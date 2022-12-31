@@ -17,36 +17,23 @@ https://www.notion.so/modulabs/e9651dcbc43c4d0e95954ef1963426f1
 # 깃허브 내 폴더 구조도
 
 our-socar
+- 1차윤겸
+- 2김선중
+- 3김연수
+- 4배현우
+- 5이승준
+- main
+    - code
+    - data
+        - data_raw
+        - data_intermediate
+        - data_final
+        - 1102_1230_collect_data.ipynb
+- .git
+- readme.md
 
-├── 1차윤겸
-
-├── 2김선중
-
-├── 3김연수
-
-├── 4배현우
-
-└── 5이승준
-
-├── .git
-
-├── main
-
-    ├── code
-
-    └── data
-
-        ├── aiffelthon_dataset
-
-        ├── data_raw
-
-        ├── data_intermediate
-
-        ├── data_final
-
-        └── 1102_1230_collect_data.ipynb
-        
-└── readme.md
+<!--파일구조도 개선 필요 있음
+https://jane-aeiou.tistory.com/80-->
 
 # 파일 양식
 
