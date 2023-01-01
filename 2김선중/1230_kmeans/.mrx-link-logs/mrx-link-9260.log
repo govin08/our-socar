@@ -1,0 +1,3 @@
+[2023-01-01 23:33:33] mrx-link.MRXLinkWebSocketHandler._accept_connection() DEBUG: WebSocket opened
+[2023-01-01 23:33:37] mrx-link.MRXLinkWebSocketHandler._run_callback() DEBUG: kernel_id was set to cfbda06e-61a1-4b43-8298-3d2740ee2c0a
+[2023-01-01 23:33:37] mrx-link.MRXLinkWebSocketHandler._run_callback() DEBUG: kernel:info proccessed.
