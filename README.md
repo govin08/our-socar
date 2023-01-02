@@ -23,12 +23,12 @@ our-socar
 - 4배현우
 - 5이승준
 - main
-    - code
+    - codes
     - data
         - data_raw
         - data_intermediate
         - data_final
-        - 1102_1230_collect_data.ipynb
+    - documents
 - .git
 - readme.md
 
