@@ -25,9 +25,10 @@ our-socar
 - main
     - codes
     - data
-        - data_raw
-        - data_intermediate
-        - data_final
+        - data_a_original
+        - data_b_raw
+        - data_c_intermediate
+        - data_d_final
     - documents
 - .git
 - readme.md
@@ -38,11 +39,15 @@ https://jane-aeiou.tistory.com/80-->
 # 파일 양식
 
 ## main 폴더의 파일 양식
-- 예시 : `2201_1229_population.csv`
-- `2201`
-  - 맨 앞 숫자 `2` (용도)
+- 예시 : `2b201_1229_population.csv`
+- `2b201`
+  - 맨 앞 숫자 `2b` (용도)
     - 1 : 프로그램
     - 2 : 데이터
+        - a : original 파일 (각자 수집한 원본 csv 파일, 한 개 feature)
+        - b : raw 파일 (엑셀로 작업하여 변경한 csv 파일, 한 개 feature)
+        - c : intermediate 파일 (주피터 노트북으로 작업하여 변경한 csv 파일, 한 개 feature)
+        - d : final 파일 (최종 csv 파일, 여러 개 feature)
     - 3 : 문서
   - 두번째 숫자 `2` (작성자, 가나다순)
     - 1 : 차윤겸
