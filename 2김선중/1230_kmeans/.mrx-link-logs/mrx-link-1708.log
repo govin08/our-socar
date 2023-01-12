@@ -1,0 +1,2 @@
+[2023-01-02 08:51:36] mrx-link.MRXLinkWebSocketHandler._accept_connection() DEBUG: WebSocket opened
+[2023-01-02 08:51:41] mrx-link.MRXLinkWebSocketHandler.on_connection_close() DEBUG: WebSocket on kernel id  closed
