@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bf7b17c1b9f53bb35170a39aa886f827 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_bf7b17c1b9f53bb35170a39aa886f827" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bf7b17c1b9f53bb35170a39aa886f827 = L.map(
+                "map_bf7b17c1b9f53bb35170a39aa886f827",
+                {
+                    center: [37.5326, 127.024612],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 9,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f55c7fb8a8558e0f2056640eef6a85db = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_bf7b17c1b9f53bb35170a39aa886f827);
+        
+    
+            var feature_group_c99d4f262af6f8bf7c1590dfc99f734a = L.featureGroup(
+                {}
+            ).addTo(map_bf7b17c1b9f53bb35170a39aa886f827);
+        
+    
+            var circle_marker_bf2366a8044148d10d09fd06c31d505d = L.circleMarker(
+                [37.30397090000028, 127.00174327903562],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.50974930362117, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_bf2366a8044148d10d09fd06c31d505d.bindTooltip(
+                `<div>
+                     수원시 장안구, 18개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bbba6b334296ac90155a55fb77f2a002 = L.circleMarker(
+                [37.25768699999995, 126.96353177903784],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.1197771587743732, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_bbba6b334296ac90155a55fb77f2a002.bindTooltip(
+                `<div>
+                     수원시 권선구, 16개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_fe7628e351e2c76c11b0e3b47bc69569 = L.circleMarker(
+                [37.28256950000001, 127.01171837904],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.8997214484679663, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_fe7628e351e2c76c11b0e3b47bc69569.bindTooltip(
+                `<div>
+                     수원시 팔달구, 20개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_572ed3e8c48bef7926c1942f1c47bf75 = L.circleMarker(
+                [37.259599900001895, 127.04234075393327],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.6295264623955426, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_572ed3e8c48bef7926c1942f1c47bf75.bindTooltip(
+                `<div>
+                     수원시 영통구, 34개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2398d33ac18231fc7833c2dc98e54f02 = L.circleMarker(
+                [37.23434599999878, 127.192964779039],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.654596100278551, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_2398d33ac18231fc7833c2dc98e54f02.bindTooltip(
+                `<div>
+                     용인시 처인구, 29개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8e1da8eb104d18005353cb5965623d1b = L.circleMarker(
+                [37.2804499000003, 127.106282679038],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.214484679665738, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_8e1da8eb104d18005353cb5965623d1b.bindTooltip(
+                `<div>
+                     용인시 기흥구, 37개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f65df089233e305712d7dd6a36d04a4e = L.circleMarker(
+                [37.3222421999992, 127.08940067903866],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.214484679665738, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_f65df089233e305712d7dd6a36d04a4e.bindTooltip(
+                `<div>
+                     용인시 수지구, 37개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d98ded514d8cc00bad22743cb69c7202 = L.circleMarker(
+                [37.45039559999981, 127.13725427904112],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.50974930362117, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_d98ded514d8cc00bad22743cb69c7202.bindTooltip(
+                `<div>
+                     성남시 수정구, 18개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d7b5be2a8ada87d200e33c23d49c66cb = L.circleMarker(
+                [37.43052329999992, 127.12883047903613],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.534818941504178, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_d7b5be2a8ada87d200e33c23d49c66cb.bindTooltip(
+                `<div>
+                     성남시 중원구, 13개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6c891000b332fd721b406be40c6e90dc = L.circleMarker(
+                [37.38281949999914, 127.11054617903623],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.309192200557103, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_6c891000b332fd721b406be40c6e90dc.bindTooltip(
+                `<div>
+                     성남시 분당구, 58개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c622b7c561b070e6251be38121b9744c = L.circleMarker(
+                [37.503591699999895, 126.75762077903995],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.114206128133706, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_c622b7c561b070e6251be38121b9744c.bindTooltip(
+                `<div>
+                     부천시, 57개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_86200ee1c355c56912e2f47c13c8abd6 = L.circleMarker(
+                [37.19956500000045, 126.82302577903695],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.919220055710305, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_86200ee1c355c56912e2f47c13c8abd6.bindTooltip(
+                `<div>
+                     화성시, 56개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_89bbee446deb2fb000513943f4eda943 = L.circleMarker(
+                [37.30108130000041, 126.83827217903396],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.094707520891365, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_89bbee446deb2fb000513943f4eda943.bindTooltip(
+                `<div>
+                     안산시 상록구, 21개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_abb6e5d178593cb2510c44208a016334 = L.circleMarker(
+                [37.32101699999964, 126.80688497904232],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.874651810584958, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_abb6e5d178593cb2510c44208a016334.bindTooltip(
+                `<div>
+                     안산시 단원구, 25개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0d48295dc4b32a400dee99f362e5809a = L.circleMarker(
+                [37.38664900000111, 126.92394577903464],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.7047353760445683, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_0d48295dc4b32a400dee99f362e5809a.bindTooltip(
+                `<div>
+                     안양시 만안구, 19개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_67b0b8b8282d1bbd2fca69bbf1a1dd91 = L.circleMarker(
+                [37.39257390000054, 126.94297467903772],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.7047353760445683, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_67b0b8b8282d1bbd2fca69bbf1a1dd91.bindTooltip(
+                `<div>
+                     안양시 동안구, 19개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2009d076a94208387293a60638cf702e = L.circleMarker(
+                [36.989605799999936, 127.1051017790378],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.33426183844011, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_2009d076a94208387293a60638cf702e.bindTooltip(
+                `<div>
+                     평택시, 53개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_7c6518e7fe7a9fba793d07fa0e7b4162 = L.circleMarker(
+                [37.380176999999485, 126.79455477903672],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.8245125348189415, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_7c6518e7fe7a9fba793d07fa0e7b4162.bindTooltip(
+                `<div>
+                     시흥시, 35개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9404508ae249cc4b69d16fb08ba94e68 = L.circleMarker(
+                [37.61534999999992, 126.70716477903692],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.724233983286908, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_9404508ae249cc4b69d16fb08ba94e68.bindTooltip(
+                `<div>
+                     김포시, 55개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_09c1c919ad17fb9941547dc9f59001e2 = L.circleMarker(
+                [37.4267878151939, 127.25816050743552],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.1197771587743732, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_09c1c919ad17fb9941547dc9f59001e2.bindTooltip(
+                `<div>
+                     광주시, 16개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ce3cde70005c17d28f7bf5b7e97819d3 = L.circleMarker(
+                [37.47861759999975, 126.8562711790359],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4596100278551525, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_ce3cde70005c17d28f7bf5b7e97819d3.bindTooltip(
+                `<div>
+                     광명시, 28개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cc2a9f75a213cec83c82dc7ed415bc0e = L.circleMarker(
+                [37.36152300000101, 126.92695877903768],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.9498607242339832, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_cc2a9f75a213cec83c82dc7ed415bc0e.bindTooltip(
+                `<div>
+                     군포시, 10개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d7ef7c1f8c30625d0ce32fb801b2e189 = L.circleMarker(
+                [37.53930139978594, 127.20649497931808],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.654596100278551, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_d7ef7c1f8c30625d0ce32fb801b2e189.bindTooltip(
+                `<div>
+                     하남시, 29개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e5146ff53e8bdf842cbf45e82430d87f = L.circleMarker(
+                [37.14988699999913, 127.0690826790372],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.924791086350975, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_e5146ff53e8bdf842cbf45e82430d87f.bindTooltip(
+                `<div>
+                     오산시, 15개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_32f7009f3930beee46133907580000d3 = L.circleMarker(
+                [37.27234199999979, 127.4266546790396],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.7298050139275762, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_32f7009f3930beee46133907580000d3.bindTooltip(
+                `<div>
+                     이천시, 14개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_37066924a1dd20a8eee5dc137ae1bf78 = L.circleMarker(
+                [37.00805459999921, 127.27139387904104],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.534818941504178, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_37066924a1dd20a8eee5dc137ae1bf78.bindTooltip(
+                `<div>
+                     안성시, 13개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_046dab0733767d2fb02e4088798776a3 = L.circleMarker(
+                [37.34488690000084, 126.96409435393784],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 0.9749303621169916, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_046dab0733767d2fb02e4088798776a3.bindTooltip(
+                `<div>
+                     의왕시, 5개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a696dc0b3ebc9ab759e5629af1d24f64 = L.circleMarker(
+                [37.49179099999989, 127.47921767903722],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 0.9749303621169916, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_a696dc0b3ebc9ab759e5629af1d24f64.bindTooltip(
+                `<div>
+                     양평군, 5개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6975d3e2710ee4ed70da8bff33f5fed2 = L.circleMarker(
+                [37.29834189999944, 127.62870277903738],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.3649025069637881, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_6975d3e2710ee4ed70da8bff33f5fed2.bindTooltip(
+                `<div>
+                     여주시, 7개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_92ed36b86f2ba817a1211072afd4583a = L.circleMarker(
+                [37.4292012999992, 126.97929577903906],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 0.5849582172701949, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_92ed36b86f2ba817a1211072afd4583a.bindTooltip(
+                `<div>
+                     과천시, 3개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e204b0f64ab8432cbb1fa404b0c09038 = L.circleMarker(
+                [37.63743050000004, 126.82374537903809],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.359331476323119, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_e204b0f64ab8432cbb1fa404b0c09038.bindTooltip(
+                `<div>
+                     고양시 덕양구, 48개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_da5ef1daf53e41389dd9c3a82719de47 = L.circleMarker(
+                [37.65862180000045, 126.7710064539382],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.944289693593314, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_da5ef1daf53e41389dd9c3a82719de47.bindTooltip(
+                `<div>
+                     고양시 일산동구, 51개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8b40d9c05e81bd31af66d0c174e7e636 = L.circleMarker(
+                [37.67799146170975, 126.74110481457048],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.654596100278551, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_8b40d9c05e81bd31af66d0c174e7e636.bindTooltip(
+                `<div>
+                     고양시 일산서구, 29개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9eb2264b5ab966744960e46fc832c72c = L.circleMarker(
+                [37.635985000004034, 127.21228275393878],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.114206128133706, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_9eb2264b5ab966744960e46fc832c72c.bindTooltip(
+                `<div>
+                     남양주시, 57개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f30d4521851a43660398bff289b0d5da = L.circleMarker(
+                [37.76018600000026, 126.77150377903833],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.01949860724234, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_f30d4521851a43660398bff289b0d5da.bindTooltip(
+                `<div>
+                     파주시, 36개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9488b996fb24108974dbe541b4fb357a = L.circleMarker(
+                [37.738082999999605, 127.02537367903524],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.214484679665738, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_9488b996fb24108974dbe541b4fb357a.bindTooltip(
+                `<div>
+                     의정부시, 37개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1ea916fbbe9dec92af27b37a3b436f3e = L.circleMarker(
+                [37.78532890000048, 127.03746767903924],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2.3398328690807797, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_1ea916fbbe9dec92af27b37a3b436f3e.bindTooltip(
+                `<div>
+                     양주시, 12개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_46f82500dae63cc0b15aea16cf582dd1 = L.circleMarker(
+                [37.594265899999066, 127.12125267903824],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3.7047353760445683, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_46f82500dae63cc0b15aea16cf582dd1.bindTooltip(
+                `<div>
+                     구리시, 19개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c0f24cc639c7df7f92cbc9aa6d738bb2 = L.circleMarker(
+                [37.89486699999945, 127.19186117903664],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.754874651810585, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_c0f24cc639c7df7f92cbc9aa6d738bb2.bindTooltip(
+                `<div>
+                     포천시, 9개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4ad0bd3fc0a7b63f66b73ff527412eb1 = L.circleMarker(
+                [37.90366429999981, 127.05225917903596],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 0.7799442896935933, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_4ad0bd3fc0a7b63f66b73ff527412eb1.bindTooltip(
+                `<div>
+                     동두천시, 4개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f446238e6234c80ee9114e4bfa154570 = L.circleMarker(
+                [37.83150789999981, 127.5011616790384],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1.3649025069637881, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_f446238e6234c80ee9114e4bfa154570.bindTooltip(
+                `<div>
+                     가평군, 7개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f4ce867dd5112a4bba7914d7d9c8a0b6 = L.circleMarker(
+                [38.09673800000029, 127.06637577903746],
+                {"bubblingMouseEvents": true, "color": "#3388ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 0.5849582172701949, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c99d4f262af6f8bf7c1590dfc99f734a);
+        
+    
+            circle_marker_f4ce867dd5112a4bba7914d7d9c8a0b6.bindTooltip(
+                `<div>
+                     연천군, 3개의 쏘카존
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

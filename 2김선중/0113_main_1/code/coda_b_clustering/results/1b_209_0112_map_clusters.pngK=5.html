@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2542d133215970fdb58fb265531136a5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2542d133215970fdb58fb265531136a5" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2542d133215970fdb58fb265531136a5 = L.map(
+                "map_2542d133215970fdb58fb265531136a5",
+                {
+                    center: [37.5326, 127.024612],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 9,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bf82908c942470b1c767f5ccdcf43697 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            var circle_marker_e883b836f6275754ac357df41071c41a = L.circleMarker(
+                [37.30397090000028, 127.00174327903562],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_e883b836f6275754ac357df41071c41a.bindTooltip(
+                `<div>
+                     수원시 장안구- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4a8f065c1f5f71ce3a56dc53166e455b = L.circleMarker(
+                [37.25768699999995, 126.96353177903784],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_4a8f065c1f5f71ce3a56dc53166e455b.bindTooltip(
+                `<div>
+                     수원시 권선구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_321d722ab08c219cfec2587abb1bfcd5 = L.circleMarker(
+                [37.28256950000001, 127.01171837904],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_321d722ab08c219cfec2587abb1bfcd5.bindTooltip(
+                `<div>
+                     수원시 팔달구- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3dffd0aa5da94e82c11ea0e33ffc9bfa = L.circleMarker(
+                [37.259599900001895, 127.04234075393327],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_3dffd0aa5da94e82c11ea0e33ffc9bfa.bindTooltip(
+                `<div>
+                     수원시 영통구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_585682595feab34818b79fa49b824517 = L.circleMarker(
+                [37.23434599999878, 127.192964779039],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_585682595feab34818b79fa49b824517.bindTooltip(
+                `<div>
+                     용인시 처인구- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8950c09818e85b309f79fef3b534f287 = L.circleMarker(
+                [37.2804499000003, 127.106282679038],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_8950c09818e85b309f79fef3b534f287.bindTooltip(
+                `<div>
+                     용인시 기흥구- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_390acb3dcc6e1900cf6dd5ecf4542c8f = L.circleMarker(
+                [37.3222421999992, 127.08940067903866],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_390acb3dcc6e1900cf6dd5ecf4542c8f.bindTooltip(
+                `<div>
+                     용인시 수지구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4ac5f7e0da42bd9a3f2ed241ef23ec09 = L.circleMarker(
+                [37.45039559999981, 127.13725427904112],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_4ac5f7e0da42bd9a3f2ed241ef23ec09.bindTooltip(
+                `<div>
+                     성남시 수정구- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f68b5c3bc34853c587343c7de8b6ddb2 = L.circleMarker(
+                [37.43052329999992, 127.12883047903613],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_f68b5c3bc34853c587343c7de8b6ddb2.bindTooltip(
+                `<div>
+                     성남시 중원구- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c208889cb2ea00049252101e51da838a = L.circleMarker(
+                [37.38281949999914, 127.11054617903623],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_c208889cb2ea00049252101e51da838a.bindTooltip(
+                `<div>
+                     성남시 분당구- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_acae0d34c84b431dbb0b43f0c7066e04 = L.circleMarker(
+                [37.503591699999895, 126.75762077903995],
+                {"bubblingMouseEvents": true, "color": "#8000ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8000ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_acae0d34c84b431dbb0b43f0c7066e04.bindTooltip(
+                `<div>
+                     부천시- Cluster 1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_36fb6f520ff0021f0061cb6e499fcbd5 = L.circleMarker(
+                [37.19956500000045, 126.82302577903695],
+                {"bubblingMouseEvents": true, "color": "#8000ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8000ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_36fb6f520ff0021f0061cb6e499fcbd5.bindTooltip(
+                `<div>
+                     화성시- Cluster 1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4c54531dbf6857b9dee3e7d611de446e = L.circleMarker(
+                [37.30108130000041, 126.83827217903396],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_4c54531dbf6857b9dee3e7d611de446e.bindTooltip(
+                `<div>
+                     안산시 상록구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_207cb8516bc5f12b3a000e21275bdaa2 = L.circleMarker(
+                [37.32101699999964, 126.80688497904232],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_207cb8516bc5f12b3a000e21275bdaa2.bindTooltip(
+                `<div>
+                     안산시 단원구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bb4dc27222ac01ee72dad79f20bdccf3 = L.circleMarker(
+                [37.38664900000111, 126.92394577903464],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_bb4dc27222ac01ee72dad79f20bdccf3.bindTooltip(
+                `<div>
+                     안양시 만안구- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_880afc3c84535801c4957cb72fc88114 = L.circleMarker(
+                [37.39257390000054, 126.94297467903772],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_880afc3c84535801c4957cb72fc88114.bindTooltip(
+                `<div>
+                     안양시 동안구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cf94ff62dd8d3305689ba308883712d4 = L.circleMarker(
+                [36.989605799999936, 127.1051017790378],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_cf94ff62dd8d3305689ba308883712d4.bindTooltip(
+                `<div>
+                     평택시- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c4f3656964a4a7844c823c3b5318617c = L.circleMarker(
+                [37.380176999999485, 126.79455477903672],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_c4f3656964a4a7844c823c3b5318617c.bindTooltip(
+                `<div>
+                     시흥시- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a2802de4cfca9709f303adfa95c3e50f = L.circleMarker(
+                [37.61534999999992, 126.70716477903692],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_a2802de4cfca9709f303adfa95c3e50f.bindTooltip(
+                `<div>
+                     김포시- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_cadc00e81a12bbed3c0d70c340d69a0f = L.circleMarker(
+                [37.4267878151939, 127.25816050743552],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_cadc00e81a12bbed3c0d70c340d69a0f.bindTooltip(
+                `<div>
+                     광주시- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4c15eae48507b96bd3b903a4f37a80db = L.circleMarker(
+                [37.47861759999975, 126.8562711790359],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_4c15eae48507b96bd3b903a4f37a80db.bindTooltip(
+                `<div>
+                     광명시- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f94557eced4ee5cebff23715d72ed8ea = L.circleMarker(
+                [37.36152300000101, 126.92695877903768],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_f94557eced4ee5cebff23715d72ed8ea.bindTooltip(
+                `<div>
+                     군포시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_ce5de2119fe86498f76c3e94c3e2b9fb = L.circleMarker(
+                [37.53930139978594, 127.20649497931808],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_ce5de2119fe86498f76c3e94c3e2b9fb.bindTooltip(
+                `<div>
+                     하남시- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0829e56583b1dbb923b56aee89b0dfb8 = L.circleMarker(
+                [37.14988699999913, 127.0690826790372],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_0829e56583b1dbb923b56aee89b0dfb8.bindTooltip(
+                `<div>
+                     오산시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_47664b3c6c0de003966f89bea5ea802c = L.circleMarker(
+                [37.27234199999979, 127.4266546790396],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_47664b3c6c0de003966f89bea5ea802c.bindTooltip(
+                `<div>
+                     이천시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b89207edb2db59c3a994ae299a4c0bed = L.circleMarker(
+                [37.00805459999921, 127.27139387904104],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_b89207edb2db59c3a994ae299a4c0bed.bindTooltip(
+                `<div>
+                     안성시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_f6a5d287e016cca5fdbdba5adb6a4d15 = L.circleMarker(
+                [37.34488690000084, 126.96409435393784],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_f6a5d287e016cca5fdbdba5adb6a4d15.bindTooltip(
+                `<div>
+                     의왕시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4d142ca8fbbfd9661ac20c2560dbbb80 = L.circleMarker(
+                [37.49179099999989, 127.47921767903722],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_4d142ca8fbbfd9661ac20c2560dbbb80.bindTooltip(
+                `<div>
+                     양평군- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6e1e7792fc125af26185cbbdfc7c0074 = L.circleMarker(
+                [37.29834189999944, 127.62870277903738],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_6e1e7792fc125af26185cbbdfc7c0074.bindTooltip(
+                `<div>
+                     여주시- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_0f724d00786cfd9775e0767999da7473 = L.circleMarker(
+                [37.4292012999992, 126.97929577903906],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_0f724d00786cfd9775e0767999da7473.bindTooltip(
+                `<div>
+                     과천시- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c13b21b11f70e592cbd5428b1e3e329c = L.circleMarker(
+                [37.63743050000004, 126.82374537903809],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_c13b21b11f70e592cbd5428b1e3e329c.bindTooltip(
+                `<div>
+                     고양시 덕양구- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_33528f95e063318d7278c8237f3dc8f1 = L.circleMarker(
+                [37.65862180000045, 126.7710064539382],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_33528f95e063318d7278c8237f3dc8f1.bindTooltip(
+                `<div>
+                     고양시 일산동구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_b2099a2f6c3fc871f757fe89be6c011b = L.circleMarker(
+                [37.67799146170975, 126.74110481457048],
+                {"bubblingMouseEvents": true, "color": "#ff0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_b2099a2f6c3fc871f757fe89be6c011b.bindTooltip(
+                `<div>
+                     고양시 일산서구- Cluster 0
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bb13e51f753ffa88dc72b89c058829c7 = L.circleMarker(
+                [37.635985000004034, 127.21228275393878],
+                {"bubblingMouseEvents": true, "color": "#8000ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8000ff", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_bb13e51f753ffa88dc72b89c058829c7.bindTooltip(
+                `<div>
+                     남양주시- Cluster 1
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e6d0491a27d0fa48f1847c78431d3750 = L.circleMarker(
+                [37.76018600000026, 126.77150377903833],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_e6d0491a27d0fa48f1847c78431d3750.bindTooltip(
+                `<div>
+                     파주시- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_3ea86dfad1d38ba606be630fe870230c = L.circleMarker(
+                [37.738082999999605, 127.02537367903524],
+                {"bubblingMouseEvents": true, "color": "#80ffb4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#80ffb4", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_3ea86dfad1d38ba606be630fe870230c.bindTooltip(
+                `<div>
+                     의정부시- Cluster 3
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_87815a28540e6ac7c5e3df4865ccac54 = L.circleMarker(
+                [37.78532890000048, 127.03746767903924],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_87815a28540e6ac7c5e3df4865ccac54.bindTooltip(
+                `<div>
+                     양주시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_e888a62e02e0174cea11ed3b03d87e31 = L.circleMarker(
+                [37.594265899999066, 127.12125267903824],
+                {"bubblingMouseEvents": true, "color": "#ffb360", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffb360", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_e888a62e02e0174cea11ed3b03d87e31.bindTooltip(
+                `<div>
+                     구리시- Cluster 4
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6ceae417ee9a259a7810b719902f78c0 = L.circleMarker(
+                [37.89486699999945, 127.19186117903664],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_6ceae417ee9a259a7810b719902f78c0.bindTooltip(
+                `<div>
+                     포천시- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9e562a513cd7a2f1c82b11b1c210e232 = L.circleMarker(
+                [37.90366429999981, 127.05225917903596],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_9e562a513cd7a2f1c82b11b1c210e232.bindTooltip(
+                `<div>
+                     동두천시- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_27acf2f1fd1c26801263247257169e40 = L.circleMarker(
+                [37.83150789999981, 127.5011616790384],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_27acf2f1fd1c26801263247257169e40.bindTooltip(
+                `<div>
+                     가평군- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_78ec94e10b17c921b9056b08def6e53b = L.circleMarker(
+                [38.09673800000029, 127.06637577903746],
+                {"bubblingMouseEvents": true, "color": "#00b5eb", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00b5eb", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_2542d133215970fdb58fb265531136a5);
+        
+    
+            circle_marker_78ec94e10b17c921b9056b08def6e53b.bindTooltip(
+                `<div>
+                     연천군- Cluster 2
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
