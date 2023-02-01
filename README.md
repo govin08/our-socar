@@ -27,13 +27,10 @@ our-socar
         - code_a_collect_data
         - code_b_clustering
         - code_c_forecasting
-            - code_ca_ARIMA
-            - code_cb_LSTM
     - data
         - data_a_original
         - data_b_raw
-        - data_c_intermediate
-        - data_d_final
+        - data_c_final
     - document
 - .git
 - readme.md
