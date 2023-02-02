@@ -27,6 +27,7 @@ our-socar
         - code_a_collect_data
         - code_b_clustering
         - code_c_forecasting
+        - code_d_suggestion
     - data
         - data_a_original
         - data_b_raw
