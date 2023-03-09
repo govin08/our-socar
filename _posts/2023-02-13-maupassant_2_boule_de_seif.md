@@ -2,10 +2,10 @@
 layout: single
 title:  "모파상(2) - 「비곗덩어리」"
 description: "모파상의 소설 「비곗덩어리」에 관한 글입니다."
+categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-categories: literature
 ---
 
 ## 1. 프로이센-프랑스 전쟁

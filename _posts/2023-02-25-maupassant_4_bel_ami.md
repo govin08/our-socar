@@ -2,10 +2,10 @@
 layout: single
 title:  "모파상(4) - 「벨 아미」"
 description: "모파상의 소설 「벨 아미」에 관한 글입니다."
+categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-categories: literature
 ---
 
 ## 1. 잘생긴 남자

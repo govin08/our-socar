@@ -2,10 +2,10 @@
 layout: single
 title:  "모파상(3) - 「여자의 일생」"
 description: "모파상의 소설 「어느 인생」에 관한 글입니다."
+categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-categories: literature
 ---
 
 ## 1. 제목의 오역

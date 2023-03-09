@@ -18,7 +18,7 @@ minimal_mistakes_skin    : "dirt"
 locale                   : "ko-KR"
 title                    : "의지와 표상으로서의 수학"
 title_separator          : "|"
-subtitle                 : "The Mathematics as Will and Representation"
+subtitle                 : "Mathematics as Will and Representation"
 name                     : "Govin"
 description              : "Govin's webpage"
 url                      : "https://govin08.github.io"
@@ -214,16 +214,16 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 
 # HTML Compression
