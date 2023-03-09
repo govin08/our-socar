@@ -6,9 +6,10 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
+toc : True
 ---
 
-## 1. 잘생긴 남자
+# 1. 잘생긴 남자
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-1.png" alt="maupassant_4-1" width="300"/>
@@ -20,7 +21,7 @@ published: true
 이 소설에서는 잘생긴 남자가 등장합니다.
 <!-- 그리고 이 남자가 어떻게 해서 본인의 미모를 전격적으로 활용하여, 돈과 권력을 취하게 되는지를 그리고 있습니다. -->
 
-## 2. 「벨 아미」
+# 2. 「벨 아미」
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-2-1.png" alt="maupassant_4-2-1" width="300"/>
@@ -848,7 +849,7 @@ published: true
 > 그의 생각은 뒤로 돌아가 있었다.
 > 강렬한 햇빛 때문에 가늘게 뜬 그의 눈앞에는, 드 마렐 부인이 침대에서 나올 때면 언제나 마구 흐트러지는 귀여운 곱슬머리를 거울 앞에서 매만지던 영상이 아른거렸다.
 
-## 3.
+# 3.
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-3.png" alt="maupassant_4-3" width="300"/>

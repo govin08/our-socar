@@ -6,9 +6,10 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
+toc : True
 ---
 
-## 1. 프로이센-프랑스 전쟁
+# 1. 프로이센-프랑스 전쟁
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-1.png" alt="maupassant_2-1" width="300"/>
 </div>
@@ -36,7 +37,7 @@ published: true
 오른쪽 그림은 프로이센-프랑스 전쟁에서 프로이센이 프랑스를 공격한 경로를 나타냅니다.
 프로이센 군은 수도 파리를 먼저 점령하고, 이후에는 루앙시를 포함한 프랑스 동북부 지방을 점령했음을 알 수 있읍니다.
 
-## 2. 「비곗덩어리」
+# 2. 「비곗덩어리」
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-3.png" alt="maupassant_2-3" width="300"/>
@@ -315,7 +316,7 @@ published: true
 > 불 드 쉬프는 아직도 울고 있었다.
 > 그리고 가끔 견딜 수 없는 흐느낌이 음절과 음절 사이로 어둠 속에서 새어 나왔다.
 
-## 3.
+# 3.
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-4.png" alt="maupassant_2-4" width="300"/>

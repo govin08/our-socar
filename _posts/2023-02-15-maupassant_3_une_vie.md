@@ -6,9 +6,10 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
+toc : True
 ---
 
-## 1. 제목의 오역
+# 1. 제목의 오역
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-1.png" alt="maupassant_3-1" width="300"/>
@@ -47,8 +48,9 @@ published: true
 제목이 「어느 인생」이건, 「여자의 일생」이건 간에 이 소설은 정말로 한 여자의 일생을 다루고 있습니다.
 잔느라는 이름의 주인공이, 수녀원에서 나온 17살부터 시작하여, 40대 후반이 되기까지의 일생이 아주 면밀하게 묘사되고 있습니다. -->
 
-## 2. 「여자의 일생」
+# 2. 「여자의 일생」
 
+## 2-1
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-1.png" alt="maupassant_3-2-1" width="300"/>
 </div>
@@ -154,6 +156,7 @@ published: true
 > 
 > 만약 쥘리앵이 여전히 아름답고 말쑥하고 우아하고 매력적이었더라면 그녀는 많이 괴로웠을까?
 
+## 2-2
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-2.png" alt="maupassant_3-2-2" width="300"/>
 </div>
@@ -280,6 +283,7 @@ published: true
 그는 잔느와 잔느 부모님의 재산은 결국 본인 소유의 것이라는 인식을 가지고 있었던 것 같습니다.
 하지만, 잔느의 아버지는 원래의 계획대로 로잘리를 적당한 사내와 혼인시키는 데 성공합니다.
 
+## 2-3
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-3.png" alt="maupassant_3-2-3" width="300"/>
 </div>
@@ -329,6 +333,7 @@ published: true
 > 사람들의 대화를 끊어 버리고서 배내옷이나 턱받이나 잘 만든 리본에 감탄을 늘어놓거나, 주위에서 하는 얘기에는 전혀 귀 기울이지 않고 옷감 조각에 넋을 빼앗기기도 했다.
 > 그녀는 옷감을 뒤집어 오래 보고, 더 잘 보려고 손을 쳐들어 다시 뒤집어 보다가는 "이걸 해 입히면 아기가 예쁠까요?" 하고 갑자기 묻기도 했다.
 
+## 2-4
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-4.png" alt="maupassant_3-2-4" width="300"/>
 </div>
@@ -470,6 +475,7 @@ published: true
 > 여자는 충격으로 턱이 떨어져서 늘어져 있었다.
 > 부러진 그들의 사지는 살 아래에 뼈가 없는 것처럼 물컹거렸다.
 
+## 2-5
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-5.png" alt="maupassant_3-2-5" width="300"/>
 </div>
@@ -575,6 +581,7 @@ published: true
 > 엄청나게 변하셨어요.
 > 그러나 서로 만나 보지 못한 지 이십사 년이나 되었다는 걸 생각해 보세요."
 
+## 2-6
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-6.png" alt="maupassant_3-2-6" width="300"/>
 </div>
@@ -651,7 +658,7 @@ published: true
 
 
 
-## 3.
+# 3. 페시미즘(pessimism)과 「여자의 일생」
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-3.png" alt="maupassant_3-3" width="300"/>

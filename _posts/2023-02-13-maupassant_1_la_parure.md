@@ -6,10 +6,11 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-# teaser: {{site.url}}/images/2023-02-13-maupassant_the_necklace\maupassant_1-1.png
+toc : True
+#teaser: {{site.url}}/images/2023-02-13-maupassant_the_necklace\maupassant_1-1.png
 ---
 
-## 1. 기 드 모파상
+# 1. 기 드 모파상
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_1-1.png" alt="maupassant_1-1" width="300"/>
@@ -23,7 +24,7 @@ published: true
 모파상의 문장들은 대체로 어렵지 않고 잘 읽히지만, 이 소설은 특히나 짧은 페이지 수와 어렵지 않은 줄거리 덕에 아주 쉽게 읽힙니다.
 그 때문인지, 중고등학교의 교과서에 종종 실리기도 합니다.
 
-## 2. 「목걸이」
+# 2. 「목걸이」
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_1-2.png" alt="maupassant_1-2" width="300"/>
@@ -86,7 +87,7 @@ published: true
 > 그 목걸이는 가짜였어.
 > 겨우 5백 프랑밖에 안하던 거였는데···."
 
-## 3. 마틸드의 *여린 마음*
+# 3. 마틸드의 *여린 마음*
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_1-3.png" alt="maupassant_1-3" width="300"/>
