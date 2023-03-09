@@ -6,7 +6,8 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-toc : True
+toc : true
+author_profile: false
 ---
 
 # 1. 잘생긴 남자
@@ -23,6 +24,7 @@ toc : True
 
 # 2. 「벨 아미」
 
+## 2-1
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-2-1.png" alt="maupassant_4-2-1" width="300"/>
 </div>
@@ -145,6 +147,7 @@ toc : True
 > "자, 그만하면 됐네.
 > 한 잔 더 할까?"
 
+## 2-2
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-2-2.png" alt="maupassant_4-2-2" width="300"/>
 </div>
@@ -276,6 +279,7 @@ toc : True
 > 정치 단체 사이에 차차 뒤루아의 이름이 알려졌고, 사람들의 힘찬 악수와 정중하게 모자를 벗는 태도에서 자신의 세력이 커졌음을 느꼈다.
 > 한편 아내의 명석한 두뇌와 정보를 수집하는 소질이며 아는 사람의 수가 많은 데에는 경탄과 칭찬을 금할 수가 없었다.
 
+## 2-3
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-2-3.png" alt="maupassant_4-2-3" width="300"/>
 </div>
@@ -452,6 +456,7 @@ toc : True
 > "이 여잡니다.
 > 현장을 잡았습니다."
 
+## 2-4
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-2-4.png" alt="maupassant_4-2-4" width="300"/>
 </div>
@@ -687,6 +692,7 @@ toc : True
 > "어머, 벌써 가는 거에요?
 > 당신의 아내가 되어서 정말 즐거웠어요!"
 
+## 2-5
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-2-5.png" alt="maupassant_4-2-5" width="300"/>
 </div>
@@ -849,7 +855,7 @@ toc : True
 > 그의 생각은 뒤로 돌아가 있었다.
 > 강렬한 햇빛 때문에 가늘게 뜬 그의 눈앞에는, 드 마렐 부인이 침대에서 나올 때면 언제나 마구 흐트러지는 귀여운 곱슬머리를 거울 앞에서 매만지던 영상이 아른거렸다.
 
-# 3.
+# 3. 악당
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-3.png" alt="maupassant_4-3" width="300"/>

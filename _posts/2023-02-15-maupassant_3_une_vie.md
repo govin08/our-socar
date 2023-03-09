@@ -6,7 +6,10 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-toc : True
+toc : true
+author_profile: false
+sidebar:
+    nav: "docs"
 ---
 
 # 1. 제목의 오역

@@ -6,7 +6,8 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-toc : True
+toc : true
+author_profile: false
 ---
 
 # 1. 프로이센-프랑스 전쟁

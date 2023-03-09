@@ -6,5 +6,14 @@ main:
     url: /about/
   - title: "Category"
     url: /categories/
-  - title: "Tags"
+  - title: "Tag"
     url: /tags/
+  - title: "Search"
+    url: /search/
+docs:
+  - title: ""
+  - children:
+    - title: "Category"
+      url: /categories/
+    - title: "Tag"
+      url: /tags/

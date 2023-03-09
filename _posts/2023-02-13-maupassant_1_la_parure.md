@@ -6,7 +6,8 @@ categories: literature
 tags: [Maupassant]
 comments: true
 published: true
-toc : True
+toc : true
+author_profile: false
 #teaser: {{site.url}}/images/2023-02-13-maupassant_the_necklace\maupassant_1-1.png
 ---
 
