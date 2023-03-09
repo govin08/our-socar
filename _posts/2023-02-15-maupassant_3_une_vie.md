@@ -1,12 +1,9 @@
 ---
 layout: single
-title:  "모파상(3) - 「여자의 일생」"
-description: "모파상의 소설 「어느 인생」에 관한 글입니다."
+title:  "모파상 - 「여자의 일생」"
+#description: "모파상의 소설 「어느 인생」에 관한 글입니다."
 categories: literature
 tags: [Maupassant]
-comments: true
-published: true
-toc : true
 author_profile: false
 sidebar:
     nav: "docs"
@@ -14,9 +11,10 @@ sidebar:
 
 # 1. 제목의 오역
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+![maupassant 3-1]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-1.png){: .img-50-center}
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-1.png" alt="maupassant_3-1" width="300"/>
-</div>
+</div> -->
 
 이 소설은 모파상의 첫번째 장편소설로 모파상의 대표작이기도 합니다.
 톨스토이는 이 소설을 두고 "「레미제라블」 이래 최고의 프랑스 소설"이라는 평가를 내리기도 했는데요.
@@ -54,9 +52,10 @@ sidebar:
 # 2. 「여자의 일생」
 
 ## 2-1
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+![maupassant 3-2-1]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-1.png){: .img-50-center}
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-1.png" alt="maupassant_3-2-1" width="300"/>
-</div>
+</div> -->
 
 소설의 배경은 19세기 초반의 프랑스, 노르망디 지방의 한 시골마을입니다.
 이때는 아직 여성에 대한 교육제도가 마련되지 않았던 시기입니다.
@@ -160,9 +159,10 @@ sidebar:
 > 만약 쥘리앵이 여전히 아름답고 말쑥하고 우아하고 매력적이었더라면 그녀는 많이 괴로웠을까?
 
 ## 2-2
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-2.png" alt="maupassant_3-2-2" width="300"/>
-</div>
+</div> -->
+![maupassant 3-2-2]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-2.png){: .img-50-center}
 
 이러한 갈등은 충격적인 한 사건으로 말미암아 최고조에 이르게 됩니다.
 잔느의 집에는 **로잘리**라는 이름의 하녀가 있었습니다.
@@ -287,9 +287,10 @@ sidebar:
 하지만, 잔느의 아버지는 원래의 계획대로 로잘리를 적당한 사내와 혼인시키는 데 성공합니다.
 
 ## 2-3
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-3.png" alt="maupassant_3-2-3" width="300"/>
-</div>
+</div> -->
+![maupassant 3-2-3]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-3.png){: .img-50-center}
 
 이후의 결혼생활에서 잔느는 오히려 초탈한듯 무던하게 살아갑니다.
 그녀는 이제 남편에 대해서 그 어떤 기대도 갖지 않았기에, 상처를 받는 일도 없습니다.
@@ -337,9 +338,10 @@ sidebar:
 > 그녀는 옷감을 뒤집어 오래 보고, 더 잘 보려고 손을 쳐들어 다시 뒤집어 보다가는 "이걸 해 입히면 아기가 예쁠까요?" 하고 갑자기 묻기도 했다.
 
 ## 2-4
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-4.png" alt="maupassant_3-2-4" width="300"/>
-</div>
+</div> -->
+![maupassant 3-2-4]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-4.png){: .img-50-center}
 
 한편, 라마르 부부(잔느-쥘리앵 부부)는 근처에 살고 있던 푸르빌 백작 부부와 친하게 지내며 교류하고 있었습니다.
 라마르 부부가 살던 곳은 인적이 드문 시골이었기에, 근처에 친구라고 할 만한 사람이 푸르빌 부부 외에는 없었던 데다 나이도 얼추 비슷했기에, 이 두 부부는 다정한 친분을 유지하며 지내고 있었습니다.
@@ -479,9 +481,10 @@ sidebar:
 > 부러진 그들의 사지는 살 아래에 뼈가 없는 것처럼 물컹거렸다.
 
 ## 2-5
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-5.png" alt="maupassant_3-2-5" width="300"/>
-</div>
+</div> -->
+![maupassant 3-2-5]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-5.png){: .img-50-center}
 
 비록 악덕한 남편이었을지라도 남편을 잃게 된 잔느의 슬픔은 대단한 것이었지만, 잔느에게는 그래도 살아야 할 이유가 될 만한 세 사람이 남아있었습니다.
 그의 아들 **폴**과 아버지 **시몽 남작**, 그리고 **리종 이모**였는데요.
@@ -585,9 +588,10 @@ sidebar:
 > 그러나 서로 만나 보지 못한 지 이십사 년이나 되었다는 걸 생각해 보세요."
 
 ## 2-6
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-6.png" alt="maupassant_3-2-6" width="300"/>
-</div>
+</div> -->
+![maupassant 3-2-6]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-2-6.png){: .img-50-center}
 
 로잘리의 등장으로 잔느의 삶은 드디어 추락을 멈춥니다.
 로잘리는 잔느의 경제권을 위임받아, 이자를 청산하고 토지를 매각하여 더이상 잔느가 경제적으로 몰락하는 것을 중지시킵니다.
@@ -661,11 +665,14 @@ sidebar:
 
 
 
-# 3. 페시미즘(pessimism)과 「여자의 일생」
+# 3. 페시미즘(pessimism)
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_3-3.png" alt="maupassant_3-3" width="300"/>
-</div>
+</div> -->
+![maupassant 3-3]({{site.url}}\images\2023-02-13-maupassant\maupassant_3-3.png){: .img-50-center }
+
+<!-- 여기서 말하는 것은 페미니즘(feminism, 여성주의)이 아닌 페시미즘(pessimism, 염세주의, 비관론)입니다. -->
 
 앞선 두 단편에 비해, 장편소설을 정리하는 건 꽤 어렵고 손이 많이 가는 일이군요.
 그래도, 이 글을 쓰기 위해 소설의 주요한 부분들을 다시 읽고 적으면서, 이 소설이 주는 조용한 감동과 울림을 다시 느낄 수 있는 시간이었던 것 같습니다.

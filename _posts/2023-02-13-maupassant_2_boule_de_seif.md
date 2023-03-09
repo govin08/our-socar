@@ -1,19 +1,16 @@
 ---
 layout: single
-title:  "모파상(2) - 「비곗덩어리」"
-description: "모파상의 소설 「비곗덩어리」에 관한 글입니다."
+title:  "모파상 - 「비곗덩어리」"
+#description: "모파상의 소설 「비곗덩어리」에 관한 글입니다."
 categories: literature
 tags: [Maupassant]
-comments: true
-published: true
-toc : true
 author_profile: false
+sidebar:
+    nav: "docs"
 ---
 
 # 1. 프로이센-프랑스 전쟁
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
-    <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-1.png" alt="maupassant_2-1" width="300"/>
-</div>
+![maupassant 2-1-1]({{site.url}}\images\2023-02-13-maupassant\maupassant_2-1-1.png){: .img-50-center}
 
 1870년 7월, 프랑스와 프로이센(현재의 독일) 사이에서는 전쟁이 벌어졌습니다.
 보불전쟁(普佛戰爭, Franco-Prussian War)이라고도 불리는 이 전쟁은 프로이센의 압도적인 승리로 끝나게 됩니다.
@@ -28,8 +25,8 @@ author_profile: false
 > 한 사람도 빗나간 데가 없다.
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
-    <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-2-1.png" alt="maupassant_2-2-1" width="300"/>
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTgzZjIwZWI0MDhhYzJkYmFkM2ZhZmZmMDJjOTRhZmJmOTUwY2E3MSZjdD1n/pRTe4b4A20BicA6V4N/giphy.gif" alt="rouen_3"  width="250" />
+    <img src="\images\2023-02-13-maupassant\maupassant_2-1-2.png" alt="maupassant_2-1-2" width="300"/>
+    <img src="\images\2023-02-13-maupassant\maupassant_2-1-3.gif" alt="maupassant_2-1-3" width="300"/>
 </div>
 
 그림의 왼쪽 지도에 나타나있는 루앙(Rouen) 시는 프랑스 노르망디의 주요 도시로, 파리에서 북쪽으로 100km 정도 가면 있습니다.
@@ -40,9 +37,10 @@ author_profile: false
 
 # 2. 「비곗덩어리」
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+![maupassant 2-2]({{site.url}}\images\2023-02-13-maupassant\maupassant_2-2.png){: .img-50-center}
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-3.png" alt="maupassant_2-3" width="300"/>
-</div>
+</div> -->
 
 한 도시가 적에 의해서 함락되는 과정은, 그렇게까지 신속하고 명쾌하게 이루어지지는 않습니다.
 예를 들어, 컴퓨터 게임에서 흔히 그러는 것처럼, 어떤 도시가 1870년 12월 4일까지는 프랑스 땅이었다가, 12월 5일부터는 프로이센 땅이 되는 식은 아닌 것입니다.
@@ -319,9 +317,10 @@ author_profile: false
 
 # 3.
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
+![maupassant 2-3]({{site.url}}\images\2023-02-13-maupassant\maupassant_2-3.png){: .img-50-center}
+<!-- <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_2-4.png" alt="maupassant_2-4" width="300"/>
-</div>
+</div> -->
 
 이 소설이 전하는 메시지는 너무나도 뚜렷하게 보입니다.
 어쩌면 지나치게 분명해보이기까지 합니다.
@@ -338,7 +337,6 @@ author_profile: false
 문제의 해결에 있어서는 등을 돌린 채로 외면할 것 같기도 합니다.
 그런 면에서, 소설 속 사람들의 행동은 충분히 이해되기도 합니다.
 어쩌면, 그런 가식적인 모습들이 굉장히 인간적으로 느껴지기까지 하는 부분이 있는 것 같습니다. -->
-
 
 - 책 정보
     - 책이름 : 『목걸이』

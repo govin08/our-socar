@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dirt"
+minimal_mistakes_skin    : "air" # air, contrast, dark, dirt, mint, sunrise, aqua, neon, plum
 
 # Site Settings
 locale                   : "ko-KR"
@@ -85,10 +85,10 @@ analytics:
 # Site Author
 author:
   name             : "sj kim"
-  avatar           : "/assets/logo.ico/android-chrome-192x192.png"
+  avatar           : "/assets/images/logo.png"
   bio              : "**수학**, **머신러닝**, **문학**을 좋아합니다. <br> 소통은 큰 힘이 됩니다."
   location         : "Korea"
-  email            : #"govindah08@gmail.com"
+  email            : "govindah08@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -187,6 +187,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-redirect-from
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -195,6 +196,7 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-redirect-from
 
 
 # Archives
@@ -247,6 +249,10 @@ defaults:
       share: false
       related: false
       show_date: true
+      toc: true
+      toc_sticky: true
+      toc_label: 목차
+      toc_icon: "fas fa-table"
   - scope:
       path: "_pages"
       type: pages

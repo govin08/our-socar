@@ -1,21 +1,17 @@
 ---
 layout: single
-title:  "모파상(1) - 「목걸이」"
-description: "모파상의 소설 「목걸이」에 관한 글입니다."
+title:  "모파상 - 「목걸이」"
+#description: "모파상의 소설 「목걸이」에 관한 글입니다."
 categories: literature
 tags: [Maupassant]
-comments: true
-published: true
-toc : true
 author_profile: false
-#teaser: {{site.url}}/images/2023-02-13-maupassant_the_necklace\maupassant_1-1.png
+sidebar:
+    nav: "docs"
 ---
 
 # 1. 기 드 모파상
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
-    <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_1-1.png" alt="maupassant_1-1" width="300"/>
-</div>
+![maupassant 1-1]({{site.url}}\images\2023-02-13-maupassant\maupassant_1-1.png){: .img-50-center}
 
 모파상(Guy de Maupassant)은 1800년대 후반에 활동한 프랑스 작가입니다(1850 ~ 1893).
 어릴 적, 플로베르로부터 재능을 인정받아 글쓰는 법을 배웠고, 단편 「비곗덩어리」가 성공하면서 작가로서의 명성을 얻었습니다.
@@ -27,9 +23,7 @@ author_profile: false
 
 # 2. 「목걸이」
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
-    <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_1-2.png" alt="maupassant_1-2" width="300"/>
-</div>
+![maupassant 1-2]({{site.url}}\images\2023-02-13-maupassant\maupassant_1-2.png){: .img-50-center}
 
 모파상은 여성들의 심리를 잘 묘사해내는 작가로 유명합니다.
 또한, 소설 속에 등장하는 주인공들은 여자로 설정되는 경우가 많은데요.
@@ -90,9 +84,7 @@ author_profile: false
 
 # 3. 마틸드의 *여린 마음*
 
-<div style="text-align : center; padding: 50px 1px 50px 1px;">
-    <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_1-3.png" alt="maupassant_1-3" width="300"/>
-</div>
+![maupassant 1-3]({{site.url}}\images\2023-02-13-maupassant\maupassant_1-3.png){: .img-50-center}
 
 마틸드를 보면 자연스럽게 미소가 지어집니다.
 본인의 미모에 비해 결혼생활이 삭막하다고 말하는, 옷과 장신구가 없어서 무도회에 가지 못하겠다고 투정부리는 마틸드의 모습은 얼마나 귀여운지요.
@@ -104,6 +96,12 @@ author_profile: false
 이 평범한 부부의 순진함은, 어떻게든 본인들의 잘못을 어떻게든 책임지고자 하는 모습에서 가장 잘 드러나는 것 같습니다.
 목걸이가 가짜인 줄도 모르고 10년 동안이나 고생해서 빚을 갚아나가려고 하는 모습은 얼마나 인간적인지요.
 아름다웠던 미모가 시들고 세월이 흘러가는 것도 모르는 채로, 알고보면 별 것도 아닌 일때문에 근심하며 정신없이 살아가는 모습은, 우리 평범한 삶의 모습과 참 닮아있는 것 같습니다.
+
+<!-- 피천득의 수필 「여린 마음」의 한 구절을 발췌하면서 이 글을 마칩니다.
+> 사람은 본시 연한 정으로 만들어졌다.
+> 여린 연민의 정은 냉혹한 풍자보다 귀하다.
+> 소월도 쇼팽도 센티멘탈리스트였다.
+> 우리 모두 여린 마음으로 돌아간다면 인생은 좀 더 행복할 수 있을 것이다. -->
 
 - 책 정보
     - 책이름 : 『목걸이』
