@@ -10,9 +10,11 @@ author_profile: false
 ---
 
 <!-- https://mmistakes.github.io/minimal-mistakes/docs/utility-classes/
+primary / 회색 / 성질
 info / 파랑 / 정의
+warning / 주황 / 증명
 success / 연두 / 정리
-warning / 주황 / 증명 -->
+danger / 빨강 / 참고 -->
 
 
 2020년 3월, 대학원의 두번째 학기에 행렬의 직교대각화(orthogonal diagonalization)에 대해 고민했습니다.
@@ -31,7 +33,9 @@ warning / 주황 / 증명 -->
 [링크]({{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf){: .btn .btn--primary}
 
 해당 파일은 영어로 작성해본 것인데, 이번 포스트에서는 이것을 한글로 적으면서 내용도 풀어서 다시 정리해보고자 합니다.
-사실, 어느 정도 선형대수에 대한 지식이 있다면, 간결하게 적어놓은 원래 파일이 더 잘읽힐 수 있습니다.
+사실, 어느 정도 선형대수에 대한 지식이 있다면, 간결하게 적어놓은 원래 파일이 더 잘 읽힐 수 있습니다.
+
+---
 
 이 포스트는 기본적으로 한글을 사용하지만, 사용된 수학용어들은 대부분 영어로 적었습니다.
 해당 용어가 처음등장할 때에 한해서만 한글 표현을 병기해보았습니다.
@@ -41,16 +45,19 @@ warning / 주황 / 증명 -->
 
 ## 1.1 행렬
 
-이 포스트에서 다루는 행렬들은 모두 entry(성분)들이 실수 혹은 복소수인 행렬들만을 다룹니다.
+이 포스트에서 다루는 행렬들은 모두 성분(entry)들이 실수 혹은 복소수인 행렬들만을 다룹니다.
 즉, 여기에서 행렬(matrix)이란, 실수 혹은 복소수를 직사각형 모양으로 배열해 괄호로 묶어 놓은 것을 말합니다.
-예를 들어
-<!-- (특정한 행렬은 $P$, $Q$, $R$, $S$, $T$, $U$ 등으로 쓰고 일반적인 행렬은 $A$, $B$, $C$ 등으로 적겠습니다.) -->
-,
+예를 들어,
 
 $$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
 
 는 행렬입니다.
 이때, $P$는 2개의 행과 2개의 열로 이루어진 행렬이어서 '$2\times 2$ 행렬'이라고 부르고 $Q$는 2개의 행과 3개의 열로 이루어진 행렬이어서 '$2\times3$ 행렬'이라고 부릅니다.
+이 포스트에서는 $2\times 2$, $2\times 3$ 등을 그 행렬의 '모양'이라고 하겠습니다.
+
+**참고**\\
+개별적인 행렬들은 $P$, $Q$, $R$, $\cdots$, $M$, $N$, $K$, $\cdots$ 등으로 적었고, 일반적인 행렬은 $A$, $B$, $C$ 등으로 적었습니다.
+{: .notice--danger}
 
 행이 하나인 행렬과 열이 하나인 행렬도 행렬로 취급합니다.
 이것들은 각각 '행벡터', '열벡터' 라는 이름으로도 불립니다.
@@ -65,19 +72,24 @@ $$R=\begin{bmatrix}2&4\end{bmatrix},\qquad S=\begin{bmatrix}1\\-1\\0\end{bmatrix
 그런데 선형대수에서는 보통 이것들을 열벡터로 쓰고
 
 $$
-v=\begin{bmatrix}2\\1\end{bmatrix},\qquad w=\begin{bmatrix}1\\0\\3
+v=\begin{bmatrix}2\\1\end{bmatrix},\qquad w=\begin{bmatrix}1\\0\\3\end{bmatrix}
 $$
 
 와 같이 나타내게 됩니다.
 
-행렬을 대문자 알파벳으로 표시한다면, 이 행렬의 entry는 소문자 알파벳과 두 개의 아래첨자로 표시합니다.
+행렬을 대문자 알파벳으로 표시한다면, 이 행렬의 성분들은 소문자 알파벳과 두 개의 아래첨자로 표시합니다.
 이때 첫번째 아래첨자는 행 번호를, 두번째 아래첨자는 열 번호를 각각 의미합니다.
 예를 들어,
-위의 $P$의 정의에서
+위의 행렬
+
+$$P=\begin{bmatrix}1&2\\0&1\end{bmatrix}$$
+
+에서
 
 $$p_{11}=1,\quad p_{12}=2,\quad p_{21}=0,\quad p_{22}=1$$
 
 입니다.
+
 어떤 행렬의 모양을 나타낼 때, 두 개의 아래첨자가 있는 소문자 알파벳의 양옆에 소괄호를 붙이고, 거기에 다시 행렬의 모양을 특정해 표시하기도 합니다.
 예를 들어
 
@@ -90,15 +102,83 @@ $$T=\begin{bmatrix}1&2\\2&3\end{bmatrix}$$
 
 이 될 것입니다.
 
-어떤 행렬의 행의 개수와 열의 개수가 같으면 그 행렬을 정사각행렬(정방행렬, square matrix)이라고 부릅니다.
+### 여러가지 행렬
+
+어떤 행렬의 행의 개수와 열의 개수가 같으면 그 행렬을 **정사각행렬**(정방행렬, square matrix)이라고 부릅니다.
 예를 들어, $P$, $T$는 정사각행렬이지만 $Q$, $R$, $S$는 정사각행렬이 아닙니다.
+
+어떤 행렬 $A$에 대하여, $A$의 대각성분이란 $i=j$를 만족시키는 $a_{ij}$들을 말합니다.
+만약 대각성분들을 제외한 모든 성분들
+
+$$a_{ij}\quad(i\neq j)$$
+
+이 0이면, 이 행렬을 **대각행렬**이라고 부릅니다.
+
+예를 들어,
+
+$$
+\begin{align*}
+D&=\begin{bmatrix}2&0\\0&5\end{bmatrix}\\
+E&=\begin{bmatrix}1&0&0\\0&3&0\\0&0&2\end{bmatrix}\\
+F&=\begin{bmatrix}-1&0&0\\0&4&0\end{bmatrix}
+\end{align*}
+$$
+
+와 같은 행렬들은 대각행렬입니다.
+반면, $P$, $Q$, $R$, $S$, $T$는 모두 대각행렬이 아닙니다.
+
+대각행렬 중 가장 간단하면서 중요한 행렬은 **항등행렬**이라고 불리는 행렬입니다.
+항등행렬은, 정사각행렬 중에서 대각성분이 모두 1인 대각행렬을 말합니다.
+즉,
+
+$$
+\begin{bmatrix}1&0\\0&1\end{bmatrix},\quad\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix},\quad\cdots
+$$
+
+와 같은 행렬을 말합니다.
+항등행렬의 행의 수(=열의 수)가 $n$개이면 그 항등행렬을 $I_n$으로 표현합니다.
+($n$이 중요하지 않다면 $n$은 생략될  수 있습니다.)
+즉, 위의 항등행렬들은
+
+$$
+\begin{align*}
+I_2&=\begin{bmatrix}1&0\\0&1\end{bmatrix}\\
+I_3&=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}\\
+&\vdots
+\end{align*}
+$$
+
+와 같이 표현될 수 있습니다.
+
+두 정사각행렬 $A$, $B$에 대하여
+
+$$AB=BA=I$$
+
+가 성립하면, $B$를 $A$의 역행렬이라고 말하고, $B=A^{-1}$라고 씁니다.
+반대로, $A$는 $B$의 역행렬이기도 합니다.
+즉 $A=B^{-1}$이기도 합니다.
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+두 행렬 $A$, $B$에 대하여 $AB=I$이면 $BA=I$가 성립합니다.
+<br>
+(이것은 두 행렬이 꼭 정사각행렬이 아니어도 상관 없습니다.
+예를 들어 $A$가 $m\times n$ 행렬이고, $B$가 $n\times m$ 행렬이라고 가정하면,
+$AB=I_m$이 성립하면 $BA=I_n$이 성립하는 식입니다.)
+<br>
+이 사실은, 이 포스트에서 설명하지 않는 선형대수의 다른 개념들을 동원하지 않고서는 설명하기가 꽤 어려울 수 있습니다.
+![ㅇㅇ의 증명](https://math.stackexchange.com/)에 따르면 정사각행렬들의 집합이 algebra over a field 라는 사실만을 이용하여 증명하고 있습니다.
+<br>
+그러니까 역행렬의 정의를 다음과 같이 써도 괜찮습니다.
+두 정사각형 $A$, $B$에 대하여 $AB=I$이면 $BA=I$이고, $B$는 $A$의 역행렬입니다($B=A^{-1}$).
+</div>
 
 ## 1.2 행렬의 연산
 
 ### 이항연산
 두 행렬의 모양이 같으면 두 행렬을 더할 수 있습니다.
 두 행렬을 더할 때에는 성분별로 더하면 됩니다.
-예를 들어, $A$와 $E$는 모양이 서로 같으므로 서로 더할 수 있고, 그 결과가
+예를 들어, $P$와 $T$는 모양이 서로 같으므로 서로 더할 수 있고, 그 결과가
 
 $$P+T=\begin{bmatrix}1&2\\0&1\end{bmatrix}+\begin{bmatrix}1&2\\2&3\end{bmatrix}=\begin{bmatrix}1+1&2+2\\0+2&1+3\end{bmatrix}=\begin{bmatrix}2&4\\2&4\end{bmatrix}$$
 
@@ -106,14 +186,14 @@ $$P+T=\begin{bmatrix}1&2\\0&1\end{bmatrix}+\begin{bmatrix}1&2\\2&3\end{bmatrix}=
 
 두 행렬에 대해서 첫번째 행렬의 열의 수와 두번째 행렬의 행의 수가 같으면 두 행렬을 곱할 수 있습니다.
 그러니까, $A$가 $m\times n$ 행렬이고, $B$가 $n\times l$ 행렬이면, 두 행렬 $A$, $B$의 곱 $AB$를 생각할 수 있습니다.
-$AB=C$이라고 하면,
+$AB=C$이라고 하면, $C$의 각 성분들인 $c_{ij}$는
 
 $$c_{ij}=\sum_{k=1}^na_{ik}b_{kj}$$
 
 입니다.
 
 예를 들어, $P$와 $Q$는 각각 $2\times2$, $2\times3$ 행렬이고 따라서 두 행렬을 곱할 수 있습니다.
-($m=2$, $n=2$, $k=3$)
+($m=2$, $n=2$, $l=3$)
 그 결과는
 
 $$
@@ -130,6 +210,7 @@ PQ
 \end{bmatrix}
 \end{align*}
 $$
+
 입니다.
 
 마찬가지로,
@@ -145,10 +226,10 @@ P^2&=\begin{bmatrix}1&2\\0&1\end{bmatrix}^2=\begin{bmatrix}1&2\\0&1\end{bmatrix}
 $$
 
 와 같이 계산할 수 있습니다.
-이상은 행렬이 두 개 주어졌을 때 만들 수 있는 이항연산입니다.
+이상은 행렬이 두 개 주어졌을 때 만들 수 있는 이항연산인 **덧셈**과 **곱셈**입니다.
 
 ### 단항연산
-행렬 하나에 대해서도 연산을 정의할 수 있는데, 대표적인 것이 transpose(전치)와 conjugate transpose(켤레전치)입니다.
+행렬 하나에 대해서도 연산을 정의할 수 있는데, 대표적인 것이 **transpose** (전치轉置)와 **conjugate transpose** (켤레전치)입니다.
 
 행렬 $A$에 대하여, $A$의 transpose는 $A^T$와 같이 표시하는데, 이것은 $A$의 행번호와 열번호를 뒤집어놓은 것입니다.
 예를 들면,
@@ -163,33 +244,15 @@ $$
 
 등입니다.
 
-행렬 $A$의 conjugate transpose는 $A^H$와 같이 표시하는데, 이것은 $A$를 transpose하고, 각 entry들에 conjuagtion(켤레 연산)을 취한 것입니다.
-즉,
+conjugate transpose에 대해 설명하기 전에 conjugation(켤레복소수화, 공액共軶)에 대해 먼저 이야기하겠습니다.
+어떤 복소수 $z=a+bi$에 대하여 ($a$, $b$는 실수) 이 복소수의 켤레복소수(conjugate)는 $a-bi$이고, 이것을 $\bar z$로 표시합니다.
+이와 같이, 주어진 복소수를 그 켤레복소수로 변환하는 연산을 conjugation이라고 합니다.
 
-$$
-A^H=\overline{A^T}
-$$
-
-입니다.
-그런데, 사실 transpose를 먼저 하나, 각 entry에 conjuagtion을 취하나 같으므로
-
-$$
-A^H = \bar A^T
-$$
-
-와 같이 정의해도 정확히 같은 정의가 됩니다.
-이때, 어떤 복소수에 conjuagtion을 취하는 것은 이 복소수의 허수부분의 부호를 바꾸어 켤레복소수를 얻어내는 것을 말합니다.
-즉 $2+3i$의 켤레복소수는 $2-3i$인데, 이것을
-
-$$
-\overline{2+3i}=2-3i
-$$
-
-로 표현합니다.
-마찬가지로,
+예를 들어
 
 $$
 \begin{align*}
+\overline{2+3i}&=2-3i\\
 \overline{2-3i}&=2+3i\\
 \overline{i}&=-i\\
 \overline{3}&=3\\
@@ -198,19 +261,30 @@ $$
 $$
 
 입니다.
-특히, 실수의 켤레 복소수가 자기 자신이 된다는 것은 중요합니다.
-즉
+이때, 실수의 켤레복소수가 자기 자신이 된다는 것은 중요합니다.
 
 **정리 1** \\
 $z$가 실수이면, $\bar z=z$이고, 그 역도 성립합니다.
 {: .notice--success}
 
-어떤 행렬에 conjuagtion을 취하는 것은 그 행렬의 각 entry에 conjuagtion을 취하는 것입니다.
-예를 들어
+**증명** \\
+복소수 $z=a+bi$에 대하여, 만약 $z$가 실수이면 $b=0$이고 $z=a$입니다.
+따라서 $\bar z=a=\overline{a+0i}=a-0i=a=z$입니다.
+반대로,$\bar z=z$이면 $a+bi=a-bi$입니다.
+두 복소수가 같으려면 실수부분과 허수부분이 서로 같아야 하므로 $b=-b$, $2b=0$, $b=0$이 됩니다.
+따라서 $z$는 실수입니다.
+{: .notice--warning}
+
+conjugation은 단순히 복소수에 대해서만이 아니라, 복소수를 성분으로 가지는 행렬에 대해서도 취할 수 있습니다.
+행렬 $A$에 대하여 $A$의 conjugate은 $\bar A$로 표시하며, $A$의 각 성분들에 conjugation을 취한 행렬로 정의합니다;
+
+$$\bar A = \left(\overline{a_{ij}}\right)_{m\times n}$$
+
+예를 들어 복소수를 성분으로 갖는 행렬 $U$가
 
 $$U=\begin{bmatrix}0&2-3i\\2+3i&3\end{bmatrix}$$
 
-이면
+와 같이 정의될 때,
 
 $$
 \begin{align*}
@@ -227,9 +301,61 @@ $$
 $A$가 실수로 이루어진 행렬이면, $\bar A=A$이고, 그 역도 성립합니다.
 {: .notice--success}
 
+<div class="notice--warning">
+<b>증명 </b> <br>
+복소수로 이루어진 행렬 $A$를 $A=\left(a_{ij}\right)_{m\times n}$으로 표현하겠습니다.
+만약, $A$가 실수로 이루어진 행렬이면,
+$\bar A = \left(\overline{a_{ij}}\right)_{m\times n} = \left(a_{ij}\right)_{m\times n} = A$
+입니다.
+반대로, $\bar A=A$이면, 모든 $i$, $j$에 대하여 $\overline{a_{ij}}=a_{ij}$가 성립한다는 뜻입니다.
+따라서 $a_{ij}$들은 모두 실수입니다.
+</div>
+
+지금까지 정의한 행렬 $P$, $Q$, $R$, $S$, $T$, $U$에서 정리 2를 간단히 확인해볼 수 있습니다.
+$P$, $Q$, $R$, $S$, $T$는 실수로 이루어진 행렬들이고 $\bar P=P$, $\bar Q=Q$, $\bar R=R$, $\bar S=S$, $\bar T=T$가 성립합니다.
+$U$는 실수로만 이루어진 행렬이 아니고, 허수가 포함된 행렬입니다.
+따라서 $\bar U\neq U$입니다.
+
+이제 행렬의 conjugate transpose를 정의할 수 있습니다.
+어떤 행렬 $A$의 conjugate transpose는 $A^H$와 같이 표시하는데, 이것은 $A$를 transpose하고, conjugation한 것을 말합니다.
+즉,
+
+$$
+A^H=\overline{A^T}
+$$
+
+입니다.
+그런데, 사실 transpose를 먼저 취하나, conjuagtion을 먼저 취하나 그 결과는 같으므로
+
+$$
+A^H = \bar A^T
+$$
+
+와 같이 정의해도 정확히 같은 정의가 됩니다.
+
+한편, 정리 2에 따르면 실수로 이루어진 행렬이면 $A$에 대하여 transpose를 취하는 것과 conjugation을 취하는 것에는 차이가 없습니다.
+또한, 두 행렬 $A$, $B$의 곱 $AB$에 대하여 transpose나 conjugation을 취한 결과는 각 행렬을 transpose 혹은 conjugation한 후 순서를 바꾸어 얻은 결과와 같습니다.
+나중에 이 사실들을 써먹을 예정이므로, 아래와 같이 성질 3으로 적어놓겠습니다.
+이에 관한 증명들은 생략하겠습니다.
+
+<div class="notice">
+<b>성질 3 </b> <br>
+(a) $A$가 실수로 이루어진 행렬이면 $A^T=A^H$입니다.
+<br>
+(b) $A$, $B$가 복소수로 이루어진 행렬이고 행렬곱 $AB$가 정의될 때, 아래 식이 성립합니다.
+
+$$
+\begin{align*}
+(AB)^T&=B^TA^T\\
+(AB)^H&=B^HA^H
+\end{align*}
+$$
+
+</div>
+
 ## 1.3 symmetric / Hermitian
 
-이제 드디어 symmetric, Hermitian이라는 말이 나옵니다.
+이제 드디어 symmetric, Hermitian이라는 말을 쓸 수 있습니다.
 
 ### symmetric 행렬
 
@@ -246,11 +372,11 @@ $$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\en
 
 는 대각선을 기준으로 대칭이 아니므로 $P$, $Q$는 symmetric 행렬이 아닙니다.
 $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니다.
-즉, symmetric 행렬이 되기 위한 필요조건은, 그 행렬이 정사각행렬인 것입니다.
+즉, symmetric 행렬이 되기 위해서는 일단 그 행렬이 정사각행렬일 필요가 있습니다..
 
 행렬의 symmetricity는 transpose를 사용하면 쉽게 정의할 수도 있습니다.
 
-**정의 3**\\
+**정의 4**\\
 행렬 $A$에 대하여 $A^T=A$이면 $A$를 symmetric 행렬이라고 부릅니다.
 {: .notice--info}
 
@@ -259,7 +385,7 @@ $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니�
 한편, Hermitian 행렬(Hermitian matrix, 에르미트 행렬)이란, 대각선을 기준으로 양옆이 서로 켤레관계인 행렬을 말합니다.
 이것을 conjugate transpose로 표현하면 다음과 같이 간단하게 정의할 수 있습니다.
 
-**정의 4**\\
+**정의 5**\\
 행렬 $A$에 대하여 $A^H=A$이면 $A$를 Hermitian 행렬이라고 부릅니다.
 {: .notice--info}
 
@@ -268,13 +394,42 @@ $P$, $Q$, $R$, $S$, $T$, $U$ 중에서 정사각행렬인 것은
 
 $$
 \begin{align*}
-P=\begin{bmatrix}1&2\\0&1\end{bmatrix}\\
-T=\begin{bmatrix}1&2\\2&3\end{bmatrix}\\
-U=\begin{bmatrix}0&2-3i\\2+3i&3\end{bmatrix}
+P&=\begin{bmatrix}1&2\\0&1\end{bmatrix}\\
+T&=\begin{bmatrix}1&2\\2&3\end{bmatrix}\\
+U&=\begin{bmatrix}0&2-3i\\2+3i&3\end{bmatrix}
 \end{align*}
 $$
 
 입니다.
+이 중에서 $T$, $U$는 Hermitian 행렬이고, $P$는 Hermite 행렬이 아닙니다.
+$P$, $T$는 실수로 이루어진 행렬이므로 성질 3(a)을 사용하여
+
+<!-- $$
+\begin{align*}
+P^H&=P^T=\begin{bmatrix}1&2\\0&1\end{bmatrix}^T=\begin{bmatrix}1&0\\2&1\end{bmatrix}\ne P\\
+T^H&=T^T=\begin{bmatrix}1&2\\2&3\end{bmatrix}^T=\begin{bmatrix}1&2\\2&3\end{bmatrix}=T
+\end{align*}
+$$ -->
+
+$$
+\begin{align*}
+P^H&=P^T\ne P\\
+T^H&=T^T=T
+\end{align*}
+$$
+
+임을 확인할 수 있습니다.
+$U$에 대해서는 직접 complex conjugate를 계산하여
+
+$$
+U^H
+=\overline{U^T}=\overline{\begin{bmatrix}0&2+3i\\2-3i&3\end{bmatrix}}
+=\begin{bmatrix}\bar0&\overline{2+3i}\\\overline{2-3i}&\bar3\end{bmatrix}=U
+$$
+
+와 같이 계산할 수 있습니다.
+
+<!-- 
 이 중 $T$는 Hermitian 행렬입니다(transpose의 $T$와 행렬 이름의 $T$가 혼동되지 않게 잘 보아야 합니다.);
 
 $$
@@ -299,89 +454,193 @@ $$
 U^H
 &=\begin{bmatrix}0&2-3i\\2+3i&3\end{bmatrix}^H=\begin{bmatrix}0&2+3i\\2-3i&3\end{bmatrix}^T=U
 \end{align*}
-$$
+$$ -->
 
 ## 1.4 inner product / norm
 
-고등학교 수학에 따르면, 2차원 벡터 $v$, $w$가 다음과 같이 주어져 있을 때,
+### inner product / norm
+
+고등학교 수학에 따르면, 2차원 벡터 $x$, $y$가 다음과 같이 주어져 있을 때,
 
 $$
-v=\begin{bmatrix}v_1\\v_2\end{bmatrix},\quad w=\begin{bmatrix}w_1\\w_2\end{bmatrix}
+x=\begin{bmatrix}x_1\\x_2\end{bmatrix},\quad y=\begin{bmatrix}y_1\\y_2\end{bmatrix}
 $$
 
-두 벡터의 내적 $v\cdot w$은
+두 벡터의 내적 $x\cdot y$은
 
 $$
-v\cdot w=v_1w_1+v_2w_2
+x\cdot y=x_1y_1+x_2y_2
 $$
 
 로 정의됩니다.
-이때, 벡터 $v$의 길이는
+또한, 벡터 $x$의 길이는
 
-$$\sqrt{v_1\,^2+v_2\,^2}$$
+$$\sqrt{x_1\,^2+x_2\,^2}$$
 
 으로 나타낼 수 있었습니다.
 고등학교 수학에서는 3차원까지 다룹니다.
-3차원 벡터 $v$, $w$가 
+3차원 벡터 $x$, $y$가 
 
 $$
-v=\begin{bmatrix}v_1\\v_2\\v_3\end{bmatrix},\quad w=\begin{bmatrix}w_1\\w_2\\w_3\end{bmatrix}
+x=\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix},\quad y=\begin{bmatrix}y_1\\y_2\\y_3\end{bmatrix}
 $$
 
 와 같이 주어질 때, 두 벡터의 내적은
 
 $$
-v\cdot w=v_1w_1+v_2w_2+v_3w_3
+x\cdot y=x_1y_1+x_2y_2+x_3y_3
 $$
 
-이고, $v$의 길이는
+이고, $x$의 길이는
 
-$$\sqrt{v_1\,^2+v_2\,^2+v_3\,^2}$$
+$$\sqrt{x_1\,^2+x_2\,^2+x_3\,^2}$$
 
 입니다.
 
 이것을 일반적인 $n$차원으로 확장하면, 두 벡터
 
 $$
-v=\begin{bmatrix}v_1\\v_2\\v_3\\\vdots\\v_n\end{bmatrix},\quad w=\begin{bmatrix}w_1\\w_2\\w_3\\\vdots\\w_n\end{bmatrix}
+x=\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix},\quad y=\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}
 $$
 
-에 대하여 $v$와 $w$의 내적은
+에 대하여 $x$와 $y$의 내적은
 
 $$
-v\cdot w=\sum_{k=1}^nv_kw_k
+x\cdot y=\sum_{k=1}^nx_ky_k
 $$
 
-이고, $v$의 길이는
+이고, $x$의 길이는
 
 $$
-\sqrt{\sum_{k=1}^n{v_k}^2}
+\sqrt{\sum_{k=1}^n{x_k}^2}
 $$
 
 입니다.
 
 이것이, $n$차원 벡터의 내적(inner product)과 놈(norm)에 해당합니다.
-더 정리해서 말하기 전에, 열벡터로서 표현된 두 벡터의 $v$, $w$의 내적과 norm을 행렬곱의 형식으로 표현해보려 합니다.
-행렬곱의 정의에 따르면 $v$와 $w$의 내적은 $v^Tw$와 같습니다.
-그리고, $v$의 크기는 $v$와 그 자신의 내적, 즉 $v^Tv$에 루트를 씌운 값과 같습니다.
+더 정리해서 말하기 전에, 열벡터로서 표현된 두 벡터의 $x$, $y$의 내적과 norm을 행렬곱의 형식으로 표현해보려 합니다.
+위의 정의된 $x\cdot y$의 식은 행렬곱의 정의에 의해 $x^Ty$와 같습니다;
+
+$$
+\begin{align*}
+x^Ty
+&=\begin{bmatrix}x_1&x_2&\cdots&x_n\end{bmatrix}\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}\\
+&=x_1y_1+x_2y_2+\cdots+x_ny_n=x\cdot y.
+\end{align*}
+$$
+
+그리고, $x$의 크기는 $x$와 그 자신의 내적, 즉 $x^Tx$에 루트를 씌운 값과 같습니다;
+
+$$
+\sqrt{x^Tx}=x_1\cdot x_1+x_2\cdot x_2+\cdots+x_n\cdot x_n=\sqrt{\sum_{k=1}^n{x_k}^2}
+$$
 
 <div class="notice--info">
-**정의 5**\\
-(1) $n$차원 벡터 $v$, $w$에 대하여 $v$와 $w$의 내적을 $\langle v,w\rangle$로 나타내면,
+<b> 정의 6 </b> <br>
+(a) $n$차원 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적(inner product)은 $x\cdot y$로 쓰기도 하지만 $\langle x,y\rangle$로 나타내기도 합니다.
+$\langle x, y\rangle$의 정의는
 
-$$\langle v,w\rangle=v^Tw$$
+$$\langle x,y\rangle=x^Ty$$
 
-이 성립합니다.
+입니다.
+<br>
+(b) $n$차원 벡터 $x$의 크기는 $x$의 norm이라고도 부르며, $||x||$로 나타냅니다.
+$||x||$의 정의는
 
-(2) $n$차원 벡터 $v$에 대하여 $v$의 norm을 $||v||$로 나타내면,
+$$||x||=\sqrt{\langle v,v\rangle}=\sqrt{x^Tx}$$
 
-$$||v||=\sqrt{<v,v>}=\sqrt{v^Tv}$$
-
-이 성립합니다.
+입니다.
 </div>
-{: .notice--info}
 
-## 1.5 orthogonal vectors / orthonormal vectors
+### orthogonal / orthonormal
+
+고등학교 수학에서, 영벡터가 아닌 두 벡터가 서로 수직이면 그 내적이 0이며, 그 역도 성립한다는 것을 다룹니다.
+
+예를 들어, 세 개의 2차원 벡터 $u_1$, $u_2$, $u_3$가
+
+$$
+u_1=\begin{bmatrix}1\\-2\end{bmatrix},\quad
+u_2=\begin{bmatrix}2\\1\end{bmatrix},\quad
+u_3=\begin{bmatrix}1\\0\end{bmatrix}
+$$
+
+이면
+
+![diagonalization_1-5-1]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-1.png){: .img-50-center}
+
+$u_1$와 $u_2$는 서로 수직입니다($u_1\perp u_2$);
+
+$$
+{u_1}^Tu_2=\begin{bmatrix}1&-2\end{bmatrix}\begin{bmatrix}2\\1\end{bmatrix}=0
+$$
+
+
+하지만 $u_1$와 $u_3$, $u_2$와 $u_3$는 수직이 아닙니다($u_1\not\perp u_3$, $u_2\not\perp u_3$);
+
+$$
+\begin{align*}
+{u_1}^Tu_3&=\begin{bmatrix}1&-2\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=1\neq0\\
+{u_2}^Tu_3&=\begin{bmatrix}2&1\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}=2\neq0\\
+\end{align*}
+$$
+
+예를 들어, 세 개의 3차원 벡터 $v_1$, $v_2$, $v_3$가
+
+$$
+v_1=\begin{bmatrix}1\\-2\\0\end{bmatrix},\quad
+v_2=\begin{bmatrix}2\\1\\0\end{bmatrix},\quad
+v_3=\begin{bmatrix}0\\0\\1\end{bmatrix}
+$$
+
+이면
+
+![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-3.png){: .img-50-center}
+
+하지만 $u_1$와 $u_2$, $u_1$와 $u_3$, $u_2$와 $u_3$는 모두 서로 수직입니다($u_1\perp u_2$, $u_1\perp u_3$, $u_2\perp u_3$);
+
+$$
+\begin{align*}
+{v_1}^Tv_2&=\begin{bmatrix}1&-2&0\end{bmatrix}\begin{bmatrix}2\\1\\0\end{bmatrix}=0\\
+{v_1}^Tu_3&=\begin{bmatrix}1&-2&0\end{bmatrix}\begin{bmatrix}0\\0\\1\end{bmatrix}=0\\
+{v_2}^Tu_3&=\begin{bmatrix}2&1&0\end{bmatrix}\begin{bmatrix}0\\0\\1\end{bmatrix}=0
+\end{align*}
+$$
+
+이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 orthogonal하다고 말합니다.
+위의 예에서 $u_1$, $u_2$, $u_3$는 orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 orthogonal한 것입니다.
+
+$v_1$, $v_2$, $v_3$를 조금 변형해서 $w_1$, $w_2$, $w_3$를 다음과 같이 만들면
+
+$$
+w_1=\begin{bmatrix}\frac1{\sqrt5}\\-\frac2{\sqrt5}\\0\end{bmatrix},\quad
+w_2=\begin{bmatrix}\frac2{\sqrt5}\\\frac1{\sqrt5}\\0\end{bmatrix},\quad
+w_3=\begin{bmatrix}0\\0\\1\end{bmatrix}
+$$
+
+이 경우에도 $w_1\perp u_w$, $w_1\perp w_3$, $w_2\perp w_3$가 성립합니다.
+즉 $w_1$, $w_2$, $w_3$은 orthogonal합니다.
+이때, $w_1$, $w_2$, $w_3$은 $v_1$, $v_2$, $v_3$의 경우와 다르게 그 벡터들의 크기가 1이라는 성질이 있습니다;
+
+$$
+\begin{align*}
+||w_1||&=\sqrt{\left(\frac1{\sqrt5}\right)^2+\left(-\frac2{\sqrt5}\right)^2+0^2}=1\\
+||w_2||&=\sqrt{\left(\frac2{\sqrt5}\right)^2+\left(\frac1{\sqrt5}\right)^2+0^2}=1\\
+||w_3||&=\sqrt{0^2+0^2+1^2}=1
+\end{align*}
+$$
+
+이런 경우에, 이 벡터들이 orthonormal하다고 말합니다.
+즉, $u_1$, $u_2$, $u_3$와 $v_1$, $v_2$, $v_3$는 orthonormnal하지 않고, $w_1$, $w_2$, $w_3$는 orthonormal한 것입니다.
+
+<div class="notice--info">
+<b> 정의 7 </b> <br>
+$n$개의 $m$차원벡터 $a_1$, $a_2$, $\cdots$, $a_n$에 대하여
+<br>
+(a) $a_1$, $a_2$, $\cdots$, $a_n$가 모두 서로 수직이면 $a_1$, $a_2$, $\cdots$, $a_n$가 orthogonal하다고 합니다.
+<br>
+(b) $a_1$, $a_2$, $\cdots$, $a_n$가 모두 서로 수직이고, $||a_1||=1$, $||a_2||=1$, $\cdots$, $||a_n||=1$이면 $a_1$, $a_2$, $\cdots$, $a_n$가 orthonormal하다고 합니다.
+</div>
+
 
 ## 1.6 orthogonal matrices / unitary matrices
 
