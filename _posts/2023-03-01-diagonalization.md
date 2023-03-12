@@ -365,6 +365,7 @@ $$
 행렬곱의 정의에 따르면 $v$와 $w$의 내적은 $v^Tw$와 같습니다.
 그리고, $v$의 크기는 $v$와 그 자신의 내적, 즉 $v^Tv$에 루트를 씌운 값과 같습니다.
 
+<div class="notice--info">
 **정의 5**\\
 (1) $n$차원 벡터 $v$, $w$에 대하여 $v$와 $w$의 내적을 $\langle v,w\rangle$로 나타내면,
 
@@ -377,6 +378,7 @@ $$\langle v,w\rangle=v^Tw$$
 $$||v||=\sqrt{<v,v>}=\sqrt{v^Tv}$$
 
 이 성립합니다.
+</div>
 {: .notice--info}
 
 ## 1.5 orthogonal vectors / orthonormal vectors
@@ -384,7 +386,6 @@ $$||v||=\sqrt{<v,v>}=\sqrt{v^Tv}$$
 ## 1.6 orthogonal matrices / unitary matrices
 
 ## 1.7 eigenvalue / eigenvector
-
 
 
 [1]:{{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf
