@@ -233,7 +233,7 @@ $$
 이상은 행렬이 두 개 주어졌을 때 만들 수 있는 이항연산인 **덧셈**과 **곱셈**입니다.
 
 ### 단항연산
-행렬 하나에 대해서도 연산을 정의할 수 있는데, 대표적인 것이 **transpose** (전치轉置)와 **conjugate transpose** (켤레전치)입니다.
+행렬 하나에 대해서도 연산을 정의할 수 있는데, 대표적인 것이 **transpose** (전치)와 **conjugate transpose** (켤레전치)입니다.
 
 행렬 $A$에 대하여, $A$의 transpose는 $A^T$와 같이 표시하는데, 이것은 $A$의 행번호와 열번호를 뒤집어놓은 것입니다.
 예를 들면,
@@ -248,8 +248,8 @@ $$
 
 등입니다.
 
-conjugate transpose에 대해 설명하기 전에 conjugation(켤레복소수화, 공액共軶)에 대해 먼저 이야기하겠습니다.
-어떤 복소수 $z=a+bi$에 대하여 ($a$, $b$는 실수) 이 복소수의 켤레복소수(conjugate)는 $a-bi$이고, 이것을 $\bar z$로 표시합니다.
+conjugate transpose에 대해 설명하기 전에 conjugation(켤레복소수화, 공액)에 대해 먼저 이야기하겠습니다.
+어떤 복소수 $z=a+bi$에 대하여 ($a$, $b$는 실수) 이 복소수의 켤레복소수는 $a-bi$이고, 이것을 $\bar z$로 표시합니다.
 이와 같이, 주어진 복소수를 그 켤레복소수로 변환하는 연산을 conjugation이라고 합니다.
 
 예를 들어
@@ -537,23 +537,24 @@ x^Ty
 \end{align*}
 $$
 
-그리고, $x$의 크기는 $x$와 그 자신의 내적, 즉 $x^Tx$에 루트를 씌운 값과 같습니다;
+한편, $x$의 크기는 $x$와 그 자신의 내적, 즉 $x^Tx$에 루트를 씌운 값과 같습니다;
 
 $$
 \sqrt{x^Tx}=\sqrt{x_1\,^2+x_2\,^2+\cdots+x_n}\,^2=\sqrt{\sum_{k=1}^n{x_k}^2}
 $$
 
+이 포스트에서는 내적을 표현할 때 $x\cdot y$라는 표현 대신 $\langle x,\rangle$이라는 표현을 쓰겠습니다.
+또한 $x$의 크기는 $||x||$로 표시하며, '크기'라는 표현 대신 'norm'이라는 표현을 사용하겠습니다.
+
 <div class="notice--info">
 <b> 정의 6 </b> <br>
-(a) $n$차원 실수 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적(inner product)은 $x\cdot y$로 쓰기도 하지만 $\langle x,y\rangle$로 나타내기도 합니다.
-$\langle x, y\rangle$의 정의는
+(a) $n$차원 실수 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적(inner product)은
 
 $$\langle x,y\rangle=x^Ty$$
 
 입니다.
 <br>
-(b) $n$차원 실수 벡터 $x$의 크기는 $x$의 norm이라고도 부르며, $||x||$로 나타냅니다.
-$||x||$의 정의는
+(b) $n$차원 실수 벡터 $x$의 norm은
 
 $$||x||=\sqrt{\langle x,x\rangle}=\sqrt{x^Tx}$$
 
@@ -615,7 +616,7 @@ $$
 $$
 
 이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 pairwisely orthogonal (mutually orthogonal) 하다고 말합니다.
-위의 예에서 $u_1$, $u_2$, $u_3$는 pairwisely orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 pairwisely orthogonal한 것입니다.
+위의 예에서 $u_1$, $u_2$, $u_3$는 pairwisely orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 pairwisely orthogonal합니다.
 
 $v_1$, $v_2$, $v_3$를 조금 변형해서 $w_1$, $w_2$, $w_3$를 다음과 같이 만들면
 
@@ -625,9 +626,9 @@ w_2=\begin{bmatrix}\frac2{\sqrt5}\\\frac1{\sqrt5}\\0\end{bmatrix},\quad
 w_3=\begin{bmatrix}0\\0\\1\end{bmatrix}
 $$
 
-이 경우에도 $w_1\perp u_w$, $w_1\perp w_3$, $w_2\perp w_3$가 성립합니다.
+이 경우에도 $w_1\perp u_2$, $w_1\perp w_3$, $w_2\perp w_3$가 성립합니다.
 즉 $w_1$, $w_2$, $w_3$은 pairwisely orthogonal합니다.
-이때, $w_1$, $w_2$, $w_3$은 $v_1$, $v_2$, $v_3$의 경우와 다르게 그 벡터들의 크기가 1이라는 성질이 있습니다;
+여기에 더해, 그 벡터들의 크기가 1이라는 성질이 있습니다;
 
 $$
 \begin{align*}
@@ -638,11 +639,13 @@ $$
 $$
 
 이런 경우에, 이 벡터들이 orthonormal하다고 말합니다.
-즉, $u_1$, $u_2$, $u_3$와 $v_1$, $v_2$, $v_3$는 orthonormal하지 않고, $w_1$, $w_2$, $w_3$는 orthonormal한 것입니다.
+<!-- 즉, $u_1$, $u_2$, $u_3$와 $v_1$, $v_2$, $v_3$는 orthonormal하지 않고, $w_1$, $w_2$, $w_3$는 orthonormal한 것입니다. -->
 
-정리하면 다음과 같이 정의할 수 있습니다.
+<!-- 정리하면 다음과 같이 정의할 수 있습니다.
 - $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이면 $x_1$, $x_2$, $\cdots$, $x_n$가 pairwisely orthogonal하다고 합니다.
-- $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이고, $||x_1||=1$, $||x_2||=1$, $\cdots$, $||x_n||=1$이면 $x_1$, $x_2$, $\cdots$, $x_n$가 orthonormal하다고 합니다.
+- $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이고, $||x_1||=1$, $||x_2||=1$, $\cdots$, $||x_n||=1$이면 $x_1$, $x_2$, $\cdots$, $x_n$가 orthonormal하다고 합니다. -->
+
+정리하면 다음과 같습니다.
 
 <div class="notice--info">
 <b> 정의 7 </b> <br>
@@ -650,13 +653,13 @@ $$
 
 $$x^Ty=0$$
 
-이면 두 벡터가 orthogonal 하다고 말하고, $x\perp y$라고 씁니다.
+이면 두 벡터가 orthogonal 하다(수직이다)고 말하고, $x\perp y$라고 표현합니다.
 <br>
 (b) $n$개의 실수 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 
 $${x_i}^Tx_j=0\quad(i\neq j)$$
 
-이면, 이 벡터들이 mutually orthogonal하다고 말합니다.
+이면, 이 벡터들이 pairwisely orthogonal하다고 말합니다.
 <br>
 (c) $n$개의 실수 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 
@@ -668,14 +671,14 @@ $$
 이면, 이 벡터들이 orthonormal하다고 말합니다.
 </div>
 
-위의 두 조건 (a), (b)를 다음과 같이 간단하게 적을 수도 있습니다.
+<!-- 위의 두 조건 (a), (b)를 다음과 같이 간단하게 적을 수도 있습니다.
 
 $$
 \begin{align*}
 (a)\:\:{x_i}^Tx_j&=0\quad(i\neq j)\\
 (b)\:\:{x_i}^Tx_j&=\begin{cases}0&(i\neq j)\\1&(i=j)\end{cases}
 \end{align*}
-$$
+$$ -->
 
 ### orthogonal 행렬
 
@@ -698,7 +701,7 @@ $$
 $$
 
 이 됩니다.
-재밌는 사실은, 이 아홉가지의 계산을 하나의 행렬곱으로 표현할 수 있다는 것입니다.
+재밌는 사실은, 이 아홉 개의 계산을 하나의 행렬곱으로 표현할 수 있다는 것입니다.
 행렬곱의 정의를 상기해보면
 
 $$
@@ -816,38 +819,36 @@ $$A^TA=I$$
 를 만족시키면 $A$를 orthogonal 행렬(orthogonal matrix, 직교행렬)이라고 부릅니다.
 </div>
 
-$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음이 성질도 성립합니다.
+$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성질 9(a), 9(b)가 성립합니다.
+또한, 1.1의 두번째 참고에 의해 성질 9(c)가 성립합니다.
 
-(a) $A$가 orthogonal 행렬($n\times n$)이면 $A$의 각 열들은 orthonormal하다.
-
-(b) $n$차원의 orthonormal한 실수벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal하다.
+<div class="notice">
+<b>성질 9 </b> <br>
+(a) $n$차원의 orthonormal한 실수벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal 합니다.
+<br>
+(b) $A$가 orthogonal 행렬이면 $A$의 각 열들은 orthonormal 합니다.
+<br>
+(c) $A$가 orthogonal 행렬이면, $A$의 역행렬은 $A$의 transpose와 같습니다 ;
+$$A^{-1}=A^T$$
+</div>
 
 <div class="notice--danger">
-<b> 참고 </b> <br>
+<b> 주의 </b> <br>
 이 포스트에서 (그리고 선형대수에서) orthogonal이라는 말은 두 가지 의미를 가집니다.
 두 의미를 혼동하지 않고 잘 사용해야 합니다.
-<br>
-(a) 두 벡터 $x$, $y$에 대하여
-
-$$x^Ty=0$$
-
-이면 두 벡터는 orthogonal 하다(직교한다)고 말합니다.
-벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
-$${x_i}^Tx_j=0\qquad(i\neq j)$$
-을 만족시킬 때 이 벡터들을 pairwisely orthogonal 하다고 말합니다.
-<br>
-(b) 정사각행렬 $A$에 대하여
-$$A^TA=I$$
-이면 이 행렬 $A$가 orthogonal 하다고 말합니다.
+<ul>
+    <li> 두 벡터가 orthogonal한 것은 두 벡터를 내적했을 때 0이 된다는 뜻입니다.</li>
+    <li> 어떤 정사각행렬이 orthogonal한 것은 역행렬과 transpose가 일치한다는 뜻입니다.</li>
+</ul>
 </div>
 
 ### unitary 행렬
 
 지금까지 정의한 내적(inner product), norm, orthogonality 등은 성분이 실수인 벡터 혹은 행렬에 대한 개념입니다.
-만약, 그 성분이 일반적으로 복소수인 벡터 혹은 행렬에 대해 생각한다면, 그에 따른 내적, norm 등의 개념은 실수일 때와는 조금 다르게 정의됩니다.
+일반적으로, 성분이 복소수인 벡터 혹은 행렬에 대해 생각한다면, 그에 따른 내적, norm, orthogonality 등의 개념은 실수일 때와는 조금 다르게 정의됩니다.
 
 <div class="notice--info">
-<b> 정의 9 </b> <br>
+<b> 정의 10 </b> <br>
 (a) $n$차원 복소수 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적(inner product) $\langle x,y\rangle$은
 
 $$\langle x,y\rangle=x^Hy$$
@@ -871,11 +872,9 @@ $$x=\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix},\quad y=\begin{bmatrix}y_1
 $$
 \begin{align*}
 \langle x, y\rangle
-&=\overline{x_1}y_1+\overline{x_2}y_2+\cdots+\overline{x_n}y_n\\
-&=\sum_{k=1}^n\overline{x_k}y_k\\
+&=\overline{x_1}y_1+\overline{x_2}y_2+\cdots+\overline{x_n}y_n=\sum_{k=1}^n\overline{x_k}y_k\\
 ||x||
-&=\sqrt{|x_1|^2+|x_n|^2+\cdots+|x_n|^2}\\
-&=\sqrt{\sum_{k=1}^n|x_k|^2}
+&=\sqrt{|x_1|^2+|x_n|^2+\cdots+|x_n|^2}=\sqrt{\sum_{k=1}^n|x_k|^2}
 \end{align*}
 $$
 
@@ -928,7 +927,7 @@ $$
 
 $$x^Hy=0$$
 
-이면 두 벡터가 서로 수직이라고 말하고, $x\perp y$라고 씁니다.
+이면 두 벡터가 서로 수직(orthogonal)이라고 말하고, $x\perp y$ 라고 씁니다.
 <br>
 (b) $n$개의 복소벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 
@@ -948,6 +947,7 @@ $$
 이면 이 벡터들이 orthonormal하다고 말합니다.
 </div>
 
+(정의 7과 거의 같습니다.)
 즉,
 
 $$
@@ -963,7 +963,7 @@ v_1=\begin{bmatrix}3-i\\i\end{bmatrix},\quad
 v_2=\begin{bmatrix}1-i\\-2-4i\end{bmatrix}
 $$
 
-는 orthogonal 하지만, orthonormal하지는 않습니다.
+는 orthogonal 하지만, orthonormal하지는 않습니다;
 
 $$
 \begin{align*}
@@ -1031,22 +1031,29 @@ $$A^HA=I$$
 를 만족시키면 $A$를 unitary 행렬(unitary matrix, 유니터리 행렬)이라고 부릅니다.
 </div>
 
-$w_1$, $w_2$ $W$ 사이의 관계에서 볼 수 있듯 다음이 성질도 성립합니다.
+$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성질 13(a), 13(b)가 성립합니다.
+또한, 1.1의 두번째 참고에 의해 성질 13(c)가 성립합니다.
 
-(a) $A$가 unitary 행렬($n\times n$)이면 $A$의 각 열들은 orthonormal하다.
-
-(b) $n$차원의 orthonormal한 복소벡터들 $n$개를 가로로 나열해서 얻은 행렬은 unitary하다.
+<div class="notice">
+<b>성질 13 </b> <br>
+(a) $n$차원의 orthonormal한 복소 벡터들 $n$개를 가로로 나열해서 얻은 행렬은 unitary 합니다.
+<br>
+(b) $A$가 unitary 행렬이면 $A$의 각 열들은 orthonormal 합니다.
+<br>
+(c) $A$가 unitary 행렬이면, $A$의 역행렬은 $A$의 conjugate transpose와 같습니다 ;
+$$A^{-1}=A^H$$
+</div>
 
 <div class="notice--danger">
 <b> 참고 </b> <br>
-$A^T=A$를 만족시키는 실수 행렬을 orthogonal 행렬이라고 했었습니다.
-그리고 $A^H=A$를 만족시키는 복소수 행렬을 unitary 행렬이라고 했습니다.
+$A^TA=I$를 만족시키는 실수 행렬을 orthogonal 행렬이라고 했었습니다.
+그리고 $A^HA=I$를 만족시키는 복소수 행렬을 unitary 행렬이라고 했습니다.
 
 따라서, 모든 orthogonal 행렬은 unitary 행렬이기도 합니다.
-$A$가 orthogonal 행렬이면 $A$의 모든 성분들은 실수이고, $A^T=A$입니다.
-그러면, 정리 2에 의해
+$A$가 orthogonal 행렬이면 $A$의 모든 성분들은 실수이고, $A^TA=I$입니다.
+그러면, 성질 3(a)에 의해
 
-$$A^H=\overline{A^T}=\overline A=A$$
+$$A^HA=A^TA=A$$
 
 이기 때문입니다.
 </div>
