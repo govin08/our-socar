@@ -46,14 +46,14 @@ danger / 빨강 / 참고 -->
 ## 1.1 행렬
 
 이 포스트에서 다루는 행렬들은 모두 성분(entry)들이 실수 혹은 복소수인 행렬들만을 다룹니다.
-즉, 여기에서 행렬(matrix)이란, 실수 혹은 복소수를 직사각형 모양으로 배열해 괄호로 묶어 놓은 것을 말합니다.
+즉, 여기에서 **행렬(matrix)**이란, 실수 혹은 복소수들을 직사각형 모양으로 배열해 괄호로 묶어 놓은 것을 말합니다.
 예를 들어,
 
 $$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
 
 는 행렬입니다.
 이때, $P$는 2개의 행과 2개의 열로 이루어진 행렬이어서 '$2\times 2$ 행렬'이라고 부르고 $Q$는 2개의 행과 3개의 열로 이루어진 행렬이어서 '$2\times3$ 행렬'이라고 부릅니다.
-이 포스트에서는 $2\times 2$, $2\times 3$ 등을 그 행렬의 '모양'이라고 하겠습니다.
+이 포스트에서는 $2\times 2$, $2\times 3$ 등을 그 행렬의 모양이라고 하겠습니다.
 
 **참고**\\
 개별적인 행렬들은 $P$, $Q$, $R$, $\cdots$, $M$, $N$, $K$, $\cdots$ 등으로 적었고, 일반적인 행렬은 $A$, $B$, $C$ 등으로 적었습니다.
@@ -67,8 +67,8 @@ $$R=\begin{bmatrix}2&4\end{bmatrix},\qquad S=\begin{bmatrix}1\\-1\\0\end{bmatrix
 
 이면 $R$는 $1\times2$ 행렬이기도 하지만 2차원의 행벡터라고도 불리고, $S$는 $3\times1$ 행렬이기도 하지만 3차원의 열벡터라고도 불립니다.
 
-선형대수를 말할 때 늘 그렇듯이, 이 포스트에서도 벡터는 열벡터로 표시합니다.
-그러니까, 고등학교 수학에서는 $v=(2,1)$을 2차원 벡터(평면 벡터), $w=(1,0,3)$을 3차원 벡터로 생각했었습니다.
+선형대수를 말할 때 흔히 그렇듯이, 이 포스트에서도 벡터는 열벡터로 표시합니다.
+그러니까, 고등학교 수학에서는 $v=(2,1)$을 2차원 벡터, $w=(1,0,3)$을 3차원 벡터로 생각했었습니다.
 그런데 선형대수에서는 보통 이것들을 열벡터로 쓰고
 
 $$
@@ -90,10 +90,10 @@ $$p_{11}=1,\quad p_{12}=2,\quad p_{21}=0,\quad p_{22}=1$$
 
 입니다.
 
-어떤 행렬의 모양을 나타낼 때, 두 개의 아래첨자가 있는 소문자 알파벳의 양옆에 소괄호를 붙이고, 거기에 다시 행렬의 모양을 특정해 표시하기도 합니다.
+어떤 행렬을 나타낼 때, 두 개의 아래첨자($i$, $j$)가 붙은 소문자 알파벳의 양옆에 소괄호를 붙이고, 거기에 다시 아래첨자로 행렬의 모양을 특정해 표시하기도 합니다.
 예를 들어
 
-$$T=(e_ij)_{2\times2}$$
+$$T=(t_{ij})_{2\times2}$$
 
 이면, 이것은 이 행렬이 $2\times2$ 행렬이라는 뜻이고, 그 성분들이 $t_{ij}$로 표시된다는 뜻입니다.
 만약 $t_{ij}=i+j-1$이면
@@ -142,8 +142,8 @@ $$
 
 $$
 \begin{align*}
-I_2&=\begin{bmatrix}1&0\\0&1\end{bmatrix}\\
-I_3&=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}\\
+I_2=&\begin{bmatrix}1&0\\0&1\end{bmatrix}\\
+I_3=&\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}\\
 &\vdots
 \end{align*}
 $$
@@ -162,7 +162,7 @@ $$AB=BA=I$$
 <b>참고 </b> <br>
 두 정사각행렬 $A$, $B$에 대하여 $AB=I$이면 $BA=I$가 성립합니다.
 <br>
-(a) 이것은 당연한 말 같아보이기는 해도, 아주 쉽게 증명되지는 않습니다.
+이것은 당연한 말 같아보이기는 해도, 아주 쉽게 증명되지는 않습니다.
 보통은 선형대수의 다른 개념들을 많이 동원해야 증명됩니다.
 이 포스트에서는 해당 개념들에 대해 다루지 않을 예정이므로 링크로 그 증명을 대체합니다.
 <ul>
@@ -275,7 +275,7 @@ $z$가 실수이면, $\bar z=z$이고, 그 역도 성립합니다.
 복소수 $z=a+bi$에 대하여, 만약 $z$가 실수이면 $b=0$이고 $z=a$입니다.
 따라서 $\bar z=a=\overline{a+0i}=a-0i=a=z$입니다.
 반대로,$\bar z=z$이면 $a+bi=a-bi$입니다.
-두 복소수가 같으려면 실수부분과 허수부분이 서로 같아야 하므로 $b=-b$, $2b=0$, $b=0$이 됩니다.
+두 복소수가 같으려면 실수부분과 허수부분이 서로 같아야 하므로 $b=-b$, $2b=0$, $b=0$입니다.
 따라서 $z$는 실수입니다.
 {: .notice--warning}
 
@@ -351,29 +351,34 @@ $$
 \begin{align*}
 (AB)^T&=B^TA^T\\
 (AB)^H&=B^HA^H\\
-(AB)^{-1}&=B^{-1}A^{-1}
 \end{align*}
 $$
+<br>
+(c) $A$, $B$가 복소수로 이루어진 행렬이고 $AB$의 역행렬이 존재할 때, 아래 식이 성립합니다.
+
+$$(AB)^{-1}=B^{-1}A^{-1}$$
+
 </div>
 
 ## 1.3 symmetric / Hermitian
 
-이제 드디어 symmetric, Hermitian이라는 말을 쓸 수 있습니다.
+이제, 이 포스트에서 목표로 하는 두 명제에 등장하는 두 표현인 'symmetric'과 'Hermitian'을 정의할 수 있습니다.
+<!-- transpose와 conjugate transpose를 사용하면, 어떤 행렬에 대하여 symmetric, Hermitian이라는 말이 무엇인지 정의할 수 있습니다. -->
 
 ### symmetric 행렬
 
-symmetric 행렬 (symmetric matrix, 대칭 행렬)이란, 행렬의 대각선을 기준으로 양옆이 대칭인 행렬을 말합니다.
+symmetric 행렬 (symmetric matrix, 대칭 행렬)이란, 행렬의 대각성분들을 기준으로 양옆이 대칭인 행렬을 말합니다.
 예를 들어 행렬
 
 $$T=\begin{bmatrix}1&2\\2&3\end{bmatrix}$$
 
-의 대각선은 1, 3을 잇는 직선인데, 이 행렬은 이 직선을 기준으로 양옆이 대칭입니다.
+의 대각성분들은 $t_{11}=1$, $t_{22}=3$인데 이것들을 기준으로 양옆이 대칭입니다.
 따라서 $T$는 symmetric 행렬입니다.
 반면, 행렬
 
 $$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
 
-는 대각선을 기준으로 대칭이 아니므로 $P$, $Q$는 symmetric 행렬이 아닙니다.
+는 대각성분들을 기준으로 대칭이 아니므로 symmetric 행렬이 아닙니다.
 $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니다.
 즉, symmetric 행렬이 되기 위해서는 일단 그 행렬이 정사각행렬일 필요가 있습니다..
 
@@ -512,13 +517,13 @@ $$
 x\cdot y=\sum_{k=1}^nx_ky_k
 $$
 
-이고, $x$의 길이는
+으로, $x$의 길이는
 
 $$
 \sqrt{\sum_{k=1}^n{x_k}^2}
 $$
 
-입니다.
+으로 정할 수 있을 것입니다.
 
 이것이, $n$차원 벡터의 내적(inner product)과 놈(norm)에 해당합니다.
 더 정리해서 말하기 전에, 열벡터로서 표현된 두 벡터의 $x$, $y$의 내적과 norm을 행렬곱의 형식으로 표현해보려 합니다.
@@ -535,7 +540,7 @@ $$
 그리고, $x$의 크기는 $x$와 그 자신의 내적, 즉 $x^Tx$에 루트를 씌운 값과 같습니다;
 
 $$
-\sqrt{x^Tx}=x_1\cdot x_1+x_2\cdot x_2+\cdots+x_n\cdot x_n=\sqrt{\sum_{k=1}^n{x_k}^2}
+\sqrt{x^Tx}=\sqrt{x_1\,^2+x_2\,^2+\cdots+x_n}\,^2=\sqrt{\sum_{k=1}^n{x_k}^2}
 $$
 
 <div class="notice--info">
@@ -557,7 +562,7 @@ $$||x||=\sqrt{\langle x,x\rangle}=\sqrt{x^Tx}$$
 
 ### orthogonal / orthonormal
 
-고등학교 수학에서, 영벡터가 아닌 두 벡터가 서로 수직이면 그 내적이 0이며, 그 역도 성립한다는 것을 다룹니다.
+고등학교 수학에서, 영벡터가 아닌 두 벡터가 서로 **수직(orthogonal)**이면 그 내적이 0이며, 그 역도 성립한다는 것을 다룹니다.
 
 예를 들어, 세 개의 2차원 벡터 $u_1$, $u_2$, $u_3$가
 
@@ -599,18 +604,18 @@ $$
 
 ![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-3.png){: .img-100-center}
 
-하지만 $u_1$와 $u_2$, $u_1$와 $u_3$, $u_2$와 $u_3$는 모두 서로 수직입니다($u_1\perp u_2$, $u_1\perp u_3$, $u_2\perp u_3$);
+$v_1$와 $v_2$, $v_1$와 $v_3$, $v_2$와 $v_3$는 모두 서로 수직입니다($v_1\perp v_2$, $v_1\perp v_3$, $v_2\perp v_3$);
 
 $$
 \begin{align*}
 {v_1}^Tv_2&=\begin{bmatrix}1&-2&0\end{bmatrix}\begin{bmatrix}2\\1\\0\end{bmatrix}=0\\
-{v_1}^Tu_3&=\begin{bmatrix}1&-2&0\end{bmatrix}\begin{bmatrix}0\\0\\1\end{bmatrix}=0\\
-{v_2}^Tu_3&=\begin{bmatrix}2&1&0\end{bmatrix}\begin{bmatrix}0\\0\\1\end{bmatrix}=0
+{v_1}^Tv_3&=\begin{bmatrix}1&-2&0\end{bmatrix}\begin{bmatrix}0\\0\\1\end{bmatrix}=0\\
+{v_2}^Tv_3&=\begin{bmatrix}2&1&0\end{bmatrix}\begin{bmatrix}0\\0\\1\end{bmatrix}=0
 \end{align*}
 $$
 
-이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 orthogonal하다고 말합니다.
-위의 예에서 $u_1$, $u_2$, $u_3$는 orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 orthogonal한 것입니다.
+이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 pairwisely orthogonal하다고 말합니다.
+위의 예에서 $u_1$, $u_2$, $u_3$는 pairwisely orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 pairwisely orthogonal한 것입니다.
 
 $v_1$, $v_2$, $v_3$를 조금 변형해서 $w_1$, $w_2$, $w_3$를 다음과 같이 만들면
 
@@ -621,7 +626,7 @@ w_3=\begin{bmatrix}0\\0\\1\end{bmatrix}
 $$
 
 이 경우에도 $w_1\perp u_w$, $w_1\perp w_3$, $w_2\perp w_3$가 성립합니다.
-즉 $w_1$, $w_2$, $w_3$은 orthogonal합니다.
+즉 $w_1$, $w_2$, $w_3$은 pairwisely orthogonal합니다.
 이때, $w_1$, $w_2$, $w_3$은 $v_1$, $v_2$, $v_3$의 경우와 다르게 그 벡터들의 크기가 1이라는 성질이 있습니다;
 
 $$
@@ -633,16 +638,25 @@ $$
 $$
 
 이런 경우에, 이 벡터들이 orthonormal하다고 말합니다.
-즉, $u_1$, $u_2$, $u_3$와 $v_1$, $v_2$, $v_3$는 orthonormnal하지 않고, $w_1$, $w_2$, $w_3$는 orthonormal한 것입니다.
+즉, $u_1$, $u_2$, $u_3$와 $v_1$, $v_2$, $v_3$는 orthonormal하지 않고, $w_1$, $w_2$, $w_3$는 orthonormal한 것입니다.
 
 <div class="notice--info">
 <b> 정의 7 </b> <br>
-$n$개의 $m$차원 실수 벡터 $a_1$, $a_2$, $\cdots$, $a_n$에 대하여
+$n$개의 실수 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 <br>
-(a) $a_1$, $a_2$, $\cdots$, $a_n$가 모두 서로 수직이면 $a_1$, $a_2$, $\cdots$, $a_n$가 orthogonal하다고 합니다.
+(a) $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이면 $x_1$, $x_2$, $\cdots$, $x_n$가 pairwisely orthogonal하다고 합니다.
 <br>
-(b) $a_1$, $a_2$, $\cdots$, $a_n$가 모두 서로 수직이고, $||a_1||=1$, $||a_2||=1$, $\cdots$, $||a_n||=1$이면 $a_1$, $a_2$, $\cdots$, $a_n$가 orthonormal하다고 합니다.
+(b) $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이고, $||x_1||=1$, $||x_2||=1$, $\cdots$, $||x_n||=1$이면 $x_1$, $x_2$, $\cdots$, $x_n$가 orthonormal하다고 합니다.
 </div>
+
+위의 두 조건 (a), (b)를 다음과 같이 간단하게 적을 수도 있습니다.
+
+$$
+\begin{align*}
+(a)\:\:{x_i}^Tx_j&=0\quad(i\neq j)\\
+(b)\:\:{x_i}^Tx_j&=\begin{cases}0&(i\neq j)\\1&(i=j)\end{cases}
+\end{align*}
+$$
 
 ### orthogonal 행렬
 
@@ -724,7 +738,7 @@ $$V^TV=
 \end{bmatrix}$$
 
 로 쓸 수 있습니다.
-일반적으로, 정사각행렬 $A$가 orthogonal한 벡터들을 가로로 나열한 행렬이면, $A^TA$는 대각행렬입니다.
+일반적으로, 정사각행렬 $A$가 pairwisely orthogonal한 벡터들을 가로로 나열한 행렬이면, $A^TA$는 대각행렬입니다.
 
 이번에는 orthonormal한 세 개의 3차원벡터 $w_1$, $w_2$, $w_3$에 대해 다시 생각해봅시다.
 
@@ -772,7 +786,7 @@ $$W^TW=I$$
 
 가 됩니다.
 이때, $W$와 같은 행렬을 orthogonal 행렬이라고 합니다.
-즉, orthonormal한 열벡터들이 가로로 나열되어 있는 정사각행렬을 orthogonal 행렬이라고 합니다.
+<!-- 즉, orthonormal한 열벡터들이 가로로 나열되어 있는 정사각행렬을 orthogonal 행렬이라고 합니다. -->
 
 <div class="notice--info">
 <b> 정의 8 </b> <br>
@@ -783,29 +797,25 @@ $$A^TA=I$$
 를 만족시키면 $A$를 orthogonal 행렬(orthogonal matrix, 직교행렬)이라고 부릅니다.
 </div>
 
-<div class="notice--info">
-<b> 정의 8 </b> <br>
-실수를 성분으로 가지는 정사각행렬 $A$가
-
-$$A^TA=I$$
-
-를 만족시키면 $A$를 orthogonal 행렬(orthogonal matrix, 직교행렬)이라고 부릅니다.
-</div>
-
-$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음이 성질이 성립합니다.
+$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음이 성질도 성립합니다.
 
 (a) $A$가 orthogonal 행렬($n\times n$)이면 $A$의 각 열들은 orthonormal하다.
 
 (b) $n$차원의 orthonormal한 벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal하다.
 
 <div class="notice--danger">
-<b> 참고 9 </b> <br>
+<b> 참고 </b> <br>
 이 포스트에서 (그리고 선형대수에서) orthogonal이라는 말은 두 가지 의미를 가집니다.
 두 의미를 혼동하지 않고 잘 사용해야 합니다.
 <br>
-(a) 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
+(a) 두 벡터 $x$, $y$에 대하여
+
+$$x^Ty=0$$
+
+이면 두 벡터는 orthogonal 하다(직교한다)고 말합니다.
+벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 $${x_i}^Tx_j=0\qquad(i\neq j)$$
-을 만족시킬 때 이 벡터들을 orthogonal 하다고 말합니다.
+을 만족시킬 때 이 벡터들을 mutually orthogonal 하다고 말합니다.
 <br>
 (b) 정사각행렬 $A$에 대하여
 $$A^TA=I$$
@@ -818,7 +828,7 @@ $$A^TA=I$$
 만약, 그 성분이 일반적으로 복소수인 벡터 혹은 행렬에 대해 생각한다면, 그에 따른 내적, norm 등의 개념은 실수일 때와는 조금 다르게 정의됩니다.
 
 <div class="notice--info">
-<b> 정의 10 </b> <br>
+<b> 정의 9 </b> <br>
 (a) $n$차원 복소수 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적(inner product) $\langle x,y\rangle$은
 
 $$\langle x,y\rangle=x^Hy$$
@@ -851,14 +861,12 @@ $$
 $$
 
 인 것입니다.
-($|a+bi|=\sqrt{a^2+b^2}$)
+$\left(|a+bi|=\sqrt{a^2+b^2}\right)$
 예를 들어, 벡터 $u_1$, $u_2$가
 
 $$
-\begin{align*}
-u_1=&\begin{bmatrix}1+2i\\2-i\end{bmatrix}\\
-u_2=&\begin{bmatrix}3\\1-i\end{bmatrix}
-\end{align*}
+u_1=\begin{bmatrix}1+2i\\2-i\end{bmatrix},\quad
+u_2=\begin{bmatrix}3\\1-i\end{bmatrix}
 $$
 
 이면
@@ -893,25 +901,25 @@ $$
 
 입니다.
 
-위와 같이 정의한 복소벡터에 대한 내적을 가지고 '수직'의 개념도 정의할 수 있습니다.
+위와 같이 정의한 복소벡터에 대한 내적을 가지고 수직(orthogonality)의 개념도 정의할 수 있습니다.
 
 <div class="notice--info">
 <b> 정의 11 </b> <br>
 (a) 두 복소수 벡터 $x$, $y$에 대하여 
 
-$$\langle x,y\rangle=0$$
+$$x^Hy=0$$
 
 이면 두 벡터가 서로 수직이라고 말하고, $x\perp y$라고 씁니다.
 <br>
 (b) $n$개의 복소벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 
-$$\langle x_i,x_j\rangle=0\quad(i\neq j)$$
+$$x_i\,^Hx_j=0\quad(i\neq j)$$
 
 이면 이 벡터들이 orthogonal하다고 말합니다.
 <br>
 (c) $n$개의 복소벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 
-$$\langle x_i,x_j\rangle=
+$$x_i\,^Hx_j=
 \begin{cases}
 0\quad(i\neq j)\\
 1\quad(i=j)
@@ -920,6 +928,21 @@ $$
 
 이면 이 벡터들이 orthonormal하다고 말합니다.
 </div>
+
+즉,
+
+$$
+u_1=\begin{bmatrix}1+2i\\2-i\end{bmatrix},\quad
+u_2=\begin{bmatrix}3\\1-i\end{bmatrix}
+$$
+
+는 orthogonal하지도, orthonormal하지도 않습니다.
+반면,
+
+$$
+v_1=\begin{bmatrix}1+2i\\2-i\end{bmatrix},\quad
+v_2=\begin{bmatrix}3\\1-i\end{bmatrix}
+$$
 
 ## 1.7 eigenvalue / eigenvector
 
