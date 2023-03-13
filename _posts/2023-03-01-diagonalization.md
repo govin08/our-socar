@@ -614,7 +614,7 @@ $$
 \end{align*}
 $$
 
-이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 pairwisely orthogonal하다고 말합니다.
+이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 pairwisely orthogonal (mutually orthogonal) 하다고 말합니다.
 위의 예에서 $u_1$, $u_2$, $u_3$는 pairwisely orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 pairwisely orthogonal한 것입니다.
 
 $v_1$, $v_2$, $v_3$를 조금 변형해서 $w_1$, $w_2$, $w_3$를 다음과 같이 만들면
@@ -640,13 +640,32 @@ $$
 이런 경우에, 이 벡터들이 orthonormal하다고 말합니다.
 즉, $u_1$, $u_2$, $u_3$와 $v_1$, $v_2$, $v_3$는 orthonormal하지 않고, $w_1$, $w_2$, $w_3$는 orthonormal한 것입니다.
 
+정리하면 다음과 같이 정의할 수 있습니다.
+- $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이면 $x_1$, $x_2$, $\cdots$, $x_n$가 pairwisely orthogonal하다고 합니다.
+- $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이고, $||x_1||=1$, $||x_2||=1$, $\cdots$, $||x_n||=1$이면 $x_1$, $x_2$, $\cdots$, $x_n$가 orthonormal하다고 합니다.
+
 <div class="notice--info">
 <b> 정의 7 </b> <br>
-$n$개의 실수 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
+(a) 두 실수 벡터 $x$, $y$에 대하여
+
+$$x^Ty=0$$
+
+이면 두 벡터가 orthogonal 하다고 말하고, $x\perp y$라고 씁니다.
 <br>
-(a) $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이면 $x_1$, $x_2$, $\cdots$, $x_n$가 pairwisely orthogonal하다고 합니다.
+(b) $n$개의 실수 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
+
+$${x_i}^Tx_j=0\quad(i\neq j)$$
+
+이면, 이 벡터들이 mutually orthogonal하다고 말합니다.
 <br>
-(b) $x_1$, $x_2$, $\cdots$, $x_n$가 모두 서로 수직이고, $||x_1||=1$, $||x_2||=1$, $\cdots$, $||x_n||=1$이면 $x_1$, $x_2$, $\cdots$, $x_n$가 orthonormal하다고 합니다.
+(c) $n$개의 실수 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
+
+$$
+{x_i}^Tx_j=
+\begin{cases}0&(i\neq j)\\1&(i=j)\end{cases}
+$$
+
+이면, 이 벡터들이 orthonormal하다고 말합니다.
 </div>
 
 위의 두 조건 (a), (b)를 다음과 같이 간단하게 적을 수도 있습니다.
@@ -785,7 +804,7 @@ $$
 $$W^TW=I$$
 
 가 됩니다.
-이때, $W$와 같은 행렬을 orthogonal 행렬이라고 합니다.
+이때, $W$와 같은 행렬을 **orthogonal 행렬**이라고 합니다.
 <!-- 즉, orthonormal한 열벡터들이 가로로 나열되어 있는 정사각행렬을 orthogonal 행렬이라고 합니다. -->
 
 <div class="notice--info">
@@ -801,7 +820,7 @@ $w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음이 성�
 
 (a) $A$가 orthogonal 행렬($n\times n$)이면 $A$의 각 열들은 orthonormal하다.
 
-(b) $n$차원의 orthonormal한 벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal하다.
+(b) $n$차원의 orthonormal한 실수벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal하다.
 
 <div class="notice--danger">
 <b> 참고 </b> <br>
@@ -815,7 +834,7 @@ $$x^Ty=0$$
 이면 두 벡터는 orthogonal 하다(직교한다)고 말합니다.
 벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 $${x_i}^Tx_j=0\qquad(i\neq j)$$
-을 만족시킬 때 이 벡터들을 mutually orthogonal 하다고 말합니다.
+을 만족시킬 때 이 벡터들을 pairwisely orthogonal 하다고 말합니다.
 <br>
 (b) 정사각행렬 $A$에 대하여
 $$A^TA=I$$
@@ -915,7 +934,7 @@ $$x^Hy=0$$
 
 $$x_i\,^Hx_j=0\quad(i\neq j)$$
 
-이면 이 벡터들이 orthogonal하다고 말합니다.
+이면 이 벡터들이 pairwisely orthogonal하다고 말합니다.
 <br>
 (c) $n$개의 복소벡터 $x_1$, $x_2$, $\cdots$, $x_n$에 대하여
 
@@ -936,13 +955,101 @@ u_1=\begin{bmatrix}1+2i\\2-i\end{bmatrix},\quad
 u_2=\begin{bmatrix}3\\1-i\end{bmatrix}
 $$
 
-는 orthogonal하지도, orthonormal하지도 않습니다.
+는 pairwisely orthogonal 하지도, orthonormal하지도 않습니다.
 반면,
 
 $$
-v_1=\begin{bmatrix}1+2i\\2-i\end{bmatrix},\quad
-v_2=\begin{bmatrix}3\\1-i\end{bmatrix}
+v_1=\begin{bmatrix}3-i\\i\end{bmatrix},\quad
+v_2=\begin{bmatrix}1-i\\-2-4i\end{bmatrix}
 $$
+
+는 orthogonal 하지만, orthonormal하지는 않습니다.
+
+$$
+\begin{align*}
+v_1\,^Hv_2
+&=\begin{bmatrix}3+i&(-i)\end{bmatrix}\begin{bmatrix}1-i\\-2-4i\end{bmatrix}\\
+&=(3+i)(1-i)+(-i)(-2-4i)=0
+\end{align*}
+$$
+
+만약, 가능한 모든 $v_i$에 대하여 내적하여 결과를 내면
+
+$$
+\begin{align*}
+v_1\,^Hv_1&=\sqrt{11}    &v_1\,^Hv_2&=0\\
+v_2\,^Hv_1&=0            &v_2\,^Hv_2&=\sqrt{22}
+\end{align*}
+$$
+
+입니다.
+따라서 두 열벡터 $v_1$과 $v_2$를 좌우로 나열하여 행렬
+
+$$V=\begin{bmatrix}|&|\\v_1&v_2\\|&|\end{bmatrix}$$
+
+를 만들면
+
+$$V^HV=\begin{bmatrix}\sqrt{11}&0\\0&\sqrt{22}\end{bmatrix}$$
+
+가 성립합니다.
+
+이번에는 $v_1$, $v_2$를 조금 변형하여
+
+$$
+w_1=\begin{bmatrix}\frac3{\sqrt{11}}-\frac1{\sqrt{11}}i\\\frac1{\sqrt{11}}i\end{bmatrix},\quad
+w_2=\begin{bmatrix}\frac1{\sqrt{22}}-\frac1{\sqrt{22}}i\\-\frac2{\sqrt{22}}-\frac4{\sqrt{22}}i\end{bmatrix}
+$$
+
+를 만들면, $w_1$, $w_2$는 orthonormal하고
+
+$$
+\begin{align*}
+w_1\,^Hw_1&=1 &w_1\,^Hw_2&=0\\
+w_2\,^Hw_1&=0 &w_2\,^Hw_2&=1
+\end{align*}
+$$
+
+입니다.
+행렬 $W$를
+
+$$W=\begin{bmatrix}|&|\\w_1&w_2\\|&|\end{bmatrix}$$
+
+로 두면
+
+$$W^HW=I$$
+
+가 성립합니다.
+
+이때 $W$와 같은 행렬을 **unitary 행렬**이라고 부릅니다.
+
+<div class="notice--info">
+<b> 정의 12 </b> <br>
+복소수를 성분으로 가지는 정사각행렬 $A$가
+
+$$A^HA=I$$
+
+를 만족시키면 $A$를 unitary 행렬(unitary matrix, 유니터리 행렬)이라고 부릅니다.
+</div>
+
+$w_1$, $w_2$ $W$ 사이의 관계에서 볼 수 있듯 다음이 성질도 성립합니다.
+
+(a) $A$가 unitary 행렬($n\times n$)이면 $A$의 각 열들은 orthonormal하다.
+
+(b) $n$차원의 orthonormal한 복소벡터들 $n$개를 가로로 나열해서 얻은 행렬은 unitary하다.
+
+<div class="notice--danger">
+<b> 참고 </b> <br>
+$A^T=A$를 만족시키는 실수 행렬을 orthogonal 행렬이라고 했었습니다.
+그리고 $A^H=A$를 만족시키는 복소수 행렬을 unitary 행렬이라고 했습니다.
+
+따라서, 모든 orthogonal 행렬은 unitary 행렬이기도 합니다.
+$A$가 orthogonal 행렬이면 $A$의 모든 성분들은 실수이고, $A^T=A$입니다.
+그러면, 정리 2에 의해
+
+$$A^H=\overline{A^T}=\overline A=A$$
+
+이기 때문입니다.
+</div>
 
 ## 1.7 eigenvalue / eigenvector
 
