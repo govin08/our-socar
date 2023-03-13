@@ -548,7 +548,7 @@ $$
 \sqrt{x^Tx}=\sqrt{x_1\,^2+x_2\,^2+\cdots+x_n}\,^2=\sqrt{\sum_{k=1}^n{x_k}^2}
 $$
 
-이 포스트에서는 내적을 표현할 때 $x\cdot y$라는 표현 대신 $\langle x,\rangle$이라는 표현을 쓰겠습니다.
+이 포스트에서는 내적을 표현할 때 $x\cdot y$라는 표현 대신 $\langle x,y\rangle$라는 표현을 쓰겠습니다.
 또한 $x$의 크기는 $||x||$로 표시하며, '크기'라는 표현 대신 'norm'이라는 표현을 사용하겠습니다.
 
 <div class="notice--info">
@@ -1051,7 +1051,7 @@ $$A^{-1}=A^H$$
 <div class="notice--danger">
 <b> 참고 </b> <br>
 $A^TA=I$를 만족시키는 실수 행렬을 orthogonal 행렬이라고 했었습니다.
-그리고 $A^HA=I$를 만족시키는 복소수 행렬을 unitary 행렬이라고 했습니다.
+그리고 $A^HA=I$를 만족시키는 복소 행렬을 unitary 행렬이라고 했습니다.
 
 따라서, 모든 orthogonal 행렬은 unitary 행렬이기도 합니다.
 $A$가 orthogonal 행렬이면, $A$의 모든 성분들은 실수이고 $A^TA=I$입니다.
