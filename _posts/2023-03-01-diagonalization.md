@@ -580,7 +580,7 @@ $$
 
 이면
 
-![diagonalization_1-5-1]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-1.png){: .img-50-center}
+![diagonalization_1-4-1]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-4-1.png){: .img-50-center}
 
 $u_1$와 $u_2$는 서로 수직입니다($u_1\perp u_2$);
 
@@ -608,7 +608,7 @@ $$
 
 이면
 
-![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-3.png){: .img-100-center}
+![diagonalization_1-4-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-4-2.png){: .img-100-center}
 
 $v_1$와 $v_2$, $v_1$와 $v_3$, $v_2$와 $v_3$는 모두 서로 수직입니다($v_1\perp v_2$, $v_1\perp v_3$, $v_2\perp v_3$);
 
@@ -1062,7 +1062,460 @@ $$A^HA=A^TA=I$$
 이기 때문입니다.
 </div>
 
-## 1.7 eigenvalue / eigenvector
+## 1.5 eigenvalue / eigenvector
 
+대각화에서 중요한 개념인 eigenvalue, eigenvector에 대해 다룹니다.
+이것들을 다루기 위해서는 **행렬식(determinant)**을 언급하지 않기가 힘들기 때문에 다루어봤습니다.
+하지만, 행렬식에 대해 설명하려면 조금 복잡하고 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
+아래의 '행렬식' 단락을 이해하는 것이 힘들면, 정리 15 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
+
+고등학교 수학에서 행렬식의 개념에 대해 다룹니다.
+행렬
+
+$$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$$
+
+의 행렬식 $D=ad-bc$가 0이면 역행렬이 존재하지 않고, 0이 아니면 역행렬이 존재한다는 것이지요.
+이 포스트에서는 $A$의 행렬식을 $\text{det}(A)$ (또는 $\text{det}\;A$)로 적으려 합니다.
+지금까지 써왔던 $A$의 표현식
+
+$$A=\begin{bmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{bmatrix}$$
+
+으로 나타내면
+
+$$\text{det}A = a_{11}a_{22}-a_{12}a_{21}$$
+
+이 됩니다.
+그리고 흔히 대학 1학년 수준의 미적분학에 보면 $3\times3$ 행렬
+
+$$A=\begin{bmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{bmatrix}$$
+
+에 대한 행렬식이
+
+$$\text{det}A = a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}-a_{13}a_{21}a_{32}+a_{13}a_{22}a_{31}$$
+
+라는 것을 다루기도 합니다.
+일반적인 행렬식에 대해 정의하고 논의하려면 먼저 순열(permutation)에 대해 말해야합니다.
+여기서 말하는 순열은 고등학교 수학에서 다루는 $_5P_3=5\times4\times3=60$와 는 조금 다릅니다.
+
+### permutation
+중학교 수학(혹은 고등학교 수학)에서 함수란 두 집합 $X$, $Y$가 주어졌을 때 $A$의 **모든** 원소 $x\in X$에 대하여 $Y$의 **한** 원소 $f(x)$에 대응시키는 것을 말합니다.
+이때, $X$를 정의역(domain), $Y$를 공역(codomain)이라고 부릅니다.
+예를 들어, 두 집합 $X=\{a,b,c\}$, $Y=\{1,2,3\}$에 대하여
+$a$를 $1$로 대응시키고, $b$를 $3$으로 대응시키고 $c$도 3으로 대응시키는 함수를 $f$라고 하면,
+
+$$
+\begin{align*}
+f(a)&=1\\
+f(b)&=3\\
+f(c)&=3
+\end{align*}
+$$
+
+로 표현할 수 있고, 아래의 (1)번 그림으로도 나타낼 수 있습니다.
+
+![diagonalization_1-5-1]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-1.png)
+<!-- {: .img-100-center} -->
+
+이 그림의 (2)번은 $a$가 3으로 대응되고 $b$가 2로 대응되었으나, $c$는 어디에도 대응되지 않았기 때문에 함수라고 할 수 없습니다.
+(3)번 또한, $a$가 서로 다른 두 개의 $Y$의 원소 1, 2에 대응되었으므로 이것도 함수라고 할 수 없습니다.
+
+함수 중에서
+
+$x_1,x_2\in X$이고 $x_1\ne x_2$이면 $f(x_1)\ne f(x_2)$이다.
+{: .center}
+
+를 만족시키키는 함수를 일대일함수(one-to-one function, injection)라고 합니다.
+또한, 일대일함수 중에서
+
+모든 $y\in Y$에 대하여 $y=f(x)$를 만족시키는 $x$가 적어도 하나 존재한다.
+{: .center}
+
+라는 조건을 만족시키는 함수를 일대일대응(one-to-one correspondence, bijection)이라고 합니다.
+
+예를 들어, 아래 그림에서 (가)는 함수라고 할 수 없고 (나), (다), (라)는 함수라고 할 수 있는데, 그중 (나)는 $a\ne b$인데도 불구하고 $f(a)=f(b)$이므로 일대일함수가 아닙니다.
+하지만 (다), (라)는 일대일함수 조건을 만족하므로 일대일함수입니다.
+(다), (라) 중에서는 (라)가 일대일대응 조건을 만족시킵니다.
+$1\in Y$은 $f(c)=1$을 만족시키는 $c\in X$가 존재하고, 
+$2\in Y$은 $f(b)=2$을 만족시키는 $b\in X$가 존재하며,
+$3\in Y$은 $f(a)=3$을 만족시키는 $a\in X$가 존재하기 때문입니다.
+그런데 (다)의 경우에는 $4\in Y$가 $f(x)=4$를 만족시키는 $x\in X$가 존재하지 않기 때문에 일대일대응이 아닙니다.
+
+![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-2.png)
+
+이제 permutation을 정의할 수 있습니다.
+$n$이 자연수일 때, 정의역과 공역이 모두 $\mathbb N_n=\\{1,2,\cdots,n\\}$인 일대일대응을 permutation이라고 합니다.
+
+예를 들어 $n=3$인 permutation들은 아래와 같습니다.
+
+![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-3.png)
+
+
+일반적으로 $n$의 permutation의 개수는 $n!$ 개일 것입니다.
+$n=3$인 permutation들의 개수는 $3!=6$ 개이므로, 모든 permutation들을 다 나타낸 셈입니다.
+$n$의 permutation들의 집합을 $S_n$이라고 표기하겠습니다.
+이 집합은 'symmetric group degree $n$($n$에 대한 대칭군)'이라는 이름을 가지고 있습니다.
+
+재밌는 것은, 순열을 행렬로서 표현할 수 있다는 것입니다.
+어떤 permutation이 $i\in\{1,2,3\}$을 $j\in\{1,2,3\}$로 대응시켰다면, $3\times3$ 행렬의 $i$행 $j$열 성분에 1을 넣고, 나머지 성분에는 0을 넣는 행렬을 만드는 것입니다.
+
+예를 들어, 위 그림의 첫번째 permuation은 1을 1로, 2는 2로, 3은 3으로 대응시켰습니다.
+따라서 $a_{11}=a_{22}=a_{33}=1$이고 나머지 $(i,j)$에 대해서는 $a_{ij}=0$인 행렬
+
+$$
+\begin{bmatrix}
+1&0&0\\0&1&0\\0&0&1
+\end{bmatrix}
+$$
+
+을 생각하는 것입니다.
+두번째 permutation은 1을 1으로, 2를 3으로, 3을 2로 대응시켰으므로 $a_{11}=a_{23}=a_{32}=1$인 행렬 
+
+$$
+\begin{bmatrix}
+1&0&0\\0&0&1\\0&1&0
+\end{bmatrix}
+$$
+
+을 만드는 것입니다.
+
+여섯 개의 permutation 대한 각각의 행렬들은
+
+$$
+\begin{gather*}
+P_1=
+\begin{bmatrix}
+1&0&0\\0&1&0\\0&0&1
+\end{bmatrix}
+,\quad
+P_2=
+\begin{bmatrix}
+1&0&0\\0&0&1\\0&1&0
+\end{bmatrix}
+,\quad
+P_3=
+\begin{bmatrix}
+0&1&0\\1&0&0\\0&0&1
+\end{bmatrix}
+\\
+P_4=
+\begin{bmatrix}
+0&1&0\\0&0&1\\1&0&0
+\end{bmatrix}
+,\quad
+P_5=
+\begin{bmatrix}
+0&0&1\\1&0&0\\0&1&0
+\end{bmatrix}
+,\quad
+P_6=
+\begin{bmatrix}
+0&0&1\\0&1&0\\1&0&0
+\end{bmatrix}
+\end{gather*}
+$$
+
+입니다.
+이 행렬들은 **permuation 행렬** (permuation matrix, 치환 행렬)이라고 불립니다.
+<!-- 이때, permutation $\sigma$와 그에 대응되는 permutation 행렬 $P$에 대해서는 긴밀한 관계가 있습니다. -->
+permutation 행렬은 대응되는 permutation 자체와 같은 것이라고 보겠습니다.
+이것은 충분히 말이 되는 이야기입니다.
+여섯 개의 permutation 중 첫번째 permutation인 $\sigma_1$는
+
+$$
+\begin{align*}
+\sigma_1(1)=1\\
+\sigma_1(2)=2\\
+\sigma_1(3)=3
+\end{align*}
+$$
+
+를 만족시키는 일대일대응입니다.
+그리고 이것은 마치 $\sigma_1$이 벡터
+$$\begin{bmatrix}1\\2\\3\end{bmatrix}$$을
+$$\begin{bmatrix}1\\2\\3\end{bmatrix}$$로 대응시켰다고 생각할 수 있는데, 정말로 벡터 $$\begin{bmatrix}1\\2\\3\end{bmatrix}$$의 왼쪽에 행렬 $P_1$을 곱하면 $$\begin{bmatrix}1\\2\\3\end{bmatrix}$$가 나오기 때문입니다;
+
+$$
+\begin{bmatrix}
+1&0&0\\0&1&0\\0&0&1
+\end{bmatrix}
+\begin{bmatrix}1\\2\\3\end{bmatrix}
+=
+\begin{bmatrix}1\\2\\3\end{bmatrix}.
+$$
+
+마찬가지로 $\sigma_2$에 대해서는
+
+$$
+\begin{align*}
+\sigma_1(1)=1\\
+\sigma_1(2)=3\\
+\sigma_1(3)=2
+\end{align*}
+$$
+
+가 성립하는데 이것은 행렬로
+
+$$
+\begin{bmatrix}
+1&0&0\\0&1&0\\0&0&1
+\end{bmatrix}
+\begin{bmatrix}1\\2\\3\end{bmatrix}.
+=
+\begin{bmatrix}1\\3\\2\end{bmatrix}.
+$$
+
+와 같이 표현할 수 있는 것입니다.
+
+이번에는 각각의 permutation들을 even permutation과 odd permutation으로 나누고, permutation $\sigma$의 부호 $\text{sgn}(\sigma)$를 정의하려 합니다.
+어떤 permutation $\sigma$의 permutation 행렬이 $P$일 떄,
+- $P$의 행을 짝수번 교환하여 항등행렬 $I$을 만들 수 있으면 $\sigma$를 even permutation이라고 합니다.
+- $P$의 행을 홀수번 교환하여 항등행렬 $I$를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
+- 함수 $\text{sgn}:S_n\to\{1,-1\}$을 다음과 같이 정의합니다;
+
+$$
+\text{sgn}(\sigma)=
+\begin{cases}
+1&(\sigma : \text{even})\\
+-1&(\sigma : \text{odd})
+\end{cases}
+$$
+
+예를 들어, $\sigma_1$의 경우에는 $P_1=I$이므로 $P_1$의 행을 0번 교환하여 $I$를 만들 수 있는데, $0$은 짝수이므로 $\sigma_1$은 even permutation이고, $\text{sgn}(\sigma_1)=1$입니다.
+
+$\sigma_2$의 경우에는 $P_2$의 두번째 행과 세번째 행을 교환하면 $I$를 만들 수 있습니다.
+$1$은 홀수이므로 $\sigma_2$는 odd permutation이고 $\text{sgn}(\sigma_2)=-1$입니다.
+사실, $P_2$는 첫번째 행과 두번째 행을 교환하여 $P_4$와 같은 형태를 만들고, 다시 첫번째 행과 두번째 행을 교환하여 $P_2$로 돌아온 뒤, 두번째 행과 세번째 행을 교환하여 $I$를 만들 수 있습니다.
+이 경우에는 $P_2$의 행을 3번 교환했는데, 그럼에도 불구하고 $\sigma$가 odd permutation이라는 사실은 변하지 않습니다.
+
+$n=3$인 6개의 permutation에 대해서 부호를 계산하면 다음과 같습니다.
+
+$$
+\begin{align*}
+\text{sgn}(P_1)&=1  &\text{sgn}(P_2)&=-1  &\text{sgn}(P_3)&=-1  \\
+\text{sgn}(P_4)&=1  &\text{sgn}(P_5)&=1   &\text{sgn}(P_3)&=-1
+\end{align*}
+$$
+
+즉, $n=3$인 permutation은 총 6개가 있는데, 그 중 even permutation은 3개, odd permutation은 3개가 있습니다.
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+자연수 $n$에 대하여, 모든 permutation들의 집합을 $S_n$이라고 쓰고, 이 집합을 permutation group이라고 부른다고 했었습니다.
+모든 even permutation들의 집합은 $A_n$이라고 쓰고, 이 집합을 alternating group이라고 부릅니다.
+모든 odd permutation들의 집합은 $S_n-A_n$이 되지만, 이것은 군(group)을 이루지는 않습니다.
+<br>
+일반적으로, even permutation의 개수와 odd permutation의 개수는 같습니다.
+따라서 $n$에 대한 even permutation들의 개수는 $\frac{n!}2$이고, odd permutation들의 개수도 $\frac{n!}2$입니다.
+<br>
+이에 대한 증명은 꽤 쉽습니다.
+odd permutation 중 하나를 골라서 $\beta$라고 하겠습니다.
+임의의 even permutation $\alpha\in A_n$에 대하여 $g(\alpha)$를
+<br>
+$$g(\alpha)=\beta\circ\alpha$$
+<br>
+로 적습니다.
+그러면 $g(\alpha)$는 odd permutation이 되고, 따라서 $g$는 $A_n$에서 $S_n-A_n$으로 가는 함수가 됩니다.
+더구나 이 함수 $g$는 일대일대응 조건까지도 만족시킵니다.
+따라서 $g$의 정의역인 $A_n$과 $g$의 공역인 $S_n-A_n$은 그 개수가 같습니다.
+</div>
+
+한편, $n=2$에 대해서도 $\sigma_i$, $P_i$, parity(even/odd) 등에 대해 적으면 다음과 같습니다.
+$n=2$일 때 permutation의 개수는 $2!=2$개입니다.
+$S_2=\{\sigma_1,\sigma_2\}$라고 하면,
+
+$$
+\begin{cases}\sigma_1(1)=1\\\sigma_1(2)=2\end{cases},\qquad
+\begin{cases}\sigma_2(1)=2\\\sigma_2(2)=1\end{cases}
+$$
+
+이고,
+
+$$
+P_1=\begin{bmatrix}1&0\\0&1\end{bmatrix},\qquad
+P_2=\begin{bmatrix}0&1\\1&0\end{bmatrix}
+$$
+
+이며,
+
+$$
+\text{sgn}(\sigma_1)=1,\qquad \text{sgn}(\sigma_2)=-1
+$$
+
+입니다.
+
+
+### 행렬식
+
+이제 행렬식을 정의할 수 있습니다.
+
+<div class="notice--info">
+<b> 정의 14 </b> <br>
+정사각행렬
+
+$$
+A
+=\begin{bmatrix}
+a_{11}&\cdots&a_{1n}\\
+\vdots&\ddots&\vdots\\
+a_{n1}&\cdots&a_{nn}
+\end{bmatrix}
+$$
+
+에 대하여 행렬식 $\text{det}(A)$를
+
+$$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^na_{i,\sigma(i)}$$
+
+로 정의합니다.
+
+</div>
+
+복잡해보이는 정의이지만, 잘 풀어보면 위에서 알아본 $2\times2$ 행렬에서의 $\text{det}A = a_{11}a_{22}-a_{12}a_{21}$와 $3\times3$ 행렬에서의
+
+$$A=\begin{bmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{bmatrix}$$
+
+에 대응되는 식임을 확인할 수 있습니다.
+
+$n=2$인 경우를 먼저 보면, $S_2$의 원소의 개수는 2개이고 $(S_2=\{s_1,s_2\})$
+
+$$
+\begin{gather*}
+\begin{cases}\sigma_1(1)=1\\\sigma_1(2)=2\end{cases},\qquad
+\begin{cases}\sigma_2(1)=2\\\sigma_2(2)=1\end{cases}\\
+\text{sgn}(\sigma_1)=1,\qquad\text{sgn}(\sigma_2)=-1
+\end{gather*}
+$$
+
+였으므로
+
+$$
+\begin{align*}
+\text{det}(A)
+&=\sum_{\sigma\in S_2}\prod_{i=1}^2a_{i,\sigma(i)}\\
+&=\prod_{i=1}^2a_{i,\sigma_1(i)}+\prod_{i=1}^2a_{i,\sigma_2(i)}\\
+&=a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}+a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}\\
+&=a_{11}a_{22}-a_{12}a_{21}
+\end{align*}
+$$
+
+인 것입니다.
+
+마찬가지로, $n=3$의 경우, $\,|S_3|=6$이었고,
+
+$$
+\begin{align*}
+&
+\begin{cases}\sigma_1(1)=1\\\sigma_1(2)=2\\\sigma_1(3)=3\end{cases},
+\qquad
+\begin{cases}\sigma_2(1)=1\\\sigma_2(2)=3\\\sigma_2(3)=2\end{cases},
+\qquad
+\begin{cases}\sigma_1(1)=2\\\sigma_3(2)=1\\\sigma_3(3)=3\end{cases},
+\\[10pt]
+&
+\begin{cases}\sigma_4(1)=2\\\sigma_4(2)=3\\\sigma_4(3)=1\end{cases},
+\qquad
+\begin{cases}\sigma_5(1)=3\\\sigma_5(2)=1\\\sigma_5(3)=2\end{cases},
+\qquad
+\begin{cases}\sigma_6(1)=3\\\sigma_6(2)=2\\\sigma_6(3)=1\end{cases},
+\\[20pt]
+&
+\text{sgn}(\sigma_1)=1,\qquad
+\text{sgn}(\sigma_2)=-1,\qquad
+\text{sgn}(\sigma_3)=-1\\[10pt]
+&
+\text{sgn}(\sigma_4)=1,\qquad
+\text{sgn}(\sigma_5)=1\quad
+\text{sgn}(\sigma_6)=-1
+\end{align*}
+$$
+
+이었기 때문에
+
+$$
+\begin{align*}
+&\text{det}(A)\\
+=&\sum_{\sigma\in S_3}\prod_{i=1}^3a_{i,\sigma(i)}\\
+=&\prod_{i=1}^3a_{i,\sigma_1(i)}
++\prod_{i=1}^3a_{i,\sigma_2(i)}
++\prod_{i=1}^3a_{i,\sigma_3(i)}\\
+&+\prod_{i=1}^3a_{i,\sigma_4(i)}
++\prod_{i=1}^3a_{i,\sigma_5(i)}
++\prod_{i=1}^3a_{i,\sigma_6(i)}\\
+=&a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}a_{3,\sigma_1(3)}
++a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}a_{3,\sigma_2(3)}
++a_{1,\sigma_3(1)}a_{2,\sigma_3(2)}a_{3,\sigma_3(3)}\\
+&+a_{1,\sigma_4(1)}a_{2,\sigma_4(2)}a_{3,\sigma_4(3)}
++a_{1,\sigma_5(1)}a_{2,\sigma_5(2)}a_{3,\sigma_5(3)}
++a_{1,\sigma_6(1)}a_{2,\sigma_6(2)}a_{3,\sigma_6(3)}\\
+=&a_{11}a_{22}a_{33}
+-a_{11}a_{23}a_{32}
+-a_{12}a_{21}a_{33}\\
+&+a_{12}a_{23}a_{31}
++a_{13}a_{21}a_{32}
+-a_{13}a_{22}a_{31}
+\end{align*}
+$$
+
+이 됩니다.
+
+한편, 행렬식의 정의에 따르면 임의의 $n$에 대하여 $\text{det}(I)=1$입니다.
+
+행렬식에 대하여 앞으로 사용될 사실은 다음의 두 명제입니다.
+
+<div class="notice--success">
+<b> 정의 15 </b> <br>
+(a) 정사각행렬 $A$, $B$에 대하여 $\text{det}(AB)=\text{det}(A)\text{det}(B)$ 입니다.
+<br>
+(b) 정사각행렬 $A$에 대하여 $A$의 역행렬이 존재하기 위한 필요충분조건은 $\text{det}(A)\neq0$인 것입니다.
+</div>
+
+<div class="notice--warning">
+<b> 증명 : 정의 15(a) </b> <br>
+출처 : 
+<a href="https://math.stackexchange.com/questions/60284/how-to-show-that-detab-deta-detb">computational proof by user59671</a>
+<br>
+</div>
+
+$n=2$
+
+$$
+\begin{align*}
+\text{det}(AB)
+&=\sum_{\sigma\in S_2}\text{sgn}(\sigma)\prod_{k=1}^2\sum_{i=1}^2A_{ki}B_{i\sigma(k)}\\
+&=\prod_{k=1}^2\sum_{i=1}^2A_{ki}B_{i\sigma_1(k)}
+-\prod_{k=1}^2\sum_{i=1}^2A_{ki}B_{i\sigma_2(k)}\\
+&=\prod_{k=1}^2A_{k1}B_{1,\sigma_1(k)}+A_{k,2}B_{2,\sigma_1(k)}
++\prod_{k=1}^2A_{k1}B_{1,\sigma_2(k)}+A_{k,2}B_{2,\sigma_2(k)}
+\end{align*}
+$$
+
+<div class="notice--warning">
+<b> 증명 : 정의 15(b) </b> <br>
+한쪽 방향인
+<center>
+$A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
+</center>
+만 증명하고, 반대방향의 증명은 생략합니다.
+<br>
+만약 $A$의 역행렬이 존재하면 $AB=I$를 만족시키는 정사각행렬 $B$가 존재합니다.
+그러면 (a)에 의해
+$$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
+입니다.
+</div>
+
+### eigenvalue / eigenvector
+
+# 2. 직교대각화
+
+## 2.1. diagonalization
+
+## 2.2. orthogonal / unitary diagonalization
+
+## 2.3. 예시
+
+# 3. 증명
+
+## 3.1. distinct eigenvalues
+
+## 3.2. repeated roots
 
 [1]:{{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf
