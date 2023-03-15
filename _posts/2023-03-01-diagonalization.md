@@ -1086,9 +1086,9 @@ $$A^HA=A^TA=I$$
 
 ## 1.5 eigenvalue / eigenvector
 
-대각화에서 중요한 개념인 eigenvalue, eigenvector에 대해 다룹니다.
-이것들을 다루기 위해서는 **행렬식(determinant)**을 언급하지 않기가 힘들기 때문에 다루어봤습니다.
-하지만, 행렬식에 대해 설명하려면 조금 복잡하고 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
+어떤 행렬을 대각화할 때 반드시 등장하게 되는 eigenvalue, eigenvector에 대해 적어보았습니다.
+eigenvalue를 계산할 때에는 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기하겠습니다.
+하지만, 행렬식에 대해 말하려면 조금 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
 아래의 '행렬식' 단락을 이해하는 것이 힘들면, 정리 15 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
 
 고등학교 수학에서 행렬식의 개념에 대해 다룹니다.
@@ -1120,9 +1120,14 @@ $$\text{det}A = a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a
 여기서 말하는 순열은 고등학교 수학에서 다루는 $_5P_3=5\times4\times3=60$와 는 조금 다릅니다.
 
 ### permutation
-중학교 수학(혹은 고등학교 수학)에서 함수란 두 집합 $X$, $Y$가 주어졌을 때 $A$의 **모든** 원소 $x\in X$에 대하여 $Y$의 **한** 원소 $f(x)$에 대응시키는 것을 말합니다.
+중학교 수학(혹은 고등학교 수학)에서 함수란 두 집합 $X$, $Y$가 주어졌을 때
+
+$X$의 **모든** 원소 $x\in X$에 대하여 $Y$의 **한** 원소 $f(x)$에 대응시키는 것
+{: .text-center}
+
+을 말합니다.
 이때, $X$를 정의역(domain), $Y$를 공역(codomain)이라고 부릅니다.
-예를 들어, 두 집합 $X=\{a,b,c\}$, $Y=\{1,2,3\}$에 대하여
+예를 들어, 두 집합 $X=\\{a,b,c\}$, $Y=\\{1,2,3\}$에 대하여
 $a$를 $1$로 대응시키고, $b$를 $3$으로 대응시키고 $c$도 3으로 대응시키는 함수를 $f$라고 하면,
 
 $$
@@ -1143,14 +1148,14 @@ $$
 
 함수 중에서
 
-$x_1,x_2\in X$이고 $x_1\ne x_2$이면 $f(x_1)\ne f(x_2)$이다.
-{: .center}
+$x_1\ne x_2$이면 $f(x_1)\ne f(x_2)$이다.
+{: .text-center}
 
 를 만족시키키는 함수를 일대일함수(one-to-one function, injection)라고 합니다.
 또한, 일대일함수 중에서
 
 모든 $y\in Y$에 대하여 $y=f(x)$를 만족시키는 $x$가 적어도 하나 존재한다.
-{: .center}
+{: .text-center}
 
 라는 조건을 만족시키는 함수를 일대일대응(one-to-one correspondence, bijection)이라고 합니다.
 
@@ -1173,11 +1178,117 @@ $n$이 자연수일 때, 정의역과 공역이 모두 $\mathbb N_n=\\{1,2,\cdot
 
 
 일반적으로 $n$의 permutation의 개수는 $n!$ 개일 것입니다.
-$n=3$인 permutation들의 개수는 $3!=6$ 개이므로, 모든 permutation들을 다 나타낸 셈입니다.
+$n=3$인 permutation들의 개수는 $3!=6$ 개이므로, 위의 그림은 모든 permutation들을 다 나타낸 셈입니다.
 $n$의 permutation들의 집합을 $S_n$이라고 표기하겠습니다.
-이 집합은 'symmetric group degree $n$($n$에 대한 대칭군)'이라는 이름을 가지고 있습니다.
+이 집합은 'symmetric group degree $n$'(대칭군)이라는 이름을 가지고 있습니다.
 
-재밌는 것은, 순열을 행렬로서 표현할 수 있다는 것입니다.
+$\sigma$가 permutation일 때, $\sigma$를 표현하는 방법은 다양하지만, 그 중 가장 간단한 방법은 $\sigma(1)$, $\sigma(2)$, $\cdots$, $\sigma(3)$를 단순히 나열하는 것입니다.
+예를 들어 위 그림의 첫번째 permutation인 $\sigma_1$은
+
+$$
+\begin{cases}
+\sigma_1(1)=1\\
+\sigma_1(2)=2\\
+\sigma_1(3)=3
+\end{cases}
+$$
+
+을 만족시키므로 $$\sigma_1=123$$으로 나타내는 것입니다.
+두번째 permutation인 $\sigma_2$는
+
+$$
+\begin{cases}
+\sigma_2(1)=1\\
+\sigma_2(2)=3\\
+\sigma_2(3)=2
+\end{cases}
+$$
+
+이므로, $\sigma_2=132$라고 간략히 씁니다.
+이러한 표기법으로 여섯 개의 permutation $\sigma_i$를 모두 표현하면
+
+$$
+\begin{align*}
+&\sigma_1=123,\quad&&\sigma_2=132,\quad&&\sigma_3=213, \\
+&\sigma_4=231,\quad&&\sigma_5=312,\quad&&\sigma_6=321
+\end{align*}
+$$
+
+이 됩니다.
+
+이번에는 각각의 permutation들을 even permutation과 odd permutation으로 나누고, permutation $\sigma$의 부호 $\text{sgn}(\sigma)$를 정의하려 합니다.
+어떤 permutation $\sigma=abc$에 대하여
+- $a$, $b$, $c$를 이 permutation의 '성분'이라고 할 때, $\sigma$의 서로다른 두 요소를 바꾸는 것을 '교환'이라고 하겠습니다.
+예를 들어 $\sigma$의 첫번째와 두번째 요소를 교환하면 $bac$가 됩니다.
+$\sigma$의 두번째 요소와 세번째 요소를 교환하면 $acb$가 됩니다.
+- $\sigma$의 을 짝수번 교환하여 항등함수를 만들 수 있으면 $\sigma$를 even permutation이라고 합니다.
+- $\sigma$의 행을 홀수번 교환하여 항등행렬를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
+- 함수 $\text{sgn}:S_n\to\{1,-1\}$을 다음과 같이 정의합니다;
+
+$$
+\text{sgn}(\sigma)=
+\begin{cases}
+1&(\sigma : \text{even})\\
+-1&(\sigma : \text{odd})
+\end{cases}
+$$
+
+예를 들어, $\sigma_1=123$의 경우에는 그 자체로 항등함수이므로 0번 교환하여 항등함수를 만들 수 있는고, $0$은 짝수이므로 $\sigma_1$은 even permutation이고, $\text{sgn}(\sigma_1)=1$입니다.
+
+$\sigma_2=132$의 경우에는 $P_2$의 두번째 성분 3과 세번째 성분 2를 교환하면 항등함수 $\sigma_1$를 만들 수 있습니다.
+$1$은 홀수이므로 $\sigma_2$는 odd permutation이고 $\text{sgn}(\sigma_2)=-1$입니다.
+사실, $\sigma_2=132$는 첫번째 성분 1과 두번째 성분 3을 교환하여 $\sigma_4=312$를 만들고, 다시 첫번째 성분 3과 두번째 성분 1을 교환하여 $\sigma_2=132$로 돌아온 뒤, 두번째 성분 3과 세번째 성분 2을 교환하여 $\sigma_1=123$를 만들 수 있습니다.
+이 경우에는 $sigma_2$의 성분을 3번 교환했는데, 그럼에도 불구하고 $\sigma$가 odd permutation이라는 사실은 변하지 않습니다.
+
+$\sigma_4=231$의 경우에는 짝수번 교환해야 항등함수 $\sigma_1=231$이 됩니다.
+예를 들어 $\sigma_1$의 1과 3을 교환하여 $\sigma_2=132$를 얻고, 다시 3과 2를 교환하여 $\sigma_3=123$을 얻을 수 있기 때문입니다.
+
+$n=3$인 6개의 permutation에 대해서 부호를 계산하면 다음과 같습니다.
+
+$$
+\begin{align*}
+\text{sgn}(P_1)&=1  &\text{sgn}(P_2)&=-1  &\text{sgn}(P_3)&=-1  \\
+\text{sgn}(P_4)&=1  &\text{sgn}(P_5)&=1   &\text{sgn}(P_3)&=-1
+\end{align*}
+$$
+
+즉, $n=3$인 permutation은 총 6개가 있는데, 그 중 even permutation은 3개, odd permutation은 3개가 있습니다.
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+자연수 $n$에 대하여, 모든 permutation들의 집합을 $S_n$이라고 쓰고, 이 집합을 permutation group이라고 부른다고 했었습니다.
+모든 even permutation들의 집합은 $A_n$이라고 쓰고, 이 집합을 alternating group이라고 부릅니다.
+모든 odd permutation들의 집합은 $S_n-A_n$이 되지만, 이것은 군(group)을 이루지는 않습니다.
+<br>
+일반적으로, even permutation의 개수와 odd permutation의 개수는 같습니다.
+따라서 $n$에 대한 even permutation들의 개수는 $\frac{n!}2$이고, odd permutation들의 개수도 $\frac{n!}2$입니다.
+<br>
+이에 대한 증명은 꽤 쉽습니다.
+odd permutation 중 하나를 골라서 $\beta$라고 하겠습니다.
+임의의 even permutation $\alpha\in A_n$에 대하여 $g(\alpha)$를
+<br>
+$$g(\alpha)=\beta\circ\alpha$$
+<br>
+로 적습니다.
+그러면 $g(\alpha)$는 odd permutation이 되고, 따라서 $g$는 $A_n$에서 $S_n-A_n$으로 가는 함수가 됩니다.
+더구나 이 함수 $g$는 일대일대응 조건까지도 만족시킵니다.
+따라서 $g$의 정의역인 $A_n$과 $g$의 공역인 $S_n-A_n$은 그 개수가 같습니다.
+</div>
+
+한편, $n=2$에 대해서도 $\sigma_i$, $P_i$, parity(even/odd) 등에 대해 적으면 다음과 같습니다.
+$n=2$일 때 permutation의 개수는 $2!=2$개입니다.
+$S_2=\{\sigma_1,\sigma_2\}$라고 하면,
+
+$$
+\begin{align*}
+\sigma_1&=12,\quad&\text{sgn}(\sigma_1)&=1\\
+\sigma_2&=21,\quad&\text{sgn}(\sigma_2)&=-1
+\end{align*}
+$$
+
+
+
+<!-- 재밌는 것은, 순열을 행렬로서 표현할 수 있다는 것입니다.
 어떤 permutation이 $i\in\{1,2,3\}$을 $j\in\{1,2,3\}$로 대응시켰다면, $3\times3$ 행렬의 $i$행 $j$열 성분에 1을 넣고, 나머지 성분에는 0을 넣는 행렬을 만드는 것입니다.
 
 예를 들어, 위 그림의 첫번째 permuation은 1을 1로, 2는 2로, 3은 3으로 대응시켰습니다.
@@ -1238,7 +1349,7 @@ $$
 
 입니다.
 이 행렬들은 **permuation 행렬** (permuation matrix, 치환 행렬)이라고 불립니다.
-<!-- 이때, permutation $\sigma$와 그에 대응되는 permutation 행렬 $P$에 대해서는 긴밀한 관계가 있습니다. -->
+이때, permutation $\sigma$와 그에 대응되는 permutation 행렬 $P$에 대해서는 긴밀한 관계가 있습니다.
 permutation 행렬은 대응되는 permutation 자체와 같은 것이라고 보겠습니다.
 이것은 충분히 말이 되는 이야기입니다.
 여섯 개의 permutation 중 첫번째 permutation인 $\sigma_1$는
@@ -1363,7 +1474,7 @@ $$
 \text{sgn}(\sigma_1)=1,\qquad \text{sgn}(\sigma_2)=-1
 $$
 
-입니다.
+입니다. -->
 
 
 ### 행렬식
@@ -1372,9 +1483,9 @@ $$
 
 <div class="notice--info">
 <b> 정의 14 </b> <br>
-정사각행렬
+$n\times n$ 정사각행렬 $A$에 대하여 행렬식 $\text{det}(A)$를
 
-$$
+<!-- $$
 A
 =\begin{bmatrix}
 a_{11}&\cdots&a_{1n}\\
@@ -1383,9 +1494,9 @@ a_{n1}&\cdots&a_{nn}
 \end{bmatrix}
 $$
 
-에 대하여 행렬식 $\text{det}(A)$를
+에 대하여  -->
 
-$$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^na_{i,\sigma(i)}$$
+$$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^n\text{sgn}(\sigma)a_{i,\sigma(i)}$$
 
 로 정의합니다.
 
@@ -1393,18 +1504,17 @@ $$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^na_{i,\sigma(i)}$$
 
 복잡해보이는 정의이지만, 잘 풀어보면 위에서 알아본 $2\times2$ 행렬에서의 $\text{det}A = a_{11}a_{22}-a_{12}a_{21}$와 $3\times3$ 행렬에서의
 
-$$A=\begin{bmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{bmatrix}$$
+$$\text{det}A = a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}-a_{13}a_{21}a_{32}+a_{13}a_{22}a_{31}$$
 
 에 대응되는 식임을 확인할 수 있습니다.
 
-$n=2$인 경우를 먼저 보면, $S_2$의 원소의 개수는 2개이고 $(S_2=\{s_1,s_2\})$
+$2\times2$ 행렬의 경우를 먼저 보면, $S_2$의 원소의 개수는 2개이고 $(S_2=\\{\sigma_1,\sigma_2\\})$
 
 $$
-\begin{gather*}
-\begin{cases}\sigma_1(1)=1\\\sigma_1(2)=2\end{cases},\qquad
-\begin{cases}\sigma_2(1)=2\\\sigma_2(2)=1\end{cases}\\
-\text{sgn}(\sigma_1)=1,\qquad\text{sgn}(\sigma_2)=-1
-\end{gather*}
+\begin{align*}
+\sigma_1&=12,\quad&\text{sgn}(\sigma_1)&=1\\
+\sigma_2&=21,\quad&\text{sgn}(\sigma_2)&=-1
+\end{align*}
 $$
 
 였으므로
@@ -1412,18 +1522,30 @@ $$
 $$
 \begin{align*}
 \text{det}(A)
-&=\sum_{\sigma\in S_2}\prod_{i=1}^2a_{i,\sigma(i)}\\
-&=\prod_{i=1}^2a_{i,\sigma_1(i)}+\prod_{i=1}^2a_{i,\sigma_2(i)}\\
-&=a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}+a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}\\
+&=\sum_{\sigma\in S_2}\prod_{i=1}^2\text{sgn}(\sigma)a_{i,\sigma(i)}\\
+&=\prod_{i=1}^2\text{sgn}(\sigma_1)a_{i,\sigma_1(i)}
++\prod_{i=1}^2\text{sgn}(\sigma_2)a_{i,\sigma_2(i)}\\
+&=a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}-a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}\\
 &=a_{11}a_{22}-a_{12}a_{21}
 \end{align*}
 $$
 
 인 것입니다.
 
-마찬가지로, $n=3$의 경우, $\,|S_3|=6$이었고,
+$3\times3$ 행렬의 경우에도
+<!-- 마찬가지로, $n=3$의 경우, $|S_3|=6$이었고, -->
 
 $$
+\begin{align*}
+\sigma_1&=123&\text{sgn}(\sigma_1)&=1\\
+\sigma_2&=132&\text{sgn}(\sigma_2)&=-1\\
+\sigma_3&=213&\text{sgn}(\sigma_3)&=-1\\
+\sigma_4&=231&\text{sgn}(\sigma_4)&=1\\
+\sigma_5&=312&\text{sgn}(\sigma_5)&=1\\
+\sigma_6&=321&\text{sgn}(\sigma_6)&=-1
+\end{align*}
+$$
+<!-- $$
 \begin{align*}
 &
 \begin{cases}\sigma_1(1)=1\\\sigma_1(2)=2\\\sigma_1(3)=3\end{cases},
@@ -1448,26 +1570,26 @@ $$
 \text{sgn}(\sigma_5)=1\quad
 \text{sgn}(\sigma_6)=-1
 \end{align*}
-$$
+$$ -->
 
 이었기 때문에
 
 $$
 \begin{align*}
 &\text{det}(A)\\
-=&\sum_{\sigma\in S_3}\prod_{i=1}^3a_{i,\sigma(i)}\\
-=&\prod_{i=1}^3a_{i,\sigma_1(i)}
-+\prod_{i=1}^3a_{i,\sigma_2(i)}
-+\prod_{i=1}^3a_{i,\sigma_3(i)}\\
-&+\prod_{i=1}^3a_{i,\sigma_4(i)}
-+\prod_{i=1}^3a_{i,\sigma_5(i)}
-+\prod_{i=1}^3a_{i,\sigma_6(i)}\\
+=&\sum_{\sigma\in S_3}\prod_{i=1}^3\text{sgn}(\sigma)a_{i,\sigma(i)}\\
+=&\prod_{i=1}^3\text{sgn}(\sigma_1)a_{i,\sigma_1(i)}
++\prod_{i=1}^3\text{sgn}(\sigma_2)a_{i,\sigma_2(i)}
++\prod_{i=1}^3\text{sgn}(\sigma_3)a_{i,\sigma_3(i)}\\
+&+\prod_{i=1}^3\text{sgn}(\sigma_4)a_{i,\sigma_4(i)}
++\prod_{i=1}^3\text{sgn}(\sigma_5)a_{i,\sigma_5(i)}
++\prod_{i=1}^3\text{sgn}(\sigma_6)a_{i,\sigma_6(i)}\\
 =&a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}a_{3,\sigma_1(3)}
-+a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}a_{3,\sigma_2(3)}
-+a_{1,\sigma_3(1)}a_{2,\sigma_3(2)}a_{3,\sigma_3(3)}\\
+-a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}a_{3,\sigma_2(3)}
+-a_{1,\sigma_3(1)}a_{2,\sigma_3(2)}a_{3,\sigma_3(3)}\\
 &+a_{1,\sigma_4(1)}a_{2,\sigma_4(2)}a_{3,\sigma_4(3)}
 +a_{1,\sigma_5(1)}a_{2,\sigma_5(2)}a_{3,\sigma_5(3)}
-+a_{1,\sigma_6(1)}a_{2,\sigma_6(2)}a_{3,\sigma_6(3)}\\
+-a_{1,\sigma_6(1)}a_{2,\sigma_6(2)}a_{3,\sigma_6(3)}\\
 =&a_{11}a_{22}a_{33}
 -a_{11}a_{23}a_{32}
 -a_{12}a_{21}a_{33}\\
@@ -1479,12 +1601,12 @@ $$
 
 이 됩니다.
 
-한편, 행렬식의 정의에 따르면 임의의 $n$에 대하여 $\text{det}(I)=1$입니다.
+<!-- 한편, 행렬식의 정의에 따르면 임의의 $n$에 대하여 $\text{det}(I)=1$입니다. -->
 
 행렬식에 대하여 앞으로 사용될 사실은 다음의 두 명제입니다.
 
 <div class="notice--success">
-<b> 정의 15 </b> <br>
+<b> 정리 15 </b> <br>
 (a) 정사각행렬 $A$, $B$에 대하여 $\text{det}(AB)=\text{det}(A)\text{det}(B)$ 입니다.
 <br>
 (b) 정사각행렬 $A$에 대하여 $A$의 역행렬이 존재하기 위한 필요충분조건은 $\text{det}(A)\neq0$인 것입니다.
