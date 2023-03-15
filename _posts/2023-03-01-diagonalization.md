@@ -1256,6 +1256,7 @@ $$
 
 <div class="notice--danger">
 <b>참고 </b> <br>
+(a)
 자연수 $n$에 대하여, 모든 permutation들의 집합을 $S_n$이라고 쓰고, 이 집합을 permutation group이라고 부른다고 했었습니다.
 모든 even permutation들의 집합은 $A_n$이라고 쓰고, 이 집합을 alternating group이라고 부릅니다.
 모든 odd permutation들의 집합은 $S_n-A_n$이 되지만, 이것은 군(group)을 이루지는 않습니다.
@@ -1273,6 +1274,16 @@ $$g(\alpha)=\beta\circ\alpha$$
 그러면 $g(\alpha)$는 odd permutation이 되고, 따라서 $g$는 $A_n$에서 $S_n-A_n$으로 가는 함수가 됩니다.
 더구나 이 함수 $g$는 일대일대응 조건까지도 만족시킵니다.
 따라서 $g$의 정의역인 $A_n$과 $g$의 공역인 $S_n-A_n$은 그 개수가 같습니다.
+<br>
+(b) permutation의 부호함수 $\text{sgn}$에 대하여 다음과 같은 사실들이 성립합니다.
+($\alpha,\beta\in S_n$)
+(증명은 생략합니다.)
+<ul>
+    <li> 함수 $\text{sgn}:S_n\to\{1,-1\}$은 잘 정의된 함수입니다.</li>
+    <li> $\text{sgn}(\alpha\circ\beta)=\text{sgn}(\alpha)\text{sgn}(\beta)$</li>
+    <li> $\text{sgn}(\alpha\circ\alpha)=1$</li>
+    <li> $\text{sgn}(\alpha^{-1})=\text{sgn}(\alpha)$</li>
+</ul>
 </div>
 
 한편, $n=2$에 대해서도 $\sigma_i$, $P_i$, parity(even/odd) 등에 대해 적으면 다음과 같습니다.
@@ -1612,39 +1623,104 @@ $$
 (b) 정사각행렬 $A$에 대하여 $A$의 역행렬이 존재하기 위한 필요충분조건은 $\text{det}(A)\neq0$인 것입니다.
 </div>
 
-<div class="notice--warning">
-<b> 증명 : 정의 15(a) </b> <br>
-출처 : 
-<a href="https://math.stackexchange.com/questions/60284/how-to-show-that-detab-deta-detb">computational proof by user59671</a>
-<br>
-</div>
-
-$n=2$
+**증명 : 정의 15(a)**
+{: .notice--warning}
 
 $$
 \begin{align*}
 \text{det}(AB)
-&=\sum_{\sigma\in S_2}\text{sgn}(\sigma)\prod_{k=1}^2\sum_{i=1}^2A_{ki}B_{i\sigma(k)}\\
-&=\prod_{k=1}^2\sum_{i=1}^2A_{ki}B_{i\sigma_1(k)}
--\prod_{k=1}^2\sum_{i=1}^2A_{ki}B_{i\sigma_2(k)}\\
-&=\prod_{k=1}^2A_{k1}B_{1,\sigma_1(k)}+A_{k,2}B_{2,\sigma_1(k)}
-+\prod_{k=1}^2A_{k1}B_{1,\sigma_2(k)}+A_{k,2}B_{2,\sigma_2(k)}
+&=\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^n(AB)_{k,\sigma(k)}\\
+&=\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^n\left(\sum_{i=1}^nA_{ki}B_{i,\sigma(k)}\right)\\
+&=\sum_{\sigma\in S_n}\text{sgn}(\sigma)\left(\sum_{f:\mathbb N_n\to\mathbb N_n}\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}\right)\\
+&=\sum_{\sigma\in S_n}\sum_{f:\mathbb N_n\to\mathbb N_n}\text{sgn}(\sigma)\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}\\
+&=\sum_{f:\mathbb N_n\to\mathbb N_n}\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}\\
+&=\sum_{f:\mathbb N_n\to\mathbb N_n}\sum_{\sigma\in S_n}\text{sgn}(\sigma)\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
+=&\sum_{f:\mathbb N_n\to\mathbb N_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)
 \end{align*}
 $$
 
-<div class="notice--warning">
-<b> 증명 : 정의 15(b) </b> <br>
+함수 $f:\mathbb N_n\to\mathbb N_n$는 일대일대응인 것 $(\in S_n)$과 그렇지 않은 것 $(\not\in S_n)$ 으로 나눌 수 있습니다.
+
+따라서
+
+$$
+\begin{align*}
+\text{det}(AB)&=P+Q\\
+P&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
+Q&=\sum_{f:\not\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)
+\end{align*}
+$$
+
+로 쓸 수 있습니다.
+$Q$를 먼저 계산합시다.
+$f$가 일대일대응이 아니면 이것은 일대일함수가 아닙니다.
+(항상 그런 것은 아니지만, 이 경우에는 정의역과 공역이 같기 때문에 그렇습니다.)
+따라서 $f(k_1)=f(k_2)$인 $k_1\ne k_2$가 존재합니다.
+만약, $k_1$과 $k_2$를 바꾸는 교환을 $\alpha$라고 하면, 임의의 $\sigma$에 대하여 $\alpha\circ\sigma\in S_n$이고, $\text{sgn}(\sigma)+\text{sgn}(\alpha\circ\sigma)=0$입니다.
+그리고
+
+$$
+\prod_{k=1}^nB_{f(k),\sigma(k)}=\prod_{k=1}^nB_{(\alpha\circ f)(k),\sigma(k)}
+$$
+
+이기 떄문에, 위의 $Q$ 식에서 괄호친 부분의 두 배는 0이 됩니다;
+
+$$
+\begin{align*}
+&2\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
+=&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
++\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
+=&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
++\sum_{\sigma\in S_n}\text{sgn}(\alpha\circ\sigma)\prod_{k=1}^nB_{f(k),(\alpha\circ\sigma)(k)}\\
+=&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
++\sum_{\sigma\in S_n}\left(-\text{sgn}(\sigma)\right)\prod_{k=1}^nB_{f(k),(\alpha\circ\sigma)(k)}\\
+=&0
+\end{align*}
+$$
+
+따라서 $Q=0$입니다.
+한편, $P$를 계산하면
+
+$$
+\begin{align*}
+P
+&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
+&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
+&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
+&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\cdot\left(\text{sgn}(f)\right)^2\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
+&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1}\circ f)\cdot\text{sgn}(f)\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
+&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\cdot\text{sgn}(f)\prod_{k=1}^nB_{\pi(k),k}\right)\\
+&=\left(\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
+&=\text{det}(A)\text{det}(B)
+\end{align*}
+$$
+
+입니다.
+위의 결과를 요약하면
+
+$$
+\text{det}(AB)=P+Q=0+\text{det}(A)\text{det}(B)=\text{det}(A)\text{det}(B)
+$$
+
+가 됩니다.
+
+**증명 : 정의 15(b)**
+{: .notice--warning}
+
 한쪽 방향인
-<center>
+
 $A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
-</center>
+{: .text-center}
+
 만 증명하고, 반대방향의 증명은 생략합니다.
-<br>
+
 만약 $A$의 역행렬이 존재하면 $AB=I$를 만족시키는 정사각행렬 $B$가 존재합니다.
 그러면 (a)에 의해
 $$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
 입니다.
-</div>
+따라서 $\text{det}(A)=0$이 될 수는 없습니다.
+
+---
 
 ### eigenvalue / eigenvector
 
