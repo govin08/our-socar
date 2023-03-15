@@ -16,16 +16,13 @@ warning / 주황 / 증명
 success / 연두 / 정리
 danger / 빨강 / 참고 -->
 
-
 2020년 3월, 대학원의 두번째 학기에 행렬의 직교대각화(orthogonal diagonalization)에 대해 고민했습니다.
 해당 내용은 수학과 기준 학부 2학년 2학기에 배워야 하는 내용이지만, 그리고 해당 시기의 〈선형대수2〉 과목은 A+을 받기는 했지만, 완벽하게 직교대각화에 대해 이해하지는 못했습니다.
 개별적인 행렬의 직교대각화는 할 줄 알았고, eigenvalue-eigenvector가 뭔지 알았지만,
  - **real symmetric 행렬은 왜 orthogonally diagonalizable한지**
-
-마찬가지로
  - **complex Hermitian 행렬은 왜 unitarily diagonalizable한지**
  
- 이해하지 못했습니다.
+에 대해서는 이해하지 못했습니다.
 
 그리하여, 한 번 시간을 잡고 위의 두 내용에 대해 고민해본 적이 있습니다.
 많은 자료들을 뒤졌지만 정작 제가 궁금해하는 저 위의 사실에 대하여 AtoZ로 알려주는 자료는 찾지 못했습니다.
@@ -40,10 +37,6 @@ danger / 빨강 / 참고 -->
 이 포스트는 기본적으로 한글을 사용하지만, 사용된 수학 용어들은 대부분 영어로 적었습니다.
 해당 용어가 처음 등장할 때에 한해서만 한글 표현을 병기해보았습니다.
 다만, 고등학교 수준의 수학 용어는 그냥 한국어 용어로 썼습니다.
-<ul>
-    <li>개별적인 행렬들은 $P$, $Q$, $R$, $\cdots$ 등으로 적었고, 일반적인 행렬은 $A$, $B$, $C$ 등으로 적었습니다.</li>
-    <li>개별적인 벡터들은 $u$, $v$, $w$ 등으로 적었고, 일반적인 벡터는 $x$, $y$ 등으로 적었습니다.</li>
-</ul>    
 </div>
 
 # 1 정의
@@ -57,6 +50,15 @@ danger / 빨강 / 참고 -->
 $$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
 
 는 행렬입니다.
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+<ul>
+    <li>개별적인 행렬들은 $P$, $Q$, $R$, $\cdots$ 등으로 적었고, 일반적인 행렬은 $A$, $B$, $C$ 등으로 적었습니다.</li>
+    <li>개별적인 벡터들은 $u$, $v$, $w$ 등으로 적었고, 일반적인 벡터는 $x$, $y$ 등으로 적었습니다.</li>
+</ul>
+</div>
+
 이때, $P$는 2개의 행과 2개의 열로 이루어진 행렬이어서 '$2\times 2$ 행렬'이라고 부르고 $Q$는 2개의 행과 3개의 열로 이루어진 행렬이어서 '$2\times3$ 행렬'이라고 부릅니다.
 이 포스트에서는 $2\times 2$, $2\times 3$ 등을 그 행렬의 모양이라고 하겠습니다.
 
@@ -91,15 +93,20 @@ $$p_{11}=1,\quad p_{12}=2,\quad p_{21}=0,\quad p_{22}=1$$
 
 입니다.
 
-어떤 행렬을 나타낼 때, 행렬의 일반적인 성분(e.g. $a_{ij}$)을 소괄호로 감싸고, 거기에 다시 아래첨자로 행렬의 모양을 특정해 표시하기도 합니다.
+가끔씩은, 소문자가 아닌 대문자 알파벳에 아래첨자를 주어 행렬의 성분을 표시하기도 합니다.
+즉, 행렬 $A$가 주어졌을 때 이 행렬의 $i$행 $j$열 성분은 보통 $a_{ij}$로 나타내지만, 가끔씩은 $A_{ij}$로 나타내기도 합니다.
+이것은 행렬 자체의 표현이 조금 복잡할 때 많이 쓰입니다.
+만약 $AB+C$라는 행렬의 $i$행 $j$열 성분을 표현하고 싶다면 $\left(AB+C\right)_{ij}$라고 표현하는 것입니다.
+
+어떤 행렬을 나타낼 때, 행렬의 성분을 소괄호로 감싸고, 거기에 다시 아래첨자로 행렬의 모양을 특정해 표시하기도 합니다.
 즉
 
-$$A=(t_{ij})_{m\times n}$$
+$$A=(a_{ij})_{m\times n}$$
 
 이면, 이것은 이 행렬 $A$가 $m\times n$ 행렬이고, 그 성분이 $a_{ij}$라는 뜻입니다.
 예를 들어, 
 
-$$T=t_{ij}=\left(i+j-1\right)_{2\times2}$$
+$$T=\left(t_{ij}\right)_{2\times2}=\left(i+j-1\right)_{2\times2}$$
 
 이면
 
@@ -107,34 +114,27 @@ $$T=\begin{bmatrix}1&2\\2&3\end{bmatrix}$$
 
 이 될 것입니다.
 
-한편, 행렬 $A$가 주어졌을 때, 이 행렬의 $i$행 $j$열 성분을 $A_{ij}$로 나타내기도 합니다.
-이것은 행렬 자체의 표현이 조금 복잡할 때 많이 쓰입니다.
-만약 $AB+C$라는 행렬의 $i$행 $j$열 성분을 표현하고 싶다면 $\left(AB+C\right)_{ij}$라고 표현하는 것입니다.
-
 ### 여러가지 행렬
 
 어떤 행렬의 행의 개수와 열의 개수가 같으면 그 행렬을 **정사각행렬**(정방행렬, square matrix)이라고 부릅니다.
 예를 들어, $P$, $T$는 정사각행렬이지만 $Q$, $R$, $S$는 정사각행렬이 아닙니다.
+사실, 이후에 나오는 모든 행렬들은 정사각행렬입니다.
 
 어떤 행렬 $A$에 대하여, $A$의 대각성분이란 $i=j$를 만족시키는 $a_{ij}$들을 말합니다.
-만약 대각성분들을 제외한 모든 성분들
-
-$$a_{ij}\quad(i\neq j)$$
-
-이 0이면, 이 행렬을 **대각행렬**이라고 부릅니다.
+만약 대각성분들을 제외한 모든 성분들이 0이면, 이 행렬을 **대각행렬**이라고 부릅니다.
 
 예를 들어,
 
 $$
 \begin{align*}
 D&=\begin{bmatrix}2&0\\0&5\end{bmatrix}\\
-E&=\begin{bmatrix}1&0&0\\0&3&0\\0&0&2\end{bmatrix}\\
+E&=\begin{bmatrix}1&0&0\\0&0&0\\0&0&2\end{bmatrix}\\
 F&=\begin{bmatrix}-1&0&0\\0&4&0\end{bmatrix}
 \end{align*}
 $$
 
 와 같은 행렬들은 대각행렬입니다.
-반면, $P$, $Q$, $R$, $S$, $T$는 모두 대각행렬이 아닙니다.
+반면, 위에서 정의한 $P$, $Q$, $R$, $S$, $T$는 모두 대각행렬이 아닙니다.
 
 대각행렬 중 가장 간단하면서 중요한 행렬은 **항등행렬**이라고 불리는 행렬입니다.
 항등행렬은, 정사각행렬 중에서 대각성분이 모두 1인 대각행렬을 말합니다.
@@ -146,15 +146,13 @@ $$
 
 와 같은 행렬을 말합니다.
 항등행렬의 행의 수(=열의 수)가 $n$개이면 그 항등행렬을 $I_n$으로 표현합니다.
-($n$이 중요하지 않다면 $n$은 생략될  수 있습니다.)
+($n$이 중요하지 않다면 $n$를 생략하여 그냥 $I_n$이라고 쓸 수도 있습니다.)
 즉, 위의 항등행렬들은
 
 $$
-\begin{align*}
-I_2=&\begin{bmatrix}1&0\\0&1\end{bmatrix}\\
-I_3=&\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}\\
-&\vdots
-\end{align*}
+I_2=\begin{bmatrix}1&0\\0&1\end{bmatrix},quad
+I_3=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix},\quad\\
+\cdots
 $$
 
 와 같이 표현될 수 있습니다.
@@ -166,24 +164,30 @@ $$AB=BA=I$$
 가 성립하면, $B$를 $A$의 역행렬이라고 말하고, $B=A^{-1}$라고 씁니다.
 반대로, $A$는 $B$의 역행렬이기도 합니다.
 즉 $A=B^{-1}$이기도 합니다.
+따라서 $A$의 역행렬이 존재하면
+
+$$AA^{-1}=A^{-1}=I$$
+
+입니다.
 
 <div class="notice--danger">
 <b>참고 </b> <br>
-두 정사각행렬 $A$, $B$에 대하여 $AB=I$이면 $BA=I$가 성립합니다.
+    <center>
+    두 정사각행렬 $A$, $B$에 대하여 $AB=I$이면 $BA=I$가 성립합니다.
+    </center>
 <br>
 이것은 당연한 말 같아보이기는 해도, 쉽게 증명되지는 않습니다.
-보통은 선형대수의 다른 개념들을 많이 동원해야 증명됩니다.
-이 포스트에서는 해당 개념들에 대해 다루지 않을 예정이므로 링크로 그 증명을 대체합니다.
-<ul>
-    <li> <a href="https://math.stackexchange.com/questions/852387/if-ab-i-then-ba-i-is-my-proof-right">determinant를 이용한 Surb의 증명</a></li>
-    <li> <a href="https://sharmaeklavya2.github.io/theoremdep/nodes/linear-algebra/matrices/product-equals-identity-implies-invertible.html">연립방정식과 rank를 이용한 증명</a></li>
-</ul>
-그 중 아래 증명에에서는 정사각행렬들의 집합이 algebra over a field 라는 사실과 subspace의 dimension의 개념만을 이용하여 증명하고 있어서 읽기 좋은 것 같습니다.
-<ul>
-    <li> <a href="https://math.stackexchange.com/questions/3852/if-ab-i-then-ba-i">algebra over a field을 이용한 Martin Brandenburg의 증명</a></li>
-</ul>
-그러니까 다음과 같이 쓸 수 있습니다 ;
-두 정사각형 $A$, $B$에 대하여 $AB=I$이면 $B=A^{-1}$ 입니다.
+뒤에 나오는 정리 16(a)를 사용하면 determinant를 사용하여
+<a href="https://math.stackexchange.com/q/852390">증명</a>
+할 수 있습니다.
+만약, 정사각행렬들의 집합이 algebra over a field 라는 사실을 사용하면 선형대수의 다른 개념들을 많이 사용하지 않고도
+<a href="https://math.stackexchange.com/q/3860">증명</a>
+할 수 있습니다.
+<br>
+여하튼, 이것을 정리하면 다음과 같이 쓸 수 있습니다.
+    <center>
+    두 정사각형 $A$, $B$에 대하여 $AB=I$이면 $B=A^{-1}$ 입니다.
+    </center>
 </div>
 
 ## 1.2 행렬의 연산
@@ -199,9 +203,9 @@ $$P+T=\begin{bmatrix}1&2\\0&1\end{bmatrix}+\begin{bmatrix}1&2\\2&3\end{bmatrix}=
 
 두 행렬에 대해서 첫번째 행렬의 열의 수와 두번째 행렬의 행의 수가 같으면 두 행렬을 곱할 수 있습니다.
 그러니까, $A$가 $m\times n$ 행렬이고, $B$가 $n\times l$ 행렬이면, 두 행렬 $A$, $B$의 곱 $AB$를 생각할 수 있습니다.
-$AB=C$이라고 하면, $C$의 각 성분들인 $c_{ij}$는
+이때, $AB$의 성분은
 
-$$c_{ij}=\sum_{k=1}^na_{ik}b_{kj}$$
+$$\left(AB\right)_{ij}=\sum_{k=1}^na_{ik}b_{kj}$$
 
 입니다.
 
@@ -316,7 +320,7 @@ $A$가 실수로 이루어진 행렬이면, $\bar A=A$이고, 그 역도 성립�
 
 <div class="notice--warning">
 <b>증명 </b> <br>
-복소수로 이루어진 행렬 $A$를 $A=\left(a_{ij}\right)_{m\times n}$으로 표현하겠습니다.
+<!-- 복소수로 이루어진 행렬 $A$를 $A=\left(a_{ij}\right)_{m\times n}$으로 표현하겠습니다. -->
 만약, $A$가 실수로 이루어진 행렬이면,
 $\bar A = \left(\overline{a_{ij}}\right)_{m\times n} = \left(a_{ij}\right)_{m\times n} = A$
 입니다.
@@ -359,32 +363,59 @@ $$
 또한, 두 행렬 $A$, $B$의 곱 $AB$에 대하여 transpose나 conjugation을 취한 결과는 각 행렬을 transpose 혹은 conjugation한 후 순서를 바꾸어 얻은 결과와 같습니다 ;
 
 $$
+%\begin{align*}
 \left((AB)^T\right)_{ij}
-&=\left(AB\right)_{ji}\\
-&=\sum_{k=1}^na_{jk}b_{ki}\\
-&=\sum_{k=1}^m{B^T}_{ik}{A^T}_{kj}\\
-&=B^TA^T
+=\left(AB\right)_{ji}
+=\sum_{k=1}^na_{jk}b_{ki}
+=\sum_{k=1}^m{B^T}_{ik}{A^T}_{kj}
+=\left(B^TA^T\right)_{ij}
+%\end{align*}
 $$
 
-나중에 이 사실들을 써먹을 예정이므로, 아래와 같이 성질 3으로 적어놓겠습니다.
-이에 관한 증명들은 생략하겠습니다.
+이상을 정리하면 다음과 같습니다.
+
+<div class="notice--info">
+<b> 정의 3 : 행렬의 연산 </b> <br>
+정사각행렬 $A=\left(a_{ij}\right)_{n\times n}$, $B=\left(b_{ij}\right)_{n\times n}$와 실수 $c$에 대하여
+<br>
+(a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
+<br>
+(b) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
+<br>
+(c) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
+<br>
+(d) $cA=\left(ca_{ij}\right)_{n\times n}$
+<br>
+(e) $A^T=\left(a_{ji}\right)_{n\times n}$
+<br>
+(f) $$A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
+</div>
+
+<!-- (a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
+<br>
+(b) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
+<br>
+(c) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
+<br>
+(d) $cA=\left(ca_{ij}\right)_{n\times n}$
+<br>
+(e) $A^T=\left(a_{ji}\right)_{n\times n}$
+<br>
+(f) $A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
+<br> -->
 
 <div class="notice">
-<b>성질 3 </b> <br>
-(a) $A$가 실수로 이루어진 행렬이면 $A^T=A^H$입니다.
+<b> 성질 4 </b> <br>
+정사각행렬 $A=\left(a_{ij}\right)_{n\times n}$, $B=\left(b_{ij}\right)_{n\times n}$에 대하여 <br>
+(a) $A$가 실수로 이루어진 행렬이면 $\overline A=A$가 성립하고 그 역도 성립합니다.
 <br>
-(b) $A$, $B$가 복소수로 이루어진 행렬이고 행렬곱 $AB$가 정의될 때, 아래 식이 성립합니다.
-$$
-\begin{align*}
-(AB)^T&=B^TA^T\\
-(AB)^H&=B^HA^H\\
-\end{align*}
-$$
+(b) $A$가 실수로 이루어진 행렬이면 $A^T=A^H$가 성립하고 그 역도 성립합니다.
 <br>
-(c) $A$, $B$가 복소수로 이루어진 행렬이고 $AB$의 역행렬이 존재할 때, 아래 식이 성립합니다.
-
-$$(AB)^{-1}=B^{-1}A^{-1}$$
-
+(c) $(AB)^T=B^TA^T$, $(A^T)^T=A$
+<br>
+(d) $(AB)^H=B^HA^H$, $(A^H)^H=A$
+<br>
+(e) $A$, $B$의 역행렬이 존재하면 $(AB)^{-1}=B^{-1}A^{-1}$ 입니다.
 </div>
 
 ## 1.3 symmetric / Hermitian
@@ -411,7 +442,7 @@ $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니�
 
 행렬의 symmetricity는 transpose를 사용하면 쉽게 정의할 수도 있습니다.
 
-**정의 4**\\
+**정의 5**\\
 행렬 $A$에 대하여 $A^T=A$이면 $A$를 symmetric 행렬이라고 부릅니다.
 {: .notice--info}
 
@@ -420,7 +451,7 @@ $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니�
 한편, Hermitian 행렬(Hermitian matrix, 에르미트 행렬)이란, 대각선을 기준으로 양옆이 서로 켤레관계인 행렬을 말합니다.
 이것을 conjugate transpose로 표현하면 다음과 같이 간단하게 정의할 수 있습니다.
 
-**정의 5**\\
+**정의 6**\\
 행렬 $A$에 대하여 $A^H=A$이면 $A$를 Hermitian 행렬이라고 부릅니다.
 {: .notice--info}
 
@@ -574,7 +605,7 @@ $$
 또한 $x$의 크기는 $||x||$로 표시하며, '크기'라는 표현 대신 'norm'이라는 표현을 사용하겠습니다.
 
 <div class="notice--info">
-<b> 정의 6 </b> <br>
+<b> 정의 7 </b> <br>
 (a) $n$차원 실수 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적은
 
 $$\langle x,y\rangle=x^Ty$$
@@ -642,7 +673,7 @@ $$
 \end{align*}
 $$
 
-이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 서로 모두 수직일때, 이 벡터들이 pairwisely orthogonal (mutually orthogonal) 하다고 말합니다.
+이때, $v_1$, $v_2$, $v_3$의 경우처럼 벡터들이 모두 서로 수직일때, 이 벡터들이 pairwisely orthogonal (mutually orthogonal) 하다고 말합니다.
 위의 예에서 $u_1$, $u_2$, $u_3$는 pairwisely orthogonal하지 않고, $v_1$, $v_2$, $v_3$는 pairwisely orthogonal합니다.
 
 $v_1$, $v_2$, $v_3$를 조금 변형해서 $w_1$, $w_2$, $w_3$를 다음과 같이 만들면
@@ -675,7 +706,7 @@ $$
 정리하면 다음과 같습니다.
 
 <div class="notice--info">
-<b> 정의 7 </b> <br>
+<b> 정의 8 </b> <br>
 (a) 두 실수 벡터 $x$, $y$에 대하여
 
 $$x^Ty=0$$
@@ -838,8 +869,8 @@ $$W^TW=I$$
 <!-- 즉, orthonormal한 열벡터들이 가로로 나열되어 있는 정사각행렬을 orthogonal 행렬이라고 합니다. -->
 
 <div class="notice--info">
-<b> 정의 8 </b> <br>
-실수를 성분으로 가지는 정사각행렬 $A$가
+<b> 정의 9 </b> <br>
+정사각행렬 $A$가
 
 $$A^TA=I$$
 
@@ -850,7 +881,7 @@ $w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성�
 또한, 1.1의 두번째 참고에 의해 성질 9(c)가 성립합니다.
 
 <div class="notice">
-<b>성질 9 </b> <br>
+<b>성질 10 </b> <br>
 (a) $n$차원의 orthonormal한 실수벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal 합니다.
 <br>
 (b) $A$가 orthogonal 행렬이면 $A$의 각 열들은 orthonormal 합니다.
@@ -872,10 +903,10 @@ $$A^{-1}=A^T$$
 ### unitary 행렬
 
 지금까지 정의한 내적, norm, orthogonality 등은 성분이 실수인 벡터 혹은 행렬에 대한 개념입니다.
-일반적으로, 성분이 복소수인 벡터 혹은 행렬에 대해 생각한다면, 그에 따른 내적, norm, orthogonality 등의 개념은 실수일 때와는 조금 다르게 정의됩니다.
+일반적으로, 성분이 복소수인 벡터 혹은 행렬(복소 벡터, 복소 행렬)에 대해 생각한다면, 그에 따른 내적, norm, orthogonality 등의 개념은 실수일 때와는 조금 다르게 정의됩니다.
 
 <div class="notice--info">
-<b> 정의 10 </b> <br>
+<b> 정의 11 </b> <br>
 (a) $n$차원 복소 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적 $\langle x,y\rangle$은
 
 $$\langle x,y\rangle=x^Hy$$
@@ -906,7 +937,7 @@ $$
 $$
 
 인 것입니다.
-$\left(|a+bi|=\sqrt{a^2+b^2}\right)$
+$\left(|z|=\sqrt{z\bar z},\quad|a+bi|=\sqrt{a^2+b^2}\right)$
 예를 들어, 벡터 $u_1$, $u_2$가
 
 $$
@@ -946,10 +977,10 @@ $$
 
 입니다.
 
-위와 같이 정의한 복소 벡터에 대한 내적을 가지고 수직(orthogonality)의 개념도 정의할 수 있습니다.
+위와 같이 정의한 내적을 이용해 복소벡터의 수직(orthogonality)의 개념도 정의할 수 있습니다.
 
 <div class="notice--info">
-<b> 정의 11 </b> <br>
+<b> 정의 12 </b> <br>
 (a) 두 복소 벡터 $x$, $y$에 대하여 
 
 $$x^Hy=0$$
@@ -991,7 +1022,7 @@ $$
 
 는 pairwisely orthogonal 하지만, orthonormal하지는 않습니다;
 
-$$
+<!-- $$
 \begin{align*}
 v_1\,^Hv_2
 &=\begin{bmatrix}3+i&(-i)\end{bmatrix}\begin{bmatrix}1-i\\-2-4i\end{bmatrix}\\
@@ -999,7 +1030,7 @@ v_1\,^Hv_2
 \end{align*}
 $$
 
-만약, 가능한 모든 $v_i$에 대하여 내적하여 결과를 내면
+만약, 가능한 모든 $v_i$에 대하여 내적하여 결과를 내면 -->
 
 $$
 \begin{align*}
@@ -1049,7 +1080,7 @@ $$W^HW=I$$
 이때 $W$와 같은 행렬을 **unitary 행렬**이라고 부릅니다.
 
 <div class="notice--info">
-<b> 정의 12 </b> <br>
+<b> 정의 13 </b> <br>
 복소수를 성분으로 가지는 정사각행렬 $A$가
 
 $$A^HA=I$$
@@ -1057,11 +1088,11 @@ $$A^HA=I$$
 를 만족시키면 $A$를 unitary 행렬(unitary matrix, 유니터리 행렬)이라고 부릅니다.
 </div>
 
-$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성질 13(a), 13(b)가 성립합니다.
-또한, 1.1의 두번째 참고에 의해 성질 13(c)가 성립합니다.
+$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성질 14(a), 14(b)가 성립합니다.
+또한, 1.1의 두번째 참고에 의해 성질 14(c)가 성립합니다.
 
 <div class="notice">
-<b>성질 13 </b> <br>
+<b>성질 14 </b> <br>
 (a) $n$차원의 orthonormal한 복소 벡터들 $n$개를 가로로 나열해서 얻은 행렬은 unitary 합니다.
 <br>
 (b) $A$가 unitary 행렬이면 $A$의 각 열들은 orthonormal 합니다.
@@ -1087,16 +1118,16 @@ $$A^HA=A^TA=I$$
 ## 1.5 eigenvalue / eigenvector
 
 어떤 행렬을 대각화할 때 반드시 등장하게 되는 eigenvalue, eigenvector에 대해 적어보았습니다.
-eigenvalue를 계산할 때에는 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기하겠습니다.
-하지만, 행렬식에 대해 말하려면 조금 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
-아래의 '행렬식' 단락을 이해하는 것이 힘들면, 정리 15 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
+eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기했습니다.
+하지만, 행렬식에 대해 말하려면 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
+아래의 '행렬식' 단락을 이해하는 것이 힘들면, 정리 16 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
 
 고등학교 수학에서 행렬식의 개념에 대해 다룹니다.
 행렬
 
 $$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$$
 
-의 행렬식 $D=ad-bc$가 0이면 역행렬이 존재하지 않고, 0이 아니면 역행렬이 존재한다는 것이지요.
+의 행렬식 $D=ad-bc$가 0이면 역행렬이 존재하지 않고, 0이 아니면 역행렬이 존재한다는 것입니다.
 이 포스트에서는 $A$의 행렬식을 $\text{det}(A)$ (또는 $\text{det}\;A$)로 적으려 합니다.
 지금까지 써왔던 $A$의 표현식
 
@@ -1107,27 +1138,33 @@ $$A=\begin{bmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{bmatrix}$$
 $$\text{det}A = a_{11}a_{22}-a_{12}a_{21}$$
 
 이 됩니다.
-그리고 흔히 대학 1학년 수준의 미적분학에 보면 $3\times3$ 행렬
+또한, 흔히 대학 1학년 수준의 미적분학에 보면 $3\times3$ 행렬
 
 $$A=\begin{bmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{bmatrix}$$
 
 에 대한 행렬식이
 
-$$\text{det}A = a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}-a_{13}a_{21}a_{32}+a_{13}a_{22}a_{31}$$
+$$
+\begin{multline*}
+\text{det}A
+= a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}
++a_{12}a_{23}a_{31}-a_{13}a_{21}a_{32}+a_{13}a_{22}a_{31}
+\end{multline*}
+$$
 
 라는 것을 다루기도 합니다.
-일반적인 행렬식에 대해 정의하고 논의하려면 먼저 순열(permutation)에 대해 말해야합니다.
+일반적인 행렬식에 대해 정의하고 논의하려면 먼저 permutation(순열)에 대해 말해야합니다.
 여기서 말하는 순열은 고등학교 수학에서 다루는 $_5P_3=5\times4\times3=60$와 는 조금 다릅니다.
 
 ### permutation
-중학교 수학(혹은 고등학교 수학)에서 함수란 두 집합 $X$, $Y$가 주어졌을 때
+중학교 수학(혹은 고등학교 수학)에서 **함수**란 두 집합 $X$, $Y$가 주어졌을 때
 
-$X$의 **모든** 원소 $x\in X$에 대하여 $Y$의 **한** 원소 $f(x)$에 대응시키는 것
+$X$의 모든 원소 $x\in X$에 대하여 $Y$의 한 원소 $f(x)$에 대응시키는 것
 {: .text-center}
 
 을 말합니다.
 이때, $X$를 정의역(domain), $Y$를 공역(codomain)이라고 부릅니다.
-예를 들어, 두 집합 $X=\\{a,b,c\}$, $Y=\\{1,2,3\}$에 대하여
+예를 들어, 두 집합 $X=\\{a,b,c\\}$, $Y=\\{1,2,3\\}$에 대하여
 $a$를 $1$로 대응시키고, $b$를 $3$으로 대응시키고 $c$도 3으로 대응시키는 함수를 $f$라고 하면,
 
 $$
@@ -1169,18 +1206,18 @@ $3\in Y$은 $f(a)=3$을 만족시키는 $a\in X$가 존재하기 때문입니다
 
 ![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-2.png)
 
-이제 permutation을 정의할 수 있습니다.
+이제 **permutation(순열)**을 정의할 수 있습니다.
 $n$이 자연수일 때, 정의역과 공역이 모두 $\mathbb N_n=\\{1,2,\cdots,n\\}$인 일대일대응을 permutation이라고 합니다.
 
 예를 들어 $n=3$인 permutation들은 아래와 같습니다.
 
 ![diagonalization_1-5-2]({{site.url}}\images\2023-03-01-diagonalization\diagonalization_1-5-3.png)
 
-
 일반적으로 $n$의 permutation의 개수는 $n!$ 개일 것입니다.
-$n=3$인 permutation들의 개수는 $3!=6$ 개이므로, 위의 그림은 모든 permutation들을 다 나타낸 셈입니다.
+따라서, $n=3$인 permutation들의 개수는 $3!=6$ 개이므로, 위의 그림은 모든 permutation들을 다 나타낸 셈입니다.
+
 $n$의 permutation들의 집합을 $S_n$이라고 표기하겠습니다.
-이 집합은 'symmetric group degree $n$'(대칭군)이라는 이름을 가지고 있습니다.
+이 집합은 **symmetric group(대칭군)**이라는 이름을 가지고 있습니다.
 
 $\sigma$가 permutation일 때, $\sigma$를 표현하는 방법은 다양하지만, 그 중 가장 간단한 방법은 $\sigma(1)$, $\sigma(2)$, $\cdots$, $\sigma(3)$를 단순히 나열하는 것입니다.
 예를 들어 위 그림의 첫번째 permutation인 $\sigma_1$은
@@ -1217,13 +1254,13 @@ $$
 이 됩니다.
 
 이번에는 각각의 permutation들을 even permutation과 odd permutation으로 나누고, permutation $\sigma$의 부호 $\text{sgn}(\sigma)$를 정의하려 합니다.
-어떤 permutation $\sigma=abc$에 대하여
-- $a$, $b$, $c$를 이 permutation의 '성분'이라고 할 때, $\sigma$의 서로다른 두 요소를 바꾸는 것을 '교환'이라고 하겠습니다.
-예를 들어 $\sigma$의 첫번째와 두번째 요소를 교환하면 $bac$가 됩니다.
-$\sigma$의 두번째 요소와 세번째 요소를 교환하면 $acb$가 됩니다.
-- $\sigma$의 을 짝수번 교환하여 항등함수를 만들 수 있으면 $\sigma$를 even permutation이라고 합니다.
-- $\sigma$의 행을 홀수번 교환하여 항등행렬를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
-- 함수 $\text{sgn}:S_n\to\{1,-1\}$을 다음과 같이 정의합니다;
+어떤 permutation $\sigma=abc$에 대하여 $a$, $b$, $c$를 이 permutation의 '성분'이라고 할 때, $\sigma$의 서로다른 두 요소를 바꾸는 것을 '교환'이라고 하겠습니다.
+예를 들어 $\sigma=abc$의 첫번째와 두번째 요소를 교환하면 $bac$가 됩니다.
+$\sigma=abc$의 두번째 요소와 세번째 요소를 교환하면 $acb$가 됩니다.
+이때,
+- $\sigma$를 짝수번 교환하여 항등함수를 만들 수 있으면 $\sigma$를 even permutation이라고 합니다.
+- $\sigma$를 홀수번 교환하여 항등행렬를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
+- 함수 $\text{sgn}:S_n\to\\{1,-1\\}$을 다음과 같이 정의합니다;
 
 $$
 \text{sgn}(\sigma)=
@@ -1233,22 +1270,26 @@ $$
 \end{cases}
 $$
 
-예를 들어, $\sigma_1=123$의 경우에는 그 자체로 항등함수이므로 0번 교환하여 항등함수를 만들 수 있는고, $0$은 짝수이므로 $\sigma_1$은 even permutation이고, $\text{sgn}(\sigma_1)=1$입니다.
+여기에서 항등함수란, $f(x)=x$인 함수 $f$를 말합니다.
+$S_3$에서는 $\sigma_1=123$이 항등함수가 될 것입니다.
 
-$\sigma_2=132$의 경우에는 $P_2$의 두번째 성분 3과 세번째 성분 2를 교환하면 항등함수 $\sigma_1$를 만들 수 있습니다.
-$1$은 홀수이므로 $\sigma_2$는 odd permutation이고 $\text{sgn}(\sigma_2)=-1$입니다.
-사실, $\sigma_2=132$는 첫번째 성분 1과 두번째 성분 3을 교환하여 $\sigma_4=312$를 만들고, 다시 첫번째 성분 3과 두번째 성분 1을 교환하여 $\sigma_2=132$로 돌아온 뒤, 두번째 성분 3과 세번째 성분 2을 교환하여 $\sigma_1=123$를 만들 수 있습니다.
-이 경우에는 $sigma_2$의 성분을 3번 교환했는데, 그럼에도 불구하고 $\sigma$가 odd permutation이라는 사실은 변하지 않습니다.
+예를 들어, $\sigma_1=123$의 경우에는 그 자체로 항등함수이므로 0번 교환하여 항등함수를 만들 수 있고, $0$은 짝수이므로 $\sigma_1$은 even permutation입니다.
+따라서, $\text{sgn}(\sigma_1)=1$입니다.
 
-$\sigma_4=231$의 경우에는 짝수번 교환해야 항등함수 $\sigma_1=231$이 됩니다.
-예를 들어 $\sigma_1$의 1과 3을 교환하여 $\sigma_2=132$를 얻고, 다시 3과 2를 교환하여 $\sigma_3=123$을 얻을 수 있기 때문입니다.
+$\sigma_2=132$의 경우에는 $132$의 3과 2를 교환하면 항등함수 $123$를 만들 수 있습니다.
+1번 교환하여 항등함수를 만들었고, $1$은 홀수이므로 $\sigma_2$는 odd permutation이며 $\text{sgn}(\sigma_2)=-1$입니다.
+사실, $\sigma_2=132$는 1과 3을 교환하여여 $312$를 만들고, 다시 3과 1을 교환하여 $132$로 돌아온 뒤, 3과 2를 교환하여 $123$를 만들 수 있습니다.
+이 경우에는 $\sigma_2=132$의 성분을 3번 교환했는데, 그럼에도 불구하고 $\sigma$가 odd permutation이라는 사실은 변하지 않습니다.
+
+$\sigma_4=231$의 경우에는 짝수번 교환해야 항등함수 $\sigma_1=123$이 됩니다.
+예를 들어 $\sigma_4=231$의 1과 3을 교환하여 $\sigma_2=213$를 얻고, 다시 1과 2를 교환하여 $\sigma_1=123$을 얻을 수 있기 때문입니다.
 
 $n=3$인 6개의 permutation에 대해서 부호를 계산하면 다음과 같습니다.
 
 $$
 \begin{align*}
-\text{sgn}(P_1)&=1  &\text{sgn}(P_2)&=-1  &\text{sgn}(P_3)&=-1  \\
-\text{sgn}(P_4)&=1  &\text{sgn}(P_5)&=1   &\text{sgn}(P_3)&=-1
+\text{sgn}(\sigma_1)&=1  &\text{sgn}(\sigma_2)&=-1  &\text{sgn}(\sigma_3)&=-1  \\
+\text{sgn}(\sigma_4)&=1  &\text{sgn}(\sigma_5)&=1   &\text{sgn}(\sigma_3)&=-1
 \end{align*}
 $$
 
@@ -1286,9 +1327,8 @@ $$g(\alpha)=\beta\circ\alpha$$
 </ul>
 </div>
 
-한편, $n=2$에 대해서도 $\sigma_i$, $P_i$, parity(even/odd) 등에 대해 적으면 다음과 같습니다.
-$n=2$일 때 permutation의 개수는 $2!=2$개입니다.
-$S_2=\{\sigma_1,\sigma_2\}$라고 하면,
+한편, $n=2$이면 permutation의 개수는 $2!=2$개입니다.
+$S_2=\\{\sigma_1,\sigma_2\\}$라고 하면,
 
 $$
 \begin{align*}
@@ -1493,7 +1533,7 @@ $$
 이제 행렬식을 정의할 수 있습니다.
 
 <div class="notice--info">
-<b> 정의 14 </b> <br>
+<b> 정의 15 </b> <br>
 $n\times n$ 정사각행렬 $A$에 대하여 행렬식 $\text{det}(A)$를
 
 <!-- $$
@@ -1510,10 +1550,41 @@ $$
 $$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^n\text{sgn}(\sigma)a_{i,\sigma(i)}$$
 
 로 정의합니다.
-
 </div>
 
-복잡해보이는 정의이지만, 잘 풀어보면 위에서 알아본 $2\times2$ 행렬에서의 $\text{det}A = a_{11}a_{22}-a_{12}a_{21}$와 $3\times3$ 행렬에서의
+여기에서 $\prod$는 곱의 기호입니다.
+이것은 합의 기호 $\sum$과 비슷하게 쓰입니다.
+예를 들어 1, 2, $\cdots$, $n$을 차례로 더하는 것을
+
+$$\sum_{k=1}^nk=1+2+\cdots+n=\frac{n(n+1)}2$$
+
+와 같이 표현하듯이, 차례로 곱하는 것은
+
+$$\prod_{k=1}^nk=1\times2\times\cdots\times n=n!$$
+
+과 같이 표현됩니다.
+더 예를 들면 다음과 같습니다.
+등차수열 $a_k=2k$를 차례로 더하거나 곱하면
+
+$$
+\begin{align*}
+\sum_{k=1}^n2k&=2\sum_{k=1}^nk=n(n+1)\\
+\prod_{k=1}^n2k&=\left(\prod_{k=1}^n2\right)\left(\prod_{k=1}^nk\right)=2^n\times n!
+\end{align*}
+$$
+
+이 되고, 등비수열 $b_k=2^k$를 차례로 더하거나 곱하면
+
+$$
+\begin{align*}
+\sum_{k=1}^n2^k&=\frac{2(2^n-1)}{2-1}=2(2^n-1)\\
+\prod_{k=1}^n2^k&=2^{1+2+\cdots+n}=2^{\frac{n(n+1)}2}
+\end{align*}
+$$
+
+가 됩니다.
+
+정의 15의 식은 복잡해보이지만, 잘 풀어보면 위에서 알아본 $2\times2$ 행렬에서의 $\text{det}A = a_{11}a_{22}-a_{12}a_{21}$와 $3\times3$ 행렬에서의
 
 $$\text{det}A = a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}-a_{13}a_{21}a_{32}+a_{13}a_{22}a_{31}$$
 
@@ -1548,12 +1619,19 @@ $3\times3$ 행렬의 경우에도
 
 $$
 \begin{align*}
-\sigma_1&=123&\text{sgn}(\sigma_1)&=1\\
-\sigma_2&=132&\text{sgn}(\sigma_2)&=-1\\
-\sigma_3&=213&\text{sgn}(\sigma_3)&=-1\\
-\sigma_4&=231&\text{sgn}(\sigma_4)&=1\\
-\sigma_5&=312&\text{sgn}(\sigma_5)&=1\\
-\sigma_6&=321&\text{sgn}(\sigma_6)&=-1
+\sigma_1&=12,\quad&\text{sgn}(\sigma_1)&=1\\
+\sigma_2&=21,\quad&\text{sgn}(\sigma_2)&=-1
+\end{align*}
+$$
+
+$$
+\begin{align*}
+\sigma_1&=123,\quad&\text{sgn}(\sigma_1)&=1\\
+\sigma_2&=132,\quad&\text{sgn}(\sigma_2)&=-1\\
+\sigma_3&=213,\quad&\text{sgn}(\sigma_3)&=-1\\
+\sigma_4&=231,\quad&\text{sgn}(\sigma_4)&=1\\
+\sigma_5&=312,\quad&\text{sgn}(\sigma_5)&=1\\
+\sigma_6&=321,\quad&\text{sgn}(\sigma_6)&=-1
 \end{align*}
 $$
 <!-- $$
@@ -1587,7 +1665,7 @@ $$ -->
 
 $$
 \begin{align*}
-&\text{det}(A)\\
+\text{det}(A)
 =&\sum_{\sigma\in S_3}\prod_{i=1}^3\text{sgn}(\sigma)a_{i,\sigma(i)}\\
 =&\prod_{i=1}^3\text{sgn}(\sigma_1)a_{i,\sigma_1(i)}
 +\prod_{i=1}^3\text{sgn}(\sigma_2)a_{i,\sigma_2(i)}
@@ -1617,14 +1695,18 @@ $$
 행렬식에 대하여 앞으로 사용될 사실은 다음의 두 명제입니다.
 
 <div class="notice--success">
-<b> 정리 15 </b> <br>
-(a) 정사각행렬 $A$, $B$에 대하여 $\text{det}(AB)=\text{det}(A)\text{det}(B)$ 입니다.
+<b> 정리 16 </b> <br>
+(a) 정사각행렬 $A$, $B$에 대하여
+$$\text{det}(AB)=\text{det}(A)\text{det}(B)$$
+입니다.
 <br>
 (b) 정사각행렬 $A$에 대하여 $A$의 역행렬이 존재하기 위한 필요충분조건은 $\text{det}(A)\neq0$인 것입니다.
 </div>
 
-**증명 : 정의 15(a)**
+**증명 : 정의 16(a)**
 {: .notice--warning}
+
+아래 증명은 이 [증명](https://math.stackexchange.com/q/302089)에서 오타로 보이는 것을 수정하고, 설명을 덧붙인 것입니다.
 
 $$
 \begin{align*}
@@ -1639,7 +1721,47 @@ $$
 \end{align*}
 $$
 
-함수 $f:\mathbb N_n\to\mathbb N_n$는 일대일대응인 것 $(\in S_n)$과 그렇지 않은 것 $(\not\in S_n)$ 으로 나눌 수 있습니다.
+위의 계산에서 두번째 줄은 행렬의 곱 $AB$의 성분에 대한 정의를 쓴 것입니다.
+세번째 줄에 대한 설명은 다음과 같습니다.
+
+보통 중학교 과정에 있는 내용이지만, $(a_1+a_2)(b_1+b_2)$를 전개한다는 것은
+
+$$(a_1+a_2)(b_1+b_2)=a_1b_1+a_1b_2+a_2b_1+a_2b_2$$
+
+와 같이 쓰는 것입니다.
+이것은
+
+$a_1$와 $a_2$ 중에서 하나를 고르고 $b_1$와 $b_2$ 중에서 하나를 고른 뒤 가능한 모든 조합을 더하는 것
+{: .text-center}
+
+을 말합니다.
+이것을 조금 형식적으로 쓰면,
+
+$f:\\{1,2\\}\to\\{1,2\\}$인 함수 하나를 고르고, 가능한 모든 $a_{f(1)}b_{f(2)}$의 조합을 더하는 것
+{: .text-center}
+
+과 정확히 일치합니다.
+$f:\\{1,2\\}\to\\{1,2\\}$인 함수는 다음의 네 개 함수입니다.
+
+$$
+\begin{align*}
+&f_1(1)=1,\quad&&f_2(1)=1,\quad&&f_3(1)=2,\quad&&f_4(1)=2\\
+&f_1(2)=1,\quad&&f_2(2)=2,\quad&&f_3(2)=1,\quad&&f_4(2)=2
+\end{align*}
+$$
+
+따라서, 가능한 모든 $a_{f(1)}b_{f(2)}$의 조합은
+
+$$
+a_{f_1(1)}b_{f_1(2)}=a_1b_1,\quad\\
+a_{f_2(1)}b_{f_2(2)}=a_1b_2,\quad\\
+a_{f_3(1)}b_{f_3(2)}=a_2b_1,\quad\\
+a_{f_4(1)}b_{f_4(2)}=a_2b_2,\quad
+$$
+
+이라서 이것들을 모두 더하면 $a_1b_1+a_1b_2+a_2b_1+a_2b_2$이 되는 것입니다.
+
+함수 $f:\mathbb N_n\to\mathbb N_n$는 일대일대응인 것 $(f\in S_n)$과 그렇지 않은 것 $(f\not\in S_n)$ 으로 나눌 수 있습니다.
 
 따라서
 
@@ -1704,7 +1826,7 @@ $$
 
 가 됩니다.
 
-**증명 : 정의 15(b)**
+**증명 : 정의 16(b)**
 {: .notice--warning}
 
 한쪽 방향인
