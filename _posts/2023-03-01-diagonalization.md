@@ -47,7 +47,7 @@ danger / 빨강 / 참고 -->
 즉, 여기에서 **행렬(matrix)**이란, 실수 혹은 복소수들을 직사각형 모양으로 배열해 괄호로 묶어 놓은 것을 말합니다.
 예를 들어,
 
-$$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
+$$P=\begin{bmatrix}1&2\\0&2\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
 
 는 행렬입니다.
 
@@ -85,11 +85,11 @@ $$
 예를 들어,
 위의 행렬
 
-$$P=\begin{bmatrix}1&2\\0&1\end{bmatrix}$$
+$$P=\begin{bmatrix}1&2\\0&2\end{bmatrix}$$
 
 에서
 
-$$p_{11}=1,\quad p_{12}=2,\quad p_{21}=0,\quad p_{22}=1$$
+$$p_{11}=1,\quad p_{12}=2,\quad p_{21}=0,\quad p_{22}=2$$
 
 입니다.
 
@@ -118,7 +118,7 @@ $$T=\begin{bmatrix}1&2\\2&3\end{bmatrix}$$
 
 어떤 행렬의 행의 개수와 열의 개수가 같으면 그 행렬을 **정사각행렬**(정방행렬, square matrix)이라고 부릅니다.
 예를 들어, $P$, $T$는 정사각행렬이지만 $Q$, $R$, $S$는 정사각행렬이 아닙니다.
-사실, 이후에 나오는 모든 행렬들은 정사각행렬입니다.
+<!-- 사실, 이후에 나오는 모든 행렬들은 정사각행렬입니다. -->
 
 어떤 행렬 $A$에 대하여, $A$의 대각성분이란 $i=j$를 만족시키는 $a_{ij}$들을 말합니다.
 만약 대각성분들을 제외한 모든 성분들이 0이면, 이 행렬을 **대각행렬**이라고 부릅니다.
@@ -150,7 +150,7 @@ $$
 즉, 위의 항등행렬들은
 
 $$
-I_2=\begin{bmatrix}1&0\\0&1\end{bmatrix},quad
+I_2=\begin{bmatrix}1&0\\0&1\end{bmatrix},\quad
 I_3=\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix},\quad\\
 \cdots
 $$
@@ -197,7 +197,7 @@ $$AA^{-1}=A^{-1}=I$$
 두 행렬을 더할 때에는 성분별로 더하면 됩니다.
 예를 들어, $P$와 $T$는 모양이 서로 같으므로 서로 더할 수 있고, 그 결과가
 
-$$P+T=\begin{bmatrix}1&2\\0&1\end{bmatrix}+\begin{bmatrix}1&2\\2&3\end{bmatrix}=\begin{bmatrix}1+1&2+2\\0+2&1+3\end{bmatrix}=\begin{bmatrix}2&4\\2&4\end{bmatrix}$$
+$$P+T=\begin{bmatrix}1&2\\0&2\end{bmatrix}+\begin{bmatrix}1&2\\2&3\end{bmatrix}=\begin{bmatrix}1+1&2+2\\0+2&2+3\end{bmatrix}=\begin{bmatrix}2&4\\2&5\end{bmatrix}$$
 
 로 나타나지만, $P$와 $Q$는 모양이 서로 다르므로 더할 수 없습니다.
 
@@ -216,14 +216,14 @@ $$\left(AB\right)_{ij}=\sum_{k=1}^na_{ik}b_{kj}$$
 $$
 \begin{align*}
 PQ
-&=\begin{bmatrix}1&2\\0&1\end{bmatrix}\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}\\
+&=\begin{bmatrix}1&2\\0&2\end{bmatrix}\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}\\
 &=\begin{bmatrix}
 1\times0+2\times1&1\times1+2\times0&1\times0+2\times0\\
-0\times0+1\times1&0\times1+1\times0&0\times0+1\times0
+0\times0+2\times1&0\times1+2\times0&0\times0+2\times0
 \end{bmatrix}\\
 &=\begin{bmatrix}
 2&1&0\\
-1&0&0
+2&0&0
 \end{bmatrix}
 \end{align*}
 $$
@@ -234,11 +234,11 @@ $$
 
 $$
 \begin{align*}
-PT&=\begin{bmatrix}1&2\\0&1\end{bmatrix}\begin{bmatrix}1&2\\2&3\end{bmatrix}=\begin{bmatrix}5&8\\2&3\end{bmatrix}\\
+PT&=\begin{bmatrix}1&2\\0&2\end{bmatrix}\begin{bmatrix}1&2\\4&6\end{bmatrix}=\begin{bmatrix}5&8\\2&3\end{bmatrix}\\
 QS&=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}\begin{bmatrix}1\\-1\\0\end{bmatrix}=\begin{bmatrix}-1\\1\end{bmatrix}\\
-RP&=\begin{bmatrix}2&4\end{bmatrix}\begin{bmatrix}1&2\\0&1\end{bmatrix}=\begin{bmatrix}2&8\end{bmatrix}\\
-P^2&=\begin{bmatrix}1&2\\0&1\end{bmatrix}^2=\begin{bmatrix}1&2\\0&1\end{bmatrix}\begin{bmatrix}1&2\\0&1\end{bmatrix}
-=\begin{bmatrix}1&4\\0&1\end{bmatrix}
+RP&=\begin{bmatrix}2&4\end{bmatrix}\begin{bmatrix}1&2\\0&2\end{bmatrix}=\begin{bmatrix}2&12\end{bmatrix}\\
+P^2&=\begin{bmatrix}1&2\\0&2\end{bmatrix}^2=\begin{bmatrix}1&2\\0&2\end{bmatrix}\begin{bmatrix}1&2\\0&2\end{bmatrix}
+=\begin{bmatrix}1&6\\0&4\end{bmatrix}
 \end{align*}
 $$
 
@@ -253,7 +253,7 @@ $$
 
 $$
 \begin{align*}
-P^T&=\begin{bmatrix}1&2\\0&1\end{bmatrix}^T=\begin{bmatrix}1&0\\2&1\end{bmatrix}\\
+P^T&=\begin{bmatrix}1&2\\0&2\end{bmatrix}^T=\begin{bmatrix}1&0\\2&2\end{bmatrix}\\
 Q^T&=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}^T=\begin{bmatrix}0&1\\1&0\\0&0\end{bmatrix}\\
 R^T&=\begin{bmatrix}2&4\end{bmatrix}^T=\begin{bmatrix}2\\4\end{bmatrix}
 \end{align*}
@@ -360,17 +360,36 @@ A^H=\overline{\left(a_{ij}\right)^T}
 =A^T
 $$
 
-또한, 두 행렬 $A$, $B$의 곱 $AB$에 대하여 transpose나 conjugation을 취한 결과는 각 행렬을 transpose 혹은 conjugation한 후 순서를 바꾸어 얻은 결과와 같습니다 ;
+또한, 두 행렬 $A$, $B$의 곱 $AB$에 대하여 transpose나 conjugate transpose를 취한 결과는 각 행렬을 transpose 혹은 conjugate transpose한 후 순서를 바꾸어 얻은 결과와 같습니다 : 성질 4(c)
 
 $$
-%\begin{align*}
+\begin{align*}
 \left((AB)^T\right)_{ij}
-=\left(AB\right)_{ji}
+&%=\left(AB\right)_{ji}
 =\sum_{k=1}^na_{jk}b_{ki}
 =\sum_{k=1}^m{B^T}_{ik}{A^T}_{kj}
 =\left(B^TA^T\right)_{ij}
-%\end{align*}
+\\
+\left((AB)^H\right)_{ij}
+&%=\left(\overline A\overline B\right)_{ji}
+=\sum_{k=1}^n\overline{a_{jk}}\overline{b_{ki}}
+=\sum_{k=1}^m{B^H}_{ik}{A^H}_{kj}
+=\left(B^HA^H\right)_{ij}
+\end{align*}
 $$
+
+<!-- 그리고, 어떤 행렬에 transpose 혹은 conjugate transpose를 두 번 연달아 적용하면 원래 행렬로 돌아옵니다 : 성질 4(d)
+
+$$
+\begin{align*}
+\left(\left(a_{ij}\right)_{n\times n}\,^T\right)^T
+&=\left(a_{ji}\right)_{n\times n}\,^T
+=\left(a_{ij}\right)_{n\times n}\\
+\left(\left(a_{ij}\right)_{n\times n}\,^H\right)^H
+&=\left(\overline{a_{ji}}\right)_{n\times n}\,^H
+=\left(\overline{\overline{a_{ij}\.}\.}\right)_{n\times n}
+\end{align*}
+$$ -->
 
 이상을 정리하면 다음과 같습니다.
 
@@ -378,17 +397,17 @@ $$
 <b> 정의 3 : 행렬의 연산 </b> <br>
 정사각행렬 $A=\left(a_{ij}\right)_{n\times n}$, $B=\left(b_{ij}\right)_{n\times n}$와 실수 $c$에 대하여
 <br>
-(a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
+<!-- (a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
+<br> -->
+(a) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
 <br>
-(b) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
+(b) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
 <br>
-(c) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
+(c) $cA=\left(ca_{ij}\right)_{n\times n}$
 <br>
-(d) $cA=\left(ca_{ij}\right)_{n\times n}$
+(d) $A^T=\left(a_{ji}\right)_{n\times n}$
 <br>
-(e) $A^T=\left(a_{ji}\right)_{n\times n}$
-<br>
-(f) $$A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
+(e) $A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
 </div>
 
 <!-- (a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
@@ -411,9 +430,9 @@ $$
 <br>
 (b) $A$가 실수로 이루어진 행렬이면 $A^T=A^H$가 성립하고 그 역도 성립합니다.
 <br>
-(c) $(AB)^T=B^TA^T$, $(A^T)^T=A$
+(c) $(AB)^T=B^TA^T$, $(AB)^H=B^HA^H$
 <br>
-(d) $(AB)^H=B^HA^H$, $(A^H)^H=A$
+(d) $(A^T)^T=A$, $(A^H)^H=A$
 <br>
 (e) $A$, $B$의 역행렬이 존재하면 $(AB)^{-1}=B^{-1}A^{-1}$ 입니다.
 </div>
@@ -434,7 +453,7 @@ $$T=\begin{bmatrix}1&2\\2&3\end{bmatrix}$$
 따라서 $T$는 symmetric 행렬입니다.
 반면, 행렬
 
-$$P=\begin{bmatrix}1&2\\0&1\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
+$$P=\begin{bmatrix}1&2\\0&2\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}$$
 
 는 대각성분들을 기준으로 대칭이 아니므로 symmetric 행렬이 아닙니다.
 $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니다.
@@ -460,7 +479,7 @@ $P$, $Q$, $R$, $S$, $T$, $Z$ 중에서 정사각행렬인 것은
 
 $$
 \begin{align*}
-P&=\begin{bmatrix}1&2\\0&1\end{bmatrix}\\
+P&=\begin{bmatrix}1&2\\0&2\end{bmatrix}\\
 T&=\begin{bmatrix}1&2\\2&3\end{bmatrix}\\
 Z&=\begin{bmatrix}0&2-3i\\2+3i&3\end{bmatrix}
 \end{align*}
@@ -1218,6 +1237,7 @@ $n$이 자연수일 때, 정의역과 공역이 모두 $\mathbb N_n=\\{1,2,\cdot
 
 $n$의 permutation들의 집합을 $S_n$이라고 표기하겠습니다.
 이 집합은 **symmetric group(대칭군)**이라는 이름을 가지고 있습니다.
+유한집합 $X$의 원소의 개수를 $|X|$로 표현한다고 하면, 위의 결과는 $|S_3|=6$로 쓸 수 있습니다.
 
 $\sigma$가 permutation일 때, $\sigma$를 표현하는 방법은 다양하지만, 그 중 가장 간단한 방법은 $\sigma(1)$, $\sigma(2)$, $\cdots$, $\sigma(3)$를 단순히 나열하는 것입니다.
 예를 들어 위 그림의 첫번째 permutation인 $\sigma_1$은
@@ -1254,9 +1274,9 @@ $$
 이 됩니다.
 
 이번에는 각각의 permutation들을 even permutation과 odd permutation으로 나누고, permutation $\sigma$의 부호 $\text{sgn}(\sigma)$를 정의하려 합니다.
-어떤 permutation $\sigma=abc$에 대하여 $a$, $b$, $c$를 이 permutation의 '성분'이라고 할 때, $\sigma$의 서로다른 두 요소를 바꾸는 것을 '교환'이라고 하겠습니다.
-예를 들어 $\sigma=abc$의 첫번째와 두번째 요소를 교환하면 $bac$가 됩니다.
-$\sigma=abc$의 두번째 요소와 세번째 요소를 교환하면 $acb$가 됩니다.
+어떤 permutation $\sigma=abc$에 대하여 $a$, $b$, $c$를 이 permutation의 '성분'라고 할 때, $\sigma$의 서로다른 두 성분를 바꾸는 것을 '교환'이라고 하겠습니다.
+예를 들어 $\sigma=abc$의 첫번째와 두번째 성분을 교환하면 $bac$가 됩니다.
+$\sigma=abc$의 두번째 성분과 세번째 성분을 교환하면 $acb$가 됩니다.
 이때,
 - $\sigma$를 짝수번 교환하여 항등함수를 만들 수 있으면 $\sigma$를 even permutation이라고 합니다.
 - $\sigma$를 홀수번 교환하여 항등행렬를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
@@ -1279,10 +1299,10 @@ $S_3$에서는 $\sigma_1=123$이 항등함수가 될 것입니다.
 $\sigma_2=132$의 경우에는 $132$의 3과 2를 교환하면 항등함수 $123$를 만들 수 있습니다.
 1번 교환하여 항등함수를 만들었고, $1$은 홀수이므로 $\sigma_2$는 odd permutation이며 $\text{sgn}(\sigma_2)=-1$입니다.
 사실, $\sigma_2=132$는 1과 3을 교환하여여 $312$를 만들고, 다시 3과 1을 교환하여 $132$로 돌아온 뒤, 3과 2를 교환하여 $123$를 만들 수 있습니다.
-이 경우에는 $\sigma_2=132$의 성분을 3번 교환했는데, 그럼에도 불구하고 $\sigma$가 odd permutation이라는 사실은 변하지 않습니다.
+이 경우에는 $\sigma_2=132$의 성분을 3번 교환했는데, 그럼에도 불구하고 $\sigma_2$가 odd permutation이라는 사실은 변하지 않습니다.
 
 $\sigma_4=231$의 경우에는 짝수번 교환해야 항등함수 $\sigma_1=123$이 됩니다.
-예를 들어 $\sigma_4=231$의 1과 3을 교환하여 $\sigma_2=213$를 얻고, 다시 1과 2를 교환하여 $\sigma_1=123$을 얻을 수 있기 때문입니다.
+예를 들어 $\sigma_4=231$의 3과 1을 교환하여 $\sigma_2=213$를 얻고, 다시 2와 1을 교환하여 $\sigma_1=123$을 얻을 수 있기 때문입니다.
 
 $n=3$인 6개의 permutation에 대해서 부호를 계산하면 다음과 같습니다.
 
@@ -1590,7 +1610,7 @@ $$\text{det}A = a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a
 
 에 대응되는 식임을 확인할 수 있습니다.
 
-$2\times2$ 행렬의 경우를 먼저 보면, $S_2$의 원소의 개수는 2개이고 $(S_2=\\{\sigma_1,\sigma_2\\})$
+$2\times2$ 행렬의 경우를 먼저 보면, $(S_2=\\{\sigma_1,\sigma_2\\})$
 
 $$
 \begin{align*}
@@ -1619,47 +1639,14 @@ $3\times3$ 행렬의 경우에도
 
 $$
 \begin{align*}
-\sigma_1&=12,\quad&\text{sgn}(\sigma_1)&=1\\
-\sigma_2&=21,\quad&\text{sgn}(\sigma_2)&=-1
-\end{align*}
-$$
-
-$$
-\begin{align*}
 \sigma_1&=123,\quad&\text{sgn}(\sigma_1)&=1\\
-\sigma_2&=132,\quad&\text{sgn}(\sigma_2)&=-1\\
-\sigma_3&=213,\quad&\text{sgn}(\sigma_3)&=-1\\
-\sigma_4&=231,\quad&\text{sgn}(\sigma_4)&=1\\
-\sigma_5&=312,\quad&\text{sgn}(\sigma_5)&=1\\
-\sigma_6&=321,\quad&\text{sgn}(\sigma_6)&=-1
+\sigma_2&=132,\quad&\text{sgn}(\sigma_1)&=-1\\
+\sigma_3&=213,\quad&\text{sgn}(\sigma_1)&=-1\\
+\sigma_4&=231,\quad&\text{sgn}(\sigma_1)&=1\\
+\sigma_5&=312,\quad&\text{sgn}(\sigma_1)&=1\\
+\sigma_6&=321,\quad&\text{sgn}(\sigma_1)&=-1\\
 \end{align*}
-$$
-<!-- $$
-\begin{align*}
-&
-\begin{cases}\sigma_1(1)=1\\\sigma_1(2)=2\\\sigma_1(3)=3\end{cases},
-\qquad
-\begin{cases}\sigma_2(1)=1\\\sigma_2(2)=3\\\sigma_2(3)=2\end{cases},
-\qquad
-\begin{cases}\sigma_1(1)=2\\\sigma_3(2)=1\\\sigma_3(3)=3\end{cases},
-\\[10pt]
-&
-\begin{cases}\sigma_4(1)=2\\\sigma_4(2)=3\\\sigma_4(3)=1\end{cases},
-\qquad
-\begin{cases}\sigma_5(1)=3\\\sigma_5(2)=1\\\sigma_5(3)=2\end{cases},
-\qquad
-\begin{cases}\sigma_6(1)=3\\\sigma_6(2)=2\\\sigma_6(3)=1\end{cases},
-\\[20pt]
-&
-\text{sgn}(\sigma_1)=1,\qquad
-\text{sgn}(\sigma_2)=-1,\qquad
-\text{sgn}(\sigma_3)=-1\\[10pt]
-&
-\text{sgn}(\sigma_4)=1,\qquad
-\text{sgn}(\sigma_5)=1\quad
-\text{sgn}(\sigma_6)=-1
-\end{align*}
-$$ -->
+$$ㄴ
 
 이었기 때문에
 
@@ -1703,10 +1690,11 @@ $$\text{det}(AB)=\text{det}(A)\text{det}(B)$$
 (b) 정사각행렬 $A$에 대하여 $A$의 역행렬이 존재하기 위한 필요충분조건은 $\text{det}(A)\neq0$인 것입니다.
 </div>
 
-**증명 : 정의 16(a)**
+**증명 : 정리 16(a)**
 {: .notice--warning}
 
 아래 증명은 이 [증명](https://math.stackexchange.com/q/302089)에서 오타로 보이는 것을 수정하고, 설명을 덧붙인 것입니다.
+선형대수의 다른 개념들을 사용하지 않고 계산만을 이용해 증명하려다보니, 증명과정이 조금 복잡합니다.
 
 $$
 \begin{align*}
@@ -1744,11 +1732,26 @@ $f:\\{1,2\\}\to\\{1,2\\}$인 함수 하나를 고르고, 가능한 모든 $a_{f(
 $f:\\{1,2\\}\to\\{1,2\\}$인 함수는 다음의 네 개 함수입니다.
 
 $$
+\begin{cases}
+f_1(1)=1\\f_1(2)=1
+\end{cases},\qquad
+\begin{cases}
+f_2(1)=1\\f_2(2)=2
+\end{cases},\qquad
+\begin{cases}
+f_3(1)=2\\f_3(2)=1
+\end{cases},\qquad
+\begin{cases}
+f_4(1)=2\\f_4(2)=2
+\end{cases}.
+$$
+
+<!-- $$
 \begin{align*}
 &f_1(1)=1,\quad&&f_2(1)=1,\quad&&f_3(1)=2,\quad&&f_4(1)=2\\
 &f_1(2)=1,\quad&&f_2(2)=2,\quad&&f_3(2)=1,\quad&&f_4(2)=2
 \end{align*}
-$$
+$$ -->
 
 따라서, 가능한 모든 $a_{f(1)}b_{f(2)}$의 조합은
 
@@ -1761,7 +1764,8 @@ $$
 
 이라서 이것들을 모두 더하면 $a_1b_1+a_1b_2+a_2b_1+a_2b_2$이 되는 것입니다.
 
-함수 $f:\mathbb N_n\to\mathbb N_n$는 일대일대응인 것 $(f\in S_n)$과 그렇지 않은 것 $(f\not\in S_n)$ 으로 나눌 수 있습니다.
+이후 네번째 줄부터 마지막까지는 두 개의 summation($\sum$)에 대하여 순서를 바꾸거나 상수를 빼거나 넣은 것에 해당합니다.
+마지막 식에서, 함수 $f:\mathbb N_n\to\mathbb N_n$는 일대일대응인 것 $(f\in S_n)$과 그렇지 않은 것 $(f\not\in S_n)$ 으로 나눌 수 있습니다.
 
 따라서
 
@@ -1778,14 +1782,14 @@ $Q$를 먼저 계산합시다.
 $f$가 일대일대응이 아니면 이것은 일대일함수가 아닙니다.
 (항상 그런 것은 아니지만, 이 경우에는 정의역과 공역이 같기 때문에 그렇습니다.)
 따라서 $f(k_1)=f(k_2)$인 $k_1\ne k_2$가 존재합니다.
-만약, $k_1$과 $k_2$를 바꾸는 교환을 $\alpha$라고 하면, 임의의 $\sigma$에 대하여 $\alpha\circ\sigma\in S_n$이고, $\text{sgn}(\sigma)+\text{sgn}(\alpha\circ\sigma)=0$입니다.
-그리고
+만약, $k_1$과 $k_2$를 바꾸는 교환을 $\alpha$라고 하면, 임의의 $\sigma$에 대하여 $\alpha\circ\sigma\in S_n$이고, $\text{sgn}(\alpha\circ\sigma)=\text{sgn}(\alpha)\text{sgn}(\sigma)=-\text{sgn}(\sigma)$이며, 임의의 $k\in\mathbb N_n$에 대하여 $(\alpha\circ\sigma)(k)=\sigma(k)$입니다.
+따라서,
 
 $$
 \prod_{k=1}^nB_{f(k),\sigma(k)}=\prod_{k=1}^nB_{(\alpha\circ f)(k),\sigma(k)}
 $$
 
-이기 떄문에, 위의 $Q$ 식에서 괄호친 부분의 두 배는 0이 됩니다;
+이기 때문에, 위의 $Q$ 식에서 괄호친 부분의 두 배는 0이 됩니다;
 
 $$
 \begin{align*}
@@ -1800,7 +1804,7 @@ $$
 \end{align*}
 $$
 
-따라서 $Q=0$입니다.
+결국 $Q=0$입니다.
 한편, $P$를 계산하면
 
 $$
@@ -1809,9 +1813,9 @@ P
 &=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
 &=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
 &=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
-&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\cdot\left(\text{sgn}(f)\right)^2\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
 &=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1}\circ f)\cdot\text{sgn}(f)\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
 &=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\cdot\text{sgn}(f)\prod_{k=1}^nB_{\pi(k),k}\right)\\
+&=\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
 &=\left(\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
 &=\text{det}(A)\text{det}(B)
 \end{align*}
@@ -1826,22 +1830,26 @@ $$
 
 가 됩니다.
 
-**증명 : 정의 16(b)**
+**증명 : 정리 16(b), $\Rightarrow$** $A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
 {: .notice--warning}
-
-한쪽 방향인
-
-$A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
-{: .text-center}
-
-만 증명하고, 반대방향의 증명은 생략합니다.
 
 만약 $A$의 역행렬이 존재하면 $AB=I$를 만족시키는 정사각행렬 $B$가 존재합니다.
 그러면 (a)에 의해
 $$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
 입니다.
-따라서 $\text{det}(A)=0$이 될 수는 없습니다.
+따라서 $\text{det}(A)=0$이 될 수 없습니다.
 
+**증명 : 정리 16(b), $\Leftarrow$** $\text{det}(A)\neq0$이면, $A$의 역행렬이 존재합니다.
+{: .notice--warning}
+
+이 증명은 반대방향의 증명보다 조금 복잡하며, 이 포스트에 소개한 선형대수의 개념만 가지고는 증명할 수 없는 것처럼 보입니다.
+가능한 증명방식 중 하나는, 원래 명제의 대우를 통해 증명하는 것입니다.
+
+만약 $A$의 역행렬이 존재하지 않으면, $A$는 일대일함수가 아닙니다.
+따라서 $Ax_1=A_x_2$인 $x_1\ne x_2$가 존재하고, 이는 곧 
+그러면 영벡터이 아니면서 $Ax=0$을 만족시키는 벡터 $x\in\mathbb R^n$이 존재한다는 뜻입니다.
+행렬 $A$의 $i$번째 열을 $A_i$로 표현하면, 식 $Ax=0$이 의미하는 바는 $A_1$, $A_2$, $\cdots$, $A_n$이 linearly dependent하다는 것을 의미합니다.
+따라서 $\text{det}(A)=0$이 됩니다.
 ---
 
 ### eigenvalue / eigenvector
