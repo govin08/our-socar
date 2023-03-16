@@ -1570,6 +1570,7 @@ $$
 $$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^n\text{sgn}(\sigma)a_{i,\sigma(i)}$$
 
 로 정의합니다.
+행렬식은 $|A|$와 같이 표기하기도 합니다.
 </div>
 
 여기에서 $\prod$는 곱의 기호입니다.
@@ -1635,7 +1636,6 @@ $$
 인 것입니다.
 
 $3\times3$ 행렬의 경우에도
-<!-- 마찬가지로, $n=3$의 경우, $|S_3|=6$이었고, -->
 
 $$
 \begin{align*}
@@ -1646,7 +1646,7 @@ $$
 \sigma_5&=312,\quad&\text{sgn}(\sigma_1)&=1\\
 \sigma_6&=321,\quad&\text{sgn}(\sigma_1)&=-1\\
 \end{align*}
-$$ㄴ
+$$
 
 이었기 때문에
 
@@ -1846,13 +1846,654 @@ $$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
 가능한 증명방식 중 하나는, 원래 명제의 대우를 통해 증명하는 것입니다.
 
 만약 $A$의 역행렬이 존재하지 않으면, $A$는 일대일함수가 아닙니다.
-따라서 $Ax_1=A_x_2$인 $x_1\ne x_2$가 존재하고, 이는 곧 
+따라서 $Ax_1=Ax_2$인 $x_1\ne x_2$가 존재하고, 이는 곧 
 그러면 영벡터이 아니면서 $Ax=0$을 만족시키는 벡터 $x\in\mathbb R^n$이 존재한다는 뜻입니다.
 행렬 $A$의 $i$번째 열을 $A_i$로 표현하면, 식 $Ax=0$이 의미하는 바는 $A_1$, $A_2$, $\cdots$, $A_n$이 linearly dependent하다는 것을 의미합니다.
 따라서 $\text{det}(A)=0$이 됩니다.
----
 
 ### eigenvalue / eigenvector
+
+이제 eigenvalue와 eigenvector에 대해 말할 수 있습니다.
+
+<div class="notice--info">
+<b> 정의 17 </b> <br>
+정사각행렬 $A$에 대하여
+
+$$Ax=\lambda x$$
+
+를 만족시키는 복소수 $\lambda$와 벡터 $x(\ne0)$가 존재하면 $\lambda$를 <b>eigenvalue</b>(고윳값, 고유치), $x$를 <b>eigenvector</b>(고유벡터)라고 부릅니다.
+</div>
+
+eigenvalue/eigenvector는 선형적인 연립편미분방정식의 해를 구하는 데 쓰일 수 있고, 머신러닝의 SVD(singular value decomposition), PCA(principal component analysis)의 계산에서도 나타나며, 행렬의 norm을 계산하는 데에도 등장합니다.
+
+예를 들어, 행렬
+
+$$P=\begin{bmatrix}2&2\\0&1\end{bmatrix}$$
+
+에 대해서
+<!-- 
+$$Px=\lambda x$$
+
+를 만족시키는 $\lambda$와 $x$가 각각 eigenvalue와 eigenvector입니다.
+이때, -->
+
+$$
+\begin{bmatrix}2&2\\0&1\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
+=\begin{bmatrix}2\\0\end{bmatrix}=2\begin{bmatrix}1\\0\end{bmatrix}
+$$
+
+이므로
+
+$$
+x=\begin{bmatrix}1\\0\end{bmatrix}
+$$
+
+은 $P$의 eigenvector이고, 그때의 eigenvalue는 2입니다.
+하지만
+
+$$
+\begin{bmatrix}2&2\\0&1\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix}
+=\begin{bmatrix}2\\1\end{bmatrix}
+$$
+
+은 어떻게 해도 
+
+$$
+x'=\begin{bmatrix}0\\1\end{bmatrix}
+$$
+
+의 실수배 (혹은 복소수배)가 될 수 없으므로 $x'$는 eigenvector가 아닙니다.
+
+$x$가 eigenvector이면 $x$의 상수배인 $cx$도 eigenvector입니다$(c\ne0)$.
+예를 들어, $$3x=\begin{bmatrix}3\\0\end{bmatrix}$$은 eigenvector입니다.
+그리고 그 때의 eigenvalue는 여전히 $2$입니다;
+
+$$
+\begin{bmatrix}2&2\\0&1\end{bmatrix}\begin{bmatrix}3\\0\end{bmatrix}
+=\begin{bmatrix}6\\0\end{bmatrix}=2\begin{bmatrix}3\\0\end{bmatrix}
+$$
+
+이것은 일반적으로 성립합니다.
+즉, $Ax=\lambda x$이면,
+
+$$A(cx)=cAx=c(\lambda x)=\lambda(cx)$$
+
+이기 때문입니다.
+
+한편, 정의 17의 식
+
+$$Ax=\lambda x$$
+
+을 변형하면
+
+$$
+\begin{align*}
+Ax&=\lambda(Ix)\\
+Ax&=(\lambda I)x\\
+Ax-(\lambda I)x&=0\\
+(A-\lambda I)x&=0
+\end{align*}
+$$
+
+이 됩니다.
+이 식으로부터 $\text{det}(A-\lambda I)=0$을 얻을 수 있습니다.
+왜냐하면, 만약 $\text{det}(A-\lambda I)\ne0$일 경우, 정리 16(b)에 의하여 $A-\lambda I$의 역행렬이 존재합니다.
+그러면
+
+$$x=Ix=(A-\lambda I)^{-1}(A-\lambda I)x=(A-\lambda I)^{-1}0=0$$
+
+이 되어 $x$가 영벡터가 아니라는 사실과 모순되기 때문입니다.
+이상을 정리하면 다음과 같습니다.
+
+<div class="notice">
+<b> 성질 18 </b> <br>
+정사각행렬 $A$에 대하여
+<br>
+(a) $A$의 eigenvector가 $x$이면 그 상수배인 $cx$도 eigenvector 이며, 두 eigenvector에 대한 eigenvalue는 일치합니다(단, $c\ne0$).
+따라서, 하나의 eigenvalue에 대한 eigenvector는 유일하지 않습니다.
+<br>
+(b) $\lambda$가 $A$의 eigenvalue이면 $\text{det}(A-\lambda I)=0$입니다.
+이와 같은 방정식을 characteristic equation (특성 방정식)이라고 부릅니다.
+</div>
+
+예를 들어, 행렬
+
+$$P=\begin{bmatrix}2&2\\0&1\end{bmatrix}$$
+
+의 eigenvalue를 구하기 위해서는
+
+$$
+\begin{align*}
+\text{det}(P-\lambda I)&=0\\
+\begin{vmatrix}2-\lambda&2\\0&1-\lambda\end{vmatrix}&=0\\
+(2-\lambda)(1-\lambda)-2\times0&=0\\
+(\lambda-1)(\lambda-2)&=0
+\end{align*}
+$$
+
+을 풀면 됩니다.
+이 이차방정식의 해는 1과 2이며, 그것들을 각각 $\lambda_1=1$, $\lambda_2=2$로 두겠습니다.
+$\lambda_1$에 대응되는 eigenvector를 $x_1$으로,
+$\lambda_2$에 대응되는 eigenvector를 $x_2$으로 각각 표현하겠습니다.
+$x_1$을 구하기 위해 $x_1=\begin{bmatrix}a&b\end{bmatrix}^T$
+로 두면
+
+$$
+\begin{align*}
+(P-\lambda_1I)x_1&=0\\
+(P-I)x_1&=0\\
+\begin{bmatrix}1&2\\0&0\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+이 됩니다.
+이것은 연립방정식
+
+$$
+\begin{cases}
+a+2b&=0\\
+0a+0b&=0
+\end{cases}
+$$
+
+을 푸는 것과 같으며, 따라서 $b=-2a$입니다.
+그러므로 $x_1$은
+
+$$
+x_1=\begin{bmatrix}a\\b\end{bmatrix}
+=\begin{bmatrix}a\\-2a\end{bmatrix}
+=a\begin{bmatrix}1\\-2\end{bmatrix}
+$$
+
+입니다.
+이때 성질 18(a)에 의해, $\lambda_1=1$에 대한 대표적인 eigenvector를
+
+$$x_1=\begin{bmatrix}1\\-2\end{bmatrix}$$
+
+라고 두어도 괜찮습니다.
+마찬가지로 $x_2$를 구하면
+
+$$
+\begin{align*}
+(P-\lambda_2I)x_2&=0\\
+(P-2I)x_2&=0\\
+\begin{bmatrix}0&2\\0&-1\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+으로부터 $2b=0$이고, $-b=0$이고 따라서 $b=0$입니다.
+따라서
+
+$$
+\begin{bmatrix}a\\b\end{bmatrix}
+=\begin{bmatrix}a\\0\end{bmatrix}
+=a\begin{bmatrix}1\\0\end{bmatrix}
+$$
+
+이고 $\lambda_2=2$에 대한 eigenvector $x_2$를
+
+$$x_2=\begin{bmatrix}1\\0\end{bmatrix}$$
+
+로 둘 수 있습니다.
+
+다른 행렬들에 대해서도 eigenvalue / eigenvector를 구해보면 다음과 같습니다.
+(1.1 에서 정의한 $Q$, $R$ 등과 다른 행렬들입니다.)
+행렬 $Q$가
+
+$$
+Q=\begin{bmatrix}2&2\\2&-1\end{bmatrix}
+$$
+
+이면
+
+$$
+|Q-\lambda I|
+=
+\begin{vmatrix}
+2-\lambda&2\\2&-1-\lambda
+\end{vmatrix}
+=(\lambda+2)(\lambda-3)=0
+$$
+
+으로부터 $\lambda_1=-2$, $\lambda_2=3$이고,
+
+$$
+\begin{align*}
+(Q+2I)x_1&=0\\
+\begin{bmatrix}4&2\\2&1\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+와
+
+$$
+\begin{align*}
+(Q-3I)x_2&=0\\
+\begin{bmatrix}-1&2\\2&-4\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+에서
+
+$$
+x_1=\begin{bmatrix}1\\-2\end{bmatrix},\quad
+x_2=\begin{bmatrix}2\\1\end{bmatrix}
+$$
+
+입니다.
+
+행렬 $R$이
+
+$$
+R=\begin{bmatrix}3&2\\-4&-1\end{bmatrix}
+$$
+
+이면
+
+$$
+|R-\lambda I|
+=
+\begin{vmatrix}
+3-\lambda&2\\-4&-1-\lambda
+\end{vmatrix}
+=\lambda^2-2\lambda+5=0
+$$
+
+으로부터 $\lambda_1=1+2i$, $\lambda_2=1-2i$이고,
+
+$$
+\begin{align*}
+(R-(1+2i)I)x_2&=0\\
+\begin{bmatrix}2-2i&2\\-4&-2-2i\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+와
+
+$$
+\begin{align*}
+(R-(1-2i)I)x_2&=0\\
+\begin{bmatrix}2+2i&2\\-4&-2+2i\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+에서
+
+$$
+x_1=\begin{bmatrix}1\\-1+i\end{bmatrix},\quad
+x_2=\begin{bmatrix}1\\-1-i\end{bmatrix}
+$$
+
+입니다.
+<div class="notice--danger">
+<b>참고 </b> <br>
+$Q$의 첫번째 eigenvector는
+
+$$x_1=\begin{bmatrix}-1\\2\end{bmatrix}$$
+
+로 두어도 상관없습니다.
+마찬가지로 $R$의 두번째 eigenvector는
+
+$$x_2=\begin{bmatrix}1-i\\-2\end{bmatrix}$$
+
+로 두어도 괜찮습니다.
+</div>
+
+eigenvalue/eigenvector의 의미를 파악하기 위해서는, 일단 행렬이 일종의 함수라는 것을 받아들여야 합니다.
+행렬
+
+$$P=\begin{bmatrix}1&2\\0&2\end{bmatrix}$$
+
+에 대하여 함수 $p$를
+
+$$p(x)=Px$$
+
+로 정의하면, $p$는 2차원 벡터
+
+$$x=\begin{bmatrix}a\\b\end{bmatrix}$$
+
+를 2차원 벡터
+
+$$Px=
+\begin{bmatrix}2&2\\0&1\end{bmatrix}\begin{bmatrix}a\\b\end{bmatrix}
+=\begin{bmatrix}2a+2b\\b\end{bmatrix}
+$$
+
+로 보내는 함수인 것입니다.
+몇 개의 함숫값들을 계산해보면
+
+$$
+\begin{align*}
+p\left(\begin{bmatrix}2\\0\end{bmatrix}\right)
+&=\begin{bmatrix}1\\0\end{bmatrix}\\
+p\left(\begin{bmatrix}0\\1\end{bmatrix}\right)
+&=\begin{bmatrix}2\\2\end{bmatrix}\\
+p\left(\begin{bmatrix}4\\1\end{bmatrix}\right)
+&=\begin{bmatrix}10\\1\end{bmatrix}
+\end{align*}
+$$
+
+등입니다.
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+(a) 이 함수 $p$는 <b>선형함수(linear function)</b>입니다.
+이것은, 함수 $p$가 덧셈과 스칼라곱을 보존하는 함수라는 뜻으로
+<ul>
+    <li> $p(x+y)=p(x)+p(y)$ </li>
+    <li> $p(cx)=cp(x)$ </li>
+</ul>
+를 만족하는 함수라는 뜻입니다.
+(단, $x$, $y$는 2차원 벡터, $c$는 복소수)
+정의에 따라 계산해보면 위의 두 식이 성립함을 쉽게 확인할 수 있습니다.
+<br>
+(b) 증명하지는 않겠지만, 선형대수의 기본적인 사실 중 하나는
+<b>$n$차원 벡터를 $n$차원 벡터로 보내는 모든 선형함수는 행렬로 표현된다</b>
+는 것입니다.
+다시 말해, 모든 행렬은 선형함수라고 간주할 수 있고, 모든 선형함수는 행렬로 표현할 수 있습니다.
+그러니까 조금 비약해서 말하면, 행렬과 선형함수는 동일시할 수 있습니다.
+<br>
+(c) 선형함수는 수학에서 워낙 중요한 함수다보니, 여러 이름을 가지고 있습니다.
+<ul>
+    <li> 선형함수(linear function) </li>
+    <li> 선형사상(linear map, linear mapping) </li>
+    <li> 선형변환(linear transformation) </li>
+    <li> 일차함수 </li>
+    <li> 일차변환 </li>
+</ul>
+은 모두 같은 의미를 지칭하는 서로다른 용어들입니다.
+<br>
+그러니까, 보통 중학교에서 배우는 $y=ax+b$와 같은 일차함수는 여기에서 말하는 선형함수와는 다른 의미입니다.
+선형대수에서, 차원이 1인 선형함수는 $y=ax$ 뿐입니다.
+일반적으로, $A$가 행렬이고 $x$, $y$, $b$가 벡터일 때 $y=Ax+b$와 같이 표현되는 함수는 'affine 함수'라고 불립니다.
+그런 관점에서 본다면 함수 $y=ax+b$도 affine 함수라고 불러야 의미적으로 맞을 것입니다.
+</div>
+
+고등학교 수학에서 영벡터가 아닌 두 벡터가 서로 같은 방향(혹은 반대 방향)이면 한 벡터가 다른 벡터의 실수배와 같다는 것을 배웁니다.
+행렬 $A$가 일종의 함수(변환)이라는 관점에서 보면,
+**eigenvector란, 함수 $A$에 의해 방향이 변하지 않는 벡터**
+를 의미합니다.
+
+$x$가 행렬 $A$의 eigenvector이고 그에 대한 eigenvalue가 $\lambda>0$이면, 벡터 $x$는 함수 $A$에 의해 $Ax=\lambda x$로 변환됩니다.
+이때 $Ax$는 $x$와 방향이 같고 그 길이가 $\lambda$배인 벡터를 의미하는 것입니다.
+만약 $\lambda<0$이면, $Ax$는 $x$와 방향이 반대이고, 그 길이가 $\lambda$배인 벡터를 의미하는 것입니다.
+
+예를 들어, 행렬
+
+$$P=\begin{bmatrix}2&2\\0&1\end{bmatrix}$$
+
+의 eigenvalue는 각각 $\lambda_1=1$, $\lambda_2=2$였고, 각각에 대응되는 eigenvector들은
+$x_1=\begin{bmatrix}2&-1\end{bmatrix}^T$,
+$x_2=\begin{bmatrix}1&0\end{bmatrix}^T$
+이었습니다.
+
+따라서 $P$에 대응되는 선형함수 $p$는
+$x$축에 평행한 벡터 $e_1=\begin{bmatrix}1&0\end{bmatrix}^T$를, 방향이 같으며 길이가 두 배인 벡터 $2e_1=\begin{bmatrix}1&0\end{bmatrix}^T$로 보냅니다.
+즉,
+
+$$p(e_1)=2e_1$$
+
+입니다.
+한편, $y$축에 평행한 벡터 $e_2=\begin{bmatrix}0&1\end{bmatrix}^T$는 $e_2$와는 다른 방향인 $\begin{bmatrix}2&1\end{bmatrix}^T$로 보냅니다.
+그런데 $e_2$가 $e_2=-x_1+2x_2$로 표현된다는 사실을 이용하면
+
+$$
+p(e_2)=p(-x_1+2x_2)=-p(x_1)+2p(x_2)=-x_1+4x_2
+=-\begin{bmatrix}2\\-1\end{bmatrix}+4\begin{bmatrix}1\\0\end{bmatrix}
+=\begin{bmatrix}-2\\2\end{bmatrix}
+$$
+
+와 같이 계산할 수도 있습니다.
+$p(e_2)$를 직접 계산하는 것에 비해 효율적이라고는 볼 수 없지만, 그래도 어떤 벡터 $x$에 대한 함수 $p$의 함숫값 $p(x)$를 계산할 때, eigenvector 측면에서 계산하면 재미있는 결과가 나온다는 것을 알 수 있습니다.
+즉, 임의의 2차원벡터 $x$를 $x=\alpha_1x_1+\alpha_2x_2$의 형태로 놓으면
+
+$$p(x)=\alpha_1p(x_1)+\alpha_2p(x_2)
+=\alpha_1\lambda_1x_1+\alpha_2\lambda_2x_2$$
+
+와 같이 계산할 수 있는 것입니다.
+평면벡터를 다룰 때 우리에게 익숙한 $x$축과 $y$축 방향 대신, 새로운 $x'$축과 $y'$축을 기준으로 계산할 수 있는데, 그 $x'$축의 방향과 $y'$축의 방향을 eigenvector들의 방향으로 정하면 그 계산이 쉬워진다는 뜻입니다.
+
+이때, $P$의 경우에는 $x'$축의 방향 ($\begin{bmatrix}2&-1\end{bmatrix}^T$)과 $y'$축의 방향 ($\begin{bmatrix}1&0\end{bmatrix}^T$)이 서로 직교하지 않습니다.
+반면에 $Q$에서는 $x'$축의 방향 ($\begin{bmatrix}1&-2\end{bmatrix}^T$)과 $y'$축의 방향 ($\begin{bmatrix}2&1\end{bmatrix}^T$)이 서로 직교합니다.
+이러한 좌표변환에서 $Q$의 경우가 (orthogonally diagonalizable한 경우에 해당합니다.) $P$의 경우에 비해 (orthogonally diagonalizable하지 않은 경우에 해당합니다.) 더 계산이 편리할 것임은 지금 시점에서도 예상할 수 있습니다.
+
+$P$, $Q$에서는 eigenvalue가 서로 다른 실수인 경우를, $R$에서는 서로 다른 허수인 경우를 보았습니다.
+몇 개의 예를 통해 eigenvalue가 중복되는 경우($S$, $T$), $3\times3$인 경우($U$, $V$) 등에 대한 예시를 조금 더 살펴보겠습니다.
+
+$$
+S=\begin{bmatrix}
+1&3\\-3&-5
+\end{bmatrix}
+$$
+
+의 경우
+
+$$
+|S-\lambda I|=
+\begin{vmatrix}1-\lambda&3\\-3&-5-\lambda\end{vmatrix}=(3-\lambda)^2
+=(\lambda+2)^2=0
+$$
+
+으로부터 $S$의 유일한 eigenvalue는 $\lambda_1=-2$임을 알 수 있습니다.
+
+$$
+\begin{align*}
+(R+2I)x_1&=0\\
+\begin{bmatrix}3&3\\-3&-3\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+에서 $b=-a$이고
+
+$$
+x_1=\begin{bmatrix}1\\-1\end{bmatrix}
+$$
+
+입니다.
+이때, eigenvector가 유일하다고 말할 수는 없지만, 모든 eigenvector는 $x_1$의 스칼라곱으로만 얻어진다는 것을 알 수 있습니다.
+
+이때, 특성방정식 $(\lambda+2)^2=0$에서 근 $\lambda_1=-2$는 중근이고 이때의 대수적 중복도(algebraic multiplicity)는 2라고 말합니다.
+한편, $\lambda_1=-2$에 대응되는 모든 eigenvector는 하나의 벡터
+$\begin{bmatrix}1&-1\end{bmatrix}^T$로 표현될 수 있었습니다.
+이럴 때에, 기하적 중복도(geometric multiplicity)는 1이라고 말합니다.
+
+$P$, $Q$, $R$의 예를 다시 살펴보면, eigenvalue가 중근을 가진 적이 없었으므로 algebraic multiplicity는 모두 1입니다.
+그리고 어떤 eigenvalue에 대한 eigenvector가 단 하나의 벡터에 대한 스칼라곱으로 충분히 표시될 수 있었기 때문에, geometric multiplicity도 모두 1입니다.
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+이 포스트에서 소개하지 않는 선형대수 용어들을 동원하여 geometric multiplicity의 개념을 설명하자면 다음과 같습니다.
+$n\times n$ 행렬 $A$의 한 eigenvalue가 $\lambda$일 때, $A-\lambda I$는 singular matrix (non-invertible matrix)입니다.
+$A-\lambda I$의 null space
+$$\text{null}(A)=\{x:Ax=0\}$$
+를 eigenvalue $\lambda$에 대한 eigenspace 라고 합니다.
+이 eigenspace를 $\text{eig}(\lambda)$라고 적으면 $\text{eig}(\lambda)$는 $\mathbb R^n$의 subspace이고 그 dimension이 1 이상이며, eigenvalue들은 $\text{eig(\lambda)}$의 basis를 형성합니다.
+이때, $\text{eig}(\lambda)$의 dimension을 geometric multiplicity라고 말할 수 있습니다.
+즉, geometric multiplicity란, 특정한 eigenvalue $\lambda$에 대한 임의의 eigenvector를 표현하기 위해 동원되어야 하는 최소한의 eigenvector들의 개수입니다.
+</div>
+
+$$
+T=\begin{bmatrix}
+3&0\\0&3
+\end{bmatrix}
+$$
+
+의 경우에도
+
+$$
+|T-\lambda I|=
+\begin{vmatrix}3-\lambda&0\\0&3-\lambda\end{vmatrix}=(3-\lambda)^2
+=(\lambda-3)^2=0
+$$
+
+eigenvalue는 유일하게 하나($\lambda_1=3$)로 주어집니다.
+eigenvector를 구하기 위해
+
+$$
+\begin{align*}
+(R-3I)x&=0\\
+\begin{bmatrix}0&0\\0&0\end{bmatrix}
+\begin{bmatrix}a\\b\end{bmatrix}&=0
+\end{align*}
+$$
+
+로 두면, $a$, $b$에 대한 아무런 정보도 얻을 수 없습니다.
+즉, $a$와 $b$는 모두 임의의 실수이고, 모든 이차원 벡터
+
+$$
+x=\begin{bmatrix}a\\b\end{bmatrix}
+$$
+
+가 eigenvector의 역할을 할 수 있음을 확인할 수 있습니다.
+한편, $x$가 다음과 같이 두 개의 벡터
+
+$$
+x_1=\begin{bmatrix}1\\0\end{bmatrix},\qquad
+x_2=\begin{bmatrix}0\\1\end{bmatrix}
+$$
+
+들의 일차결합(linear combination)
+
+$$
+x=ax_1+bx_2
+$$
+
+으로 표현될 수 있다는 사실을 생각해보면 두 개의 *대표적인* eigenvector들을 각각 $x_1$과 $x_2$로 두어도 될 것입니다.
+이 때에 algebraic multiplicity는 2이고 geometric multiplicity도 2입니다.
+
+$3\times 3$ 행렬
+
+$$
+U=\begin{bmatrix}
+2&0&1\\0&0&0\\1&0&2
+\end{bmatrix}
+$$
+
+에 대해서는
+
+$$
+|U-\lambda I|=
+\begin{vmatrix}2-\lambda&0&1\\0&-\lambda&0\\1&0&2-\lambda\end{vmatrix}=-\lambda^3_4\lambda-3\lambda=-\lambda(\lambda-1)(\lambda-3)=0
+$$
+
+에서 $\lambda_1=0$, $\lambda_2=1$, $\lambda_3=3$ 입니다.
+
+$$
+\begin{align*}
+(U-0I)x&=0\\
+\begin{bmatrix}2&0&1\\0&0&0\\1&0&2\end{bmatrix}
+\begin{bmatrix}a\\b\\c\end{bmatrix}&=0
+\end{align*}
+$$
+
+으로부터 $2a+c=0$, $a+2c=0$, $a=c=0$이고
+
+$$
+x_1=\begin{bmatrix}0\\1\\0\end{bmatrix}
+$$
+
+으로 둘 수 있습니다.
+또한
+
+$$
+\begin{align*}
+(U-I)x&=0\\
+\begin{bmatrix}1&0&1\\0&-1&0\\1&0&1\end{bmatrix}
+\begin{bmatrix}a\\b\\c\end{bmatrix}&=0
+\end{align*}
+$$
+
+에서 $c=-a$, $b=0$이고
+
+$$
+x_2=\begin{bmatrix}1\\0\\-1\end{bmatrix}
+$$
+
+으로 둘 수 있습니다.
+마지막으로
+
+$$
+\begin{align*}
+(U-3I)x&=0\\
+\begin{bmatrix}-1&0&1\\0&-3&0\\1&0&-1\end{bmatrix}
+\begin{bmatrix}a\\b\\c\end{bmatrix}&=0
+\end{align*}
+$$
+
+에서 $c=a$, $b=0$이고
+
+$$
+x_2=\begin{bmatrix}1\\0\\1\end{bmatrix}
+$$
+
+입니다.
+행렬 $V$가
+
+$$
+V=\begin{bmatrix}
+0&0&2\\-3&1&6\\0&0&1
+\end{bmatrix}
+$$
+
+이면
+
+$$
+|V-\lambda I|=
+\begin{vmatrix}-\lambda&0&2\\-3&1-\lambda&6\\0&0&1-\lambda\end{vmatrix}=-\lambda(\lambda-1)^2=0
+$$
+
+에서 $\lambda_1=0$, $\lambda_2=\lambda_3=1$ 입니다.
+
+$$
+\begin{align*}
+(V-0I)x&=0\\
+\begin{bmatrix}0&0&2\\-3&1&6\\0&0&1\end{bmatrix}
+\begin{bmatrix}a\\b\\c\end{bmatrix}&=0
+\end{align*}
+$$
+
+으로부터 $c=0$, $-3a+b=0$, $b=3a$이고
+
+$$
+x_1=\begin{bmatrix}1\\3\\0\end{bmatrix}
+$$
+
+을 얻을 수 있습니다.
+$\lambda_2=\lambda_3=1$에 대해서는
+
+$$
+\begin{align*}
+(V-I)x&=0\\
+\begin{bmatrix}-1&0&2\\-3&0&6\\0&0&0\end{bmatrix}
+\begin{bmatrix}a\\b\\c\end{bmatrix}&=0
+\end{align*}
+$$
+
+에서 $-a+2b=0$, $a=2b$이고
+
+$$
+x=\begin{bmatrix}2b\\b\\c\end{bmatrix}
+=b\begin{bmatrix}2\\1\\0\end{bmatrix}
++c\begin{bmatrix}0\\0\\1\end{bmatrix}
+$$
+
+이므로
+
+$$
+\begin{align*}
+x_2&=\begin{bmatrix}2\\1\\0\end{bmatrix}\\
+x_3&=\begin{bmatrix}0\\0\\1\end{bmatrix}
+\end{align*}
+$$
+
+로 둘 수 있습니다.
 
 # 2. 직교대각화
 
