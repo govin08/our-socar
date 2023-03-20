@@ -234,7 +234,7 @@ $$
 
 $$
 \begin{align*}
-PT&=\begin{bmatrix}1&2\\0&2\end{bmatrix}\begin{bmatrix}1&2\\4&6\end{bmatrix}=\begin{bmatrix}5&8\\2&3\end{bmatrix}\\
+PT&=\begin{bmatrix}1&2\\0&2\end{bmatrix}\begin{bmatrix}1&2\\2&3\end{bmatrix}=\begin{bmatrix}5&8\\4&6\end{bmatrix}\\
 QS&=\begin{bmatrix}0&1&0\\1&0&0\end{bmatrix}\begin{bmatrix}1\\-1\\0\end{bmatrix}=\begin{bmatrix}-1\\1\end{bmatrix}\\
 RP&=\begin{bmatrix}2&4\end{bmatrix}\begin{bmatrix}1&2\\0&2\end{bmatrix}=\begin{bmatrix}2&12\end{bmatrix}\\
 P^2&=\begin{bmatrix}1&2\\0&2\end{bmatrix}^2=\begin{bmatrix}1&2\\0&2\end{bmatrix}\begin{bmatrix}1&2\\0&2\end{bmatrix}
@@ -260,6 +260,11 @@ R^T&=\begin{bmatrix}2&4\end{bmatrix}^T=\begin{bmatrix}2\\4\end{bmatrix}
 $$
 
 등입니다.
+$A=\left(a_{ij}\right)_{m\times n}$의 transpose $A^T$를 다음과 같이 정의할 수도 있습니다.
+
+$$
+A^T=\left(a_{ji}\right)_{n\times m}
+$$
 
 conjugate transpose에 대해 설명하기 전에 conjugation(켤레복소수화, 공액)에 대해 먼저 이야기하겠습니다.
 어떤 복소수 $z=a+bi$에 대하여 ($a$, $b$는 실수) 이 복소수의 켤레복소수는 $a-bi$이고, 이것을 $\bar z$로 표시합니다.
@@ -285,8 +290,7 @@ $z$가 실수이면, $\bar z=z$이고, 그 역도 성립합니다.
 {: .notice--success}
 
 **증명** \\
-복소수 $z=a+bi$에 대하여, 만약 $z$가 실수이면 $b=0$이고 $z=a$입니다.
-따라서 $\bar z=a=\overline{a+0i}=a-0i=a=z$입니다.
+복소수 $z=a+bi$에 대하여, 만약 $z$가 실수이면 $b=0$이고, $\bar z=\overline{a+0i}=a-0i=z$입니다.
 반대로,$\bar z=z$이면 $a+bi=a-bi$입니다.
 두 복소수가 같으려면 실수부분과 허수부분이 서로 같아야 하므로 $b=-b$, $2b=0$, $b=0$입니다.
 따라서 $z$는 실수입니다.
@@ -306,7 +310,7 @@ $$Z=\begin{bmatrix}0&2-3i\\2+3i&3\end{bmatrix}$$
 $$
 \begin{align*}
 \overline Z
-&=\begin{bmatrix}0&\overline{2-3i}\\\overline{2+3i}&\overline3\end{bmatrix}\\
+&=\begin{bmatrix}\overline 0&\overline{2-3i}\\\overline{2+3i}&\overline3\end{bmatrix}\\
 &=\begin{bmatrix}0&2+3i\\2-3i&3\end{bmatrix}
 \end{align*}
 $$
@@ -353,9 +357,9 @@ $$
 한편, 정리 2에 따르면 실수로 이루어진 행렬이면 $A$에 대하여 transpose를 취하는 것과 conjugate transpose를 취하는 것에는 차이가 없습니다 ; 
 
 $$
-A^H=\overline{\left(a_{ij}\right)^T}
+A^H=\overline{\left(a_{ij}\right)_{n\times n}\,^T}
 =\overline{\left(a_{ji}\right)_{n\times n}}
-=\left(\overline{a_{ij}}\right)_{n\times n}
+=\left(\overline{a_{ji}}\right)_{n\times n}
 =\left(a_{ji}\right)_{n\times n}
 =A^T
 $$
@@ -365,16 +369,21 @@ $$
 $$
 \begin{align*}
 \left((AB)^T\right)_{ij}
-&%=\left(AB\right)_{ji}
-=\sum_{k=1}^na_{jk}b_{ki}
-=\sum_{k=1}^m{B^T}_{ik}{A^T}_{kj}
+&=\left(AB\right)_{ji}
+=\sum_{k=1}^na_{jk}b_{ki}\\
+&=\sum_{k=1}^m{B^T}_{ik}{A^T}_{kj}
 =\left(B^TA^T\right)_{ij}
 \\
-\left((AB)^H\right)_{ij}
-&%=\left(\overline A\overline B\right)_{ji}
-=\sum_{k=1}^n\overline{a_{jk}}\overline{b_{ki}}
-=\sum_{k=1}^m{B^H}_{ik}{A^H}_{kj}
-=\left(B^HA^H\right)_{ij}
+\left(\overline{AB}\right)_{ij}
+&=\overline{\left(AB\right)_{ij}}
+=\overline{\sum_{k=1}^na_{ik}b_{kj}}\\
+&=\sum_{k=1}^n\overline{a_{ik}}\overline{b_{kj}}
+=\overline A\overline B\\
+(AB)^H
+&=\left(\overline{AB}\right)^T
+=\left(\overline A\overline B\right)^T
+=\overline B^T\overline A^T
+=B^HA^H
 \end{align*}
 $$
 
@@ -397,8 +406,8 @@ $$ -->
 <b> 정의 3 : 행렬의 연산 </b> <br>
 정사각행렬 $A=\left(a_{ij}\right)_{n\times n}$, $B=\left(b_{ij}\right)_{n\times n}$와 실수 $c$에 대하여
 <br>
-<!-- (a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
-<br> -->
+(a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
+<br>
 (a) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
 <br>
 (b) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
@@ -430,7 +439,7 @@ $$ -->
 <br>
 (b) $A$가 실수로 이루어진 행렬이면 $A^T=A^H$가 성립하고 그 역도 성립합니다.
 <br>
-(c) $(AB)^T=B^TA^T$, $(AB)^H=B^HA^H$
+(c) $(AB)^T=B^TA^T$, $\overline{AB}=\overline A\overline B$, $(AB)^H=B^HA^H$
 <br>
 (d) $(A^T)^T=A$, $(A^H)^H=A$
 <br>
@@ -970,7 +979,7 @@ $$
 \begin{align*}
 \langle u_1, u_2\rangle
 % &=\left\langle \begin{bmatrix}1+2i\\2-i\end{bmatrix}, \begin{bmatrix}3\\1-i\end{bmatrix}\right\rangle\\
-&=u_1\,^Hu_2\\
+&={u_1}^Hu_2\\
 &=\begin{bmatrix}1-2i&2+i\end{bmatrix}\begin{bmatrix}3\\1-i\end{bmatrix}\\
 &=(1-2i)3+(2+i)(1-i)\\
 &=(3-6i)+(3-i)=6-7i
@@ -982,12 +991,12 @@ $$
 $$
 \begin{align*}
 ||u_1||
-&=\sqrt{u_1\,^Hu_1}\\
+&=\sqrt{\,{u_1}^Hu_1}\\
 &=\sqrt{\begin{bmatrix}1-2i&2+i\end{bmatrix}\begin{bmatrix}1+2i\\2-i\end{bmatrix}}\\
 &=\sqrt{(1-2i)(1+2i)+(2+i)(2-i)}\\
 &=\sqrt{5+5}=\sqrt{10}\\
 ||u_2||
-&=\sqrt{u_2\,^Hu_2}\\
+&=\sqrt{\,{u_2}^Hu_2}\\
 &=\sqrt{\begin{bmatrix}3&1+i\end{bmatrix}\begin{bmatrix}3\\1-i\end{bmatrix}}\\
 &=\sqrt{3\times3+(1+i)(1-i)}\\
 &=\sqrt{11}
@@ -1107,8 +1116,7 @@ $$A^HA=I$$
 를 만족시키면 $A$를 unitary 행렬(unitary matrix, 유니터리 행렬)이라고 부릅니다.
 </div>
 
-$w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성질 14(a), 14(b)가 성립합니다.
-또한, 1.1의 두번째 참고에 의해 성질 14(c)가 성립합니다.
+행렬의 orthogonality에 대하여 성질 12가 성립하는 것과 마찬가지로, unitarity에 대해서는 아래의 성질들이 성립합니다.
 
 <div class="notice">
 <b>성질 14 </b> <br>
@@ -1139,7 +1147,7 @@ $$A^HA=A^TA=I$$
 어떤 행렬을 대각화할 때 반드시 등장하게 되는 eigenvalue, eigenvector에 대해 적어보았습니다.
 eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기했습니다.
 하지만, 행렬식에 대해 말하려면 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
-아래의 '행렬식' 단락을 이해하는 것이 힘들면, 정리 16 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
+아래의 '행렬식' 단락을 이해하는 것이 힘들면, $2\times 2$ 행렬과 $3\times3$ 행렬의 행렬식의 정의와 정리 16 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
 
 고등학교 수학에서 행렬식의 개념에 대해 다룹니다.
 행렬
