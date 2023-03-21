@@ -5,8 +5,6 @@ title:  "모파상 - 「목걸이」"
 categories: literature
 tags: [Maupassant]
 author_profile: false
-sidebar:
-    nav: "docs"
 ---
 
 # 1. 기 드 모파상

@@ -5,8 +5,6 @@ title:  "모파상 - 「여자의 일생」"
 categories: literature
 tags: [Maupassant]
 author_profile: false
-sidebar:
-    nav: "docs"
 ---
 
 # 1. 제목의 오역

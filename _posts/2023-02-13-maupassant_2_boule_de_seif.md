@@ -5,8 +5,6 @@ title:  "모파상 - 「비곗덩어리」"
 categories: literature
 tags: [Maupassant]
 author_profile: false
-sidebar:
-    nav: "docs"
 ---
 
 # 1. 프로이센-프랑스 전쟁

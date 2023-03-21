@@ -161,7 +161,7 @@ $$
 
 $$AB=BA=I$$
 
-가 성립하면, $B$를 $A$의 역행렬이라고 말하고, $B=A^{-1}$라고 씁니다.
+가 성립하면 $B$를 $A$의 역행렬이라고 말하고, $B=A^{-1}$라고 씁니다.
 반대로, $A$는 $B$의 역행렬이기도 합니다.
 즉 $A=B^{-1}$이기도 합니다.
 따라서 $A$의 역행렬이 존재하면
@@ -169,6 +169,7 @@ $$AB=BA=I$$
 $$AA^{-1}=A^{-1}=I$$
 
 입니다.
+역행렬이 존재하는 행렬을 **가역행렬(invertible matrix)**이라고 부릅니다.
 
 <div class="notice--danger">
 <b>참고 </b> <br>
@@ -431,6 +432,9 @@ $$ -->
 <br>
 (f) $A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
 <br> -->
+
+이때, (c)에서 정의되는 연산을 **스칼라곱(scalar multiplication)**이라고 부릅니다.
+(c)에서 $c$값은 스칼라(scalar)라고 부르며 이것은 실수 (혹은 복소수)를 의미합니다.
 
 <div class="notice">
 <b> 성질 4 </b> <br>
@@ -965,7 +969,7 @@ $$
 $$
 
 인 것입니다.
-$\left(|z|=\sqrt{z\bar z},\quad|a+bi|=\sqrt{a^2+b^2}\right)$
+(복소수 $z=a+bi$에 대하여 $z$의 절댓값 $|z|$는 $|z|=\sqrt{z\bar z}=\sqrt{a^2+b^2}로 정의됩니다.)
 예를 들어, 벡터 $u_1$, $u_2$가
 
 $$
@@ -1142,10 +1146,10 @@ $$A^HA=A^TA=I$$
 이기 때문입니다.
 </div>
 
-## 1.5 eigenvalue / eigenvector
+## 1.5 행렬식
 
-어떤 행렬을 대각화할 때 반드시 등장하게 되는 eigenvalue, eigenvector에 대해 적어보았습니다.
-eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기했습니다.
+행렬의 대각화 개념은 eigenvalue/eigenvector와 관련되어 있는 개념입니다.
+그런데 eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기했습니다.
 하지만, 행렬식에 대해 말하려면 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
 아래의 '행렬식' 단락을 이해하는 것이 힘들면, $2\times 2$ 행렬과 $3\times3$ 행렬의 행렬식의 정의와 정리 16 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
 
@@ -1155,7 +1159,7 @@ eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사�
 $$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$$
 
 의 행렬식 $D=ad-bc$가 0이면 역행렬이 존재하지 않고, 0이 아니면 역행렬이 존재한다는 것입니다.
-이 포스트에서는 $A$의 행렬식을 $\text{det}(A)$ (또는 $\text{det}\;A$)로 적으려 합니다.
+이 포스트에서는 $A$의 행렬식을 $\text{det}(A)$ (또는 $|A|$)로 적으려 합니다.
 지금까지 써왔던 $A$의 표현식
 
 $$A=\begin{bmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{bmatrix}$$
@@ -1299,7 +1303,7 @@ $$
 $$
 
 여기에서 항등함수란, $f(x)=x$인 함수 $f$를 말합니다.
-$S_3$에서는 $\sigma_1=123$이 항등함수가 될 것입니다.
+따라서, $S_3$에서는 $\sigma_1=123$이 항등함수입니다.
 
 예를 들어, $\sigma_1=123$의 경우에는 그 자체로 항등함수이므로 0번 교환하여 항등함수를 만들 수 있고, $0$은 짝수이므로 $\sigma_1$은 even permutation입니다.
 따라서, $\text{sgn}(\sigma_1)=1$입니다.
@@ -1364,6 +1368,8 @@ $$
 \sigma_2&=21,\quad&\text{sgn}(\sigma_2)&=-1
 \end{align*}
 $$
+
+입니다.
 
 
 
@@ -1575,7 +1581,7 @@ $$
 
 에 대하여  -->
 
-$$\text{det}(A)=\sum_{\sigma\in S_n}\prod_{i=1}^n\text{sgn}(\sigma)a_{i,\sigma(i)}$$
+$$\text{det}(A)=\sum_{\sigma\in S_n}\left(\text{sgn}(\sigma)\prod_{i=1}^na_{i,\sigma(i)}\right)$$
 
 로 정의합니다.
 행렬식은 $|A|$와 같이 표기하기도 합니다.
@@ -1633,9 +1639,9 @@ $$
 $$
 \begin{align*}
 \text{det}(A)
-&=\sum_{\sigma\in S_2}\prod_{i=1}^2\text{sgn}(\sigma)a_{i,\sigma(i)}\\
-&=\prod_{i=1}^2\text{sgn}(\sigma_1)a_{i,\sigma_1(i)}
-+\prod_{i=1}^2\text{sgn}(\sigma_2)a_{i,\sigma_2(i)}\\
+&=\sum_{\sigma\in S_2}\left(\text{sgn}(\sigma)\prod_{i=1}^2a_{i,\sigma(i)}\right)\\
+&=\text{sgn}(\sigma_1)\prod_{i=1}^2a_{i,\sigma_1(i)}
++\text{sgn}(\sigma_2)\prod_{i=1}^2a_{i,\sigma_2(i)}\\
 &=a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}-a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}\\
 &=a_{11}a_{22}-a_{12}a_{21}
 \end{align*}
@@ -1661,13 +1667,13 @@ $$
 $$
 \begin{align*}
 \text{det}(A)
-=&\sum_{\sigma\in S_3}\prod_{i=1}^3\text{sgn}(\sigma)a_{i,\sigma(i)}\\
-=&\prod_{i=1}^3\text{sgn}(\sigma_1)a_{i,\sigma_1(i)}
-+\prod_{i=1}^3\text{sgn}(\sigma_2)a_{i,\sigma_2(i)}
-+\prod_{i=1}^3\text{sgn}(\sigma_3)a_{i,\sigma_3(i)}\\
-&+\prod_{i=1}^3\text{sgn}(\sigma_4)a_{i,\sigma_4(i)}
-+\prod_{i=1}^3\text{sgn}(\sigma_5)a_{i,\sigma_5(i)}
-+\prod_{i=1}^3\text{sgn}(\sigma_6)a_{i,\sigma_6(i)}\\
+=&\sum_{\sigma\in S_3}\left(\text{sgn}(\sigma)\prod_{i=1}^3a_{i,\sigma(i)}\right)\\
+=&\text{sgn}(\sigma_1)\prod_{i=1}^3a_{i,\sigma_1(i)}
++\text{sgn}(\sigma_2)\prod_{i=1}^3a_{i,\sigma_2(i)}
++\text{sgn}(\sigma_3)\prod_{i=1}^3a_{i,\sigma_3(i)}\\
+&+\text{sgn}(\sigma_4)\prod_{i=1}^3a_{i,\sigma_4(i)}
++\text{sgn}(\sigma_5)\prod_{i=1}^3a_{i,\sigma_5(i)}
++\text{sgn}(\sigma_6)\prod_{i=1}^3a_{i,\sigma_6(i)}\\
 =&a_{1,\sigma_1(1)}a_{2,\sigma_1(2)}a_{3,\sigma_1(3)}
 -a_{1,\sigma_2(1)}a_{2,\sigma_2(2)}a_{3,\sigma_2(3)}
 -a_{1,\sigma_3(1)}a_{2,\sigma_3(2)}a_{3,\sigma_3(3)}\\
@@ -1727,7 +1733,7 @@ $$(a_1+a_2)(b_1+b_2)=a_1b_1+a_1b_2+a_2b_1+a_2b_2$$
 와 같이 쓰는 것입니다.
 이것은
 
-$a_1$와 $a_2$ 중에서 하나를 고르고 $b_1$와 $b_2$ 중에서 하나를 고른 뒤 가능한 모든 조합을 더하는 것
+$a_1$와 $a_2$ 중에서 하나를 고르고 $b_1$와 $b_2$ 중에서 하나를 골라서 곱한 뒤 가능한 모든 조합을 더하는 것
 {: .text-center}
 
 을 말합니다.
@@ -1772,7 +1778,7 @@ $$
 
 이라서 이것들을 모두 더하면 $a_1b_1+a_1b_2+a_2b_1+a_2b_2$이 되는 것입니다.
 
-이후 네번째 줄부터 마지막까지는 두 개의 summation($\sum$)에 대하여 순서를 바꾸거나 상수를 빼거나 넣은 것에 해당합니다.
+이후 네번째 줄부터 마지막까지는 합의 기호$\left(\sum\right)$의 순서를 바꾸거나 상수를 빼거나 넣은 것에 해당합니다.
 마지막 식에서, 함수 $f:\mathbb N_n\to\mathbb N_n$는 일대일대응인 것 $(f\in S_n)$과 그렇지 않은 것 $(f\not\in S_n)$ 으로 나눌 수 있습니다.
 
 따라서
@@ -1790,14 +1796,22 @@ $Q$를 먼저 계산합시다.
 $f$가 일대일대응이 아니면 이것은 일대일함수가 아닙니다.
 (항상 그런 것은 아니지만, 이 경우에는 정의역과 공역이 같기 때문에 그렇습니다.)
 따라서 $f(k_1)=f(k_2)$인 $k_1\ne k_2$가 존재합니다.
-만약, $k_1$과 $k_2$를 바꾸는 교환을 $\alpha$라고 하면, 임의의 $\sigma$에 대하여 $\alpha\circ\sigma\in S_n$이고, $\text{sgn}(\alpha\circ\sigma)=\text{sgn}(\alpha)\text{sgn}(\sigma)=-\text{sgn}(\sigma)$이며, 임의의 $k\in\mathbb N_n$에 대하여 $(\alpha\circ\sigma)(k)=\sigma(k)$입니다.
-따라서,
+만약, $k_1$과 $k_2$를 바꾸는 교환을 $\alpha$라고 하면
 
 $$
-\prod_{k=1}^nB_{f(k),\sigma(k)}=\prod_{k=1}^nB_{(\alpha\circ f)(k),\sigma(k)}
+\begin{align*}
+\prod_{k=1}^nB_{(\sigma\circ\alpha)(k),\sigma(k)}
+&=B_{f(1),(\sigma\circ\alpha)(1)}\times\cdots\times B_{f(k_1),(\sigma\circ\alpha)(k_1)}
+\times\cdots\times B_{f(k_2),(\sigma\circ\alpha)(k_2)}\times\cdots\times B_{f(n),(\sigma\circ\alpha)(n)}\\
+&=B_{f(1),\sigma(1)}\times\cdots\times B_{f(k_1),\sigma(k_2)}
+\times\cdots\times B_{f(k_2),\sigma(k_2)}\times\cdots\times B_{f(n),\sigma(n)}\\
+&=B_{f(1),\sigma(1)}\times\cdots\times B_{f(k_2),\sigma(k_2)}
+\times\cdots\times B_{f(k_1),\sigma(k_2)}\times\cdots\times B_{f(n),\sigma(n)}\\
+&=\prod_{k=1}^nB_{f(k),\sigma(k)}
+\end{align*}
 $$
 
-이기 때문에, 위의 $Q$ 식에서 괄호친 부분의 두 배는 0이 됩니다;
+이고, 임의의 $\sigma\in S_n$에 대하여 $\alpha\circ\sigma\in S_n$이고, $\text{sgn}(\alpha\circ\sigma)=\text{sgn}(\alpha)\text{sgn}(\sigma)=-\text{sgn}(\sigma)$ 이므로, 위의 $Q$ 식에서 괄호친 부분의 두 배는 0이 됩니다;
 
 $$
 \begin{align*}
@@ -1805,9 +1819,9 @@ $$
 =&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
 +\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
 =&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
-+\sum_{\sigma\in S_n}\text{sgn}(\alpha\circ\sigma)\prod_{k=1}^nB_{f(k),(\alpha\circ\sigma)(k)}\\
++\sum_{\sigma\in S_n}\text{sgn}(\alpha\circ\sigma)\prod_{k=1}^nB_{f(k),(\sigma\circ\alpha)(k)}\\
 =&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
-+\sum_{\sigma\in S_n}\left(-\text{sgn}(\sigma)\right)\prod_{k=1}^nB_{f(k),(\alpha\circ\sigma)(k)}\\
++\sum_{\sigma\in S_n}\left(-\text{sgn}(\sigma)\right)\prod_{k=1}^nB_{f(k),(\sigma\circ\alpha)(k)}\\
 =&0
 \end{align*}
 $$
@@ -1825,11 +1839,27 @@ P
 &=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\cdot\text{sgn}(f)\prod_{k=1}^nB_{\pi(k),k}\right)\\
 &=\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
 &=\left(\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
+&=\text{det}(A)\text{det}(B^T)\\
 &=\text{det}(A)\text{det}(B)
 \end{align*}
 $$
 
 입니다.
+마지막 부분에서 $\text{det}(B^T)=\text{det}(B)$인 것은
+
+$$
+\text{det}(B)
+=
+\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nb_{k,\sigma(k)}
+=
+\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\prod_{k=1}^nb_{\sigma^{-1}(k),k}
+=
+\sum_{\pi\in S_n}\text{sgn}(pi)\prod_{k=1}^nb_{\pi(k),k}
+=
+\text{det}(B^T)
+$$
+
+로 설명될 수 있습니다.
 위의 결과를 요약하면
 
 $$
@@ -1838,7 +1868,9 @@ $$
 
 가 됩니다.
 
-**증명 : 정리 16(b), $\Rightarrow$** $A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
+정의 16(b)에 대한 증명은 다음과 같습니다.
+
+**증명 [ 정리 16(b)의 $\Rightarrow$** 방향 ]  $A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
 {: .notice--warning}
 
 만약 $A$의 역행렬이 존재하면 $AB=I$를 만족시키는 정사각행렬 $B$가 존재합니다.
@@ -1847,19 +1879,22 @@ $$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
 입니다.
 따라서 $\text{det}(A)=0$이 될 수 없습니다.
 
-**증명 : 정리 16(b), $\Leftarrow$** $\text{det}(A)\neq0$이면, $A$의 역행렬이 존재합니다.
+**증명 [ 정리 16(b)의 $\Leftarrow$** 방향 ] $\text{det}(A)\neq0$이면, $A$의 역행렬이 존재합니다.
 {: .notice--warning}
 
 이 증명은 반대방향의 증명보다 조금 복잡하며, 이 포스트에 소개한 선형대수의 개념만 가지고는 증명할 수 없는 것처럼 보입니다.
-가능한 증명방식 중 하나는, 원래 명제의 대우를 통해 증명하는 것입니다.
+소개하지 않은 개념들을 사용하여 증명할 때 가능한 증명방식 중 하나는, 원래 명제의 대우를 통해 증명하는 것으로 아래와 같습니다.
 
 만약 $A$의 역행렬이 존재하지 않으면, $A$는 일대일함수가 아닙니다.
-따라서 $Ax_1=Ax_2$인 $x_1\ne x_2$가 존재하고, 이는 곧 
-그러면 영벡터이 아니면서 $Ax=0$을 만족시키는 벡터 $x\in\mathbb R^n$이 존재한다는 뜻입니다.
+따라서 $Ax_1=Ax_2$인 $x_1\ne x_2$가 존재하고, 이는 곧  영벡터이 아니면서 $Ax=0$을 만족시키는 벡터 $x\in\mathbb R^n$이 존재한다는 뜻입니다($x=x_2-x_1$).
 행렬 $A$의 $i$번째 열을 $A_i$로 표현하면, 식 $Ax=0$이 의미하는 바는 $A_1$, $A_2$, $\cdots$, $A_n$이 linearly dependent하다는 것을 의미합니다.
-따라서 $\text{det}(A)=0$이 됩니다.
+따라서 $\text{det}(A)=0$입니다.
 
-### eigenvalue / eigenvector
+# 2 직교대각화
+
+## 2.1 eigenvalue / eigenvector
+
+<!-- 어떤 행렬을 대각화할 때 반드시 등장하게 되는 eigenvalue, eigenvector에 대해 적어보았습니다. -->
 
 이제 eigenvalue와 eigenvector에 대해 말할 수 있습니다.
 
@@ -1872,18 +1907,11 @@ $$Ax=\lambda x$$
 를 만족시키는 복소수 $\lambda$와 벡터 $x(\ne0)$가 존재하면 $\lambda$를 <b>eigenvalue</b>(고윳값, 고유치), $x$를 <b>eigenvector</b>(고유벡터)라고 부릅니다.
 </div>
 
-eigenvalue/eigenvector는 선형적인 연립편미분방정식의 해를 구하는 데 쓰일 수 있고, 머신러닝의 SVD(singular value decomposition), PCA(principal component analysis)의 계산에서도 나타나며, 행렬의 norm을 계산하는 데에도 등장합니다.
-
 예를 들어, 행렬
 
 $$P=\begin{bmatrix}2&2\\0&1\end{bmatrix}$$
 
 에 대해서
-<!-- 
-$$Px=\lambda x$$
-
-를 만족시키는 $\lambda$와 $x$가 각각 eigenvalue와 eigenvector입니다.
-이때, -->
 
 $$
 \begin{bmatrix}2&2\\0&1\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
@@ -1910,9 +1938,9 @@ $$
 x'=\begin{bmatrix}0\\1\end{bmatrix}
 $$
 
-의 실수배 (혹은 복소수배)가 될 수 없으므로 $x'$는 eigenvector가 아닙니다.
+의 스칼라곱이 될 수 없으므로 $x'$는 eigenvector가 아닙니다.
 
-$x$가 eigenvector이면 $x$의 상수배인 $cx$도 eigenvector입니다$(c\ne0)$.
+$x$가 eigenvector이면 $x$의 스칼라곱인 $cx$도 eigenvector입니다$(c\ne0)$.
 예를 들어, $$3x=\begin{bmatrix}3\\0\end{bmatrix}$$은 eigenvector입니다.
 그리고 그 때의 eigenvalue는 여전히 $2$입니다;
 
@@ -1957,7 +1985,7 @@ $$x=Ix=(A-\lambda I)^{-1}(A-\lambda I)x=(A-\lambda I)^{-1}0=0$$
 <b> 성질 18 </b> <br>
 정사각행렬 $A$에 대하여
 <br>
-(a) $A$의 eigenvector가 $x$이면 그 상수배인 $cx$도 eigenvector 이며, 두 eigenvector에 대한 eigenvalue는 일치합니다(단, $c\ne0$).
+(a) $A$의 eigenvector가 $x$이면 스칼라곱인 $cx$도 eigenvector 이며, 두 eigenvector에 대한 eigenvalue는 일치합니다(단, $c\ne0$).
 따라서, 하나의 eigenvalue에 대한 eigenvector는 유일하지 않습니다.
 <br>
 (b) $\lambda$가 $A$의 eigenvalue이면 $\text{det}(A-\lambda I)=0$입니다.
@@ -1989,7 +2017,6 @@ $x_1$을 구하기 위해 $x_1=\begin{bmatrix}a&b\end{bmatrix}^T$
 $$
 \begin{align*}
 (P-\lambda_1I)x_1&=0\\
-(P-I)x_1&=0\\
 \begin{bmatrix}1&2\\0&0\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2005,19 +2032,19 @@ a+2b&=0\\
 \end{cases}
 $$
 
-을 푸는 것과 같으며, 따라서 $b=-2a$입니다.
+을 푸는 것과 같으며, 따라서 $a=-2b$입니다.
 그러므로 $x_1$은
 
 $$
 x_1=\begin{bmatrix}a\\b\end{bmatrix}
-=\begin{bmatrix}a\\-2a\end{bmatrix}
-=a\begin{bmatrix}1\\-2\end{bmatrix}
+=\begin{bmatrix}-2b\\b\end{bmatrix}
+=b\begin{bmatrix}-2\\1\end{bmatrix}
 $$
 
 입니다.
 이때 성질 18(a)에 의해, $\lambda_1=1$에 대한 대표적인 eigenvector를
 
-$$x_1=\begin{bmatrix}1\\-2\end{bmatrix}$$
+$$x_1=\begin{bmatrix}-2\\1\end{bmatrix}$$
 
 라고 두어도 괜찮습니다.
 마찬가지로 $x_2$를 구하면
@@ -2025,7 +2052,6 @@ $$x_1=\begin{bmatrix}1\\-2\end{bmatrix}$$
 $$
 \begin{align*}
 (P-\lambda_2I)x_2&=0\\
-(P-2I)x_2&=0\\
 \begin{bmatrix}0&2\\0&-1\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2069,7 +2095,7 @@ $$
 
 $$
 \begin{align*}
-(Q+2I)x_1&=0\\
+(Q-\lambda_1I)x_1&=0\\
 \begin{bmatrix}4&2\\2&1\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2079,7 +2105,7 @@ $$
 
 $$
 \begin{align*}
-(Q-3I)x_2&=0\\
+(Q-\lambda_2I)x_2&=0\\
 \begin{bmatrix}-1&2\\2&-4\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2115,7 +2141,7 @@ $$
 
 $$
 \begin{align*}
-(R-(1+2i)I)x_2&=0\\
+(R-\lambda_1I)x_2&=0\\
 \begin{bmatrix}2-2i&2\\-4&-2-2i\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2125,7 +2151,7 @@ $$
 
 $$
 \begin{align*}
-(R-(1-2i)I)x_2&=0\\
+(R-\lambda_2I)x_2&=0\\
 \begin{bmatrix}2+2i&2\\-4&-2+2i\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2153,7 +2179,8 @@ $$x_2=\begin{bmatrix}1-i\\-2\end{bmatrix}$$
 로 두어도 괜찮습니다.
 </div>
 
-eigenvalue/eigenvector의 의미를 파악하기 위해서는, 일단 행렬이 일종의 함수라는 것을 받아들여야 합니다.
+더 많은 예를 보기 전에, eigenvalue와 eigenvector가 어떤 의미를 가지는 지 간략하게 보려고 합니다.
+이를 위해서는 먼저, 행렬이 일종의 함수라는 것을 받아들여야 합니다.
 행렬
 
 $$P=\begin{bmatrix}1&2\\0&2\end{bmatrix}$$
@@ -2198,7 +2225,7 @@ $$
     <li> $p(cx)=cp(x)$ </li>
 </ul>
 를 만족하는 함수라는 뜻입니다.
-(단, $x$, $y$는 2차원 벡터, $c$는 복소수)
+(단, $x$, $y$는 2차원 벡터, $c$는 스칼라)
 정의에 따라 계산해보면 위의 두 식이 성립함을 쉽게 확인할 수 있습니다.
 <br>
 (b) 증명하지는 않겠지만, 선형대수의 기본적인 사실 중 하나는
@@ -2224,9 +2251,8 @@ $$
 </div>
 
 고등학교 수학에서 영벡터가 아닌 두 벡터가 서로 같은 방향(혹은 반대 방향)이면 한 벡터가 다른 벡터의 실수배와 같다는 것을 배웁니다.
-행렬 $A$가 일종의 함수(변환)이라는 관점에서 보면,
-**eigenvector란, 함수 $A$에 의해 방향이 변하지 않는 벡터**
-를 의미합니다.
+행렬 $A$가 일종의 함수라는 관점에서 보면,
+**eigenvector란, 함수 $A$에 의해 방향이 변하지 않는 벡터** (혹은 방향이 반대로 뒤집히는 벡터)를 의미합니다.
 
 $x$가 행렬 $A$의 eigenvector이고 그에 대한 eigenvalue가 $\lambda>0$이면, 벡터 $x$는 함수 $A$에 의해 $Ax=\lambda x$로 변환됩니다.
 이때 $Ax$는 $x$와 방향이 같고 그 길이가 $\lambda$배인 벡터를 의미하는 것입니다.
@@ -2237,17 +2263,18 @@ $x$가 행렬 $A$의 eigenvector이고 그에 대한 eigenvalue가 $\lambda>0$�
 $$P=\begin{bmatrix}2&2\\0&1\end{bmatrix}$$
 
 의 eigenvalue는 각각 $\lambda_1=1$, $\lambda_2=2$였고, 각각에 대응되는 eigenvector들은
-$x_1=\begin{bmatrix}2&-1\end{bmatrix}^T$,
+$x_1=\begin{bmatrix}-2&1\end{bmatrix}^T$,
 $x_2=\begin{bmatrix}1&0\end{bmatrix}^T$
 이었습니다.
 
 따라서 $P$에 대응되는 선형함수 $p$는
-$x$축에 평행한 벡터 $e_1=\begin{bmatrix}1&0\end{bmatrix}^T$를, 방향이 같으며 길이가 두 배인 벡터 $2e_1=\begin{bmatrix}1&0\end{bmatrix}^T$로 보냅니다.
+$x$축에 평행한 벡터 $e_1=\begin{bmatrix}1&0\end{bmatrix}^T$를, 방향이 같으며 길이가 두 배인 벡터 $2e_1=\begin{bmatrix}2&0\end{bmatrix}^T$로 보냅니다.
 즉,
 
 $$p(e_1)=2e_1$$
 
 입니다.
+
 한편, $y$축에 평행한 벡터 $e_2=\begin{bmatrix}0&1\end{bmatrix}^T$는 $e_2$와는 다른 방향인 $\begin{bmatrix}2&1\end{bmatrix}^T$로 보냅니다.
 그런데 $e_2$가 $e_2=-x_1+2x_2$로 표현된다는 사실을 이용하면
 
@@ -2284,15 +2311,13 @@ $$
 
 $$
 |S-\lambda I|=
-\begin{vmatrix}1-\lambda&3\\-3&-5-\lambda\end{vmatrix}=(3-\lambda)^2
-=(\lambda+2)^2=0
+\begin{vmatrix}1-\lambda&3\\-3&-5-\lambda\end{vmatrix}=(\lambda+2)^2=0
 $$
 
-으로부터 $S$의 유일한 eigenvalue는 $\lambda_1=-2$임을 알 수 있습니다.
+으로부터 $S$의 유일한 eigenvalue는 $\lambda=-2$임을 알 수 있습니다.
 
 $$
 \begin{align*}
-(R+2I)x_1&=0\\
 \begin{bmatrix}3&3\\-3&-3\end{bmatrix}
 \begin{bmatrix}a\\b\end{bmatrix}&=0
 \end{align*}
@@ -2305,10 +2330,12 @@ x_1=\begin{bmatrix}1\\-1\end{bmatrix}
 $$
 
 입니다.
-이때, eigenvector가 유일하다고 말할 수는 없지만, 모든 eigenvector는 $x_1$의 스칼라곱으로만 얻어진다는 것을 알 수 있습니다.
+따라서, 모든 eigenvector는 $\begin{bmatrix}1&-1\end{bmatrix}^T$의 스칼라곱으로만 얻어진다는 것을 알 수 있습니다.
 
-이때, 특성방정식 $(\lambda+2)^2=0$에서 근 $\lambda_1=-2$는 중근이고 이때의 대수적 중복도(algebraic multiplicity)는 2라고 말합니다.
-한편, $\lambda_1=-2$에 대응되는 모든 eigenvector는 하나의 벡터
+이때, 특성방정식 $(\lambda+2)^2=0$에서 근 $\lambda=-2$는 중근입니다.
+즉, 서로 같은 실근입니다($\lambda_1=\lambda_2=-2$).
+이와 같은 경우에 eigenvalue $-2$에 대한 대수적 중복도(algebraic multiplicity)는 2라고 말합니다.
+한편, $\lambda=-2$에 대응되는 모든 eigenvector는 하나의 벡터
 $\begin{bmatrix}1&-1\end{bmatrix}^T$로 표현될 수 있었습니다.
 이럴 때에, 기하적 중복도(geometric multiplicity)는 1이라고 말합니다.
 
@@ -2318,14 +2345,16 @@ $P$, $Q$, $R$의 예를 다시 살펴보면, eigenvalue가 중근을 가진 적�
 <div class="notice--danger">
 <b>참고 </b> <br>
 이 포스트에서 소개하지 않는 선형대수 용어들을 동원하여 geometric multiplicity의 개념을 설명하자면 다음과 같습니다.
-$n\times n$ 행렬 $A$의 한 eigenvalue가 $\lambda$일 때, $A-\lambda I$는 singular matrix (non-invertible matrix)입니다.
+$n\times n$ 행렬 $A$의 한 eigenvalue가 $\lambda$일 때, $A-\lambda I$는 비가역행렬(singular matrix, not invertible matrix)입니다.
 $A-\lambda I$의 null space
-$$\text{null}(A)=\{x:Ax=0\}$$
+$$N(A)=\{x:Ax=0\}$$
 를 eigenvalue $\lambda$에 대한 eigenspace 라고 합니다.
-이 eigenspace를 $\text{eig}(\lambda)$라고 적으면 $\text{eig}(\lambda)$는 $\mathbb R^n$의 subspace이고 그 dimension이 1 이상이며, eigenvalue들은 $\text{eig(\lambda)}$의 basis를 형성합니다.
+이 eigenspace를 $\text{eig}(\lambda)$라고 적으면 $\text{eig}(\lambda)$는 $\mathbb R^n$의 subspace이고 그 dimension이 1 이상이며, eigenvalue들은 $\text{eig}(\lambda)$의 basis를 형성합니다.
 이때, $\text{eig}(\lambda)$의 dimension을 geometric multiplicity라고 말할 수 있습니다.
 즉, geometric multiplicity란, 특정한 eigenvalue $\lambda$에 대한 임의의 eigenvector를 표현하기 위해 동원되어야 하는 최소한의 eigenvector들의 개수입니다.
 </div>
+
+다른 행렬 
 
 $$
 T=\begin{bmatrix}
@@ -2337,11 +2366,11 @@ $$
 
 $$
 |T-\lambda I|=
-\begin{vmatrix}3-\lambda&0\\0&3-\lambda\end{vmatrix}=(3-\lambda)^2
+\begin{vmatrix}3-\lambda&0\\0&3-\lambda\end{vmatrix}
 =(\lambda-3)^2=0
 $$
 
-eigenvalue는 유일하게 하나($\lambda_1=3$)로 주어집니다.
+eigenvalue는 유일하게 하나($\lambda_1=\lambda_2=3$)로 주어집니다.
 eigenvector를 구하기 위해
 
 $$
@@ -2373,7 +2402,9 @@ $$
 x=ax_1+bx_2
 $$
 
-으로 표현될 수 있다는 사실을 생각해보면 두 개의 *대표적인* eigenvector들을 각각 $x_1$과 $x_2$로 두어도 될 것입니다.
+으로 표현될 수 있다는 사실을 생각해보면 두 개의 *대표적인* eigenvector들을 각각
+$x_1=\begin{bmatrix}1&0\end{bmatrix}^T$과
+$x_2=\begin{bmatrix}0&1\end{bmatrix}^T$로 두어도 될 것입니다.
 이 때에 algebraic multiplicity는 2이고 geometric multiplicity도 2입니다.
 
 $3\times 3$ 행렬
@@ -2388,7 +2419,7 @@ $$
 
 $$
 |U-\lambda I|=
-\begin{vmatrix}2-\lambda&0&1\\0&-\lambda&0\\1&0&2-\lambda\end{vmatrix}=-\lambda^3_4\lambda-3\lambda=-\lambda(\lambda-1)(\lambda-3)=0
+\begin{vmatrix}2-\lambda&0&1\\0&-\lambda&0\\1&0&2-\lambda\end{vmatrix}=-\lambda^3+4\lambda^2-3\lambda=-\lambda(\lambda-1)(\lambda-3)=0
 $$
 
 에서 $\lambda_1=0$, $\lambda_2=1$, $\lambda_3=3$ 입니다.
@@ -2438,11 +2469,12 @@ $$
 에서 $c=a$, $b=0$이고
 
 $$
-x_2=\begin{bmatrix}1\\0\\1\end{bmatrix}
+x_3=\begin{bmatrix}1\\0\\1\end{bmatrix}
 $$
 
 입니다.
-행렬 $V$가
+이때, $U$의 모든 eigenvalue들에 대하여 algebraic multiplicity와 geometric multiplicity는 모두 1입니다.
+마지막 예시로서 행렬 $V$가
 
 $$
 V=\begin{bmatrix}
@@ -2502,19 +2534,562 @@ x_3&=\begin{bmatrix}0\\0\\1\end{bmatrix}
 $$
 
 로 둘 수 있습니다.
+이때, $\lambda_1=0$에 대한 algebraic multiplicity와 geometric multiplicity는 모두 1이고, 
+$\lambda_2=\lambda_3=1$에 대한 algebraic multiplicity와 geometric multiplicity는 모두 2입니다.
 
-# 2. 직교대각화
+<div class="notice--danger">
+<b>참고 </b> <br>
+eigenvalue와 eigenvector는 선형대수의 여러 방면에 쓰입니다.
+이 포스트에서 다루는 바와 같이 직교대각화에 사용되고,선형적인 연립편미분방정식의 해를 구하는 데 쓰일 수 있으며, 머신러닝의 SVD(singular value decomposition), PCA(principal component analysis)의 계산에서도 나타나고, 행렬의 norm을 계산하는 데에도 등장합니다.
+</div>
 
-## 2.1. diagonalization
+## 2.2 대각화와 직교대각화
 
-## 2.2. orthogonal / unitary diagonalization
+이제 이 포스트의 주된 주제인 **대각화(diagonalization)**와 **직교대각화(orthogonal/unitary diagonalization)**에 대해 말할 수 있습니다.
 
-## 2.3. 예시
+<div class="notice--info">
+<b> 정의 19 : 행렬의 대각화와 직교대각화 </b> <br>
+정사각행렬 $A$에 대하여
+<br>
+(a) $A=BDB^{-1}$을 만족시키는 대각행렬 $D$와 가역행렬 $B$가 존재하면 $A$가 **대각화가능(diagonalizable)**하다고 말합니다.
+<br>
+(b) $A$가 실수행렬이고 $A=BDB^{-1}$를 만족시키는 대각행렬 $D$와 orthogonal 행렬 $B$가 존재하면 $A$가 **직교대각화가능(orthogonally diagonalizable)**하다고 말합니다.
+<br>
+(c) $A$가 복소행렬이고 $A=BDB^{-1}$를 만족시키는 대각행렬 $D$와 unitary 행렬 $B$가 존재하면 $A$를 **직교대각화가능 (unitarily diagonalizable)**하다고 말합니다.
+</div>
 
-# 3. 증명
+이 포스트에서는 orthogonal diagonalization과 unitary diagonalization을 모두 '직교대각화'라는 한국어로 지칭했습니다.
+경우에 따라서는 후자를 '유니터리대각화'라는 말로 번역하기도 하는 것 같지만, 너무 긴 용어라고 판단되어서 사용하지 않겠습니다.
+그러니까, 어떤 행렬에 대하여 '직교대각화'라는 말을 쓸 때 그 행렬이 실수행렬이면 orthogonal diagonalization에 대해 말하는 것이고, 그 행렬이 복소행렬이면 unitary diagonalization을 말하는 것입니다.
 
-## 3.1. distinct eigenvalues
+1.4에서 eigenvalue/eigenvector의 의미에 대해 설명하면서 좌표변환에 대해 간략하게 언급했습니다.
+어떤 행렬 $A$에 대한 좌표변환은 [정확하게는, 행렬 $A$의 열들이 basis를 이룰 때, 그 basis에 대한 좌표변환(change of basis)는] 그 행렬의 왼쪽에 가역행렬 $B$를 곱함으로써 얻어질 수 있습니다.
+그런 의미에서 식
 
-## 3.2. repeated roots
+$$A=BDB^{-1}$$
+
+을 변형하여
+
+$$
+\begin{equation}
+AB=BD\tag{(*)}
+\end{equation}
+$$
+
+
+로 쓰면, 이것은
+
+좌표변환 $B$를 거치고 나면 행렬 $A$가 대각행렬 $D$로 변환된다.
+{: .text-center}
+
+라고 말할 수 있는 것입니다.
+일반 행렬 $A$에 비해 대각행렬 $D$는, 특히 거듭제곱의 관점에서, 다루기 쉬운 행렬입니다.
+그런 의미에서 대각화란, 주어진 행렬을 간단한 형태로 변환하는 것을 의미합니다.
+
+위 식 $A=BDB^{-1}$을
+
+$A$와 $D$가 **유사(similar)**하다.
+{: .text-center}
+
+라는 말로 표현하기도 합니다.
+
+한편, $A$가 대각화가능하다고 해도, 좌표변환한 축들이 서로 수직한 경우가 더 '바람직'합니다.
+이러한 행렬을 직교대각화가능한 행렬이라고 부르는 것인데, 어떤 행렬 $A$가 직교대각화가능할 경우, 좌표변환을 관장하는 행렬인 $B$가 orthogonal 행렬이므로 (혹은 unitary 행렬이므로) 그 역행렬을 구하는 것도 매우 간단해집니다. ($B^{-1}=B^T$ 또는 $B^{-1}=B^H$, 이하 성질 10(c), 성질 14(c))
+
+대부분의 행렬들은 대각화가 가능합니다.
+그리고 대각화 과정은 그 행렬의 eigenvalue와 eigenvector를 이용함으로써 쉽게 얻어질 수 있습니다.
+이때, 식 $(*)$에서의 $D$의 대각성분들은 eigenvalue들로 채워지게 되고 $B$의 열들은 eigenvector들로 채워집니다.
+앞서 
+
+$$P=\begin{bmatrix}1&2\\0&2\end{bmatrix}$$
+
+에 대하여
+
+$$
+\begin{align*}
+\lambda_1&=1,&\quad x_1&=\begin{bmatrix}-2\\1\end{bmatrix}\\
+\lambda_2&=2,&\quad x_2&=\begin{bmatrix}1\\0\end{bmatrix}
+\end{align*}
+$$
+
+로 계산했었습니다.
+정의에 의해
+
+$$
+Px_1=\lambda_1x_1,\quad
+Px_2=\lambda_2x_2
+$$
+
+혹은
+
+$$
+\begin{bmatrix}1&2\\0&2\end{bmatrix}
+\begin{bmatrix}-2\\1\end{bmatrix}
+=
+1
+\begin{bmatrix}-2\\1\end{bmatrix}
+,\quad
+\begin{bmatrix}1&2\\0&2\end{bmatrix}
+\begin{bmatrix}1\\0\end{bmatrix}
+=
+2
+\begin{bmatrix}1\\0\end{bmatrix}
+$$
+
+가 성립하는 것인데 이것을 하나의 식
+
+$$
+\begin{bmatrix}1&2\\0&2\end{bmatrix}
+\begin{bmatrix}-2&1\\1&0\end{bmatrix}
+=
+\begin{bmatrix}-2&1\\1&0\end{bmatrix}
+\begin{bmatrix}1&0\\0&2\end{bmatrix}
+$$
+
+으로 표현할 수 있는 것입니다.
+이는 식 $(*)$와 같은 형태이고, 따라서 $P$는 대각화가능합니다;
+
+$$
+P=
+\begin{bmatrix}1&2\\0&2\end{bmatrix}
+=
+BDB^{-1}
+=
+\begin{bmatrix}-2&1\\1&0\end{bmatrix}
+\begin{bmatrix}1&0\\0&2\end{bmatrix}
+\begin{bmatrix}-2&1\\1&0\end{bmatrix}^{-1}
+$$
+
+마찬가지로,
+
+$$
+Q=\begin{bmatrix}2&2\\2&-1\end{bmatrix}
+$$
+
+는
+
+$$
+\begin{align*}
+\lambda_1&=-2,  &\quad x_1&=\begin{bmatrix}1\\-2\end{bmatrix}\\
+\lambda_2&=3,   &\quad x_2&=\begin{bmatrix}2\\1\end{bmatrix}
+\end{align*}
+$$
+
+으로부터
+
+$$
+Q
+\begin{bmatrix}
+|&|\\
+x_1&x_2\\
+|&|
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2&0\\0&3
+\end{bmatrix}
+\begin{bmatrix}
+|&|\\
+x_1&x_2\\
+|&|
+\end{bmatrix}
+$$
+
+이고
+
+$$
+Q=
+\begin{bmatrix}2&2\\2&-1\end{bmatrix}
+=
+BDB^{-1}
+=
+\begin{bmatrix}1&2\\-2&1\end{bmatrix}
+\begin{bmatrix}-2&0\\0&3\end{bmatrix}
+\begin{bmatrix}1&2\\-2&1\end{bmatrix}^{-1}
+$$
+
+입니다.
+
+eigenvalue가 허수였던 행렬
+
+$$
+R=\begin{bmatrix}3&2\\-4&-1\end{bmatrix}
+$$
+
+도
+
+$$
+\begin{align*}
+\lambda_1&=1+2i,    &\quad x_1&=\begin{bmatrix}1\\-1+i\end{bmatrix}\\
+\lambda_2&=1-2i,    &\quad x_2&=\begin{bmatrix}1\\-1-i\end{bmatrix}
+\end{align*}
+$$
+
+에서
+
+$$
+R=
+\begin{bmatrix}3&2\\-4&-1\end{bmatrix}
+=
+BDB^{-1}
+=
+\begin{bmatrix}1&1\\-1+i&-1-i\end{bmatrix}
+\begin{bmatrix}1+2i&0\\0&1-2i\end{bmatrix}
+\begin{bmatrix}1&1\\-1+i&-1-i\end{bmatrix}^{-1}
+$$
+
+입니다.
+
+지금까지 $2\times 2$ 행렬에 대한 대각화를 시도해보았고, $P$, $Q$, $R$이 모두 대각화가능하다는 것을 볼 수 있었습니다.
+특히 $Q$의 경우에는 $B$가 orthogonal 행렬이므로 직교대각화가 가능한 행렬이라는 것을 알 수 있습니다.
+
+한편, 행렬
+
+$$
+S=\begin{bmatrix}
+1&3\\-3&-5
+\end{bmatrix}
+$$
+
+의 경우, 유일한 eigenvalue $\lambda=-2$를 가졌었습니다.
+
+$$
+\lambda_1=\lambda_2=-2,\quad x_1=\begin{bmatrix}1\\-1\end{bmatrix}
+$$
+
+만약 $x_2$를 $x_2=x_1$으로 둔다면,
+
+$$
+Sx_1=\lambda_1x_1,\quad
+Sx_2=\lambda_2x_2,
+$$
+
+$$
+S
+\begin{bmatrix}
+|&|\\
+x_1&x_2\\
+|&|
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2&0\\0&-2
+\end{bmatrix}
+\begin{bmatrix}
+|&|\\
+x_1&x_2\\
+|&|
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2&0\\0&-2
+\end{bmatrix}
+\begin{bmatrix}
+1&1\\
+-1&-1
+\end{bmatrix}
+$$
+
+로 두어 $(*)$와 같은 식을 만들 수는 있습니다.
+하지만,
+
+$$
+B=\begin{bmatrix}1&1\\-1&-1\end{bmatrix}
+$$
+
+이 비가역행렬이므로 $S=BDB^{-1}$와 같이 만들 수 없습니다.
+$S$는 diagonalizable한지 판단할 수 없습니다.
+
+반면, 행렬
+
+$$
+T=\begin{bmatrix}
+3&0\\0&3
+\end{bmatrix}
+$$
+
+는
+
+$$
+\begin{align*}
+\lambda_1&=3,  &\quad x_1&=\begin{bmatrix}1\\0\end{bmatrix}\\
+\lambda_2&=3,  &\quad x_2&=\begin{bmatrix}0\\1\end{bmatrix}
+\end{align*}
+$$
+
+이기 때문에, $S$에서와 마찬가지로 eigenvalue의 algebraic multiplicity가 2이지만, 이 경우에는 대각화가능합니다.
+$P$, $Q$, $R$, $S$에서와 같은 과정을 통해서도 대각화 식을 얻을 수 있지만, $T$는 그 자체로 대각행렬이기 때문에 대각화가능하다고 볼 수 있습니다.
+즉
+
+$$
+T=
+\begin{bmatrix}3&0\\0&3\end{bmatrix}
+=
+IDI^{-1}
+=
+\begin{bmatrix}1&0\\0&1\end{bmatrix}
+\begin{bmatrix}3&0\\0&3\end{bmatrix}
+\begin{bmatrix}1&0\\0&1\end{bmatrix}^{-1}
+$$
+
+인 것입니다.
+
+위의 예들을 통해서 보면 충분한 수의 eigenvector가 생긴다면, 대각화가가능하리라고 판단할 수 있습니다.
+이는 다음과 같이 정리될 수 있습니다.
+
+<div class="notice">
+<b> 성질 20 </b> <br>
+$n\times n$ 행렬 $A$에 대하여 
+$A$의 각 eigenvalue들에 대한 geometric multiplicity의 합이 $n$이면, $A$는 대각화가능합니다.
+</div>
+
+다시 말해, $A$가 선형독립인 $n$개의 eigenvector를 가진다면, $A$는 대각화가능합니다.
+
+다음의 $3\times 3$행렬 $U$, $V$도 충분한 geometric multiplicity를 가지므로 모두 대각화가능합니다.
+특히, $U$는 eigenvector들이 pairwisely orthogonal하므로 orthogonal diagonalization도 가능합니다.
+
+$$
+\begin{align*}
+ U&=\begin{bmatrix}2&0&1\\0&0&0\\1&0&2\end{bmatrix}
+&V&=\begin{bmatrix}0&0&2\\-3&1&6\\0&0&1\end{bmatrix}\\
+\lambda_1&=0,\quad x_1=\begin{bmatrix}0\\1\\0\end{bmatrix}
+&\lambda_1&=0,\quad x_1=\begin{bmatrix}1\\3\\0\end{bmatrix}\\
+\lambda_2&=1,\quad x_2=\begin{bmatrix}1\\0\\-1\end{bmatrix}
+&\lambda_2&=1,\quad x_2=\begin{bmatrix}2\\1\\0\end{bmatrix}\\
+\lambda_3&=3,\quad x_3=\begin{bmatrix}1\\0\\1\end{bmatrix}
+&\lambda_3&=1,\quad x_3=\begin{bmatrix}0\\0\\1\end{bmatrix}\\
+U&=
+\begin{bmatrix}
+|&|&|\\
+x_1&x_2&x_3\\
+|&|&|
+\end{bmatrix}
+\begin{bmatrix}
+0&0&0\\
+0&1&0\\
+0&0&3
+\end{bmatrix}
+\begin{bmatrix}
+-&{x_1}^T&-\\
+-&{x_2}^T&-\\
+-&{x_3}^T&-
+\end{bmatrix}^{-1}\\
+&=
+\begin{bmatrix}
+0&1&1\\
+1&0&0\\
+0&-1&1
+\end{bmatrix}
+\begin{bmatrix}
+0&0&0\\
+0&1&0\\
+0&0&3
+\end{bmatrix}
+\begin{bmatrix}
+0&1&1\\
+1&0&0\\
+0&-1&1
+\end{bmatrix}^{-1}\\
+&=
+\begin{bmatrix}
+0&1&1\\
+1&0&0\\
+0&-1&1
+\end{bmatrix}
+\begin{bmatrix}
+0&0&0\\
+0&1&0\\
+0&0&3
+\end{bmatrix}
+\begin{bmatrix}
+0&1&0\\
+1&0&-1\\
+1&0&1
+\end{bmatrix}\\
+V&=
+\begin{bmatrix}
+|&|&|\\
+x_1&x_2&x_3\\
+|&|&|
+\end{bmatrix}
+\begin{bmatrix}
+0&0&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix}
+\begin{bmatrix}
+-&{x_1}^T&-\\
+-&{x_2}^T&-\\
+-&{x_3}^T&-
+\end{bmatrix}^{-1}\\
+&=
+\begin{bmatrix}
+1&2&0\\
+3&1&0\\
+0&0&1
+\end{bmatrix}
+\begin{bmatrix}
+0&0&0\\
+0&1&0\\
+0&0&1
+\end{bmatrix}
+\begin{bmatrix}
+1&2&0\\
+3&1&0\\
+0&0&1
+\end{bmatrix}^{-1}
+\end{align*}
+$$
+
+행렬의 직교대각화에 관하여 기본적인 정리이자, 이 포스트의 목적이기도 한 두 명제는 다음과 같습니다.
+
+<div class="notice--success">
+<b> 정리 21 </b> <br>
+정사각행렬 $A$에 대하여 <br>
+(a) $A$가 실수 행렬이고 symmetric 행렬이면 $A$는 orthogonally diagonalizable합니다. <br>
+(b) $A$가 복소 행렬이고 Hermitian 행렬이면 $A$는 unitarily diagonalizable합니다.
+</div>
+
+실제로, 위의 예시들에서 $Q$, $U$는 real symmetric 행렬(실수 행렬이면서 symmetric) 이었고, orthogonally diagonalizable했습니다.
+
+한편, 위의 정리에서 (b)만 증명하면 (a)도 증명하는 셈이 됩니다.
+(b)가 성립한다고 가정하고 $A$가 real symmetric 하다고 하면 $A$는 Hermitian 행렬이기도 합니다$(A^H={\overline A}^T=A^T=A)$.
+따라서 (b)에 의해 $A$는 $A=BDB^{-1}$를 만족시키는 unitary 행렬 $B$가 존재합니다.
+그런데 1.4의 마지막 참고에 의해 $B$는 orthogonal 행렬이기도 합니다.
+그러니까, $A$는 unitarily diagonalizable할 뿐만 아니라 orthogonally diagonalizable하기도 한 것입니다.
+
+남은 포스트의 내용은 정리 21(b)를 증명하는 것을 목적으로 합니다.
+그리고 사실 원래 만들었던 [파일]({{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf){: .btn .btn--primary}의 내용은 지금부터이며, 앞의 내용들은 이 증명을 위한 배경지식이었습니다.
+
+만약, 행렬 $A$의 eigenvalue들이 모두 다를 경우에 정리 21(b)를 증명하는 것은 그래도 꽤 간결하게 설명될 수 있습니다.
+하지만, 그렇지 않을 경우, 즉 characteristic equation이 중근을 가질 경우는 그렇게 간단하지 않아서, Schur's lemma를 사용해 설명해보았습니다.
+이 부분들은 Gilbert Strang의 「Linear Algebra and its Applications」 (4판, 2006)을 참고하여 적은 것임을 밝힙니다.
+
+## 2.3 증명 1 : distinct eigenvalues
+
+<div class="notice--primary">
+<b> 성질 22 </b> <br>
+정사각행렬 $A$에 대하여 $A$가 Hermitian이면 다음 사실이 성립합니다. <br>
+(a) $x^HAx$는 실수입니다. <br>
+(b) $A$의 eigenvalue들은 모두 실수입니다 <br>
+(c) 만약 $A$의 eigenvalue들이 모두 다르다면, eigenvector들은 pairwisely orthogonal합니다.
+</div>
+
+(a)에 대해 증명하기 전에, $2\times2$의 경우를 간단히 보겠습니다.
+$A$가 Hermitian이므로
+
+$$A=\begin{bmatrix}a&b\\\overline b&c\end{bmatrix}$$
+
+로 둘 수 있습니다.
+이때, $a$, $b$, $c$는 모두 복소수입니다.
+그러면, $x^HAx$는 각각 $1\times 2$, $2\times2$, $2\times 1$ 행렬이므로 행렬곱 연산이 가능하고, 그 결과는 $1\times1$ 행렬로 이것을 하나의 복소수로 취급할 수 있습니다.
+
+$$x=\begin{bmatrix}u\\v\end{bmatrix}$$
+
+로 두고 계산하면
+
+$$
+x^HAx=
+\begin{bmatrix}\overline u&\overline v\end{bmatrix}
+\begin{bmatrix}a&b\\\overline b&c\end{bmatrix}
+\begin{bmatrix}u\\v\end{bmatrix}
+=a\overline uu+\overline bu\overline v+b\overline uv+c\overline vv
+=a|u|^2+(\overline bu\overline v+\overline{\overline bu\overline v})+c|v|^2
+$$
+
+이 됩니다.
+첫번째 항과 마지막 항은 당연히 실수이고, 가운데 괄호의 두 개 항은 켤레관계인 두 복소수 사이의 합이므로 여전히 실수입니다.
+따라서 $x^HAx$는 항상 실수입니다.
+
+이에 대한 일반적인 증명은, 지금까지의 설명보다도 훨씬 짧습니다.
+$x^HAx$가 $1\times1$ 행렬임을 상기하고 이것의 conjugation을 계산하면 (성질 4(c), (d) 등에 의해)
+
+$$\overline{\left(x^HAx\right)}=\overline{\left(x^HAx\right)}^T=\left(x^HAx\right)^H=x^HA^H(x^H)^H=x^HAx^H.$$
+
+입니다.
+$x^HAx$의 conjugation을 취한 것이 자기 자신과 같으므로 정리 1에 의해 $x^HAx$는 실수입니다.
+
+(b)의 증명도 어렵지 않습니다.
+$\lambda$를 $A$의 한 eigenvalue라고 하겠습니다.
+우리는 $\lambda$가 실수임을 증명하기만 하면 됩니다.
+
+eigenvalue의 정의(정의 17)에 의해
+
+$$Ax=\lambda x$$
+
+를 만족시키는 벡터 $x$가 존재합니다$(x\ne0)$.
+이 식의 양변의 왼쪽에 $x^H$를 곱하면
+
+$$x^HAx=x^H(\lambda x)=\lambda x^Hx=\lambda\cdot||x||$$
+
+가 됩니다.
+$x\ne0$이므로 $||x||\ne0$이고, (a)에 의해
+
+$$\lambda=\frac{x^HAx}{||x||}$$
+
+는 실수입니다.
+
+(c)의 증명은 다음과 같습니다.
+$A$의 두 eigenvector를 각각 $x_1$, $x_2$라고 하고, 대응되는 eigenvalue들을 각각 $\lambda_1$, $\lambda_2$라고 하겠습니다.
+그러면 가정에 의해 $\lambda_1\ne\lambda_2$이고 $Ax_1=\lambda_1x_1$, $Ax_2=\lambda_2x_2$ 입니다.
+그러면
+
+$$
+\begin{align*}
+\lambda_1{x_1}^Hx_2
+&=\left(\lambda_1{x_1}\right)^Hx_2=\left(Ax_1\right)^Hx_2\\
+&={x_1}^HA^Hx_2={x_1}^HAx_2={x_1}^H(\lambda_2x_2)=\lambda_2{x_1}^Hx_2
+\end{align*}
+$$
+
+입니다.
+즉
+
+$$\left(\lambda_1-\lambda_2\right){x_1}^Hx_2=0$$
+
+이고, $\lambda_1\ne\lambda_2$ 로부터
+
+$${x_1}^Hx_2=0$$
+
+입니다.
+다시 말해, $x_1$과 $x_2$의 내적 $\langle x_1, x_2 rangle$가 0이라는 말이므로 $x_1$과 $x_2$는 orthogonal합니다.
+
+그러니까, 임의의 서로다른 두 eigenvector라고 하더라도 orthogonal하므로 (c)가 증명된 셈입니다.
+
+위의 세 성질을 이용하면, eigenvalue들의 근이 모두 다를 경우에 대한 정리 21(b)의 증명은 다음과 같이 될 수 있습니다.
+
+<div class="notice--warning">
+<b>증명 : $A$가 $n\times n$ Hermitian 행렬이고, $n$개의 서로다른 eigenvalue들을 가지면 $A$는 unitarilly diagonalizable 합니다. </b> <br>
+</div>
+
+$A$의 eigenvalue들을 $\lambda_1$, $\cdots$, $\lambda_n$이라고 하고 ($i\ne j$이면 $\lambda_i\ne\lambda_j$) 대응되는 eigenvector들을 $x_1$, $\cdots$, $x_n$이라고 하면, $i=1,\cdots,n$에 대하여
+
+$$Ax_i=\lambda_ix_i$$
+
+가 성립합니다.
+성질 22(c)에 의해 $x_i$들은 pairwisely orthogonal합니다.
+그런데 $x_i$들의 스칼라곱도 여전히 eigenvector이므로 (성질 18(a)), $x_i$들의 norm이 모두 1이라고 가정할 수 있습니다.
+즉 $x_i$들이 orthonormal하다고 말할 수 있습니다.
+이제 2.2 에서 여러 행렬들에 대해서 했던 것과 비슷하게 하면
+
+$$B=\begin{bmatrix}|&|&|\\x_1&\cdots&x_n\\|&|&|\end{bmatrix}$$
+
+는 unitary 행렬이고 (성질 10(a))
+
+$$
+\begin{align*}
+AB&=A\begin{bmatrix}|&&|\\x_1&\cdots&x_n\\|&&|\end{bmatrix}
+=\begin{bmatrix}Ax_1&\cdots&Ax_n\end{bmatrix}
+=\begin{bmatrix}\lambda_1x_1&\cdots&\lambda_nx_n\end{bmatrix}\\
+&=\begin{bmatrix}|&&|\\x_1&\cdots&x_n\\|&&|\end{bmatrix}
+\begin{bmatrix}\lambda_1&\cdots&0\\\vdots&\ddots&\vdots\\0&\cdots&\lambda_n\end{bmatrix}
+=BD
+\end{align*}
+$$
+
+입니다.
+따라서 $A=BDB^H$이고 $A$는 unitarily diagonalizable합니다.
+
+## 2.4 증명 2 : repeated roots
 
 [1]:{{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf

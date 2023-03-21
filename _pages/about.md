@@ -4,9 +4,10 @@ title: "About"
 toc: true
 toc_sticky: true
 toc_label: "MYSELF"
+author_profile: false
 ---
 
-<img src="\assets\images\wide_landscape3.jpg" alt="about" style="max-width: 100%; height: auto;"/>
+<img src="\assets\images\archimedes.webp" alt="about" style="max-width: 100%; height: auto;"/>
 
 수학, 머신러닝, 소설을 좋아합니다.
 
