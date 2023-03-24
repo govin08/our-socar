@@ -3367,7 +3367,7 @@ $$x_4=\frac{x_4}{||x_4||}
 
 이제 Schur's Lemma를 증명할 수 있습니다.
 
-<div class="primary">
+<div class="notice">
 <b>성질 24 </b> <br>
 대각행렬 $A$에 대하여 $U^{-1}AU$가 상삼각행렬인 unitary 행렬 $U$가 존재합니다.
 </div>
