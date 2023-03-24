@@ -11,10 +11,10 @@ author_profile: false
 
 <!-- https://mmistakes.github.io/minimal-mistakes/docs/utility-classes/
 primary / 회색 / 성질
-info / 파랑 / 정의
-warning / 주황 / 증명
-success / 연두 / 정리
-danger / 빨강 / 참고 -->
+notice--info / 파랑 / 정의
+notice--warning / 주황 / 증명
+notice--success / 연두 / 정리
+notice--danger / 빨강 / 참고 -->
 
 2020년 3월, 대학원의 두번째 학기에 행렬의 직교대각화(orthogonal diagonalization)에 대해 고민했습니다.
 해당 내용은 수학과 기준 학부 2학년 2학기에 배워야 하는 내용이지만, 그리고 해당 시기의 〈선형대수2〉 과목은 A+을 받기는 했지만, 완벽하게 직교대각화에 대해 이해하지는 못했습니다.
@@ -26,7 +26,7 @@ danger / 빨강 / 참고 -->
 
 그리하여, 한 번 시간을 잡고 위의 두 내용에 대해 고민해본 적이 있습니다.
 많은 자료들을 뒤졌지만 정작 제가 궁금해하는 저 위의 사실에 대하여 AtoZ로 알려주는 자료는 찾지 못했습니다.
-그래서, 해당 내용을 직접 TeX으로 정리해 본 적이 있습니다.
+그래서, 관련 내용을 직접 TeX으로 정리해 본 적이 있습니다.
 [링크]({{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf){: .btn .btn--primary}
 
 해당 파일은 영어로 작성해본 것인데, 이번 포스트에서는 이것을 한글로 적으면서 내용도 풀어서 다시 정리해보고자 합니다.
@@ -35,7 +35,7 @@ danger / 빨강 / 참고 -->
 <div class="notice--danger">
 <b>참고 </b> <br>
 이 포스트는 기본적으로 한글을 사용하지만, 사용된 수학 용어들은 대부분 영어로 적었습니다.
-해당 용어가 처음 등장할 때에 한해서만 한글 표현을 병기해보았습니다.
+용어가 처음 등장할 때에 한해서만 한글 표현을 병기해보았습니다.
 다만, 고등학교 수준의 수학 용어는 그냥 한국어 용어로 썼습니다.
 </div>
 
@@ -178,11 +178,11 @@ $$AA^{-1}=A^{-1}=I$$
     </center>
 <br>
 이것은 당연한 말 같아보이기는 해도, 쉽게 증명되지는 않습니다.
-뒤에 나오는 정리 16(a)를 사용하면 determinant를 사용하여
+뒤에 나오는 정리 14(a)를 사용하면 determinant를 사용하여
 <a href="https://math.stackexchange.com/q/852390">증명</a>
 할 수 있습니다.
 만약, 정사각행렬들의 집합이 algebra over a field 라는 사실을 사용하면 선형대수의 다른 개념들을 많이 사용하지 않고도
-<a href="https://math.stackexchange.com/q/3860">증명</a>
+<a href="https://math.stackexchange.com/q/3855">증명</a>
 할 수 있습니다.
 <br>
 여하튼, 이것을 정리하면 다음과 같이 쓸 수 있습니다.
@@ -288,16 +288,16 @@ $$
 입니다.
 이때, 실수의 켤레복소수가 자기 자신이 된다는 것은 중요합니다.
 
-**정리 1** \\
-$z$가 실수이면, $\bar z=z$이고, 그 역도 성립합니다.
-{: .notice--success}
+정확하게 말하면
 
-**증명** \\
+$z$가 실수이면, $\bar z=z$이고, 그 역도 성립합니다.
+{: .text-center}
+
+이에 대한 증명은 간단합니다.
 복소수 $z=a+bi$에 대하여, 만약 $z$가 실수이면 $b=0$이고, $\bar z=\overline{a+0i}=a-0i=z$입니다.
 반대로,$\bar z=z$이면 $a+bi=a-bi$입니다.
 두 복소수가 같으려면 실수부분과 허수부분이 서로 같아야 하므로 $b=-b$, $2b=0$, $b=0$입니다.
-따라서 $z$는 실수입니다. $\square$a
-{: .notice--warning}
+따라서 $z$는 실수입니다. $\square$
 
 conjugation은 단순히 복소수에 대해서만이 아니라, 복소수를 성분으로 가지는 행렬에 대해서도 취할 수 있습니다.
 행렬 $A$에 대하여 $A$의 conjugate은 $\bar A$로 표시하며, $A$의 각 성분들에 conjugation을 취한 행렬로 정의합니다;
@@ -319,23 +319,20 @@ $$
 $$
 
 인 것입니다.
-한편, 정리 1을 응용하면 다음과 같이 쓸 수도 있습니다.
+복소행렬의 conjugation에 대해서도 위의 명제와 비슷한 명제가 성립합니다;
 
-**정리 2** \\
 $A$가 실수로 이루어진 행렬이면, $\bar A=A$이고, 그 역도 성립합니다.
-{: .notice--success}
+{: .text-center}
 
-<div class="notice--warning">
-<b>증명 </b> <br>
-<!-- 복소수로 이루어진 행렬 $A$를 $A=\left(a_{ij}\right)_{m\times n}$으로 표현하겠습니다. -->
 만약, $A$가 실수로 이루어진 행렬이면,
-$\bar A = \left(\overline{a_{ij}}\right)_{m\times n} = \left(a_{ij}\right)_{m\times n} = A$
+
+$$\bar A = \left(\overline{a_{ij}}\right)_{m\times n} = \left(a_{ij}\right)_{m\times n} = A$$
+
 입니다.
 반대로, $\bar A=A$이면, 모든 $i$, $j$에 대하여 $\overline{a_{ij}}=a_{ij}$가 성립한다는 뜻입니다.
 따라서 $a_{ij}$들은 모두 실수입니다. $\square$
-</div>
 
-지금까지 정의한 행렬 $P$, $Q$, $R$, $S$, $T$, $Z$에서 정리 2를 간단히 확인해볼 수 있습니다.
+지금까지 정의한 행렬 $P$, $Q$, $R$, $S$, $T$, $Z$에서 위의 사실을 간단히 확인해볼 수 있습니다.
 $P$, $Q$, $R$, $S$, $Z$는 실수로 이루어진 행렬들이고 $\overline P=P$, $\overline Q=Q$, $\overline R=R$, $\overline S=S$, $\overline T=T$가 성립합니다.
 $Z$는 실수로만 이루어진 행렬이 아니고, 허수가 포함된 행렬입니다.
 따라서 $\bar Z\neq Z$입니다.
@@ -357,7 +354,7 @@ $$
 
 와 같이 정의해도 정확히 같은 정의가 됩니다.
 
-한편, 정리 2에 따르면 실수로 이루어진 행렬이면 $A$에 대하여 transpose를 취하는 것과 conjugate transpose를 취하는 것에는 차이가 없습니다 ; 
+한편, 실수로 이루어진 행렬이면 $A$에 대하여 transpose를 취하는 것과 conjugate transpose를 취하는 것에는 차이가 없습니다 ; 
 
 $$
 A^H=\overline{\left(a_{ij}\right)_{n\times n}\,^T}
@@ -367,7 +364,7 @@ A^H=\overline{\left(a_{ij}\right)_{n\times n}\,^T}
 =A^T
 $$
 
-또한, 두 행렬 $A$, $B$의 곱 $AB$에 대하여 transpose나 conjugate transpose를 취한 결과는 각 행렬을 transpose 혹은 conjugate transpose한 후 순서를 바꾸어 얻은 결과와 같습니다 : 성질 4(c)
+또한, 두 행렬 $A$, $B$의 곱 $AB$에 대하여 transpose나 conjugate transpose를 취한 결과는 각 행렬을 transpose 혹은 conjugate transpose한 후 순서를 바꾸어 얻은 결과와 같습니다 : 성질 02(c)
 
 $$
 \begin{align*}
@@ -381,7 +378,7 @@ $$
 &=\overline{\left(AB\right)_{ij}}
 =\overline{\sum_{k=1}^na_{ik}b_{kj}}\\
 &=\sum_{k=1}^n\overline{a_{ik}}\overline{b_{kj}}
-=\overline A\overline B\\
+=\overline A\;\overline B\\
 (AB)^H
 &=\left(\overline{AB}\right)^T
 =\left(\overline A\overline B\right)^T
@@ -390,7 +387,7 @@ $$
 \end{align*}
 $$
 
-<!-- 그리고, 어떤 행렬에 transpose 혹은 conjugate transpose를 두 번 연달아 적용하면 원래 행렬로 돌아옵니다 : 성질 4(d)
+<!-- 그리고, 어떤 행렬에 transpose 혹은 conjugate transpose를 두 번 연달아 적용하면 원래 행렬로 돌아옵니다 : 성질 02(d)
 
 $$
 \begin{align*}
@@ -406,20 +403,20 @@ $$ -->
 이상을 정리하면 다음과 같습니다.
 
 <div class="notice--info">
-<b> 정의 3 : 행렬의 연산 </b> <br>
+<b> 정의 01 : 행렬의 연산 </b> <br>
 정사각행렬 $A=\left(a_{ij}\right)_{n\times n}$, $B=\left(b_{ij}\right)_{n\times n}$와 실수 $c$에 대하여
 <br>
 (a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
 <br>
-(a) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
+(b) $A-B=\left(a_{ij}-b_{ij}\right)_{n\times n}$
 <br>
-(b) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
+(c) $AB=\left(\sum_{k=1}^na_{ik}b_{kj}\right)_{n\times n}$
 <br>
-(c) $cA=\left(ca_{ij}\right)_{n\times n}$
+(d) $cA=\left(ca_{ij}\right)_{n\times n}$
 <br>
-(d) $A^T=\left(a_{ji}\right)_{n\times n}$
+(e) $A^T=\left(a_{ji}\right)_{n\times n}$
 <br>
-(e) $A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
+(f) $A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
 </div>
 
 <!-- (a) $A+B=\left(a_{ij}+b_{ij}\right)_{n\times n}$
@@ -435,17 +432,22 @@ $$ -->
 (f) $A^H=\left(\overline{a_{ji}\,}\right)_{n\times n}$
 <br> -->
 
-이때, (c)에서 정의되는 연산을 **스칼라곱(scalar multiplication)**이라고 부릅니다.
-(c)에서 $c$값은 스칼라(scalar)라고 부르며 이것은 실수 (혹은 복소수)를 의미합니다.
+
+(a)에서 정의된 행렬의 덧셈은 결합법칙과 교환법칙을 만족시킵니다 ; $(A+B)+C=A+(B+C)$, $(AB)C=A(BC)$.
+(c)에서 정의된 행렬의 곱셈은 결합법칙을 만족시키지만 교환법칙을 만족시키지는 않습니다 ; $(AB)C=A(BC)$.
+덧셈과 곱셈에 대해서 분배법칙도 성립합니다 ; $(A+B)C=AB+BC$, $A(B+C)=AB+AC$.
+(d)에서 정의되는 연산을 **스칼라곱(scalar multiplication)**이라고 부릅니다.
+(d)에서 $c$값은 스칼라(scalar)라고 부르며 이것은 실수 (혹은 복소수)를 의미합니다.
+스칼라곱에 대해서 분배법칙과 비슷한 성질들이 성립합니다 ; $(c_1+c_2)A=c_1A+c_2A$, $c(A+B)=cA+cB$.
 
 <div class="notice">
-<b> 성질 4 </b> <br>
+<b> 성질 02 </b> <br>
 정사각행렬 $A=\left(a_{ij}\right)_{n\times n}$, $B=\left(b_{ij}\right)_{n\times n}$에 대하여 <br>
 (a) $A$가 실수로 이루어진 행렬이면 $\overline A=A$가 성립하고 그 역도 성립합니다.
 <br>
-(b) $A$가 실수로 이루어진 행렬이면 $A^T=A^H$가 성립하고 그 역도 성립합니다.
+(b) $A$가 실수로 이루어진 행렬이면 $A^H=A^T$가 성립하고 그 역도 성립합니다.
 <br>
-(c) $(AB)^T=B^TA^T$, $\overline{AB}=\overline A\overline B$, $(AB)^H=B^HA^H$
+(c) $(AB)^T=B^TA^T$, $\overline{AB}=\overline A\;\overline B$, $(AB)^H=B^HA^H$
 <br>
 (d) $(A^T)^T=A$, $(A^H)^H=A$
 <br>
@@ -476,7 +478,7 @@ $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니�
 
 행렬의 symmetricity는 transpose를 사용하면 쉽게 정의할 수도 있습니다.
 
-**정의 5**\\
+**정의 03**\\
 행렬 $A$에 대하여 $A^T=A$이면 $A$를 symmetric 행렬이라고 부릅니다.
 {: .notice--info}
 
@@ -485,7 +487,7 @@ $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니�
 한편, Hermitian 행렬(Hermitian matrix, 에르미트 행렬)이란, 대각선을 기준으로 양옆이 서로 켤레관계인 행렬을 말합니다.
 이것을 conjugate transpose로 표현하면 다음과 같이 간단하게 정의할 수 있습니다.
 
-**정의 6**\\
+**정의 04**\\
 행렬 $A$에 대하여 $A^H=A$이면 $A$를 Hermitian 행렬이라고 부릅니다.
 {: .notice--info}
 
@@ -544,7 +546,7 @@ $$
 
 (그러니까, $T$는 symmetric 행렬이면서 Hermitian 행렬입니다.
 반면에 $P$는 symmetric 행렬도 못 되고, Hermitian 행렬도 못 됩니다.)
-즉, 실수로 이루어진 행렬에서는 conjugation은 아무 역할을 하지 못하기 때문에 (정리 2) symmetricity와 Hermitianity의 개념이 서로 일치합니다.
+즉, 실수로 이루어진 행렬에서는 conjugation은 아무 역할을 하지 못하기 때문에 symmetricity와 Hermitianity의 개념이 서로 일치합니다.
 다시 말해, 모든 real symmetric 행렬 (실수로 이루어진 행렬들 중 symmetric 행렬)은 Hermitian 행렬인 것입니다.
 
 마지막으로, $U$도 Hermitian 행렬입니다.
@@ -639,7 +641,7 @@ $$
 또한 $x$의 크기는 $||x||$로 표시하며, '크기'라는 표현 대신 'norm'이라는 표현을 사용하겠습니다.
 
 <div class="notice--info">
-<b> 정의 7 </b> <br>
+<b> 정의 05 </b> <br>
 (a) $n$차원 실수 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적은
 
 $$\langle x,y\rangle=x^Ty$$
@@ -740,7 +742,7 @@ $$
 정리하면 다음과 같습니다.
 
 <div class="notice--info">
-<b> 정의 8 </b> <br>
+<b> 정의 06 </b> <br>
 (a) 두 실수 벡터 $x$, $y$에 대하여
 
 $$x^Ty=0$$
@@ -772,7 +774,7 @@ $$
 \end{align*}
 $$ -->
 
-***orthogonal 행렬**
+**orthogonal 행렬**
 
 orthogonal한 세 개의 3차원벡터 $v_1$, $v_2$, $v_3$에 대해 다시 생각해봅시다.
 
@@ -903,7 +905,7 @@ $$W^TW=I$$
 <!-- 즉, orthonormal한 열벡터들이 가로로 나열되어 있는 정사각행렬을 orthogonal 행렬이라고 합니다. -->
 
 <div class="notice--info">
-<b> 정의 9 </b> <br>
+<b> 정의 07 </b> <br>
 정사각행렬 $A$가
 
 $$A^TA=I$$
@@ -915,7 +917,7 @@ $w_1$, $w_2$, $w_3$와 $W$ 사이의 관계에서 볼 수 있듯 다음의 성�
 또한, 1.1의 두번째 참고에 의해 성질 9(c)가 성립합니다.
 
 <div class="notice">
-<b>성질 10 </b> <br>
+<b>성질 08 </b> <br>
 (a) $n$차원의 orthonormal한 실수벡터들 $n$개를 가로로 나열해서 얻은 행렬은 orthogonal 합니다.
 <br>
 (b) $A$가 orthogonal 행렬이면 $A$의 각 열들은 orthonormal 합니다.
@@ -925,12 +927,12 @@ $$A^{-1}=A^T$$
 </div>
 
 <div class="notice--danger">
-<b> 주의 </b> <br>
+<b> 참고 </b> <br>
 이 포스트에서 orthogonal이라는 말은 두 가지 의미를 가집니다.
 두 의미를 혼동하지 않고 잘 사용해야 합니다.
 <ul>
     <li> 두 벡터가 orthogonal한 것은 두 벡터를 내적했을 때 0이 된다는 뜻입니다.</li>
-    <li> 어떤 정사각행렬이 orthogonal한 것은 역행렬과 transpose가 일치한다는 뜻입니다.</li>
+    <li> 어떤 정사각행렬이 orthogonal한 것은 각 열들이 orthonormal하다는 뜻입니다. 즉, 역행렬과 transpose가 일치하는 경우입니다.</li>
 </ul>
 </div>
 
@@ -940,7 +942,7 @@ $$A^{-1}=A^T$$
 일반적으로, 성분이 복소수인 벡터 혹은 행렬(복소 벡터, 복소 행렬)에 대해 생각한다면, 그에 따른 내적, norm, orthogonality 등의 개념은 실수일 때와는 조금 다르게 정의됩니다.
 
 <div class="notice--info">
-<b> 정의 11 </b> <br>
+<b> 정의 09 </b> <br>
 (a) $n$차원 복소 벡터 $x$, $y$에 대하여 $x$와 $y$의 내적 $\langle x,y\rangle$은
 
 $$\langle x,y\rangle=x^Hy$$
@@ -954,7 +956,7 @@ $$||x||=\sqrt{\langle x,x\rangle}=\sqrt{x^Hx}$$
 입니다.
 </div>
 
-정의 6과 비교해보면 transpose(T)였던 것이 conjugate transpose(H)로 바뀌었습니다.
+정의 4와 비교해보면 transpose(T)였던 것이 conjugate transpose(H)로 바뀌었습니다.
 다시 말해,
 
 $$x=\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix},\quad y=\begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}$$
@@ -971,7 +973,7 @@ $$
 $$
 
 인 것입니다.
-(복소수 $z=a+bi$에 대하여 $z$의 절댓값 $|z|$는 $|z|=\sqrt{z\bar z}=\sqrt{a^2+b^2}로 정의됩니다.)
+(복소수 $z=a+bi$에 대하여 $z$의 절댓값 $|z|$는 $|z|=\sqrt{z\bar z}=\sqrt{a^2+b^2}$로 정의됩니다.)
 예를 들어, 벡터 $u_1$, $u_2$가
 
 $$
@@ -1011,10 +1013,30 @@ $$
 
 입니다.
 
+<div class="notice--danger">
+<b> 참고 </b> <br>
+정의 5에서 정의된 실수벡터의 내적 $\langle x,y\rangle=x^Ty$는 좋은 성질들이 많이 성립합니다; $x$, $y$, $z$가 실수벡터이고 $c$가 실수일 때,
+<ul>
+    <li> $\langle x,y\rangle=\langle y,x\rangle$ </li>
+    <li> $\langle x+y,z\rangle=\langle x,z\rangle+\langle y,z\rangle$ </li>
+    <li> $\langle x,y+z\rangle=\langle x,y\rangle+\langle x,z\rangle$ </li>
+    <li> $\langle cx,y\rangle=c\langle x,y\rangle=\langle x,cy\rangle$ </li>
+</ul>
+하지만 정의 9에서 정의된 복소벡터의 내적 $\langle x,y\rangle=x^Hy$에 대해서는, 조금 더 일반적인 다음 성질들이 성립합니다; ; $x$, $y$, $z$가 복소벡터이고 $c$가 복소수일 때,
+<ul>
+    <li> $\langle x,y\rangle=\overline{\langle y,x\rangle}$ </li>
+    <li> $\langle x+y,z\rangle=\langle x,z\rangle+\langle y,z\rangle$ </li>
+    <li> $\langle x,y+z\rangle=\langle x,y\rangle+\langle x,z\rangle$ </li>
+    <li> $\langle cx,y\rangle=\overline c\langle x,y\rangle$</li>
+    <li> $\langle x,cy\rangle=c\langle x,y\rangle$</li>
+</ul>
+이 성질들은 정의 4, 정의 9의 식들에 대입하면 바로 증명될 수 있습니다.
+</div>
+
 위와 같이 정의한 내적을 이용해 복소벡터의 수직(orthogonality)의 개념도 정의할 수 있습니다.
 
 <div class="notice--info">
-<b> 정의 12 </b> <br>
+<b> 정의 10 </b> <br>
 (a) 두 복소 벡터 $x$, $y$에 대하여 
 
 $$x^Hy=0$$
@@ -1046,7 +1068,7 @@ u_1=\begin{bmatrix}1+2i\\2-i\end{bmatrix},\quad
 u_2=\begin{bmatrix}3\\1-i\end{bmatrix}
 $$
 
-는 pairwisely orthogonal 하지도, orthonormal하지도 않습니다.
+는 orthogonal 하지도, orthonormal하지도 않습니다.
 반면,
 
 $$
@@ -1054,7 +1076,7 @@ v_1=\begin{bmatrix}3-i\\i\end{bmatrix},\quad
 v_2=\begin{bmatrix}1-i\\-2-4i\end{bmatrix}
 $$
 
-는 pairwisely orthogonal 하지만, orthonormal하지는 않습니다;
+는 orthogonal 하지만, orthonormal하지는 않습니다;
 
 <!-- $$
 \begin{align*}
@@ -1114,7 +1136,7 @@ $$W^HW=I$$
 이때 $W$와 같은 행렬을 **unitary 행렬**이라고 부릅니다.
 
 <div class="notice--info">
-<b> 정의 13 </b> <br>
+<b> 정의 11 </b> <br>
 복소수를 성분으로 가지는 정사각행렬 $A$가
 
 $$A^HA=I$$
@@ -1125,7 +1147,7 @@ $$A^HA=I$$
 행렬의 orthogonality에 대하여 성질 12가 성립하는 것과 마찬가지로, unitarity에 대해서는 아래의 성질들이 성립합니다.
 
 <div class="notice">
-<b>성질 14 </b> <br>
+<b>성질 12 </b> <br>
 (a) $n$차원의 orthonormal한 복소 벡터들 $n$개를 가로로 나열해서 얻은 행렬은 unitary 합니다.
 <br>
 (b) $A$가 unitary 행렬이면 $A$의 각 열들은 orthonormal 합니다.
@@ -1136,6 +1158,7 @@ $$A^{-1}=A^H$$
 
 <div class="notice--danger">
 <b> 참고 </b> <br>
+(a)
 $A^TA=I$를 만족시키는 실수 행렬을 orthogonal 행렬이라고 했었습니다.
 그리고 $A^HA=I$를 만족시키는 복소 행렬을 unitary 행렬이라고 했습니다.
 
@@ -1146,6 +1169,10 @@ $A$가 orthogonal 행렬이면, $A$의 모든 성분들은 실수이고 $A^TA=I$
 $$A^HA=A^TA=I$$
 
 이기 때문입니다.
+<br>
+(b) 두 벡터에 대한 orthogonality, 여러 벡터에 대한 pairwise orthogonality와 orthonormality에 대해서, 두 개의 정의를 내렸습니다(정의 06, 정의 10).
+하지만 두 정의가 서로 상충되지는 않습니다.
+만약 $x_i$가 실수벡터이면, 정의 10의 모든 식들은 정의 06의 식들과 일치하기 때문입니다.
 </div>
 
 ## 1.5 행렬식
@@ -1153,7 +1180,7 @@ $$A^HA=A^TA=I$$
 행렬의 대각화 개념은 eigenvalue/eigenvector와 관련되어 있는 개념입니다.
 그런데 eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기했습니다.
 하지만, 행렬식에 대해 말하려면 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
-아래의 '행렬식' 단락을 이해하는 것이 힘들면, $2\times 2$ 행렬과 $3\times3$ 행렬의 행렬식의 정의와 정리 16 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
+아래의 '행렬식' 단락을 이해하는 것이 힘들면, $2\times 2$ 행렬과 $3\times3$ 행렬의 행렬식의 정의와 정리 14 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
 
 고등학교 수학에서 행렬식의 개념에 대해 다룹니다.
 행렬
@@ -1569,7 +1596,7 @@ $$
 이제 행렬식을 정의할 수 있습니다.
 
 <div class="notice--info">
-<b> 정의 15 </b> <br>
+<b> 정의 13 </b> <br>
 $n\times n$ 정사각행렬 $A$에 대하여 행렬식 $\text{det}(A)$를
 
 <!-- $$
@@ -1621,7 +1648,7 @@ $$
 
 가 됩니다.
 
-정의 15의 식은 복잡해보이지만, 잘 풀어보면 위에서 알아본 $2\times2$ 행렬에서의
+정의 13의 식은 복잡해보이지만, 잘 풀어보면 위에서 알아본 $2\times2$ 행렬에서의
 
 $$\text{det}A = a_{11}a_{22}-a_{12}a_{21}$$
 
@@ -1702,7 +1729,7 @@ $$
 행렬식에 대하여 앞으로 사용될 사실은 다음의 두 명제입니다.
 
 <div class="notice--success">
-<b> 정리 16 </b> <br>
+<b> 정리 14 </b> <br>
 (a) 정사각행렬 $A$, $B$에 대하여
 $$\text{det}(AB)=\text{det}(A)\text{det}(B)$$
 입니다.
@@ -1710,7 +1737,7 @@ $$\text{det}(AB)=\text{det}(A)\text{det}(B)$$
 (b) 정사각행렬 $A$에 대하여 $A$의 역행렬이 존재하기 위한 필요충분조건은 $\text{det}(A)\neq0$인 것입니다.
 </div>
 
-**증명 : 정리 16(a)**
+**증명 : 정리 14(a)**
 {: .notice--warning}
 
 아래 증명은 이 [증명](https://math.stackexchange.com/q/302089)에서 오타로 보이는 것을 수정하고, 설명을 덧붙인 것입니다.
@@ -1897,9 +1924,9 @@ $$
 
 가 됩니다. $\square$
 
-정의 16(b)에 대한 증명은 다음과 같습니다.
+정리 14(b)에 대한 증명은 다음과 같습니다.
 
-**증명 [ 정리 16(b)의 $\Rightarrow$** 방향 ]  $A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
+**증명 [ 정리 14(b)의 $\Rightarrow$** 방향 ]  $A$의 역행렬이 존재하면 $\text{det}(A)\neq0$ 입니다.
 {: .notice--warning}
 
 만약 $A$의 역행렬이 존재하면 $AB=I$를 만족시키는 정사각행렬 $B$가 존재합니다.
@@ -1908,7 +1935,7 @@ $$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
 입니다.
 따라서 $\text{det}(A)=0$이 될 수 없습니다. $\square$
 
-**증명 [ 정리 16(b)의 $\Leftarrow$** 방향 ] $\text{det}(A)\neq0$이면, $A$의 역행렬이 존재합니다.
+**증명 [ 정리 14(b)의 $\Leftarrow$** 방향 ] $\text{det}(A)\neq0$이면, $A$의 역행렬이 존재합니다.
 {: .notice--warning}
 
 이 증명은 반대방향의 증명보다 조금 복잡하며, 이 포스트에 소개한 선형대수의 개념만 가지고는 증명할 수 없는 것처럼 보입니다.
@@ -1928,7 +1955,7 @@ $$\text{det}(A)\text{det}(B)=\text{det}(AB)=\text{det}(I)=1$$
 이제 eigenvalue와 eigenvector에 대해 말할 수 있습니다.
 
 <div class="notice--info">
-<b> 정의 17 </b> <br>
+<b> 정의 15 </b> <br>
 정사각행렬 $A$에 대하여
 
 $$Ax=\lambda x$$
@@ -1985,7 +2012,7 @@ $$A(cx)=cAx=c(\lambda x)=\lambda(cx)$$
 
 이기 때문입니다.
 
-한편, 정의 17의 식
+한편, 정의 15의 식
 
 $$Ax=\lambda x$$
 
@@ -2002,7 +2029,7 @@ $$
 
 이 됩니다.
 이 식으로부터 $\text{det}(A-\lambda I)=0$을 얻을 수 있습니다.
-왜냐하면, 만약 $\text{det}(A-\lambda I)\ne0$일 경우, 정리 16(b)에 의하여 $A-\lambda I$의 역행렬이 존재합니다.
+왜냐하면, 만약 $\text{det}(A-\lambda I)\ne0$일 경우, 정리 14(b)에 의하여 $A-\lambda I$의 역행렬이 존재합니다.
 그러면
 
 $$x=Ix=(A-\lambda I)^{-1}(A-\lambda I)x=(A-\lambda I)^{-1}0=0$$
@@ -2011,17 +2038,21 @@ $$x=Ix=(A-\lambda I)^{-1}(A-\lambda I)x=(A-\lambda I)^{-1}0=0$$
 이상을 정리하면 다음과 같습니다.
 
 <div class="notice">
-<b> 성질 18 </b> <br>
+<b> 성질 16 </b> <br>
 정사각행렬 $A$에 대하여
 <br>
 (a) $A$의 eigenvector가 $x$이면 스칼라곱인 $cx$도 eigenvector 이며, 두 eigenvector에 대한 eigenvalue는 일치합니다(단, $c\ne0$).
 따라서, 하나의 eigenvalue에 대한 eigenvector는 유일하지 않습니다.
 <br>
-(b) $\lambda$가 $A$의 eigenvalue이면 $\text{det}(A-\lambda I)=0$입니다. (사실, 그 역도 성립합니다.)
+(b) $Ax=\lambda x\:(x\ne0)$ 이기 위한 필요충분조건은 $(A-\lambda I)x=0$인 $x\ne0$이 존재하는 것입니다.
+또 이것은 $\text{det}(A-\lmabda I)=0$인 것과 동치입니다.
+<!-- (b) $\lambda$가 $A$의 eigenvalue이면 $\text{det}(A-\lambda I)=0$입니다. (사실, 그 역도 성립합니다.)
 이때, 방정식 $\text{det}(A-\lambda I)=0$을 characteristic equation (특성 방정식)이라고 부릅니다.
 <br>
-(c) $Ax=\lambda x$이기 위한 필요충분조건은 $(A-\lambda I)x=0$인 $x\ne0$이 존재하는 것입니다.
+(c) $Ax=\lambda x$이기 위한 필요충분조건은 $(A-\lambda I)x=0$인 $x\ne0$이 존재하는 것입니다. -->
 </div>
+
+성질 16(b)에서 식 $\text{det}(A-\lambda I)=0$을 characteristic equation(특성방정식)이라고 부릅니다.
 
 예를 들어, 행렬
 
@@ -2073,7 +2104,7 @@ x_1=\begin{bmatrix}a\\b\end{bmatrix}
 $$
 
 입니다.
-이때 성질 18(a)에 의해, $\lambda_1=1$에 대한 대표적인 eigenvector를
+이때 성질 16(a)에 의해, $\lambda_1=1$에 대한 대표적인 eigenvector를
 
 $$x_1=\begin{bmatrix}-2\\1\end{bmatrix}$$
 
@@ -2570,7 +2601,7 @@ $\lambda_2=\lambda_3=1$에 대한 algebraic multiplicity와 geometric multiplici
 
 <div class="notice--danger">
 <b>참고 </b> <br>
-eigenvalue와 eigenvector는 선형대수의 여러 방면에 쓰입니다.
+eigenvalue와 eigenvector는 선형대수를 응용하는 여러 방면에 쓰입니다.
 이 포스트에서 다루는 바와 같이 직교대각화에 사용되고,선형적인 연립편미분방정식의 해를 구하는 데 쓰일 수 있으며, 머신러닝의 SVD(singular value decomposition), PCA(principal component analysis)의 계산에서도 나타나고, 행렬의 norm을 계산하는 데에도 등장합니다.
 </div>
 
@@ -2579,7 +2610,7 @@ eigenvalue와 eigenvector는 선형대수의 여러 방면에 쓰입니다.
 이제 이 포스트의 주된 주제인 **대각화(diagonalization)**와 **직교대각화(orthogonal/unitary diagonalization)**에 대해 말할 수 있습니다.
 
 <div class="notice--info">
-<b> 정의 19 : 행렬의 대각화와 직교대각화 </b> <br>
+<b> 정의 17 : 행렬의 대각화와 직교대각화 </b> <br>
 정사각행렬 $A$에 대하여
 <br>
 (a) $A=BDB^{-1}$을 만족시키는 대각행렬 $D$와 가역행렬 $B$가 존재하면 $A$가 <b>대각화가능(diagonalizable)</b>하다고 말합니다.
@@ -2655,23 +2686,8 @@ $$
 
 와 같이 비교적 간단하게 계산될 수 있습니다.
 
-한편, 위 식 $A=BDB^{-1}$을
-
-$A$와 $D$가 **유사(similar)**하다.
-{: .text-center}
-
-라는 말로 표현하기도 합니다.
-
-<div class="notice--danger">
-<b>참고 </b> <br>
-일반적으로, 두 행렬 $A_1$, $A_2$에 대하여
-$$A_1=BA_2B^{-1}$$
-을 만족시키는 가역행렬 $B$가 존재하면, $A_1$와 $A_2$가 유사하다고 말합니다.
-이것을 $A_1\sim A_2$로 표현하면, $\sim$은 equivalence relation(동치관계)이기도 합니다.
-</div>
-
 만약, $A$가 대각화가능하다고 해도, 좌표변환한 축들이 서로 수직한 경우가 더 '바람직'합니다.
-이러한 행렬을 직교대각화가능한 행렬이라고 부르는 것인데, 어떤 행렬 $A$가 직교대각화가능할 경우, 좌표변환을 관장하는 행렬인 $B$가 orthogonal 행렬이므로 (혹은 unitary 행렬이므로) 그 역행렬을 구하는 것도 매우 간단해집니다. ($B^{-1}=B^T$ 또는 $B^{-1}=B^H$, 이하 성질 10(c), 성질 14(c))
+이러한 행렬을 직교대각화가능한 행렬이라고 부르는 것인데, 어떤 행렬 $A$가 직교대각화가능할 경우, 좌표변환을 관장하는 행렬인 $B$가 orthogonal 행렬이므로 (혹은 unitary 행렬이므로) 그 역행렬을 구하는 것도 매우 간단해집니다. ($B^{-1}=B^T$ 또는 $B^{-1}=B^H$, 이하 성질 08(c), 성질 12(c))
 
 대부분의 행렬들은 대각화가 가능합니다.
 그리고 대각화 과정은 그 행렬의 eigenvalue와 eigenvector를 이용함으로써 쉽게 얻어질 수 있습니다.
@@ -2916,7 +2932,7 @@ $$
 이는 다음과 같이 정리될 수 있습니다.
 
 <div class="notice">
-<b> 성질 20 </b> <br>
+<b> 성질 18 </b> <br>
 $n\times n$ 행렬 $A$에 대하여 
 $A$의 각 eigenvalue들에 대한 geometric multiplicity의 합이 $n$이면, $A$는 대각화가능합니다.
 </div>
@@ -3003,7 +3019,7 @@ $$
 행렬의 직교대각화에 관한 기본적인 정리이자, 이 포스트의 목적이기도 한 두 명제는 다음과 같습니다.
 
 <div class="notice--success">
-<b> 정리 21 </b> <br>
+<b> 정리 19 </b> <br>
 정사각행렬 $A$에 대하여 <br>
 (a) $A$가 실수 행렬이고 symmetric 행렬이면 $A$는 orthogonally diagonalizable합니다. <br>
 (b) $A$가 복소 행렬이고 Hermitian 행렬이면 $A$는 unitarily diagonalizable합니다.
@@ -3012,19 +3028,19 @@ $$
 실제로, 위의 예시들에서 $Q$, $U$는 real symmetric 행렬(실수 행렬이면서 symmetric) 이었고, orthogonally diagonalizable했습니다.
 
 한편, 위의 정리에서 (b)만 증명하면 (a)도 증명하는 셈이 됩니다.
-이것은 성질 23에서 따로 증명하겠습니다.
+이것은 성질 21에서 따로 증명하겠습니다.
 
-남은 포스트의 내용은 정리 21(b)를 증명하는 것을 목적으로 합니다.
+남은 포스트의 내용은 정리 19(b)를 증명하는 것을 목적으로 합니다.
 그리고 사실 원래 만들었던 [파일]({{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf){: .btn .btn--primary}의 내용은 지금부터이며, 앞의 내용들은 이 증명을 위한 배경지식이었습니다.
 
-만약, 행렬 $A$의 eigenvalue들이 모두 다를 경우에 정리 21(b)를 증명하는 것은 그래도 꽤 간결하게 설명될 수 있습니다 (2.3).
+만약, 행렬 $A$의 eigenvalue들이 모두 다를 경우에 정리 19(b)를 증명하는 것은 그래도 꽤 간결하게 설명될 수 있습니다 (2.3).
 하지만, 그렇지 않을 경우, 즉 characteristic equation이 중근을 가질 경우는 그렇게 간단하지 않아서, Schur's lemma를 사용해 설명해보았습니다 (2.4).
 이 부분들은 Gilbert Strang의 「Linear Algebra and its Applications」 (4판, 2006)을 참고하여 적은 것임을 밝힙니다.
 
 ## 2.3 증명 1 : distinct eigenvalues
 
-<div class="notice--primary">
-<b> 성질 22 </b> <br>
+<div class="notice">
+<b> 성질 20 </b> <br>
 정사각행렬 $A$에 대하여 $A$가 Hermitian이면 다음 사실이 성립합니다. <br>
 (a) $x^HAx$는 실수입니다. <br>
 (b) $A$의 eigenvalue들은 모두 실수입니다 <br>
@@ -3058,17 +3074,17 @@ $$
 따라서 $x^HAx$는 항상 실수입니다.
 
 이에 대한 일반적인 증명은, 지금까지의 설명보다도 훨씬 짧습니다.
-$x^HAx$가 $1\times1$ 행렬임을 상기하고 이것의 conjugation을 계산하면 (성질 4(c), (d) 등에 의해)
+$x^HAx$가 $1\times1$ 행렬임을 상기하고 이것의 conjugation을 계산하면 (성질 02(c), (d) 등에 의해)
 
 $$\overline{\left(x^HAx\right)}=\overline{\left(x^HAx\right)}^T=\left(x^HAx\right)^H=x^HA^H(x^H)^H=x^HAx.$$
 
 입니다.
-$x^HAx$의 conjugation을 취한 것이 자기 자신과 같으므로 정리 1에 의해 $x^HAx$는 실수입니다.
+$x^HAx$의 conjugation을 취한 것이 자기 자신과 같으므로 $x^HAx$는 실수입니다.
 
 (b)의 증명도 어렵지 않습니다.
 $\lambda$를 $A$의 한 eigenvalue라고 하겠습니다.
 우리는 $\lambda$가 실수임을 증명하기만 하면 됩니다.
-eigenvalue의 정의(정의 17)에 의해
+eigenvalue의 정의(정의 15)에 의해
 
 $$Ax=\lambda x$$
 
@@ -3111,7 +3127,7 @@ $${x_1}^Hx_2=0$$
 다시 말해, $x_1$과 $x_2$의 내적 $\langle x_1, x_2 \rangle$가 0이라는 말이므로 $x_1$과 $x_2$는 orthogonal합니다.
 그러니까, 임의의 두 eigenvector $x_1$, $x_2$가 orthogonal하므로 (c)가 증명된 셈입니다. $\square$
 
-위의 세 성질을 이용하면, eigenvalue들의 근이 모두 다를 경우에 대한 정리 21(b)의 증명은 다음과 같이 될 수 있습니다.
+위의 세 성질을 이용하면, eigenvalue들의 근이 모두 다를 경우에 대한 정리 19(b)의 증명은 다음과 같이 될 수 있습니다.
 
 <div class="notice--warning">
 <b>증명 : $A$가 $n\times n$ Hermitian 행렬이고, $n$개의 서로다른 eigenvalue들을 가지면 $A$는 unitarilly diagonalizable 합니다. </b> <br>
@@ -3122,14 +3138,14 @@ $A$의 서로다른 eigenvalue들을 $\lambda_1$, $\cdots$, $\lambda_n$이라고
 $$Ax_i=\lambda_ix_i$$
 
 가 성립합니다.
-성질 22(c)에 의해 $x_i$들은 pairwisely orthogonal합니다.
-그런데 $x_i$들의 스칼라곱도 여전히 eigenvector이므로 (성질 18(a)), $x_i$들의 norm이 모두 1이라고 가정할 수 있습니다.
+성질 20(c)에 의해 $x_i$들은 pairwisely orthogonal합니다.
+그런데 $x_i$들의 스칼라곱도 여전히 eigenvector이므로 (성질 16(a)), $x_i$들의 norm이 모두 1이라고 가정할 수 있습니다.
 즉 $x_i$들이 orthonormal하다고 말할 수 있습니다.
 이제 2.2 에서 여러 행렬들에 대해서 했던 것과 비슷하게 하면
 
 $$B=\begin{bmatrix}|&&|\\x_1&\cdots&x_n\\|&&|\end{bmatrix}$$
 
-는 unitary 행렬이고 (성질 10(a))
+는 unitary 행렬이고 (성질 08(a))
 
 $$
 \begin{align*}
@@ -3145,9 +3161,9 @@ $$
 입니다.
 따라서 $A=BDB^H$이고 $A$는 unitarily diagonalizable합니다. $\square$
 
-<div class="notice--primary">
-<b> 성질 23 </b> <br>
-정리 21의 (b)가 성립하면 (a)도 성립합니다.<br>
+<div class="notice">
+<b> 성질 21 </b> <br>
+정리 19의 (b)가 성립하면 (a)도 성립합니다.<br>
 </div>
 
 (b)가 성립한다고 가정하고 $A$가 real symmetric 하다고 두면 $A$는 Hermitian 행렬이기도 합니다$(A^H={\overline A}^T=A^T=A)$.
@@ -3165,7 +3181,7 @@ $$Ax=\lambda x$$
 $$Ax_1+iAx_2=\lambda x_1+i\lambda x_2$$
 
 입니다.
-이때, 성질 22(b)에 의해 $\lambda$는 실수이고, 따라서
+이때, 성질 20(b)에 의해 $\lambda$는 실수이고, 따라서
 
 $$Ax_1=\lambda x_1,\quad Ax_2=\lambda x_2$$
 
@@ -3178,5 +3194,335 @@ $$Ax_1=\lambda x_1,\quad Ax_2=\lambda x_2$$
 그러니까, $A$는 unitarily diagonalizable할 뿐만 아니라 orthogonally diagonalizable하기도 한 것입니다. $\square$
 
 ## 2.4 증명 2 : repeated roots
+
+이전 절에서 정리 19(b)를, characteristic equation이 중근을 가지지 않는 경우 (eigenvalue들이 겹치지 않는 경우)에 한해 증명했습니다.
+또한 정리 19(b)가 성립하면 정리 19(a)도 성립한다고 했으므로 characteristic equation이 중근을 가지지 않는 경우에 대해서는 정리 19를 모두 증명한 셈입니다.
+이제는 eigenvalue가 겹치는 경우, 즉 characteristic equation이 중근을 가질 수도 있는 일반적인 경우에 대한 정리 19의 증명을 해보겠습니다.
+이번에도, 19(b)만 증명하면, 19(a)도 증명한 셈이 됩니다.
+
+증명해야 할 명제를 다시 쓰면
+
+$A$가 복소 행렬이고 Hermitian 행렬이면 $A$는 unitarily diagonalizable합니다.
+{: .text-center}
+
+입니다.
+이 명제는 Schur's lemma (성질 24)를 사용할 수 있으면 쉽게 증명될 수 있습니다.
+하지만 Schur's lemma를 설명하기 위해서는 similiarity(정의 22)와 Gram-Schmidt process(성질 23)에 대해 먼저 살펴봐야 합니다.
+
+**similarity**
+
+<div class="notice--info">
+<b>정의 22 </b> <br>
+두 대각행렬 $A_1$, $A_2$에 대하여
+$$A_2=BA_1B^{-1}$$
+을 만족시키는 가역행렬 $B$가 존재하면, $A_1$와 $A_2$가 similar(유사)하다고 말합니다.
+<!-- 이것을 $A_1\sim A_2$로 표현하면, $\sim$은 equivalence relation(동치관계)이기도 합니다. -->
+</div>
+
+이 이항관계(binary operation)는 동치관계(equivalence relation)이기도 합니다.
+즉, 대각행렬 $A$, $B$, $C$에 대하여 (a) $A\sim A$이고, (b) $A\sim B$이면 $B\sim A$이고 (c) $A\sim B$ 이고 $B\sim C$이면, $A\sim C$입니다.
+따라서 모든 $n\times n$ 행렬들의 집합을 이 similarity에 의해 나눌 수도 있습니다.
+
+또한, 정의 17에서의 대각화식 $A=BDB^{-1}$은
+
+$A$와 $D$가 유사하다.
+{: .text-center}
+
+라는 말로 표현할 수도 있습니다.
+
+중요한 것은, similar한 행렬들이 같은 eigenvalue들을 공유한다는 점입니다.
+
+$\lambda$가 $A_1$의 eigenvalue이고 $A_1\sim A_2$이면 $\lambda$는 $A_2$의 eigenvalue입니다.
+{: .text-center}
+
+그리고 $\lambda$에 대한 $A_1$의 eigenvector가 $x$이면, $A_2$의 eigenvector는 $Bx$입니다.
+{: .text-center}
+
+만약 $A_1x=\lambda x$이면 $A_1=B^{-1}A_2B$로부터
+
+$$B^{-1}A_2Bx=\lambda x$$
+
+이고 양변의 왼쪽에 $B$를 곱하면
+
+$$A_2(Bx)=B(\lambda x)=\lambda(Bx)$$
+
+이기 때문입니다.
+
+**Gram-Schmidt process**
+
+다음으로 Gram-Schmidt process입니다.
+다만, 일반적으로 선형대수에서 이야기되는 Gram-Schmidt process 대신, 조금 특수한 경우의 Gram-Schmidt process를 이야기하려 합니다.
+
+<div class="notice">
+<b>성질 23 </b> <br>
+$n$차원 벡터 $x_1$, $\cdots$, $x_k$가 orthonormal이면 ($k\lt n$)
+$n-k$개의 벡터 $x_{k+1}$, $\cdots$, $x_n$이 존재하여 $x_1$, $\cdots$, $x_n$이 orthonormal하도록 만들 수 있습니다.
+</div>
+
+**증명 : 성질 23(a)**
+{: .notice--warning}
+
+orthonormal한 $x_1$, $\cdots$, $x_k$에 대하여 $\langle{x_j},x_{k+1}\rangle=0$, $||x_{k+1}||=1$을 만족시키는 $x_{k+1}$만 찾아낼 수 있으면 됩니다(단, $j=1,\cdots,k$).
+그러면 $x_1$, $\cdots$, $x_k$, $x_{k+1}$은 orthonormal하고, 이 orthonormal 벡터들에 대하여 같은 작업을 반복할 수 있기 때문입니다.
+
+$e_i$를, $i$번째 성분이 1이고 나머지 성분이 0인 벡터라고 하겠습니다.
+이 벡터들은 standard unit vector (표준단위벡터)라고 부릅니다.
+예를 들어, 3차원공간에서는
+
+$$
+e_1=\begin{bmatrix}1\\0\\0\end{bmatrix},\quad
+e_2=\begin{bmatrix}0\\1\\0\end{bmatrix},\quad
+e_3=\begin{bmatrix}0\\0\\1\end{bmatrix}
+$$
+
+입니다. $k<n$ 이므로, $e_i\notin\\{x_1,\cdots,x_k\\}$를 만족시키는 $i$가 존재합니다.
+$\hat x_{k+1}$을
+
+$$
+\hat x_{k+1}=e_i-\langle x_1,e_i\rangle x_1-\langle x_2,e_i\rangle x_2-\cdots-\langle x_k,e_i\rangle x_k
+$$
+
+로 정의합니다.
+그러면, $j=1,2,\cdots,k$에 대하여 $\hat x_{k+1}\perp x_j$입니다;
+
+$$
+\begin{align*}
+\langle x_j,\hat x_{k+1}\rangle
+&=\langle x_j, e_i-\langle x_1,e_i\rangle x_1-\langle x_2,e_i\rangle x_2-\cdots-\langle x_k,e_i\rangle x_k\rangle\\
+&=\langle x_j, e_i\rangle
+-\langle x_1,e_i\rangle\langle x_j,x_1\rangle
+-\langle x_2,e_i\rangle\langle x_j,x_2\rangle
+-\cdots
+-\langle x_k,e_i\rangle\langle x_j,x_k\rangle\\
+&=\langle x_j, e_i\rangle-\langle x_j,e_i\rangle\langle x_j,x_j\rangle\\
+&=0
+\end{align*}
+$$
+
+이 계산에서, $\langle x,y+z\rangle=\langle x,y\rangle+\langle x,z\rangle$, $\langle x, cy\rangle=c\langle x,y\rangle$과 같은 성질들이 사용되었습니다(정의 9에 딸린 참고).
+이제, $\hat x_{k+1}$을 크기가 1인 벡터로 만들면 $x_{k+1}$이 얻어집니다;
+
+$$x_{k+1}=\frac{\hat x_{k+1}}{||\hat x_{k+1}||}.$$
+
+예를 들어, 4차원 실수벡터 $x_1$, $x_2$가
+
+$$
+x_1=\frac1{\sqrt6}\begin{bmatrix}1\\1\\2\\0\end{bmatrix}
+,\quad
+x_2=\frac1{\sqrt6}\begin{bmatrix}2\\0\\-1\\1\end{bmatrix}
+$$
+
+이라고 하면, $x_1$과 $x_2$는 orthonormal합니다.
+$e_1\notin\\{x_1,x_2\\}$이므로
+
+$$
+\begin{align*}
+\hat x_3
+&=e_1-\langle x_1,e_1\rangle x_1-\langle x_2,e_1\rangle\\
+&=\begin{bmatrix}1\\0\\0\\0\end{bmatrix}
+-\frac1{\sqrt6}\cdot\frac1{\sqrt6}\begin{bmatrix}1\\1\\2\\0\end{bmatrix}
+-\frac2{\sqrt6}\cdot\frac1{\sqrt6}\begin{bmatrix}2\\0\\-1\\1\end{bmatrix}
+\\
+&=\begin{bmatrix}1\\0\\0\\0\end{bmatrix}
+-\begin{bmatrix}\frac16\\\frac16\\\frac26\\0\end{bmatrix}
+-\begin{bmatrix}\frac46\\0\\-\frac26\\\frac26\end{bmatrix}\\
+&=\frac16\begin{bmatrix}1\\-1\\0\\-2\end{bmatrix}
+\end{align*}
+$$
+
+입니다.
+이것을 크기가 1인 벡터로 만들면
+
+$$x_3=\frac{x_3}{||x_3||}
+=\frac1{\sqrt6}\begin{bmatrix}1\\-1\\0\\-2\end{bmatrix}$$
+
+이 됩니다.
+마찬가지로, $e_2\notin\\{x_1,x_2,x_3\\}$이므로
+
+$$
+\begin{align*}
+\hat x_4
+&=e_2-\langle x_1,e_2\rangle x_1-\langle x_2,e_2\rangle-\langle x_3,e_2\rangle\\
+&=\begin{bmatrix}0\\1\\0\\0\end{bmatrix}
+-\frac1{\sqrt6}\cdot\frac1{\sqrt6}\begin{bmatrix}1\\1\\2\\0\end{bmatrix}
+-0
++\frac1{\sqrt6}\cdot\frac1{\sqrt6}\begin{bmatrix}1\\-1\\0\\2\end{bmatrix}
+\\
+&=\begin{bmatrix}0\\1\\0\\0\end{bmatrix}
+-\begin{bmatrix}\frac16\\\frac16\\\frac26\\0\end{bmatrix}
++\begin{bmatrix}\frac16\\-\frac16\\0\\-\frac26\end{bmatrix}\\
+&=\frac16\begin{bmatrix}0\\4\\-2\\-2\end{bmatrix}
+\end{align*}
+$$
+
+이고
+
+$$x_4=\frac{x_4}{||x_4||}
+=\frac1{\sqrt6}\begin{bmatrix}0\\2\\-1\\-1\end{bmatrix}$$
+
+입니다.
+그러면, 정말로 네 벡터 $x_1$, $x_2$, $x_3$, $x_4$는 orthonormal합니다.
+
+**Schur's Lemma**
+
+이제 Schur's Lemma를 증명할 수 있습니다.
+
+<div class="primary">
+<b>성질 24 </b> <br>
+대각행렬 $A$에 대하여 $U^{-1}AU$가 상삼각행렬인 unitary 행렬 $U$가 존재합니다.
+</div>
+
+이때, 상삼각행렬(upper triangular matrix)이란, 행렬의 대각성분들의 아래에 있는 모든 성분들이 0인 행렬을 말합니다.
+아래에 정의된 $T_1$, $T_2$는 모두 상삼각행렬입니다.
+
+$$
+T_1=\begin{bmatrix}2&5\\0&-1\end{bmatrix},\qquad
+T_2=\begin{bmatrix}-1&0&3\\0&2&4\\0&0&0\end{bmatrix}
+$$
+
+**증명 : 성질 24 (Schur's lemma)**
+{: .notice--warning}
+
+$A$가 $n\times n$ 행렬이라고 하겠습니다.
+$A$의 characteristic equation $|A-\lambda I|=0$은 계수가 복소수인 $n$차 방정식이므로, $n$개의 근 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$을 가집니다.
+(이것을 대수학의 기본정리(fundamental theorem of algebra)라고 부릅니다.)
+$\lambda_1$의 eigenvector 중 크기가 1인 벡터를 $x_1$이라고 하겠습니다.
+성질 23에 의해, $x_1$을 포함하는 orthonormal한 $n$개의 벡터를 만들 수 있고 이 벡터들을 열벡터로 나열하여 unitary 행렬 $U_1$을 만들 수 있습니다.
+$x_1$을 $U_1$의 첫번째 열에 두면,
+
+$$
+\begin{align*}
+\begin{bmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&\cdots&a_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+|     &*&\cdots&*\\
+|     &*&\cdots&*\\
+x_1   &*&\ddots&*\\
+|     &*&\cdots&*
+\end{bmatrix}
+&=
+\begin{bmatrix}
+|     &*&\cdots&*\\
+|     &*&\cdots&*\\
+x_1   &*&\ddots&*\\
+|     &*&\cdots&*
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1&*&\cdots&*\\
+0        &*&\cdots&*\\
+0        &*&\ddots&*\\
+0        &*&\cdots&*
+\end{bmatrix}\\
+AU_1&=U_1A_1
+\end{align*}
+$$
+
+이 됩니다.
+그러면 $A\sim A_1$이고, 성질 22에 의해 $A_1$의 eigenvalue들도 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$이 됩니다.
+$A_1$의 오른쪽 아래에 있는 $n-1\times n-1$ 행렬을 $A^{(1)}$이라고 하겠습니다.
+즉
+
+$$A_1=\begin{bmatrix}\lambda_1&*\\0&A^{(1)}\end{bmatrix}$$
+
+입니다.
+행렬식의 정의에 의해 $\text{det}(A_1)=(1-\lambda)\text{det}(A^{(1)})$이고, 따라서 $A^{(1)}$의 eigenvalue들은 $\lambda_2$, $\cdots$, $\lambda_n$입니다.
+$\lambda_2$의 eigenvector 중 크기가 1인 ($n-1$차원의) 벡터를 $x_2$로 두고 $x_2$를 포함하는 orthonormal한 $n-1$개의 벡터를 만든 후, 이 벡터들을 열벡터로 나열하여 unitary 행렬 $U_2^{(1)}$을 만들면
+
+$$A^{(1)}U_2^{(1)}=U_2^{(1)}A_2^{(1)}$$
+
+이고
+
+$$A_2^{(1)}=
+\begin{bmatrix}
+\lambda_2&*&\cdots&*\\
+0        &*&\cdots&*\\
+0        &*&\ddots&*\\
+0        &*&\cdots&*
+\end{bmatrix}
+$$
+
+이 되도록 만들 수 있습니다.
+$n\times n$ 행렬 $U_2$와 $A_2$를 $U_2^{(1)}$와 $A_2^{(1)}$를 사용하여
+
+$$
+U_2=\begin{bmatrix}1&*\\0&U_2^{(1)}\end{bmatrix},\quad
+A_2=\begin{bmatrix}\lambda_1&*\\0&A_2^{(1)}\end{bmatrix}
+$$
+
+와 같이 만들면,
+
+$$
+\begin{align*}
+\begin{bmatrix}\lambda_1&*\\0&A^{(1)}\end{bmatrix}
+\begin{bmatrix}1&*\\0&U_2^{(1)}\end{bmatrix}
+&=
+\begin{bmatrix}1&*\\0&U_2^{(1)}\end{bmatrix}
+\begin{bmatrix}1&*\\0&A_2^{(1)}\end{bmatrix}\\
+A_1U_2&=U_2A_2
+\end{align*}
+$$
+
+입니다.
+따라서 $A_1\sim A_2$입니다.
+
+이와 같은 과정을 계속 반복합니다.
+한번만 더 예를 들어보면, $A_2$의 eigenvalue들도 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$이 되고, $A_2$의 오른쪽 아래에 있는 $n-2\times n-2$ 행렬을 $A^{(2)}$라고 하면
+
+$$A_2=\begin{bmatrix}\lambda_2&*\\0&A^{(2)}\end{bmatrix}$$
+
+이고, $A^{(2)}$는 $\lambda_3$, $\cdots$, $\lambda_n$을 eigenvalue로 가집니다.
+$\lambda_3$의 eigenvector 중 크기가 1인 ($n-2$차원의) 벡터 $x_3$을 포함하는 orthonormal한 $n-2$개의 벡터들을 열벡터로 나열하여 unitary 행렬 $U_3^{(2)}$를 만들면
+
+$$A^{(2)}U_3^{(2)}=U_3^{(2)}A_3^{(2)}$$
+
+이고
+
+$$A_3^{(2)}=
+\begin{bmatrix}
+\lambda_3&*&\cdots&*\\
+0        &*&\cdots&*\\
+0        &*&\ddots&*\\
+0        &*&\cdots&*
+\end{bmatrix}
+$$
+
+입니다.
+
+$$
+U_3=\begin{bmatrix}
+1&0&*\\
+0&1&*\\
+0&0&U_3^{(2)}
+\end{bmatrix},\quad
+A_3=\begin{bmatrix}
+\lambda_1&0&*\\
+0&\lambda_2&*\\
+0&0&A_3^{(2)}
+\end{bmatrix}
+$$
+
+로 두면,
+
+$$
+\begin{align*}
+\begin{bmatrix}\lambda_1&*\\0&A^{(1)}\end{bmatrix}
+\begin{bmatrix}
+1&0&*\\
+0&1&*\\
+0&0&U_3^{(2)}
+\end{bmatrix}
+&=
+\begin{bmatrix}1&*\\0&U_2^{(1)}\end{bmatrix}
+\begin{bmatrix}1&*\\0&A_2^{(1)}\end{bmatrix}\\
+A_2U_3&=U_3A_3
+\end{align*}
+$$
+
+입니다.
+
 
 [1]:{{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf
