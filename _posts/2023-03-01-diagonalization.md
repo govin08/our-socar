@@ -1022,7 +1022,7 @@ $$
     <li> $\langle x,y+z\rangle=\langle x,y\rangle+\langle x,z\rangle$ </li>
     <li> $\langle cx,y\rangle=c\langle x,y\rangle=\langle x,cy\rangle$ </li>
 </ul>
-하지만 정의 9에서 정의된 복소벡터의 내적 $\langle x,y\rangle=x^Hy$에 대해서는, 조금 더 일반적인 다음 성질들이 성립합니다; ; $x$, $y$, $z$가 복소벡터이고 $c$가 복소수일 때,
+하지만 정의 9에서 정의된 복소벡터의 내적 $\langle x,y\rangle=x^Hy$에 대해서는, 조금 더 일반적인 다음 성질들이 성립합니다; $x$, $y$, $z$가 복소벡터이고 $c$가 복소수일 때,
 <ul>
     <li> $\langle x,y\rangle=\overline{\langle y,x\rangle}$ </li>
     <li> $\langle x+y,z\rangle=\langle x,z\rangle+\langle y,z\rangle$ </li>
@@ -1031,6 +1031,7 @@ $$
     <li> $\langle x,cy\rangle=c\langle x,y\rangle$</li>
 </ul>
 이 성질들은 정의 4, 정의 9의 식들에 대입하면 바로 증명될 수 있습니다.
+여하튼, 복소벡터든 실수벡터든 두번째 성분에 대해서는 linear 하다는 것을 알 수 있습니다 ; $\langle x,y+z\rangle=\langle x,y\rangle+\langle x,z\rangle$, $\langle x,cy\rangle=c\langle x,y\rangle$
 </div>
 
 위와 같이 정의한 내적을 이용해 복소벡터의 수직(orthogonality)의 개념도 정의할 수 있습니다.
@@ -3127,7 +3128,7 @@ $${x_1}^Hx_2=0$$
 다시 말해, $x_1$과 $x_2$의 내적 $\langle x_1, x_2 \rangle$가 0이라는 말이므로 $x_1$과 $x_2$는 orthogonal합니다.
 그러니까, 임의의 두 eigenvector $x_1$, $x_2$가 orthogonal하므로 (c)가 증명된 셈입니다. $\square$
 
-위의 세 성질을 이용하면, eigenvalue들의 근이 모두 다를 경우에 대한 정리 19(b)의 증명은 다음과 같이 될 수 있습니다.
+위의 세 성질을 이용하면, characteristic equation의 근이 모두 다를 경우에 대한 정리 19(b)의 증명은 다음과 같이 될 수 있습니다.
 
 <div class="notice--warning">
 <b>증명 : $A$가 $n\times n$ Hermitian 행렬이고, $n$개의 서로다른 eigenvalue들을 가지면 $A$는 unitarilly diagonalizable 합니다. </b> <br>
@@ -3169,8 +3170,11 @@ $$
 (b)가 성립한다고 가정하고 $A$가 real symmetric 하다고 두면 $A$는 Hermitian 행렬이기도 합니다$(A^H={\overline A}^T=A^T=A)$.
 따라서 (b)에 의해 $A$는 $A=BDB^{-1}$를 만족시키는 unitary 행렬 $B$가 존재합니다.
 
-이때 $A$의 eigenvector matrix $B$는 실수행렬이라고 가정할 수 있습니다.
-이를 증명하기 위해서는 $A$의 모든 eigenvector들이 실수벡터임을 보이기만 하면 됩니다.
+하지만 아직 $A$가 orthogonally diagonalizable한 것은 아닙니다.
+$B$는 unitary 행렬이기 때문에 허수가 포함된 행렬일 수도 있습니다.
+만약 $B$가 허수가 포함된 행렬이라면 $A$가 orthogonally diagonally diagonalizable하다고 말할 수 없겠지만, $B$가 순수하게 실수로만 이루어진 행렬이라면 $A$가 orthogonally diagonallizable하다고 말할 수 있습니다.
+
+$B$가 실수행렬이라는 것을 증명하기 위해서는 $A$의 모든 eigenvector들이 실수벡터임을 보이기만 하면 됩니다.
 
 $x$가 $A$의 eigenvector일 때, $x$를 $x=x_1+x_2i$로 두면 ($x_1$, $x_2$는 각각 $n$차원의 실수벡터) $x\ne0$이므로 $x_1\ne0$ 이거나 $x_2\ne0$ 입니다.
 
@@ -3206,8 +3210,8 @@ $A$가 복소 행렬이고 Hermitian 행렬이면 $A$는 unitarily diagonalizabl
 {: .text-center}
 
 입니다.
-이 명제는 Schur's lemma (성질 24)를 사용할 수 있으면 쉽게 증명될 수 있습니다.
-하지만 Schur's lemma를 설명하기 위해서는 similiarity(정의 22)와 Gram-Schmidt process(성질 23)에 대해 먼저 살펴봐야 합니다.
+이 명제는 Schur's lemma (성질 25)를 사용할 수 있으면 쉽게 증명될 수 있습니다.
+하지만 Schur's lemma를 설명하기 위해서는 similiarity(정의 22)와 Gram-Schmidt process(성질 24)에 대해 먼저 살펴봐야 합니다.
 
 **similarity**
 
@@ -3221,22 +3225,26 @@ $$A_2=BA_1B^{-1}$$
 
 이 이항관계(binary operation)는 동치관계(equivalence relation)이기도 합니다.
 즉, 대각행렬 $A$, $B$, $C$에 대하여 (a) $A\sim A$이고, (b) $A\sim B$이면 $B\sim A$이고 (c) $A\sim B$ 이고 $B\sim C$이면, $A\sim C$입니다.
-따라서 모든 $n\times n$ 행렬들의 집합을 이 similarity에 의해 나눌 수도 있습니다.
+따라서 모든 $n\times n$ 행렬들을 이 similarity에 의해 분류할 수도 있습니다.
 
-또한, 정의 17에서의 대각화식 $A=BDB^{-1}$은
+한편, 정의 17에서의 대각화식 $A=BDB^{-1}$은
 
 $A$와 $D$가 유사하다.
 {: .text-center}
 
 라는 말로 표현할 수도 있습니다.
+또한, 그런 관점에서 보면, similar한 두 행렬들이란 좌표변환을 통해 같아질 수 있는 행렬이라고도 말할 수 있습니다.
 
-중요한 것은, similar한 행렬들이 같은 eigenvalue들을 공유한다는 점입니다.
+중요한 사실 중 하나는, similar한 행렬들이 같은 eigenvalue들을 공유한다는 점입니다.
 
+<div class="notice">
+<b>성질 23 </b> <br>
 $\lambda$가 $A_1$의 eigenvalue이고 $A_1\sim A_2$이면 $\lambda$는 $A_2$의 eigenvalue입니다.
-{: .text-center}
-
 그리고 $\lambda$에 대한 $A_1$의 eigenvector가 $x$이면, $A_2$의 eigenvector는 $Bx$입니다.
-{: .text-center}
+</div>
+
+**증명 : 성질 23**
+{: .notice--warning}
 
 만약 $A_1x=\lambda x$이면 $A_1=B^{-1}A_2B$로부터
 
@@ -3246,7 +3254,7 @@ $$B^{-1}A_2Bx=\lambda x$$
 
 $$A_2(Bx)=B(\lambda x)=\lambda(Bx)$$
 
-이기 때문입니다.
+이기 때문입니다. $\square$
 
 **Gram-Schmidt process**
 
@@ -3254,12 +3262,12 @@ $$A_2(Bx)=B(\lambda x)=\lambda(Bx)$$
 다만, 일반적으로 선형대수에서 이야기되는 Gram-Schmidt process 대신, 조금 특수한 경우의 Gram-Schmidt process를 이야기하려 합니다.
 
 <div class="notice">
-<b>성질 23 </b> <br>
+<b>성질 24 </b> <br>
 $n$차원 벡터 $x_1$, $\cdots$, $x_k$가 orthonormal이면 ($k\lt n$)
 $n-k$개의 벡터 $x_{k+1}$, $\cdots$, $x_n$이 존재하여 $x_1$, $\cdots$, $x_n$이 orthonormal하도록 만들 수 있습니다.
 </div>
 
-**증명 : 성질 23(a)**
+**증명 : 성질 24(a)**
 {: .notice--warning}
 
 orthonormal한 $x_1$, $\cdots$, $x_k$에 대하여 $\langle{x_j},x_{k+1}\rangle=0$, $||x_{k+1}||=1$을 만족시키는 $x_{k+1}$만 찾아낼 수 있으면 됩니다(단, $j=1,\cdots,k$).
@@ -3303,6 +3311,34 @@ $$
 이제, $\hat x_{k+1}$을 크기가 1인 벡터로 만들면 $x_{k+1}$이 얻어집니다;
 
 $$x_{k+1}=\frac{\hat x_{k+1}}{||\hat x_{k+1}||}.$$
+
+이로서, 성질 23이 증명되었습니다. $\square$
+
+<div class="notice--danger">
+<b>참고 </b> <br>
+조금 더 일반적인, 보통의 Gram-schmidt process라 함은
+<a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">다음</a>과 같습니다
+<br>
+<center>
+innper product space (혹은 $\mathbb R^n$, $\mathbb C^n$) 에서의 $m$개의 벡터 $v_1$, $v_2$, $\cdots$, $v_m$가 선형독립일 때,
+$$\text{span}(v_1,v_2,\cdots,v_m)=\text{span}(u_1,u_2,\cdots,u_m)$$
+를 만족시키는 orthonormal한 $m$개의 벡터 $u_1$, $u_2$, $\cdots$, $u_m$
+가 존재합니다.
+</center>
+$u_i$를 얻어내는 방식은 성질 23에서와 거의 유사합니다.
+먼저 $u_1$는 $u_1=\frac{v_1}{||v_1||}$으로 정합니다.
+따라서 $u_1$은 크기가 1인 벡터입니다.
+$u_1$, $\cdots$, $u_k$가 주어졌을 때 ($k\lt n$) $u_{k+1}$은
+$$
+\hat x_{k+1}=v_{k+1}
+-\langle u_1,v_{k+1}\rangle u_1
+-\langle u_2,v_{k+1}\rangle u_2
+-\cdots
+-\langle u_k,v_{k+1}\rangle u_k
+$$
+로 정하면 됩니다.
+<br>
+</div>
 
 예를 들어, 4차원 실수벡터 $x_1$, $x_2$가
 
@@ -3368,7 +3404,7 @@ $$x_4=\frac{x_4}{||x_4||}
 이제 Schur's Lemma를 증명할 수 있습니다.
 
 <div class="notice">
-<b>성질 24 </b> <br>
+<b>성질 25 </b> <br>
 대각행렬 $A$에 대하여 $U^{-1}AU$가 상삼각행렬인 unitary 행렬 $U$가 존재합니다.
 </div>
 
@@ -3380,17 +3416,337 @@ T_1=\begin{bmatrix}2&5\\0&-1\end{bmatrix},\qquad
 T_2=\begin{bmatrix}-1&0&3\\0&2&4\\0&0&0\end{bmatrix}
 $$
 
-**증명 : 성질 24 (Schur's lemma)**
+**증명 : 성질 25 (Schur's lemma)**
 {: .notice--warning}
 
 $A$가 $n\times n$ 행렬이라고 하겠습니다.
 $A$의 characteristic equation $|A-\lambda I|=0$은 계수가 복소수인 $n$차 방정식이므로, $n$개의 근 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$을 가집니다.
 (이것을 대수학의 기본정리(fundamental theorem of algebra)라고 부릅니다.)
 $\lambda_1$의 eigenvector 중 크기가 1인 벡터를 $x_1$이라고 하겠습니다.
-성질 23에 의해, $x_1$을 포함하는 orthonormal한 $n$개의 벡터를 만들 수 있고 이 벡터들을 열벡터로 나열하여 unitary 행렬 $U_1$을 만들 수 있습니다.
+성질 24에 의해, $x_1$을 포함하는 orthonormal한 $n$개의 벡터를 만들 수 있고 이 벡터들을 열벡터로 나열하여 unitary 행렬 $U_1$을 만들 수 있습니다.
 $x_1$을 $U_1$의 첫번째 열에 두면,
 
 $$
+\begin{align*}
+\begin{bmatrix}
+a_{11}&a_{12}&a_{13}&\cdots&a_{1n}\\
+a_{21}&a_{22}&a_{23}&\cdots&a_{2n}\\
+a_{31}&a_{32}&a_{33}&\cdots&a_{3n}\\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+a_{n1}&a_{n2}&a_{n3}&\cdots&a_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+|     &*     &*     &\cdots&*     \\
+|     &*     &*     &\cdots&*     \\
+x_1   &*     &*     &\cdots&*     \\
+|     &\vdots&\vdots&\ddots&\vdots\\
+|     &*     &*     &\cdots&*     
+\end{bmatrix}
+&=
+\begin{bmatrix}
+|     &*     &*     &\cdots&*     \\
+|     &*     &*     &\cdots&*     \\
+x_1   &*     &*     &\cdots&*     \\
+|     &\vdots&\vdots&\ddots&\vdots\\
+|     &*     &*     &\cdots&*     
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1&*  &*     &\cdots&*     \\
+0     &*     &*     &\cdots&*     \\
+0     &*     &*     &\cdots&*     \\
+0     &\vdots&\vdots&\ddots&\vdots\\
+0     &*     &*     &\cdots&*     
+\end{bmatrix}\\
+AU_1&=U_1A_1\qquad(n\times n)
+\end{align*}
+$$
+
+이 됩니다.
+그러면 $A\sim A_1$이고, 성질 22에 의해 $A_1$의 eigenvalue들도 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$이 됩니다.
+$A_1$의 오른쪽 아래에 있는 $n-1\times n-1$ 행렬을 $A^{(1)}$이라고 하겠습니다.
+즉
+
+$$
+A_1=
+\begin{bmatrix}
+\lambda_1&*  &*     &\cdots&*     \\
+0     &*     &*     &\cdots&*     \\
+0     &*     &*     &\cdots&*     \\
+0     &\vdots&\vdots&\ddots&\vdots\\
+0     &*     &*     &\cdots&*     
+\end{bmatrix}
+=
+\begin{bmatrix}
+\lambda_1&*\\
+0     &A^{(1)}
+\end{bmatrix}
+$$
+
+입니다.
+$A_1$은 첫 대각성분이 $\lambda_1$이고 그 아래가 모두 0인 행렬입니다.
+이제 $A^{(1)}$에 방금 $A$에 했던 것과 비슷한 작업을 합니다.
+이때, $A_1\sim A$이므로 $A_1$은 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$을 eigenvalue로 갖습니다.
+따라서 $A^{(1)}$은 $\lambda_2$, $\cdots$, $\lambda_n$을 eigenvalue로 갖습니다.
+$A^{(1)}$에서 $\lambda_2$의 eigenvector를 $x_2$라고 하면 $x_2$를 포함하는 $n-1$개의 orthonormal벡터를 만들 수 있고, 이것들을 열벡터로 나열하여 $n-1\times n-1$인 unitary 행렬 $U^{(2)}$를 만들 수 있습니다.
+$x_2$를 $U^{(2)}$의 첫번째 열에 두면
+
+$$
+\begin{align*}
+\begin{bmatrix}
+*     &*     &\cdots&*     \\
+*     &*     &\cdots&*     \\
+\vdots&\vdots&\ddots&\vdots\\
+*     &*     &\cdots&*
+\end{bmatrix}
+\begin{bmatrix}
+|     &*     &\cdots&*     \\
+x_2   &*     &\cdots&*     \\
+|     &\vdots&\ddots&\vdots\\
+|     &*     &\cdots&*
+\end{bmatrix}
+&=
+\begin{bmatrix}
+|     &*     &\cdots&*     \\
+x_2   &*     &\cdots&*     \\
+|     &\vdots&\ddots&\vdots\\
+|     &*     &\cdots&*
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_2&*  &\cdots&*     \\
+0     &*     &\cdots&*     \\
+0     &\vdots&\ddots&\vdots\\
+0     &*     &\cdots&*
+\end{bmatrix}\\
+A^{(1)}U^{(2)}&=U^{(2)}A^{(2)}\qquad(n-1\times n-1)
+\end{align*}
+$$
+
+입니다.
+$n-1\times n-1$행렬 $A^{(2)}$와 $U^{(2)}$를 가지고 각각 $A_2$와 $U_2$를 
+
+$$
+\begin{align*}
+U_2&=
+\begin{bmatrix}
+1     &*\\
+0     &U^{(2)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1     &*     &*     &\cdots&*     \\
+0     &|     &*     &\cdots&*     \\
+0     &x_2   &*     &\cdots&*     \\
+\vdots&|     &\vdots&\ddots&\vdots\\
+0     &|     &*     &\cdots&*     
+\end{bmatrix}
+\\
+A_2&=
+\begin{bmatrix}
+\lambda_1&*   \\
+0     &A^{(2)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\lambda_1&*  &*     &\cdots&*     \\
+0     &\lambda_2&*  &\cdots&*     \\
+0     &0     &*     &\cdots&*     \\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0     &0     &*     &\cdots&*     
+\end{bmatrix}
+\end{align*}
+$$
+
+와 같이 만들면, $A_2$는 처음 두 개의 대각성분들이 $\lambda_1$, $\lambda_2$이고 그 아래가 모두 0인 행렬입니다.
+또한,
+
+$$
+\begin{align*}
+\begin{bmatrix}
+1     &*     \\
+0     &A^{(1)}
+\end{bmatrix}
+\begin{bmatrix}
+1     &*     \\
+0     &U^{(2)}
+\end{bmatrix}
+&=
+\begin{bmatrix}
+1     &*     \\
+0     &U^{(2)}
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1&*  \\
+0     &A^{(2)}
+\end{bmatrix}\\
+A_1U_2&=U_2A_2
+\end{align*}
+$$
+
+즉, $A_1\sim A_2$가 성립합니다.
+$A_2$의 오른쪽 아래에 있는 $n-2\times n-2$ 행렬을 $A^{(2)}$라고 하면 
+
+$$
+A_2=
+\begin{bmatrix}
+\lambda_1&*  &*     &\cdots&*     \\
+0     &\lambda_2&*  &\cdots&*     \\
+0     &0     &*     &\cdots&*     \\
+\vdots&\vdots&\vdots&\ddots&\vdots\\
+0     &0     &*     &\cdots&*     
+\end{bmatrix}
+=
+\begin{bmatrix}
+\lambda_1&*  &*     \\
+0     &\lambda_2&*\\
+0     &0     &A^{(2)}
+\end{bmatrix}
+$$
+
+입니다.
+다시, $A_2$는 $\lambda_1$, $\cdots$, $\lambda_n$을 eigenvalue로 가지고, 따라서 $A^{(2)}$는 $\lambda_3$, $\cdots$, $\lambda_n$을 eigenvalue로 가집니다.
+$A^{(2)}$에서 $\lambda_3$의 eigenvector를 $x_3$라고 하면 $x_3$를 포함하는 $n-2$개의 orthonormal벡터를 만들 수 있고, 이것들을 열벡터로 나열하여 $n-2\times n-2$인 unitary 행렬 $U^{(3)}$를 만들 수 있습니다.
+$x_3$를 $U^{(3)}$의 첫번째 열에 두면
+
+$$
+\begin{align*}
+\begin{bmatrix}
+*     &\cdots&*     \\
+\vdots&\ddots&\vdots\\
+*     &\cdots&*
+\end{bmatrix}
+\begin{bmatrix}
+|     &\cdots&*     \\
+x_3   &\ddots&\vdots\\
+|     &\cdots&*
+\end{bmatrix}
+&=
+\begin{bmatrix}
+|     &\cdots&*     \\
+x_3   &\ddots&\vdots\\
+|     &\cdots&*
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_3&\cdots  &*     \\
+\vdots&\ddots&\vdots\\
+0     &\cdots&*
+\end{bmatrix}\\
+A^{(2)}U^{(3)}&=U^{(3)}A^{(3)}\qquad(n-2\times n-2)
+\end{align*}
+$$
+
+입니다.
+$n-2\times n-2$ 행렬 $U^{(3)}$, $A^{(3)}$을 가지고 $n\times n$ 행렬 $U_3$, $A_3$를
+
+$$
+\begin{align*}
+U_3&=
+\begin{bmatrix}
+1     &*     &*\\
+0     &1     &*\\
+0     &0     &U^{(3)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1     &*     &*     &\cdots&*     \\
+0     &1     &*     &\cdots&*     \\
+0     &0     &|     &\cdots&*     \\
+\vdots&\vdots&x_3   &\ddots&\vdots\\
+0     &0     &|     &\cdots&*     
+\end{bmatrix}
+\\
+A_3&=
+\begin{bmatrix}
+\lambda_1&*  &*\\
+0     &\lambda_2&*\\
+0     &0     &A^{(3)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\lambda_1&*  &*     &\cdots&*     \\
+0     &\lambda_2&*  &\cdots&*     \\
+0     &0     &\lambda_3&\cdots&*     \\
+\vdots&\vdots&\cdots&\ddots&\vdots\\
+0     &0     &0     &\cdots&*     
+\end{bmatrix}
+\end{align*}
+$$
+
+와 같이 만들면, $A_3$는 처음 두 개의 대각성분들이 $\lambda_1$, $\lambda_2$, $\lambda_3$이고 그 아래가 모두 0인 행렬입니다.
+또한,
+
+$$
+\begin{align*}
+\begin{bmatrix}
+\lambda_1&*  &*     \\
+0     &\lambda_2&*\\
+0     &0     &A^{(2)}
+\end{bmatrix}
+\begin{bmatrix}
+1     &*     &*\\
+0     &1     &*\\
+0     &0     &U^{(3)}
+\end{bmatrix}
+&=
+\begin{bmatrix}
+1     &*     &*\\
+0     &1     &*\\
+0     &0     &U^{(3)}
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1&*  &*\\
+0     &\lambda_2&*\\
+0     &0     &A^{(3)}
+\end{bmatrix}\\
+A_2U_3&=U_3A_3
+\end{align*}
+$$
+
+이 성립합니다.
+또다시, $A_2\times A_3$가 성립하고 이와 같은 과정을 반복할 수 있습니다.
+$k$번의 반복 후에 처음 $k$개의 대각성분들이 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_k$이고, 그 아래가 모두 0인 행렬 $A_k$를 얻을 수 있고, $A_k$는 $A$와
+
+$$
+AU_1=U_1A_1,\quad
+A_1U_2=U_2A_2,\quad
+\cdots,
+A_{k-1}U_k=U_kA_k,\quad
+$$
+
+의 관계를 가집니다.
+그러면
+
+$$
+\begin{align*}
+A
+&={U_k}A_{k-1}{U_k}^{-1}\\
+&=\cdots\\
+&=U_k\cdots U_1 A{U_1}^{-1}\cdots {U_k}^{-1}\\
+\end{align*}
+$$
+
+입니다.
+
+$n$번의 반복 후에는
+
+대각성분들이 $\lambda_1$, $\lambda_2$, $\cdots$, $\lambda_n$인 상삼각행렬 $A_n$을 얻을 수 있고 $A_n$은 $A$와
+
+$$
+\begin{align*}
+A
+&=U_n\cdots U_1A_n{U_1}^{-1}\cdots {U_n}^{-1}\\
+&=U_1\cdots U_n A_n\left(U_1\cdots U_n\right)^{-1}
+\end{align*}
+$$
+
+의 관계식을 가집니다.
+행렬 $U$를 $U=U_1\cdots U_n$로 두면, $U$는 unitary 행렬이고
+
+$$A_n=UAU^{-1}$$
+
+입니다.
+$A_n$이 상삼각행렬이라고 했으므로, 정사각행렬 $A$에 대하여 $UAU^{-1}$이 상삼각행렬이 되는 unitary 행렬 $U$를 찾은 셈입니다. $\square$
+
+<!-- $$
 \begin{align*}
 \begin{bmatrix}
 a_{11}&a_{12}&\cdots&a_{1n}\\
@@ -3518,11 +3874,524 @@ $$
 &=
 \begin{bmatrix}1&*\\0&U_2^{(1)}\end{bmatrix}
 \begin{bmatrix}1&*\\0&A_2^{(1)}\end{bmatrix}\\
-A_2U_3&=U_3A_3
+A_2U_3&=U_3A_3\qquad(n\times n)
+\end{align*}
+$$
+
+입니다. -->
+
+성질 25를 사용하면, 소기했던 정리 19(b)의 증명은 바로 얻어집니다.
+<!-- 하지만, 그 전에 성질 25가 실제로 어떻게 적용되는지 하는 예시를 보려고 합니다. -->
+
+<div class="notice--warning">
+<b>증명[정리 19(b)] : $A$가 $n\times n$ Hermitian 행렬이면 $A$는 unitarilly diagonalizable 합니다. </b> <br>
+</div>
+
+$A$가 $n\times n$ Hermitian 행렬이라고 가정하겠습니다.
+성질 25(Schur's lemma)에 의해
+
+$$A_n=UAU^{-1}$$
+
+을 만족시키는 unitary 행렬 $U$와 상삼각행렬 $A_n$이 존재합니다.
+$U^{-1}=U^H$임을 활용하면
+
+$$A_n=UAU^H$$
+
+와 같이 쓸 수도 있습니다.
+$A_n$에 conjugate transpose를 취해보면
+
+$$
+\begin{align*}
+{A_n}^H
+&=\left(UAU^H\right)^H\\
+&=\left(U^H\right)^HA^HU^H\\
+&=UA^HU^H\\
+&=UAU^H\\
+&=A_n
 \end{align*}
 $$
 
 입니다.
+그러면, $A_n$은 상삼각행렬이면서 동시에 Hermitian 행렬입니다.
+그러려면 $A_n$이 대각행렬이 될 수밖에 없습니다.
+왜냐하면, $i\lt j$인 $i$, $j$에 대하여
 
+$$
+\begin{align*}
+\left(A_n\right)_{ij}
+&=\left({A_n}^H\right)_{ij}\\
+&=\left(\overline{A_n}\right)_{ji}\\
+&=\overline{\left(A_n\right)_{ji}}\\
+&=\overline 0\\
+&=0
+\end{align*}
+$$
+
+이기 때문입니다.
+
+결국
+
+$$A=U^{-1}A_nU=U^{-1}A_n\left(U^{-1}\right)^{-1}$$
+
+이고 $U^{-1}$이 unitary 행렬이므로 $A$는 unitarily diagonalizable합니다.
+$\square$
+
+이로써, 이 포스트의 주요 정리였던 정리 19에 대한 증명을 마쳤습니다.
+마지막으로, 성질 25(Schur's Lemma)와 정리 19에 대한 예시를 들면서 이 포스트를 마치겠습니다.
+
+$3\times3$ 행렬 $A$를 
+
+$$A=
+\begin{bmatrix}
+2&1&-2\\
+1&0&0\\
+0&1&0
+\end{bmatrix}
+$$
+
+으로 두겠습니다.
+이 행렬의 characteristic equation은
+
+$$
+\begin{align*}
+|A-\lambda I|
+&=(2-\lambda)(-\lambda)(-\lambda)-1\cdot1\cdot(-\lambda)+(-2)\cdot1\cdot1\\
+&=(2-\lambda)(\lambda^2-1)
+\end{align*}
+$$
+
+이므로 $\lambda_1=1$, $\lambda_2=-1$, $\lambda_3=2$로 둘 수 있습니다.
+$\lambda_1=1$에 대한 eigenvector $x_1$을 구하기 위해
+
+$$
+\begin{gather*}
+(A-\lambda I)x_1=0\\
+\begin{bmatrix}
+1&1&-2\\
+1&-1&0\\
+0&1&-1
+\end{bmatrix}
+\begin{bmatrix}
+a\\b\\c
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\0\\0
+\end{bmatrix}
+\end{gather*}
+$$
+
+을 풀면
+
+$a-b=0$, $b-c=0$에서 $\begin{bmatrix}1&1&1\end{bmatrix}^T$은 $\lambda_1$의 한 eigenvector입니다.
+이 eigenvector의 크기를 1로 만들면
+
+$$
+x_1=\frac1{\sqrt3}\begin{bmatrix}1\\1\\1\end{bmatrix}
+$$
+
+이 됩니다.
+이제 $U_1$을 만들어야 합니다.
+즉, $x_1$을 포함하여 세 개의 3차원 벡터들이 orthonormal하도록 만들어야 합니다.
+이를 위해서는 Gram-Schmidt process를 사용해도 되지만, 이 경우에는 식이 간단하므로, 나머지 두 벡터를 $\begin{bmatrix}a&b&c\end{bmatrix}^T$, $\begin{bmatrix}d&e&f\end{bmatrix}^T$로 두면
+
+$$
+\begin{align*}
+a+b+c&=0\\
+d+e+f&=0\\
+ad+be+cf&=0
+\end{align*}
+$$
+
+를 만족시킵니다.
+이 식을 만족시키는 정수 $a$, $\cdots$, $f$를 먼저 찾겠습니다.
+$a=1$, $b=-1$, $c=0$이면 첫번째 식 $a+b+c=0$을 만족시킵니다.
+또한,
+
+$$
+\begin{align*}
+d+e+f&=0\\
+d-e&=0
+\end{align*}
+$$
+
+에서 $d=1$, $e=1$, $f=-2$로 둘 수 있습니다.
+따라서
+
+$$
+\begin{align*}
+x_1=
+&\frac1{\sqrt3}\begin{bmatrix}1&1&1\end{bmatrix}^T,\\
+&\begin{bmatrix}1&-1&0\end{bmatrix}^T,\\
+&\begin{bmatrix}1&1&-2\end{bmatrix}^T
+\end{align*}
+$$
+
+는 pairwisely orthogonal 조건을 만족시키는 세 벡터입니다.
+이제 뒤의 두 벡터의 크기를 1로 바꾸어
+
+$$
+\begin{align*}
+x_1=
+&\frac1{\sqrt3}\begin{bmatrix}1&1&1\end{bmatrix}^T,\\
+&\frac1{\sqrt2}\begin{bmatrix}1&-1&0\end{bmatrix}^T,\\
+&\frac1{\sqrt6}\begin{bmatrix}1&1&-2\end{bmatrix}^T
+\end{align*}
+$$
+
+으로 만들면 이 벡터들은 orthonormal합니다.
+이 벡터들을 열벡터로 하는 unitary 행렬 $U_1$은
+
+$$
+U_1=
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &-\frac2{\sqrt6}
+\end{bmatrix}
+$$
+
+입니다.
+그러면, 첫번째 열의 대각성분이 $\lambda_1=1$이고 그 아래가 모두 0인 행렬 $A_1$이 존재하여
+
+$$AU_1=U_1A_1$$
+
+입니다.
+이것을 더 자세히 쓰면
+
+$$
+\begin{bmatrix}
+2&1&-2\\
+1&0&0\\
+0&1&0
+\end{bmatrix}
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}
+\begin{bmatrix}
+1&*&*\\
+0&*&*\\
+0&*&*
+\end{bmatrix}
+$$
+
+입니다.
+다음단계로 나가기 전에, $A_1$을 먼저 구해놓겠습니다.
+
+$$
+\begin{align*}
+A_1
+&=\begin{bmatrix}
+1&*&*\\
+0&*&*\\
+0&*&*
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+2&1&-2\\
+1&0&0\\
+0&1&0
+\end{bmatrix}
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}^T
+\begin{bmatrix}
+2&1&-2\\
+1&0&0\\
+0&1&0
+\end{bmatrix}
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt3}  &\frac1{\sqrt3}  \\
+\frac1{\sqrt2}  &-\frac1{\sqrt2} &0               \\
+\frac1{\sqrt6}  &\frac1{\sqrt6}  &\frac2{\sqrt6}
+\end{bmatrix}
+\begin{bmatrix}
+2&1&-2\\
+1&0&0\\
+0&1&0
+\end{bmatrix}
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &\frac2{\sqrt6}
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+1               &\frac1{\sqrt6}  &\frac3{\sqrt2}  \\
+0               &0               &\sqrt3          \\
+0               &\frac2{\sqrt3}  &1
+\end{bmatrix}
+\end{align*}
+$$
+
+입니다.
+이제, $A_1$의 오른쪽 아래 $2\times2$ 행렬을 $A^{(1)}$로 두겠습니다.
+다시 말해,
+
+$$
+A_1
+=\begin{bmatrix}
+1               &\frac1{\sqrt6}  &\frac3{\sqrt2}  \\
+0               &0               &\sqrt3          \\
+0               &\frac2{\sqrt3}  &1
+\end{bmatrix}
+=\begin{bmatrix}1&*\\0&A^{(1)}\end{bmatrix}
+$$
+
+이고
+
+$$
+A^{(1)}=
+\begin{bmatrix}
+0               &\sqrt3          \\
+\frac2{\sqrt3}  &1
+\end{bmatrix}
+$$
+
+인 것입니다.
+
+이때, $A_1$과 $A_2$는 similar하므로 $A_2$의 eigenvalue들은 ($A$일때와 마찬가지로) $\lambda_1=1$, $\lambda_2=-1$, $\lambda_3=2$입니다.
+또한, 행렬의 구조상 $A^{(1)}$의 eigenvalue들은 $\lambda_2=-1$, $\lambda_3=2$
+입니다.
+$A^{(1)}$의 eigenvalue $\lambda_2=-1$에 대한 eigenvector $x_2$는
+
+$$
+\begin{bmatrix}
+1               &\sqrt3          \\
+\frac2{\sqrt3}  &2
+\end{bmatrix}
+\begin{bmatrix}
+a\\b
+\end{bmatrix}
+=0
+$$
+
+으로부터 구할 수 있고, $a=-\sqrt 3b$로부터 eigenvector $\begin{bmatrix}-\sqrt3&1\end{bmatrix}^T$를 얻을 수 있습니다.
+이것의 크기를 1로 바꾸면
+
+$$
+x_2=
+\begin{bmatrix}
+-\frac{\sqrt3}2\\\frac12
+\end{bmatrix}
+$$
+
+를 얻을 수 있습니다.
+
+$x_2$와 함께 orthonormal 조건을 만족시키는 벡터를 $\begin{bmatrix}a&b\end{bmatrix}^T$
+
+라고 하면
+
+$$-\sqrt3a+b=0$$
+
+와 $b=\sqrt3$에서 이 벡터를 $\begin{bmatrix}1&\sqrt3\end{bmatrix}^T$로 둘 수 있고, 이것의 크기를 1로 두어 $\begin{bmatrix}\frac12&\frac{\sqrt3}2\end{bmatrix}^T$로 둘 수 있습니다.
+다시 말해, 두 벡터
+
+$$
+\begin{align*}
+x_2=
+&
+\begin{bmatrix}
+-\frac{\sqrt3}2&\frac12
+\end{bmatrix}^T\\
+&
+\begin{bmatrix}
+\frac12&\frac{\sqrt3}2
+\end{bmatrix}^T\end{align*}
+$$
+
+는 orthonormal합니다.
+이 벡터들을 열벡터로 하는 행렬
+
+$$
+U^{(2)}=
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}
+$$
+
+는 unitary 행렬이고,
+
+$$A^{(1)}U^{(2)}=U^{(2)}A^{(2)}$$
+
+인 상삼각행렬 $A^{(2)}$가 존재합니다.
+이것을 자세히 쓰면
+
+$$
+\begin{bmatrix}
+0               &\sqrt3          \\
+\frac2{\sqrt3}  &1
+\end{bmatrix}
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}
+\begin{bmatrix}
+-1              &*          \\
+0               &*
+\end{bmatrix}
+$$
+
+입니다.
+아까와 마찬가지로 $A^{(2)}$를 계산을 통해 구하면
+
+$$
+\begin{align*}
+A^{(2)}
+&=
+\begin{bmatrix}
+-1              &*          \\
+0               &*
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+0               &\sqrt3          \\
+\frac2{\sqrt3}  &1
+\end{bmatrix}
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}^T
+\begin{bmatrix}
+0               &\sqrt3          \\
+\frac2{\sqrt3}  &1
+\end{bmatrix}
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}
+\begin{bmatrix}
+0               &\sqrt3          \\
+\frac2{\sqrt3}  &1
+\end{bmatrix}
+\begin{bmatrix}
+-\frac{\sqrt3}2 &\frac12         \\
+\frac12         &\frac{\sqrt3}2  
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+-1              &-\frac1{\sqrt3}         \\
+0               &2
+\end{bmatrix}
+\end{align*}
+$$
+
+이제, 두 개의 $2\times2$ 행렬 $U^{(2)}$, $A^{(2)}$를 가지고 $3\times3$ 행렬
+
+$$
+\begin{align*}
+U_2
+&=
+\begin{bmatrix}
+1&0\\
+0&U^{(2)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&0&0\\
+0&-\frac{\sqrt3}2 &\frac12\\
+0&\frac12         &\frac{\sqrt3}2
+\end{bmatrix}\\
+A_2
+&=
+\begin{bmatrix}
+1&0\\
+0&A^{(2)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&0&0\\
+0&-1              &-\frac1{\sqrt3}         \\
+0&0               &2
+\end{bmatrix}
+\end{align*}
+$$
+
+을 얻으면, $U_2$는 unitary 행렬이고
+
+$$A_1U_2=U_2A_2$$
+
+입니다.
+위에서 얻은 식
+
+$$AU_1=U_1A_1$$
+
+과 조합하면
+
+$$A=U_1A_1{U_1}^{-1}=U_1U_2A_2\left(U_1U_2\right)^{-1}$$
+
+입니다.
+
+$$U_1U_2=
+\begin{bmatrix}
+\frac1{\sqrt3}  &\frac1{\sqrt2}  &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &-\frac1{\sqrt2} &\frac1{\sqrt6}  \\
+\frac1{\sqrt3}  &0               &-\frac2{\sqrt6}
+\end{bmatrix}
+\begin{bmatrix}
+1&0&0\\
+0&-\frac{\sqrt3}2 &\frac12\\
+0&\frac12         &\frac{\sqrt3}2
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac1{\sqrt3} &-\frac3{2\sqrt2}+\frac1{2\sqrt6}&\frac1{2\sqrt2}+\frac3{2\sqrt6}\\
+\frac1{\sqrt3} &\frac3{2\sqrt2}+\frac1{2\sqrt6}&-\frac1{2\sqrt2}+\frac3{2\sqrt6}\\
+\frac1{\sqrt3} &-\frac1{\sqrt6}         &-\frac1{\sqrt2}
+\end{bmatrix}
+$$
+
+는 unitary행렬이고
+(이론상 unitary인 것은 맞을 것입니다.
+각각의 열들을 내적해 확인해 보았을 때는, 모두 이상없이 되지만 두번째 열과 세번째 열을 내적했을 때 0이 나오지 않는 것 같기도 합니다.
+따라서 계산을 다시 해보면 좋을 것 같습니다만, 아직 안했습니다.)
+$A$는 unitarily diagonalizable합니다.
 
 [1]:{{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf
