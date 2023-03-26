@@ -354,7 +354,7 @@ $$
 
 와 같이 정의해도 정확히 같은 정의가 됩니다.
 
-한편, 실수로 이루어진 행렬이면 $A$에 대하여 transpose를 취하는 것과 conjugate transpose를 취하는 것에는 차이가 없습니다 ; 
+한편, 실수로 이루어진 행렬 $A$에 대하여는 transpose를 취하는 것과 conjugate transpose를 취하는 것에는 차이가 없습니다 ; 
 
 $$
 A^H=\overline{\left(a_{ij}\right)_{n\times n}\,^T}
@@ -474,7 +474,7 @@ $$P=\begin{bmatrix}1&2\\0&2\end{bmatrix},\qquad Q=\begin{bmatrix}0&1&0\\1&0&0\en
 
 는 대각성분들을 기준으로 대칭이 아니므로 symmetric 행렬이 아닙니다.
 $Q$와 같은 $2\times 3$ 행렬은 어떻게 해도 symmetric하지 않습니다.
-즉, symmetric 행렬이 되기 위해서는 일단 그 행렬이 정사각행렬일 필요가 있습니다..
+즉, symmetric 행렬이 되기 위해서는 일단 그 행렬이 정사각행렬일 필요가 있습니다.
 
 행렬의 symmetricity는 transpose를 사용하면 쉽게 정의할 수도 있습니다.
 
@@ -504,7 +504,7 @@ $$
 
 입니다.
 이 중에서 $T$, $Z$는 Hermitian 행렬이고, $P$는 Hermite 행렬이 아닙니다.
-$P$, $T$는 실수로 이루어진 행렬이므로 성질 3(a)을 사용하여
+$P$, $T$는 실수로 이루어진 행렬이므로 성질 3(b)를 사용하여
 
 <!-- $$
 \begin{align*}
@@ -1031,7 +1031,7 @@ $$
     <li> $\langle x,cy\rangle=c\langle x,y\rangle$</li>
 </ul>
 이 성질들은 정의 4, 정의 9의 식들에 대입하면 바로 증명될 수 있습니다.
-여하튼, 복소벡터든 실수벡터든 두번째 성분에 대해서는 linear 하다는 것을 알 수 있습니다 ; $\langle x,y+z\rangle=\langle x,y\rangle+\langle x,z\rangle$, $\langle x,cy\rangle=c\langle x,y\rangle$
+또한, $x$, $y$, $z$가 모두 실수이면, 복소벡터의 내적에 관한 성질들은 실수벡터의 내적에 관한 성질들과 일치한다는 점에서 복소벡터의 내적은 실수벡터의 내적을 일반화한 것입니다.
 </div>
 
 위와 같이 정의한 내적을 이용해 복소벡터의 수직(orthogonality)의 개념도 정의할 수 있습니다.
@@ -1171,7 +1171,7 @@ $$A^HA=A^TA=I$$
 
 이기 때문입니다.
 <br>
-(b) 두 벡터에 대한 orthogonality, 여러 벡터에 대한 pairwise orthogonality와 orthonormality에 대해서, 두 개의 정의를 내렸습니다(정의 06, 정의 10).
+(b) 두 벡터에 대한 orthogonality, 여러 벡터에 대한 pairwise orthogonality와 orthonormality에 대해서, 서로다른 두 개의 정의를 내렸습니다(정의 06, 정의 10).
 하지만 두 정의가 서로 상충되지는 않습니다.
 만약 $x_i$가 실수벡터이면, 정의 10의 모든 식들은 정의 06의 식들과 일치하기 때문입니다.
 </div>
@@ -1181,7 +1181,7 @@ $$A^HA=A^TA=I$$
 행렬의 대각화 개념은 eigenvalue/eigenvector와 관련되어 있는 개념입니다.
 그런데 eigenvalue를 계산할 때, 많은 경우에 **행렬식(determinant)**이 사용되므로 이에 대해 먼저 이야기했습니다.
 하지만, 행렬식에 대해 말하려면 복잡하면서도 기본적인 설명들이 많이 들어갈 수밖에 없습니다.
-아래의 '행렬식' 단락을 이해하는 것이 힘들면, $2\times 2$ 행렬과 $3\times3$ 행렬의 행렬식의 정의와 정리 14 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
+이번 절 1.5 행렬식의 내용이 너무 복잡하면, $2\times 2$ 행렬과 $3\times3$ 행렬의 행렬식의 정의와 정리 14 정도만 인정하고 넘어가도 이 포스트의 뒷부분을 이해하는 데에는 문제가 없을 것 같습니다.
 
 고등학교 수학에서 행렬식의 개념에 대해 다룹니다.
 행렬
@@ -1189,7 +1189,7 @@ $$A^HA=A^TA=I$$
 $$A=\begin{bmatrix}a&b\\c&d\end{bmatrix}$$
 
 의 행렬식 $D=ad-bc$가 0이면 역행렬이 존재하지 않고, 0이 아니면 역행렬이 존재한다는 것입니다.
-이 포스트에서는 $A$의 행렬식을 $\text{det}(A)$ (또는 $|A|$)로 적으려 합니다.
+이 포스트에서는 $A$의 행렬식을 $\text{det}(A)$로 적으려 합니다.
 지금까지 써왔던 $A$의 표현식
 
 $$A=\begin{bmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{bmatrix}$$
@@ -1218,6 +1218,7 @@ $$
 여기서 말하는 순열은 고등학교 수학에서 다루는 $_5P_3=5\times4\times3=60$와 는 조금 다릅니다.
 
 **permutation**
+
 중학교 수학(혹은 고등학교 수학)에서 **함수**란 두 집합 $X$, $Y$가 주어졌을 때
 
 $X$의 모든 원소 $x\in X$에 대하여 $Y$의 한 원소 $f(x)$에 대응시키는 것
@@ -1321,7 +1322,7 @@ $$
 $\sigma=abc$의 두번째 성분과 세번째 성분을 교환하면 $acb$가 됩니다.
 이때,
 - $\sigma$를 짝수번 교환하여 항등함수를 만들 수 있으면 $\sigma$를 even permutation이라고 합니다.
-- $\sigma$를 홀수번 교환하여 항등행렬를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
+- $\sigma$를 홀수번 교환하여 항등함수를 만들 수 있으면 $\sigma$를 odd permutation이라고 합니다.
 - 함수 $\text{sgn}:S_n\to\\{1,-1\\}$을 다음과 같이 정의합니다;
 
 $$
@@ -1753,7 +1754,7 @@ $$
 &=\sum_{\sigma\in S_n}\sum_{f:\mathbb N_n\to\mathbb N_n}\text{sgn}(\sigma)\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}\\
 &=\sum_{f:\mathbb N_n\to\mathbb N_n}\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}\\
 &=\sum_{f:\mathbb N_n\to\mathbb N_n}\sum_{\sigma\in S_n}\text{sgn}(\sigma)\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
-=&\sum_{f:\mathbb N_n\to\mathbb N_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)
+=&\sum_{f:\mathbb N_n\to\mathbb N_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)
 \end{align*}
 $$
 
@@ -1811,7 +1812,7 @@ a_{f_4(1)}b_{f_4(2)}=a_2b_2,\quad
 $$
 
 이라서 이것들을 모두 더하면 $a_1b_1+a_1b_2+a_2b_1+a_2b_2$이 되는 것입니다.
-$a_i=c_{1i}$, $b_i=c_{2i}$로 적고, 이 결과를 다시 쓰면 다시 쓰면
+$a_i=c_{1i}$, $b_i=c_{2i}$로 적고, 위의 전개과정을 다시 쓰면
 
 $$
 \prod_{k=1}^2\left(\sum_{i=1}^2c_{ki}\right)=\sum_{f:\{1,2\}\to\{1,2\}}\prod_{k=1}^nc_{k,f(k)}
@@ -1822,7 +1823,7 @@ $$
 
 $$\prod_{k=1}^n\left(\sum_{i=1}^nA_{ki}B_{i,\sigma(k)}\right)$$
 
-은
+을
 
 $$\sum_{f:\mathbb N_n\to\mathbb N_n}\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}$$
 
@@ -1836,8 +1837,8 @@ $$\sum_{f:\mathbb N_n\to\mathbb N_n}\prod_{k=1}^nA_{k,f(k)}B_{f(k),\sigma(k)}$$
 $$
 \begin{align*}
 \text{det}(AB)&=P+Q\\
-P&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
-Q&=\sum_{f:\not\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)
+P&=\sum_{f\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
+Q&=\sum_{f:\not\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)
 \end{align*}
 $$
 
@@ -1861,22 +1862,22 @@ $$
 \end{align*}
 $$
 
-이고, 임의의 $\sigma\in S_n$에 대하여 $\alpha\circ\sigma\in S_n$이고, $\text{sgn}(\alpha\circ\sigma)=\text{sgn}(\alpha)\text{sgn}(\sigma)=-\text{sgn}(\sigma)$ 이므로, 위의 $Q$ 식에서 괄호친 부분의 두 배는 0이 됩니다;
+이고, 임의의 $\sigma\in S_n$에 대하여 $\alpha\circ\sigma\in S_n$이며, $\text{sgn}(\alpha\circ\sigma)=\text{sgn}(\alpha)\text{sgn}(\sigma)=-\text{sgn}(\sigma)$ 이므로, 위의 $Q$ 식에서 두번째 괄호의 두 배는 0이 됩니다;
 
 $$
 \begin{align*}
-&2\sum_{\sigma\not\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
-=&\sum_{\sigma\not\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
-+\sum_{\sigma\not\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
-=&\sum_{\sigma\not\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
-+\sum_{\sigma\not\in S_n}\text{sgn}(\sigma\circ\alpha)\prod_{k=1}^nB_{f(k),(\sigma\circ\alpha)(k)}\\
-=&\sum_{\sigma\not\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
-+\sum_{\sigma\not\in S_n}\left(-\text{sgn}(\sigma)\right)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
+&2\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
+=&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
++\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
+=&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
++\sum_{\sigma\in S_n}\text{sgn}(\sigma\circ\alpha)\prod_{k=1}^nB_{f(k),(\sigma\circ\alpha)(k)}\\
+=&\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}
++\sum_{\sigma\in S_n}\left(-\text{sgn}(\sigma)\right)\prod_{k=1}^nB_{f(k),\sigma(k)}\\
 =&0
 \end{align*}
 $$
 
-세번째 줄에서 $$\sum_{\sigma\not\in S_n}$$의 항에 $\sigma$ 대신 $\sigma\circ\alpha$를 넣었고, 그 전후의 결과는 같습니다.
+세번째 줄에서 $\sum_{\sigma\in S_n}$의 항에 $\sigma$ 대신 $\sigma\circ\alpha$를 넣었고, 그 전후의 결과는 같습니다.
 왜냐하면 1.5의 첫번째 참고(b)에서 $\sigma\mapsto\sigma\circ\alpha$는 일대일대응이라고 했었기 때문입니다.
 이러한 방식의 논증은 이후 계산들에서도 두어번 나타납니다.
 
@@ -1886,12 +1887,12 @@ $$
 $$
 \begin{align*}
 P
-&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
-&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
-&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
-&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1}\circ f)\cdot\text{sgn}(f)\prod_{k=1}^nB_{(\sigma^{-1}\circ f)(k),k}\right)\\
-&=\sum_{f\in S_n}\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\cdot\text{sgn}(f)\prod_{k=1}^nB_{\pi(k),k}\right)\\
-&=\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
+&=\sum_{f\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{f(k),\sigma(k)}\right)\\
+&=\sum_{f\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{k=1}^nB_{(f\circ\sigma^{-1})(k),k}\right)\\
+&=\sum_{f\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(\sigma^{-1})\prod_{k=1}^nB_{(f\circ\sigma^{-1})(k),k}\right)\\
+&=\sum_{f\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\sigma\in S_n}\text{sgn}(f\circ\sigma^{-1})\cdot\text{sgn}(f)\prod_{k=1}^nB_{(f\circ\sigma^{-1})(k),k}\right)\\
+&=\sum_{f\in S_n}\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\cdot\text{sgn}(f)\prod_{k=1}^nB_{\pi(k),k}\right)\\
+&=\sum_{f\in S_n}\text{sgn}(f)\left(\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
 &=\left(\sum_{f\in S_n}\text{sgn}(f)\prod_{k=1}^nA_{k,f(k)}\right)\left(\sum_{\pi\in S_n}\text{sgn}(\pi)\prod_{k=1}^nB_{\pi(k),k}\right)\\
 &=\text{det}(A)\text{det}(B^T)\\
 &=\text{det}(A)\text{det}(B)
@@ -1900,7 +1901,7 @@ $$
 
 입니다.
 두번째 줄에서 $\sigma^{-1}$이 일대일대응이므로 $$\prod_{k=1}^n$$에서 $k$ 대신 $\sigma^{-1}(k)$를 사용하여도 그 곱은 여전히 같습니다.
-다섯번째 줄에서 $\sigma^{-1}\circ f$를 $\pi$로 치환하고, 합 또한 $\pi$에 대한 합으로 바꾸었는데, 이는 $\sigma\mapsto\sigma^{-1}\circ f$가 일대일대응이기 때문에 가능합니다.
+다섯번째 줄에서 $f\circ\sigma^{-1}$를 $\pi$로 치환하고, 합 또한 $\pi$에 대한 합으로 바꾸었는데, 이는 $\sigma\mapsto f\circ\sigma^{-1}$가 일대일대응이기 때문에 가능합니다.
 마지막 부분에서 $\text{det}(B^T)=\text{det}(B)$인 것은
 
 $$
@@ -4402,7 +4403,7 @@ $A$는 unitarily diagonalizable합니다.
 다만, 몇번의 퇴고가 더 필요할 것으로 보입니다.
 
 원래 만들었던 TeX파일의 내용만을 옮겨 적어도 되겠지만, 그에 대한 배경설명을 넣으려다보니 글이 길어졌습니다.
-논리적으로 완결성이 있는 글을 작성하고 싶은 욕심에 글을 다지고 다지다보니 글의 분량이 더 길어졌습니다.
+또한, 논리적으로 완결성이 있는 글을 작성하고 싶은 욕심에 글을 다지고 다지다보니 글의 분량이 더 길어졌습니다.
 
 수학의 모든 분야가 그럴테지만 선형대수는 그 자체로 상당히 넓은 범위를 가지고 있습니다.
 게다가 '직교대각화'는 선형대수 줄거리의 후반부에 위치합니다.

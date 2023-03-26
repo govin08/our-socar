@@ -7,7 +7,7 @@ tags: [Maupassant]
 author_profile: false
 ---
 
-# 1. 잘생긴 남자
+# 1.
 
 <div style="text-align : center; padding: 50px 1px 50px 1px;">
     <img src="{{site.url}}\images\2023-02-13-maupassant\maupassant_4-1.png" alt="maupassant_4-1" width="300"/>

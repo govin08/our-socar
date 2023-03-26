@@ -25,7 +25,7 @@ url                      : "https://govin08.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "govin08/govin08.github.io"
 teaser                   : #"/assets/images/dim_image.jpg"
-logo                     : "/assets/images/zergling.png"
+logo                     : #"/assets/images/zergling.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : true
 words_per_minute         : 200
