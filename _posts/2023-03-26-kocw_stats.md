@@ -12,9 +12,9 @@ author_profile: false
 이 강의는 총 21강으로 되어 있고 확률과 통계에 관한 전반적인 사항을 다루는 것 같습니다.
 강의 내용을 아주 자세하게는 적지 않고 간략하게만 적어나갈 예정입니다.
 
-# 1 조건부확률과 Bayes 정리
+# 01 조건부확률과 Bayes 정리
 
-**1) sample Space**
+**(1) sample Space**
 
 확률에 대해 공부할 때 가장 먼저 배우는 것은 당연히 표본공간(sample space, 전공간)입니다.
 고등학교 이후의 과정에서 확률은 항상 집합의 관점에서 이해됩니다.
@@ -35,7 +35,7 @@ $$S=\{H,T\}$$
 
 입니다.
 
-**2) event**
+**(2) event**
 
 확률은 보통 $P(A)$로 표시하는데, 여기에서 $A$는 사건(event)이라고 부릅니다.
 이때, 사건은 $S$의 부분집합입니다. ($A\subset S$)
@@ -48,7 +48,7 @@ P(A)
 \end{align*}
 $$
 
-**3) coditional probability**
+**(3) coditional probability**
 
 두 사건 $A$, $B$에 대하여 사건 $A$가 발생했을 때
 사건 $B$도 발생할 확률을 $P(B|A)$라고 쓰고,
@@ -60,9 +60,9 @@ $$P(B|A)=\frac{P(B\cap A)}{P(A)}$$
 이것은 마치, $A$를 sample space로 보는 것과 같습니다.
 마찬가지로, 일반적인 확률 $P(A)$도 $P(A|S)$와 같이 해석할 수 있습니다.
 
-**4) the law of total probability**
+**(4) the law of total probability**
 
-$A_1$, $\cdots$, $A_n$가 $S$의 partition이면 ($i\ne j$일 때 $A_i\cap A_j=\varnothing$이고 $A_1\cup A_2\cup\cdots\cup A_n=S$)
+$A_1$, $\cdots$, $A_n$가 $S$의 partition이면 ($i\ne j$일 때 $A_i\cap A_j=\varnothing$ 이고 $A_1\cup A_2\cup\cdots\cup A_n=S$)
 
 $$P(A)=P(A_1\cap A)+\cdots+P(A_n\cap A)=\sum_{i=1}^nP(A_i\cap A)$$
 
@@ -74,26 +74,26 @@ $$P(A)=\sum_{i=1}^nP(A|A_i)P(A_i)$$
 입니다.
 이후에 Bayes theorem에서 자세히 다루겠지만, $P(A|A_i)$와 같은 확률은 사전확률로 해석할 수 있습니다.
 
-![stats 1-1]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-50-center}
+![stats 1-1]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
 
-**5) Bayesian theorem**
+**(5) Bayesian theorem**
 
 조건부확률의 식으로부터
 
 $$P(B|A)=\frac{P(A|B)P(B)}{P(A)}$$
 
 입니다.
-$P(B|A)$를 직접적으로 구하기가 어려운데, $A$가 $A_1$, $\cdots$, $A_n$의 partition으로 표현될 수 있고, $P(A_i|B)$는 구하는 것이 상대적으로 용이한 경우에 Bayesian theorem이 자주 쓰입니다.
+$P(B|A)$를 직접적으로 구하기가 어려운데, partition $A_1$, $\cdots$, $A_n$이 존재하고, $P(A_i|B)$는 구하는 것이 상대적으로 용이한 경우에 Bayesian theorem이 자주 쓰입니다.
 이때, $P(A|B)$는 사전확률(prior, 선행확률)이라고 불리며, $P(A)$는 the law of total probability에 의해 구하게 됩니다.
 
 특히 $P(B|A)$에서 $A$가 observation data (input)에 대응되고 $B$가 original data (output)에 해당되는 경우가 대표적인 예입니다.
-어떤 input이 주어졌을 때 어떤 output이 나올 확률은 보통 인과관계를 잘 따지면 계산할 수 있지만, 어떤 output이 나왔을 때 input이 그 값으로 주어졌을 확률, 즉 반대 경우는 해석하기 어렵고 계산하기 어렵습니다.
+어떤 input이 주어졌을 때 어떤 output이 나올 확률은 보통 인과관계나 선후관계를 잘 따지면 계산할 수 있지만, 어떤 output이 나왔을 때 input이 그 값으로 주어졌을 확률, 즉 반대 경우는 해석하기 어렵고 계산하기 어렵습니다.
 그런 경우에 $A$와 $B$의 위치를 바꾸어서, 계산하는 트릭이 Bayesian rule인 것 같습니다.
 
 **ex. 1.7 binary symmetric channel**
 
 데이터를 전송하는 어떤 기기가 있다고 하고, 그 기기가 transmitter와 receiver로 이루어져있다고 하겠습니다.
-input data와 output data가 binary인 경우에 이 구조를 binary channel이라고 하는 것 같습니다.
+input data와 output data가 binary인 경우에 이 구조를 binary channel이라고 한다고 합니다.
 
 $$
 \begin{align*}
@@ -119,13 +119,13 @@ $$
 (마치 행렬같습니다.)
 
 (이때, 위의 표현식은 조금은 엄밀하지는 못한 표현식인 것 같습니다.
-$P(\cdot|\cdot)$의 두 $\;\;\cdot\;\;$에는 사건이, 그러니까 집합이 들어가야 하는데, 하나의 원소만 들어갔습니다.
+$P(\cdot|\cdot)$의 두 $~\cdot~$에는 사건이, 그러니까 집합이 들어가야 하는데, 하나의 원소만 들어갔습니다.
 $P(y_1|x_1)$라는 표현은 $P(\\{y_1\\}|\\{x_1\\})$로 해석하면 될 것 같습니다.
 조금 더 정확하게는 $P(S_1\times\\{y_1\\}\|\\{x_1\\}\times S_2)$로 해석하면 될 것 같습니다.
 하지만, 크게 혼동될 일이 없으니 $P(y_1|x_1)$로 써도 될 것 같습니다.)
 
 만약 $P_{11}=P_{22}$이고 $P_{12}=P_{21}$이 성립하면 이 binary channel을 binary symmetric channel이라고 부릅니다.
-(따라서 행렬이 symmetric한 것과는 연관이 없습니다.)
+(따라서 행렬이 symmetric한 것과는 다릅니다.)
 당연히
 
 $$
@@ -141,7 +141,7 @@ $$
 **(1) $P(\text{error})$**
 
 오류라고 판단할 수 있는 경우는 input이 $x_1$로 들어갔는데 output이 $y_2$로 나오는 경우와 그 반대의 경우입니다.
-전자의 경우를 $\\{x_1\\}\times\\{y_2\\}$로 표현해야 정확하겠지만 이것을 그냥 $x_1\cap y_2$로 쓰면
+전자의 경우를 $\\{x_1\\}\times\\{y_2\\}$로 표현해야 정확하겠지만 이것을 그냥 $x_1\cap y_2$로 쓰면 (그러니까, $\left(\\{x_1\\}\times S_2\right)\cap\left( S_1\times\\{y_2\\}\right)$의 의미입니다.)
 
 $$
 \begin{align*}
@@ -181,7 +181,8 @@ P(x_1|\text{error})
 $$
 
 (강의에서는 위 계산이 다 완성되지 않았고, 위의 계산은 나름대로 결과를 내본 것입니다.
-문제에서 $P(x_i)$는 주어지지 않은 것처럼 보입니다.)
+문제에서 $P(x_i)$는 주어지지 않은 것처럼 보입니다.
+그리고, 만약 이 channel이 symetric하면 위의 식은 조금 더 간단히 쓸 수 있을 것으로 보입니다.)
 
 ![stats 1-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-2.png){: .img-50-center}
 
@@ -233,7 +234,7 @@ $$
 
 입니다.
 
-# 2 독립사건과 확률
+# 02 독립사건과 확률
 
 **1.10 combinatorial analysis**
 
@@ -241,7 +242,7 @@ $$
 
 서로 다른 $n$개의 대상을 일렬로 나열하는 방법의 수는
 
-$$n!=n\times(n-1)\times\cdots1.$$
+$$n!=n\times(n-1)\times\cdots\times1.$$
 
 서로 다른 $n$개의 대상 중 $r$개를 일렬로 나열하는 방법의 수는
 
@@ -303,7 +304,7 @@ n(n-1)x^2(1+x)^{n-2}&=\sum_{k=0}^nk(k-1)\binom nkx^k
 \end{align*}
 $$
 
-이고 마지막 식을 $(*)$와 더하면
+이고 마지막 식을 $(\ast)$와 더하면
 
 $$
 \begin{equation}\tag{$**$}
@@ -396,6 +397,7 @@ $$\sqrt{2\pi n}\left(\frac ne\right)^n$$
 
 강의에는 이에 대한 증명이 나와있지 않은데 [이 자료](https://kconrad.math.uconn.edu/blurbs/analysis/stirling.pdf)(Keith Conrad의 자료)에 설명과 증명이 잘 되어 있는 것 같습니다.
 여기에서의 증명은 Gaussian distribution을 통한 증명과, 어떤 함수열의 수렴을 통한 증명이 소개되고 있는 것 같습니다.
+(언제 한 번 이것을 공부해서 포스트로 남기면 참 좋을텐데)
 
 엄밀한 증명은 조금 어렵지만, 대략적으로 이 식의 의미를 파악하는 건 그렇게까지 어렵지 않은 것 같습니다.
 어림하고자 하는 값 $n!$에 자연로그를 취하면
@@ -443,7 +445,7 @@ $$n!=g(n)\left(\frac ne\right)^n$$
 
 ![stats 2-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-2.png){: .img-50-center}
 
-여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, 이 시스템의 reliability는
+여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, $R_n(t)$일 때, 이 시스템의 reliability는
 
 $$\prod_{i=1}^nR_i(t)$$
 
@@ -479,14 +481,15 @@ $$
 
 입니다.
 
-# 3 확률변수의 정의
+# 03 확률변수의 정의
 
 **Chapter 2. Random Variables(확률변수)**
 
 **2.2 definiion of random variables**
 
-언제나 확률변수의 개념을 정확히 이해하는 건 어려운 일인 것 같습니다.
-개인적으로는 볼때마다 새로운 것 같은데, 그래도 다시 한 번 강의를 보며 다시 한 번 이해해봤습니다.
+언제나 확률변수의 개념을 정확히 이해하는 건 결코 쉬운 일은 아닌 것 같습니다.
+매번 충분할 정도로 이해하고 넘어가려고 노력하는데도 불구하고 볼때마다 새로운 것 같습니다.
+그래도 다시 한 번 강의를 보며 다시 한 번 이해해봤습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-1.png){: .img-50-center}
 
@@ -504,7 +507,7 @@ A random variable is a function $X$ mapping each outcome of random experiment $w
 {: .text-center}
 
 를 확률변수 $X$로 정의할 수 있습니다.
-이 시행에서 $S=\{H,T\}$이고, 확률변수 $X$는 $S$에서 $\mathbb R$로 가는 함수로서
+이 시행에서 $S=\{\H,T\\}$이고, 확률변수 $X$는 $S$에서 $\mathbb R$로 가는 함수로서
 
 $$
 \begin{align*}
@@ -513,16 +516,16 @@ X(T)&=-1
 \end{align*}
 $$
 
-확률변수를 사용하면 확률 $P(\:\cdot\:)$를 마치 숫자들의 함수로서 생각할 수 있게 됩니다.
+확률변수를 사용하면 확률 $P(~\cdot~)$를 마치 숫자들의 함수로서 생각할 수 있게 됩니다.
 그전까지 $P(A)$라는 표현에서 $A$는 사건(event)이라고 불렸고 표본공간 $S$의 부분집합을 의미했습니다.
-그러니까 그전까지는 확률 $P(\:\cdot\:)$가 마치 '집합의 함수'처럼 동작했습니다.
+그러니까 그전까지는 확률 $P(~\cdot~)$가 마치 '집합의 함수'처럼 동작했습니다.
 그래서
 
 $$P(\{H\})=\frac12,\quad P(\{T\})=\frac12,\quad P(\varnothing)=0,\quad P(S)=1$$
 
 와 같은 표현들을 사용할 수 있었지만 직관적인 표현은 아니었습니다.
 
-그런데 확률변수 $X$를 도입하고 나면 $P(\:\cdot\:)$를 숫자들의 함수처럼 생각할 수 있습니다.
+그런데 확률변수 $X$를 도입하고 나면 $P(~\cdot~)$를 숫자들의 함수처럼 생각할 수 있습니다.
 $p(x)$ 혹은 $P(X=x)$라는 표현을 (이것들은 나중에 확률질량함수라는 이름을 가지게 되는데)
 
 $$
@@ -552,11 +555,13 @@ $P$는 집합을 숫자로 대응시키는, 조금 복잡한 느낌이었지만 
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-2.png){: .img-50-center}
 
-동전을 두 개 던졌을 때 나온 앞면의 수
+이번에는 동전던지기에 관한 또다른 확률변수를 생각해봅니다.
+
+동전을 두 번 던졌을 때 나온 앞면의 수
 {: .text-center}
 
 도 확률변수 $X$가 됩니다.
-이때의 표본공간은 $S=\{H,T\}^2$인데, 강의에서는 cartesian product에서의 순서쌍의 표현을 생략하여, $S=\{HH,HT,TH,TT\}$로 쓰고 있습니다.
+이때의 표본공간은 $S=\\{H,T\\}^2$인데, 강의에서는 cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
 확률변수 $X$는
 
 $$
@@ -603,17 +608,17 @@ $$
 
 $$A_x=\{w\in S:X(w)=x\}$$
 
-이것은 아까 $(*)$에서 $p(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
+이것은 아까 $(\ast)$에서 $p(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
 즉, $p(x)$ 혹은 $P(X=x)$를
 
 $$p(x)=P(X=x)=P(A_x)$$
 
 로 정의합니다.
 
-지금까지, $P(\:\cdot\:)$에 들어가는 것이 사건(event, $S$의 부분집합)이었던 것을, 특정한 숫자로 들어갈 수 있게 바꾸었습니다.
+지금까지, $P(~\cdot~)$에 들어가는 것이 사건(event, $S$의 부분집합)이었던 것을, 특정한 숫자로 들어갈 수 있게 바꾸었습니다.
 여기에는 '숫자들의 집합'도 들어갈 수 있습니다.
-예를 들어 $\{X:a\lt X\le b\}$와 같은 집합도 들어갈 수 있습니다.
-보통 쓸 때는 $P(\{X:a\lt X\le b\})$로 쓰지 않고 $P(a\le X\le b)$로 표기하는데
+예를 들어 $\\{X:a\lt X\le b\\}$와 같은 집합도 들어갈 수 있습니다.
+보통 쓸 때는 $P(\\{X:a\lt X\le b\\})$로 쓰지 않고 $P(a\le X\le b)$로 표기하는데
 
 $$
 P(a<X\le b)=P\left(\{w\in S:a<X(w)\le b\}\right)
@@ -628,8 +633,7 @@ $$P(X\le1)=P\left(\{HH,HT,TH\}\right)=\frac34$$
 
 **2.4 distribution functions**
 
-For a random variable $X$ and a real value $x$,
-the *cumulative distribution function*(CDF, 누적확률)은 
+확률변수 $X$와 실수 $x$에 대하여 cumulative distribution function(CDF, 누적확률)은 
 
 $$F_X(x)=P\left(X\le x\right)$$
 
@@ -659,7 +663,7 @@ $$F_X(1)=\frac34$$
 $$
 F_X(x)=\begin{cases}
 0&(x\lt0)\\
-x+\frac12&(0\le x\lt\frac12)\\
+x+\frac12&(0\le x\le\frac12)\\
 1&(x\gt\frac12)\\
 \end{cases}
 $$
@@ -731,7 +735,7 @@ $$F_X(x)=\sum_{x_i\le x}P_X(x_i)$$
 
 이때, CDF의 그래프는 step function으로 나타납니다.
 
-연속확률변수에서 확률밀도함수 $f_X(x)$에 대응하는 개념을 설명하려면 dirac delta function과 같이 조금 복잡한 논의가 필요합니다.
+이산확률변수 $X$에 대하여 연속확률변수에서의 확률밀도함수 $f_X(x)$에 대응하는 개념을 설명하려면 dirac delta function과 같이 조금 복잡한 논의가 필요합니다.
 다시 말해, 연속확률변수에서는
 
 $$P(a\le X\lt b)=\int_a^bf_X(x)\,dx$$
@@ -792,11 +796,11 @@ $$f_X(x)=\frac14\delta(x)+\frac12\delta(x-1)+\frac14\delta(x-2)$$
 로 정할 수 있습니다.
 
 <!-- 실제 강의에서는 dirac delta function에 대해서는 언급하지 않고 $\delta(x)$를 '델타의 수'라고 부르고 있습니다. -->
-dirac delta function은 엄밀히 말하면 함수가 아닌 generalized function이며, measure를 통해 이해될 수 있다고 합니다.
+dirac delta function은 엄밀히 말하면 함수가 아닌 generalized function이며, measure나 distribution을 통해 이해될 수 있다고 합니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-6.gif){: .img-100-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-6.gif){: .img-50-center}
 
-# 4 이산확률변수와 연속확률변수
+# 04 이산확률변수와 연속확률변수
 
 **2.6 continuous random variables**
 
@@ -808,7 +812,7 @@ $X(S)$가 countable이면 (혹은 at most countable, 그러니까, finite이거�
 확률변수 $X$가 가질 수 있는 값이 유한개(혹은 countable)이면 $X$를 이산확률변수라고 부릅니다.
 {: .text-center}
 
-와 같은 앞서의 정의에 대응됩니다.
+와 같은 앞서의 정의를 다시 쓴 것입니다.
 
 만약, 확률변수가 이산확률변수가 아니면 연속확률변수라고 부릅니다.
 그러니까, 치역 $X(S)$가 uncountable인 경우 (uncountably infinte)를 말합니다.
@@ -821,8 +825,18 @@ $X(S)$가 countable이면 (혹은 at most countable, 그러니까, finite이거�
 예를 들어 0과 1 사이의 숫자를 임의로 뽑을 때 그 값을 $X$라고 하면, $X$는 연속확률변수입니다.
 그런데 이런 경우에 $P(X=\frac12)$을 어떻게 정의해야 할 지 애매합니다.
 
-(답 : 확률을 measure-theoretic하게 생각하면 $P$는 하나의 measure라고 볼 수 있고 이 경우에는 '집합의 길이'와 관련된 measure를 $P$로써 정의합니다.
-그런데 원소가 하나인 집합에 대한 '길이'는 0이므로 $P(X=\frac12)=0$입니다.)
+<div class="notice--danger">
+답 : $P(X=\frac12)=0$<br>
+
+확률을 measure-theoretic하게 생각하면 $P$는 하나의 measure라고 볼 수 있고 이 경우에는 '집합의 길이'와 관련된 measure를 $P$로써 정의합니다.
+그런데 원소가 하나인 집합에 대한 '길이'는 0이므로 $P(X=\frac12)=0$입니다.<br>
+
+조금 더 직관적으로 말할 수도 있을 것 같습니다.
+$P(X=\frac12)=a$로 두면 ($a>0$) 다른 모든 숫자 $0\le x\le1$에 대해서도 마찬가지로 $P(X=x)=a$가 성립한다고 말할 수 있을 겁니다.
+그러면, 모든 $x$에 대하여 이 확률값들을 더했을 때 1이 되어야 합니다.
+사실 이 덧셈이 잘 정의되는지도 의문이기는 하지만, 어쨌든 양수 $a$를 무한번 더해서 1이 된다는 것인데, 이건 말이 안됩니다.
+따라서, 임의의 양의 실수 $a$에 대하여 $P(X=\frac12)=a$일 수 없고, $P(X=\frac12)=0$일 수밖에 없습니다.
+</div>
 
 즉, 이산확률변수에서의 '확률질량함수'가 잘 작동하지 않고, 따라서 다른 방식으로 연속확률분포를 이해할 필요가 있습니다.
 
@@ -862,17 +876,19 @@ CDF가 미분가능하지도 않고, 심지어 불연속인 극단적인 경우�
 
 함수 $f_X(x)$가 어떤 연속확률변수의 PDF이기 위해서는 다음 두 조건을 만족시켜야 합니다.
 
-1. $f_X(x)\ge0$
-2. $\int_{-\infty}^\infty f_X(x)\,dx=1$
+(1) $f_X(x)\ge0$
+
+(2) $\int_{-\infty}^\infty f_X(x)\,dx=1$
 
 마찬가지로, 함수 $P_X(x)$가 어떤 이산확률변수의 PMF이기  위해서는 다음의 두 조건을 만족시켜야 합니다.
 
-1. $p_X(x_i)\ge0$
-2. $\sum_{k=1}^n p_X(x_i)=1$
+(1) $p_X(x_i)\ge0$
+
+(2) $\sum_{k=1}^n p_X(x_i)=1$
 
 PDF의 추가적인 성질들은 다음과 같습니다.
 
-3. $\int_a^bf_X(x)\,dx=P(a\lt X\le b)$
+(3) $\int_a^bf_X(x)\,dx=P(a\lt X\le b)$
 
 이것은, 지금까지 쓴 개념들을 동원해 쉽게 증명됩니다.
 
@@ -885,7 +901,7 @@ P(a\lt X\le b)
 \end{align*}
 $$
 
-4. $P(X\lt a)=P(X\le a)$
+(4) $P(X\lt a)=P(X\le a)$
 
 이것은, 한 점에서의 확률이 항상 0이라는 사실로부터 바로 설명될 수 있습니다.
 위의 4번에 쓴 식은 가능한 여러 식들 중 하나를 대표적으로 쓴 것입니다.
@@ -912,3 +928,923 @@ $f_X(x)$가 상수함수이면 $X$가 uniform distribution을 따른다고 합�
 고등학교 과정의 '기하학적 확률'에서 확률을 넓이 혹은 길이에 의존해 계산하게 되는데 그러한 상황 또한 uniform distribution을 가정하고 있습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_4-1.png){: .img-100-center}
+
+강의의 마지막 부분에는 신호나 그림에서의 sampling과 quantization, binarization에 대해 언급됩니다.
+주요한 내용은 아래 캡쳐와 같습니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_4-2.png){: .img-100-center}
+
+연속적인 아날로그 신호(continuous, analogue signal)를 특정한 주파수로 sampling하면 discrete signal을 얻을 수 있습니다.
+이 discrete signal을 표현할 때에는 특정한 step size를 가정하여 level의 형태로 얻게 되는데 이 과정을 양자화(quantization)라고 부릅니다.
+마지막으로 이 값들을 2진수로 바꾸어(binarization) 디지털 신호로 바꾸는 과정이 있습니다.
+이 일련의 과정들은 아날로그로 주어진 데이터를 디지털의 형태로 바꾸는 작업입니다.
+이때, 실제 신호와 level로 주어진 근사값들 사이의 차이를 quantization error라고 가정하는데, 많은 경우에 이 error를 uniform distribution을 따른다고 가정하고 모델링을 진행한다고 합니다.
+
+# 05 확률변수의 평균과 분산
+
+**Chapter 3. moments of random variables**
+
+**arithemetic average(산술평균)**
+
+$x_i$들의 산술평균은
+
+$$\bar x=\frac{x_1+\cdots+x_N}N.$$
+
+**different frequences**
+
+서로다른 $x_i$들에 대하여 그 빈도 $w_i$가 주어져 있을 때의 평균(weighted average)은
+
+$$\bar x=\frac{w_1x_1+\cdots+w_Nx_N}{w_1+\cdots+w_N}.$$
+
+**3.1 expectation(mean)**
+
+$$
+\begin{align*}
+E[X]&=\sum_{i=1}^nx_iP_X(x_i)             &&(\text{discrete})\\
+E[X]&=\int_{-\infty}^\infty xf_X(x)\,dx &&(\text{continuous})
+\end{align*}
+$$
+
+**ex 3.3 Poisson distribution**
+
+$$
+P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)
+$$
+
+$K$가 the number of event occurence in time interval이라고 하면, $K$는 위와 같은 분포를 따르는 경우가 많다고 합니다.
+
+$P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번쨰 조건인 $P_K(k)\ge0$은 당연합니다.
+두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series를 사용할 수 있습니다.
+
+$$e^x=\sum_{k=0}^\infty\frac{x^k}{k!}$$
+
+여기에 $x=\lambda$를 대입하여
+
+$$e^\lambda=\sum_{k=0}^\infty\frac{\lambda^k}{k!}$$
+
+를 얻습니다.
+이 식의 양변에 $e^{-\lambda}$를 곱하면
+
+$$1=\sum_{k=0}^\infty\frac{\lambda^k}{k!}e^{-\lambda}=\sum_{k=1}^\infty P_K(k)$$
+가 되어 두번째 조건을 만족시킵니다.
+따라서 $P_K(k)$는 정말로 PMF가 됩니다.
+강의에서는 일반적인 Taylor series에 대한 설명도 포함되어 있습니다.
+
+이 Poisson distribution에 대한 평균을 구해보면
+
+$$
+\begin{align*}
+E[X]
+&=\sum_{k=0}^\infty kP_K(k)\\
+&=\sum_{k=0}^\infty k\frac{\lambda^k}{k!}e^{-\lambda}\\
+&=\sum_{k=1}^\infty k\frac{\lambda^k}{k!}e^{-\lambda}\\
+&=\lambda\sum_{k=1}^\infty\frac{\lambda^{k-1}}{(k-1)!}e^{-\lambda}\\
+&=\lambda\sum_{m=0}^\infty\frac{\lambda^m}{m!}e^{-\lambda}\\
+&=\lambda
+\end{align*}
+$$
+
+이 됩니다.
+
+**ex 3.4 exponential distribution**
+
+$$
+\begin{align*}
+f_X(x)=
+\begin{cases}
+\lambda e^{-\lambda x}  &x\ge0\\
+0                       &x\lt0
+\end{cases}
+\end{align*}
+$$
+
+이번에도 $f_X$가 PDF가 되기 위해서는 두 가지 조건을 만족시켜야 하는데 첫번째 조건 $f_X(x)\ge0$은 당연합니다.
+두 번째 조건인 $\int_{-\infty}^\infty f_X(x)\,dx=1$
+을 확인해보면
+
+$$
+\begin{align*}
+\int_{-\infty}^\infty f_X(x)\,dx
+&=\lambda\int_0^\infty e^{-\lambda x}\,dx\\
+&=\lambda\times\left[-\frac1\lambda e^{-\lambda x}\right]_0^\infty\\
+&=\lambda\times\frac1\lambda\\
+&=1
+\end{align*}
+$$
+
+이 성립합니다.
+한편, 평균을 구해보면
+
+$$
+\begin{align*}
+E[X]
+&=\int_{-\infty}^\infty xP_X(x)\,dx\\
+&=\lambda\int_0^\infty xe^{-\lambda x}\,dx\\
+&=\lambda\left(\left[-\frac1\lambda xe^{-\lambda x}\right]_0^\infty
++\int_0^\infty\frac1\lambda e^{-\lambda x}\,dx\right)\\
+&=\lambda\left(0+\left[-\frac1{\lambda^2}e^{-\lambda x}\right]_0^\infty\right)\\
+&=\frac1\lambda
+\end{align*}
+$$
+
+입니다.
+
+이와 같은 푸아송 분포와 지수분포는 특정한 값(parameter) $\lambda$에 의존합니다.
+실제 자연현상이나 사회현상은 그 분포를 알 수 없는데, 우리는 특정한 확률모델을 전제하여 그 현상을 모델링해볼 수 있습니다.
+이와 같은 과정을 parametric estimation (혹은 parametric probability density estimation) 이라고 부르는 것 같습니다.
+
+**3.4 moments of random variables**
+
+**nth order moments**
+
+$$
+\begin{align*}
+E[X^n]&=\sum_i{x_i}^n P_X(x_i)\\
+E[X^n]&=\int_{-\infty}^\infty x^n f_X(x)\,dx
+\end{align*}
+$$
+
+**central moments**
+
+$$
+\begin{align*}
+E[(X-\mu)^n]&=\sum_i(x_i-\mu)^nP_X(x_i)\\
+E[(X-\mu)^n]&=\int_{-\infty}^\infty(x-\mu)^n f_X(x)\,dx
+\end{align*}
+$$
+
+$n=1$이면
+
+$$
+\begin{align*}
+E[(X-\mu)]
+&=\sum_i(x_i-\mu)P_X(x_i)\\
+&=\sum_ix_iP_X(x_i)-\mu\sum_iP_X(x_i)\\
+&=\mu-\mu\times 1\\
+&=0
+\end{align*}
+$$
+
+입니다.
+즉, 편차의 합은 항상 0입니다.
+
+$n=2$이면
+
+$$
+\begin{align*}
+E[(X-\mu)^2]
+&=\sum_i(x_i-\mu)^2P_X(x_i)
+\end{align*}
+$$
+
+인데 이 값을 분산(variance)이라고 부르고 ${\sigma_X}^2$으로 씁니다.
+
+- 분산은 항상 0보다 크거나 같습니다.
+- 모든 변량이 같으면 ($x_1=\cdots=x_n$) 분산이 0이고 그 역도 성립합니다.
+- 분산이 작으면 변량들이 평균에 모여있고 분산이 크면 변량들이 넓게 분포되어 있습니다.
+- $t$에 대한 함수 $g(t)=E[(X-t)^2]$를 생각하면 이 함수는 $t=\mu$에서 최솟값 ${\sigma_X}^2$를 가집니다.
+
+
+**Proposition 3.3**
+
+어떤 확률변수 $X$에 대한 함수 $g_1(X)$, $\cdots$, $g_n(X)$와 실수 $a_1$, $\cdots$, $a_n$에 대하여
+
+$$
+E[a_1g_1(X)+\cdots+a_ng_n(X)]=a_1E[g_1(X)]+\cdots+a_nE[g_n(X)]
+$$
+
+이 성립합니다.
+정의에 넣어서 증명해보면 바로 증명됩니다.
+
+이것은 $E$가 linear operator라는 뜻입니다.
+즉, 모든 실함수(혹은 real measureable function)들의 집합을 $V$라고 하면, 이것은 (무한차원의) 벡터공간입니다.
+이때, $E$는 $E:V\to\mathbb R$인 함수라고 생각할 수 있는데 이 $E$가 선형함수라는 뜻입니다. (더 구체적으로는, linear functional입니다.)
+
+이 proposition으로부터 바로 얻을 수 있는 결과는
+
+$$E[aX+b]=aE[X]+b$$
+
+입니다.
+또한
+
+$$
+\begin{align*}
+{\sigma_X}^2
+&=E[(X-\mu)^2]\\
+&=E[X^2-2\mu X+\mu^2]\\
+&=E[X^2]-2\mu E[X]+\mu^2\\
+&=E[X^2]-2E[X]^2+E[X]^2\\
+&=E[X^2]-E[X]^2
+\end{align*}
+$$
+
+입니다.
+이를 이용하여 푸아송 분포
+
+$$P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}$$
+
+에서의 분산을 구해보면
+
+$$
+\begin{align*}
+E[K^2]
+&=\sum_{k=0}^\infty k^2P_K(k)\\
+&=\sum_{k=0}^\infty k^2\frac{\lambda^k}{k!}e^{-\lambda}\\
+&=\sum_{k=0}^\infty k(k-1)\frac{\lambda^k}{k!}e^{-\lambda}
++\sum_{k=0}^\infty k\frac{\lambda^k}{k!}e^{-\lambda}\\
+&=\sum_{k=2}^\infty k(k-1)\frac{\lambda^k}{k!}e^{-\lambda}+E[X]\\
+&=\lambda^2\sum_{k=2}^\infty\frac{\lambda^{k-2}}{(k-2)!}e^{-\lambda}+E[X]\\
+&=\lambda^2+\lambda
+\end{align*}
+$$
+
+으로부터
+
+$${\sigma_K}^2=E[K^2]-E[K]^2=(\lambda^2+\lambda)-\lambda^2=\lambda$$
+
+입니다.
+또한, 지수분포
+
+$$
+\begin{align*}
+f_X(x)=
+\begin{cases}
+\lambda e^{-\lambda x}  &x\ge0\\
+0                       &x\lt0
+\end{cases}
+\end{align*}
+$$
+
+에서의 분산을 구해보면
+
+$$
+\begin{align*}
+E[X^2]
+&=\int_0^\infty x^2P_X(x)\,dx\\
+&=\int_0^\infty x^2\lambda e^{-\lambda x}\,dx\\
+&=\left[-x^2e^{-\lambda x}\right]_0^\infty+\int_0^\infty2xe^{-\lambda x}\,dx\\
+&=0+\frac2\lambda\int_0^\infty x\lambda e^{-\lambda x}\,dx\\
+&=\frac2\lambda\cdot E[X]=\frac2{\lambda^2}
+\end{align*}
+$$
+
+이고
+
+$${\sigma_X}^2=E[X^2]-E[X]^2=\frac1{\lambda^2}$$
+
+입니다.
+
+# 06 조건부 평균
+
+**ex 3.13 geometric distribution**
+
+Let $K$ be the number of trials until the first success.
+For example, we may toss a die  repeatedly until the first $6$.
+
+따라서 $K$는 이산확률변수이고, PMF는
+
+$$P_K(k)=(1-p)^{k-1}p$$
+
+로 주어집니다.
+PMF의 두번째 조건을 (예의상) 확인해보면
+
+$$
+\sum_{k=1}^\infty P_K(k)=p+p(1-p)+p(1-p)^2+\cdots=\frac p{1-(1-p)}=1
+$$
+
+입니다.
+다음으로 평균을 구해보면
+
+$$
+\begin{align*}
+E[K]
+&=\sum_{k=1}^\infty kP_k(k)\\
+&=\sum_{k=1}^\infty k(1-p)^{k-1}p\\
+&=p+2(1-p)p+3(1-p)^2+\cdots\\
+(1-p)E[K]&=(1-p)p+2(1-p)^2p+3(1-p)^3p
+\end{align*}
+$$
+
+두 식을 적당히 빼면
+
+$$
+pE[K]=p+(1-p)p+(1-p)^2p+\cdots=1
+$$
+
+이고 $E[K]=\frac1p$입니다.
+
+(강의에서는 미분을 통해 구한 것 같습니다만, 위와 같이 멱급수의 공비를 곱하는 방식으로 구해봤습니다.
+하지만 지금 구한 방법으로는 분산을 구하기가 힘들 것 같으니, 미분의 방법으로 처음부터 다시 풀어보면)
+
+다시 평균을 구하기 위해 평균 식
+
+$$E[K]=\sum_{k=1}^\infty k(1-p)^{k-1}p$$
+
+을 보면 $\sum_k (1-p)^k$와 같은 함수형태를 미분하는 것이 요긴할 것으로 보입니다.
+등비급수의 식에 의해
+
+$$\sum_{k=1}^\infty(1-p)^k=\frac{1-p}{1-(1-p)}=\frac{1-p}p=\frac1p-1$$
+
+이고, 양변을 미분한 뒤 마이너스를 붙이면
+
+$$
+\begin{equation}\tag{$*$}
+\sum_{k=1}^\infty k(1-p)^{k-1}=\frac1{p^2}
+\end{equation}
+$$
+
+입니다.
+따라서
+
+$$E[K]=\frac1{p^2}\times p = \frac1p$$
+
+입니다.
+$E[K^2]$의 식도 보면
+
+$$E[K^2]=\sum_{k=1}^\infty k^2(1-p)^{k-1}p$$
+
+인데, 이것은 식 ($\ast$)을 미분하면 비슷한 식을 얻을 수 있습니다.
+($\ast$)을 미분한 뒤 마이너스를 붙이면
+
+$$\sum_{k=1}^\infty k(k-1)(1-p)^{k-2}=\frac2{p^3}$$
+
+이고, 따라서
+
+$$
+\begin{equation}\tag{$\ast\ast$}
+\begin{aligned}
+\sum_{k=1}^\infty k^2(1-p)^{k-2}
+&=\frac2{p^3}+\sum_{k=1}^\infty k(1-p)^{k-2}\\
+&=\frac2{p^3}+\frac1{p^2(1-p)}\\
+&=\frac{2(1-p)+p}{p^3(1-p)}\\
+&=\frac{2-p}{p^3(1-p)}
+\end{aligned}
+\end{equation}
+$$
+
+이고,
+
+$$
+E[K^2]=\sum_{k=1}^\infty k^2p(1-p)^{k-1}
+=\frac{2-p}{p^3(1-p)}\times p(1-p)=\frac{2-p}{p^2}
+$$
+
+입니다.
+따라서
+
+$${\sigma_K}^2=E[K^2]-E[K]^2=\frac{2-p}{p^2}-\frac1{p^2}=\frac{1-p}{p^2}$$
+
+입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_6-1.png){: .img-100-center}
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_6-2.png){: .img-100-center}
+
+이후에는 평균과 분산의 의미에 대한 설명이 있습니다(위 캡쳐).
+computer vision에서의 얼굴인식문제를 아주 naive하게 생각할 때, 우리는 실제 카메라에 인식된 얼굴모양(실제값)이 우리가 정한 특정한 형태의 얼굴모양 (표준참값, 예측값, 추정값, 표준모델)과 얼마나 비슷한지를 판단할만한 판단근거가 필요합니다.
+
+이떄의 실제값과 표준참값은 각각 벡터로 생각할 수 있고, 따라서 표준적인 벡터사이의 거리(의 제곱)인 $L^2$ norm(의 제곱)을 생각하게 됩니다.
+그것은 실제값과 표준참값을 뺀 다음 제곱하여 성분별로 더하는 것을 말합니다.
+그리고 이 값(energy라고 통상 부르기도 하는 값)이 최소가 되도록 하는 표준참값을, '괜찮은 모델'이라고 둘 수 있을 것입니다.
+
+그런데 $L^2$ norm의 제곱, 즉 sum of squared error(SSE)는 그 특성상 표준참값이 실제값들의 평균일 때에 최소가 되는 경향이 있습니다.
+(사실 표준참값-실제값 예는 multivariate이고 뒤에 나오는 예시는 univariate이라서 적절한 설명인지 잘 이해가 안가긴 하지만)
+그리고 이것은 아까 간단하게 언급한 적이 있습니다.
+
+$$g(t)=\sum_{k=1}^n(t-x_k)^2$$
+
+는 $t=\frac1n\sum_{k=1}^nx_k$일 때, 즉 $t$가 $x_k$들의 평균일 때 최소가 되는 것입니다.
+(중학교 식으로 $ax^2+bx+c$의 최솟값을 구하는 식으로 해도 되고, 고등학교 식으로 미분을 사용해도 됩니다.)
+여기에서는 discrete uniform distribution인 경우에 대해서만 증명한 셈이지만 일반적인 분포에 대해서도, 그리고 연속확률분포에 관해서도 마찬가지의 사실을 쉽게 증명할 수 있습니다.
+
+반면
+
+$$h(t)=\sum_{k=1}^n|t-x_k|$$
+
+와 같은 값을 objective function으로 둘 수도 있을 것입니다.
+이 경우에는 $t$가 $x_k$들의 중간값(median)일 때 $g(t)$가 최소임이 알려져있습니다.
+이것은 그래프를 살짝 그려보기만 해도 알 수 있습니다. (아래 그림) 다만, 이 경우도 역시 discrete uniform distribution에 대한 논증인데, 일반적인 분포와 연속확률분포에 대해서는 다른 방식의 증명이 필요할 것입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_6-3.png){: .img-100-center}
+
+**3.5 conditional mean**
+
+이산확률변수 $X$에 대하여 조건부 기댓값 $E[X|A]$는 다음 식과 같이 정의됩니다.
+
+$$
+\begin{align*}
+E[X|A]
+&=\sum_{x_i\in A}x_iP(x_i|A)\\
+&=\sum_{x_i\in A}x_i\frac{P(x_i\cap A)}{P(A)}
+\end{align*}
+$$
+
+여기에서도 notation에 대한 이슈를 언급하지 않을 수가 없습니다.
+$P(x_i|A)$라는 표현은 아직 정의된 적이 없는 표현입니다.
+$P(\cdot|\cdot)$에서 두 개의 $~\cdot~$은 사건, 그러니까 $S$의 부분집합이 들어가야 합니다.
+그런 점에서 $A$는 적절히 잘 들어갔으나, $x_i$는 도저히 사건이 아닙니다.
+$P(x_i\cap A)$라는 표현 또한 마찬가지입니다.
+
+그런데, 앞서 확률변수의 의미($P$가 집합의 함수가 아니라 숫자의 함수라서 더 다루기가 편해졌다는 내용)에 대해 말할 때에 $p(x)$라는 표현을 쓴 적이 있습니다.
+이것은
+
+$$p(x)=P(X=x)=P(A_x)=P\left(\{w\in S:X(w)=x\}\right)$$
+
+으로 정의되었던 것 같습니다.
+여기서 $P(A_x)$라는 표현은 $A_x$가 사건이라는 점에서 제대로 된 표현입니다.
+그러니까 위의 식을, (굉장히 원리주의적인 방식으로) 다시 표현하면
+
+$$
+\begin{align*}
+E[X|A]
+&=\sum_{x_i\in A}x_iP(A_{x_i}|A)\\
+&=\sum_{x_i\in A}x_i\frac{P(A_{x_i}\cap A)}{P(A)}
+\end{align*}
+$$
+
+와 같이 해석할 수 있을 것입니다.
+notation 상의 문제가 없으니 앞으로는 $P(x_i|A)$, $P(x_i\cap A)$와 같은 표현을 마음껏 쓸 수 있을 것 같습니다.
+
+(다만, $E[X|A]$라는 표현에 대해서는, 그 자체가 정의이기때문에 문제될 것이 없고, 직관적으로도 '사건 $A$가 발생했다는 조건 하에서의 $X$의 평균'이라는 의미이므로 전혀 문제될 것이 없지만, 아주 잘 와닿지는 않는 것 같습니다.)
+
+지금까지는 discrete한 경우의 조건부기댓값이었습니다.
+continuous case의 경우에는 조금 더 복잡하다고 합니다.
+
+$$
+\begin{align*}
+E[X|A]
+&=\int_{x\in A}xf_X(x|A)\,dx\\
+f_X(x|A)
+&=\frac d{dx}F_X(x|A)\\
+&=\frac d{dx}P(X\le x|A)
+\end{align*}
+$$
+
+이때, $f_X(x|A)$는 conditional probability density function, 줄여서 conditional density (혹은 conditional PDF) 입니다.
+이것은 정의이며, 이 정의는 discrete case와 정확히 잘 대응되는 정의입니다.
+그리고 이것은 conditional cumulative distribution function (혹은 conditional CDF)를 미분해서 얻어집니다.
+이것 또한 정의이며, PDF와 CDF 사이의 관계와 같다는 점에서 일관된 정의입니다.
+세번째 줄의 $P(X\le x|A)$라는 표현도 큰 문제는 없습니다.
+$P\left(\\{w\in S:X(w)\le x\\}|A\right)$ 이므로 잘 정의됩니다.
+
+**ex. 3.14**
+
+사건 $A=\\{X\le a\\}$에 대하여 conditional density를 구하려고 합니다.
+이때 $A$의 notation도 해석이 좀 필요할 것 같은데,
+
+$$A=\{w\in S:X(w)\le a\}$$
+
+라는 의미인 것 같습니다.
+이때 $X$의 CDF와 PDF는 이미 주어져 있다고 가정하는 것 같습니다.
+그러니까, $F_X(x)$와 $f_X(x)$를 사용하여 $F_X(x|A)$와 $f_X(x|A)$를 구하는 것이 목적입니다.
+conditional CDF $F_X(x|A)$ 를 먼저 계산하면
+
+$$
+\begin{align*}
+F_X(x|A)
+&=P\left(X\le x|X\le a\right)\\
+&=\frac{P\left(X\le x\cap X\le a\right)}{P(x\le a)}
+\end{align*}
+$$
+
+입니다.
+두 경우가 있을 수 있는데, 만약 $x\gt a$이면,
+
+$$F_X(x|A)=\frac{P(X\le a)}{P(X\le a)}=1$$
+
+이 됩니다.
+만약 $x\le a$이면
+
+$$F_X(x|A)=\frac{P(X\le x)}{P(X\le a)}=\frac{F_X(x)}{F_X(a)}$$
+
+가 됩니다.
+여기에서 분모인 $F_X(a)$ 값은 $x$와는 관계가 없는 상수입니다.
+우리 목적은 conditional CDF $F_X(x|A)$를 $F_X$와 $f_X$로 표현하는 것이므로 여기서 더 계산할 필요는 없습니다.
+
+정리하면
+
+$$
+F_X(x|A)=
+\begin{cases}
+1&(x\gt a)\\
+\frac{F_X(x)}{F_X(a)}&(x\le a)
+\end{cases}
+$$
+
+입니다.
+다음으로, condtional PDF $f_X(x|A)$를 구하면
+
+$$
+f_X(x|A)
+=\frac d{dx}F_X(x|A)
+=\begin{cases}
+0&(x\gt a)\\
+\frac{f_X(x)}{F_X(a)}&(x\le a)
+\end{cases}
+$$
+
+입니다.
+
+**ex. 3.15**
+
+이번에는 PDF가
+
+$$f_X(x)=\frac1{20},\quad 40\le x\le 60$$
+
+로 주어지고, 사건 $A$가
+
+$$A=\{X\le 55\}$$
+
+인 경우를 보겠습니다.
+conditionoal density $F_X(x|A)$는
+
+$$
+F_X(x|A)=P(X\le x|X\le 55)=\frac{x-40}{15}
+$$
+
+이고 conditionoal CDF $F_X(x|A)$는
+
+$$
+f_X(x|A)=\frac d{dx}F_x(x|A)=\frac1{15}
+$$
+
+입니다.
+또한, condtional expectation $E[X|A]$는
+
+$$
+\begin{align*}
+E[X|A]
+&=\int_{x\in A}xf_X(x|A)\,dx\\
+&=\int_{40}^{55}\frac1{15}x\,dx\\
+&=\frac{95}2\\
+&=47.5
+\end{align*}
+$$
+
+입니다.
+그냥 의미적으로 해석해보면, 원래 $X$는 40과 60 사이에 균일하게 분포되어 있었는데, 여기에 $X$가 55보다 작다는 조건 $A$를 준 것입니다.
+그러면 $A$라는 조건 하에서 $X$는 40과 55 사이에 균일하게 분포되어 있습니다.
+따라서 이 조건 하에서의 평균은 $\frac{40+55}2=47.5$가 되어야 합니다.
+
+그런 것 치고는 위의 계산은 불필요하게 복잡한 것 같습니다.
+저 위의 계산처럼 conditional density를 사용하지 않는 방법은.. 크게 없을 것 같습니다. conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
+굳이 다른 방법을 찾자면 integration by part를 사용해 conditional CDF를 사용할 수는 있겠는데, 별로 좋은 방법은 아닌 것 같습니다.
+
+# 07 여러가지 이산확률분포
+
+**3.6 Chebysev inequality**
+
+체비셰프의 부등식.
+이름은 당연히 들어봤지만, 제대로 보는 것이 처음이라는 것은 상당히 유감스럽습니다.
+학부때 확률론을 계속해서 피해다녔더니, 이제서야 보게 되었습니다.
+
+그런데, 아주 재미있는 부등식인 것 같습니다.
+확률변수 $X$와 양의 실수 $a$에 대하여
+
+$$
+P\left(|X-E[X]|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
+$$
+
+입니다.
+$X$가 평균으로부터 어느 정도의 간격($a$) 이상 떨어져있을 확률은 그 간격에 의존하는 어떤 값$\left(\frac{\,{\sigma_X}^2}{a^2}\right)$보다 작다는 뜻입니다.
+
+예를 들어 $Z=2$인 경우, 즉 $a=2\sigma_X$인 경우에 있어서의 Chebysev inequality는 $X$가 2-sigma 바깥에 있을 확률이 $\frac14$보다 작다는 것을 의미합니다.
+
+이 부등식이 아주 tight한 것 같지는 않습니다.
+만약, $X$가 정규분포를 따른다면, $a=2\sigma_X$에 대한 확률은
+
+$$
+\begin{align*}
+P\left(|X-E[X]|\ge a\right)
+&=P\left(|X-E[X]|\ge2\sigma_X\right)\\
+&=P\left(|Z|\ge2\right)\\
+&=2\left(1-P\left(0\le Z\le2\right)\right)\\
+&=2(0.5-0.47725)\\
+&=0.0455
+\end{align*}
+$$
+
+입니다([표준정규분포표](https://ko.wikipedia.org/wiki/%ED%91%9C%EC%A4%80%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC%ED%91%9C)의 값을 활용했습니다.)
+그러니까, Chevysev inequailty를 통해 얻는 확률의 upper bound는 0.25였는데, 실제 확률의 값은 0.0455입니다.
+따라서 이 경우는 Chevysev inequality의 결과를 (당연히) 만족시키기는 합니다.
+근데 그 결과라는 게 실제값보다는 너무 크다는 것입니다.
+그런 의미에서 Chevysev inequality는 어떤 확률에 대한 일반적인 upper bound를 제시하는 것이라고 이해해야 할 것 같습니다.
+
+연속확률변수에 대한 Chevysev inequality는, ${\sigma_X}^2$을 들여다보면 쉽게 증명됩니다.
+
+$$
+\begin{align*}
+{\sigma_X}^2
+&=\int_{-\infty}^\infty\left(x-E[X]\right)^2f_X(x)\,dx\\
+&=\int_{|x-E[X]|\ge a}\left(x-E[X]\right)^2f_X(x)\,dx
++\int_{|x-E[X]|\lt a}\left(x-E[X]\right)^2f_X(x)\,dx\\
+&\ge a^2\int_{|x-E[X]|\ge a}f_X(x)\,dx\\
+&=a^2P\left(|x-E[X]|\ge a\right)
+\end{align*}\\
+$$
+
+강의에서, 이산확률변수에 대한 증명은 조금 tricky할 수 있다고 했는데, 그래도 한 번 해보면
+
+$$
+\begin{align*}
+{\sigma_X}^2
+&=\sum_{i=1}^n\left(x_i-E[X]\right)^2P_X(x_i)\\
+&=\sum_{|x_i-E[X]|\ge a}\left(x_i-E[X]\right)^2P_X(x_i)
++\sum_{|x_i-E[X]|\lt a}\left(x_i-E[X]\right)^2P_X(x_i)\\
+&\ge a^2\sum_{|x_i-E[X]|\ge a}P_X(x_i)\\
+&=a^2P\left(|x-E[X]|\ge a\right)
+\end{align*}\\
+$$
+
+입니다.
+(되는데?)
+"expectation 값이 random variable이 아닐 수도 있다"는 말씀이 무슨 의미인지 잘 모르겠습니다.
+[이 사람](https://zhengtianyu.wordpress.com/2014/01/04/proof-of-chebyshevs-inequality/)은 제가 한 것과 똑같은 증명을 적어놓았고, [wikipedia](https://en.wikipedia.org/wiki/Chebyshev%27s_inequality)에는 conditional expectation의 성질을 사용하여 (그러니까 summation이나 integral을 사용하지 않고) 증명했습니다.
+
+**Chapter 4. special distributions**
+
+**4.2 Bernoulli distribution**
+
+'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은 '[베르눌리](https://www.youtube.com/watch?v=n6czlFpvaf4)'라고 읽는 것이 맞는 것 같습니다.
+마찬가지로 Poisson은 '[푸아상](https://youtu.be/43eJq-pAOGA)'으로 발음하는 것이 맞는 것 같습니다.
+
+강의에서는 *$X$가 binary인 경우*를 bernoulli distribution이라고 한다고 되어 있습니다.
+앞서 말했듯 $X$는 $X:S\to\mathbb R$입니다.
+여기서 binary라는 것은 $|S|=2$라는 의미인 것 같습니다.
+물론 $|X(S)|=2$도 성립할 것입니다.
+($|X(S)|=1$인 경우는 의미가 없으니까)
+다시말해 sample space가
+
+$$S=\{w_1,w_2\}$$
+
+인 경우를 Bernoulli distribution이라고 합니다.
+이때의 $X$의 값은 어떻게든 정해도 됩니다.
+예를 들어
+
+$$
+\begin{cases}
+X(w_1)=-2\\
+X(w_2)=3
+\end{cases}
+$$
+
+로 정의해도 이것은 Bernoulli distribution에 해당할 것 같습니다.
+하지만, [통상](https://en.wikipedia.org/wiki/Bernoulli_distribution)
+
+$$
+\begin{cases}
+X(w_1)=1\\
+X(w_2)=0
+\end{cases}
+$$
+
+인 경우를 가정합니다.
+
+$P_X(X=1)=p$라고 하면 $P_X(X=0)=1-p$이고, 따라서 Bernoulli distribution은 오로지 하나의 값 $p$에 의해 결정되는 분포입니다.
+기록을 위해 PMF를 다시 써보면
+
+$$
+P_X(x)=
+\begin{cases}
+p &(x=1)\\
+1-p &(x=0)
+\end{cases}
+$$
+
+인데 이것을 다음과 같이 한 줄로 쓸 수 있습니다.
+(조금 쓸데없어보이기도 하고, 그냥 현학적인 표현인 것처럼 보이기도 하지만, 많은 경우에 Bernoulli distribution이 이와 같이 표현되니 알아두어도 나쁘지는 않을 것 같습니다.)
+덧셈의 형태로
+
+$$
+P_X(x)=(1-p)(1-x)+px
+$$
+
+와 같이 쓸 수도 있고, 아니면 곱셈의 형태로
+
+$$
+P_X(x)=p^x(1-p)^{1-x}
+$$
+
+와 같이 쓸 수도 있습니다.
+
+Beroulli 분포는 가장 간단한 형태의 분포이므로 (그보다 더 간단한 형태는 $P_X(x)$가 상수함수인 경우겠지만, 그 경우는 확률적으로 이야기하는 것 자체가 의미가 없습니다.) 평균과 분산도 아주 쉽게 계산됩니다.
+
+$$
+\begin{align*}
+E[X]
+&=0\times P_X(0)+1\times P_X(1)\\
+&=0\times(1-p)+1\times p\\
+&=p\\
+{\sigma_X}^2
+&=(0-E[X])^2\times P_X(0)+(1-E[X])^2\times P_X(1)\\
+&=(0-p)^2\times(1-p)+(1-p)^2\times p\\
+&=p(1-p)\left(p+(1-p)\right)\\
+&=p(1-p)
+\end{align*}
+$$
+
+**4.3 binomial distribution**
+
+아까, $|S|=2$ 인 경우를 생각했었는데 이와 같은 시행을 Bernoulli trial이라고 부르는 것 같습니다.
+[다음](https://en.wikipedia.org/wiki/Bernoulli_trial)은 위키피디아의 정의입니다.
+
+A Bernoulli trial (or binomial trial) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
+
+이런 Bernoulli trial을 $n$번 시행했을 때, sucess의 횟수 (혹은 $S=\\{s_1,s_2\\}의 관점에서는 $s_1$의 횟수)를 확률변수 $X$라고 정의할 때, 이때 $X$의 분포를 이항분포(binomial distribution)라고 합니다.
+
+이항분포의 PMF는 당연히
+
+$$P_X(x)=\binom nxp^x(1-p)^{n-x}\qquad(x=0,1,\cdots,n)$$
+
+이고 이것은 다 더했을 때 1입니다;
+
+$$
+\begin{align*}
+\sum_{x=1}^nP_X(x)
+&=
+\sum_{x=1}^n\binom nxp^x(1-p)^{n-x}\\
+&=\left(p+(1-p)\right)^n\\
+&=1
+\end{align*}
+$$
+
+이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 1.10.4에서 증명했습니다.
+그 때에는 $(1+x)^n$을 미분하여 얻을 수 있는 성질로부터 증명했었습니다.
+강의에서는 표준적인 방법 (combination의 성질)으로서 증명하고 있는데, 여기에는 생략하겠습니다.
+
+**4.4 geometric distribution**
+
+geometric distribution에 대해서는 이미 3.13에서 보았고, 평균과 분산도 계산했었습니다.
+
+$$
+\begin{align*}
+P_K(k)&=(1-p)^{k-1}p\quad(k=1,2,\cdots)\\
+E[K]&=\frac1p\\
+{\sigma_X}^2&=\frac{1-p}{p^2}
+\end{align*}
+$$
+
+geometric distribution을 Bernoulli trial의 입장에서 이것을 다시 해석해보면
+
+the number of Bernoulli trial until the first success
+{: .text-center}
+
+입니다.
+그러니까 앞서의 정의와 비슷한데 이번에는 완전히 정확하게 적혔습니다.
+
+**forgetfulness(memorylessness)** 라는 개념은 geometric distribution에서 빈번히 생각될 수 있는 개념인 것 같습니다.
+이것은 여러 번의 Bernoulli trial에서 앞서의 결과가 이후의 결과에 영향을 미치지 않는다는 뜻으로 [일종의 Markov property입니다](https://en.wikipedia.org/wiki/Memorylessness).
+
+Consider $k$ additional trials until the first success, given $n$ trials fail. (강의의 칠판에 적힌 표현)
+
+Consider the probability that a success is achieved at $k$ additional trials, given $n$ trials fail. (다시 적어본 표현)
+
+그러니까, 어떤 Bernoulli trial을 여러 번 시행하는데 처음 $n$번은 모두 실패했다는 가정 하에 그 다음 $k$번째에 성공(그러니까, $1,\cdots,k-1$번째에는 모두 실패) 할 수 있는 확률을 계산해보려고 합니다.
+그리고 이 확률이 (처음 $n$번이 모두 실패했다는 가정 없이) $k$번째에 성공할 수 있는 확률과 같은지를 보려고 합니다.
+
+$$
+\begin{align*}
+P\left(X=n+k|X>n\right)
+&=\frac{P\left((X=n+k)\cap(X>n)\right)}{P(X>n)}\\[10pt]
+&=\frac{P\left(X=n+k\right)}{P(X>n)}\\[15pt]
+&=\frac{(1-p)^{n+k-1}p}{\sum_{x\ge n+1}(1-p)^{x-1}p}\\[15pt]
+&=\frac{(1-p)^{n+k-1}}{\sum_{x\ge n+1}(1-p)^{x-1}}\\[15pt]
+&=\frac{(1-p)^{n+k-1}}{\frac{(1-p)^n}{1-(1-p)}}\\[15pt]
+&=(1-p)^{k-1}p\\
+&=P\left(X=k\right)
+\end{align*}
+$$
+
+그리고 위의 계산결과에서 보듯, 정말로 그것이 성립합니다.
+즉, 지금 하는 것은 독립시행이므로, 앞서의 결과가 이후의 시행에 영향을 미치지 않는 것이 당연한데, 그 사실을 다시 한 번 확인해보았습니다.
+
+# 08 지수분포와 어랑분포
+
+**4.7 Poisson distribution**
+
+$$
+\begin{align*}
+P_K(k)&=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)\\
+E[X]&=\lambda\\
+{\sigma_K}^2&=\lambda
+\end{align*}
+$$
+
+$K$ : the number of Bernoulli success in a time interal.
+
+위의 간단한 정의는 칠판에 적힌 표현입니다.
+([wikipedia](https://en.wikipedia.org/wiki/Poisson_distribution))에는 다음과 같이 적혀있습니다.
+
+>The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.
+>
+>For instance, a call center receives an average of 180 calls per hour, 24 hours a day. The calls are independent; receiving one does not change the probability of when the next one will arrive. The number of calls received during any minute has a Poisson probability distribution with mean 3: the most likely numbers are 2 and 3 but 1 and 4 are also likely and there is a small probability of it being as low as zero and a very small probability it could be 10.
+>
+>Another example is the number of decay events that occur from a radioactive source during a defined observation period.
+
+Poisson 분포의 저 식이 도대체 무슨 의미가 있는지를 몰라서 여러가지로 알아보다가, 아주 재미있는 결과를 발견했습니다.
+나중에 이 강의에서 다룰 지도 모르겠지만 먼저 적어보면, binomial PMF인
+;
+$$f_X(k)=\binom nkp^k(1-p)^{n-k}$$
+
+에서 $n$을 무한대로 보내면, Poisson PMF의 모양이 된다는 것입니다.
+
+$$
+\lim_{n\to\infty}\binom nkp^k(1-p)^{n-k}=
+\frac{\lambda^k}{k!}e^{-\lambda}
+$$
+
+단, $\lambda$는 $p=\frac\lambda n$으로 주어집니다.
+이에 대한 [증명](https://math.stackexchange.com/q/3125971)은 어렵지 않은데
+
+
+$$
+\begin{align*}
+\lim_{n\to\infty}\binom nkp^k(1-p)^{n-k}
+=&\lim_{n\to\infty}\frac{n(n-1)(n-2)\cdots(n-k+1)}{k!}\left(\frac\lambda n\right)^k\left(1-\frac\lambda n\right)^{n-k}\\
+=&\lim_{n\to\infty}\frac{n(n-1)(n-2)\cdots(n-k+1)}{n^k}\frac{\lambda^k}{k!}\left(1-\frac\lambda n\right)^{n-k}\\
+=&\frac{\lambda^k}{k!}
+\lim_{n\to\infty}\frac{n-1}n
+\times\lim_{n\to\infty}\frac{n-2}n
+\times\cdots
+\times\lim_{n\to\infty}\frac{n-k+1}n
+\times\lim_{n\to\infty}
+\left(1-\frac\lambda n\right)^{n-k}\\
+=&\frac{\lambda^k}{k!}\lim_{n\to\infty}\left(1-\frac\lambda n\right)^{n-k}\\
+=&\frac{\lambda^k}{k!}
+\lim_{n\to\infty}\left(1-\frac\lambda n\right)^n
+\lim_{n\to\infty}\left(1-\frac\lambda n\right)^{-k}\\
+=&\frac{\lambda^k}{k!}
+\lim_{n\to\infty}\left(\left(1-\frac\lambda n\right)^{-\frac n\lambda}\right)^{-\lambda}\times1\\
+=&\frac{\lambda^k}{k!}
+\left(\lim_{n\to\infty}\left(1-\frac\lambda n\right)^{-\frac n\lambda}\right)^{-\lambda}\\
+=&\frac{\lambda^k}{k!}e^{-\lambda}
+\end{align*}
+$$
+
+이기 때문입니다.
+
+추가적으로, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 Example 5.4.1, 5.4.2를 읽어봤습니다.
+설명이 잘 되어 있어서, 그 내용을 토대로 Poisson distribution의 의미를 적어보면 다음과 같습니다.
+
+어떤 가게에 손님이 한 시간에 4.5명 꼴로 들어옵니다.
+그럴 때에, 어느 날의 어느 시각으로부터 한 시간동안 들어온 손님의 수를 $X$라고 하면, $X$의 분포를 어떻게 이해하면 좋을지 생각해볼 수 있습니다.
+답은 $\lambda=4.5$로 하는 Poisson distribution입니다.
+이유는 다음과 같습니다.
+
+위 문제를 풀기 위해 할 수 있는 자연스러운 방법은, 한 시간을 작은 시간단위로 쪼개는 것입니다.
+예를 들어 1초 단위로 쪼개본다고 하겠습니다(1시간 = 3600초).
+어느 날의 어느 시각(예를 들어 오후 1시)으로부터 한 시간동안이라고 하면 오후 2시까지입니다.
+그 시간을
+- 1시 00분 00초 ~ 1시 00분 01초 : $T_1$
+- 1시 00분 01초 ~ 1시 00분 02초 : $T_2$
+
+$\qquad\vdots$
+- 1시 59분 59초 ~ 2시 00분 00초 : $T_{3600}$
+
+의 3600개 시간간격으로 나눌 수 있는 것입니다.
+한편, 1시간에 4.5명 꼴로 손님이 들어온다고 했으니까, 1초에 $4.5/3600=0.00125$명 꼴로 손님이 들어옵니다.
+그러니까 각각의 $T_i$ 동안 0.00125명 꼴로 손님이 들어옵니다.
+그러면, $T_i$ 동안 손님이 들어오는 횟수는 거의 0입니다. 어쩌다가 한 번 들어오는 것이고 두 명 이상 들어올 가능성은 거의 없습니다.
+(실제로는 친구나 가족과 함께 방문할 수도 있으므로 현재로서는 이 가정이 좋은 가정은 아닐테지만, 어쨌든 수치상으로는 그렇습니다.)
+그러니까 각각의 $T_i$에 대하여 손님이 들어오지 않거나(0명), 아니면 들어오거나(1명) 한다고 *가정*할 수 있습니다.
+즉, 한 번의 시행에서 나오는 결과값이 0 아니면 1인 Bernoulli trial이고 이때 $p=0.00125$입니다.
+그런데 이런 시행이 한 번 있는 것이 아니라 3600번 있습니다.
+그리고 각각의 시행들이 독립적일테니까, 한 시간동안 들어온 손님의 수가 $x$인 확률이
+
+$$
+P(X=x)=\binom{3600}x(0.00125)^x(0.99875)^{3600-x}\tag{$\ast$}
+$$
+
+입니다.
+즉, $X$는 $B(3600, 0.00125)$인 이항분포를 따릅니다.
+
+그런데 한 시간을 1초 단위로 자른 것은, 그냥 1초가 익숙해서 그렇게 한 것이지 어떤 특별한 의미가 있는 것은 아닙니다.
+예를 들어 0.1초로 자를 수도 있습니다.
+그 경우에는 총 36000개의 시간간격이 존재할 것이고 $X$는 $B(36000,0.000125)$를 따를 것이며
+
+$$
+P(X=x)=\binom{36000}x(0.000125)^x(0.999875)^{36000-x}\tag{$\ast\ast$}
+$$
+
+이 될 것입니다.
+그리고 이 때에는 아까의 *가정*(하나의 시간간격동안 2명 이상 들어오지 않는다는 가정)이 더 그럴듯하게 성립할 것이므로 $(\ast\ast)$의 분포는 $(\ast)$의 분포보다 더 괜찮은 (현상을 잘 반영하는) 분포일 것입니다.
+심지어는, 아무리 친구 두 명이서 함께 가게를 방문한다고 하더라도, 두 명의 사람이 가게에 들어오는 시각에는 차이가 있을 것이므로 시간간격을 충분히 줄이면 이 *가정*은 항상 성립한다고 말할 수도 있을 것입니다.
+그래서 3600, 36000이었던 값을 양의 무한대로 보내버리고, 아까의 계산결과를 적용하면
+
+$$
+P(X=x)
+=\lim_{n\to\infty}
+\binom nx\left(\frac{4.5}n\right)^x\left(1-\frac{4.5}n\right)^{n-x}
+=\frac{4.5^x}{x!}e^{-4.5}
+$$
+
+이 되는데 이것은 $\lambda=4.5$인 Poisson PMF입니다.
+$\square$
+
+
+$$
+\begin{align*}
+
+\end{align*}
+$$
+
