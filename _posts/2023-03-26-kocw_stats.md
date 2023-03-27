@@ -10,7 +10,9 @@ author_profile: false
 
 이 포스트는 한양대학교 이상화 교수님의 [「확률 및 통계」 강의](http://www.kocw.net/home/search/kemView.do?kemId=1056974)에 대한 요약입니다.
 이 강의는 총 21강으로 되어 있고 확률과 통계에 관한 전반적인 사항을 다루는 것 같습니다.
+
 강의 내용을 아주 자세하게는 적지 않고 간략하게만 적어나갈 예정입니다.
+아주 깔끔하게 적으려다보면 시간이 많이 걸리거나, 아예 안하게 되는 경우도 있어서, 조금 간단하게, 때로는 의식의 흐름대로 적어나가게 되는데, 그래도 쓰고 고치고 하다보면 잘 정리될 수도 있을 것 같습니다.
 
 # 01 조건부확률과 Bayes 정리
 
@@ -921,7 +923,7 @@ $$
 
 **ex 2.15 uniform distribution**
 
-$f_X(x)$가 상수함수이면 $X$가 uniform distribution을 따른다고 합니다.
+$f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution을 따른다고 정의합니다.
 아까, 0과 1 사이의 숫자를 임의로 골라 그 값을 $X$라고 할때, $X$는 uniform distribution을 따릅니다.
 주사위를 하나 던져 눈을 보는 것도 일종의 uniform distribution에 해당합니다.
 
@@ -1139,7 +1141,7 @@ $$
 $$
 
 입니다.
-이를 이용하여 푸아송 분포
+이를 이용하여 Poisson distribution
 
 $$P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}$$
 
@@ -1163,7 +1165,7 @@ $$
 $${\sigma_K}^2=E[K^2]-E[K]^2=(\lambda^2+\lambda)-\lambda^2=\lambda$$
 
 입니다.
-또한, 지수분포
+또한, exponential distribution
 
 $$
 \begin{align*}
@@ -1841,6 +1843,145 @@ $$
 이 되는데 이것은 $\lambda=4.5$인 Poisson PMF입니다.
 $\square$
 
+**4.8 exponential distribution**
+
+$$
+\begin{align*}
+f_X(x)&=\lambda e^{-\lambda x}\qquad(x\ge0)\\
+E[X]&=\frac1\lambda\\
+{\sigma_K}^2&=\frac1{\lambda^2}
+\end{align*}
+$$
+
+강의에서는 geometric distribution과 exponential distribution은 각각 선형대수에서의 difference equation/differential equation (차분방정식/미분방정식)과 연관이 있다고 설명합니다.
+
+선형대수의 해당 개념들에 대해서는 [G. Strang, Linear Algebra and Its Applications, 4ed](https://a.co/d/5l0YO6H)의 5.3과 5.4에 그 설명이 잘 적혀있습니다. 5.3의 첫 절 정도만 읽어봤는데, 거기에서는 피보나치 수열의 일반식을 difference equation을 통해 얻어내고 있습니다.
+그 과정에서 정사각행렬의 거듭제곱이 등장하는데, 이를 간단하게 하기 위해서 (당연히) 행렬의 대각화를 사용합니다.
+(최근에 대각화에 대해 [정리]({{ site.url }}/mathematics/diagonalization/)해본 적이 있어서 이해하기가 편했습니다.)
+그 결과로, 피보나치 수열의 일반식에는 어떤 숫자(=eigenvalues)의 거듭제곱이 수반됩니다 ;
+
+$$
+\begin{align*}
+u_k&=c_1{\lambda_1}^kx_1+c_2{\lambda_2}^kx_2\\
+F_k&=c_1{\lambda_1}^k+c_2{\lambda_2}^k
+\end{align*}
+$$
+
+이러한 형태가 difference equation 말고도 differential equation(system of linear partial differential equations)에서도 나타나는 것은 주지의 사실입니다.
+
+![stats 1-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-1.png){: .img-100-center}
+
+한편, 지난 강의에서 geometric distribution에서의 memorylessness에 대해 말했었는데, exponential distribution에서도 마찬가지로 memoryless property가 성립한다는 내용이 강의에 이어집니다.
+확인할 내용은 다음과 같습니다.
+
+expoential distribution은 어떤 시스템의 (혹은 어떤 상태의) 생존(survival, success)에 관한 문제와 관련있습니다.
+어떤 시스템이 $t$라는 시점까지 생존했다는 가정 하에 그 이후 $s$만큼의 시간까지 생존할 확률을 계산할 건데, 그 확률이 ($t$라는 시점까지 생존했다는 가정 없이 그냥) $s$만큼의 시간만큼 생존할 확률과 같다는 것을 보려고 합니다.
+
+계산에 앞서 expoential distribution에 대한 CDF를 먼저 계산해보면
+
+$$
+\begin{align*}
+F_X(x)
+&=\int_0^xf_X(\tilde x)\,d\tilde x\\
+&=\int_0^x\lambda e^{-\lambda\tilde x}\,d\tilde x\\
+&=1-e^{\lambda x}
+\end{align*}
+$$
+
+입니다.
+계산해보면
+
+$$
+\begin{align*}
+P\left(X\le t+s|X>t\right)
+&=\frac{P\left((X\le t+s)\cap(X>t)\right)}{P(X>t)}\\
+&=\frac{P\left(t<X\le t+s\right)}{1-P(X\le t)}\\
+&=\frac{F_X(t+s)-F_X(t)}{1-F_X(t)}\\
+&=\frac{e^{\lambda t}-e^{\lambda(t+s)}}{e^{-\lambda t}}\\
+&=1-e^{\lambda s}\\
+&=F_X(s)\\
+&=P(X\le s)
+\end{align*}
+$$
+
+인 것입니다.
+
+**relation between ED and PD**
+
+여기에서 ED는 exponential distribution, PD는 poisson distribution입니다.
+ED는 연속확률변수로서 '(생존)시간'과 관련이 있었고 PD는 이산확률변수로서 주어진 시간구간 동안의 '발생횟수'와 관련이 있었습니다.
+
+For a Poisson distribution with $\lambda$ per unit time,
+
+$$P_X(x) = \frac{\lambda^x}{x!}e^{-\lambda}.\qquad(x=0,1,2,\cdots)$$
+
+Transforming 'unit time' to 'time interval $t$' yields
+($1\to t$, $\lambda\to\lambda t$)
+
+$$P_X(x) = \frac{\lambda^xt^x}{x!}e^{-\lambda t}.\qquad(x=0,1,2,\cdots)$$
+
+한글로 다시 쓰면, 원래 PD식(첫번째 식)에서 $X$가 단위시간(길이가 1인 시간간격)동안 특정 사건이 발생한 횟수이었는데, 이번에는 길이가 $t$인 시간간격 동안 특정 사건이 발생할 횟수를 $X$로 정한 것입니다.
+그리고 그 때의 PMF가 두번째 식처럼 나옵니다.
+
+그러면, 길이가 $t$인 시간간격동안 한번도 사건이 발생하지 않을 확률 $P(\text{no event})$은
+
+$$P(\text{no event})=P_X(0)=e^{-\lambda t}$$
+
+이고 길이가 $t$인 시간간격동안 적어도 한 번 사건이 발생할 확률 $P(\text{at least one event})$는
+
+$$P(\text{at least one event})=1-P_X(0)=1-e^{-\lambda t}$$
+
+이것은 ED의 CDF에 $t$를 넣은 모양과 완전히 일치합니다.
+
+그러니까, PD를 해석할 때 어떤 event를 상정했었습니다.
+그 event의 예시를 '상점에서 손님이 들어오는 것'으로 해석했었지만, event가 어떤 종류의 것이었어도 상관없었습니다.
+event의 의미를 '죽는 것', 그러니까 '생존에 실패하는 것'으로 둔다면, 그리고 PD의 단위시간간격을 '길이 $t$의 시간간격'으로 바꾼다면,
+
+$$
+\begin{align*}
+P^{\text{poisson, $t$}}(X\ne0)
+&=P^{\text{exponential}}(X\le t)\\
+\text{$t$ 시간간격 안에 실패가 한 번도 발생하지 않을 확률}
+&=\text{$t$ 시간 동안 생존할 확률}
+\end{align*}
+$$
+
+인 것입니다.
+여기서 좌변과 우변의 $X$는 서로 다른 종류의 확률변수입니다.
+즉, 좌변의 $X$는 길이가 $t$인 시간간격 동안 '실패'가 발생할 횟수이고, 우변의 $X$는 생존시간, 즉 '실패'가 처음으로 발생한 시각을 뜻합니다.
+
+다시 정리하면, 특정 시점에 일어날 수 있는 어떤 사건에 대하여
+
+- 사건 사이의 시간간격은 exponential distribution을 따르고
+- 일정한 시간간격 동안 사건이 일어난 횟수는 Poisson distribution을 따른다
+
+고 할 수 있습니다.
+
+![stats 1-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-2.png){: .img-50-center}
+
+그러니까, exponential distribution을 따르는 어떤 확률변수 $T$를 '사건 사이의 시간간격'이라고 해석하면, 특정 시간간격을 상정한 다음 그 시간간격 동안 해당 사건이 일어난 횟수를 확률변수 $X$라고 정할 때 $X$는 Poisson distribution을 따릅니다.
+
+반대로, Poisson distribution을 따르는 어떤 확률변수 $X$를 '일정한 시간간격 동안 사건이 일어날 횟수'로 해석한다면, 그 사건이 일어나는 시간 간격을 확률변수 $T$로 정할 떄 $T$는 exponential distribution을 따릅니다.
+
+**4.9 Erlang distribution**
+
+Erlang distribution (of $k$) is a generalization of expoential distribution.
+
+어떤 사건이 발생하는 간격은 exponetial distribution을 따른다고 했었습니다.
+즉, 시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 두번째 사건이 발생했다면 $T_2-T_1$은 exponential distribution을 따릅니다.
+다시 말해, exponential distribution은 한 개의 사건발생간격을 고려합니다.
+
+$k=2$인 Erlang distribution은 두 개의 사건발생간격을 고려합니다.
+시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 발생하며, 또 그 다음 사건이 시각 $T_3$에 발생하면, $T_3-T_1$이 따르르는 분포가 $k=2$인 Erlang distribution입니다.
+
+(물론, $T_2-T_1$ 말고도 $T_3-T_2$, $T_4-T_3$도 exponential distribution을 따릅니다.
+마찬가지로 $T_3-T_1$ 말고도 $T_4-T_2$, $T_5-T_3$도 $k=2$인 Erlang distribution을 따릅니다.)
+
+그 연장선상에서 보면 $T_4-T_1$은 $k=3$인 Erlang distribution을, $T_5-T_1$은 $k=4$인 Erlang distribution을 따른다고 말할 수 있습니다.
+
+이제 $k$-order Erlang distribution(혹은 Erlang-$k$ distribution)의 정의를 보면
+
+$$f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}$$
 
 $$
 \begin{align*}
