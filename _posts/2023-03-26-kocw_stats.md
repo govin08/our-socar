@@ -140,9 +140,9 @@ $$
 이 성립합니다.
 강의에서는 세 종류의 계산을 해보는데, 첫번째 계산은 the law of total probability와 연관이 있고, 두번째와 세번째 계산은 Bayesian theorem과 연관이 있습니다.
 
-**(1) $P(\text{error})$**
+**(1) error가 발생할 확률**
 
-오류라고 판단할 수 있는 경우는 input이 $x_1$로 들어갔는데 output이 $y_2$로 나오는 경우와 그 반대의 경우입니다.
+오류라고 판단할 수 있는 경우는 input이 $x_1$로 들어갔는데 output이 $y_2$로 나오는 경우와 그 반대의 경우(vice versa)입니다.
 전자의 경우를 $\\{x_1\\}\times\\{y_2\\}$로 표현해야 정확하겠지만 이것을 그냥 $x_1\cap y_2$로 쓰면 (그러니까, $\left(\\{x_1\\}\times S_2\right)\cap\left( S_1\times\\{y_2\\}\right)$의 의미입니다.)
 
 $$
@@ -170,7 +170,7 @@ $$
 
 여기에서 $y_2$는 아까 말한 observation data (output)이고 $x_1$은 original data (input)입니다.
 
-**(3) $P(x_1|\text{error})$**
+**(3) error가 발생했을 때, 입력값이 $x_1$일 확률**
 
 $$
 \begin{align*}
@@ -319,7 +319,7 @@ $$
 $$P(X=k)=\binom nkp^k(1-p)^{n-k}$$
 
 입니다.
-따라서 $X$의 평균은
+따라서 $X$의 평균은 $(\ast)$를 사용하여
 
 $$
 \begin{align*}
@@ -333,7 +333,7 @@ E(X)
 $$
 
 으로 계산됩니다.
-$X$의 분산은 조금 복잡한데
+$X$의 분산은 조금 복잡한데 $(\ast\ast)$를 사용하여
 
 $$
 \begin{align*}
@@ -368,7 +368,7 @@ $$
 (1-x)f(x)=1+x+x^2+\cdots=\frac1{1-x}
 $$
 
-입니다. (단, $|x|<1$)
+입니다. (단, $|x|\lt1$ )
 
 따라서
 
@@ -383,7 +383,7 @@ $$
 g(x)=1+x+x^2+\cdots
 $$
 
-라고 하면 $f(x)=g'(x)$이므로
+라고 하면 $g(x)=\frac1{1-x}$이고 $f(x)=g'(x)$이므로
 
 $$
 f(x)=\left(\frac1{1-x}\right)'=\frac1{(x-1)^2}
@@ -411,15 +411,15 @@ $$\log(n!)=\log1+\log2+\cdots+\log n$$
 $$\int_1^n\log x\,dx$$
 
 과 관련이 있는 값입니다.
-폐구간 $1\le x\le n$를 길이가 1인 $n$개의 구간으로 나누면, 리만적분에서 흔히 하는 방식에 의해, 정적분의 값은 $n$개의 **큰** 직사각형들의 넓이의 합보다는 작고 $n$개의 (사실은 $n-1$개의) **작은** 직사각형들의 넓이의 합보다는 큽니다.
+폐구간 $1\le x\le n$를 길이가 1인 $n-1$개의 구간으로 나누면, 리만적분에서 흔히 하는 방식에 의해, 정적분의 값은 $n$개의 **큰** 직사각형들의 넓이의 합보다는 작고 $n$개의 (사실은 $n-1$개의) **작은** 직사각형들의 넓이의 합보다는 큽니다.
 즉,
 
 $$
 \begin{align*}
-\log1+\log2+\cdots+\log(n-1)&<\int_1^n\log x\,dx<\log2+\log3+\cdots+\log n\\
-\log((n-1)!)&<n\log n-n+1<\log(n!)\\
-n\log n-n+1&<\log(n!)<n\log n-n+1+\log n\\
-e^{n\log n-n+1}&<e^{\log(n!)}<e^{n\log n-n+1+\log n}\\
+\log1+\log2+\cdots+\log(n-1)&<\int_1^n\log x\,dx<\log2+\log3+\cdots+\log n\\[10pt]
+\log((n-1)!)&<n\log n-n+1<\log(n!)\\[10pt]
+n\log n-n+1&<\log(n!)<n\log n-n+1+\log n\\[10pt]
+e^{n\log n-n+1}&<e^{\log(n!)}<e^{n\log n-n+1+\log n}\\[10pt]
 e\left(\frac ne\right)^n&<n!<en\left(\frac ne\right)^n
 \end{align*}
 $$
@@ -491,7 +491,7 @@ $$
 
 언제나 확률변수의 개념을 정확히 이해하는 건 결코 쉬운 일은 아닌 것 같습니다.
 매번 충분할 정도로 이해하고 넘어가려고 노력하는데도 불구하고 볼때마다 새로운 것 같습니다.
-그래도 다시 한 번 강의를 보며 다시 한 번 이해해봤습니다.
+그래도 강의를 보며 다시 한 번 이해해봤습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-1.png){: .img-50-center}
 
@@ -509,7 +509,7 @@ A random variable is a function $X$ mapping each outcome of random experiment $w
 {: .text-center}
 
 를 확률변수 $X$로 정의할 수 있습니다.
-이 시행에서 $S=\{\H,T\\}$이고, 확률변수 $X$는 $S$에서 $\mathbb R$로 가는 함수로서
+이 시행에서 $S=\\{H,T\\}$이고, 확률변수 $X$는 $S$에서 $\mathbb R$로 가는 함수로서
 
 $$
 \begin{align*}
@@ -531,7 +531,7 @@ $$P(\{H\})=\frac12,\quad P(\{T\})=\frac12,\quad P(\varnothing)=0,\quad P(S)=1$$
 $p(x)$ 혹은 $P(X=x)$라는 표현을 (이것들은 나중에 확률질량함수라는 이름을 가지게 되는데)
 
 $$
-\begin{equation}\tag{$*$}
+\begin{equation}\tag{$\ast$}
 \begin{aligned}
 p(x)
 &=P(X=x)\\
@@ -605,7 +605,7 @@ $$
 **2.3 events defined by RV**
 
 강의에서는 $A_x$를 도입해서 설명하고 있습니다.
-이떄 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합입니다.
+이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합입니다.
 (따라서 이것은 $X$의 inverse image $X^{-1}(x)$이기도 합니다.)
 
 $$A_x=\{w\in S:X(w)=x\}$$
@@ -647,11 +647,11 @@ $$F_X(1)=\frac34$$
 였습니다.
 
 따라서 CDF는
-- nondecreasing 입니다 : if $x_1\lt x_2$, then $F_x(x_1)\le F_X(x_2)$
+- nondecreasing 입니다 : if $x_1\lt x_2$, then $F_X(x_1)\le F_X(x_2)$
 - 치역이 $[0,1]$입니다 : $0\le F_X(x)\le1$
 - 두 점근선을 가집니다 : $\displaystyle\lim_{x\to\infty}F_X(x)=1$, $\displaystyle\lim_{x\to-\infty}F_X(x)=0$
 - $P(a\lt X\lt b)=F_X(b)-F_X(a)$
-- $P(x>a)=1-F_x(a)$
+- $P(x>a)=1-F_X(a)$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-3.png){: .img-50-center}
 
@@ -708,7 +708,7 @@ $$
 
 **2.5 discrete random variables(이산확률변수)**
 
-확률변수 $X$가 가질 수 있는 값이 유한개이면 (혹은 countable개이면) $X$를 이산확률변수라고 부릅니다.
+확률변수 $X$가 가질 수 있는 값이 유한개이면 (혹은 countable개이면, 그러니까 at most countable개이면) $X$를 이산확률변수라고 부릅니다.
 
 이 때에는 확률질량함수(probability mass function) $P_X(x)$를 다음과 같이 정의합니다.
 
@@ -731,11 +731,11 @@ $$F_X(x)=\sum_{x_i\le x}P_X(x_i)$$
 이산확률변수의 분포(distribution)는 확률질량함수의 그래프로서 나타내는데, 그것을 $xy$ 평면에 찍힌 여러 개의 점으로 표현하기보다는, 선분으로써 표현하는 경향이 있는 것 같습니다.
 
 동전을 두 개 던지는 시행에서의
-확률질량함수의 그래프와 CDF의 그래프는 아래와 같습니다.
+확률질량함수의 그래프와 CDF와 PMF의 그래프는 아래와 같습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-5.png){: .img-100-center}
 
-이때, CDF의 그래프는 step function으로 나타납니다.
+CDF의 그래프는 step function으로 나타나는 것을 볼 수 있습니다.
 
 이산확률변수 $X$에 대하여 연속확률변수에서의 확률밀도함수 $f_X(x)$에 대응하는 개념을 설명하려면 dirac delta function과 같이 조금 복잡한 논의가 필요합니다.
 다시 말해, 연속확률변수에서는
@@ -743,7 +743,7 @@ $$F_X(x)=\sum_{x_i\le x}P_X(x_i)$$
 $$P(a\le X\lt b)=\int_a^bf_X(x)\,dx$$
 
 와 같은 식을 만족시키는 함수 $f_X(x)$를 생각하게 되는데, 위의 $P_X(x)$의 그래프에서는 '그래프 아래의 면적'이라는 개념을 정의할 수 없으니까 애매합니다.
-그럴 때에, 함수 $\delta$(dirac delta function)를
+그럴 때에, 함수 $\delta$(dirac delta function)를 도입하는데, 이 함수는
 
 $$
 \delta(x)\approx
@@ -755,12 +755,15 @@ $$
 
 와 같이 이해합니다.
 [(출처)](https://en.wikipedia.org/wiki/Dirac_delta_function)
+
 이 함수는 $x\ne0$인 곳에서는 함숫값이 0이고 $x=0$인 곳에서만 함숫값이 $\infty$인 불연속함수처럼 적혀있는데, 실제로는 연속함수처럼 생각합니다.
 또, 실수 전체의 범위에서 적분했을 때의 값이 $1$인 것으로 가정합니다.
 
 $$
 \int_{-\infty}^{\infty}\delta(x)\,dx=1
 $$
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-6.gif){: .img-10-center}
 
 따라서 이 함수 $\delta(x)$가
 
@@ -798,9 +801,10 @@ $$f_X(x)=\frac14\delta(x)+\frac12\delta(x-1)+\frac14\delta(x-2)$$
 로 정할 수 있습니다.
 
 <!-- 실제 강의에서는 dirac delta function에 대해서는 언급하지 않고 $\delta(x)$를 '델타의 수'라고 부르고 있습니다. -->
+<div class="notice--danger">
 dirac delta function은 엄밀히 말하면 함수가 아닌 generalized function이며, measure나 distribution을 통해 이해될 수 있다고 합니다.
+</div>
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-6.gif){: .img-50-center}
 
 # 04 이산확률변수와 연속확률변수
 
@@ -817,7 +821,7 @@ $X(S)$가 countable이면 (혹은 at most countable, 그러니까, finite이거�
 와 같은 앞서의 정의를 다시 쓴 것입니다.
 
 만약, 확률변수가 이산확률변수가 아니면 연속확률변수라고 부릅니다.
-그러니까, 치역 $X(S)$가 uncountable인 경우 (uncountably infinte)를 말합니다.
+그러니까, 치역 $X(S)$가 uncountable인 경우를 말합니다.
 말로 풀어 쓰면
 
 확률변수 $X$가 가질 수 있는 값이 uncountable하게 많으면 $X$를 연속확률변수라고 부릅니다.
@@ -825,19 +829,19 @@ $X(S)$가 countable이면 (혹은 at most countable, 그러니까, finite이거�
 
 이산확률분포의 경우에 비해 연속확률분포의 경우에는 조금 어렵고 섬세한 이야기들이 많이 산적해있습니다.
 예를 들어 0과 1 사이의 숫자를 임의로 뽑을 때 그 값을 $X$라고 하면, $X$는 연속확률변수입니다.
-그런데 이런 경우에 $P(X=\frac12)$을 어떻게 정의해야 할 지 애매합니다.
+그런데 이런 경우에 $P(X=0.5)$을 어떻게 정의해야 할 지 애매합니다.
 
 <div class="notice--danger">
-답 : $P(X=\frac12)=0$<br>
+답 : $P(X=0.5)=0$<br>
 
 확률을 measure-theoretic하게 생각하면 $P$는 하나의 measure라고 볼 수 있고 이 경우에는 '집합의 길이'와 관련된 measure를 $P$로써 정의합니다.
-그런데 원소가 하나인 집합에 대한 '길이'는 0이므로 $P(X=\frac12)=0$입니다.<br>
+그런데 원소가 하나인 집합에 대한 '길이'는 0이므로 $P(X=0.5)=0$입니다.<br>
 
 조금 더 직관적으로 말할 수도 있을 것 같습니다.
-$P(X=\frac12)=a$로 두면 ($a>0$) 다른 모든 숫자 $0\le x\le1$에 대해서도 마찬가지로 $P(X=x)=a$가 성립한다고 말할 수 있을 겁니다.
+$P(X=0.5)=a$로 두면 ($a>0$) 다른 모든 숫자 $0\le x\le1$에 대해서도 마찬가지로 $P(X=x)=a$가 성립한다고 말할 수 있을 겁니다.
 그러면, 모든 $x$에 대하여 이 확률값들을 더했을 때 1이 되어야 합니다.
 사실 이 덧셈이 잘 정의되는지도 의문이기는 하지만, 어쨌든 양수 $a$를 무한번 더해서 1이 된다는 것인데, 이건 말이 안됩니다.
-따라서, 임의의 양의 실수 $a$에 대하여 $P(X=\frac12)=a$일 수 없고, $P(X=\frac12)=0$일 수밖에 없습니다.
+따라서, 임의의 양의 실수 $a$에 대하여 $P(X=0.5)=a$일 수 없고, $P(X=0.5)=0$일 수밖에 없습니다.
 </div>
 
 즉, 이산확률변수에서의 '확률질량함수'가 잘 작동하지 않고, 따라서 다른 방식으로 연속확률분포를 이해할 필요가 있습니다.
@@ -931,10 +935,11 @@ $f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution�
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_4-1.png){: .img-100-center}
 
-강의의 마지막 부분에는 신호나 그림에서의 sampling과 quantization, binarization에 대해 언급됩니다.
-주요한 내용은 아래 캡쳐와 같습니다.
+강의의 마지막 부분에는 신호나 그림에서의 sampling과 quantization, binarization에 대해 언급됩니다. (아래 캡쳐)
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_4-2.png){: .img-100-center}
+
+이에 대한 설명은 다음과 같습니다.
 
 연속적인 아날로그 신호(continuous, analogue signal)를 특정한 주파수로 sampling하면 discrete signal을 얻을 수 있습니다.
 이 discrete signal을 표현할 때에는 특정한 step size를 가정하여 level의 형태로 얻게 되는데 이 과정을 양자화(quantization)라고 부릅니다.
@@ -976,7 +981,7 @@ $$
 $K$가 the number of event occurence in time interval이라고 하면, $K$는 위와 같은 분포를 따르는 경우가 많다고 합니다.
 
 $P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번쨰 조건인 $P_K(k)\ge0$은 당연합니다.
-두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series를 사용할 수 있습니다.
+두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series(혹은 지수함수의 추상적인 정의)를 사용할 수 있습니다;
 
 $$e^x=\sum_{k=0}^\infty\frac{x^k}{k!}$$
 
@@ -1305,7 +1310,7 @@ $${\sigma_K}^2=E[K^2]-E[K]^2=\frac{2-p}{p^2}-\frac1{p^2}=\frac{1-p}{p^2}$$
 이후에는 평균과 분산의 의미에 대한 설명이 있습니다(위 캡쳐).
 computer vision에서의 얼굴인식문제를 아주 naive하게 생각할 때, 우리는 실제 카메라에 인식된 얼굴모양(실제값)이 우리가 정한 특정한 형태의 얼굴모양 (표준참값, 예측값, 추정값, 표준모델)과 얼마나 비슷한지를 판단할만한 판단근거가 필요합니다.
 
-이떄의 실제값과 표준참값은 각각 벡터로 생각할 수 있고, 따라서 표준적인 벡터사이의 거리(의 제곱)인 $L^2$ norm(의 제곱)을 생각하게 됩니다.
+이때의 실제값과 표준참값은 각각 벡터로 생각할 수 있고, 따라서 표준적인 벡터사이의 거리(의 제곱)인 $L^2$ norm(의 제곱)을 생각하게 됩니다.
 그것은 실제값과 표준참값을 뺀 다음 제곱하여 성분별로 더하는 것을 말합니다.
 그리고 이 값(energy라고 통상 부르기도 하는 값)이 최소가 되도록 하는 표준참값을, '괜찮은 모델'이라고 둘 수 있을 것입니다.
 
@@ -1467,7 +1472,7 @@ $$
 이고 conditionoal CDF $F_X(x|A)$는
 
 $$
-f_X(x|A)=\frac d{dx}F_x(x|A)=\frac1{15}
+f_X(x|A)=\frac d{dx}F_X(x|A)=\frac1{15}
 $$
 
 입니다.
@@ -1981,7 +1986,7 @@ $k=2$인 Erlang distribution은 두 개의 사건발생간격을 고려합니다
 
 이제 $k$-order Erlang distribution(혹은 Erlang-$k$ distribution)의 정의를 보면
 
-$$f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}$$
+$$f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0$$
 
 $$
 \begin{align*}
