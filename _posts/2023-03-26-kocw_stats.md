@@ -76,7 +76,7 @@ $$P(A)=\sum_{i=1}^nP(A|A_i)P(A_i)$$
 입니다.
 이후에 Bayes theorem에서 자세히 다루겠지만, $P(A|A_i)$와 같은 확률은 사전확률로 해석할 수 있습니다.
 
-![stats 1-1]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
 
 **(5) Bayesian theorem**
 
@@ -186,7 +186,7 @@ $$
 문제에서 $P(x_i)$는 주어지지 않은 것처럼 보입니다.
 그리고, 만약 이 channel이 symetric하면 위의 식은 조금 더 간단히 쓸 수 있을 것으로 보입니다.)
 
-![stats 1-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-2.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-2.png){: .img-50-center}
 
 **1.8 independent events**
 
@@ -212,7 +212,7 @@ $$P(A)P(B)=P(A\cap B)$$
 - 독립(independence)과 배반(exclusiveness)의 개념을 혼동하지 말아야 합니다.
 - $A$와 $B$가 독립이면 $A$와 $\overline B$($B$의 여사건, complement)도 독립입니다.
 
-![stats 1-3]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-3.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-3.png){: .img-50-center}
 
 **1.9 Combined Experiments**
 
@@ -244,7 +244,10 @@ $$
 
 서로 다른 $n$개의 대상을 일렬로 나열하는 방법의 수는
 
-$$n!=n\times(n-1)\times\cdots\times1.$$
+$$n!=n\times(n-1)\times\cdots\times1$$
+
+입니다.
+$n!$은 $n$ factorial(팩토리얼)이라고 읽고, $0!=1$로 정의합니다.
 
 서로 다른 $n$개의 대상 중 $r$개를 일렬로 나열하는 방법의 수는
 
@@ -438,14 +441,14 @@ $$n!=g(n)\left(\frac ne\right)^n$$
 
 **1. 11 Reliability**
 
-![stats 2-1]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-1.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-1.png){: .img-50-center}
 
 어떤 시스템(혹은 모듈)이 어떤 기간동안 얼마나 올바르게 고장나지 않고 잘 동작하는지를 나타내는 값을 reliability라고 합니다.
 그것을 $R(t)$라고 적습니다.
 
 **series connection(직렬연결)**
 
-![stats 2-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-2.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-2.png){: .img-50-center}
 
 여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, $R_n(t)$일 때, 이 시스템의 reliability는
 
@@ -455,7 +458,7 @@ $$\prod_{i=1}^nR_i(t)$$
 
 **parallel connection(병렬연결)**
 
-![stats 2-3]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-3.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-3.png){: .img-50-center}
 
 이번에는 이 모듈들이 병렬로 연결되어 있다면 이 시스템의 reliability는
 
@@ -463,12 +466,12 @@ $$1-\prod_{i=1}^n\left(1-R_i(t)\right)$$
 
 입니다.
 
-![stats 2-4]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-4.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-4.png){: .img-50-center}
 
 만약 위의 그림처럼 복잡한 시스템이라고 한다면, $C_3$가 동작하는지($R_x$) 동작하지 않는지($R_y$)에 따라 구분해서 얻어낼 수 있습니다.
 전자의 경우에는 두 쌍의 병렬모듈들이 직렬로 연결된 것이고 후자의 경우에는 두 쌍의 직렬모듈들이 병렬로 연결된 것이라고 볼 수 있습니다.
 
-![stats 2-5]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-5.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-5.png){: .img-50-center}
 
 따라서
 
@@ -1750,7 +1753,7 @@ $K$ : the number of Bernoulli success in a time interal.
 
 Poisson 분포의 저 식이 도대체 무슨 의미가 있는지를 몰라서 여러가지로 알아보다가, 아주 재미있는 결과를 발견했습니다.
 나중에 이 강의에서 다룰 지도 모르겠지만 먼저 적어보면, binomial PMF인
-;
+
 $$f_X(k)=\binom nkp^k(1-p)^{n-k}$$
 
 에서 $n$을 무한대로 보내면, Poisson PMF의 모양이 된다는 것입니다.
@@ -1858,6 +1861,10 @@ E[X]&=\frac1\lambda\\
 \end{align*}
 $$
 
+(Poisson distribution에서 그랬던 것처럼 이번에도 이 분포의 의미를 열심히 살펴보는 것은 의미있는 일일 것 같습니다.
+하지만, 시간관계상 생략하고, 강의의 내용을 먼저 따라가려고 합니다.
+나중에 한번 다 끝나고 나면, (Stirling's formula의 유도도 포함하여) 그때 다시 고민해보려 합니다.)
+
 강의에서는 geometric distribution과 exponential distribution은 각각 선형대수에서의 difference equation/differential equation (차분방정식/미분방정식)과 연관이 있다고 설명합니다.
 
 선형대수의 해당 개념들에 대해서는 [G. Strang, Linear Algebra and Its Applications, 4ed](https://a.co/d/5l0YO6H)의 5.3과 5.4에 그 설명이 잘 적혀있습니다. 5.3의 첫 절 정도만 읽어봤는데, 거기에서는 피보나치 수열의 일반식을 difference equation을 통해 얻어내고 있습니다.
@@ -1874,7 +1881,7 @@ $$
 
 이러한 형태가 difference equation 말고도 differential equation(system of linear partial differential equations)에서도 나타나는 것은 주지의 사실입니다.
 
-![stats 1-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-1.png){: .img-100-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-1.png){: .img-100-center}
 
 한편, 지난 강의에서 geometric distribution에서의 memorylessness에 대해 말했었는데, exponential distribution에서도 마찬가지로 memoryless property가 성립한다는 내용이 강의에 이어집니다.
 확인할 내용은 다음과 같습니다.
@@ -1962,7 +1969,7 @@ $$
 
 고 할 수 있습니다.
 
-![stats 1-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-2.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-2.png){: .img-50-center}
 
 그러니까, exponential distribution을 따르는 어떤 확률변수 $T$를 '사건 사이의 시간간격'이라고 해석하면, 특정 시간간격을 상정한 다음 그 시간간격 동안 해당 사건이 일어난 횟수를 확률변수 $X$라고 정할 때 $X$는 Poisson distribution을 따릅니다.
 
@@ -1986,7 +1993,333 @@ $k=2$인 Erlang distribution은 두 개의 사건발생간격을 고려합니다
 
 이제 $k$-order Erlang distribution(혹은 Erlang-$k$ distribution)의 정의를 보면
 
-$$f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0$$
+$$
+f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
+\tag{$\ast$}
+$$
+
+**gamma function**
+
+Erlang distribution의 계산을 돕기 위해 gamma function을 다음과 같이 정의합니다.
+
+$$
+\Gamma(k)=\int_0^\infty x^{k-1}e^{-x}\,dx\tag{$\ast\ast$}
+$$
+
+특별히 $k$가 자연수일 때 $\Gamma(k)$는 순열(팩토리얼)의 형태가 됩니다;
+
+$$
+\Gamma(k)=(k-1)!\qquad(k=1,2,\cdots)\tag{$\ast\ast\ast$}
+$$
+
+이것은 $k$에 대한 귀납법으로 쉽게 증명될 수 있습니다.
+$k=1$이면
+
+$$
+\begin{align*}
+\Gamma(1)
+&=\int_0^\infty e^{-x}\,dx\\
+&=\left[-e^{-x}\right]_0^\infty\\
+&=1-0\\
+&=0!
+\end{align*}
+$$
+
+입니다.
+$k-1$인 경우의 $(\ast\ast\ast)$이 성립한다고 가정하면, 즉, $\Gamma(k-1)=(k-2)!$을 가정하면 부분적분에 의해
+
+$$
+\begin{align*}
+\Gamma(k)
+&=\int_0^\infty x^{k-1}e^{-x}\,dx\\
+&=\left[-x^{k-1}e^{-x}\right]_0^\infty+\int_0^\infty (k-1)x^{k-2}e^{-x}\,dx\\
+&=(0-0)+(k-1)\Gamma(k-1)\\
+&=(k-1)(k-2)!\\
+&=(k-1)!
+\end{align*}
+$$
+
+이 됩니다.
+$\square$
+
+gamma function의 정의 ($\ast\ast$)에서 $k$는 양의 정수(자연수)로 둘 수도 있고 양의 실수로 둘 수도 있습니다.
+심지어는 실수부분이 양수인 복소수로 둘 수 있다고 합니다.
+([출처 : wikipedia](https://en.wikipedia.org/wiki/Gamma_function))
+그런 의미에서, gamma function은 팩토리얼의 개념을 일반화한 것이라고 볼 수 있습니다.
+예를 들어,
+
+$\frac12!$을 어떻게 정의할까?
+{: .text-center}
+
+하는 질문에 $\frac12!=\Gamma(\frac12)$ 로 정의해볼 수 있는 것입니다.
+
+이제, Erlang distribution에 관한 $(\ast)$ 식이 정말로 PDF의 역할을 하는 지 살펴보기 위해 계산해보면
+
+$$
+\begin{align*}
+\int_0^\infty f_{X_k}(x)\,dx
+&=\int_0^\infty\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\,dx\\
+&=\frac{\lambda^k}{(k-1)!}\int_0^\infty x^{k-1}e^{-\lambda x}\,dx\\
+&=\frac{\lambda^k}{(k-1)!}\int_0^\infty
+(\lambda x)^{k-1}\cdot\frac1{\lambda^{k-1}}e^{-\lambda x}\frac1{\lambda}\,d(\lambda x)\\
+&=\frac1{(k-1)!}\int_0^\infty u^{k-1}e^{-u}\,du\\
+&=\frac1{(k-1)!}\Gamma(k)\\
+&=1
+\end{align*}
+$$
+
+입니다.
+평균을 계산해보면
+
+$$
+\begin{align*}
+E[X]
+&=\int_0^\infty x\cdot\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\,dx\\
+&=\frac{\lambda^k}{(k-1)!}\underline{\int_0^\infty x^ke^{-\lambda x}\,dx}\\
+&=\frac{\lambda^k}{(k-1)!}\left(
+    \left[-\frac{x^{k-1}}\lambda e^{-\lambda x}\right]_0^\infty
+    +\frac k{\lambda}\int_0^\infty x^{k-1}e^{-\lambda x}\,dx\right)\\
+&=\frac{\lambda^k}{(k-1)!}\left(0+\frac k{\lambda^{k+1}}
+\int_0^\infty(\lambda x)^{k-1}e^{-\lambda x}\,d(\lambda x)\right)\\
+&=\frac{\lambda^k}{(k-1)!}\times\frac k{\lambda^{k+1}}
+\int_0^\infty u^{k-1}e^{-u}\,du\\
+&=\frac{\lambda^k}{(k-1)!}\times
+\underline{\frac k{\lambda^{k+1}}\times\Gamma(k)}\\
+&=\frac k{\lambda}
+\end{align*}
+$$
+
+이고 분산을 계산하기 위해 $E[X^2]$를 계산해보면
+
+$$
+\begin{align*}
+E[X^2]
+&=\int_0^\infty x^2\cdot\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\,dx\\
+&=\frac{\lambda^k}{(k-1)!}\int_0^\infty x^{k+1}e^{-\lambda x}\,dx\\
+&=\frac{\lambda^k}{(k-1)!}\left(
+    \left[-\frac{x^{k+1}}{\lambda}e^{-\lambda x}\right]_0^\infty
+    +\frac{k+1}\lambda\int_0^\infty x^ke^{-\lambda x}\,dx\right)\\
+&=\frac{\lambda^k}{(k-1)!}\times\frac{k+1}\lambda\times\frac k{\lambda^{k+1}}\times\Gamma(k)\\
+&=\frac{k(k+1)}{\lambda^2}
+\end{align*}
+$$
+
+입니다.
+계산과정의 세번째 줄에서 네번째 줄로 넘어가는 것은 $E[X]$의 계산에서 밑줄친 두 값이 같다는 것을 활용한 것입니다.
+분산을 계산하면
+
+$${\sigma_{X_k}}^2=E[X^2]-E[X]^2=\frac k{\lambda^2}$$
+
+이 됩니다.
+
+이 결과들을 exponential distribution의 평균과 분산과의 관계와 연결지어 해석해보면 다음과 같습니다.
+어떤 사건이 시각 $T_0$ $T_1$, $T_2$, $T_3$, $\cdots$, $T_k$에 일어난다고 가정할 때, $T_1-T_0$, $T_2-T_1$, $\cdots$, $T_k-T_{k-1}$은 모두 exponential distribution을 따른다고 했습니다.
+반면, $T_2-T_0$, $T_3-T_1$, $\cdots$, $T_k-T_{k-2}$는 Erlang-$2$ distribution을 따릅니다.
+마찬가지로, $T_3-T_0$, $T_4-T_1$, $\cdots$, $T_k-T_{k-3}$는 Erlang-$3$ distribution을 따릅니다.
+그리고 $T_k-T_0$는 Erlang-$k$ distribution을 따른다고 했습니다.
+
+그러면, exponential distribution을 따르는 두 확률분포를 더하면 그것은 Erlang-$2$ distribution을 따른다고 볼 수 있습니다;
+
+$$(T_1-T_0)+(T_2-T_1)=T_2-T_0$$
+
+그리고, exponential distribution을 따르는 $k$개의 확률분포를 더하면 그것은 Erlang-$k$ distribution을 따른다고 볼 수 있습니다;
+
+$$(T_1-T_0)+(T_2-T_1)+\cdots+(T_k-T_{k-1})=T_k-T_0$$
+
+만약, exponential distribution을 따르는 각각의 확률변수들을
+ 
+$$
+T_1-T_0=X^{(1)},\quad
+T_2-T_1=X^{(2)},\quad
+\cdots,\quad
+T_k-T_{k-1}=X^{(k)}
+$$
+
+으로 표기하고 $X_k=T_k-T_0$이라고 하면,
+
+$$X^{(1)}+X^{(2)}+\cdots+X^{(k)}=X_k$$
+
+인 것입니다.
+따라서
+
+$$
+\begin{align*}
+E[X_k]
+&=E\left[X^{(1)}+X^{(2)}+\cdots+X^{(k)}\right]\\
+&\stackrel{\star}=E[X^{(1)}]+E[X^{(2)}]+\cdots+E[X^{(k)}]\\
+&=\frac1\lambda+\frac1\lambda+\cdots+\frac1\lambda\\
+&=\frac k\lambda.
+\end{align*}
+$$
+
+라고 생각할 수 있습니다.
+이것은 아까 계산한 Erlang-$k$ distribution의 평균과 정확히 일치합니다.
+여기에서 $(\star)$의 과정은 직관적으로는 당연하지만, 엄밀하게는 아직 논할 수 없습니다.
+그리고 '각 사건의 발생이 독립적이다'와 같은 가정이 있어야 저 과정이 정당화될 수 있을 것입니다.
+
+강의에서는 나중에 convolution의 개념을 배우고 나서 저 $(\star)$ 과정을 제대로 설명할 수 있다고 말합니다.
+그런데 정말로 그런 것이, 만약 $X^{(i)}$들이 0과 자연수의 값을 가진다고 가정하고(discrete) $X_2=T_2-T_0=X^{(1)}+X^{(2)}$의 PMF를 $X^{(1)}$의 PMF와 $X^{(2)}$의 PMF로 구하려고 한다면
+
+$$
+\begin{align*}
+P_{X_2}(x)
+&=P(X_2=x)\\
+&=P(X^{(1)}+X^{(2)}=x)\\
+&=P\left((X^{(1)}=0)\cap(X^{(2)}=x)\right)
++P\left((X^{(1)}=1)\cap(X^{(2)}=x-1)\right)
++\cdots
++P\left((X^{(1)}=x)\cap(X^{(2)}=0)\right)\\
+&=\sum_{i=1}^xP\left((X^{(1)}=i)\cap(X^{(2)}=x-i)\right)\\
+&=\sum_{i=1}^xP(X^{(1)}=i)\times P(X^{(2)}=x-i)\\
+&=\sum_{i=1}^xP_{X^{(1)}}(i)\times P_{X^{(2)}}(x-i)\\
+\end{align*}
+$$
+
+와 같은 꼴이 되어, $P_{X_2}$가 $P_{X^{(1)}}$와 $P_{X^{(1)}}$의 convolution 형태로 나타나기 떄문인 것 같습니다.
+(exponential distribution과 Erlang distribution의 원래 정의에서처럼 PDF로 계산하는 경우에는 summation이 아닌 적분과 관련된 식으로 convolution 식이 나옵니다.)
+
+분산에 대해서도 비슷한 해석을 할 수 있다고 하는데, 사실 강의에서의 설명은 잘 이해하지는 못했습니다.
+하지만, 다음과 같이 해석하면 되지 않을까 싶습니다.
+$X^{(1)}$, $X^{(2)}$, $\cdots$, $X^{(k)}$가 모두 평균 $\mu$를 가지고 분산 $\sigma^2$를 가지는 동일한 분포를 따를 때, 이것들의 산술평균인 $\overline X = \frac1k(X^{(1)}+\cdots+X^{(k)})$는 평균이 $\mu$이고 분산이 $\frac{\sigma^2}k$임이 알려져있습니다. (표본평균의 평균과 분산)
+그러니까,
+
+$$
+\begin{align*}
+\sigma_{X_k}
+&=V[X_k]\\
+&=V[X^{(1)}+X^{(2)}+\cdots X^{(k)}]\\
+&=V[k\overline X]\\
+&=k^2V[\overline X]\\
+&=k^2\times\frac{\sigma^2}k\\
+&=k\sigma^2\\
+&=kV[X^{(1)}]\\
+&=\frac{k}{\lambda^2}
+\end{align*}
+$$
+
+이 되어 앞서 계산의 결과와 일치합니다.
+
+마지막으로, $X_k$의 CDF를 계산해봅니다.
+이 계산은 gamma function을 직접적으로 사용할 수 없습니다.
+wikipedia 등에 따르면 위에서 정의한 gamma function에서 더 나아간
+[incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function)
+과 같은 함수를 사용하면 $X_k$의 CDF를 계산하는 것이 더 쉬워지는 것으로 보이는데, 여기에서는 그냥 부분적분과 귀납법을 사용해 계산하겠습니다.
+실제 강의에서도 부분적분을 연속적으로 사용하여 계산할 수 있다고 말씀하고 계십니다.
+
+$$
+\begin{align*}
+F_{X_k}(x)
+&=\int_0^xf_{X_k}(t)\,dt\\
+&=\int_0^x\frac{\lambda^kt^{k-1}}{(k-1)!}e^{-\lambda t}\,dt\\
+&=\frac{\lambda^k}{(k-1)!}\int_0^xt^{k-1}e^{-\lambda t}\,dt\\
+&=\frac1{(k-1)!}\int_0^{\lambda x}(\lambda t)^{k-1}e^{-\lambda t}\,d(\lambda t)\\
+&=\frac1{(k-1)!}\int_0^{\lambda x}u^{k-1}e^{-u}\,du\\
+&\stackrel{\star\star}=1-\sum_{n=0}^{k-1}\frac{(\lambda x)^n}{n!}e^{-\lambda x}
+\end{align*}
+$$
+
+$\star\star$를 수학적 귀납법으로 증명하겠습니다.
+$k=1$인 경우는
+
+$$
+\begin{align*}
+\text{LHS}
+&=\frac1{0!}\int_0^{\lambda x}u^0e^{-u}\,du\\
+&=\left[-e^{-u}\right]_0^{\lambda x}\\
+&=1-e^{-\lambda x}\\
+&=1-\sum_{n=0}^0\frac{(\lambda x)^n}{n!}e^{-\lambda x}\\
+&=\text{RHS}
+\end{align*}
+$$
+
+가 되어 성립합니다.
+$k$의 경우를 성립한다고 가정하고 $k+1$인 경우를 고려하면
+
+$$
+\begin{align*}
+\text{LHS}
+&=\frac1{k!}\int_0^{\lambda x}u^ke^{-u}\,du\\
+&=\frac1{k!}\left(\left[-u^ke^{-u}\right]_0^{\lambda x}
++k\int_0^{\lambda x}u^{k-1}e^{-u}\,du\right)\\
+&=-\frac1{k!}(\lambda x)^ke^{-\lambda x}
++\frac1{(k-1)!}\int_0^{\lambda x}u^{k-1}e^{-u}\,du\\
+&=-\frac{(\lambda x)^k}{k!}e^{-\lambda x}
++1-\sum_{n=0}^{k-1}\frac{(\lambda x)^n}{n!}e^{-\lambda x}\\
+&=1-\sum_{n=0}^k\frac{(\lambda x)^n}{n!}e^{-\lambda x}\\
+&=\text{RHS}
+\end{align*}
+$$
+
+**4.10 uniform distribution**
+
+uniform distribution에 대해서도 이미 다룬 바가 있지만, PMF와 PDF, 평균과 분산에 대해 다시 봅니다.
+
+$X$가 uniform한 이산확률분포이고 $X$가 가질 수 있는 값이 $x_1$, $x_2$, $\cdots$, $x_n$이면 $P(X=x_1)=P(X=x_2)=\cdots=P(X=x_n)$인데, 따라서
+
+$$
+P_X(x_i)=\frac1n\qquad(i=1,2,\cdots,n)
+$$
+
+로 $X$의 PMF가 결정됩니다.
+만약 $X$가 uniform한 연속확률분포이고 $X$가 가질 수 있는 값이 $a\le X\le b$이면
+
+$$f_X(x)=c(a\le x\le b)$$
+
+이고
+
+$$\int_a^bf_X(x)\,dx=1$$
+
+로부터
+
+$$f_X(x)=\frac1{b-a}(a\le x\le b)$$
+
+입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-3.png){: .img-50-center}
+
+이산확률분포의 경우 $E[X]=\frac1n(x_1+\cdots+x_n)$, ${\sigma_X}^2=\frac1n\left((x_i-E[X])^2\right)$이어서 사실 새로울 게 없습니다.
+연속확률 변수의 경우의 평균과 분산은 $E[X]=\frac{a+b}2$, ${\sigma_X}^2=\frac{(a-b)^2}{12}$로 주어지는데, 직접 계산해보면
+
+$$
+\begin{align*}
+E[X]
+&=\int_a^bxf_X(x)\,dx\\
+&=\frac 1{b-a}\int_a^bx\,dx\\
+&=\frac{a+b}2\\
+{\sigma_X}^2
+&=\int_a^bx^2f_X(x)\,dx-E[X]^2\\
+&=\frac 1{b-a}\int_a^bx^2\,dx-\left(\frac{a+b}2\right)^2\\
+&=\frac{a^2+ab+b^2}3-\frac{a^2+2ab+b^2}4\\
+&=\frac{a^2-2ab+b^2}{12}\\
+&=\frac{(a-b)^2}{12}
+\end{align*}
+$$
+
+입니다.
+강의의 마지막에는 앞서 언급된 적이 있었던 digitization에서의 quantization에 대한 설명이 다시 나옵니다.
+quantization에서의 level 사이의 간격을 $\Delta$라고 할 때, quantization error $e$는
+
+$$-\frac\Delta2\lt e\le\frac\Delta2$$
+
+와 같이 주어질텐데, 이때 $e$가 $[-\frac\Delta2,\frac\Delta2]$에서의 uniform distribution을 따른다고 가정한다는 것입니다.
+그러면 $e$의 분산은
+
+$$V[e]=\frac{\Delta^2}{12}$$
+
+으로 나타나게 될 것입니다.
+이때, error의 분산은 전력(power, 평균 에너지의 크기)로 해석할 수 있다고 합니다.
+신호의 실제값들의 표준편차를 $\sigma_S$라고 하면,
+
+$$
+\log_{10}\left(\frac{\,{\sigma_S}^2}{\left(\frac\Delta{12}\right)^2}\right)
+$$
+
+은 [SNR](https://en.wikipedia.org/wiki/Signal-to-noise_ratio)([신호 대 잡음비](https://ko.wikipedia.org/wiki/%EC%8B%A0%ED%98%B8_%EB%8C%80_%EC%9E%A1%EC%9D%8C%EB%B9%84))의 값으로 정의할 수 있는데, 이 값은 db(데시벨)이라는 단위를 가지고 있다고 합니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-4.png){: .img-100-center}
+
+
+
 
 $$
 \begin{align*}
