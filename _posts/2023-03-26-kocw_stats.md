@@ -2318,12 +2318,211 @@ $$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-4.png){: .img-100-center}
 
+# 09 정규분포
 
+연속확률변수 $X$가 확률밀도함수
 
+$$\tag{$\ast$}
+f_X(x)=\frac1{\sqrt{2\pi}\sigma_X}e^{-\frac{(x-{\mu_X})^2}{2{\sigma_X}^2}}
+\qquad(-\infty\lt x\lt\infty)
+$$
+
+를 가지면 $X$가 정규분포를 따른다고 하고 $X\sim N(\mu_X,{\sigma_X}^2)$라고 표시합니다.
+이 PDF에 대하여 다음 세 사실이 성립합니다.
+
+$$\tag{$\ast\ast$}
+\begin{align*}
+\int_{-\infty}^\infty f_X(x)\,dx&=1\\
+E[X]&=\mu_X\\
+V[X]&={\sigma_X}^2
+\end{align*}
+$$
+
+이것을 직접 증명하는 것은 복잡하기 때문에, $\mu=0$이고 $\sigma=1$인 경우를 보려고 합니다.
+다시 말해, 확률변수 $U$가 확률밀도함수
+
+$$
+f_U(u)=\frac1{\sqrt{2\pi}}e^{-\frac12u^2}
+\qquad(-\infty\lt x\lt\infty)
+$$
+
+로 주어진 연속확률변수 $U$에 대하여
 
 $$
 \begin{align*}
-
+\int_{-\infty}^\infty f_U(u)\,du&=1\\
+E[U]&=0\\
+V[U]&=1
 \end{align*}
 $$
+
+를 증명하려고 합니다.
+그리고 나서 $X=\sigma_X U+\mu_X$로 $X$를 정의하면
+$X$의 확률밀도함수는 $(\ast)$를 만족시키고, $(\ast\ast)$의 세 성질이 성립합니다.
+
+먼저 $U$의 확률밀도함수를 실수 전체에 대해 적분했을 때 1이 된다는 사실을 먼저 증명하기 위해
+
+$$
+A=\int_{-\infty}^\infty f_U(u)\,du
+$$
+
+로 두면, 극좌표계 변환에 의해
+
+$$
+\begin{align*}
+A^2
+&=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
+\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
+&=\frac1{2\pi}\iint e^{-\frac12(u^2+v^2)}\,du\,dv\\
+&=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
+e^{-\frac12r^2}r\,dr\,d\theta\\
+&=\frac1{2\pi}\int_0^{2\pi}d\theta\times
+\int_{-\infty}^\infty
+e^{-\frac12r^2}r\,dr\\
+&=\frac1{2\pi}\times 2\pi\times\int_0^\infty
+e^{-\frac12r^2}\,d\left(\frac12r^2\right)\\
+&=\int_0^\infty e^{-R}\,dR\\
+&=\left[-e^R\right]_0^\infty\\
+&=1
+\end{align*}
+$$
+
+입니다.
+따라서 $A=1$입니다.
+
+$U$의 평균을 계산하기 위해 똑같이 해보면
+
+$$
+\begin{align*}
+E[U]^2
+&=\int_{-\infty}^\infty\frac u{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
+\int_{-\infty}^\infty\frac v{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
+&=\frac1{2\pi}\iint uve^{-\frac12(u^2+v^2)}\,du\,dv\\
+&=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
+r^2\cos\theta\sin\theta e^{-\frac12r^2}r\,dr\,d\theta\\
+&=\frac1{2\pi}\int_0^{2\pi}\cos\theta\sin\theta\,d\theta\times
+\int_{-\infty}^\infty r^3e^{-\frac12r^2}r\,dr\\
+&=\frac1{2\pi}\int_0^{2\pi}\frac12\sin(2\theta)\,d\theta
+\times\int_0^\infty
+\left(\frac12r^2\right)e^{-\frac12r^2}\,d\left(\frac12r^2\right)\times2\\
+&=\frac1{2\pi}\times\left[-\frac14\cos(2\theta)\right]_0^{2\pi}\times
+\int_0^\infty Re^{-R}\,dR\times2\\
+&=\frac1{2\pi}\times0\times1\times2\\
+&=0
+\end{align*}
+$$
+
+입니다.
+따라서 $E[U]=0$입니다.
+
+마지막으로 $U$의 분산을 계산해보면
+
+$$
+\begin{align*}
+V[U]
+&=\int_{-\infty}^\infty\frac{(u-0)^2}{\sqrt{2\pi}}e^{-\frac12u^2}\,du\\
+&=\int_{-\infty}^\infty\frac{u^2}{\sqrt{2\pi}}e^{-\frac12u^2}\,du
+\end{align*}
+$$
+
+이고
+
+$$
+\begin{align*}
+V[U]^2
+&=\int_{-\infty}^\infty\frac{u^2}{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
+\int_{-\infty}^\infty\frac{v^2}{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
+&=\frac1{2\pi}\iint u^2v^2e^{-\frac12(u^2+v^2)}\,du\,dv\\
+&=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
+r^4\cos^2\theta\sin^2\theta e^{-\frac12r^2}r\,dr\,d\theta\\
+&=\frac1{2\pi}\int_0^{2\pi}\cos^2\theta\sin^2\theta\,d\theta\times
+\int_{-\infty}^\infty r^5e^{-\frac12r^2}r\,dr\\
+&=\frac1{2\pi}\int_0^{2\pi}\frac14\sin^2(2\theta)\,d\theta
+\times\int_0^\infty
+\left(\frac12r^2\right)^2e^{-\frac12r^2}\,d\left(\frac12r^2\right)\times4\\
+&=\frac1{2\pi}\int_0^{2\pi}\frac18(1-\cos(4\theta))\,d\theta\times
+\int_0^\infty R^2e^{-R}\,dR\times4\\
+&=\frac1{2\pi}\times\frac\pi4\times2\times4\\
+&=1
+\end{align*}
+$$
+
+따라서 $(\ast\ast)$의 세 성질이 성립합니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-1.png){: .img-100-center}
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-2.png){: .img-100-center}
+
+강의에서는 연속확률변수들이 대개 정규분포를 따른다는 것이 언급되면서, 특히 어떤 신호의 signal이 정규분포를 따르는 경향이 있다는 사실도 소개됩니다.
+single mode, symmetric, bellshaped등의 성질들에 대해서도 언급됩니다.
+
+여기에서 mode란 PDF의 극대점을 의미한다고 설명되고 있습니다.
+discrete case에서는 mode가 최빈값, 즉 PMF의 최대점을 의미합니다.
+
+강의에서 위의 계산도 하는 것 같은데, $du\,dv=r\,dr\,d\theta$를 설명하기 위해 Jacobian matrix도 소개되고 있습니다.
+다만 위에서 계산한 세 값 중 맨 위의 값만 계산하고 있습니다.
+
+이외에도 표준졍규분포, 표준정규분포표에 대해서도 소개되고 있습니다.
+이때 $\Phi$를 표준정규분포의 CDF로 정합니다 ;
+
+$$\Phi(x)=F_Z(x)=P(Z\le x)=\int_{-\infty}^x\frac1{\sqrt{2\pi}}e^{-\frac{z^2}2}$$
+
+**approximation of binomial distributions**
+
+$X\sim B(n,p)$이고 $n$이 충분히 크면 $X\sim N(np,np(1-p))$ 입니다.
+
+**error function**
+
+$$\text{erf}(x)=\frac2{\sqrt\pi}\int_0^xe^{-y^2}\,dy.$$
+
+$X\sim N(0,\frac12)$이면, 이 함수는 $\text{er}f(x)=P(-x\lt X\le x)$인 함수입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-2.png){: .img-50-center}
+
+**complementary error function**
+
+$$\text{erfc}(x)=\frac2{\sqrt\pi}\int_x^\infty e^{-y^2}\,dy.$$
+
+\text{erfc} 함수는 \text{erf} 함수와 complementary한 관계가 있습니다.
+다시 말해서
+
+$$\text{erf}(x)+\text{erfc}(x)=1$$
+
+입니다.
+
+또한, $X\sim N(0,\frac12)$, $Z\sim N(0,1)$, $\text{erf}(x)=P(-x\le X\le x)$, $\Phi(x)=P(Z\le x)$이므로
+
+$$
+\begin{align*}
+\text{erf}(x)
+&=2P(0\le X\le x)\\
+&=2P\left(0\le Z\le\sqrt2x\right)\\
+&=2\left(\Phi(\sqrt2x)-\frac12\right)\\
+&=2\Phi(\sqrt2x)-1
+\end{align*}
+$$
+
+이고, 반대로
+
+$$\Phi(x)=\frac12+\frac12\text{erf}\left(\frac{x}{\sqrt2}\right)$$
+
+입니다.
+
+**Gaussian mixture model**
+
+$X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로운 확률변수 $\alpha X_1+\beta X_2$는 하나의 mode를 가지지 않고 두 개의 mode를 가질 수 있습니다.
+일반적으로, 서로 다른 정규분포를 따르는 $n$개의 확률변수 $X_i$에 대하여 $X_i$들의 일차결합은 여러 개의 mode를 가질 수 있습니다(multimodal).
+이 확률변수를 가지고 만들 수 있는 모델을 Gaussian mixture model이라고 하는 것 같습니다. `sklearn`에서는 다음과 같은 설명을 하고 있습니다.
+
+> A Gaussian mixture model is a probabilistic model that assumes all the data points are generated from a mixture of a finite number of Gaussian distributions with unknown parameters.
+<!-- > One can think of mixture models as generalizing k-means clustering to incorporate information about the covariance structure of the data as well as the centers of the latent Gaussians. -->
+
+**4.5 Pascal distribution (Negative binomial distribution)**
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-3.png){: .img-75-center}
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-4.png){: .img-50-center}
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-5.png){: .img-50-center}
+
 
