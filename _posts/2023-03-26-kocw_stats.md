@@ -330,7 +330,7 @@ E(X)
 &=\sum_{k=0}^nkP(X=k)\\
 &=\sum_{k=0}^nk\binom nkp^k(1-p)^{n-k}\\
 &=(1-p)^n\sum_{k=0}^nk\binom nk\left(\frac p{1-p}\right)^k\\
-&=(1-p)^nn\cdot\frac p{1-p}\left(1+\frac p{1-p}\right)^{n-1}\\
+&\stackrel{(\ast)}=(1-p)^nn\cdot\frac p{1-p}\left(1+\frac p{1-p}\right)^{n-1}\\
 &=np
 \end{align*}
 $$
@@ -345,7 +345,7 @@ E(X)
 &=\sum_{k=0}^nk^2P(X=k)-(np)^2\\
 &=\sum_{k=0}^nk^2\binom nkp^k(1-p)^{n-k}-(np)^2\\
 &=(1-p)^n\sum_{k=0}^nk^2\binom nk\left(\frac p{1-p}\right)^k-(np)^2\\
-&=(1-p)^n\frac{np}{1-p}\left(1+\frac p{1-p}\right)^{n-2}\left(1+\frac{np}{1-p}\right)-n^2p^2\\
+&\stackrel{(\ast\ast)}=(1-p)^n\frac{np}{1-p}\left(1+\frac p{1-p}\right)^{n-2}\left(1+\frac{np}{1-p}\right)-n^2p^2\\
 &=np(1-p)
 \end{align*}
 $$
@@ -371,7 +371,8 @@ $$
 (1-x)f(x)=1+x+x^2+\cdots=\frac1{1-x}
 $$
 
-입니다. (단, $|x|\lt1$ )
+입니다.
+단, $|x|<1$ 입니다.
 
 따라서
 
@@ -533,14 +534,12 @@ $$P(\{H\})=\frac12,\quad P(\{T\})=\frac12,\quad P(\varnothing)=0,\quad P(S)=1$$
 그런데 확률변수 $X$를 도입하고 나면 $P(~\cdot~)$를 숫자들의 함수처럼 생각할 수 있습니다.
 $p(x)$ 혹은 $P(X=x)$라는 표현을 (이것들은 나중에 확률질량함수라는 이름을 가지게 되는데)
 
-$$
-\begin{equation}\tag{$\ast$}
+$$\tag{$\ast$}
 \begin{aligned}
 p(x)
 &=P(X=x)\\
 &=P\left(\{w\in S:X(w)=x\}\right)
 \end{aligned}
-\end{equation}
 $$
 
 와 같이 정의하면
@@ -653,7 +652,7 @@ $$F_X(1)=\frac34$$
 - nondecreasing 입니다 : if $x_1\lt x_2$, then $F_X(x_1)\le F_X(x_2)$
 - 치역이 $[0,1]$입니다 : $0\le F_X(x)\le1$
 - 두 점근선을 가집니다 : $\displaystyle\lim_{x\to\infty}F_X(x)=1$, $\displaystyle\lim_{x\to-\infty}F_X(x)=0$
-- $P(a\lt X\lt b)=F_X(b)-F_X(a)$
+- $P(a\lt X\le b)=F_X(b)-F_X(a)$
 - $P(x>a)=1-F_X(a)$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-3.png){: .img-50-center}
@@ -678,9 +677,9 @@ $$
 $$
 \begin{align*}
 P\left(X>\frac14\right)&=1-F_X\left(\frac14\right)=1-\frac34=\frac14\\
-P(X>0)&=1-F_X(0)=1-\frac12=\frac12\\
-P(X\ge0)&=1\\
-P(X=0)&=1\\
+P(X>0)&=1-F_X(0)=1-\frac12=\frac12\\[10pt]
+P(X\ge0)&=1\\[10pt]
+P(X=0)&=1\\[10pt]
 P\left(X\ge\frac14\right)&=\frac14
 \end{align*}
 $$
@@ -692,15 +691,15 @@ $$
 $$
 \begin{align*}
 P(X\ge0)
-&=1-P(X\lt0)\\
+&=1-P(X\lt0)\\[10pt]
 &=1-\lim_{x\to0+}P(X\le x)\\
 &=1-\lim_{x\to0+}\left(x+\frac12\right)\\
-&=1-0=1\\
+&=1-0=1\\[10pt]
 P(X=0)
 &=P(X\le0)-P(X\lt0)\\
 &=\frac12-0=1\\
 P\left(X\ge\frac14\right)
-&=1-P\left(X\lt\frac14\right)\\
+&=1-P\left(X\lt\frac14\right)\\[10pt]
 &=1-\lim_{x\to\frac14+}P(X\le x)\\
 &=1-\lim_{x\to\frac14+}\left(x+\frac12\right)\\
 &=1-\frac34=\frac14
@@ -711,7 +710,7 @@ $$
 
 **2.5 discrete random variables(이산확률변수)**
 
-확률변수 $X$가 가질 수 있는 값이 유한개이면 (혹은 countable개이면, 그러니까 at most countable개이면) $X$를 이산확률변수라고 부릅니다.
+확률변수 $X$가 가질 수 있는 값이 유한개이면 (혹은 countable개이면) $X$를 이산확률변수라고 부릅니다.
 
 이 때에는 확률질량함수(probability mass function) $P_X(x)$를 다음과 같이 정의합니다.
 
@@ -731,7 +730,7 @@ CDF와의 관계는 다음과 같습니다.
 
 $$F_X(x)=\sum_{x_i\le x}P_X(x_i)$$
 
-이산확률변수의 분포(distribution)는 확률질량함수의 그래프로서 나타내는데, 그것을 $xy$ 평면에 찍힌 여러 개의 점으로 표현하기보다는, 선분으로써 표현하는 경향이 있는 것 같습니다.
+이산확률변수의 분포(distribution)는 확률질량함수의 그래프로서 나타내는데, 그것을 $xy$ 평면에 찍힌 여러 개의 점으로 표현하기보다는, 여러 개의 선분으로써 표현하는 경향이 있는 것 같습니다.
 
 동전을 두 개 던지는 시행에서의
 확률질량함수의 그래프와 CDF와 PMF의 그래프는 아래와 같습니다.
@@ -743,7 +742,7 @@ CDF의 그래프는 step function으로 나타나는 것을 볼 수 있습니다
 이산확률변수 $X$에 대하여 연속확률변수에서의 확률밀도함수 $f_X(x)$에 대응하는 개념을 설명하려면 dirac delta function과 같이 조금 복잡한 논의가 필요합니다.
 다시 말해, 연속확률변수에서는
 
-$$P(a\le X\lt b)=\int_a^bf_X(x)\,dx$$
+$$P(a\lt X\le b)=\int_a^bf_X(x)\,dx$$
 
 와 같은 식을 만족시키는 함수 $f_X(x)$를 생각하게 되는데, 위의 $P_X(x)$의 그래프에서는 '그래프 아래의 면적'이라는 개념을 정의할 수 없으니까 애매합니다.
 그럴 때에, 함수 $\delta$(dirac delta function)를 도입하는데, 이 함수는
@@ -779,7 +778,7 @@ P_X(x)=
 $$
 
 와 같이 정의된 가장 기본적인 확률질량함수 $P_X(x)$에 대응되는 확률밀도함수라고 생각할 수 있습니다.
-일반적인 확률질량함수는 이 $\delta(x)$를 적절히 shift한 것들을 가지고 일차결합하여 만들어낼 수 있습니다.
+일반적인 확률질량함수에 대한 확률밀도함수는 이 $\delta(x)$를 적절히 shift한 것들을 가지고 일차결합하여 만들어낼 수 있습니다.
 즉
 
 $$
