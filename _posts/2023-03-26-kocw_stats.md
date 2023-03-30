@@ -18,7 +18,7 @@ author_profile: false
 
 **(1) sample Space**
 
-확률에 대해 공부할 때 가장 먼저 배우는 것은 당연히 표본공간(sample space, 전공간)입니다.
+확률에 대해 공부할 때 가장 먼저 배우는 것은 당연히 표본공간(sample space)입니다.
 고등학교 이후의 과정에서 확률은 항상 집합의 관점에서 이해됩니다.
 표본공간 또한 집합으로, 보통 $S$로 적습니다.
 표본공간이란 어떤 시행(trial)에 대하여
@@ -200,7 +200,7 @@ $$P(B|A)=P(B)$$
 
 $$P(A|B)=P(A)$$
 
-이면, 두 사건 $A$, $B$가 서로 독립이라고 말합니다.
+이면, 두 사건 $A$, $B$가 서로 이라고 말합니다.
 $P(A)\ne0$, $P(B)\ne0$인 경우에 이 독립조건은
 
 $$P(A)P(B)=P(A\cap B)$$
@@ -949,6 +949,26 @@ $f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution�
 이 일련의 과정들은 아날로그로 주어진 데이터를 디지털의 형태로 바꾸는 작업입니다.
 이때, 실제 신호와 level로 주어진 근사값들 사이의 차이를 quantization error라고 가정하는데, 많은 경우에 이 error를 uniform distribution을 따른다고 가정하고 모델링을 진행한다고 합니다.
 
+<div class="notice--danger">
+<b> 확률분포(probabilistic distribution) </b>
+확률변수 $X$가 어디에 얼마나 분포되어있는지 하는 것을 그 확률변수의 분포(distribution)이라고 합니다.
+이 분포를 직접적으로 표현하는 것이 PMF, PDF, CDF와 같은 분포함수들입니다.
+그 중 이산확률변수에 대해서는 PMF를, 연속확률분포에 대해서는 PDF를 주로 분포함수로 취급하게 되는데 PMF와 PDF는 모든 종류의 확률변수에 대해 잘 정의되지 않습니다.
+
+예를 들어, PDF로는 이산확률분포를 정하기가 힘들었습니다.
+그래프의 면적이 1이 된다는 점을 만족시키기 위해서 dirac delta function 같은 것을 도입해야 했습니다.
+또, PMF로는 연속확률분포를 정하는 데 어려움이 있었습니다.
+각 점에 대한 PMF의 값이 0이 될 수밖에 없는데, 그건 그것대로 모순이었습니다.
+
+하지만, CDF는 $X$가 이산확률변수이건 연속확률변수이건 상관없이 적절하게 잘 정의될 수 있습니다.
+또한, 일단 CDF가 정해지고 나면 CDF의 식으로부터 PMF나 PDF의 식을 쉽게 구할 수 있다는 점도 있습니다.
+그래서 그런지, 많은 경우에 CDF를 먼저 정의하고, 그 이후에 PMF나 PDF를 정의하는 것 같습니다.
+
+ 정할 수 없었습니다. (정하려면, PMF의 값들을 모두 0으로 만들어야 하는데)
+
+dirac delta function은 엄밀히 말하면 함수가 아닌 generalized function이며, measure나 distribution을 통해 이해될 수 있다고 합니다.
+</div>
+
 # 05 확률변수의 평균과 분산
 
 **Chapter 3. moments of random variables**
@@ -1004,7 +1024,7 @@ $$1=\sum_{k=0}^\infty\frac{\lambda^k}{k!}e^{-\lambda}=\sum_{k=1}^\infty P_K(k)$$
 $$
 \begin{align*}
 E[X]
-&=\sum_{k=0}^\infty kP_K(k)\\
+&=\sum_{k=0}^\infty kf_K(k)\\
 &=\sum_{k=0}^\infty k\frac{\lambda^k}{k!}e^{-\lambda}\\
 &=\sum_{k=1}^\infty k\frac{\lambda^k}{k!}e^{-\lambda}\\
 &=\lambda\sum_{k=1}^\infty\frac{\lambda^{k-1}}{(k-1)!}e^{-\lambda}\\
@@ -1338,23 +1358,24 @@ $$h(t)=\sum_{k=1}^n|t-x_k|$$
 
 **3.5 conditional mean**
 
-이산확률변수 $X$에 대하여 조건부 기댓값 $E[X|A]$는 다음 식과 같이 정의됩니다.
+이산확률변수의 conditional mean(조건부 기댓값)을 정의하기 전에, 먼저 conditional PMF(조건부 확률질량함수)를 다음과 같이 정의합니다.
 
-$$
-\begin{align*}
-E[X|A]
-&=\sum_{x_i\in A}x_iP(x_i|A)\\
-&=\sum_{x_i\in A}x_i\frac{P(x_i\cap A)}{P(A)}
-\end{align*}
-$$
+$$P_X(x|A)=P(X=x|A)$$
 
-여기에서도 notation에 대한 이슈를 언급하지 않을 수가 없습니다.
+이때, $X=x$라는 표현이 마치 사건처럼 쓰여져있습니다.
+이것은
+
+$$P(\{w\in S:X(w)=x\}|A)$$
+
+의 의미입니다.
+
+<!-- 여기에서도 notation에 대한 이슈를 언급하지 않을 수가 없습니다.
 $P(x_i|A)$라는 표현은 아직 정의된 적이 없는 표현입니다.
 $P(\cdot|\cdot)$에서 두 개의 $~\cdot~$은 사건, 그러니까 $S$의 부분집합이 들어가야 합니다.
 그런 점에서 $A$는 적절히 잘 들어갔으나, $x_i$는 도저히 사건이 아닙니다.
-$P(x_i\cap A)$라는 표현 또한 마찬가지입니다.
+$P(x_i\cap A)$라는 표현 또한 마찬가지입니다. -->
 
-그런데, 앞서 확률변수의 의미($P$가 집합의 함수가 아니라 숫자의 함수라서 더 다루기가 편해졌다는 내용)에 대해 말할 때에 $p(x)$라는 표현을 쓴 적이 있습니다.
+<!-- 그런데, 앞서 확률변수의 의미($P$가 집합의 함수가 아니라 숫자의 함수라서 더 다루기가 편해졌다는 내용)에 대해 말할 때에 $p(x)$라는 표현을 쓴 적이 있습니다.
 이것은
 
 $$p(x)=P(X=x)=P(A_x)=P\left(\{w\in S:X(w)=x\}\right)$$
@@ -1372,39 +1393,62 @@ E[X|A]
 $$
 
 와 같이 해석할 수 있을 것입니다.
-notation 상의 문제가 없으니 앞으로는 $P(x_i|A)$, $P(x_i\cap A)$와 같은 표현을 마음껏 쓸 수 있을 것 같습니다.
+notation 상의 문제가 없으니 앞으로는 $P(x_i|A)$, $P(x_i\cap A)$와 같은 표현을 마음껏 쓸 수 있을 것 같습니다. -->
 
-(다만, $E[X|A]$라는 표현에 대해서는, 그 자체가 정의이기때문에 문제될 것이 없고, 직관적으로도 '사건 $A$가 발생했다는 조건 하에서의 $X$의 평균'이라는 의미이므로 전혀 문제될 것이 없지만, 아주 잘 와닿지는 않는 것 같습니다.)
+<!-- (다만, $E[X|A]$라는 표현에 대해서는, 그 자체가 정의이기때문에 문제될 것이 없고, 직관적으로도 '사건 $A$가 발생했다는 조건 하에서의 $X$의 평균'이라는 의미이므로 전혀 문제될 것이 없지만, 아주 잘 와닿지는 않는 것 같습니다.) -->
 
-지금까지는 discrete한 경우의 조건부기댓값이었습니다.
-continuous case의 경우에는 조금 더 복잡하다고 합니다.
+그러면, 이산확률변수에서의 conditional expectation을
+
+$$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i)$$
+
+로 정의할 수 있습니다.
+(여기에서 $A\subset S$라면, $x_i\in A$는 $X^{-1}(\{x_i\})\subset A$로 해석해야 할 것입니다.)
+
+이번에는 연속확률변수의 조건부 기댓값을 정의하겠습니다.
+먼저 conditional CDF는
+
+$$
+F_X(x|A)=P(X\le x|A)
+$$
+
+로 정의됩니다.
+conditional PDF는 PDF의 정의에서와 마찬가지로 미분을 통해 얻을 수 있습니다.
 
 $$
 \begin{align*}
-E[X|A]
-&=\int_{x\in A}xf_X(x|A)\,dx\\
 f_X(x|A)
-&=\frac d{dx}F_X(x|A)\\
-&=\frac d{dx}P(X\le x|A)
+&=\lim_{\Delta x\to0+}\frac{P\left(x<X\le x+\Delta x|A\right)}{\Delta x}\\
+&=\lim_{\Delta x\to0+}\frac{F_X(x+\Delta x|A)-F_X(x|A)}{\Delta x}\\
+&=\frac d{dx}F_X(x|A)
 \end{align*}
 $$
 
-이때, $f_X(x|A)$는 conditional probability density function, 줄여서 conditional density (혹은 conditional PDF) 입니다.
+입니다.
+이를 통해 conditional expectation을
+
+$$
+E[X|A]=\int_{x\in A}xf_X(x|A)\,dx
+$$
+
+로 정의할 수 있습니다.
+(마찬가지로 $x\in A$는 $X^{-1}(\{x\})\subset A$로 해석해야 할 것입니다.)
+
+<!-- 이때, $f_X(x|A)$는 conditional probability density function, 줄여서 conditional density (혹은 conditional PDF) 입니다.
 이것은 정의이며, 이 정의는 discrete case와 정확히 잘 대응되는 정의입니다.
 그리고 이것은 conditional cumulative distribution function (혹은 conditional CDF)를 미분해서 얻어집니다.
 이것 또한 정의이며, PDF와 CDF 사이의 관계와 같다는 점에서 일관된 정의입니다.
 세번째 줄의 $P(X\le x|A)$라는 표현도 큰 문제는 없습니다.
-$P\left(\\{w\in S:X(w)\le x\\}|A\right)$ 이므로 잘 정의됩니다.
+$P\left(\\{w\in S:X(w)\le x\\}|A\right)$ 이므로 잘 정의됩니다. -->
 
 **ex. 3.14**
 
-사건 $A=\\{X\le a\\}$에 대하여 conditional density를 구하려고 합니다.
-이때 $A$의 notation도 해석이 좀 필요할 것 같은데,
+사건 $A=\\{X\le a\\}$에 대하여 conditional CDF와 conditional PDF를 구해봅니다.
+이때 $A$는
 
 $$A=\{w\in S:X(w)\le a\}$$
 
-라는 의미인 것 같습니다.
-이때 $X$의 CDF와 PDF는 이미 주어져 있다고 가정하는 것 같습니다.
+라는 의미입니다.
+이때 $X$의 CDF와 PDF는 이미 주어져 있다고 가정합니다.
 그러니까, $F_X(x)$와 $f_X(x)$를 사용하여 $F_X(x|A)$와 $f_X(x|A)$를 구하는 것이 목적입니다.
 conditional CDF $F_X(x|A)$ 를 먼저 계산하면
 
@@ -1427,9 +1471,8 @@ $$F_X(x|A)=\frac{P(X\le a)}{P(X\le a)}=1$$
 $$F_X(x|A)=\frac{P(X\le x)}{P(X\le a)}=\frac{F_X(x)}{F_X(a)}$$
 
 가 됩니다.
-여기에서 분모인 $F_X(a)$ 값은 $x$와는 관계가 없는 상수입니다.
-우리 목적은 conditional CDF $F_X(x|A)$를 $F_X$와 $f_X$로 표현하는 것이므로 여기서 더 계산할 필요는 없습니다.
-
+<!-- 여기에서 분모인 $F_X(a)$ 값은 $x$와는 관계가 없는 상수입니다. -->
+<!-- 우리 목적은 conditional CDF $F_X(x|A)$를 $F_X$와 $f_X$로 표현하는 것이므로 여기서 더 계산할 필요는 없습니다. -->
 정리하면
 
 $$
@@ -1465,26 +1508,27 @@ $$f_X(x)=\frac1{20},\quad 40\le x\le 60$$
 $$A=\{X\le 55\}$$
 
 인 경우를 보겠습니다.
-conditionoal density $F_X(x|A)$는
+conditionoal PDF는
 
 $$
 F_X(x|A)=P(X\le x|X\le 55)=\frac{x-40}{15}
 $$
 
-이고 conditionoal CDF $F_X(x|A)$는
+이고 conditionoal CDF는
 
 $$
 f_X(x|A)=\frac d{dx}F_X(x|A)=\frac1{15}
 $$
 
 입니다.
-또한, condtional expectation $E[X|A]$는
+또한, condtional expectation은
 
 $$
 \begin{align*}
 E[X|A]
 &=\int_{x\in A}xf_X(x|A)\,dx\\
 &=\int_{40}^{55}\frac1{15}x\,dx\\
+&=\frac1{15}\frac12(55-40)(55+40)\\
 &=\frac{95}2\\
 &=47.5
 \end{align*}
@@ -1492,19 +1536,19 @@ $$
 
 입니다.
 그냥 의미적으로 해석해보면, 원래 $X$는 40과 60 사이에 균일하게 분포되어 있었는데, 여기에 $X$가 55보다 작다는 조건 $A$를 준 것입니다.
-그러면 $A$라는 조건 하에서 $X$는 40과 55 사이에 균일하게 분포되어 있습니다.
+그러면 이 조건 하에서 $X$는 40과 55 사이에 균일하게 분포되어 있습니다.
 따라서 이 조건 하에서의 평균은 $\frac{40+55}2=47.5$가 되어야 합니다.
 
 그런 것 치고는 위의 계산은 불필요하게 복잡한 것 같습니다.
 저 위의 계산처럼 conditional density를 사용하지 않는 방법은.. 크게 없을 것 같습니다. conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
-굳이 다른 방법을 찾자면 integration by part를 사용해 conditional CDF를 사용할 수는 있겠는데, 별로 좋은 방법은 아닌 것 같습니다.
+굳이 다른 방법을 찾자면 부분적분을 사용해 conditional CDF를 사용할 수도 있을 것 같습니다.
 
 # 07 여러가지 이산확률분포
 
 **3.6 Chebysev inequality**
 
 체비셰프의 부등식.
-이름은 당연히 들어봤지만, 제대로 보는 것이 처음이라는 것은 상당히 유감스럽습니다.
+이름은 들어봤지만, 제대로 보는 것이 처음이라는 게 상당히 유감스럽습니다.
 학부때 확률론을 계속해서 피해다녔더니, 이제서야 보게 되었습니다.
 
 그런데, 아주 재미있는 부등식인 것 같습니다.
@@ -1517,7 +1561,7 @@ $$
 입니다.
 $X$가 평균으로부터 어느 정도의 간격($a$) 이상 떨어져있을 확률은 그 간격에 의존하는 어떤 값$\left(\frac{\,{\sigma_X}^2}{a^2}\right)$보다 작다는 뜻입니다.
 
-예를 들어 $Z=2$인 경우, 즉 $a=2\sigma_X$인 경우에 있어서의 Chebysev inequality는 $X$가 2-sigma 바깥에 있을 확률이 $\frac14$보다 작다는 것을 의미합니다.
+예를 들어 $a=2\sigma_X$인 경우에 있어서의 Chebysev inequality는 $X$가 2-sigma 바깥에 있을 확률이 $\frac14$보다 작다는 것을 의미합니다.
 
 이 부등식이 아주 tight한 것 같지는 않습니다.
 만약, $X$가 정규분포를 따른다면, $a=2\sigma_X$에 대한 확률은
@@ -2511,7 +2555,7 @@ $$\Phi(x)=\frac12+\frac12\text{erf}\left(\frac{x}{\sqrt2}\right)$$
 
 $X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로운 확률변수 $\alpha X_1+\beta X_2$는 하나의 mode를 가지지 않고 두 개의 mode를 가질 수 있습니다.
 일반적으로, 서로 다른 정규분포를 따르는 $n$개의 확률변수 $X_i$에 대하여 $X_i$들의 일차결합은 여러 개의 mode를 가질 수 있습니다(multimodal).
-이 확률변수를 가지고 만들 수 있는 모델을 Gaussian mixture model이라고 하는 것 같습니다. `sklearn`에서는 다음과 같은 설명을 하고 있습니다.
+이 확률변수를 가지고 만들 수 있는 모델을 Gaussian mixture model이라고 하는 것 같습니다. [`sklearn`](https://scikit-learn.org/stable/modules/mixture.html)에서는 다음과 같은 설명을 하고 있습니다.
 
 > A Gaussian mixture model is a probabilistic model that assumes all the data points are generated from a mixture of a finite number of Gaussian distributions with unknown parameters.
 <!-- > One can think of mixture models as generalizing k-means clustering to incorporate information about the covariance structure of the data as well as the centers of the latent Gaussians. -->
@@ -2528,7 +2572,7 @@ $X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로�
 
 이번 강의에서는 단일변수에 대한 분포가 아닌 다중변수에 대한 분포를 다룹니다.
 단일변수에 대한 정의를 다시 떠올려보면, 원래 확률공간(probability space)이란, $(S,\Sigma,P)$이었습니다.
-$S$는 sample space로 그냥 하나의 집합이었고 $\Sigma$는 sigma algebra로서 $S$의 부분집합(사건)들의 집합 중에서 특정한 성질을 만족시키는 것들이었으며 $P:\Sigma\to[0,1]$는 probability measure로서 전사건에 대한 값이 1인 finite measure입니다.
+$S$는 sample space로 그냥 하나의 집합이었고 $\Sigma$는 $\sigma$-algebra로서 $S$의 부분집합(사건)들의 집합 중에서 특정한 성질을 만족시키는 것들이었으며 $P:\Sigma\to[0,1]$는 probability measure로서 전사건에 대한 값이 1인 finite measure입니다.
 그러니까, $P(A)$라고 할 때, $A$는 $S$의 부분집합, 즉 '사건'입니다.
 그런데, 집합에 대한 함수를 다루기보다는 숫자에 대한 함수를 다루기 위해 확률변수라는 걸 도입하게 됩니다.
 확률변수란, $X:S\to\mathbb R$인 함수 $x=X(w)$로 정의됩니다.
@@ -2549,7 +2593,7 @@ $$P(a\le X\le b)=\int_a^bf_X(x)\,dx$$
 $$P(a\le X\le b)=P\left(\{w\in S:a\le X(w)\le b\}\right)=P\left(X^{-1}([a,b])\right)$$
 
 로 정의하면 두 식 $P(X=x)$, $P(a\le X\le b)$은 잘 정의됩니다.
-실제 강의에서는 sigma algebra라든지 probability measure에 대한 설명은 없이 진행됐습니다.
+실제 강의에서는 $\sigma$-algebra라든지 probability measure에 대한 설명은 없이 진행됐습니다.
 
 이번 강의에서는 두 확률변수 $X$, $Y$에 대하여
 
@@ -2562,11 +2606,11 @@ $$P(X\le x, Y\le y)$$
 를 어떻게 정의할지 하는 문제를 다룹니다.
 
 두 확률변수 $X:S_1\to\mathbb R$, $Y:S_2\to\mathbb R$를 고려한다고 해서 이 둘의 Cartesian product를 확률변수로 놓을 수는 없습니다.
-$X\times Y:S_1\times S_2\to\mathbb R^2$을 $(X\times Y)(w,z)=(X(w_1),Y(w_2))$로 정의한다고 하면 이것은 공역이 $\mathbb R^2$이므로 확률변수라고 할 수 없기 때문입니다.
-하지만, 순서쌍 $(X(w_1),Y(w_2))$에 대한 distribution은 생각해볼 수 있습니다.
+$X\times Y:S_1\times S_2\to\mathbb R^2$을 $(X\times Y)(w_1,w_2)=(X(w_1),Y(w_2))$로 정의한다고 하면 이것은 공역이 $\mathbb R^2$이므로 확률변수라고 할 수 없기 때문입니다.
+하지만, 순서쌍 $(X(w_1),Y(w_2))$에 대한 분포는 생각해볼 수 있습니다.
 
-다시 말해, 단일확률변수 $X$에 대한 distribution이라고 하면 그 확률변수 $X$에 대한 PMF나 PDF, CDF를 뜻하는 것으로 확률변수 자체보다는 확률변수의 값 $X(w)$에 의존해 결정될 수 있는 것들이었습니다.
-두 확률변수 $X$, $Y$에 대한 distribution 역시 확률변수들의 값 $(X(w_1),Y(w_2))$에 의존해 결정될 수 있습니다.
+<!-- 다시 말해, 단일확률변수 $X$에 대한 distribution이라고 하면 그 확률변수 $X$에 대한 PMF나 PDF, CDF를 뜻하는 것으로 확률변수 자체보다는 확률변수의 값 $X(w)$에 의존해 결정될 수 있는 것들이었습니다.
+두 확률변수 $X$, $Y$에 대한 distribution 역시 확률변수들의 값 $(X(w_1),Y(w_2))$에 의존해 결정될 수 있습니다. -->
 
 위에 언급한 값들을
 
@@ -2582,8 +2626,8 @@ P(X\le x,Y\le y)
 $$
 
 로 정의하면 이것들은 잘 정의됩니다.
-그러니까, $X^{-1}(\{x\})\times Y^{-1}(\{y\})\subset S_1\times S_2$이고, $X^{-1}(-\infty,x]\times Y^{-1}(-\infty,y]\subset S_1\times S_2$ 입니다.
-사실은 각각의 집합들이 $S_1\times S_2$의 sigma-algebra의 원소인지 하는 것도 봐야 더 정확하겠지만, 아래과 같은 언급 [(출처)](math.stackexchange.com/q/22042)에 따르면 $S_1\times S_2$에 대한 sigma-algebra를 $\Sigma_1\times\Sigma_2$로 generate해서 만들어내면 문제가 되지 않는 것 같습니다;
+그러니까, $X^{-1}(\\{x\\})\times Y^{-1}(\\{y\\})\subset S_1\times S_2$이고, $X^{-1}(-\infty,x]\times Y^{-1}(-\infty,y]\subset S_1\times S_2$ 입니다.
+사실은 각각의 집합들이 $S_1\times S_2$의 $\sigma$-algebra의 원소인지 하는 것도 봐야 더 정확하겠지만, 아래과 같은 [언급](math.stackexchange.com/q/22042)에 따르면 $S_1\times S_2$에 대한 $\sigma$-algebra를 $\Sigma_1\times\Sigma_2$로 generate해서 만들어내면 문제가 되지 않는 것 같습니다;
 
 > The sigma-algebra on $E$ is generated by all products of the form $A_1\times\cdots\times A_n$, where $A_i$ is measurable in $E_i$ for each $i$.
 
@@ -2595,7 +2639,7 @@ $$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-1.png){: .img-50-center}
 
-예를 들어. 동전과 주사위를 각각 하나씩 던져서 나오는 결과를 본다고 하면, 두 확률변수 $X:\\{H,T\\}\to\mathbb R$
+예를 들어. 동전과 주사위를 각각 하나씩 던져서 나오는 결과를 본다고 하면,
 
 $$
 \begin{align*}
@@ -2604,7 +2648,7 @@ X(T)&=0
 \end{align*}
 $$
 
-와 $Y:\\{1,2,3,4,5,6\\}\to\mathbb R$
+로 정의되는 확률변수 $X:\\{H,T\\}\to\mathbb R$와
 
 $$
 \begin{align*}
@@ -2617,7 +2661,8 @@ Y(6)&=6
 \end{align*}
 $$
 
-에 대한 joint distribution을
+로 정의되는 확률변수 $Y:\\{1,2,3,4,5,6\\}\to\mathbb R$를 생각하게 됩니다.
+이때, $X$, $Y$의 joint PMF는
 
 $$
 P(X=x,Y=y)=P\left(\{(w_1,w_2)\in S_1\times S_2:X(w_1)=x,Y(w_2)=y\}\right)
@@ -2640,11 +2685,13 @@ $$
 
 방금 계산한 것은 joint distribution에서의 PMF에 해당하는 것입니다.
 그런데 $X$와 $Y$ 중 하나라도 연속확률변수이면 PMF를 정의하는 건 어려운 문제가 됩니다.
-반면, CDF는 연속확률변수나 이산확률변수 모두에 대해 잘 정의되므로 joint CDF를 먼저 정의합니다.
+반면, CDF는 연속확률변수나 이산확률변수 모두에 대해 잘 정의됩니다.
+그러니, joint PMF와 joint PDF를 정의하기 전에 joint CDF의 정의를 먼저 보겠습니다.
+joint CDF는
 
 $$F_{XY}(x,y)=P(X\le x, Y\le y)$$
 
-이 joint CDF는 다음 성질들을 만족시킵니다.
+와 같이 정의됩니다. 그리고 다음 성질들을 만족시킵니다.
 
 $$
 \begin{align*}
@@ -2662,7 +2709,7 @@ $$
 &P(x_1\lt X\le x_2,Y\le y)=F_{XY}(x_2,y)-F_{XY}(x_1,y)\\
 (6)~
 &P(x_1\lt X\le x_2,y_1\lt Y\le y_2)
-=F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)-F_{XY}(x_1,y_1)\\
+=F_{XY}(x_2,y_2)-F_{XY}(x_1,y_2)-F_{XY}(x_2,y_1)+F_{XY}(x_1,y_1)\\
 \end{align*}
 $$
 
@@ -2677,12 +2724,19 @@ $$
 
 **ex. 5.1**
 
-$P(X\gt a,Y\gt b)=1-F_X(a)-F_Y(b)+F_{XY}(a,b)$
+$$
+\begin{align*}
+P(X\gt x,Y\gt y)
+&=1-P(X\le x\text{ or }Y\le y)\\
+&=1-\left(P(X\le x)+P(Y\le y)-P(X\le x, Y\le y)\right)\\
+&=1-P(X\le x)-P(Y\le y)+P(X\le x, Y\le y)\\
+&=1-F_X(x)-F_Y(y)+F_{XY}(x,y)\\
+\end{align*}
+$$
 
-위 계산에서 한 변수에 대해서의 CDF가 등장했습니다.
-이때, 두 변수 중 한 변수에 대해서의 분포를 marginal distribution이라고 합니다.
-그러니까, $X$와 $Y$의 joint distribution에서 $X$ 혹은 $Y$의 분포를 marginal distribution이라고 합니다.
-$X$와 $Y$의 marginal CDF는
+위 계산에서 한 변수에 대해서의 CDF인 $F_X(x)$가 등장했습니다.
+이와 같이, 두 변수에 대한 확률분포에서 특별히 한 변수에 대한 분포를 생각할때, 그 분포를 marginal distribution이라고 합니다.
+이때, marginal CDF와 joint CDF 사이에는 다음과 같은 관계가 성립합니다.
 
 $$
 \begin{align*}
@@ -2724,27 +2778,24 @@ $$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-8.png){: .img-50-center}
 
+위의 성질들은 모두 당연해 보이므로 따로 증명하지 않겠습니다.
+다만, (5)는 아직 이해할 수도 없고 증명할 수도 없습니다.
+아직까지는 두 사건의 독립이라는 개념만 소개했지, 두 확률변수의 독립에 대해서는 정의한 바가 없기 때문입니다.
+두 확률변수의 독립에 관해서는 12강에서 잠깐 소개하게 되는데(43분 경), 사실 이산확률변수와 연속확률변수에 대한 (5)번 항목은 두 확률변수가 독립인 것의 정의로 둘 수 있습니다.
+
 **5.4 continuous joint distributions**
 
 연속확률변수 $X$의 PDF는 CDF의 도함수로서 정의했었습니다.
-마찬가지로, 두 연속확률변수 $X$, $Y$에 대하여 $X$와 $Y$의 joint distribution에 대한 PDF에 대해 이야기하려면 CDF를 통해 정의하는 것이 안전합니다.
+$X$의 conditional PDF도 conditional CDF의 도함수로서 정의했습니다.
+마찬가지로, 두 연속확률변수 $X$, $Y$에 대하여 $X$와 $Y$의 joint PDF를 정의하기 위해서는 일단 joint CDF를 먼저 정의해야 합니다.
+joint CDF는
 
 $F_{XY}(x,y)=P(X\le x,Y\le y)$
 
-연속확률변수 $X$에 대하여 $P(X=x)$의 값을 정하는 것의 의미가 없었기 때문에, 
-
-$$
-\begin{align*}
-f_X(x)
-&=\lim_{\Delta x\to0+}\frac{P\left(x<X\le x+\Delta x\right)}{\Delta x}\\
-&=\lim_{\Delta x\to0+}\frac{F_X(x+\Delta x)-F_X(x)}{\Delta x}\\
-&=F_X'(x)
-\end{align*}
-$$
-
-와 같이 정의했었습니다.
+와 같이 정의됩니다.
+연속확률변수 $X$에 대하여 $P(X=x)$의 값을 정하는 것의 의미가 없었습니다.
 변수가 두 개일 때에도 $P(X=x,Y=y)$는 0으로 정할 수밖에 없고, 그건 큰 의미가 있지 않습니다.
-그래서 확률밀도함수 $f_{XY}(x,y)$를
+그래서 joint PDF $f_{XY}(x,y)$를
 
 $$
 \begin{align*}
@@ -2789,4 +2840,673 @@ $$
 \end{align*}
 $$
 
+이번에도 (1)-(4)는 당연합니다.
+그리고 (5)는 나중에 증명해보겠습니다.
+
+# 11 연합확률밀도함수와 조건부확률밀도함수
+
+**ex. 5.6**
+
+두 확률변수에 대하여 joint PDF가
+
+$$
+f_{XY}(x,y)=2e^{-x-y}\qquad(0\le x\le y,\quad 0\le y)
+$$
+
+로 주어지는 경우에 대하여 앞서 강의에서의 성질들이 성립하는지 살펴보겠습니다.
+이 함수의 정의역을 $R$로 두면
+
+$$R=\{(x,y)\in\mathbb R^2:0\le x\le y, 0\le y\}$$
+
+이고 이것은
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-1.png){: .img-75-center}
+
+와 같은 영역을 의미합니다.
+먼저  (2)번 성질($\iint_R f_{XY}(x,y)\,dx\,dy=1$)을 보겠습니다.
+이중적분의 순서에 따라 다음의 두 가지 방법으로 계산될 수 있습니다.
+
+$$
+\begin{align*}
+\iint_R f_{XY}(x,y)\,dx\,dy
+&\stackrel{(a)}=\int_0^\infty\int_0^yf_{XY}(x,y)\,dx\,dy\\
+&=\int_0^\infty\int_0^y2e^{-x-y}\,dx\,dy\\
+&=\int_0^\infty\left[-2e^{-x-y}\right]_{x=0}^{x=y}\,dy\\
+&=\int_0^\infty2e^{-y}-2e^{-2y}\,dy\\
+&=\left[e^{-2y}-2e^{-y}\right]_0^\infty\\
+&=0-(1-2)\\
+&=1\\
+\iint_R f_{XY}(x,y)\,dx\,dy
+&\stackrel{(b)}=\int_0^\infty\int_x^\infty f_{XY}(x,y)\,dx\,dy\\
+&=\int_0^\infty\int_x^\infty2e^{-x-y}\,dy\,dx\\
+&=\int_0^\infty\left[-2e^{-x-y}\right]_{y=x}^{y=\infty}\,dx\\
+&=\int_0^\infty2e^{-2x}\,dx\\
+&=\left[-e^{-2x}\right]_0^\infty\\
+&=1
+\end{align*}
+$$
+
+이때,
+
+$$
+\begin{align*}
+f_X(x)
+&=\int_x^\infty f_{XY}(x,y)\,dy\\
+f_Y(x)
+&=\int_0^y f_{XY}(x,y)\,dx\\
+\end{align*}
+$$
+
+이므로, marginal PDF인 $f_X(x)$와 $f_Y(y)$는 (b)와 (a)의 계산 과정에서 구해진 셈입니다(4).
+다시 말해,
+
+$$
+\begin{align*}
+f_X(x)
+&=2e^{-y}-2e^{-2y}\\
+f_Y(x)
+&=2e^{-2x}\\
+\end{align*}
+$$
+
+입니다.
+따라서
+
+$$
+f_{X,Y}(x,y)\ne f_X(x)f_Y(y)
+$$
+
+이고, $X$와 $Y$는 독립이 아닙니다(5).
+
+**ex. 5.7?**
+
+다음으로
+
+$$
+f_{XY}(x,y)=\frac1{\pi r^2}\qquad(x^2+y^2\le1)
+$$
+
+와 같이 joint PDF가 주어지는 경우입니다.
+다시 말해, 단위원 내부에서 분포가 uniform distribution으로 주어지는 경우입니다.
+이 함수의 정의역은
+
+$$D=\{(x,y)\in\mathbb R^2:x^2+y^2\le1\}$$
+
+이고 이것은
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-2.png){: .img-75-center}
+
+와 같은 영역을 의미합니다.
+이번에는 (2)번 성질이 당연합니다;
+
+$$
+\begin{align*}
+\iint_D f_{XY}(x,y)\,dx\,dy
+&=\iint_D\frac1{\pi r^2}\,dx\,dy\\
+&=\frac1{\pi r^2}\iint_D\,dx\,dy\\
+&=\frac1{\pi r^2}\times\pi r^2\\
+&=1
+\end{align*}
+$$
+
+이 계산은, 아까처럼 $dx\,dy$ 혹은 $dy\,dx$로 해도 잘 풀립니다.
+또한 $r\,dr\,d\theta$로 풀어도 잘 계산됩니다.
+marginal PDF를 계산해보면
+
+$$
+\begin{align*}
+f_X(x)
+&=\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}f_{XY}(x,y)\,dy\\
+&=\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}}\frac1{\pi r^2}\,dy\\
+&=\frac{2\sqrt{r^2-x^2}}{\pi r^2}
+\end{align*}
+$$
+
+이고, 마찬가지로
+
+$$
+f_Y(y)=\frac{2\sqrt{r^2-y^2}}{\pi r^2}
+$$
+
+입니다(4).
+따라서
+
+$$
+f_{X,Y}(x,y)\ne f_X(x)f_Y(y)
+$$
+
+이고, 이번에도 $X$와 $Y$는 독립이 아닙니다(5).
+
+**5.6 conditional distribution**
+
+다음 개념인 conditional distribution으로 넘어가기 전에, 지금까지 학습한 개념들을 정리해보겠습니다.
+
+$$
+\begin{matrix}
+\text{CDF(03)}&\text{PMF(03)}&\text{PDF(04)}&\text{exp.}(05)&\text{var.}(05)\\
+\text{con. CDF(06)}&\text{con. PMF(06)}&\text{con. PDF(06)}&\text{con. exp.}(06)\\
+\text{jnt. CDF(10)}&\text{jnt. PMF(10)}&\text{jnt. PDF(10)}\\
+\end{matrix}
+$$
+
+여기에서 괄호 안의 숫자는 강의의 회차를 의미하고, exp.는 expectation, var.은 variance, con.은 conditional, jnt.는 joint를 의미합니다.
+
+그러니까 conditional expectation에 대해서는 다루지 않았습니다.
+joint expectation과 joint variance의 개념은 생각할 수 없습니다.
+joint distribution에 대해서는 어떤 실수값을 가지는 확률변수를 생각할 수 없었기 때문입니다.
+하지만, 여러 개의 확률변수들에 특정한 함수가 주어졌을 때의 expectation은 계산할 수 있습니다.
+또 variance를 정의하는 대신 covariance를 계산하게 됩니다.
+
+여하튼, 지금 단원에서 공부하는 것은 conditional distribution이지만, 06회차 강의에서 다루었던 일반적인 conditional distribution말고, 두 확률변수에 대해 생각할 때의 conditional distribution을 공부합니다.
+
+$$
+\begin{matrix}
+\text{con2. CDF(11)}&\text{con2. PMF(11)}&\text{con2. PDF(11)}&\text{con2. exp.(11)}&\text{con2. var.(11)}
+\end{matrix}
+$$
+
+이전 강의들에서
+
+$$
+\begin{align*}
+P(A|B)
+&=\frac{P(A\cap B)}{P(B)}
+&&\text{(conditional probability with respect to events(01))}\\
+P(X\le x|X\le a)
+&=\frac{P\left((X\le x)\cap(X\le a)\right)}{P(X\le a)}
+&&\text{(conditional probability with respect to a RV(06))}
+\end{align*}
+$$
+
+와 같은 것들을 공부했습니다.
+
+두 이산확률변수 $X$와 $Y$에 대하여 조건부 확률질량함수(conditional PMF)에 해당하는 함수 $P_{Y|X}$를
+
+$$
+\begin{align*}
+P_{Y|X}(x,y)
+&=P(Y=y|X=x)\\
+&=\frac{P_{XY}(x,y)}{P_X(x)}
+\end{align*}
+$$
+
+와 같이 정의합니다.
+
+(설명을 자세히 적지 않고 캡쳐로 대체했지만) 이전 강의(10)에서 나왔던 예를 다시 살펴보겠습니다.
+동전을 세 개 던질 때, $X$를
+
+첫번째 동전이 앞면이면 1, 뒷면이면 0
+{: .text-center}
+
+으로 정하고 $Y$를
+
+세 동전 중 앞면의 개수
+{: .text-center}
+
+로 정할 때 $X$, $Y$의 joint distribution이
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-3.png){: .img-75-center}
+
+와 같이 나옴을 확인했었습니다.
+
+이때,
+
+$$
+P_{Y|X}(1|0)=\frac{P_{XY}(0,1)}{P_X(0)}=\frac{\frac28}{\frac18+\frac28+\frac18}=\frac12
+$$
+
+입니다.
+
+이번에는 $X$, $Y$가 연속확률변수인 경우를 살펴봅니다.
+이전과 마찬가지로 CDF에서부터 출발합니다.
+이때, conditional CDF는
+
+$$
+F_{Y|X}(y|x)=P(Y\le y|X=x)
+$$
+
+의 의미입니다.
+($X$가 $x$로 주어져 있을 때, $Y$의 CDF입니다.)
+그런데
+
+$$
+F_{Y|X}(y|x)=\frac{P(X=x,Y\le y)}{P(X=x)}
+$$
+
+와 같이 정의할 수는 없습니다.
+왜냐하면 분모가 0이 될 가능성이 있기 때문입니다.
+그러니까, 지금까지 CDF, (일반적인) conditional CDF, joint CDF가 별 문제 없이 정의되었던 것과는 조금 다릅니다.
+위와 같은 정의 대신에, $y$를 포함하는 infinitesimal한 구간 $x\lt X\le x+\Delta x$를 고려하여
+
+$$
+F_{Y|X}(y|x)\approx\frac{P(x\lt X\le x+\Delta x,Y\le y)}{P(x\lt X\le x+\Delta x)}
+$$
+
+와 같이 생각할 수 있습니다.
+그리고 우변에 $\Delta x\to0+$인 극한을 취해주어, 그 극한값을 $F_{Y|X}(y|x)$로 정해주는 것이 합리적입니다.
+그러면
+
+$$
+\begin{align*}
+F_{Y|X}(x,y)
+&=\lim_{\Delta x\to0+}\frac{P(x\lt X\le x+\Delta x,Y\le y)}{P(x\lt X\le x+\Delta x)}\\
+&=\lim_{\Delta x\to0+}\frac{P(x+\Delta x,Y\le y)-P(x,Y\le y)}{P(X\le x+\Delta x)-P(X\le x)}\\
+&=\lim_{\Delta x\to0+}\frac{F_{XY}(x+\Delta x,y)-F_{XY}(x,y)}{F_X(x+\Delta x)-F_X(x)}\\
+&=\frac{\lim_{\Delta x\to0+}\frac{F_{XY}(x+\Delta x,y)-F_{XY}(x,y)}{\Delta x}}{\lim_{\Delta x\to0+}\frac{F_X(x+\Delta x)-F_X(x)}{\Delta x}}\\
+&=\frac{\frac\partial{\partial x}F_{XY}(x,y)}{\frac\partial{\partial x}F_{X}(x)}\\
+\end{align*}
+$$
+
+입니다.
+이제, conditional PDF를 정의할 수 있습니다.
+이것은 conditional PDF를 $y$에 대해 편미분함으로써 얻어집니다;
+
+$$
+\begin{align*}
+f_{Y|X}(x,y)
+&=\frac\partial{\partial y}F_{Y|X}(x,y)\\
+&=\frac\partial{\partial y}\left(\frac{\frac\partial{\partial x}F_{XY}(x,y)}{\frac\partial{\partial x}F_{X}(x)}\right)\\
+&=\frac1{\frac\partial{\partial x}F_{X}(x)}\frac\partial{\partial y}\left(\frac\partial{\partial x}F_{XY}(x,y)\right)\\
+&=\frac{\frac{\partial^2}{\partial y\partial x}F_{XY}(x,y)}{\frac\partial{\partial x}F_{X}(x)}\\
+&=\frac{f_{XY}(x,y)}{f_X(x)}
+\end{align*}
+$$
+
+마찬가지로 $X$와 $Y$의 위치를 바꾸면
+
+$$f_{X|Y}(x,y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$
+
+입니다.
+
+**conditional expectations and variances**
+
+06회차 강의에서 (일반적인) conditional expectation은 (continuous case)
+
+$$
+E[X|\le a]=\int_{x\le a}xf_X(x|x\le a)\,dx
+$$
+
+와 같이 정의했었습니다.
+예를 들어, 아래 그림과 같은 bimodal(쌍봉) 분포에서 $X\le a$라는 조건이 주어지면, 그렇지 않았을 때보다 평균이 왼쪽으로 이동하게 될 것입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-4.png){: .img-75-center}
+
+이번에 다루는 것은 (그러니까, 일반적인 conditional expectation이 아니라는 말은) $E[Y|A]$에서 $A$가 $X$에 대한 조건인 경우입니다 ; $E[Y|A_X]$
+
+자세한 것은 다음 강의에서 이어갈 것 같습니다.
+
+
+**독립과 종속**
+
+강의에서 두 확률변수 $X$와 $Y$의 독립/종속에 대해서는 정의하지 않았던 것으로 보입니다.
+연속확률변수 $X$, $Y$에 대해서는
+
+$$f_{XY}(x,y)=f_X(x)=f_Y(y)$$
+
+인 것이 독립조건에 해당한다는 언급이 잠깐 있었던 것 같습니다.
+이것이 성질 또는 정리일지, 정의인지 몰랐는데, 그냥 이걸 정의로 채택하겠습니다.
+
+그럼 이산확률변수 $X$, $Y$에 대해서는
+
+$$P_{XY}(x,y)=P_X(x)=P_Y(y)$$
+
+인 것을 독립조건으로 두어야 할 것입니다.
+
+참고로 [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)에서는 Definition 3.7.5에 정의되어 있고, 내용은 다음과 같습니다.
+두 확률변수 $X$, $Y$에 대하여, $A$, $B$가 각각 실수집합의 부분집합일때(정확하게는 real measurable set이라고 해야 할 것 같습니다.)
+
+$$P(X\in A,Y\in B)=P(X\in A)P(Y\in B)$$
+
+이면 $X$와 $Y$가 독립이라고 말합니다.
+이것은 정확한 의미로 쓰면
+
+$$P\left(X^{-1}(A)\times Y^{-1}(B)\right)=P\left(X^{-1}(A)\times S_2\right)P\left(S_1\times Y^{-1}(B)\right)$$
+
+로 받아들이면 될 것 같습니다.
+만약 $A=\\{x\\}$, $B=\\{y\\}$이면, 이것은 이산확률변수에 대해서의 독립조건과 일치합니다.
+또, $A=[x_1,x_2]$, $B=[y_1,y_2]$로 두면 이것이 연속확률변수에서의 독립조건과 동치라는 것을 증명할 수 있을 것 같습니다.
+
+# 12 조건부 평균과 공분산
+
+이번 강의에서 다루는 것은, 드디어 $E[Y|X]$ 입니다.
+이전에 이것의 정확한 의미를 파악하지 못해 고생했었습니다.
+
+강의의 가장 초반부에 $E[Y|X]$의 의미는 사실은 $E[Y|X=x]$의 의미라는 언급이 있습니다.
+사실 $E[Y|X]$는 그 자체로는 아직 정의된 적이 없는 어떤 개념입니다.
+conditional expectation에서 condition에 어떤 '확률변수'가 들어가있습니다.
+지금까지 condition에 들어갈 수 있었던 것은 $S$의 부분집합(사건), 확률변수가 포함된 조건(e.g. $X=x$, $X\le x$)이었지 확률변수 그 자체는 아니었던 것입니다.
+하지만, $E[Y|X=x]$라고 하면 의미가 생깁니다.
+이것은 $X=x$인 조건 하에서의 $Y$의 기댓값을 의미합니다.
+
+더 나아가 이해해야 할 것은 [$E[Y|X]$가 확률변수](https://math.stackexchange.com/q/1946058)라는 사실입니다.
+$E[Y|X=x]$는 $Y$의 기댓값이기 때문에 $Y$라든지 $y$라든지 하는 값에 의존하지 않습니다.
+이것은 오로지 $x$에 의존하는 값입니다.
+다시 말해, $x$에 대한 함수입니다;
+
+$$E[Y|X=x]=g(x)$$
+
+그러면 $E[Y|X]$를
+
+$$E[Y|X]=g(X)$$
+
+로 정의하면 이 값은 하나의 확률변수로 생각할 수 있는 것입니다.
+예를 들어, $X$가 확률변수이면 $X$에 대한 함수 $X^2+X$도 확률변수인 것처럼, $X$가 확률변수이기 떄문에 $g(X)$도 확률변수인 것입니다.
+더 깊이 말하면, $X$와 $Y$가 각각 $X:S_1\to\mathbb R$이고 $Y:S_2\to\mathbb R$인 확률변수들이라고 할 때, 새로운 확률변수
+
+$$E[Y|X]:S_1\to\mathbb R$$
+
+을
+
+$$E[Y|X](w)=E[Y|X=X(w)]$$
+
+로 정의하면 이것은 잘 정의된 확률변수이고, 위에서 말한 의미와도 부합합니다.
+
+사실, 강의에서는 $E[Y|X]$의 의미에 대해서는 설명하지 않는 것으로 보이고, 조금은 notation abusing을 하는 것으로 보입니다.
+
+이제 강의를 따라서 $E[Y|X=x]$의 정의를 적어보겠습니다.
+아래 식에서 첫번째 등호가 정의이고, 이후의 식들은 이전에 언급한 사실들을 적용한 것입니다.
+
+$$
+\begin{align*}
+E[Y|X]
+&=\int_\mathbb Ryf_{Y|X}(x,y)\,dy\\
+&=\int_\mathbb Ry\frac{f_{XY}(x,y)}{f_X(x)}\,dy\\
+&=g(y)
+\end{align*}
+$$
+
+둘째 줄의 적분을 계산할 때 $x$가 사라지므로, 적분값을 $y$에 대한 함수로서 놓을 수 있습니다. 따라서 (아까 언급한 것처럼) 마지막 등호가 성립합니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_12-1.png){: .img-100-center}
+
+위의 그림은, 강의의 예시를 구체화해서 적어본 것입니다.
+좌표평면 위에 $(0,0)$, $(2,0)$, $(1,1)$을 꼭짓점으로 하는 삼각형의 내부에 점 $P$가 위치한다고 할 때, $P$의 $x$좌표와 $y$좌표를 각각 $X$, $Y$라고 하겠습니다.
+$P$가 삼각형 내부에 균일한 정도의 가능성으로 존재할 때 (uniform distribution) $X$, $Y$의 joint PDF는
+
+$$f_{XY}(x,y)=1\qquad(0\le y\le x, y\le 2-x)$$
+
+입니다.
+이때, $E[X|Y=y]$와 $E[Y|X=x]$를 계산해보려 합니다.
+계산을 하기 전에 직관적으로 살펴보면, $y$의 값이 어떤 값이건 상관없이 $(0\lt y\lt 1)$ $X$가 위치하는 구간은 $1$을 중심으로 하는 구간입니다.
+또한, $X$가 여전히 uniform distribution을 따를 것이므로, [$X$의 평균은 1일 수밖에 없습니다.](https://math.stackexchange.com/q/4669361)
+따라서 $E[X|Y=y]=1$입니다.
+반대로 $x$ 값이 고정되어 있다고 생각하겠습니다.
+이번에는 $x$가 $0\le x\le1$인 경우와 $1\le x\le2$인 경우의 상황이 다릅니다.
+$0\le x\le1$이면, $Y$는 $0$부터 $x$ 사이를 움직이고, 따라서 그 평균은 $\frac12x$가 될 것이니다.
+$1\le x\le2$이면, $Y$는 $0$부터 $2-x$ 사이를 움직이고, 따라서 그 평균은 $\frac12(2-x)$가 될 것입니다.
+
+계산해보면
+
+$$
+\begin{align*}
+E[X|Y=y]
+&=\int_y^{2-y}xf_{X|Y}(x,y)\,dx\\
+&=\int_y^{2-y}x\frac{f_{XY}(x,y)}{f_Y(y)}\,dx\\
+&=\int_y^{2-y}x\frac{f_{XY}(x,y)}{\int_y^{2-y}f_{XY}(x,y)\,dx}\,dx\\
+&=\int_y^{2-y}x\frac1{\int_y^{2-y}\,dx}\,dx\\
+&=\int_y^{2-y}x\frac1{2-2y}\,dx\\
+&=\frac1{2-2y}\int_y^{2-y}x\,dx\\
+&=\frac1{2-2y}\times\frac12\left((2-y)^2-y^2\right)\\
+&=1
+\end{align*}
+$$
+
+이고
+
+$0\le x\le 1$일 때의 $E[Y|X=x]$는
+
+$$
+\begin{align*}
+E[Y|X=x]
+&=\int_0^xyf_{Y|X}(x,y)\,dy\\
+&=\int_0^xy\frac{f_{XY}(x,y)}{f_X(x)}\,dy\\
+&=\int_0^xy\frac{f_{XY}(x,y)}{\int_0^xf_{XY}(x,y)\,dy}\,dy\\
+&=\int_0^xy\frac1{\int_0^x\,dy}\,dy\\
+&=\int_0^xy\frac1x\,dy\\
+&=\frac1x\int_0^xy\,dy\\
+&=\frac12x
+\end{align*}
+$$
+
+이고, $1\le x\le 2$일 때의 $E[Y|X=x]$는
+
+$$
+\begin{align*}
+E[Y|X=x]
+&=\int_0^{2-x}yf_{Y|X}(x,y)\,dy\\
+&=\int_0^{2-x}y\frac{f_{XY}(x,y)}{f_X(x)}\,dy\\
+&=\int_0^{2-x}y\frac{f_{XY}(x,y)}{\int_0^{2-x}f_{XY}(x,y)\,dy}\,dy\\
+&=\int_0^{2-x}y\frac1{\int_0^{2-x}\,dy}\,dy\\
+&=\int_0^{2-x}y\frac1{2-x}\,dy\\
+&=\frac1{2-x}\int_0^{2-x}y\,dy\\
+&=\frac12(2-x)
+\end{align*}
+$$
+
+입니다.
+
+**ex.5.10**
+
+두 연속확률변수 $X$, $Y$에 대한 PDF가 다음과 같이 주어졌다고 가정하겠습니다.
+
+$$f_{XY}(x,y)=\frac1ye^{-\frac xy}e^{-y}\qquad(0\le y\le x, y\le 2-x)$$
+
+정말로 PDF가 맞는지 (예의상) 계산해보면
+
+$$
+\begin{align*}
+\int_0^\infty\int_0^\infty f_{XY}(x,y)\,dx\,dy
+&=\int_0^\infty\frac{e^{-y}}y\int_0^\infty e^{-\frac xy}\,dx\,dy\\
+&=\int_0^\infty\frac{e^{-y}}y\left[-ye^{-\frac xy}\right]_{x=0}^{x=\infty}\,dy\\
+&=\int_0^\infty e^{-y}\,dy\\
+&=1
+\end{align*}
+$$
+
+입니다.
+conditional expectation $E[X|Y=y]$을 계산하기 전에, 그 과정에 쓰이는 $f_Y(y)$를 먼저 계산해보면
+
+$$
+\begin{align*}
+f_Y(y)
+&=\int_0^\infty f_{XY}(x,y)\,dx\\
+&=\int_0^\infty\frac1ye^{-\frac xy}e^{-y}\,dx\\
+&=\frac{e^{-y}}y\left[-ye^{-\frac xy}\right]_{x=0}^{x=\infty}\\
+&=e^{-y}
+\end{align*}
+$$
+
+입니다.
+이제 계산을 해보면
+
+$$
+\begin{align*}
+E[X|Y=y]
+&=\int_0^\infty xf_{XY}(x,y)\,dx\\
+&=\int_0^\infty x\frac{f_{X|Y}(x,y)}{f_Y(y)}\,dx\\
+&=\int_0^\infty x\times\frac{\frac1ye^{-\frac xy}e^{-y}}{e^{-y}}\,dx\\
+&=\int_0^\infty\left(\frac xy\right)e^{-\frac xy}\,dx\\
+&=y\int_0^\infty\left(\frac xy\right)e^{-\frac xy}\,d\left(\frac xy\right)\\
+&=y\left[te^{-t}-e^{-t}\right]_{t=0}^{t=\infty}\\
+&=y
+\end{align*}
+$$
+
+입니다.
+중간 계산과정에서 $\int te^{-t}\,dt=-te^{-t}-e^{-t}$를 활용했습니다.
+
+이번에는, 확률변수 $X$에 대하여 $g(X)$의 확률을 구하는 식을 소개합니다.
+이번 강의의 맨 처음에 언급한 것이지만, $X$가 어떤 분포를 가지는 확률변수이면, $g(X)$ 또한 새로운 분포를 따르는 확률변수이며, 그 떄의 PMF 혹은 PDF는 일치합니다.
+따라서 $g(x)$의 평균을
+
+$$
+\begin{align*}
+E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
+&&\text{(continuous)}\\
+E\left[g(X)\right]&=\sum_{i=1}^ng(x_i)P_X(x_i)
+&&\text{(discrete)}\\
+\end{align*}
+$$
+
+와 같이 정의할 수 있습니다.
+마찬가지로, 다변수 함수 $g(X,Y)$에 대해서도
+
+$$\tag{$\ast$}
+\begin{aligned}
+E\left[g(X,Y)\right]&=\int_{\mathbb R^2} g(x,y)f_{XY}(x,y)\,dx
+&&\text{(continuous)}\\
+E\left[g(X,Y)\right]&=\sum_{i=1}^m\sum_{j=1}^ng(x_i,y_j)P_X(x_i,y_j)
+&&\text{(discrete)}\\
+\end{aligned}
+$$
+
+입니다.
+또한,
+두 확률변수 $X$, $Y$에 대하여, 두 함수 $g_1(X,Y)$, $g_2(X,Y)$가 존재할 때, 두 실수 $\alpha$, $\beta$에 대하여
+
+$$E\left[\alpha g_1(X,Y)+\beta g_2(X,Y)\right]
+=\alpha E\left[g_1(X,Y)\right]+\beta E\left[g_2(X,Y)\right]\tag{$\ast\ast$}$$
+
+입니다.
+즉, $E$는 다변수 함수에 대해서도 linear operator입니다.
+왜냐하면
+
+$$
+\begin{align*}
+E\left[g_1(X,Y)+g_2(X,Y)\right]
+&=\iint_{\mathbb R^2}\left(g_1(X,Y)+g_2(X,Y)\right)f_{XY}(x,y)\,dx\,dy\\
+&=\iint_{\mathbb R^2}\left(g_1(X,Y)\right)f_{XY}(x,y)\,dx\,dy
++\iint_{\mathbb R^2}\left(g_2(X,Y)\right)f_{XY}(x,y)\,dx\,dy\\
+&=E\left[g_1(X,Y)\right]+E\left[g_2(X,Y)\right]
+\end{align*}
+$$
+
+이고,
+
+$$
+\begin{align*}
+E\left[\alpha g(X,Y)\right]
+&=\iint_{\mathbb R^2}\alpha g(X,Y)f_{XY}(x,y)\,dx\,dy\\
+&=\alpha\iint_{\mathbb R^2}g(X,Y)f_{XY}(x,y)\,dx\,dy\\
+&=\alpha E\left[g(X,Y)\right]
+\end{align*}
+$$
+
+이기 때문입니다.
+
+이와 같은 사실들은 구구절절 다 소개되지는 않았지만, 암시적으로 언급되고 있는 것 같습니다.
+
+**ex.5.11** $E\left[E[X|Y]\right]=E[X]$
+
+이번 성질을 이해하려면, 초반에 언급한
+
+$E[X|Y]$는 확률변수이다.
+{: .text-center}
+
+라는 것을 확실히 알아야 합니다.
+좌변에서 $E[X|Y]$에 대해 기댓값 연산을 취하고 있는데, 그럴 수 있는 것이 $E[X|Y]$가 그 자체로 확률변수이기 때문입니다.
+앞서 언급한대로 $E[X|Y=y]$는 $y$의 함수입니다 ;
+
+$$E[X|Y=y]=g(y)$$
+
+그런 관점에서 보면 $E\left[E[X|Y]\right]$는 $g(Y)$에 대한 평균을 계산하고 있는 것입니다.
+계산해보면
+
+$$
+\begin{align*}
+E\left[E[X|Y]\right]
+&=E\left[g(Y)\right]\\
+&=\int_{\mathbb R}g(Y)f_Y(y)\,dy\\
+&=\int_{\mathbb R}\left(\int_{\mathbb R}xf_{X|Y}(x,y)\,dx\right)f_Y(y)\,dy\\
+&=\iint_{\mathbb R^2}xf_{X|Y}(x,y)f_Y(y)\,dx\,dy\\
+&=\iint_{\mathbb R^2}xf_{XY}(x,y)\,dx\,dy\\
+&=\int_{\mathbb R}x\int_{\mathbb R}f_{XY}(x,y)\,dy\,dx\\
+&=\int_{\mathbb R}xf_X(x)\,dx\\
+&=E[X]
+\end{align*}
+$$
+
+입니다.
+
+이것에 대한 discrete 버전의 증명은
+
+$$
+\begin{align*}
+E\left[E[X|Y]\right]
+&=E\left[g(Y)\right]\\
+&=\sum_{j=1}^ng(y_j)P_Y(y_i)\\
+&=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_i)\\
+&=\sum_{j=1}^n\left(\sum_{i=1}^mx_iP_{X|Y}(x,y)\right)P_Y(y_i)\\
+&=\sum_{j=1}^n\sum_{i=1}^mx_iP_{X|Y}(x,y)P_Y(y_i)\\
+&=\sum_{j=1}^n\sum_{i=1}^mx_iP_{XY}(x,y)\\
+&=\sum_{i=1}^mx_i\sum_{j=1}^nP_{XY}(x,y)\\
+&=\sum_{i=1}^mx_iP_X(x)\\
+&=E[X]
+\end{align*}
+$$
+
+입니다.
+여기에서 세번째 줄과 마지막 줄의 값을 같다고 두면
+
+$$E[X]=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_i)$$
+
+이것은 the law of total probability인
+
+$$P[A]=\sum_{j=1}^nP(A|A_i)P(A_i)$$
+
+와 구조가 거의 똑같다는 점이 설명되고 있습니다.
+
+**5.7 covariance and correlation coefficient**
+
+$X$와 $Y$가 확률변수이고, $E[X]=\mu_X$, $E[Y]=\mu_Y$이면, $X$와 $Y$ 사이의 공분산(covariance)을
+
+$$\text{cov}(X,Y)=\sigma_{XY}=E\left[(X-\mu_X)(Y-\mu_Y)\right]$$
+
+로 정의합니다.
+물론, $(\ast)$에 의해
+
+$$
+\text{cov}(X,Y)=\iint_{\mathbb R^2}(x-\mu_X)(y-\mu_Y)f_{XY}(x,y)\,dx\,dy
+$$
+
+$(\ast\ast)$를 사용해 이것을 정리하면
+
+$$\tag{$\ast\ast\ast$}
+\begin{aligned}
+\text{cov}(X,Y)
+&=E\left[XY-\mu_YX-\mu_XY+\mu_X\mu_Y)\right]\\
+&\stackrel{\ast\ast}{=}E[XY]-\mu_YE[X]-\mu_XE[Y]+\mu_X\mu_Y\\
+&=E[XY]-E[X]E[Y]
+\end{aligned}
+$$
+
+입니다.
+
+만약 $\text{cov}(X,Y)\ne0$이면, $X$와 $Y$는 상관성이 있다(correlated)고 말하고, $\text{cov}(X,Y)=0$이면, $X$와 $Y$는 상관성이 없다(uncorrelated)고 말합니다.
+이때, 독립성은 uncorrelatedness를 보장합니다 ;
+
+$X$, $Y$가 서로 독립이면, $X$와 $Y$는 상관성이 없습니다.
+{. :text-center}
+
+왜냐하면, $X$와 $Y$가 독립이라고 가정할 때,
+
+$$
+\begin{align*}
+E[XY]
+&=\iint_{\mathbb R^2}xyP_{XY}(x,y)\,dx\,dy\\
+&=\iint_{\mathbb R^2}xyP_X(x)P_Y(y)\,dx\,dy\\
+&=\int_{\mathbb R}xP_X(x)\,dx\times\int_{\mathbb R}yP_Y(y)\,dy\\
+&=E[X]E[Y]
+\end{align*}
+$$
+
+가 되어 식 $(\ast\ast\ast)$의 우변이 0이 되기 때문입니다.
+
+하지만, uncorrelatedness가 독립성을 보장하지는 않습니다.
+그 [반례](https://stats.stackexchange.com/q/85384)로, $X$가 $[-1,1]$의 uniform distribution이고 $Y=X^2$이면, $X$와 $Y$는 uncorrelated하지만 독립조건이 깨집니다.
+$X$의 분포는
+
+$$f_X(x)=\frac12\qquad(-1\le x\le1)$$
+
+로 주어집니다.
 
