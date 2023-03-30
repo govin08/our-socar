@@ -207,7 +207,7 @@ $$P(A)P(B)=P(A\cap B)$$
 
 와 동치입니다.
 
-- 세 개 이상의 사건에 대한 독립을 말할 떄는 mutually independent라는 용어를 씁니다.
+- 세 개 이상의 사건에 대한 독립을 말할 때는 mutually independent라는 용어를 씁니다.
 - 독립의 개념은 독립시행(복원시행, repeated restored trial)을 다룰 때 중요합니다.
 - 독립(independence)과 배반(exclusiveness)의 개념을 혼동하지 말아야 합니다.
 - $A$와 $B$가 독립이면 $A$와 $\overline B$($B$의 여사건, complement)도 독립입니다.
@@ -2016,7 +2016,7 @@ $$
 
 그러니까, exponential distribution을 따르는 어떤 확률변수 $T$를 '사건 사이의 시간간격'이라고 해석하면, 특정 시간간격을 상정한 다음 그 시간간격 동안 해당 사건이 일어난 횟수를 확률변수 $X$라고 정할 때 $X$는 Poisson distribution을 따릅니다.
 
-반대로, Poisson distribution을 따르는 어떤 확률변수 $X$를 '일정한 시간간격 동안 사건이 일어날 횟수'로 해석한다면, 그 사건이 일어나는 시간 간격을 확률변수 $T$로 정할 떄 $T$는 exponential distribution을 따릅니다.
+반대로, Poisson distribution을 따르는 어떤 확률변수 $X$를 '일정한 시간간격 동안 사건이 일어날 횟수'로 해석한다면, 그 사건이 일어나는 시간 간격을 확률변수 $T$로 정할 때 $T$는 exponential distribution을 따릅니다.
 
 **4.9 Erlang distribution**
 
@@ -2218,7 +2218,7 @@ P_{X_2}(x)
 \end{align*}
 $$
 
-와 같은 꼴이 되어, $P_{X_2}$가 $P_{X^{(1)}}$와 $P_{X^{(1)}}$의 convolution 형태로 나타나기 떄문인 것 같습니다.
+와 같은 꼴이 되어, $P_{X_2}$가 $P_{X^{(1)}}$와 $P_{X^{(1)}}$의 convolution 형태로 나타나기 때문인 것 같습니다.
 (exponential distribution과 Erlang distribution의 원래 정의에서처럼 PDF로 계산하는 경우에는 summation이 아닌 적분과 관련된 식으로 convolution 식이 나옵니다.)
 
 분산에 대해서도 비슷한 해석을 할 수 있다고 하는데, 사실 강의에서의 설명은 잘 이해하지는 못했습니다.
@@ -3190,7 +3190,7 @@ $$E[Y|X=x]=g(x)$$
 $$E[Y|X]=g(X)$$
 
 로 정의하면 이 값은 하나의 확률변수로 생각할 수 있는 것입니다.
-예를 들어, $X$가 확률변수이면 $X$에 대한 함수 $X^2+X$도 확률변수인 것처럼, $X$가 확률변수이기 떄문에 $g(X)$도 확률변수인 것입니다.
+예를 들어, $X$가 확률변수이면 $X$에 대한 함수 $X^2+X$도 확률변수인 것처럼, $X$가 확률변수이기 때문에 $g(X)$도 확률변수인 것입니다.
 더 깊이 말하면, $X$와 $Y$가 각각 $X:S_1\to\mathbb R$이고 $Y:S_2\to\mathbb R$인 확률변수들이라고 할 때, 새로운 확률변수
 
 $$E[Y|X]:S_1\to\mathbb R$$
@@ -3336,7 +3336,7 @@ $$
 중간 계산과정에서 $\int te^{-t}\,dt=-te^{-t}-e^{-t}$를 활용했습니다.
 
 이번에는, 확률변수 $X$에 대하여 $g(X)$의 확률을 구하는 식을 소개합니다.
-이번 강의의 맨 처음에 언급한 것이지만, $X$가 어떤 분포를 가지는 확률변수이면, $g(X)$ 또한 새로운 분포를 따르는 확률변수이며, 그 떄의 PMF 혹은 PDF는 일치합니다.
+이번 강의의 맨 처음에 언급한 것이지만, $X$가 어떤 분포를 가지는 확률변수이면, $g(X)$ 또한 새로운 분포를 따르는 확률변수이며, 그 때의 PMF 혹은 PDF는 일치합니다.
 따라서 $g(x)$의 평균을
 
 $$
@@ -3503,10 +3503,206 @@ $$
 가 되어 식 $(\ast\ast\ast)$의 우변이 0이 되기 때문입니다.
 
 하지만, uncorrelatedness가 독립성을 보장하지는 않습니다.
-그 [반례](https://stats.stackexchange.com/q/85384)로, $X$가 $[-1,1]$의 uniform distribution이고 $Y=X^2$이면, $X$와 $Y$는 uncorrelated하지만 독립조건이 깨집니다.
-$X$의 분포는
+그 [반례](https://stats.stackexchange.com/q/85384)로, $X$가 $\\{-1,0,1\\}$의 uniform distribution이고 $Y=3X^2-1$이면, $X$와 $Y$는 uncorrelated하지만 독립조건이 깨집니다.
+$P_X(x)$는
 
-$$f_X(x)=\frac12\qquad(-1\le x\le1)$$
+$$
+\begin{align*}
+P_X(-1) &=\frac13\\[10pt]
+P_X(0)  &=\frac13\\[10pt]
+P_X(1)  &=\frac13
+\end{align*}
+$$
 
-로 주어집니다.
+이고 $E[X]=0$이며, $P_Y(y)$는
 
+$$
+\begin{align*}
+P_Y(-1) &=\frac13\\[10pt]
+P_Y(2)  &=\frac23
+\end{align*}
+$$
+
+이고, $E[Y]=0$입니다.
+또, $P_{XY}(x,y)$는
+
+$$
+\begin{matrix}
+        &X=-1           &X=0            &X=1            \\[20pt]
+Y=-1    &P_{XY}=0       &P_{XY}=\frac13 &P_{XY}=0       \\[20pt]
+Y=2     &P_{XY}=\frac13 &P_{XY}=0       &P_{XY}=\frac13
+\end{matrix}
+$$
+
+이므로,
+
+$$
+\begin{align*}
+E[(X-\mu_X)(Y-\mu_Y)]
+&=E[XY]\\
+&=0\times(-1)\times\frac13+(-1)\times2\times\frac13+1\times2\times\frac13\\
+&=0
+\end{align*}
+$$
+
+이라서 $X$와 $Y$는 uncorrelated합니다.
+하지만, 
+
+$$
+\begin{align*}
+P(X=-1)     &=\frac13\\
+P(Y=-1)     &=\frac13\\
+P(X=-1,Y=-1)&=0
+\end{align*}
+$$
+
+이 되어 $P(X=-1)P(Y=-1)\ne P(X=-1,Y=-1)$이고, 따라서 $X$와 $Y$는 독립이 아닙니다.
+
+이 반례는, correlated라는 뜻이 "두 확률변수가 연관되어있다"는 것이 아니라는 것도 알려줍니다.
+실제로 위와 같은 $X$와 $Y$는 $Y=3X^2-1$와 같은 '연관성'이 분명히 있는데도 불구하고 uncorrelated인 것입니다.
+
+한편, (Pearson) correlation coefficient[(피어슨) 상관계수]를 
+
+$$
+\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}
+$$
+
+로 정의합니다.
+
+두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $A_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $A_y$라고 하면, 두 집합의 Cartesian product $A_x\times A_y$는 countable이고, 따라서
+
+$$A_x\times A_y=\{(x_1,y_1),(x_2,y_2),\cdots\}$$
+
+로 쓸 수도 있습니다.
+이때, $A_x\times A_y$는 유한집합($|A_x\times A_y|=n$)일 수도 있고, 무한집합(countably many)일 수도 있습니다.
+
+<!-- 두 집합의 합집합을 $\\{t_1,t_2,\cdots,\\}$이라고 하면, 기존의 확률질량함수 $P_X(x)$와 $P_Y(y)$를 다음과 같이 확장할 수 있습니다. -->
+
+<!-- $$
+\begin{align*}
+P_X(t_i)=
+\begin{cases}
+P_X(x_j)&t_i\in A_x,~~t_i=x_j\\
+0       &t_i\not\in A_x
+\end{cases}\\[20pt]
+P_Y(t_i)=
+\begin{cases}
+P_Y(y_j)&t_i\in A_y,~~t_i=y_j\\
+0       &t_i\not\in A_y
+\end{cases}
+\end{align*}
+$$ -->
+
+만약, $A_x\times A_y$가 유한집합이면 두 벡터 $x,y\in\mathbb R^n$를
+
+$$
+\begin{align*}
+x&=\left((x_1-\mu_X)\sqrt{P_X(x_1)}~~,(x_2-\mu_X)\sqrt{P_X(x_2)},~~\cdots,~~(x_n-\mu_X)\sqrt{P_X(x_n)}\right)\\
+y&=\left((y_1-\mu_Y)\sqrt{P_Y(y_1)}~~,(y_2-\mu_Y)\sqrt{P_Y(y_2)},~~\cdots,~~(y_n-\mu_Y)\sqrt{P_Y(y_n)}\right)\\
+\end{align*}
+$$
+
+으로 두고, 만약 $A_x\times A_y$가 무한집합이면 두 벡터 $x,y\in\mathbb R^\infty$를
+
+$$
+\begin{align*}
+x&=\left((x_1-\mu_X)\sqrt{P_X(x_1)},~~(x_2-\mu_X)\sqrt{P_X(x_2)},~~(x_3-\mu_X)\sqrt{P_X(x_3)},~~\cdots\right)\\
+y&=\left((y_1-\mu_Y)\sqrt{P_Y(y_1)},~~(y_2-\mu_Y)\sqrt{P_Y(y_2)},~~(y_3-\mu_Y)\sqrt{P_Y(y_3)},~~\cdots\right)\\
+\end{align*}
+$$
+
+로 둡니다.
+그러면, $L^2$ norm $||\cdot||$, 내적 $\langle\cdot,\cdot\rangle$에 대하여
+
+$$
+\begin{align*}
+\sigma_X    &=||x||\\
+\sigma_Y    &=||y||\\
+\sigma_{XY} &=\langle x,y\rangle
+\end{align*}
+$$
+
+입니다.
+따라서, 피어슨 상관계수는
+
+$$
+\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=\frac{\langle x,y\rangle}{||x||\cdot||y||}
+$$
+
+이 됩니다.
+그러면 Cauchy-Schwarz inequality에 의해
+
+$$-1\le\rho_{XY}\le1$$
+
+이 됩니다.
+또한, $\rho_{XY}=1$인 경우는 두 벡터 $x$, $y$가 같은 방향을 향할 경우이고, $\rho_{XY}=-1$인 경우는 반대 방향을 향할 경우를 말한다는 것도 바로 알 수 있습니다.
+
+강의에서는 $X$와 $Y=aX+b$일 경우에 $|\rho_{XY}|=1$이며, $a\gt0$일 때 $\rho_{XY}=1$, $a\lt0$일 때 $\rho_{XY}=-1$이라는 사실이 언급되고 있습니다 ;
+
+$$
+\begin{align*}
+\sigma_{XY}
+&=E\left[(X-\mu_X)(Y-\mu_Y)\right]\\
+&=E\left[a(X-\mu_X)^2\right]\\
+&=aE\left[(X-\mu_X)^2\right]\\
+&=a{\sigma_X}^2\\
+\sigma_Y
+&=\sqrt{E\left[(Y-\mu_Y)^2\right]}\\
+&=\sqrt{E\left[a^2(X-\mu_X)^2\right]}\\
+&=|a|\sqrt{E\left[(X-\mu_X)^2\right]}\\
+&=|a|\sigma_X\\
+\rho_{XY}
+&=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}\\
+&=\frac{a{\sigma_X}^2}{\sigma_X\cdot|a|\sigma_X}\\
+&=\frac a{|a|}\\
+&=\begin{cases}
+1   &(a\gt0)\\
+-1  &(a\lt0)
+\end{cases}
+\end{align*}
+$$
+
+$X$, $Y$가 이산확률변수일 경우 $|\rho_{XY}|\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 innper product space라는 사실로부터 나왔습니다.
+
+$X$, $Y$가 연속확률변수이면, 조금 더 큰 차원의 벡터공간인 함수공간을 생각해야 합니다.
+함수공간
+
+$$\mathbb H=\left\{f\mid f\text{는 }\mathbb R^2\to\mathbb R\text{인 함수}
+\right\}$$
+
+은 벡터공간을 이루고, 어떤 의미에서는 그 차원이 $\mathbb R^\infty$보다도 더 큽니다.
+강의에서는 이 집합을 Hilbert space라고 부르는데, Hilbert space는 단순히 벡터공간일 뿐만 아니라 inner product space이기도 합니다 ; 
+
+$$\langle f_1,f_2\rangle=\iint_{\mathbb R^2}f_1(x,y)f_2(x,y)\,dx\,dy.$$
+
+두 벡터 $g,h\in\mathbb H$를
+
+$$
+\begin{align*}
+g(x,y)&=(x-\mu_X)\sqrt{f_{XY}(x,y)}\\
+h(x,y)&=(y-\mu_Y)\sqrt{f_{XY}(x,y)}
+\end{align*}
+$$
+
+로 정의하면
+
+$$
+\begin{align*}
+\sigma_X    &=||g||\\
+\sigma_Y    &=||h||\\
+\sigma_{XY} &=\langle g,h\rangle
+\end{align*}
+$$
+
+이 성립하고, 이번에도
+
+$$
+\rho_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}=\frac{\langle g,h\rangle}{||g||\cdot||h||}
+$$
+
+입니다.
+여전히 Cauchy-Schwarz inequality에 의해
+
+$$-1\le\rho_{XY}\le1$$
+
+가 성립합니다.
