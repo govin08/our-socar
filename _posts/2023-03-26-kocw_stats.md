@@ -3568,13 +3568,14 @@ $$
 $$
 
 로 정의합니다.
+이 값은 두 확률변수가 선형적인 상관관계 (양의 상관관계 / 음의 상관관계)가 얼마나 있는지를 나타내는 지표입니다.
 
-두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $A_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $A_y$라고 하면, 두 집합의 Cartesian product $A_x\times A_y$는 countable이고, 따라서
+두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $A_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $A_y$라고 하면, 두 집합의 Cartesian product $A_x\times A_y$는 countable이고, 따라서 $A_x\times A_y$를
 
 $$A_x\times A_y=\{(x_1,y_1),(x_2,y_2),\cdots\}$$
 
-로 쓸 수도 있습니다.
-이때, $A_x\times A_y$는 유한집합($|A_x\times A_y|=n$)일 수도 있고, 무한집합(countably many)일 수도 있습니다.
+로 쓸 수 있습니다.
+이때, $A_x\times A_y$는 유한집합(finite, $|A_x\times A_y|=n$)일 수도 있고, 무한집합(countably many)일 수도 있습니다.
 
 <!-- 두 집합의 합집합을 $\\{t_1,t_2,\cdots,\\}$이라고 하면, 기존의 확률질량함수 $P_X(x)$와 $P_Y(y)$를 다음과 같이 확장할 수 있습니다. -->
 
@@ -3597,8 +3598,8 @@ $$ -->
 
 $$
 \begin{align*}
-x&=\left((x_1-\mu_X)\sqrt{P_X(x_1)}~~,(x_2-\mu_X)\sqrt{P_X(x_2)},~~\cdots,~~(x_n-\mu_X)\sqrt{P_X(x_n)}\right)\\
-y&=\left((y_1-\mu_Y)\sqrt{P_Y(y_1)}~~,(y_2-\mu_Y)\sqrt{P_Y(y_2)},~~\cdots,~~(y_n-\mu_Y)\sqrt{P_Y(y_n)}\right)\\
+x&=\left((x_1-\mu_X)\sqrt{P_{XY}(x_1,y_1)}~~,(x_2-\mu_X)\sqrt{P_{XY}(x_2,y_2)},~~\cdots,~~(x_n-\mu_X)\sqrt{P_{XY}(x_n,y_n)}\right)\\
+y&=\left((y_1-\mu_Y)\sqrt{P_{XY}(x_1,y_1)}~~,(x_2,y_2-\mu_Y)\sqrt{P_{XY}(x_2,y_2)},~~\cdots,~~(y_n-\mu_Y)\sqrt{P_{XY}(x_n,y_n)}\right)\\
 \end{align*}
 $$
 
@@ -3606,13 +3607,13 @@ $$
 
 $$
 \begin{align*}
-x&=\left((x_1-\mu_X)\sqrt{P_X(x_1)},~~(x_2-\mu_X)\sqrt{P_X(x_2)},~~(x_3-\mu_X)\sqrt{P_X(x_3)},~~\cdots\right)\\
-y&=\left((y_1-\mu_Y)\sqrt{P_Y(y_1)},~~(y_2-\mu_Y)\sqrt{P_Y(y_2)},~~(y_3-\mu_Y)\sqrt{P_Y(y_3)},~~\cdots\right)\\
+x&=\left((x_1-\mu_X)\sqrt{P_{XY}(x_1,y_1)},~~(x_2-\mu_X)\sqrt{P_{XY}(x_2,y_2)},~~(x_3-\mu_X)\sqrt{P_{XY}(x_3,y_3)},~~\cdots\right)\\
+y&=\left((y_1-\mu_Y)\sqrt{P_{XY}(x_1,y_1)},~~(y_2-\mu_Y)\sqrt{P_{XY}(x_2,y_2)},~~(y_3-\mu_Y)\sqrt{P_{XY}(x_3,y_3)},~~\cdots\right)\\
 \end{align*}
 $$
 
 로 둡니다.
-그러면, $L^2$ norm $||\cdot||$, 내적 $\langle\cdot,\cdot\rangle$에 대하여
+그러면, $L^2$ norm $||\cdot||$과 내적 $\langle\cdot,\cdot\rangle$에 대하여
 
 $$
 \begin{align*}
@@ -3645,12 +3646,12 @@ $$
 &=E\left[(X-\mu_X)(Y-\mu_Y)\right]\\
 &=E\left[a(X-\mu_X)^2\right]\\
 &=aE\left[(X-\mu_X)^2\right]\\
-&=a{\sigma_X}^2\\
+&=a{\sigma_X}^2\\[15pt]
 \sigma_Y
 &=\sqrt{E\left[(Y-\mu_Y)^2\right]}\\
 &=\sqrt{E\left[a^2(X-\mu_X)^2\right]}\\
 &=|a|\sqrt{E\left[(X-\mu_X)^2\right]}\\
-&=|a|\sigma_X\\
+&=|a|\sigma_X\\[15pt]
 \rho_{XY}
 &=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}\\
 &=\frac{a{\sigma_X}^2}{\sigma_X\cdot|a|\sigma_X}\\
@@ -3664,7 +3665,7 @@ $$
 
 $X$, $Y$가 이산확률변수일 경우 $|\rho_{XY}|\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 innper product space라는 사실로부터 나왔습니다.
 
-$X$, $Y$가 연속확률변수이면, 조금 더 큰 차원의 벡터공간인 함수공간을 생각해야 합니다.
+$X$, $Y$가 연속확률변수이면, 조금 더 거대한 벡터공간인 함수공간을 생각해야 합니다.
 함수공간
 
 $$\mathbb H=\left\{f\mid f\text{는 }\mathbb R^2\to\mathbb R\text{인 함수}
