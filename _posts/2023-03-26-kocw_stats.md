@@ -12,21 +12,28 @@ author_profile: false
 이 강의는 총 21강으로 되어 있고 확률과 통계에 관한 전반적인 사항을 다루는 것 같습니다.
 
 강의 내용을 아주 자세하게는 적지 않고 간략하게만 적어나갈 예정입니다.
-아주 깔끔하게 적으려다보면 시간이 많이 걸리거나, 아예 안하게 되는 경우도 있어서, 조금 간단하게, 때로는 의식의 흐름대로 적어나가게 되는데, 그래도 쓰고 고치고 하다보면 잘 정리될 수도 있을 것 같습니다.
+깔끔하게 적으려다보면 시간이 많이 걸리거나, 아예 안하게 되는 경우도 있어서, 조금 간단하게 적게 될 것 같습니다.
+그래도 쓰고 고치고 하다보면 잘 정리될 수도 있을 것 같습니다.
+
+기본적으로는 강의의 내용을 따라가지만, 강의의 내용만으로는 다 채워지지 않는 부분들이 있습니다.
+예를 들어, 강의에서는 증명이 생략되는 경우도 많고, 개념의 의미가 완벽하게 설명되지 않는 경우도 있습니다.
+이런 미흡한 부분은 여러 자료들에서 채워넣으려고 했습니다.
 
 # 01 조건부확률과 Bayes 정리
 
-**(1) sample Space**
+**(1) sample space**
 
 확률에 대해 공부할 때 가장 먼저 배우는 것은 당연히 표본공간(sample space)입니다.
 고등학교 이후의 과정에서 확률은 항상 집합의 관점에서 이해됩니다.
 표본공간 또한 집합으로, 보통 $S$로 적습니다.
 표본공간이란 어떤 시행(trial)에 대하여
 
-나타날 수 있는 가능한 모든 outcome들의 집합
+나타날 수 있는 가능한 모든 결과(outcome)들의 집합
 {: .text-center}
 
 을 말합니다.
+이러한 결과(outcome)들은 근원사건(elementary event)이라고도 불립니다.
+
 예를 들어, 주사위를 하나 던지는 시행을 한다면
 
 $$S=\{1,2,3,4,5,6\}$$
@@ -37,18 +44,68 @@ $$S=\{H,T\}$$
 
 입니다.
 
-**(2) event**
+**(2) event, probability**
 
 확률은 보통 $P(A)$로 표시하는데, 여기에서 $A$는 사건(event)이라고 부릅니다.
 이때, 사건은 $S$의 부분집합입니다. ($A\subset S$)
 
 $$
-\begin{align*}
+P(A)=\text{the probability that the outcome belongs to $A$}
+$$
+
+예를 들어, 주사위를 한 번 던지는 시행에서 짝수 눈이 나올 사건을 $A$라고 하면
+
+$$
+A=\{2,4,6\}
+$$
+
+이고, $5$가 나오는 사건을 $B$라고 하면
+
+$$
+B=\{5\}
+$$
+
+입니다.
+이때, $A\subset S$, $B\subset S$인 것입니다.
+
+강의에서 '사건'에 대한 설명은 여기까지입니다.
+더 나아가, 사건을 엄밀하게 정의하려먼 $\sigma$-algebra라는 개념을 도입해야 합니다.
+사건은 $S$의 부분집합이라고 했지만, 모든 $S$의 부분집합이 사건은 아닐 수도 있습니다.
+
+$\Sigma$가 $S$의 부분집합들의 집합이면서 다음의 세 성질들을 만족시키면 $\Sigma$를 $\sigma$-algebra라고 부릅니다.
+
+- $\Sigma$는 $S$를 원소로 가집니다 ; $S\in\Sigma$
+- $\Sigma$는 차집합에 대해 닫혀있습니다 ; $A,B\in\Sigma$이면 $A-B\in\Sigma$입니다.
+- $\Sigma$는 countable union에 대해 닫혀있습니다 ; $A_1,A_2,\cdots\in\Sigma$이면, $\bigcup_iA_i\in\Sigma$입니다.
+
+그리고 $P$는 $S$에서 정의된, $P(S)=1$인 측도(measure)입니다.
+다시 말해, 다음 세 성질을 만족시키는 $P$를 probability measure라고 부릅니다.
+
+- $P$는 $P:\Sigma\to[0,1]$인 함수입니다.
+- $P$는 countably additive합니다 ; $P\left(\sum_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)$
+- $P(\varnothing)=0$, $P(S)=1$ 입니다.
+
+예를 들어, 주사위를 하나 던지는 시행에서 $\Sigma$를 $S$의 멱집합(power set, $S$의 모든 부분집합들의 집합)이라고 하고 $P$를
+
+$$
 P(A)
-&=\text{the probability that the outcome belongs to $A$}\\
-&=\text{Prob}(\text{outcome}\in A)
+=\frac{n(A)}{n(S)}
+$$
+
+로 정의하면, $\Sigma$는 $\sigma$-algebra이고 $P$는 probability measure입니다.
+(단, 유한집합 $X$에 대하여 $n(X)$는 그 집합의 원소의 개수입니다.)
+
+이렇게 정의한 $P$는 보통 (근원사건의 개수가 유한한 경우에 대한) 확률문제를 풀 때 적용해왔던 그 $P$와 의미가 일치합니다.
+예를 들어, 아까 주사위를 하나 던지는 시행에서  $A=\\{2,4,6\\}$, $B=\\{5\\}$로 두었었는데, $A\in\Sigma$, $B\in\Sigma$이고
+
+$$
+\begin{align*}
+P(A)&=\frac{n(A)}{n(S)}=\frac36=\frac12\\
+P(B)&=\frac{n(B)}{n(S)}=\frac16
 \end{align*}
 $$
+
+입니다.
 
 **(3) coditional probability**
 
@@ -64,7 +121,10 @@ $$P(B|A)=\frac{P(B\cap A)}{P(A)}$$
 
 **(4) the law of total probability**
 
-$A_1$, $\cdots$, $A_n$가 $S$의 partition이면 ($i\ne j$일 때 $A_i\cap A_j=\varnothing$ 이고 $A_1\cup A_2\cup\cdots\cup A_n=S$)
+$A_1$, $\cdots$, $A_n$가 $S$의 partition이면, 다시 말해,
+
+- $A_i$들이 서로 배반(mutually exclusive)사건이고 ; $i\ne j$일 때 $A_i\cap A_j=\varnothing$
+- $A_i$들에 대한 합집합이 $S$이면 ; $A_1\cup A_2\cup\cdots\cup A_n=S$
 
 $$P(A)=P(A_1\cap A)+\cdots+P(A_n\cap A)=\sum_{i=1}^nP(A_i\cap A)$$
 
@@ -74,7 +134,7 @@ $$P(A)=P(A_1\cap A)+\cdots+P(A_n\cap A)=\sum_{i=1}^nP(A_i\cap A)$$
 $$P(A)=\sum_{i=1}^nP(A|A_i)P(A_i)$$
 
 입니다.
-이후에 Bayes theorem에서 자세히 다루겠지만, $P(A|A_i)$와 같은 확률은 사전확률로 해석할 수 있습니다.
+<!-- 이후에 Bayes theorem에서 자세히 다루겠지만, $P(A|A_i)$와 같은 확률은 사전확률로 해석할 수 있습니다. -->
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
 
@@ -82,19 +142,33 @@ $$P(A)=\sum_{i=1}^nP(A|A_i)P(A_i)$$
 
 조건부확률의 식으로부터
 
-$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}$$
+$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}\tag{$(\ast)$}$$
 
 입니다.
-$P(B|A)$를 직접적으로 구하기가 어려운데, partition $A_1$, $\cdots$, $A_n$이 존재하고, $P(A_i|B)$는 구하는 것이 상대적으로 용이한 경우에 Bayesian theorem이 자주 쓰입니다.
-이때, $P(A|B)$는 사전확률(prior, 선행확률)이라고 불리며, $P(A)$는 the law of total probability에 의해 구하게 됩니다.
+만약 $P(B|A)$를 직접적으로 구하기가 어렵지만, $P(A_i|B)$는 구하는 것이 상대적으로 쉽고, $A_1$, $\cdots$, $A_n$이 partition을 이룰 경우에 Bayesian theorem이 자주 쓰입니다.
+이때, $(\ast)$의 우변 분모인 $P(A)$는 the law of total probability에 의해 구할 수 있습니다.
+이것은 아래의 예를 통해 보면 확인할 수 있습니다.
 
-특히 $P(B|A)$에서 $A$가 observation data (input)에 대응되고 $B$가 original data (output)에 해당되는 경우가 대표적인 예입니다.
+<div class="notice--danger">
+강의에서 $P(A|B)$가 prior(사전확률, 선행확률)라고 했습니다.
+하지만 이게 맞는 표현인지는 잘 모르겠습니다.
+<a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">위키피디아</a>에서는 다음과 같이 용어를 쓰는 것 같습니다.
+<ul>
+    <li> $P(B|A)$ : posterior, 사후확률</li>
+    <li> $P(B)$ : prior, 사전확률</li>
+    <li> $P(A|B)$ : likelihood, 우도</li>
+</ul>
+(식 $(\ast)$를 기준으로 쓴 것입니다.)
+</div>
+
+
+Bayesian theorem이 활용되는 경우는 대표적인 경우는 $P(B|A)$에서 $A$가 observation data (input)에 대응되고 $B$가 original data (output)에 대응될 때입니다.
 어떤 input이 주어졌을 때 어떤 output이 나올 확률은 보통 인과관계나 선후관계를 잘 따지면 계산할 수 있지만, 어떤 output이 나왔을 때 input이 그 값으로 주어졌을 확률, 즉 반대 경우는 해석하기 어렵고 계산하기 어렵습니다.
-그런 경우에 $A$와 $B$의 위치를 바꾸어서, 계산하는 트릭이 Bayesian rule인 것 같습니다.
+그런 경우에 $A$와 $B$의 위치를 바꾸어서, 계산하는 트릭이 Bayesian rule입니다.
 
 **ex. 1.7 binary symmetric channel**
 
-데이터를 전송하는 어떤 기기가 있다고 하고, 그 기기가 transmitter와 receiver로 이루어져있다고 하겠습니다.
+데이터를 전송하는 어떤 기기가 transmitter와 receiver로 이루어져있다고 하겠습니다.
 input data와 output data가 binary인 경우에 이 구조를 binary channel이라고 한다고 합니다.
 
 $$
@@ -120,11 +194,10 @@ $$
 로 표기하겠습니다.
 (마치 행렬같습니다.)
 
-(이때, 위의 표현식은 조금은 엄밀하지는 못한 표현식인 것 같습니다.
-$P(\cdot|\cdot)$의 두 $~\cdot~$에는 사건이, 그러니까 집합이 들어가야 하는데, 하나의 원소만 들어갔습니다.
-$P(y_1|x_1)$라는 표현은 $P(\\{y_1\\}|\\{x_1\\})$로 해석하면 될 것 같습니다.
-조금 더 정확하게는 $P(S_1\times\\{y_1\\}\|\\{x_1\\}\times S_2)$로 해석하면 될 것 같습니다.
-하지만, 크게 혼동될 일이 없으니 $P(y_1|x_1)$로 써도 될 것 같습니다.)
+<div class="notice--danger">
+$P(y_1|x_1)$과 같은 표현에 대한 세부적인 정의는 11회차 강의에서 다루어집니다.
+여기에서는 그냥 '입력이 $x_1$일 때, 출력이 $y_1$일 확률' 정도로 이해하고 넘어가면 될 것 같습니다.
+</div>
 
 만약 $P_{11}=P_{22}$이고 $P_{12}=P_{21}$이 성립하면 이 binary channel을 binary symmetric channel이라고 부릅니다.
 (따라서 행렬이 symmetric한 것과는 다릅니다.)
@@ -142,8 +215,8 @@ $$
 
 **(1) error가 발생할 확률**
 
-오류라고 판단할 수 있는 경우는 input이 $x_1$로 들어갔는데 output이 $y_2$로 나오는 경우와 그 반대의 경우(vice versa)입니다.
-전자의 경우를 $\\{x_1\\}\times\\{y_2\\}$로 표현해야 정확하겠지만 이것을 그냥 $x_1\cap y_2$로 쓰면 (그러니까, $\left(\\{x_1\\}\times S_2\right)\cap\left( S_1\times\\{y_2\\}\right)$의 의미입니다.)
+오류라고 판단할 수 있는 경우는 input이 $x_1$로 들어갔는데 output이 $y_2$로 나오는 경우와 그 반대(vice versa)의 경우입니다.
+전자의 경우를 $\left(\\{x_1\\}\times S_2\right)\cap\left( S_1\times\\{y_2\\}\right)$로 표현해야 정확하겠지만 이것을 그냥 $x_1\cap y_2$로 쓰면
 
 $$
 \begin{align*}
@@ -159,6 +232,9 @@ $$
 
 **(2) When $y_2$ is received, what is the probability that $x_1$ is transmitted?**
 
+$y_2$가 출력되었을 경우에, $x_1$이 입력되었을 확률을 계산합니다.
+Bayes rule과 the law of total probability, 그리고 $P_{ij}$의 정의에 의해
+
 $$
 \begin{align*}
 P(x_1|y_2)
@@ -168,9 +244,12 @@ P(x_1|y_2)
 \end{align*}
 $$
 
+입니다.
 여기에서 $y_2$는 아까 말한 observation data (output)이고 $x_1$은 original data (input)입니다.
 
-**(3) error가 발생했을 때, 입력값이 $x_1$일 확률**
+**(3) error가 발생했을 때, 입력값이 $x_1$이었을 확률**
+
+에러가 발생했을 때, 입력값이 $x_1$이었을 확률을 계산합니다.
 
 $$
 \begin{align*}
@@ -178,13 +257,13 @@ P(x_1|\text{error})
 &=\frac{P(\text{error}|x_1)P(x_1)}{P(\text{error})}\\
 &=\frac{P(\text{error}|x_1)P(x_1)}{P(\text{error}|x_1)P(x_1)+P(\text{error}|x_2)P(x_2)}\\
 &=\frac{P(y_2|x_1)P(x_1)}{P(y_2|x_1)P(x_1)+P(y_1|x_2)P(x_2)}\\
-&=\frac{P_{12}P(x_1)}{P_{12}P(x_1)+P_{21}P(x_2)}
+&=\frac{P_{12}P(x_1)}{P_{12}P(x_1)+P_{21}P(x_2)}\\
+&=\frac{P(x_1)}{P(x_1)+P(x_2)}
 \end{align*}
 $$
 
-(강의에서는 위 계산이 다 완성되지 않았고, 위의 계산은 나름대로 결과를 내본 것입니다.
-문제에서 $P(x_i)$는 주어지지 않은 것처럼 보입니다.
-그리고, 만약 이 channel이 symetric하면 위의 식은 조금 더 간단히 쓸 수 있을 것으로 보입니다.)
+강의에서는 위 계산이 다 완성되지 않았고, 위의 계산은 나름대로 결과를 내본 것입니다.
+마지막 계산에서 이 channel이 symmetric하다는 사실($P_{12}=P_{21}$)을 사용해봤습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-2.png){: .img-50-center}
 
@@ -203,9 +282,11 @@ $$P(A|B)=P(A)$$
 이면, 두 사건 $A$, $B$가 서로 이라고 말합니다.
 $P(A)\ne0$, $P(B)\ne0$인 경우에 이 독립조건은
 
-$$P(A)P(B)=P(A\cap B)$$
+$$P(A)P(B)=P(A\cap B)\tag{\ast\ast}$$
 
 와 동치입니다.
+강의에서는 $(\ast\ast)$를 독립의 정의로 사용하고 있습니다.
+이후에 10회차 강의에서 확률변수들 간의 독립을 정의할 때에도 여전히 $(\ast\ast)$와 같은 식을 정의로서 활용합니다.
 
 - 세 개 이상의 사건에 대한 독립을 말할 때는 mutually independent라는 용어를 씁니다.
 - 독립의 개념은 독립시행(복원시행, repeated restored trial)을 다룰 때 중요합니다.
@@ -214,9 +295,11 @@ $$P(A)P(B)=P(A\cap B)$$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-3.png){: .img-50-center}
 
-**1.9 Combined Experiments**
+**1.9 combined experiments**
 
 For two experiments with sample spaces $S_1$ and $S_2$, the sample space of the combined experiments is the Cartesian product $S_1\times S_2$;
+
+동시에 일어나느 서로 다른 두 시행을 하나의 시행으로 보았을 때의 표본공간은, 각각의 시행에 대한 표본공간 $S_1$와 $S_2$의 Cartesian product인 $S_1\times S_2$로 정의합니다.
 
 $$S_1\times S_2=\{(x,y):x\in S_1,y\in S_2\}$$
 
@@ -251,25 +334,35 @@ $n!$은 $n$ factorial(팩토리얼)이라고 읽고, $0!=1$로 정의합니다.
 
 서로 다른 $n$개의 대상 중 $r$개를 일렬로 나열하는 방법의 수는
 
-$$_nP_r=\frac{n!}{r!}=n(n-1)\cdots(n-r+1).$$
+$$_nP_r=\frac{n!}{r!}=n(n-1)\cdots(n-r+1)$$
+
+입니다.
 
 **1.10.2 group permutation (같은 것이 포함된 순열)**
 
 세 종류의 대상 $A$, $B$, $C$가 각각 $a$개, $b$개, $c$개 있을 때($a+b+c=n$), 이 $n$개의 대상을 일렬로 나열하는 방법의 수는
 
-$$\frac{n!}{a!b!c!}.$$
+$$\frac{n!}{a!b!c!}$$
+
+입니다.
 
 **1.10.3 circular permutation (원순열)**
 
 서로 다른 $n$개의 대상을 원형으로 나열하는 방법의 수는
 
-$$(n-1)!.$$
+$$(n-1)!$$
+
+입니다.
 
 **1.10.4 combination (조합)**
 
 서로 다른 $n$개의 대상들 중 $r$개를 선택하는 방법의 수는
 
-$$\binom nk=_nC_r=\frac{_nP_r}{r!}=\frac{n!}{r!(n-r)!}.$$
+$$\binom nk=_nC_r=\frac{_nP_r}{r!}=\frac{n!}{r!(n-r)!}$$
+
+입니다.
+이것은 '같은것이 포함된 순열'과 연관해서 설명될 수도 있습니다.
+즉 $\binom nk$는 두 종류의 대상 $A$와 $B$가 각각 $k$개, $n-k$개 있을 때, 이 $n$개의 대상을 일렬로 나열하는 방법의 수와 같습니다.
 
 **1.10.4 binomial theorem (이항정리)**
 
@@ -316,6 +409,7 @@ $$
 nx(1+x)^{n-2}(1+nx)=\sum_{k=0}^nk^2\binom nkx^k
 \end{equation}
 $$
+입니다.
 
 이산확률분포 $X$가 이항분포 $B(n,p)$를 따르면, $X$의 확률질량함수는
 
@@ -354,12 +448,15 @@ $$
 (잘 알려진 다른 증명보다 복잡한 것 같아서 유용한지는 잘 모르겠습니다.)
 
 한편, 멱급수에 대해서도 재미있는 계산을 할 수 있습니다.
+함수 $f(x)$를
 
 $$
 f(x)=1+2x+3x^2+\cdots
 $$
 
-이면
+로 정의하겠습니다.
+이 함수가 수렴하기 위해서는 $|x|<1$라는 조건이 있어야 합니다.
+양변에 $x$를 곱하면
 
 $$
 xf(x)=x+2x^2+3x^3+\cdots
@@ -372,7 +469,6 @@ $$
 $$
 
 입니다.
-단, $|x|<1$ 입니다.
 
 따라서
 
@@ -387,7 +483,7 @@ $$
 g(x)=1+x+x^2+\cdots
 $$
 
-라고 하면 $g(x)=\frac1{1-x}$이고 $f(x)=g'(x)$이므로
+라고 하면 $f(x)=g'(x)$이고 $g(x)=\frac1{1-x}$이므로
 
 $$
 f(x)=\left(\frac1{1-x}\right)'=\frac1{(x-1)^2}
@@ -534,12 +630,12 @@ $$P(\{H\})=\frac12,\quad P(\{T\})=\frac12,\quad P(\varnothing)=0,\quad P(S)=1$$
 그런데 확률변수 $X$를 도입하고 나면 $P(~\cdot~)$를 숫자들의 함수처럼 생각할 수 있습니다.
 $p(x)$ 혹은 $P(X=x)$라는 표현을 (이것들은 나중에 확률질량함수라는 이름을 가지게 되는데)
 
-$$\tag{$\ast$}
-\begin{aligned}
+$$
+\begin{align*}
 p(x)
 &=P(X=x)\\
-&=P\left(\{w\in S:X(w)=x\}\right)
-\end{aligned}
+&=P\left(\{w\in S:X(w)  =x\}\right)\tag{$\ast$}
+\end{align*}
 $$
 
 와 같이 정의하면
@@ -963,10 +1059,6 @@ $f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution�
 하지만, CDF는 $X$가 이산확률변수이건 연속확률변수이건 상관없이 적절하게 잘 정의될 수 있습니다.
 또한, 일단 CDF가 정해지고 나면 CDF의 식으로부터 PMF나 PDF의 식을 쉽게 구할 수 있다는 점도 있습니다.
 그래서 그런지, 많은 경우에 CDF를 먼저 정의하고, 그 이후에 PMF나 PDF를 정의하는 것 같습니다.
-
- 정할 수 없었습니다. (정하려면, PMF의 값들을 모두 0으로 만들어야 하는데)
-
-dirac delta function은 엄밀히 말하면 함수가 아닌 generalized function이며, measure나 distribution을 통해 이해될 수 있다고 합니다.
 </div>
 
 # 05 확률변수의 평균과 분산
@@ -981,7 +1073,7 @@ $$\bar x=\frac{x_1+\cdots+x_N}N.$$
 
 **different frequences**
 
-서로다른 $x_i$들에 대하여 그 빈도 $w_i$가 주어져 있을 때의 평균(weighted average)은
+서로다른 $x_i$들에 대하여 그 빈도 $w_i$가 주어져 있을 때의 가중평균(weighted average)은
 
 $$\bar x=\frac{w_1x_1+\cdots+w_Nx_N}{w_1+\cdots+w_N}.$$
 
@@ -1000,10 +1092,10 @@ $$
 P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)
 $$
 
-$K$가 the number of event occurence in time interval이라고 하면, $K$는 위와 같은 분포를 따르는 경우가 많다고 합니다.
+$K$가 the number of event occurence in a time interval이라고 하면, $K$는 위와 같은 분포를 따르는 경우가 많다고 합니다.
 
-$P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번쨰 조건인 $P_K(k)\ge0$은 당연합니다.
-두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series(혹은 지수함수의 추상적인 정의)를 사용할 수 있습니다;
+$P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번째 조건인 $P_K(k)\ge0$은 당연합니다.
+두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series(혹은 지수함수에 대한 추상적인 정의)를 사용할 수 있습니다;
 
 $$e^x=\sum_{k=0}^\infty\frac{x^k}{k!}$$
 
@@ -1330,15 +1422,16 @@ $${\sigma_K}^2=E[K^2]-E[K]^2=\frac{2-p}{p^2}-\frac1{p^2}=\frac{1-p}{p^2}$$
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_6-2.png){: .img-100-center}
 
 이후에는 평균과 분산의 의미에 대한 설명이 있습니다(위 캡쳐).
-computer vision에서의 얼굴인식문제를 아주 naive하게 생각할 때, 우리는 실제 카메라에 인식된 얼굴모양(실제값)이 우리가 정한 특정한 형태의 얼굴모양 (표준참값, 예측값, 추정값, 표준모델)과 얼마나 비슷한지를 판단할만한 판단근거가 필요합니다.
+computer vision에서의 얼굴인식문제를 아주 naive하게 생각할 때, 우리는 실제 카메라에 인식된 얼굴모양(실제값)이 우리가 정한 특정한 형태의 얼굴모양 (표준참값, 예측값, 추정값, 표준모델의 값)과 얼마나 비슷한지를 판단할만한 판단근거가 필요합니다.
 
 이때의 실제값과 표준참값은 각각 벡터로 생각할 수 있고, 따라서 표준적인 벡터사이의 거리(의 제곱)인 $L^2$ norm(의 제곱)을 생각하게 됩니다.
 그것은 실제값과 표준참값을 뺀 다음 제곱하여 성분별로 더하는 것을 말합니다.
 그리고 이 값(energy라고 통상 부르기도 하는 값)이 최소가 되도록 하는 표준참값을, '괜찮은 모델'이라고 둘 수 있을 것입니다.
 
-그런데 $L^2$ norm의 제곱, 즉 sum of squared error(SSE)는 그 특성상 표준참값이 실제값들의 평균일 때에 최소가 되는 경향이 있습니다.
+그런데 $L^2$ norm의 제곱, 즉 sum of squared errors(SSE)는 그 특성상 표준참값이 실제값들의 평균일 때에 최소가 되는 경향이 있습니다.
 (사실 표준참값-실제값 예는 multivariate이고 뒤에 나오는 예시는 univariate이라서 적절한 설명인지 잘 이해가 안가긴 하지만)
 그리고 이것은 아까 간단하게 언급한 적이 있습니다.
+즉
 
 $$g(t)=\sum_{k=1}^n(t-x_k)^2$$
 
@@ -1402,7 +1495,7 @@ notation 상의 문제가 없으니 앞으로는 $P(x_i|A)$, $P(x_i\cap A)$와 �
 $$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i)$$
 
 로 정의할 수 있습니다.
-(여기에서 $A\subset S$라면, $x_i\in A$는 $X^{-1}(\{x_i\})\subset A$로 해석해야 할 것입니다.)
+(여기에서 $A\subset S$라면, $x_i\in A$는 $X^{-1}(\\{x_i\\})\subset A$로 해석해야 할 것입니다.)
 
 이번에는 연속확률변수의 조건부 기댓값을 정의하겠습니다.
 먼저 conditional CDF는
@@ -1431,7 +1524,7 @@ E[X|A]=\int_{x\in A}xf_X(x|A)\,dx
 $$
 
 로 정의할 수 있습니다.
-(마찬가지로 $x\in A$는 $X^{-1}(\{x\})\subset A$로 해석해야 할 것입니다.)
+(마찬가지로 $x\in A$는 $X^{-1}(\\{x\\})\subset A$로 해석해야 할 것입니다.)
 
 <!-- 이때, $f_X(x|A)$는 conditional probability density function, 줄여서 conditional density (혹은 conditional PDF) 입니다.
 이것은 정의이며, 이 정의는 discrete case와 정확히 잘 대응되는 정의입니다.
@@ -1621,11 +1714,11 @@ $$
 'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은 '[베르눌리](https://www.youtube.com/watch?v=n6czlFpvaf4)'라고 읽는 것이 맞는 것 같습니다.
 마찬가지로 Poisson은 '[푸아상](https://youtu.be/43eJq-pAOGA)'으로 발음하는 것이 맞는 것 같습니다.
 
-강의에서는 *$X$가 binary인 경우*를 bernoulli distribution이라고 한다고 되어 있습니다.
+강의에서는 $X$가 binary인 경우를 bernoulli distribution이라고 한다고 되어 있습니다.
 앞서 말했듯 $X$는 $X:S\to\mathbb R$입니다.
-여기서 binary라는 것은 $|S|=2$라는 의미인 것 같습니다.
+여기서 binary라는 것은 $|S|=2$라는 의미입니다.
 물론 $|X(S)|=2$도 성립할 것입니다.
-($|X(S)|=1$인 경우는 의미가 없으니까)
+($|X(S)|=1$인 경우는 의미가 없습니다.)
 다시말해 sample space가
 
 $$S=\{w_1,w_2\}$$
@@ -1701,9 +1794,9 @@ $$
 아까, $|S|=2$ 인 경우를 생각했었는데 이와 같은 시행을 Bernoulli trial이라고 부르는 것 같습니다.
 [다음](https://en.wikipedia.org/wiki/Bernoulli_trial)은 위키피디아의 정의입니다.
 
-A Bernoulli trial (or binomial trial) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
+> A Bernoulli trial (or binomial trial) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
 
-이런 Bernoulli trial을 $n$번 시행했을 때, sucess의 횟수 (혹은 $S=\\{s_1,s_2\\}의 관점에서는 $s_1$의 횟수)를 확률변수 $X$라고 정의할 때, 이때 $X$의 분포를 이항분포(binomial distribution)라고 합니다.
+이런 Bernoulli trial을 $n$번 시행했을 때, sucess의 횟수 (혹은 $S=\\{s_1,s_2\\}$의 관점에서는 $s_1$의 횟수)를 확률변수 $X$라고 정의할 때, 이때 $X$의 분포를 이항분포(binomial distribution)라고 합니다.
 
 이항분포의 PMF는 당연히
 
@@ -1745,8 +1838,7 @@ the number of Bernoulli trial until the first success
 입니다.
 그러니까 앞서의 정의와 비슷한데 이번에는 완전히 정확하게 적혔습니다.
 
-**forgetfulness(memorylessness)** 라는 개념은 geometric distribution에서 빈번히 생각될 수 있는 개념인 것 같습니다.
-이것은 여러 번의 Bernoulli trial에서 앞서의 결과가 이후의 결과에 영향을 미치지 않는다는 뜻으로 [일종의 Markov property입니다](https://en.wikipedia.org/wiki/Memorylessness).
+**forgetfulness(memorylessness)** 는 여러 번의 Bernoulli trial에서 앞서의 결과가 이후의 결과에 영향을 미치지 않는다는 뜻으로 [일종의 Markov property입니다](https://en.wikipedia.org/wiki/Memorylessness).
 
 Consider $k$ additional trials until the first success, given $n$ trials fail. (강의의 칠판에 적힌 표현)
 
@@ -1769,7 +1861,7 @@ P\left(X=n+k|X>n\right)
 $$
 
 그리고 위의 계산결과에서 보듯, 정말로 그것이 성립합니다.
-즉, 지금 하는 것은 독립시행이므로, 앞서의 결과가 이후의 시행에 영향을 미치지 않는 것이 당연한데, 그 사실을 다시 한 번 확인해보았습니다.
+즉, 지금 하는 것은 독립시행이므로, 앞서의 결과가 이후의 시행에 영향을 미치지 않는 것이 당연한데, 그 사실을 다시 한 번 확인해본 것입니다.
 
 # 08 지수분포와 어랑분포
 
@@ -1799,7 +1891,7 @@ Poisson 분포의 저 식이 도대체 무슨 의미가 있는지를 몰라서 �
 
 $$f_X(k)=\binom nkp^k(1-p)^{n-k}$$
 
-에서 $n$을 무한대로 보내면, Poisson PMF의 모양이 된다는 것입니다.
+에서 $n$을 무한대로 보내면, Poisson PMF의 모양이 됩니다.
 
 $$
 \lim_{n\to\infty}\binom nkp^k(1-p)^{n-k}=
@@ -1807,7 +1899,7 @@ $$
 $$
 
 단, $\lambda$는 $p=\frac\lambda n$으로 주어집니다.
-이에 대한 [증명](https://math.stackexchange.com/q/3125971)은 어렵지 않은데
+이에 대한 [증명](https://https://math.stackexchange.com/q/3125971)은 어렵지 않은데
 
 
 $$
@@ -1855,12 +1947,12 @@ $\qquad\vdots$
 - 1시 59분 59초 ~ 2시 00분 00초 : $T_{3600}$
 
 의 3600개 시간간격으로 나눌 수 있는 것입니다.
-한편, 1시간에 4.5명 꼴로 손님이 들어온다고 했으니까, 1초에 $4.5/3600=0.00125$명 꼴로 손님이 들어옵니다.
+1시간에 4.5명 꼴로 손님이 들어온다고 했으니까, 1초에 $4.5/3600=0.00125$명 꼴로 손님이 들어옵니다.
 그러니까 각각의 $T_i$ 동안 0.00125명 꼴로 손님이 들어옵니다.
-그러면, $T_i$ 동안 손님이 들어오는 횟수는 거의 0입니다. 어쩌다가 한 번 들어오는 것이고 두 명 이상 들어올 가능성은 거의 없습니다.
+그러면, $T_i$ 동안 손님이 들어오는 횟수는 거의 0입니다. 어쩌다가 한 명 들어오는 것이고 두 명 이상 들어올 가능성은 거의 없습니다.
 (실제로는 친구나 가족과 함께 방문할 수도 있으므로 현재로서는 이 가정이 좋은 가정은 아닐테지만, 어쨌든 수치상으로는 그렇습니다.)
 그러니까 각각의 $T_i$에 대하여 손님이 들어오지 않거나(0명), 아니면 들어오거나(1명) 한다고 *가정*할 수 있습니다.
-즉, 한 번의 시행에서 나오는 결과값이 0 아니면 1인 Bernoulli trial이고 이때 $p=0.00125$입니다.
+즉, 한 번의 시행은 그 결과값이 0 아니면 1인 Bernoulli trial이고 이때 $p=0.00125$입니다.
 그런데 이런 시행이 한 번 있는 것이 아니라 3600번 있습니다.
 그리고 각각의 시행들이 독립적일테니까, 한 시간동안 들어온 손님의 수가 $x$인 확률이
 
@@ -1924,15 +2016,15 @@ $$
 
 이러한 형태가 difference equation 말고도 differential equation(system of linear partial differential equations)에서도 나타나는 것은 주지의 사실입니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-1.png){: .img-100-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-1.png){: .img-50-center}
 
 한편, 지난 강의에서 geometric distribution에서의 memorylessness에 대해 말했었는데, exponential distribution에서도 마찬가지로 memoryless property가 성립한다는 내용이 강의에 이어집니다.
 확인할 내용은 다음과 같습니다.
 
 expoential distribution은 어떤 시스템의 (혹은 어떤 상태의) 생존(survival, success)에 관한 문제와 관련있습니다.
-어떤 시스템이 $t$라는 시점까지 생존했다는 가정 하에 그 이후 $s$만큼의 시간까지 생존할 확률을 계산할 건데, 그 확률이 ($t$라는 시점까지 생존했다는 가정 없이 그냥) $s$만큼의 시간만큼 생존할 확률과 같다는 것을 보려고 합니다.
+어떤 시스템이 $t$ 시점까지 생존했다는 가정 하에 그 이후 $s$만큼의 시간까지 생존할 확률을 계산할 건데, 그 확률이 ($t$ 시점까지 생존했다는 가정 없이) $s$만큼의 시간만큼 생존할 확률과 같다는 것을 보려고 합니다.
 
-계산에 앞서 expoential distribution에 대한 CDF를 먼저 계산해보면
+계산에 앞서 exponential distribution에 대한 CDF를 먼저 계산해보면
 
 $$
 \begin{align*}
@@ -1959,7 +2051,8 @@ P\left(X\le t+s|X>t\right)
 \end{align*}
 $$
 
-인 것입니다.
+입니다.
+따라서 exponential distribution에 대해서 memoryless property가 성립합니다.
 
 **relation between ED and PD**
 
@@ -1970,7 +2063,7 @@ For a Poisson distribution with $\lambda$ per unit time,
 
 $$P_X(x) = \frac{\lambda^x}{x!}e^{-\lambda}.\qquad(x=0,1,2,\cdots)$$
 
-Transforming 'unit time' to 'time interval $t$' yields
+Transforming 'unit time' to 'time interval of length $t$' yields
 ($1\to t$, $\lambda\to\lambda t$)
 
 $$P_X(x) = \frac{\lambda^xt^x}{x!}e^{-\lambda t}.\qquad(x=0,1,2,\cdots)$$
@@ -2020,26 +2113,28 @@ $$
 
 **4.9 Erlang distribution**
 
-Erlang distribution (of $k$) is a generalization of expoential distribution.
+Erlang-$k$ distribution is a generalization of expoential distribution.
 
 어떤 사건이 발생하는 간격은 exponetial distribution을 따른다고 했었습니다.
 즉, 시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 두번째 사건이 발생했다면 $T_2-T_1$은 exponential distribution을 따릅니다.
 다시 말해, exponential distribution은 한 개의 사건발생간격을 고려합니다.
 
-$k=2$인 Erlang distribution은 두 개의 사건발생간격을 고려합니다.
-시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 발생하며, 또 그 다음 사건이 시각 $T_3$에 발생하면, $T_3-T_1$이 따르르는 분포가 $k=2$인 Erlang distribution입니다.
+Erlang-$2$ distribution은 두 개의 사건발생간격을 고려합니다.
+시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 발생하며, 또 그 다음 사건이 시각 $T_3$에 발생하면, $T_3-T_1$이 따르는 분포가 $k=2$인 Erlang distribution입니다.
 
 (물론, $T_2-T_1$ 말고도 $T_3-T_2$, $T_4-T_3$도 exponential distribution을 따릅니다.
 마찬가지로 $T_3-T_1$ 말고도 $T_4-T_2$, $T_5-T_3$도 $k=2$인 Erlang distribution을 따릅니다.)
 
-그 연장선상에서 보면 $T_4-T_1$은 $k=3$인 Erlang distribution을, $T_5-T_1$은 $k=4$인 Erlang distribution을 따른다고 말할 수 있습니다.
+그 연장선상에서 보면 $T_4-T_1$은 Erlang-$3$ distribution을, $T_5-T_1$은 Erlang-$4$ distribution을 따른다고 말할 수 있습니다.
 
-이제 $k$-order Erlang distribution(혹은 Erlang-$k$ distribution)의 정의를 보면
+Erlang-$k$ distribution($k$-order Erlang distribution)의 PMF는
 
 $$
 f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
 \tag{$\ast$}
 $$
+
+와 같이 정의됩니다.
 
 **gamma function**
 
@@ -2247,7 +2342,7 @@ $$
 wikipedia 등에 따르면 위에서 정의한 gamma function에서 더 나아간
 [incomplete gamma function](https://en.wikipedia.org/wiki/Incomplete_gamma_function)
 과 같은 함수를 사용하면 $X_k$의 CDF를 계산하는 것이 더 쉬워지는 것으로 보이는데, 여기에서는 그냥 부분적분과 귀납법을 사용해 계산하겠습니다.
-실제 강의에서도 부분적분을 연속적으로 사용하여 계산할 수 있다고 말씀하고 계십니다.
+실제 강의에서도 부분적분을 연속적으로 사용하여 계산할 수 있다고 언급되고 있습니다.
 
 $$
 \begin{align*}
@@ -2293,11 +2388,13 @@ $$
 \end{align*}
 $$
 
+입니다.
+
 **4.10 uniform distribution**
 
-uniform distribution에 대해서도 이미 다룬 바가 있지만, PMF와 PDF, 평균과 분산에 대해 다시 봅니다.
+uniform distribution에 대해서도 이미 다룬 바가 있지만, 이번에는 PMF와 PDF, 평균과 분산에 대해 다시 봅니다.
 
-$X$가 uniform한 이산확률분포이고 $X$가 가질 수 있는 값이 $x_1$, $x_2$, $\cdots$, $x_n$이면 $P(X=x_1)=P(X=x_2)=\cdots=P(X=x_n)$인데, 따라서
+$X$가 uniform한 이산확률분포이고 $X$가 가질 수 있는 값이 $x_1$, $x_2$, $\cdots$, $x_n$이면 $P(X=x_1)=P(X=x_2)=\cdots=P(X=x_n)$으로부터
 
 $$
 P_X(x_i)=\frac1n\qquad(i=1,2,\cdots,n)
@@ -2320,7 +2417,7 @@ $$f_X(x)=\frac1{b-a}(a\le x\le b)$$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-3.png){: .img-50-center}
 
-이산확률분포의 경우 $E[X]=\frac1n(x_1+\cdots+x_n)$, ${\sigma_X}^2=\frac1n\left((x_i-E[X])^2\right)$이어서 사실 새로울 게 없습니다.
+이산확률분포의 경우 $E[X]=\frac1n(x_1+\cdots+x_n)$, ${\sigma_X}^2=\frac1n\left(\sum_i(x_i-\mu_X)^2\right)$이어서 사실 새로울 게 없습니다.
 연속확률 변수의 경우의 평균과 분산은 $E[X]=\frac{a+b}2$, ${\sigma_X}^2=\frac{(a-b)^2}{12}$로 주어지는데, 직접 계산해보면
 
 $$
@@ -2382,7 +2479,7 @@ V[X]&={\sigma_X}^2
 $$
 
 이것을 직접 증명하는 것은 복잡하기 때문에, $\mu=0$이고 $\sigma=1$인 경우를 보려고 합니다.
-다시 말해, 확률변수 $U$가 확률밀도함수
+다시 말해,
 
 $$
 f_U(u)=\frac1{\sqrt{2\pi}}e^{-\frac12u^2}
@@ -2416,7 +2513,7 @@ $$
 A^2
 &=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
 \int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
-&=\frac1{2\pi}\iint e^{-\frac12(u^2+v^2)}\,du\,dv\\
+&=\frac1{2\pi}\iint_{\mathbb R^2}e^{-\frac12(u^2+v^2)}\,du\,dv\\
 &=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
 e^{-\frac12r^2}r\,dr\,d\theta\\
 &=\frac1{2\pi}\int_0^{2\pi}d\theta\times
@@ -2496,7 +2593,7 @@ $$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-2.png){: .img-100-center}
 
-강의에서는 연속확률변수들이 대개 정규분포를 따른다는 것이 언급되면서, 특히 어떤 신호의 signal이 정규분포를 따르는 경향이 있다는 사실도 소개됩니다.
+강의에서는 여러 종류의 연속확률변수들이 근사적으로 정규분포를 따른다는 것이 언급되면서, 특히 어떤 신호의 signal이 정규분포를 따르는 경향이 있다는 사실도 소개됩니다.
 single mode, symmetric, bellshaped등의 성질들에 대해서도 언급됩니다.
 
 여기에서 mode란 PDF의 극대점을 의미한다고 설명되고 있습니다.
@@ -2506,13 +2603,16 @@ discrete case에서는 mode가 최빈값, 즉 PMF의 최대점을 의미합니�
 다만 위에서 계산한 세 값 중 맨 위의 값만 계산하고 있습니다.
 
 이외에도 표준졍규분포, 표준정규분포표에 대해서도 소개되고 있습니다.
-이때 $\Phi$를 표준정규분포의 CDF로 정합니다 ;
+이때 $\Phi$를 표준정규분포의 CDF로 정합니다.
+즉, $Z\sim N(0,1)$일 떄,
 
 $$\Phi(x)=F_Z(x)=P(Z\le x)=\int_{-\infty}^x\frac1{\sqrt{2\pi}}e^{-\frac{z^2}2}$$
 
+입니다.
+
 **approximation of binomial distributions**
 
-$X\sim B(n,p)$이고 $n$이 충분히 크면 $X\sim N(np,np(1-p))$ 입니다.
+$X\sim B(n,p)$이고 $n$이 충분히 크면 $X\sim N(np,np(1-p))$으로 생각합니다.
 
 **error function**
 
@@ -2526,14 +2626,15 @@ $X\sim N(0,\frac12)$이면, 이 함수는 $\text{er}f(x)=P(-x\lt X\le x)$인 함
 
 $$\text{erfc}(x)=\frac2{\sqrt\pi}\int_x^\infty e^{-y^2}\,dy.$$
 
-\text{erfc} 함수는 \text{erf} 함수와 complementary한 관계가 있습니다.
+$\text{erfc}$ 함수는 $\text{erf}$ 함수와 complementary한 관계가 있습니다.
 다시 말해서
 
 $$\text{erf}(x)+\text{erfc}(x)=1$$
 
 입니다.
 
-또한, $X\sim N(0,\frac12)$, $Z\sim N(0,1)$, $\text{erf}(x)=P(-x\le X\le x)$, $\Phi(x)=P(Z\le x)$이므로
+또한,
+ <!-- $X\sim N(0,\frac12)$, $Z\sim N(0,1)$, $\text{erf}(x)=P(-x\le X\le x)$, $\Phi(x)=P(Z\le x)$이므로 -->
 
 $$
 \begin{align*}
@@ -2553,7 +2654,7 @@ $$\Phi(x)=\frac12+\frac12\text{erf}\left(\frac{x}{\sqrt2}\right)$$
 
 **Gaussian mixture model**
 
-$X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로운 확률변수 $\alpha X_1+\beta X_2$는 하나의 mode를 가지지 않고 두 개의 mode를 가질 수 있습니다.
+$X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로운 확률변수 $\alpha X_1+\beta X_2$는 하나의 mode를 가지지 않고 두 개의 mode를 가질 수 있습니다(bimodal).
 일반적으로, 서로 다른 정규분포를 따르는 $n$개의 확률변수 $X_i$에 대하여 $X_i$들의 일차결합은 여러 개의 mode를 가질 수 있습니다(multimodal).
 이 확률변수를 가지고 만들 수 있는 모델을 Gaussian mixture model이라고 하는 것 같습니다. [`sklearn`](https://scikit-learn.org/stable/modules/mixture.html)에서는 다음과 같은 설명을 하고 있습니다.
 
@@ -2564,9 +2665,9 @@ $X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로�
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-3.png){: .img-75-center}
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-4.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-4.png){: .img-75-center}
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-5.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-5.png){: .img-75-center}
 
 # 10 다중변수 및 연합분포
 
@@ -2627,7 +2728,7 @@ $$
 
 로 정의하면 이것들은 잘 정의됩니다.
 그러니까, $X^{-1}(\\{x\\})\times Y^{-1}(\\{y\\})\subset S_1\times S_2$이고, $X^{-1}(-\infty,x]\times Y^{-1}(-\infty,y]\subset S_1\times S_2$ 입니다.
-사실은 각각의 집합들이 $S_1\times S_2$의 $\sigma$-algebra의 원소인지 하는 것도 봐야 더 정확하겠지만, 아래과 같은 [언급](math.stackexchange.com/q/22042)에 따르면 $S_1\times S_2$에 대한 $\sigma$-algebra를 $\Sigma_1\times\Sigma_2$로 generate해서 만들어내면 문제가 되지 않는 것 같습니다;
+사실은 각각의 집합들이 $S_1\times S_2$의 $\sigma$-algebra의 원소인지 하는 것도 봐야 더 정확하겠지만, 아래과 같은 [언급](https://math.stackexchange.com/q/22042)에 따르면 $S_1\times S_2$에 대한 $\sigma$-algebra를 $\Sigma_1\times\Sigma_2$로 generate해서 만들어내면 문제가 되지 않는 것 같습니다;
 
 > The sigma-algebra on $E$ is generated by all products of the form $A_1\times\cdots\times A_n$, where $A_i$ is measurable in $E_i$ for each $i$.
 
@@ -2745,8 +2846,6 @@ F_Y(b)&=\lim_{x\to\infty}F_{XY}(x,b)
 \end{align*}
 $$
 
-로 이해될 수 있습니다.
-
 **5.3 discrete joint distributions**
 
 이산확률변수 $X$, $Y$에 대하여 $X$와 $Y$의 joint distribution에 대한 PMF는
@@ -2761,7 +2860,7 @@ $$
 (1)~
 &0\le P_{XY}(x,y)\le1\\
 (2)~
-&\sum_x\sum_yP_X(x,y)=1\\
+&\sum_x\sum_y P_{XY}(x,y)=1\\
 (3)~
 &F_{XY}(x,y)=P(X\le x,Y\le y)=\sum_{\tilde x\le x}\sum_{\tilde y\le y}P_{XY}(\tilde x,\tilde y)\\
 (4)~
@@ -2779,9 +2878,10 @@ $$
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-8.png){: .img-50-center}
 
 위의 성질들은 모두 당연해 보이므로 따로 증명하지 않겠습니다.
-다만, (5)는 아직 이해할 수도 없고 증명할 수도 없습니다.
+그리고 (5)는 두 확률변수가 독립인 것의 정의입니다.
+<!-- 다만, (5)는 아직 이해할 수도 없고 증명할 수도 없습니다.
 아직까지는 두 사건의 독립이라는 개념만 소개했지, 두 확률변수의 독립에 대해서는 정의한 바가 없기 때문입니다.
-두 확률변수의 독립에 관해서는 12강에서 잠깐 소개하게 되는데(43분 경), 사실 이산확률변수와 연속확률변수에 대한 (5)번 항목은 두 확률변수가 독립인 것의 정의로 둘 수 있습니다.
+두 확률변수의 독립에 관해서는 12강에서 잠깐 소개하게 되는데(43분 경), 사실 이산확률변수와 연속확률변수에 대한 (5)번 항목은 두 확률변수가 독립인 것의 정의로 둘 수 있습니다. -->
 
 **5.4 continuous joint distributions**
 
@@ -2841,7 +2941,7 @@ $$
 $$
 
 이번에도 (1)-(4)는 당연합니다.
-그리고 (5)는 나중에 증명해보겠습니다.
+그리고 (5)는 두 확률변수가 독립인 것의 정의입니다.
 
 # 11 연합확률밀도함수와 조건부확률밀도함수
 
@@ -2860,7 +2960,7 @@ $$R=\{(x,y)\in\mathbb R^2:0\le x\le y, 0\le y\}$$
 
 이고 이것은
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-1.png){: .img-75-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-1.png){: .img-50-center}
 
 와 같은 영역을 의미합니다.
 먼저  (2)번 성질($\iint_R f_{XY}(x,y)\,dx\,dy=1$)을 보겠습니다.
@@ -2934,7 +3034,7 @@ $$D=\{(x,y)\in\mathbb R^2:x^2+y^2\le1\}$$
 
 이고 이것은
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-2.png){: .img-75-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-2.png){: .img-50-center}
 
 와 같은 영역을 의미합니다.
 이번에는 (2)번 성질이 당연합니다;
@@ -2991,13 +3091,13 @@ $$
 
 여기에서 괄호 안의 숫자는 강의의 회차를 의미하고, exp.는 expectation, var.은 variance, con.은 conditional, jnt.는 joint를 의미합니다.
 
-그러니까 conditional expectation에 대해서는 다루지 않았습니다.
-joint expectation과 joint variance의 개념은 생각할 수 없습니다.
+그러니까 conditional variance에 대해서는 다루지 않았는데, 이번 강의에서 언급됩니다.
+그리고 joint expectation과 joint variance의 개념은 생각할 수 없습니다.
 joint distribution에 대해서는 어떤 실수값을 가지는 확률변수를 생각할 수 없었기 때문입니다.
-하지만, 여러 개의 확률변수들에 특정한 함수가 주어졌을 때의 expectation은 계산할 수 있습니다.
-또 variance를 정의하는 대신 covariance를 계산하게 됩니다.
+하지만, 여러 개의 확률변수들에 특정한 함수가 주어졌을 때의 expectation은 계산할 수 있습니다(12).
+또 joint variance를 정의하는 대신 covariance를 정의하게 됩니다(12).
 
-여하튼, 지금 단원에서 공부하는 것은 conditional distribution이지만, 06회차 강의에서 다루었던 일반적인 conditional distribution말고, 두 확률변수에 대해 생각할 때의 conditional distribution을 공부합니다.
+이번 강의에서 공부하는 것은 conditional distribution이지만, 06회차 강의에서 다루었던 일반적인 conditional distribution말고, 두 확률변수에 대해 생각할 때의 conditional distribution을 공부합니다.
 
 $$
 \begin{matrix}
@@ -3178,7 +3278,7 @@ conditional expectation에서 condition에 어떤 '확률변수'가 들어가있
 하지만, $E[Y|X=x]$라고 하면 의미가 생깁니다.
 이것은 $X=x$인 조건 하에서의 $Y$의 기댓값을 의미합니다.
 
-더 나아가 이해해야 할 것은 [$E[Y|X]$가 확률변수](https://math.stackexchange.com/q/1946058)라는 사실입니다.
+더 나아가 이해해야 할 것은 [$E[Y|X]$가 확률변수](https://https://math.stackexchange.com/q/1946058)라는 사실입니다.
 $E[Y|X=x]$는 $Y$의 기댓값이기 때문에 $Y$라든지 $y$라든지 하는 값에 의존하지 않습니다.
 이것은 오로지 $x$에 의존하는 값입니다.
 다시 말해, $x$에 대한 함수입니다;
@@ -3228,7 +3328,7 @@ $$f_{XY}(x,y)=1\qquad(0\le y\le x, y\le 2-x)$$
 입니다.
 이때, $E[X|Y=y]$와 $E[Y|X=x]$를 계산해보려 합니다.
 계산을 하기 전에 직관적으로 살펴보면, $y$의 값이 어떤 값이건 상관없이 $(0\lt y\lt 1)$ $X$가 위치하는 구간은 $1$을 중심으로 하는 구간입니다.
-또한, $X$가 여전히 uniform distribution을 따를 것이므로, [$X$의 평균은 1일 수밖에 없습니다.](https://math.stackexchange.com/q/4669361)
+또한, $X$가 여전히 uniform distribution을 따를 것이므로, [$X$의 평균은 1일 수밖에 없습니다.](https://https://math.stackexchange.com/q/4669361)
 따라서 $E[X|Y=y]=1$입니다.
 반대로 $x$ 값이 고정되어 있다고 생각하겠습니다.
 이번에는 $x$가 $0\le x\le1$인 경우와 $1\le x\le2$인 경우의 상황이 다릅니다.
@@ -3336,19 +3436,20 @@ $$
 중간 계산과정에서 $\int te^{-t}\,dt=-te^{-t}-e^{-t}$를 활용했습니다.
 
 이번에는, 확률변수 $X$에 대하여 $g(X)$의 확률을 구하는 식을 소개합니다.
-이번 강의의 맨 처음에 언급한 것이지만, $X$가 어떤 분포를 가지는 확률변수이면, $g(X)$ 또한 새로운 분포를 따르는 확률변수이며, 그 때의 PMF 혹은 PDF는 일치합니다.
-따라서 $g(x)$의 평균을
+이번 강의의 맨 처음에 언급한 것이지만, $X$가 어떤 분포를 가지는 확률변수이면, $g(X)$ 또한 새로운 분포를 따르는 확률변수입니다.
+이때
 
 $$
 \begin{align*}
 E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
 &&\text{(continuous)}\\
-E\left[g(X)\right]&=\sum_{i=1}^ng(x_i)P_X(x_i)
+E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
 &&\text{(discrete)}\\
 \end{align*}
 $$
 
-와 같이 정의할 수 있습니다.
+가 성립합니다.
+자세한 부분에 대해서는 14장에서 다시 볼 예정입니다.
 마찬가지로, 다변수 함수 $g(X,Y)$에 대해서도
 
 $$\tag{$\ast$}
@@ -3707,3 +3808,159 @@ $$
 $$-1\le\rho_{XY}\le1$$
 
 가 성립합니다.
+
+# 13 
+
+# 14 확률변수와 변환함수
+
+이번 강의에서는 $X$의 확률분포가 주어질 때, $g(X)$의 확률분포가 어떻게 나타나는지, 그리고 $E[g(X)]$가 어떻게 계산되는지 다룹니다.
+
+12회차 강의에서 $E[g(X)]$가
+
+\begin{equation}
+only equation environment
+\end{equation}
+
+$$
+\begin{equation}
+equation environment
+\end{equation}
+$$
+
+$$
+\begin{equation*}
+stared equation environment
+\end{equation*}
+$$
+
+$$
+\begin{equation}\tag{9}
+equation environment with tag
+\end{equation}
+$$
+
+$$
+\begin{equation*}\tag{9}
+stared equation environment with tag
+\end{equation*}
+$$
+
+$$
+double dollors
+$$
+
+$$
+double dollors with tag\tag{9}
+$$
+
+
+$$
+\begin{aligned}
+E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
+&&\text{(continuous)}\\
+E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
+&&\text{(discrete)}
+\end{aligned}\tag{$\ast$}
+$$
+
+$$\tag{$\ast$}
+\begin{aligned}
+E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
+&&\text{(continuous)}\\
+E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
+&&\text{(discrete)}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx\tag{$\ast$}
+&&\text{(continuous)}\\
+E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
+&&\text{(discrete)}
+\end{aligned}
+$$
+
+와 같이 계산될 수 있다고 했었습니다.
+그런데, 사실 이산확률변수 $X$가
+
+$$
+\begin{align*}
+P_X(x_1)&=p_1\\
+P_X(x_2)&=p_2\\
+&\vdots\\
+P_X(x_n)&=p_n\\
+\end{align*}
+$$
+
+인 확률질량함수를 가지고 있다고 해서 $(\sum_ip_i=1)$ 새로운 확률변수 $g(X)$가
+
+$$\tag{$\ast\ast$}
+\begin{aligned}
+P_Y(g(x_1))&=p_1\\
+P_Y(g(x_2))&=p_2\\
+&\vdots\\
+P_Y(g(x_n))&=p_n\\
+\end{aligned}
+$$
+
+를 항상 만족시키지는 않습니다.
+
+예를 들어 $X\sim U(\\{-1,0,1\\})$ 이고 $Y=2X-1$이면
+
+$$
+\begin{align*}
+P_X(-1)&=\frac13\\
+P_X(0)&=\frac13\\
+P_X(1)&=\frac13\\
+\end{align*}
+$$
+
+이고
+
+$$
+\begin{align*}
+P_X(-1)&=\frac13\\
+P_X(1)&=\frac13\\
+P_X(3)&=\frac13\\
+\end{align*}
+$$
+
+이라서 $(\ast\ast)$가 성립합니다.
+하지만, $Y=X^2$이면
+
+$$
+\begin{align*}
+P_X(0)&=\frac13\\
+P_X(1)&=\frac23
+\end{align*}
+$$
+
+이 되어 $(\ast\ast)$가 성립합니다.
+그러니까, $(\ast\ast)$와 같은 식이 성립하는 것은 $Y=g(X)$가 일대일함수일 때만 가능합니다.
+
+그러니까, 확률변수 $X$의 분포로부터 $g(X)$의 분포를 설명하는 것은 그렇게까지 깔끔하지는 않습니다.
+하지만 어쨌든 $E[g(X)]$을 계산하는 위의 간단한 식은 성립합니다.
+discrete case에 관한 식을 먼저 보면, 확률변수 $X$가 $x_1$, $\cdots$, $x_m$을 값으로 가지고, $Y=g(X)$가 $y_1$, $\cdots$, $y_n$을 값으로 가진다면
+
+$$\{g^{-1}:(y_j):j=1,2,\cdots,n\}$$
+
+는 $\\{x_1,x_2,\cdots,x_m\\}$의 partition이 됩니다.
+따라서
+
+$$
+\begin{align*}
+E\left[g(X)\right]
+&=\sum_{j=1}^ny_jP(g(Y)=y_j)\\
+&=\sum_{j=1}^ny_jP(X\in g^{-1}\left(\{y_j\}\right))\\
+&=\sum_{j=1}^ny_j\sum_{x\in g^{-1}\left(\{y_j\}\right)}P_X(x)\\
+&=\sum_{j=1}^n\sum_{x\in g^{-1}\left(\{y_j\}\right)}y_jP_X(x)\\
+&=\sum_{j=1}^n\sum_{x\in g^{-1}\left(\{y_j\}\right)}g(x)P_X(x)\\
+&=\sum_{i=1}^mg(x_i)P_X(x_i)
+\end{align*}
+$$
+
+입니다.
+따라서 $(\ast)$가 성립합니다.
+
+$$E\left[g(X)\right]=\int_{-\infty}^\infty g(x)f_X(x)\,dx$$
