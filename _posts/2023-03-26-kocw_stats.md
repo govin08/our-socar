@@ -32,7 +32,7 @@ author_profile: false
 {: .text-center}
 
 을 말합니다.
-이러한 결과(outcome)들은 근원사건(elementary event)이라고도 불립니다.
+이러한 결과들은 근원사건(elementary event)이라고도 불립니다.
 
 예를 들어, 주사위를 하나 던지는 시행을 한다면
 
@@ -73,16 +73,17 @@ $$
 사건은 $S$의 부분집합이라고 했지만, 모든 $S$의 부분집합이 사건은 아닐 수도 있습니다.
 
 $\Sigma$가 $S$의 부분집합들의 집합이면서 다음의 세 성질들을 만족시키면 $\Sigma$를 $\sigma$-algebra라고 부릅니다.
+그리고 $\Sigma$의 원소를 사건으로 정의합니다.
 
 - $\Sigma$는 $S$를 원소로 가집니다 ; $S\in\Sigma$
 - $\Sigma$는 차집합에 대해 닫혀있습니다 ; $A,B\in\Sigma$이면 $A-B\in\Sigma$입니다.
 - $\Sigma$는 countable union에 대해 닫혀있습니다 ; $A_1,A_2,\cdots\in\Sigma$이면, $\bigcup_iA_i\in\Sigma$입니다.
 
-그리고 $P$는 $S$에서 정의된, $P(S)=1$인 측도(measure)입니다.
+한편, $P$는 $S$에서 정의된, $P(S)=1$인 측도(measure)입니다.
 다시 말해, 다음 세 성질을 만족시키는 $P$를 probability measure라고 부릅니다.
 
 - $P$는 $P:\Sigma\to[0,1]$인 함수입니다.
-- $P$는 countably additive합니다 ; $P\left(\sum_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)$
+- $P$는 countably additive합니다 ; $A_i\in\Sigma$가 서로 배반사건일 때 $P\left(\sum_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)$
 - $P(\varnothing)=0$, $P(S)=1$ 입니다.
 
 예를 들어, 주사위를 하나 던지는 시행에서 $\Sigma$를 $S$의 멱집합(power set, $S$의 모든 부분집합들의 집합)이라고 하고 $P$를
@@ -162,7 +163,7 @@ $$P(B|A)=\frac{P(A|B)P(B)}{P(A)}\tag{$(\ast)$}$$
 </div>
 
 
-Bayesian theorem이 활용되는 경우는 대표적인 경우는 $P(B|A)$에서 $A$가 observation data (input)에 대응되고 $B$가 original data (output)에 대응될 때입니다.
+Bayesian theorem이 활용되는 경우는 대표적인 경우는 $P(B|A)$에서 $A$가 observation data (output)에 대응되고 $B$가 original data (input)에 대응될 때입니다.
 어떤 input이 주어졌을 때 어떤 output이 나올 확률은 보통 인과관계나 선후관계를 잘 따지면 계산할 수 있지만, 어떤 output이 나왔을 때 input이 그 값으로 주어졌을 확률, 즉 반대 경우는 해석하기 어렵고 계산하기 어렵습니다.
 그런 경우에 $A$와 $B$의 위치를 바꾸어서, 계산하는 트릭이 Bayesian rule입니다.
 
@@ -179,8 +180,8 @@ $$
 $$
 
 이상적인 상황은, $x_1$이 입력되었을 때 $y_1$이 잘 출력되는 경우와 $x_2$가 입력되었을 때 $y_2$가 잘 출력되는 경우입니다.
-각각의 경우는 $P(y_1|x_1)$, $P(y_2|x_2)$이 큰 확률로 나타나는 경우에 해당합니다.
-계산할 수 있는 네 개 확률을 각각
+각각의 경우는 $P(y_1|x_1)$, $P(y_2|x_2)$이 큰 값으로 나타나는 경우에 해당합니다.
+생각할 수 있는 네 개의 확률값들을 각각
 
 $$
 \begin{align*}
@@ -299,7 +300,7 @@ $$P(A)P(B)=P(A\cap B)\tag{\ast\ast}$$
 
 For two experiments with sample spaces $S_1$ and $S_2$, the sample space of the combined experiments is the Cartesian product $S_1\times S_2$;
 
-동시에 일어나느 서로 다른 두 시행을 하나의 시행으로 보았을 때의 표본공간은, 각각의 시행에 대한 표본공간 $S_1$와 $S_2$의 Cartesian product인 $S_1\times S_2$로 정의합니다.
+동시에 일어나는 서로 다른 두 시행을 하나의 시행으로 보았을 때의 표본공간은, 각각의 시행에 대한 표본공간 $S_1$와 $S_2$의 Cartesian product인 $S_1\times S_2$로 정의합니다.
 
 $$S_1\times S_2=\{(x,y):x\in S_1,y\in S_2\}$$
 
@@ -411,7 +412,7 @@ nx(1+x)^{n-2}(1+nx)=\sum_{k=0}^nk^2\binom nkx^k
 $$
 입니다.
 
-이산확률분포 $X$가 이항분포 $B(n,p)$를 따르면, $X$의 확률질량함수는
+(07강에 포함되는 내용이지만) 이산확률분포 $X$가 이항분포 $B(n,p)$를 따르면, $X$의 확률질량함수는
 
 $$P(X=k)=\binom nkp^k(1-p)^{n-k}$$
 
@@ -595,7 +596,8 @@ $$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-1.png){: .img-50-center}
 
-확률변수($X$)란, 어떤 시행의 근원사건 $w\in S$을 하나의 실수 $X(w)$로 대응시키는 함수를 말합니다.
+확률변수란, 어떤 시행의 근원사건 $w\in S$을 하나의 실수 $X(w)$로 대응시키는 함수 $X$를 말합니다.
+다시 말해, $X$가 확률변수이면, $X$는 $X:S\to\mathbb R$인 함수를 말합니다.
 
 A random variable is a function $X$ mapping each outcome of random experiment $w\in S$ to a real number $x=X(w)$.
 
@@ -661,7 +663,17 @@ $P$는 집합을 숫자로 대응시키는, 조금 복잡한 느낌이었지만 
 {: .text-center}
 
 도 확률변수 $X$가 됩니다.
-이때의 표본공간은 $S=\\{H,T\\}^2$인데, 강의에서는 cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
+이때의 표본공간은
+
+$$
+\begin{align*}
+S
+&=\{H,T\}^2\\
+&=\{(H,H),(H,T),(T,H),(T,T)\}
+\end{align*}
+$$
+
+인데, 강의에서는 cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
 확률변수 $X$는
 
 $$
@@ -685,8 +697,7 @@ P(S)&=1
 $$
 
 와 같은 표현을 사용할 수 있었습니다.
-
-그런데 이것을
+그런데 이것을 확률변수의 함수로서 쓰면
 
 $$
 \begin{align*}
@@ -696,7 +707,7 @@ p(2)&=P(X=2)=\frac14
 \end{align*}
 $$
 
-로 생각하게 되면 $p$는 다루기 쉬운 실함수가 됩니다.
+이 됩니다.
 
 관습적으로 확률변수 자체는 대문자 기호 $X$, $Y$, $Z$ 등으로, 확률변수가 가지는 특정한 값은 $x$, $y$, $z$ 등으로 나타냅니다.
 
@@ -708,12 +719,12 @@ $$
 
 $$A_x=\{w\in S:X(w)=x\}$$
 
-이것은 아까 $(\ast)$에서 $p(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
-즉, $p(x)$ 혹은 $P(X=x)$를
+이것은 아까 $(\ast)$에서 $p(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다;
+<!-- 즉, $p(x)$ 혹은 $P(X=x)$를 -->
 
 $$p(x)=P(X=x)=P(A_x)$$
 
-로 정의합니다.
+<!-- 로 정의합니다. -->
 
 지금까지, $P(~\cdot~)$에 들어가는 것이 사건(event, $S$의 부분집합)이었던 것을, 특정한 숫자로 들어갈 수 있게 바꾸었습니다.
 여기에는 '숫자들의 집합'도 들어갈 수 있습니다.
@@ -781,38 +792,39 @@ P\left(X\ge\frac14\right)&=\frac14
 $$
 
 입니다.
-아래의 세 개 계산은 notrivial합니다.
+아래의 세 개 계산은 nontrivial합니다.
 좌우극한을 가지고 계산하면
 
 $$
 \begin{align*}
 P(X\ge0)
 &=1-P(X\lt0)\\[10pt]
-&=1-\lim_{x\to0+}P(X\le x)\\
-&=1-\lim_{x\to0+}\left(x+\frac12\right)\\
+&=1-\lim_{x\to0-}P(X\le x)\\
 &=1-0=1\\[10pt]
 P(X=0)
 &=P(X\le0)-P(X\lt0)\\
 &=\frac12-0=1\\
 P\left(X\ge\frac14\right)
 &=1-P\left(X\lt\frac14\right)\\[10pt]
-&=1-\lim_{x\to\frac14+}P(X\le x)\\
-&=1-\lim_{x\to\frac14+}\left(x+\frac12\right)\\
+&=1-\lim_{x\to\frac14-}P(X\le x)\\
+&=1-\lim_{x\to\frac14-}\left(x+\frac12\right)\\
 &=1-\frac34=\frac14
 \end{align*}
 $$
+
+입니다.
+이때, $P(X>\frac14)=P(X\ge\frac14)$이지만 $P(X>0)=P(X\ge0)$인 것은 $F_X(x)$가 $x=\frac14$에서는 연속이지만 $x=0$에서는 불연속인 사실과 관련이 있습니다.
 
 이고, 강의에 따르면 조금 직관적으로도 이해할 수 있는 것 같습니다.
 
 **2.5 discrete random variables(이산확률변수)**
 
 확률변수 $X$가 가질 수 있는 값이 유한개이면 (혹은 countable개이면) $X$를 이산확률변수라고 부릅니다.
-
-이 때에는 확률질량함수(probability mass function) $P_X(x)$를 다음과 같이 정의합니다.
+이 때, 확률질량함수(probability mass function, PMF) $P_X(x)$를 다음과 같이 정의합니다.
 
 $$P_X(x)=P(X=x)$$
 
-동전을 두 개 던지는 시행에서
+예를 들어, 동전을 두 개 던져 앞면이 나온 횟수를 $X$라고 할 때
 
 $$
 \begin{align*}
@@ -822,7 +834,8 @@ P_X(2)=\frac14
 \end{align*}
 $$
 
-CDF와의 관계는 다음과 같습니다.
+입니다.
+PMF와 CDF 사이의 관계는 다음과 같습니다.
 
 $$F_X(x)=\sum_{x_i\le x}P_X(x_i)$$
 
@@ -830,17 +843,29 @@ $$F_X(x)=\sum_{x_i\le x}P_X(x_i)$$
 
 동전을 두 개 던지는 시행에서의
 확률질량함수의 그래프와 CDF와 PMF의 그래프는 아래와 같습니다.
+CDF의 그래프는 step function으로 나타나는 것을 볼 수 있습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-5.png){: .img-100-center}
 
-CDF의 그래프는 step function으로 나타나는 것을 볼 수 있습니다.
+**dirac delta function**
 
-이산확률변수 $X$에 대하여 연속확률변수에서의 확률밀도함수 $f_X(x)$에 대응하는 개념을 설명하려면 dirac delta function과 같이 조금 복잡한 논의가 필요합니다.
+04회차 강의에서 연속확률변수를 다루게 됩니다.
+그리고, 연속확률변수에서는 확률질량함수(PMF)가 아닌 확률밀도함수(PDF)를 다루게 됩니다.
+
+이산확률변수 $X$에 대해서도 확률밀도함수 $f_X(x)$를 생각할 수 있을까?
+{: .text-center}
+
+에 대한 답은 특별한 함수 $\delta$에서 찾을 수 있습니다.
+
+<div class="notice--danger">
+강의에서는 $\delta$함수에 대해 간단하게만 언급하고 있는데, 포스트에서는 <a href="https://en.wikipedia.org/wiki/Dirac_delta_function">위키피디아</a> 등을 참고하여 조금 더 적어보았습니다.
+</div>
+
 다시 말해, 연속확률변수에서는
 
 $$P(a\lt X\le b)=\int_a^bf_X(x)\,dx$$
 
-와 같은 식을 만족시키는 함수 $f_X(x)$를 생각하게 되는데, 위의 $P_X(x)$의 그래프에서는 '그래프 아래의 면적'이라는 개념을 정의할 수 없으니까 애매합니다.
+와 같은 식을 만족시키는 함수 $f_X(x)$를 생각하게 되는데, 확률질량함수 $P_X(x)$의 그래프에서는 '그래프 아래의 면적'이라는 개념을 정의할 수 없으니까 애매합니다.
 그럴 때에, 함수 $\delta$(dirac delta function)를 도입하는데, 이 함수는
 
 $$
@@ -850,9 +875,6 @@ $$
 0&(x\ne0)
 \end{cases}
 $$
-
-와 같이 이해합니다.
-[(출처)](https://en.wikipedia.org/wiki/Dirac_delta_function)
 
 이 함수는 $x\ne0$인 곳에서는 함숫값이 0이고 $x=0$인 곳에서만 함숫값이 $\infty$인 불연속함수처럼 적혀있는데, 실제로는 연속함수처럼 생각합니다.
 또, 실수 전체의 범위에서 적분했을 때의 값이 $1$인 것으로 가정합니다.
@@ -886,13 +908,13 @@ p_n&(x=x_n)
 \end{cases}
 $$
 
-인 확률질량함수 $P_X(x)$에 대해서는 (단, $p_1+\cdots+p_n=1$)
+인 확률질량함수 $P_X(x)$에 대해서 (단, $p_1+\cdots+p_n=1$)
 
 $$f_X(x)=\sum_{k=1}^np_k\delta(x-x_k)$$
 
 가 확률밀도함수의 역할을 할 수 있습니다.
 
-예를 들어 동전을 두 번 던지는 시행에 대해서는
+예를 들어, 동전을 두 번 던지는 시행에 대해서는 PDF를
 
 $$f_X(x)=\frac14\delta(x)+\frac12\delta(x-1)+\frac14\delta(x-2)$$
 
@@ -935,28 +957,27 @@ $X(S)$가 countable이면 (혹은 at most countable, 그러니까, finite이거�
 확률을 measure-theoretic하게 생각하면 $P$는 하나의 measure라고 볼 수 있고 이 경우에는 '집합의 길이'와 관련된 measure를 $P$로써 정의합니다.
 그런데 원소가 하나인 집합에 대한 '길이'는 0이므로 $P(X=0.5)=0$입니다.<br>
 
-조금 더 직관적으로 말할 수도 있을 것 같습니다.
+조금 다르게 설명할 수도 있습니다.
 $P(X=0.5)=a$로 두면 ($a>0$) 다른 모든 숫자 $0\le x\le1$에 대해서도 마찬가지로 $P(X=x)=a$가 성립한다고 말할 수 있을 겁니다.
 그러면, 모든 $x$에 대하여 이 확률값들을 더했을 때 1이 되어야 합니다.
 사실 이 덧셈이 잘 정의되는지도 의문이기는 하지만, 어쨌든 양수 $a$를 무한번 더해서 1이 된다는 것인데, 이건 말이 안됩니다.
-따라서, 임의의 양의 실수 $a$에 대하여 $P(X=0.5)=a$일 수 없고, $P(X=0.5)=0$일 수밖에 없습니다.
+따라서, 임의의 양의 실수 $a$에 대하여 $P(X=0.5)=a$인 것은 불가능하고, 따라서 $P(X=0.5)=0$일 수밖에 없습니다.
 </div>
 
-즉, 이산확률변수에서의 '확률질량함수'가 잘 작동하지 않고, 따라서 다른 방식으로 연속확률분포를 이해할 필요가 있습니다.
+즉, 연속확률변수에서는 PMF가 잘 작동하지 않고, 따라서 다른 방식으로 연속확률분포를 이해할 필요가 있습니다.
+강의에서는 다음과 같은 영어 문장으로 이 문제를 표현하고 있습니다.
 
 It is not possible to define a probability value for each $x$.
+{: .text-center}
 
-$X$가 특정한 값 $x$를 가질 때의 확률은 무조건 0인데 비해
-
-$$P(X=x)=0$$
-
-$X$가 어떤 구간 안에 위치할 확률은 많은 경우에 계산할 수 있습니다.
+$X$가 특정한 값 $x$를 가질 때의 확률은 정의하기 어려운 데 비해, $X$가 어떤 구간 안에 위치할 확률은 많은 경우에 계산할 수 있습니다.
 예를 들어, 0과 1 사이의 숫자를 임의로 뽑을 때, 그 수가 0.1과 0.3사이의 값을 가질 확률은 0.2이라고 생각할 수 있습니다.
+왜냐하면, $S$의 길이는 1인데 비해 $[0.1,0.3]$의 길이는 0.2이기 때문입니다.
 
-$$P(0.1\lt X\lt 0.3)=0.2$$
+$$P(0.1\lt X\lt 0.3)=\frac{0.2}1=0.2$$
 
-그러니까, 특정한 점 $X=x$에 대한 확률을 정의하는 대신 $x$를 포함하는 infinitesimal한 구간을 생각하고 그 구간에 대한 확률값을 그 구간의 길이로 나눈 값을 고려할 수 있습니다.
-그리고 그 값은 $F_X$가 미분가능할 경우 $F_X$의 도함수와 정확히 일치합니다.
+그러니까, 특정한 점 $X=x$에 대한 확률(확률질량함수)을 정의하는 대신 $x$를 포함하는 infinitesimal한 구간을 생각하고 그 구간에 대한 확률값을 그 구간의 길이로 나눈 값을 고려할 수 있습니다.
+그리고 그 값은 $F_X$가 미분가능할 경우 $F_X$의 $x$에서의 미분계수와 정확히 일치합니다.
 
 $$
 \begin{align*}
@@ -969,14 +990,16 @@ $$
 
 이 함수 $f_X(x)$를 확률밀도함수(probability density function)이라고 부릅니다.
 위의 식은 CDF가 주어졌을 때 PDF를 구하는 방법이기도 합니다.
-그 반대의 경우는 $f_X=F_X'$와 $\lim_{x\to-\infty}F_X(x)=0$로부터
+반대로, PDF가 주어졌을 때 CDF를 구하려면, $f_X=F_X'$와 $\lim_{x\to-\infty}F_X(x)=0$로부터
 
 $$F_X(x)=\int_{-\infty}^xf_X(\tilde x)\,d\tilde x$$
 
-와 같이 쓸 수 있습니다.
+와 같이 구할 수 있습니다.
 
+<div class="notice--danger">
 CDF는 일반적으로 미분가능하지 않을 수도 있지만, 이 강의에서는 CDF가 미분가능한 경우만 다룬다고 합니다.
 CDF가 미분가능하지도 않고, 심지어 불연속인 극단적인 경우는 2.3에서 봤었습니다.
+</div>
 
 함수 $f_X(x)$가 어떤 연속확률변수의 PDF이기 위해서는 다음 두 조건을 만족시켜야 합니다.
 
@@ -986,9 +1009,9 @@ CDF가 미분가능하지도 않고, 심지어 불연속인 극단적인 경우�
 
 마찬가지로, 함수 $P_X(x)$가 어떤 이산확률변수의 PMF이기  위해서는 다음의 두 조건을 만족시켜야 합니다.
 
-(1) $p_X(x_i)\ge0$
+(1') $P_X(x_i)\ge0$
 
-(2) $\sum_{k=1}^n p_X(x_i)=1$
+(2') $\sum_{k=1}^nP_X(x_i)=1$
 
 PDF의 추가적인 성질들은 다음과 같습니다.
 
@@ -1007,9 +1030,17 @@ $$
 
 (4) $P(X\lt a)=P(X\le a)$
 
-이것은, 한 점에서의 확률이 항상 0이라는 사실로부터 바로 설명될 수 있습니다.
-위의 4번에 쓴 식은 가능한 여러 식들 중 하나를 대표적으로 쓴 것입니다.
-일반적으로 $\le$와 $\lt$는 적절히 바꿔가면서 사용될 수 있습니다.
+만약, 임의의 실수 $a$에 대하여 $P(X=a)=0$가 항상 성립한다고 가정할 때, (4)는 당연합니다.
+왜냐하면
+
+$$P(X\le a)=P(X\lt a)+P(X=a)=P(X\lt a)+0=P(X\lt a)$$
+
+이기 때문입니다.
+
+<div class="notice--danger">
+위의 (4)번식 성질은 가능한 여러 식들 중 하나를 대표적으로 쓴 것입니다.
+일반적으로, 연속확률변수의 확률표현식에서 $\le$와 $\lt$는 적절히 바꿔가면서 사용될 수 있습니다.
+</div>
 
 **ex 2.11**
 
@@ -1046,16 +1077,16 @@ $f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution�
 이때, 실제 신호와 level로 주어진 근사값들 사이의 차이를 quantization error라고 가정하는데, 많은 경우에 이 error를 uniform distribution을 따른다고 가정하고 모델링을 진행한다고 합니다.
 
 <div class="notice--danger">
-<b> 확률분포(probabilistic distribution) </b>
+<b> 확률분포(probabilistic distribution) </b> <br>
 확률변수 $X$가 어디에 얼마나 분포되어있는지 하는 것을 그 확률변수의 분포(distribution)이라고 합니다.
 이 분포를 직접적으로 표현하는 것이 PMF, PDF, CDF와 같은 분포함수들입니다.
 그 중 이산확률변수에 대해서는 PMF를, 연속확률분포에 대해서는 PDF를 주로 분포함수로 취급하게 되는데 PMF와 PDF는 모든 종류의 확률변수에 대해 잘 정의되지 않습니다.
-
+<br>
 예를 들어, PDF로는 이산확률분포를 정하기가 힘들었습니다.
 그래프의 면적이 1이 된다는 점을 만족시키기 위해서 dirac delta function 같은 것을 도입해야 했습니다.
 또, PMF로는 연속확률분포를 정하는 데 어려움이 있었습니다.
 각 점에 대한 PMF의 값이 0이 될 수밖에 없는데, 그건 그것대로 모순이었습니다.
-
+<br>
 하지만, CDF는 $X$가 이산확률변수이건 연속확률변수이건 상관없이 적절하게 잘 정의될 수 있습니다.
 또한, 일단 CDF가 정해지고 나면 CDF의 식으로부터 PMF나 PDF의 식을 쉽게 구할 수 있다는 점도 있습니다.
 그래서 그런지, 많은 경우에 CDF를 먼저 정의하고, 그 이후에 PMF나 PDF를 정의하는 것 같습니다.
@@ -1092,8 +1123,8 @@ $$
 P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)
 $$
 
-$K$가 the number of event occurence in a time interval이라고 하면, $K$는 위와 같은 분포를 따르는 경우가 많다고 합니다.
-
+$K$가 어떤 시간 간격동안 어떤 사건이 일어난 횟수라고 하면 $K$는 위와 같은 분포를 따릅니다.
+Poisson distribution의 자세한 의미에 대해서는 08회차 강의에 자세히 적어보았습니다.
 $P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번째 조건인 $P_K(k)\ge0$은 당연합니다.
 두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series(혹은 지수함수에 대한 추상적인 정의)를 사용할 수 있습니다;
 
@@ -1169,10 +1200,13 @@ E[X]
 $$
 
 입니다.
+세번째 등호에서 부분적분을 사용했습니다.
 
+<div class="notice--danger">
 이와 같은 푸아송 분포와 지수분포는 특정한 값(parameter) $\lambda$에 의존합니다.
 실제 자연현상이나 사회현상은 그 분포를 알 수 없는데, 우리는 특정한 확률모델을 전제하여 그 현상을 모델링해볼 수 있습니다.
 이와 같은 과정을 parametric estimation (혹은 parametric probability density estimation) 이라고 부르는 것 같습니다.
+</div>
 
 **3.4 moments of random variables**
 
@@ -1180,8 +1214,8 @@ $$
 
 $$
 \begin{align*}
-E[X^n]&=\sum_i{x_i}^n P_X(x_i)\\
-E[X^n]&=\int_{-\infty}^\infty x^n f_X(x)\,dx
+E[X^n]&=\sum_i{x_i}^n P_X(x_i)&&(\text{discrete})\\
+E[X^n]&=\int_{-\infty}^\infty x^n f_X(x)\,dx&&(\text{continuous})
 \end{align*}
 $$
 
@@ -1189,8 +1223,8 @@ $$
 
 $$
 \begin{align*}
-E[(X-\mu)^n]&=\sum_i(x_i-\mu)^nP_X(x_i)\\
-E[(X-\mu)^n]&=\int_{-\infty}^\infty(x-\mu)^n f_X(x)\,dx
+E[(X-\mu)^n]&=\sum_i(x_i-\mu)^nP_X(x_i)&&(\text{discrete})\\
+E[(X-\mu)^n]&=\int_{-\infty}^\infty(x-\mu)^n f_X(x)\,dx&&(\text{continuous})
 \end{align*}
 $$
 
@@ -1202,6 +1236,18 @@ E[(X-\mu)]
 &=\sum_i(x_i-\mu)P_X(x_i)\\
 &=\sum_ix_iP_X(x_i)-\mu\sum_iP_X(x_i)\\
 &=\mu-\mu\times 1\\
+&=0
+\end{align*}
+$$
+
+이고
+
+$$
+\begin{align*}
+E[(X-\mu)]
+&=\int_{-\infty}^\infty(x-\mu)f_X(x)\,dx\\
+&=\int_{-\infty}^\infty xf_X(x)\,dx-\int_{-\infty}^\infty \mu f_X(x)\,dx\\
+&=E[X]-\mu\times1\\
 &=0
 \end{align*}
 $$
@@ -1219,27 +1265,102 @@ E[(X-\mu)^2]
 $$
 
 인데 이 값을 분산(variance)이라고 부르고 ${\sigma_X}^2$으로 씁니다.
+강의에서는 ${\sigma_X}^2$와 같은 표현만 쓰이고 있지만, 이 포스트에서는 $V[X]$와 같은 표현도 종종 사용하겠습니다.
+분산에 관한 성질은 다음과 같습니다.
 
 - 분산은 항상 0보다 크거나 같습니다.
-- 모든 변량이 같으면 ($x_1=\cdots=x_n$) 분산이 0이고 그 역도 성립합니다.
+- uniform distribution의 분산은 0이고 그 역도 성립합니다.
 - 분산이 작으면 변량들이 평균에 모여있고 분산이 크면 변량들이 넓게 분포되어 있습니다.
 - $t$에 대한 함수 $g(t)=E[(X-t)^2]$를 생각하면 이 함수는 $t=\mu$에서 최솟값 ${\sigma_X}^2$를 가집니다.
 
+<div class="notice--danger">
+<b> LOTUS </b> : law of the unconscious statistician <br>
+14회차 강의에서 다루게 되겠지만, 여기에서 미리 말해놓는 게 좋을 것 같습니다.
+흔히 LOTUS라는 약칭으로 불리는 정리 혹은 정의로서, 함수 $g$에 대하여 $g(X)$의 평균을 구하는 식이 있습니다 ; 
+
+$$
+\begin{align*}
+E[g(X)]&=\sum_ig(x_i)P_X(x_i)                   &&(\text{discrete})\\
+E[g(X)]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx   &&(\text{continuous})
+\end{align*}\tag{LOTUS, $(\ast)$}
+$$
+
+아까 평균에 대해 정의한 것은
+
+$$
+\begin{align*}
+E[X]&=\sum_{i=1}^nx_iP_X(x_i)           &&(\text{discrete})\\
+E[X]&=\int_{-\infty}^\infty xf_X(x)\,dx &&(\text{continuous})
+\end{align*}\tag{$\ast\ast$}
+$$
+
+와 같은 정의가 전부였습니다.
+그런데 무의식적(unconscious)으로
+
+$$
+\begin{align*}
+E[X^n]&=\sum_i{x_i}^n P_X(x_i)&&(\text{discrete})\\
+E[X^n]&=\int_{-\infty}^\infty x^n f_X(x)\,dx&&(\text{continuous})
+\end{align*}
+$$
+
+와 같은 계산을 했습니다.
+이 계산이 정당화되려면 LOTUS와 같은 식을 먼저 증명해야 하는 것입니다.
+통계학자들은 보통 이와 같은 논리적인 비약을 알아차리지도 못한 채로 논의를 진행시킨다는 의미에서, 이 정리는 
+<a href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician">law of the unconscious statistician</a>라는 이름으로 불립니다.<br>
+
+결론부터 말하자면, LOTUS의 식은 성립합니다.
+다만, 그 증명이 아주 당연하지는 않습니다.
+discrete case는 증명이 쉽지만, continuous case에 대한 일반적인 증명은 어렵습니다.
+그래서, $(\ast\ast)$를 정의로, LOTUS를 정리로 두고 그것의 증명을 시도하는 대신, LOTUS의 식을 정의로서 차용하는 경우도 있다고 합니다.
+이렇게 평균을 LOTUS의 식으로 정의해버리면, 기존 정의와도 일치하는 정의가 되면서, 굳이 어려운 증명을 하지 않아도 되게 됩니다. <br>
+
+이 포스트에서는 $(\ast\ast)$를 정의로 두고 LOTUS를 증명하려고 합니다.
+그것들은 14회차 강의에 대해 적으면서 다시 다루겠습니다.
+다만, LOTUS를 아직 비록 증명하지는 않았더라도, LOTUS는 앞으로 사용할 예정입니다.
+</div>
 
 **Proposition 3.3**
 
-어떤 확률변수 $X$에 대한 함수 $g_1(X)$, $\cdots$, $g_n(X)$와 실수 $a_1$, $\cdots$, $a_n$에 대하여
+어떤 확률변수 $X$에 대한 함수 $g_1(X)$, $g_2(X)$와 실수 $a_1$, $a_2$에 대하여
 
 $$
-E[a_1g_1(X)+\cdots+a_ng_n(X)]=a_1E[g_1(X)]+\cdots+a_nE[g_n(X)]
+E[a_1g_1(X)+a_2g_2(X)]=a_1E[g_1(X)]+a_2E[g_2(X)]
 $$
 
 이 성립합니다.
-정의에 넣어서 증명해보면 바로 증명됩니다.
+LOTUS 식에 넣으면 바로 증명됩니다.
+만약 $X$가 이산확률변수이면
 
+$$
+\begin{align*}
+E[a_1g_1(X)+a_2g_2(X)]
+&=\sum_i\left(a_1g_1(x_i)+a_2g_2(x_i)\right)P_X(x_i)\\
+&=a_1\sum_ig_1(x_i)P_X(x_i)+a_2\sum_ig_2(x_i)P_X(x_i)\\
+&=a_1E[g_1(X)]+a_2E[g_2(X)]
+\end{align*}
+$$
+
+이고, 만약 $X$가 연속확률변수이면
+
+$$
+\begin{align*}
+E[a_1g_1(X)+a_2g_2(X)]
+&=\int_{-\infty}^\infty\left(a_1g_1(x)+a_2g_2(x)\right)f_X(x)\,dx\\
+&=a_1\int_{-\infty}^\infty g_1(x)f_X(x)\,dx
++a_2\int_{-\infty}^\infty g_2(x)f_X(x)\,dx\\
+&=a_1E[g_1(X)]+a_2E[g_2(X)]
+\end{align*}
+$$
+
+이기 때문입니다.
+
+<div class="notice--danger">
 이것은 $E$가 linear operator라는 뜻입니다.
 즉, 모든 실함수(혹은 real measureable function)들의 집합을 $V$라고 하면, 이것은 (무한차원의) 벡터공간입니다.
-이때, $E$는 $E:V\to\mathbb R$인 함수라고 생각할 수 있는데 이 $E$가 선형함수라는 뜻입니다. (더 구체적으로는, linear functional입니다.)
+이때, $E$는 $E:V\to\mathbb R$인 함수라고 생각할 수 있는데 이 $E$가 선형함수라는 뜻입니다.
+(더 구체적으로는, linear functional입니다.)
+</div>
 
 이 proposition으로부터 바로 얻을 수 있는 결과는
 
@@ -1259,7 +1380,7 @@ $$
 \end{align*}
 $$
 
-입니다.
+도 얻을 수 있습니다.
 이를 이용하여 Poisson distribution
 
 $$P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}$$
@@ -1275,6 +1396,7 @@ E[K^2]
 +\sum_{k=0}^\infty k\frac{\lambda^k}{k!}e^{-\lambda}\\
 &=\sum_{k=2}^\infty k(k-1)\frac{\lambda^k}{k!}e^{-\lambda}+E[X]\\
 &=\lambda^2\sum_{k=2}^\infty\frac{\lambda^{k-2}}{(k-2)!}e^{-\lambda}+E[X]\\
+&=\lambda^2\sum_{m=0}^\infty\frac{\lambda^m}{m!}e^{-\lambda}+E[X]\\
 &=\lambda^2+\lambda
 \end{align*}
 $$
@@ -1320,14 +1442,19 @@ $${\sigma_X}^2=E[X^2]-E[X]^2=\frac1{\lambda^2}$$
 **ex 3.13 geometric distribution**
 
 Let $K$ be the number of trials until the first success.
-For example, we may toss a die  repeatedly until the first $6$.
+For example, we may toss a die repeatedly until the first $6$.
 
-따라서 $K$는 이산확률변수이고, PMF는
+시행의 결과가 성공/실패의 두 종류로 나오는 시행을 Bernoulli trial이라고 합니다.
+어떤 Bernoulli trial을 여러 번 반복할 때 처음 성공하기까지 걸린 시행횟수를 확률변수 $K$라고 하겠습니다.
+예를 들어, 주사위 하나를 반복적으로 던질 때, 주사위의 눈이 처음으로 6이 나오기까지의 시행횟수를 $K$라고 할 수 있습니다.
 
-$$P_K(k)=(1-p)^{k-1}p$$
+그러면 $K$는 이산확률변수이고, PMF는
+
+$$P_K(k)=(1-p)^{k-1}p\qquad(k=1,2,\cdots)$$
 
 로 주어집니다.
-PMF의 두번째 조건을 (예의상) 확인해보면
+$P_K(k)$가 PMF가 되기 위한 첫번째 조건인 $P_K(k)\ge0$은 당연합니다.
+두번째 조건도 (예의상) 확인해보면
 
 $$
 \sum_{k=1}^\infty P_K(k)=p+p(1-p)+p(1-p)^2+\cdots=\frac p{1-(1-p)}=1
@@ -1366,7 +1493,7 @@ $$E[K]=\sum_{k=1}^\infty k(1-p)^{k-1}p$$
 
 $$\sum_{k=1}^\infty(1-p)^k=\frac{1-p}{1-(1-p)}=\frac{1-p}p=\frac1p-1$$
 
-이고, 양변을 미분한 뒤 마이너스를 붙이면
+이고, 양변을 $p$에 대하여 미분한 뒤 마이너스를 붙이면
 
 $$
 \begin{equation}\tag{$*$}
@@ -1392,21 +1519,19 @@ $$\sum_{k=1}^\infty k(k-1)(1-p)^{k-2}=\frac2{p^3}$$
 이고, 따라서
 
 $$
-\begin{equation}\tag{$\ast\ast$}
 \begin{aligned}
 \sum_{k=1}^\infty k^2(1-p)^{k-2}
 &=\frac2{p^3}+\sum_{k=1}^\infty k(1-p)^{k-2}\\
-&=\frac2{p^3}+\frac1{p^2(1-p)}\\
+&\stackrel{(\ast)}=\frac2{p^3}+\frac1{p^2(1-p)}\\
 &=\frac{2(1-p)+p}{p^3(1-p)}\\
 &=\frac{2-p}{p^3(1-p)}
-\end{aligned}
-\end{equation}
+\end{aligned}\tag{$\ast\ast$}
 $$
 
 이고,
 
 $$
-E[K^2]=\sum_{k=1}^\infty k^2p(1-p)^{k-1}
+E[K^2]=\sum_{k=1}^\infty k^2(1-p)^{k-1}p
 =\frac{2-p}{p^3(1-p)}\times p(1-p)=\frac{2-p}{p^2}
 $$
 
@@ -1436,8 +1561,17 @@ computer vision에서의 얼굴인식문제를 아주 naive하게 생각할 때,
 $$g(t)=\sum_{k=1}^n(t-x_k)^2$$
 
 는 $t=\frac1n\sum_{k=1}^nx_k$일 때, 즉 $t$가 $x_k$들의 평균일 때 최소가 되는 것입니다.
-(중학교 식으로 $ax^2+bx+c$의 최솟값을 구하는 식으로 해도 되고, 고등학교 식으로 미분을 사용해도 됩니다.)
-여기에서는 discrete uniform distribution인 경우에 대해서만 증명한 셈이지만 일반적인 분포에 대해서도, 그리고 연속확률분포에 관해서도 마찬가지의 사실을 쉽게 증명할 수 있습니다.
+즉
+
+$$\text{arg}\min_tg(t)=\text{arg}\min_t\sum_{k=1}^n(t-x_k)^2=\frac1n\sum_{k=1}^nx_k$$
+
+이고
+
+$$\min_tg(t)=\min_t\sum_{k=1}^n(t-x_k)^2=\sigma_X$$
+
+인 것입니다.
+증명은, 중학교 식으로 $ax^2+bx+c$의 최솟값을 구하는 식으로 해도 되고, 고등학교 식으로 미분을 사용해도 됩니다.
+여기에서는 discrete uniform distribution인 경우에 대해서만 이야기한 셈이지만 일반적인 분포에 대해서도, 그리고 연속확률분포에 관해서도 마찬가지의 사실을 쉽게 증명할 수 있습니다.
 
 반면
 
@@ -1461,41 +1595,12 @@ $$P_X(x|A)=P(X=x|A)$$
 $$P(\{w\in S:X(w)=x\}|A)$$
 
 의 의미입니다.
-
-<!-- 여기에서도 notation에 대한 이슈를 언급하지 않을 수가 없습니다.
-$P(x_i|A)$라는 표현은 아직 정의된 적이 없는 표현입니다.
-$P(\cdot|\cdot)$에서 두 개의 $~\cdot~$은 사건, 그러니까 $S$의 부분집합이 들어가야 합니다.
-그런 점에서 $A$는 적절히 잘 들어갔으나, $x_i$는 도저히 사건이 아닙니다.
-$P(x_i\cap A)$라는 표현 또한 마찬가지입니다. -->
-
-<!-- 그런데, 앞서 확률변수의 의미($P$가 집합의 함수가 아니라 숫자의 함수라서 더 다루기가 편해졌다는 내용)에 대해 말할 때에 $p(x)$라는 표현을 쓴 적이 있습니다.
-이것은
-
-$$p(x)=P(X=x)=P(A_x)=P\left(\{w\in S:X(w)=x\}\right)$$
-
-으로 정의되었던 것 같습니다.
-여기서 $P(A_x)$라는 표현은 $A_x$가 사건이라는 점에서 제대로 된 표현입니다.
-그러니까 위의 식을, (굉장히 원리주의적인 방식으로) 다시 표현하면
-
-$$
-\begin{align*}
-E[X|A]
-&=\sum_{x_i\in A}x_iP(A_{x_i}|A)\\
-&=\sum_{x_i\in A}x_i\frac{P(A_{x_i}\cap A)}{P(A)}
-\end{align*}
-$$
-
-와 같이 해석할 수 있을 것입니다.
-notation 상의 문제가 없으니 앞으로는 $P(x_i|A)$, $P(x_i\cap A)$와 같은 표현을 마음껏 쓸 수 있을 것 같습니다. -->
-
-<!-- (다만, $E[X|A]$라는 표현에 대해서는, 그 자체가 정의이기때문에 문제될 것이 없고, 직관적으로도 '사건 $A$가 발생했다는 조건 하에서의 $X$의 평균'이라는 의미이므로 전혀 문제될 것이 없지만, 아주 잘 와닿지는 않는 것 같습니다.) -->
-
 그러면, 이산확률변수에서의 conditional expectation을
 
-$$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i)$$
+$$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i|A)$$
 
 로 정의할 수 있습니다.
-(여기에서 $A\subset S$라면, $x_i\in A$는 $X^{-1}(\\{x_i\\})\subset A$로 해석해야 할 것입니다.)
+(여기에서 $A$는 사건(event, $A\subset S$)이라기보다는 실수들의 집합($A\subset\mathbb R$)인 것 같습니다.)
 
 이번에는 연속확률변수의 조건부 기댓값을 정의하겠습니다.
 먼저 conditional CDF는
@@ -1524,14 +1629,6 @@ E[X|A]=\int_{x\in A}xf_X(x|A)\,dx
 $$
 
 로 정의할 수 있습니다.
-(마찬가지로 $x\in A$는 $X^{-1}(\\{x\\})\subset A$로 해석해야 할 것입니다.)
-
-<!-- 이때, $f_X(x|A)$는 conditional probability density function, 줄여서 conditional density (혹은 conditional PDF) 입니다.
-이것은 정의이며, 이 정의는 discrete case와 정확히 잘 대응되는 정의입니다.
-그리고 이것은 conditional cumulative distribution function (혹은 conditional CDF)를 미분해서 얻어집니다.
-이것 또한 정의이며, PDF와 CDF 사이의 관계와 같다는 점에서 일관된 정의입니다.
-세번째 줄의 $P(X\le x|A)$라는 표현도 큰 문제는 없습니다.
-$P\left(\\{w\in S:X(w)\le x\\}|A\right)$ 이므로 잘 정의됩니다. -->
 
 **ex. 3.14**
 
@@ -1601,16 +1698,27 @@ $$f_X(x)=\frac1{20},\quad 40\le x\le 60$$
 $$A=\{X\le 55\}$$
 
 인 경우를 보겠습니다.
-conditionoal PDF는
+conditionoal CDF는
 
 $$
-F_X(x|A)=P(X\le x|X\le 55)=\frac{x-40}{15}
+F_X(x|A)=P(X\le x|X\le 55)
+=\frac{P\left((X\le x)\cap X\le55\right)}{P(X\le55)}
+=\begin{cases}
+0               &(x\lt40)
+\frac{x-40}{15} &(40\le x\lt55)\\
+1               &(x\ge55)
+\end{cases}
+=
 $$
 
-이고 conditionoal CDF는
+이고 conditionoal PDF는
 
 $$
-f_X(x|A)=\frac d{dx}F_X(x|A)=\frac1{15}
+f_X(x|A)=\frac d{dx}F_X(x|A)
+=\begin{cases}
+\frac1{15}  &(40\le x\lt55)\\
+0           &(\text{otherwise})
+\end{cases}
 $$
 
 입니다.
@@ -1633,7 +1741,8 @@ $$
 따라서 이 조건 하에서의 평균은 $\frac{40+55}2=47.5$가 되어야 합니다.
 
 그런 것 치고는 위의 계산은 불필요하게 복잡한 것 같습니다.
-저 위의 계산처럼 conditional density를 사용하지 않는 방법은.. 크게 없을 것 같습니다. conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
+저 위의 계산처럼 conditional density를 사용하지 않는 방법은 크게 없을 것 같습니다.
+conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
 굳이 다른 방법을 찾자면 부분적분을 사용해 conditional CDF를 사용할 수도 있을 것 같습니다.
 
 # 07 여러가지 이산확률분포
@@ -1714,7 +1823,7 @@ $$
 'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은 '[베르눌리](https://www.youtube.com/watch?v=n6czlFpvaf4)'라고 읽는 것이 맞는 것 같습니다.
 마찬가지로 Poisson은 '[푸아상](https://youtu.be/43eJq-pAOGA)'으로 발음하는 것이 맞는 것 같습니다.
 
-강의에서는 $X$가 binary인 경우를 bernoulli distribution이라고 한다고 되어 있습니다.
+강의에서는 $X$가 binary인 경우를 Bernoulli distribution이라고 한다고 되어 있습니다.
 앞서 말했듯 $X$는 $X:S\to\mathbb R$입니다.
 여기서 binary라는 것은 $|S|=2$라는 의미입니다.
 물론 $|X(S)|=2$도 성립할 것입니다.
@@ -1796,7 +1905,7 @@ $$
 
 > A Bernoulli trial (or binomial trial) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
 
-이런 Bernoulli trial을 $n$번 시행했을 때, sucess의 횟수 (혹은 $S=\\{s_1,s_2\\}$의 관점에서는 $s_1$의 횟수)를 확률변수 $X$라고 정의할 때, 이때 $X$의 분포를 이항분포(binomial distribution)라고 합니다.
+이런 Bernoulli trial을 $n$번 시행했을 때, success의 횟수 (혹은 $S=\\{s_1,s_2\\}$의 관점에서는 $s_1$의 횟수)를 확률변수 $X$라고 정의할 때, 이때 $X$의 분포를 이항분포(binomial distribution)라고 합니다.
 
 이항분포의 PMF는 당연히
 
