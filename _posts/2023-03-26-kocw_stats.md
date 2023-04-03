@@ -990,7 +990,7 @@ $$
 
 이 함수 $f_X(x)$를 확률밀도함수(probability density function)이라고 부릅니다.
 위의 식은 CDF가 주어졌을 때 PDF를 구하는 방법이기도 합니다.
-반대로, PDF가 주어졌을 때 CDF를 구하려면, $f_X=F_X'$와 $\lim_{x\to-\infty}F_X(x)=0$로부터
+반대로, PDF가 주어졌을 때 CDF를 구하려면, $f_X=F_X'$와 $\displaystyle\lim_{x\to-\infty}F_X(x)=0$로부터
 
 $$F_X(x)=\int_{-\infty}^xf_X(\tilde x)\,d\tilde x$$
 
@@ -1630,11 +1630,6 @@ $$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i|A)$$
 $$P(\{w\in S:X(w)=x_i\}|\{w\in S:X(w)\in A\})$$
 
 의 의미입니다.
-그러면, 이산확률변수에서의 conditional expectation을
-
-$$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i|A)$$
-
-로 정의할 수 있습니다.
 
 이번에는 연속확률변수의 조건부 기댓값을 정의하겠습니다.
 먼저 conditional CDF는
@@ -1747,7 +1742,7 @@ $$
 $$
 f_X(x|A)=\frac d{dx}F_X(x|A)
 =\begin{cases}
-\frac1{15}  &(40\le x\lt55)\\
+\frac1{15}  &(40\lt x\lt55)\\
 0           &(\text{otherwise})
 \end{cases}
 $$
@@ -1850,8 +1845,12 @@ $$
 **Chapter 4. Special Distributions**
 
 <div class="notice--danger">
-'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은 '[베르눌리](https://www.youtube.com/watch?v=n6czlFpvaf4)'라고 읽는 것이 맞는 것 같습니다.
-마찬가지로 Poisson은 '[푸아상](https://youtu.be/43eJq-pAOGA)'으로 발음하는 것이 맞는 것 같습니다.
+'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은
+<a href="https://www.youtube.com/watch?v=n6czlFpvaf4"> 베르눌리 </a>
+라고 읽는 것이 맞는 것 같습니다.
+마찬가지로 Poisson은 
+<a href="https://youtu.be/43eJq-pAOGA"> 푸아상 </a>
+으로 발음하는 것이 맞는 것 같습니다.
 </div>
 
 **4.2 Bernoulli distribution**
@@ -1907,7 +1906,7 @@ $$
 입니다.
 
 예를 들어, 동전을 하나 던졌을 때 앞면이 나오면 $x=1$로 정하고 뒷면이 나오면 $x=0$으로 정하면, 
-이 시행은 Bernoulli trial이고 $S=\\{H,T\\}$, $|S|=2$, $X$의 분포는 Bernoulli distribution입니다 ; $X(S)=\\{0,1\\}$, $|X(S)|=2$.
+이 시행은 Bernoulli trial이고 ; $S=\\{H,T\\}$, $|S|=2$, $X$의 분포는 Bernoulli distribution입니다.
 그리고 $X$는
 
 $$
@@ -1955,10 +1954,10 @@ $$
 
 **4.3 binomial distribution**
 
-어떤 Bernoulli trial을 $n$번 반복적으로 시행할 때 성공의 횟수를 $X$라고 할 때
+어떤 Bernoulli trial을 $n$번 반복적으로 시행할 때 성공의 횟수
 {: .text-center}
 
-$X$는
+를 $X$라고 할 때, $X$는
 
 $$P_X(x)=\binom nxp^x(1-p)^{n-x}\qquad(x=0,1,\cdots,n)$$
 
@@ -2015,12 +2014,12 @@ memoryless property란 여러 번의 Bernoulli trial에서 앞서의 결과가 �
 그리고, geometric distribution은 memoryless property를 가지고 있습니다.
 
 geometric distribution을 따르는 확률변수 $X$에 대하여 $k$번째에 성공할 확률, 그러니까, $1$번째, $2$번째, $\cdots$, $k-1$번째까지는 실패했지만, $k$번째에는 성공할 확률은 $P(X=k)$입니다.
-geometric distribution이 memoryless property를 가진다는 것은 이 Bernoulli trial을 여러 번 시행되었다고 하더라도, 이후 $k$번째에 성공할 확률이 여전히 $P(X=k)$라는 것입니다.
+geometric distribution이 memoryless property를 가진다는 것은 이 Bernoulli trial을 여러 번 시행했다고 하더라도, 이후 $k$번째에 성공할 확률이 여전히 $P(X=k)$라는 것입니다.
 그러니까, $n$번의 시행 이후 $n+1$번째, $n+2$번째, $\cdots$, $n+k-1$번째까지는 실패했지만 $n+k$번째에는 성공할 확률이 $P(X=k)$와 같아야 합니다.
 
 문제를 간단하게 하기 위해, 앞의 $n$번째의 시행이 모두 실패했다고 가정하겠습니다.
 이 가정은 $X>n$이라는 식으로 표현될 수 있습니다.
-그러면 구해야 하는 확률은, $1$번째, $2$번째, $\cdots$, $n$번째, $\cdots$ $n+k-1$번째까지는 실패했지만, $n+k$번째에는 성공할 확률을 구해야 합니다.
+그러면 구해야 하는 확률은, $1$번째, $2$번째, $\cdots$, $n$번째, $\cdots$, $n+k-1$번째까지는 실패했지만, $n+k$번째에는 성공할 확률을 구해야 합니다.
 이것은 $X=n+k$라는 식으로 표현될 수 있습니다.
 
 따라서, $n$번째까지의 시행이 모두 실패했다고 가정했을 때, 그 이후 $k$번째에 성공할 확률은 $P(X=n+k|X>n)$으로 표현될 수 있습니다.
@@ -2173,14 +2172,14 @@ $\qquad\vdots$
 그러니까 각각의 $T_i$에 대하여 손님이 들어오지 않거나(0명), 아니면 들어오거나(1명) 한다고 *가정*할 수 있습니다.
 즉, 한 번의 시행은 그 결과값이 0 아니면 1인 Bernoulli trial이고 이때 $p=0.00125$입니다.
 그런데 이런 시행이 한 번 있는 것이 아니라 3600번 있습니다.
-그리고 각각의 시행들이 독립적일테니까, 한 시간동안 들어온 손님의 수가 $x$인 확률이
+그리고 각각의 시행들이 독립적일테니까, $X$는 $B(3600, 0.00125)$인 이항분포를 따릅니다.
+따라서 한 시간동안 들어온 손님의 수가 $x$인 확률은
 
 $$
 P(X=x)=\binom{3600}x(0.00125)^x(0.99875)^{3600-x}\tag{$\ast$}
 $$
 
 입니다.
-즉, $X$는 $B(3600, 0.00125)$인 이항분포를 따릅니다.
 
 그런데 한 시간을 1초 단위로 자른 것은, 그냥 1초가 익숙해서 그렇게 한 것이지 어떤 특별한 의미가 있는 것은 아닙니다.
 예를 들어 0.1초로 자를 수도 있습니다.
@@ -2335,7 +2334,7 @@ $$
 F_X(x)
 &=\int_0^xf_X(\tilde x)\,d\tilde x\\
 &=\int_0^x\lambda e^{-\lambda\tilde x}\,d\tilde x\\
-&=1-e^{\lambda x}
+&=1-e^{-\lambda x}
 \end{align*}
 $$
 
@@ -2348,8 +2347,8 @@ P\left(X\le t+s|X>t\right)
 &=\frac{P\left((X\le t+s)\cap(X>t)\right)}{P(X>t)}\\
 &=\frac{P\left(t<X\le t+s\right)}{1-P(X\le t)}\\
 &=\frac{F_X(t+s)-F_X(t)}{1-F_X(t)}\\
-&=\frac{e^{\lambda t}-e^{\lambda(t+s)}}{e^{-\lambda t}}\\
-&=1-e^{\lambda s}\\
+&=\frac{e^{-\lambda t}-e^{-\lambda(t+s)}}{e^{-\lambda t}}\\
+&=1-e^{-\lambda s}\\
 &=F_X(s)\\
 &=P(X\le s)
 \end{align*}
@@ -2367,7 +2366,7 @@ exponential distribution과 Poisson distribution 사이의 관계를 보려고 �
 
 $$
 \begin{align*}
-f_X(x)&=\lambda^xe^{-\lambda x}         \qquad(x\ge0)
+f_X(x)&=\lambda^xe^{-\lambda x}         \qquad(x\ge0)\\
 P_K(k)&=\frac{\lambda^x}{x!}e^{-\lambda}.\qquad(x=0,1,2,\cdots)
 \end{align*}
 $$
