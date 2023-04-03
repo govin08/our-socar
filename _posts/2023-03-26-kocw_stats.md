@@ -17,7 +17,7 @@ author_profile: false
 
 기본적으로는 강의의 내용을 따라가지만, 강의의 내용만으로는 다 채워지지 않는 부분들이 있습니다.
 예를 들어, 강의에서는 증명이 생략되는 경우도 많고, 개념의 의미가 완벽하게 설명되지 않는 경우도 있습니다.
-이런 미흡한 부분은 여러 자료들에서 채워넣으려고 했습니다.
+이런 미흡한 부분은 다른 여러 자료들에서 채워넣으려고 했습니다.
 
 # 01 조건부확률과 Bayes 정리
 
@@ -151,9 +151,7 @@ $$P(B|A)=\frac{P(A|B)P(B)}{P(A)}\tag{$(\ast)$}$$
 이것은 아래의 예를 통해 보면 확인할 수 있습니다.
 
 <div class="notice--danger">
-강의에서 $P(A|B)$가 prior(사전확률, 선행확률)라고 했습니다.
-하지만 이게 맞는 표현인지는 잘 모르겠습니다.
-<a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">위키피디아</a>에서는 다음과 같이 용어를 쓰는 것 같습니다.
+Bayes theorem($\ast$)의 식의 각 항들은 다음과 같은 의미를 가지고 있습니다(출처 : <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">위키피디아</a>)
 <ul>
     <li> $P(B|A)$ : posterior, 사후확률</li>
     <li> $P(B)$ : prior, 사전확률</li>
@@ -588,7 +586,7 @@ $$
 
 **Chapter 2. Random Variables(확률변수)**
 
-**2.2 definiion of random variables**
+**2.2 definition of random variables**
 
 언제나 확률변수의 개념을 정확히 이해하는 건 결코 쉬운 일은 아닌 것 같습니다.
 매번 충분할 정도로 이해하고 넘어가려고 노력하는데도 불구하고 볼때마다 새로운 것 같습니다.
@@ -709,7 +707,9 @@ $$
 
 이 됩니다.
 
+<div class="notice--danger">
 관습적으로 확률변수 자체는 대문자 기호 $X$, $Y$, $Z$ 등으로, 확률변수가 가지는 특정한 값은 $x$, $y$, $z$ 등으로 나타냅니다.
+</div>
 
 **2.3 events defined by RV**
 
@@ -735,8 +735,8 @@ $$
 P(a<X\le b)=P\left(\{w\in S:a<X(w)\le b\}\right)
 $$
 
-로 정의합니다.
-예를 들어 동전 두 개를 던지는 시행에서
+의 의미입니다.
+예를 들어, 동전 두 개를 던지는 시행에서
 
 $$P(X\le1)=P\left(\{HH,HT,TH\}\right)=\frac34$$
 
@@ -1038,7 +1038,7 @@ $$P(X\le a)=P(X\lt a)+P(X=a)=P(X\lt a)+0=P(X\lt a)$$
 이기 때문입니다.
 
 <div class="notice--danger">
-위의 (4)번식 성질은 가능한 여러 식들 중 하나를 대표적으로 쓴 것입니다.
+위의 (4)번식은 성립하는 여러 식들 중 하나를 대표적으로 쓴 것입니다.
 일반적으로, 연속확률변수의 확률표현식에서 $\le$와 $\lt$는 적절히 바꿔가면서 사용될 수 있습니다.
 </div>
 
@@ -1094,7 +1094,7 @@ $f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution�
 
 # 05 확률변수의 평균과 분산
 
-**Chapter 3. moments of random variables**
+**Chapter 3. Moments of Random Variables**
 
 **arithemetic average(산술평균)**
 
@@ -1119,12 +1119,21 @@ $$
 
 **ex 3.3 Poisson distribution**
 
+이산확률변수 $K$가 다음과 같은 확률질량함수를 가지고 있으면, $K$가 Poisson distribution을 따른다고 말합니다.
+
 $$
 P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)
 $$
 
-$K$가 어떤 시간 간격동안 어떤 사건이 일어난 횟수라고 하면 $K$는 위와 같은 분포를 따릅니다.
-Poisson distribution의 자세한 의미에 대해서는 08회차 강의에 자세히 적어보았습니다.
+Poisson distribution의 자세한 의미에 대해서는 08회차 강의를 정리하면서 적어보았습니다.
+그래도 간단히 요약하면,
+
+단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 단위시간동안 사건이 일어난 횟수
+{: .text-center}
+
+를 $K$라고 하면, $K$는 위의 PMF를 가집니다.
+증명은 뒤에서 해보았습니다.
+
 $P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번째 조건인 $P_K(k)\ge0$은 당연합니다.
 두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series(혹은 지수함수에 대한 추상적인 정의)를 사용할 수 있습니다;
 
@@ -1160,6 +1169,8 @@ $$
 
 **ex 3.4 exponential distribution**
 
+연속확률변수 $X$가 다음과 같은 확률밀도함수를 가지고 있으면, $X$가 exponential distribution을 따른다고 말합니다.
+
 $$
 \begin{align*}
 f_X(x)=
@@ -1169,6 +1180,15 @@ f_X(x)=
 \end{cases}
 \end{align*}
 $$
+
+이번에도, exponential distribution의 자세한 의미에 대해서는 뒤에서 다시 설명하겠습니다.
+그래도 간단히 요약하면,
+
+단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간
+{: .text-center}
+
+을 $X$라고 하면, $X$는 위의 PDF를 가집니다.
+이에 대한 증명은 뒤에서 하겠습니다.
 
 이번에도 $f_X$가 PDF가 되기 위해서는 두 가지 조건을 만족시켜야 하는데 첫번째 조건 $f_X(x)\ge0$은 당연합니다.
 두 번째 조건인 $\int_{-\infty}^\infty f_X(x)\,dx=1$
@@ -1282,7 +1302,7 @@ $$
 \begin{align*}
 E[g(X)]&=\sum_ig(x_i)P_X(x_i)                   &&(\text{discrete})\\
 E[g(X)]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx   &&(\text{continuous})
-\end{align*}\tag{LOTUS, $(\ast)$}
+\end{align*}\tag{LOTUS, $\ast$}
 $$
 
 아까 평균에 대해 정의한 것은
@@ -1309,10 +1329,10 @@ $$
 통계학자들은 보통 이와 같은 논리적인 비약을 알아차리지도 못한 채로 논의를 진행시킨다는 의미에서, 이 정리는 
 <a href="https://en.wikipedia.org/wiki/Law_of_the_unconscious_statistician">law of the unconscious statistician</a>라는 이름으로 불립니다.<br>
 
-결론부터 말하자면, LOTUS의 식은 성립합니다.
+결론부터 말하자면, LOTUS의 식 $(\ast)$은 성립합니다.
 다만, 그 증명이 아주 당연하지는 않습니다.
 discrete case는 증명이 쉽지만, continuous case에 대한 일반적인 증명은 어렵습니다.
-그래서, $(\ast\ast)$를 정의로, LOTUS를 정리로 두고 그것의 증명을 시도하는 대신, LOTUS의 식을 정의로서 차용하는 경우도 있다고 합니다.
+그래서, $(\ast\ast)$를 정의로, LOTUS를 정리로 두고 그것의 증명을 시도하는 대신, LOTUS의 식 $(\ast)$을 정의로서 차용하는 경우도 있다고 합니다.
 이렇게 평균을 LOTUS의 식으로 정의해버리면, 기존 정의와도 일치하는 정의가 되면서, 굳이 어려운 증명을 하지 않아도 되게 됩니다. <br>
 
 이 포스트에서는 $(\ast\ast)$를 정의로 두고 LOTUS를 증명하려고 합니다.
@@ -1441,19 +1461,28 @@ $${\sigma_X}^2=E[X^2]-E[X]^2=\frac1{\lambda^2}$$
 
 **ex 3.13 geometric distribution**
 
-Let $K$ be the number of trials until the first success.
-For example, we may toss a die repeatedly until the first $6$.
-
 시행의 결과가 성공/실패의 두 종류로 나오는 시행을 Bernoulli trial이라고 합니다.
-어떤 Bernoulli trial을 여러 번 반복할 때 처음 성공하기까지 걸린 시행횟수를 확률변수 $K$라고 하겠습니다.
-예를 들어, 주사위 하나를 반복적으로 던질 때, 주사위의 눈이 처음으로 6이 나오기까지의 시행횟수를 $K$라고 할 수 있습니다.
 
-그러면 $K$는 이산확률변수이고, PMF는
+어떤 Bernoulli trial을 반복적으로 시행할 때, $K$번째에 처음으로 성공할 경우
+{: .text-center}
+
+에 $K$는
 
 $$P_K(k)=(1-p)^{k-1}p\qquad(k=1,2,\cdots)$$
 
-로 주어집니다.
-$P_K(k)$가 PMF가 되기 위한 첫번째 조건인 $P_K(k)\ge0$은 당연합니다.
+와 같은 PMF를 가집니다.
+위 식에 대한 증명은 당연하기 때문에 생략하겠습니다.
+이때, 이산확률변수 $K$가 geometric distribution을 따른다고 합니다.
+
+예를 들어, 다음(칠판에 적힌 문장)과 같이 정의된 $K$는 geometric distribution을 따릅니다.
+
+Let $K$ be the number of trials until the first success.
+For example, we may toss a die repeatedly until the first $6$.
+{: .text-center}
+
+그러니까, 주사위 하나를 반복적으로 던질 때, 주사위의 눈이 처음으로 6이 나오기까지의 시행횟수를 $K$라고 하면 $K$는 geometric distribution을 따릅니다.
+
+$P_K(k)$가 PMF가 되기 위한 첫번째 조건인 $P_K(k)\ge0$를 만족시키는 것은 당연합니다.
 두번째 조건도 (예의상) 확인해보면
 
 $$
@@ -1551,7 +1580,7 @@ computer vision에서의 얼굴인식문제를 아주 naive하게 생각할 때,
 
 이때의 실제값과 표준참값은 각각 벡터로 생각할 수 있고, 따라서 표준적인 벡터사이의 거리(의 제곱)인 $L^2$ norm(의 제곱)을 생각하게 됩니다.
 그것은 실제값과 표준참값을 뺀 다음 제곱하여 성분별로 더하는 것을 말합니다.
-그리고 이 값(energy라고 통상 부르기도 하는 값)이 최소가 되도록 하는 표준참값을, '괜찮은 모델'이라고 둘 수 있을 것입니다.
+그리고 이 값(통상 energy라고 부르기도 하는 값)이 최소가 되도록 하는 표준참값을, '괜찮은 모델'이라고 둘 수 있을 것입니다.
 
 그런데 $L^2$ norm의 제곱, 즉 sum of squared errors(SSE)는 그 특성상 표준참값이 실제값들의 평균일 때에 최소가 되는 경향이 있습니다.
 (사실 표준참값-실제값 예는 multivariate이고 뒤에 나오는 예시는 univariate이라서 적절한 설명인지 잘 이해가 안가긴 하지만)
@@ -1563,15 +1592,15 @@ $$g(t)=\sum_{k=1}^n(t-x_k)^2$$
 는 $t=\frac1n\sum_{k=1}^nx_k$일 때, 즉 $t$가 $x_k$들의 평균일 때 최소가 되는 것입니다.
 즉
 
-$$\text{arg}\min_tg(t)=\text{arg}\min_t\sum_{k=1}^n(t-x_k)^2=\frac1n\sum_{k=1}^nx_k$$
+$$\text{arg}\min_t\sum_{k=1}^n(t-x_k)^2=\frac1n\sum_{k=1}^nx_k$$
 
 이고
 
-$$\min_tg(t)=\min_t\sum_{k=1}^n(t-x_k)^2=\sigma_X$$
+$$\min_t\sum_{k=1}^n(t-x_k)^2={\sigma_X}^2$$
 
 인 것입니다.
 증명은, 중학교 식으로 $ax^2+bx+c$의 최솟값을 구하는 식으로 해도 되고, 고등학교 식으로 미분을 사용해도 됩니다.
-여기에서는 discrete uniform distribution인 경우에 대해서만 이야기한 셈이지만 일반적인 분포에 대해서도, 그리고 연속확률분포에 관해서도 마찬가지의 사실을 쉽게 증명할 수 있습니다.
+여기에서는 discrete uniform distribution인 경우에 대해서만 이야기한 셈이지만 일반적인 discrete distribution에 대해서도, 그리고 연속확률분포에 관해서도 마찬가지의 사실을 쉽게 증명할 수 있습니다.
 
 반면
 
@@ -1579,20 +1608,26 @@ $$h(t)=\sum_{k=1}^n|t-x_k|$$
 
 와 같은 값을 objective function으로 둘 수도 있을 것입니다.
 이 경우에는 $t$가 $x_k$들의 중간값(median)일 때 $g(t)$가 최소임이 알려져있습니다.
-이것은 그래프를 살짝 그려보기만 해도 알 수 있습니다. (아래 그림) 다만, 이 경우도 역시 discrete uniform distribution에 대한 논증인데, 일반적인 분포와 연속확률분포에 대해서는 다른 방식의 증명이 필요할 것입니다.
+이것은 그래프를 살짝 그려보기만 해도 알 수 있습니다. (아래 그림) 다만, 이 경우도 역시 discrete uniform distribution에 대한 논증인데, 일반적인 discrete distribution와 연속확률분포에 대해서는 다른 방식의 증명이 필요할 것입니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_6-3.png){: .img-100-center}
 
-**3.5 conditional mean**
+**3.5 conditional expectation**
 
-이산확률변수의 conditional mean(조건부 기댓값)을 정의하기 전에, 먼저 conditional PMF(조건부 확률질량함수)를 다음과 같이 정의합니다.
+이산확률변수의 conditional expectation(조건부기댓값)을 정의하기 전에, 먼저 conditional PMF(조건부 확률질량함수)를 다음과 같이 정의합니다.
 
 $$P_X(x|A)=P(X=x|A)$$
 
-이때, $X=x$라는 표현이 마치 사건처럼 쓰여져있습니다.
-이것은
+그러면, 이산확률변수에서의 conditional expectation을
 
-$$P(\{w\in S:X(w)=x\}|A)$$
+$$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i|A)$$
+
+로 정의할 수 있습니다.
+여기에서 $A$는 사건(event, $A\subset S$)이라기보다는 실수들의 집합($A\subset\mathbb R$)인 것 같습니다.
+그리고, $X=x_i$라는 표현이 마치 사건처럼 쓰여져있습니다.
+따라서 $P_X(x_i|A)$는
+
+$$P(\{w\in S:X(w)=x_i\}|\{w\in S:X(w)\in A\})$$
 
 의 의미입니다.
 그러면, 이산확률변수에서의 conditional expectation을
@@ -1600,7 +1635,6 @@ $$P(\{w\in S:X(w)=x\}|A)$$
 $$E[X|A]=\sum_{x_i\in A}x_iP_X(x_i|A)$$
 
 로 정의할 수 있습니다.
-(여기에서 $A$는 사건(event, $A\subset S$)이라기보다는 실수들의 집합($A\subset\mathbb R$)인 것 같습니다.)
 
 이번에는 연속확률변수의 조건부 기댓값을 정의하겠습니다.
 먼저 conditional CDF는
@@ -1661,8 +1695,6 @@ $$F_X(x|A)=\frac{P(X\le a)}{P(X\le a)}=1$$
 $$F_X(x|A)=\frac{P(X\le x)}{P(X\le a)}=\frac{F_X(x)}{F_X(a)}$$
 
 가 됩니다.
-<!-- 여기에서 분모인 $F_X(a)$ 값은 $x$와는 관계가 없는 상수입니다. -->
-<!-- 우리 목적은 conditional CDF $F_X(x|A)$를 $F_X$와 $f_X$로 표현하는 것이므로 여기서 더 계산할 필요는 없습니다. -->
 정리하면
 
 $$
@@ -1702,13 +1734,12 @@ conditionoal CDF는
 
 $$
 F_X(x|A)=P(X\le x|X\le 55)
-=\frac{P\left((X\le x)\cap X\le55\right)}{P(X\le55)}
+=\frac{P\left((X\le x)\cap(X\le55)\right)}{P(X\le55)}
 =\begin{cases}
-0               &(x\lt40)
+0               &(x\lt40)\\
 \frac{x-40}{15} &(40\le x\lt55)\\
 1               &(x\ge55)
 \end{cases}
-=
 $$
 
 이고 conditionoal PDF는
@@ -1757,7 +1788,7 @@ conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
 확률변수 $X$와 양의 실수 $a$에 대하여
 
 $$
-P\left(|X-E[X]|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
+P\left(\big|X-E[X]\big|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
 $$
 
 입니다.
@@ -1816,24 +1847,30 @@ $$
 "expectation 값이 random variable이 아닐 수도 있다"는 말씀이 무슨 의미인지 잘 모르겠습니다.
 [이 사람](https://zhengtianyu.wordpress.com/2014/01/04/proof-of-chebyshevs-inequality/)은 제가 한 것과 똑같은 증명을 적어놓았고, [wikipedia](https://en.wikipedia.org/wiki/Chebyshev%27s_inequality)에는 conditional expectation의 성질을 사용하여 (그러니까 summation이나 integral을 사용하지 않고) 증명했습니다.
 
-**Chapter 4. special distributions**
+**Chapter 4. Special Distributions**
+
+<div class="notice--danger">
+'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은 '[베르눌리](https://www.youtube.com/watch?v=n6czlFpvaf4)'라고 읽는 것이 맞는 것 같습니다.
+마찬가지로 Poisson은 '[푸아상](https://youtu.be/43eJq-pAOGA)'으로 발음하는 것이 맞는 것 같습니다.
+</div>
 
 **4.2 Bernoulli distribution**
 
-'Bernoulli'는 '베르누이'라고 보통 쓰기도 하지만, 원래 발음은 '[베르눌리](https://www.youtube.com/watch?v=n6czlFpvaf4)'라고 읽는 것이 맞는 것 같습니다.
-마찬가지로 Poisson은 '[푸아상](https://youtu.be/43eJq-pAOGA)'으로 발음하는 것이 맞는 것 같습니다.
-
-강의에서는 $X$가 binary인 경우를 Bernoulli distribution이라고 한다고 되어 있습니다.
-앞서 말했듯 $X$는 $X:S\to\mathbb R$입니다.
-여기서 binary라는 것은 $|S|=2$라는 의미입니다.
-물론 $|X(S)|=2$도 성립할 것입니다.
-($|X(S)|=1$인 경우는 의미가 없습니다.)
-다시말해 sample space가
+앞서, Bernoulli trial(베르눌리 시행)이 근원사건의 개수가 $2$개인 시행을 말한다고 했습니다.
+즉, $|S|=2$인 경우
 
 $$S=\{w_1,w_2\}$$
 
-인 경우를 Bernoulli distribution이라고 합니다.
-이때의 $X$의 값은 어떻게든 정해도 됩니다.
+를 말합니다.
+많은 경우에 $w_1$을 '성공'으로, $w_2$를 '실패'로 해석했었습니다.
+
+[다음](https://en.wikipedia.org/wiki/Bernoulli_trial)은 위키피디아의 정의입니다.
+
+> A Bernoulli trial (or binomial trial) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
+
+<!-- 강의에서는 $X$가 binary인 경우를 Bernoulli distribution으로 지칭한다고 되어 있습니다.
+이것은 $X$의 함숫값이 두 개로 나오는 경우, 그러니까 $X$의 치역의 원소가 두 개인 경우, 즉 $|X(S)|=2$인 경우입니다. -->
+
 예를 들어
 
 $$
@@ -1843,7 +1880,7 @@ X(w_2)=3
 \end{cases}
 $$
 
-로 정의해도 이것은 Bernoulli distribution에 해당할 것 같습니다.
+로 정의하면 이것은 Bernoulli distribution에 해당할 것 같습니다.
 하지만, [통상](https://en.wikipedia.org/wiki/Bernoulli_distribution)
 
 $$
@@ -1856,7 +1893,7 @@ $$
 인 경우를 가정합니다.
 
 $P_X(X=1)=p$라고 하면 $P_X(X=0)=1-p$이고, 따라서 Bernoulli distribution은 오로지 하나의 값 $p$에 의해 결정되는 분포입니다.
-기록을 위해 PMF를 다시 써보면
+기록을 위해 PMF를 적어보면
 
 $$
 P_X(x)=
@@ -1864,25 +1901,43 @@ P_X(x)=
 p &(x=1)\\
 1-p &(x=0)
 \end{cases}
+\tag{$(\ast)$}
 $$
 
-인데 이것을 다음과 같이 한 줄로 쓸 수 있습니다.
+입니다.
+
+예를 들어, 동전을 하나 던졌을 때 앞면이 나오면 $x=1$로 정하고 뒷면이 나오면 $x=0$으로 정하면, 
+이 시행은 Bernoulli trial이고 $S=\\{H,T\\}$, $|S|=2$, $X$의 분포는 Bernoulli distribution입니다 ; $X(S)=\\{0,1\\}$, $|X(S)|=2$.
+그리고 $X$는
+
+$$
+\begin{cases}
+X(H)=1\\
+X(T)=0
+\end{cases}
+$$
+
+와 같이 주어집니다.
+
+$(\ast)$는 다음과 같이 한 줄의 식으로 쓸 수도 있습니다.
 (조금 쓸데없어보이기도 하고, 그냥 현학적인 표현인 것처럼 보이기도 하지만, 많은 경우에 Bernoulli distribution이 이와 같이 표현되니 알아두어도 나쁘지는 않을 것 같습니다.)
 덧셈의 형태로
 
 $$
-P_X(x)=(1-p)(1-x)+px
+P_X(x)=(1-p)(1-x)+px,\qquad x\in\{0,1\}
 $$
 
 와 같이 쓸 수도 있고, 아니면 곱셈의 형태로
 
 $$
-P_X(x)=p^x(1-p)^{1-x}
+P_X(x)=p^x(1-p)^{1-x},\qquad x\in\{0,1\}
 $$
 
 와 같이 쓸 수도 있습니다.
 
-Beroulli 분포는 가장 간단한 형태의 분포이므로 (그보다 더 간단한 형태는 $P_X(x)$가 상수함수인 경우겠지만, 그 경우는 확률적으로 이야기하는 것 자체가 의미가 없습니다.) 평균과 분산도 아주 쉽게 계산됩니다.
+Beroulli distribution는 가장 간단한 형태의 분포입니다.
+Bernoulli distribution보다 더 간단한 형태는 $|S|=1$인 경우겠지만, 그 경우는 확률적으로 이야기하는 것 자체가 의미가 없습니다.
+Bernoulli distribution의 평균과 분산은 아주 쉽게 계산됩니다.
 
 $$
 \begin{align*}
@@ -1900,18 +1955,18 @@ $$
 
 **4.3 binomial distribution**
 
-아까, $|S|=2$ 인 경우를 생각했었는데 이와 같은 시행을 Bernoulli trial이라고 부르는 것 같습니다.
-[다음](https://en.wikipedia.org/wiki/Bernoulli_trial)은 위키피디아의 정의입니다.
+어떤 Bernoulli trial을 $n$번 반복적으로 시행할 때 성공의 횟수를 $X$라고 할 때
+{: .text-center}
 
-> A Bernoulli trial (or binomial trial) is a random experiment with exactly two possible outcomes, "success" and "failure", in which the probability of success is the same every time the experiment is conducted.
-
-이런 Bernoulli trial을 $n$번 시행했을 때, success의 횟수 (혹은 $S=\\{s_1,s_2\\}$의 관점에서는 $s_1$의 횟수)를 확률변수 $X$라고 정의할 때, 이때 $X$의 분포를 이항분포(binomial distribution)라고 합니다.
-
-이항분포의 PMF는 당연히
+$X$는
 
 $$P_X(x)=\binom nxp^x(1-p)^{n-x}\qquad(x=0,1,\cdots,n)$$
 
-이고 이것은 다 더했을 때 1입니다;
+를 PMF로 가집니다.
+이때, $X$가 이항분포를 따른다고 합니다.
+
+위의 PMF 식의 증명은 당연하므로 생략하겠습니다.
+위의 함수 $P_X$는 $x=0$, $\cdots$, $x=n$일 때에 대하여 모두 더했을 때 1이 됩니다;
 
 $$
 \begin{align*}
@@ -1923,13 +1978,13 @@ $$
 \end{align*}
 $$
 
-이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 1.10.4에서 증명했습니다.
+이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 02회차 강의(1.10.4)에 대해 적을 때 이미 증명했습니다.
 그 때에는 $(1+x)^n$을 미분하여 얻을 수 있는 성질로부터 증명했었습니다.
 강의에서는 표준적인 방법 (combination의 성질)으로서 증명하고 있는데, 여기에는 생략하겠습니다.
 
 **4.4 geometric distribution**
 
-geometric distribution에 대해서는 이미 3.13에서 보았고, 평균과 분산도 계산했었습니다.
+geometric distribution을 따르는 확률변수 $K$가 PMF와 평균, 분산을
 
 $$
 \begin{align*}
@@ -1939,22 +1994,49 @@ E[K]&=\frac1p\\
 \end{align*}
 $$
 
-geometric distribution을 Bernoulli trial의 입장에서 이것을 다시 해석해보면
+와 같이 가진다는 것을 확인한 바 있습니다.
+여기에서 $K$의 의미는
 
 the number of Bernoulli trial until the first success
 {: .text-center}
 
 입니다.
-그러니까 앞서의 정의와 비슷한데 이번에는 완전히 정확하게 적혔습니다.
+다시 말해(06회차 강의, 3.13에서 소개한 표현을 다시 쓰면),
 
-**forgetfulness(memorylessness)** 는 여러 번의 Bernoulli trial에서 앞서의 결과가 이후의 결과에 영향을 미치지 않는다는 뜻으로 [일종의 Markov property입니다](https://en.wikipedia.org/wiki/Memorylessness).
+어떤 Bernoulli trial을 반복적으로 시행할 때, $K$번째에 처음으로 성공할 경우
+{: .text-center}
 
+의 $K$값을 말합니다.
+그러니까, 어떤 Bernoulli trial을 연속해서 시행할 때, 처음 $k-1$번은 실패하고 $k$번째에 성공할 경우에 확률변수 $K$를 $K=k$로 지정하면 $K$가 geometric distribution을 따른다고 합니다.
+
+**memorylessness(forgetfulness)**
+
+memoryless property란 여러 번의 Bernoulli trial에서 앞서의 결과가 이후의 결과에 영향을 미치지 않는다는 성질을 뜻합니다.
+그리고, geometric distribution은 memoryless property를 가지고 있습니다.
+
+geometric distribution을 따르는 확률변수 $X$에 대하여 $k$번째에 성공할 확률, 그러니까, $1$번째, $2$번째, $\cdots$, $k-1$번째까지는 실패했지만, $k$번째에는 성공할 확률은 $P(X=k)$입니다.
+geometric distribution이 memoryless property를 가진다는 것은 이 Bernoulli trial을 여러 번 시행되었다고 하더라도, 이후 $k$번째에 성공할 확률이 여전히 $P(X=k)$라는 것입니다.
+그러니까, $n$번의 시행 이후 $n+1$번째, $n+2$번째, $\cdots$, $n+k-1$번째까지는 실패했지만 $n+k$번째에는 성공할 확률이 $P(X=k)$와 같아야 합니다.
+
+문제를 간단하게 하기 위해, 앞의 $n$번째의 시행이 모두 실패했다고 가정하겠습니다.
+이 가정은 $X>n$이라는 식으로 표현될 수 있습니다.
+그러면 구해야 하는 확률은, $1$번째, $2$번째, $\cdots$, $n$번째, $\cdots$ $n+k-1$번째까지는 실패했지만, $n+k$번째에는 성공할 확률을 구해야 합니다.
+이것은 $X=n+k$라는 식으로 표현될 수 있습니다.
+
+따라서, $n$번째까지의 시행이 모두 실패했다고 가정했을 때, 그 이후 $k$번째에 성공할 확률은 $P(X=n+k|X>n)$으로 표현될 수 있습니다.
+이것이 $P(X=k)$와 같은지를 확인해보려고 합니다.
+실제로 계산해보면
+
+<!-- 
 Consider $k$ additional trials until the first success, given $n$ trials fail. (강의의 칠판에 적힌 표현)
 
 Consider the probability that a success is achieved at $k$ additional trials, given $n$ trials fail. (다시 적어본 표현)
 
 그러니까, 어떤 Bernoulli trial을 여러 번 시행하는데 처음 $n$번은 모두 실패했다는 가정 하에 그 다음 $k$번째에 성공(그러니까, $1,\cdots,k-1$번째에는 모두 실패) 할 수 있는 확률을 계산해보려고 합니다.
 그리고 이 확률이 (처음 $n$번이 모두 실패했다는 가정 없이) $k$번째에 성공할 수 있는 확률과 같은지를 보려고 합니다.
+
+$X$가 그 Bernoulli geometric distribution을 따른다고 할 때,
+geometric distribution을 따르는 확률변수 $X$에 대하여 -->
 
 $$
 \begin{align*}
@@ -1969,24 +2051,42 @@ P\left(X=n+k|X>n\right)
 \end{align*}
 $$
 
-그리고 위의 계산결과에서 보듯, 정말로 그것이 성립합니다.
+입니다.
+따라서 geometric distribution에 대해서는 memoryless property가 성립합니다.
 즉, 지금 하는 것은 독립시행이므로, 앞서의 결과가 이후의 시행에 영향을 미치지 않는 것이 당연한데, 그 사실을 다시 한 번 확인해본 것입니다.
 
 # 08 지수분포와 어랑분포
 
 **4.7 Poisson distribution**
 
+Poisson distribution을 따르는 확률변수 $K$가 PMF와 평균, 분산을
+
 $$
 \begin{align*}
 P_K(k)&=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)\\
-E[X]&=\lambda\\
+E[K]&=\lambda\\
 {\sigma_K}^2&=\lambda
 \end{align*}
 $$
 
-$K$ : the number of Bernoulli success in a time interal.
+와 같이 가진다는 것을 확인한 바 있습니다.
+여기에서 $K$의 의미는
 
-위의 간단한 정의는 칠판에 적힌 표현입니다.
+the number of Bernoulli success in a time interval
+{: .text-center}
+
+였습니다.
+다시 말해(05회차 강의, 3.3에서 소개한 표현을 다시 쓰면),
+
+단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 단위시간동안 사건이 일어난 횟수
+{: .text-center}
+
+을 말합니다.
+
+그러니까 어떤 사건이 일어난다는 것은, 그 자체로 Bernoulli trial이라고 볼 수 있습니다.
+(사건이 일어난다 / 일어나지 않는다)와 같이 두 가능성 중 하나가 발생되는 것이기 때문입니다.
+어떤 사건이 일정한 비율로 일어나는 경향을 보일 때, 특정한 시간 간격동안 어떤 사건이 일어난 횟수를 $K$라고 할 수 있는 것입니다.
+
 ([wikipedia](https://en.wikipedia.org/wiki/Poisson_distribution))에는 다음과 같이 적혀있습니다.
 
 >The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.
@@ -1995,8 +2095,10 @@ $K$ : the number of Bernoulli success in a time interal.
 >
 >Another example is the number of decay events that occur from a radioactive source during a defined observation period.
 
-Poisson 분포의 저 식이 도대체 무슨 의미가 있는지를 몰라서 여러가지로 알아보다가, 아주 재미있는 결과를 발견했습니다.
-나중에 이 강의에서 다룰 지도 모르겠지만 먼저 적어보면, binomial PMF인
+Poisson PMF의 식의 의미를 여러가지로 아주 재미있는 결과를 발견했습니다.
+이 결과를 사용하면, Poisson PMF의 의미를 더 정확하게 알 수 있습니다.
+그 내용은 이렇습니다.
+binomial PMF인
 
 $$f_X(k)=\binom nkp^k(1-p)^{n-k}$$
 
@@ -2037,13 +2139,21 @@ $$
 
 이기 때문입니다.
 
-추가적으로, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 Example 5.4.1, 5.4.2를 읽어봤습니다.
-설명이 잘 되어 있어서, 그 내용을 토대로 Poisson distribution의 의미를 적어보면 다음과 같습니다.
+Poisson PMF의 정확한 의미를 알기 위해서 [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 Example 5.4.1, 5.4.2를 읽어봤습니다.
+설명이 잘 되어 있어서, 여기에 소개해보면 다음과 같습니다.
 
 어떤 가게에 손님이 한 시간에 4.5명 꼴로 들어옵니다.
 그럴 때에, 어느 날의 어느 시각으로부터 한 시간동안 들어온 손님의 수를 $X$라고 하면, $X$의 분포를 어떻게 이해하면 좋을지 생각해볼 수 있습니다.
-답은 $\lambda=4.5$로 하는 Poisson distribution입니다.
-이유는 다음과 같습니다.
+
+<!-- 아까의 (정성적인) Poisson distribution의 정의에 따르면, $X$는 Poisson distribution을 따른다고 생각할 수 있습니다.
+그 때에, $X$가
+
+$$P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)$$
+
+와 같은 PMF를 가진다는 사실을 증명할 수 있습니다.
+즉 $X$는 $\lambda=4.5$로 하는 Poisson distribution입니다. -->
+
+그 답은 $\lambda=4.5$로 하는 Poisson distribution입니다.
 
 위 문제를 풀기 위해 할 수 있는 자연스러운 방법은, 한 시간을 작은 시간단위로 쪼개는 것입니다.
 예를 들어 1초 단위로 쪼개본다고 하겠습니다(1시간 = 3600초).
@@ -2095,26 +2205,95 @@ $$
 이 되는데 이것은 $\lambda=4.5$인 Poisson PMF입니다.
 $\square$
 
+<div class="notice--danger">
+<b> Poisson process </b><br>
+Poisson distribution에 대한 위의 설명은, 1시간동안 손님이 $4.5$명 들어오는 경향이 있다면, 30분동안에는 $2.25$명의 손님이 들어온다는 식의 가정에 근거하고 있습니다.
+즉, $t$시간 동안에는 $4.5t$명의 손님이 들어온다고 가정하고 있습니다.
+또한, 각각의 손님들이 들어오는 사건이 독립적이라는 가정도 깔려 있습니다.
+즉, Poisson PMF의 의미가 설명되기 위해서는 위의 두 가정이 전제되어야 합니다.
+위의 두 가정이 성립하는 상황을 Poisson process라고 이름붙입니다.
+정확한 정의는 다음과 같습니다.
+(출처 : <a href="https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466"> DeGroot, Probability and Statistics, 4ed </a>, definition 5.4.2)
+<br>
+어떤 사건에 대한 단위시간당 발생비율이 $\lambda$인 Poisson process는 다음의 두 조건을 만족시키는 (stochastic) process입니다.
+<ul>
+    <li>길이가 $\lambda t$인 시간간격 동안 사건이 일어나는 횟수는 Poisson distribution을 따르고, 그 평균이 $\lambda t$입니다.</li>
+    <li>서로소인 두 개의 시간간격에 대하여 사건이 일어난 횟수는 독립적입니다.</li>
+</ul>
+</div>
+
 **4.8 exponential distribution**
+
+exponential distribution을 따르는 확률변수 $X$가 PDF와 평균, 분산을
 
 $$
 \begin{align*}
 f_X(x)&=\lambda e^{-\lambda x}\qquad(x\ge0)\\
 E[X]&=\frac1\lambda\\
-{\sigma_K}^2&=\frac1{\lambda^2}
+{\sigma_X}^2&=\frac1{\lambda^2}
 \end{align*}
 $$
 
-(Poisson distribution에서 그랬던 것처럼 이번에도 이 분포의 의미를 열심히 살펴보는 것은 의미있는 일일 것 같습니다.
+와 같이 가진다는 것을 확인한 바 있습니다.
+
+<!-- (Poisson distribution에서 그랬던 것처럼 이번에도 이 분포의 의미를 열심히 살펴보는 것은 의미있는 일일 것 같습니다.
 하지만, 시간관계상 생략하고, 강의의 내용을 먼저 따라가려고 합니다.
-나중에 한번 다 끝나고 나면, (Stirling's formula의 유도도 포함하여) 그때 다시 고민해보려 합니다.)
+나중에 한번 다 끝나고 나면, (Stirling's formula의 유도도 포함하여) 그때 다시 고민해보려 합니다.) -->
+
+<!-- exponential distribution이 어떤 의미를 가지고 있는지 하는 것은  -->
+
+exponential distribution의 의미에 관해서는 Poisson distribution과 관계되어서 이따가 설명될 것 같습니다.
+그 전에 한 번 대략적으로 이야기하면,
+
+단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간
+{: .text-center}
+
+은 exponential distribution을 따릅니다.
+Bernoulli trial의 근원사건들의 의미를 죽음(death)과 생존(survival)이라고 한다면, $X$는 생존시간을 의미한다고도 볼 수 있습니다.
+
+**difference equations and differential equations**
 
 강의에서는 geometric distribution과 exponential distribution은 각각 선형대수에서의 difference equation/differential equation (차분방정식/미분방정식)과 연관이 있다고 설명합니다.
+[G. Strang, Linear Algebra and Its Applications, 4ed](https://a.co/d/5l0YO6H)와 같은 선형대수 책에서, [행렬의 대각화]({{ site.url }}/mathematics/diagonalization/)에 대한 활용으로 언급되는 것이
+- 5.3 Difference Equations and Powers $A^k$
+- 5.4 Differential Equations and $e^{\lambda t}$
 
-선형대수의 해당 개념들에 대해서는 [G. Strang, Linear Algebra and Its Applications, 4ed](https://a.co/d/5l0YO6H)의 5.3과 5.4에 그 설명이 잘 적혀있습니다. 5.3의 첫 절 정도만 읽어봤는데, 거기에서는 피보나치 수열의 일반식을 difference equation을 통해 얻어내고 있습니다.
-그 과정에서 정사각행렬의 거듭제곱이 등장하는데, 이를 간단하게 하기 위해서 (당연히) 행렬의 대각화를 사용합니다.
-(최근에 대각화에 대해 [정리]({{ site.url }}/mathematics/diagonalization/)해본 적이 있어서 이해하기가 편했습니다.)
-그 결과로, 피보나치 수열의 일반식에는 어떤 숫자(=eigenvalues)의 거듭제곱이 수반됩니다 ;
+입니다.
+
+5.3에서는 difference equation에 대해 다룹니다.
+가장 간단하게 생각해볼 수 있는 예는 피보나치 수열입니다.
+피보나치 수열의 $k$번째 항을 $F_k$라고 쓰면
+
+$$
+\begin{align*}
+F_{k+2}&=F_k+F_{k+1}\\
+F_{k+1}&=F_{k+1}
+\end{align*}
+$$
+
+이 성립합니다.
+연속된 두 피보나치 항을 하나의 벡터로 두면 이것은
+
+$$
+\begin{bmatrix}
+F_{k+2}\\
+F_{k+1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&1\\
+1&0
+\end{bmatrix}
+\begin{bmatrix}
+F_{k+1}\\
+F_k
+\end{bmatrix}
+$$
+
+와 같은 행렬식으로 표현될 수 있습니다.
+위와 같은 식을 difference equation(점화식, 차분식, recurrence equation)이라고 합니다.
+이 difference equation을 풀어 일반항을 얻는 과정에서 정사각행렬의 거듭제곱이 등장하는데, 이를 간단하게 하기 위해서 (당연히) 행렬의 대각화를 사용합니다.
+그 결과로, 피보나치 수열의 일반식에는 eigenvalues들의 거듭제곱이 수반됩니다 ;
 
 $$
 \begin{align*}
@@ -2123,15 +2302,31 @@ F_k&=c_1{\lambda_1}^k+c_2{\lambda_2}^k
 \end{align*}
 $$
 
-이러한 형태가 difference equation 말고도 differential equation(system of linear partial differential equations)에서도 나타나는 것은 주지의 사실입니다.
+5.4에서는 연립상미분방정식(system of ordinary differential equations)의 풀이에 대해 다룹니다.
+difference equation에서 $\lambda^n$과 같은 형태가 핵심이었던 것과 대응되게, differential equation에서는 $e^{At}$와 같은 행렬의 exponentiation이 핵심입니다.
+더 깊은 의미가 있겠지만, 어쨌든 그런 의미에서 geometric distribution과 difference equation이 대응되고, exponential distribution과 differential equation이 대응된다고 하는 것 같습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-1.png){: .img-50-center}
 
-한편, 지난 강의에서 geometric distribution에서의 memorylessness에 대해 말했었는데, exponential distribution에서도 마찬가지로 memoryless property가 성립한다는 내용이 강의에 이어집니다.
-확인할 내용은 다음과 같습니다.
+**memoryless property**
 
-expoential distribution은 어떤 시스템의 (혹은 어떤 상태의) 생존(survival, success)에 관한 문제와 관련있습니다.
-어떤 시스템이 $t$ 시점까지 생존했다는 가정 하에 그 이후 $s$만큼의 시간까지 생존할 확률을 계산할 건데, 그 확률이 ($t$ 시점까지 생존했다는 가정 없이) $s$만큼의 시간만큼 생존할 확률과 같다는 것을 보려고 합니다.
+이전 강의에서 geometric distribution이 memoryless property를 가지고 있음이 설명되었습니다.
+exponetial distribution도 마찬가지로 momoryless property를 가진다는 내용이 강의에 이어집니다.
+
+앞서, exponential distribution을 따르는 확률변수 $X$를 '생존시간' 혹은 '어떤 사건이 일어나기까지의 시간'으로 해석할 수 있다고 했었습니다.
+이때, $s$ 시간 안에 죽을 확률, 혹은 $s$ 시간 안에 사건이 일어날 확률은 $P(X\le s)$로 쓸 수 있을 것입니다.
+exponential distribution이 memoryless property를 가진다는 것은, $t$ 시점까지 어떤 일이 일어났는지와는 상관없이, 이후의 $s$ 시간 안에 죽을 확률, 혹은 $s$ 시간 안에 사건이 일어날 확률이 $P(X\le s)$와 같다는 것입니다.
+
+이번에도 문제를 간단하게 하기 위해, $s$ 시점까지 생존했다고(사건이 발생하지 않았다고) 가정하겠습니다.
+이 가정은 $X\le s$라는 식으로 쓸 수 있습니다.
+그리고 구해야 하는 확률은, $t+s$ 시점 내에 죽을(사건이 발생할) 확률입니다.
+이것은 $X\le t+s$로 쓸 수 있습니다.
+
+따라서, $t$ 시점까지 생존했다고 가정했을 때, 그 이후 $t+s$ 시점까지도 생존할 확률 ($t$ 시점까지 사건이 발생하지 않았다고 가정했을 때, 그 이후 $t+s$시점 까지도 사건이 발생하지 않을 확률)은 $P(X\le t+s|X\le t)$로 표현될 수 있습니다.
+이것이 $P(X\le s)$와 같은지를 보려고 합니다.
+
+<!-- expoential distribution은 어떤 시스템의 (혹은 어떤 상태의) 생존(survival, success)에 관한 문제와 관련있습니다.
+어떤 시스템이 $t$ 시점까지 생존했다는 가정 하에 그 이후 $s$만큼의 시간까지 생존할 확률을 계산할 건데, 그 확률이 ($t$ 시점까지 생존했다는 가정 없이) $s$만큼의 시간만큼 생존할 확률과 같다는 것을 보려고 합니다. -->
 
 계산에 앞서 exponential distribution에 대한 CDF를 먼저 계산해보면
 
@@ -2165,30 +2360,89 @@ $$
 
 **relation between ED and PD**
 
-여기에서 ED는 exponential distribution, PD는 poisson distribution입니다.
-ED는 연속확률변수로서 '(생존)시간'과 관련이 있었고 PD는 이산확률변수로서 주어진 시간구간 동안의 '발생횟수'와 관련이 있었습니다.
+exponential distribution과 Poisson distribution 사이의 관계를 보려고 합니다.
 
-For a Poisson distribution with $\lambda$ per unit time,
+단위시간동안 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간 $X$은 exponetial distribution을, 단위시간동안 사건이 발생한 횟수 $K$는 Poisson distribution을 따른다고 했습니다.
+그리고 $X$와 $K$에 대한 확률함수는 각각
+
+$$
+\begin{align*}
+f_X(x)&=\lambda^xe^{-\lambda x}         \qquad(x\ge0)
+P_K(k)&=\frac{\lambda^x}{x!}e^{-\lambda}.\qquad(x=0,1,2,\cdots)
+\end{align*}
+$$
+
+이었습니다.
+이 사건은 단위시간동안 $\lambda$번의 사건이 일어난다고 기대된다고 했으므로, $t$시간동안에는 $\lambda t$번의 사건이 일어난다고 가정할 수 있습니다.
+$t$시간동안 발생한 사건의 횟수를 $M$이라고 하면
+
+$$P_M(m)=\frac{\lambda^xt^x}{x!}e^{-\lambda t}.\qquad(x=0,1,2,\cdots)$$
+
+이 됩니다.
+
+<!-- ED는 연속확률분포로서 '(생존)시간'과 관련이 있었고 PD는 이산확률분포로서 주어진 시간구간 동안의 '발생횟수'와 관련이 있었습니다.
+
+둘 사이의 관계를 얻기 위해, 기존의 Poisson distribution이 단위시간에 대해 설명되었던 것을 시간 $t$에 대한 것으로 바꾸겠습니다. -->
+
+<!-- 원래 Poisson distribution(단위시간에 대한 사건의 발생 횟수)의 PMF는 -->
+
+<!-- For a Poisson distribution with $\lambda$ per unit time, -->
+
+<!-- 원래의 Poisson PDF
 
 $$P_X(x) = \frac{\lambda^x}{x!}e^{-\lambda}.\qquad(x=0,1,2,\cdots)$$
 
-Transforming 'unit time' to 'time interval of length $t$' yields
-($1\to t$, $\lambda\to\lambda t$)
+는 (단위시간동안 $\lambda$회 만큼의 사건이 발생한다고 기대될 때) 단위시간 동안의 사건의 발생횟수를 의미했습니다. -->
 
-$$P_X(x) = \frac{\lambda^xt^x}{x!}e^{-\lambda t}.\qquad(x=0,1,2,\cdots)$$
+<!-- 그러면, 길이가 $t$인 시간간격동안에는 $t\lambda$회 만큼의 사건이 발생한다고 기대됩니다. -->
 
-한글로 다시 쓰면, 원래 PD식(첫번째 식)에서 $X$가 단위시간(길이가 1인 시간간격)동안 특정 사건이 발생한 횟수이었는데, 이번에는 길이가 $t$인 시간간격 동안 특정 사건이 발생할 횟수를 $X$로 정한 것입니다.
-그리고 그 때의 PMF가 두번째 식처럼 나옵니다.
+<!-- 만약 $Y$를 길이가 $t$인 시간간격동안의 사건의 발생횟수라고 하면, $t$ 시간 동안에는 $\lambda t$만큼의 사건이 일어나리라고 생각할 수 있습니다.
+따라서
+
+$$
+\begin{aligned}
+P_Y(y)
+&=\frac{(\lambda t)^y}{y!}e^{-\lambda t}\\
+&=\frac{\lambda^y t^y}{y!}e^{-\lambda t}
+\end{aligned}
+\qquad(x=0,1,2,\cdots)
+$$
+
+와 같이 생각할 수 있습니다. -->
+
+<!-- 였습니다.
+
+
+즉, 단위시간동안 평균적으로 $\lambda$번의 사건이 발생하는 Poisson process에서, 단위시간동안 사건이 발생한 횟수 $X$에 대한 PMF가 위와 같습니다.
+
+$1$시간동안 평균적으로 $\lambda=4.5$번의 사건이 발생한다면,
+$0.5$시간 동안에는 평균적으로 $0.5\times\lambda=2.225$번의 사건이 발생합니다.
+또, $2$시간 동안에는 평균적으로 $2\times\lambda=9$번의 사건이 발생합니다.
+
+정리하면, $t$시간동안 $t\lambda$번의 사건이 발생합니다.
+따라서, $Y$를 $t$시간 동안의 사건 발생횟수라고 하면 -->
+
+<!-- 이것을 -->
+
+<!-- Transforming 'unit time' to 'time interval of length $t$' yields -->
+<!-- ($1\to t$, $\lambda\to\lambda t$) -->
+
+<!-- $$P_Y(y)=\frac{\lambda^yt^x}{x!}e^{-\lambda t}.\qquad(x=0,1,2,\cdots)$$ -->
+
+<!-- 로 바꾸면, 이것은 단위시간동안 $\lambda t$번의 사건이 발생하는 Poisson process에 대한 PD를 의미합니다. -->
+
+<!-- 한글로 다시 쓰면, 원래 PD식(첫번째 식)에서 $X$가 단위시간(길이가 1인 시간간격)동안 특정 사건이 발생한 횟수이었는데, 이번에는 길이가 $t$인 시간간격 동안 특정 사건이 발생할 횟수를 $X$로 정한 것입니다.
+그리고 그 때의 PMF가 두번째 식처럼 나옵니다. -->
+
+<!-- 이 PMF는 시간간격이 $t$인 경우에 대한 사건의 발생 횟수에 해당됩니다. -->
 
 그러면, 길이가 $t$인 시간간격동안 한번도 사건이 발생하지 않을 확률 $P(\text{no event})$은
 
-$$P(\text{no event})=P_X(0)=e^{-\lambda t}$$
+$$P(\text{no event})=P_M(0)=e^{-\lambda t}$$
 
-이고 길이가 $t$인 시간간격동안 적어도 한 번 사건이 발생할 확률 $P(\text{at least one event})$는
+이고 길이가 $t$인 시간간격동안 적어도 한 번 사건이 발생할 확률 $P(\text{at least one event})$는 exponential distribution의 CDF에 $t$를 넣은 모양과 완전히 일치합니다.
 
-$$P(\text{at least one event})=1-P_X(0)=1-e^{-\lambda t}$$
-
-이것은 ED의 CDF에 $t$를 넣은 모양과 완전히 일치합니다.
+$$P(\text{at least one event})=1-P_M(0)=1-e^{-\lambda t}=F_X(t)$$
 
 그러니까, PD를 해석할 때 어떤 event를 상정했었습니다.
 그 event의 예시를 '상점에서 손님이 들어오는 것'으로 해석했었지만, event가 어떤 종류의 것이었어도 상관없었습니다.
@@ -2713,7 +2967,7 @@ discrete case에서는 mode가 최빈값, 즉 PMF의 최대점을 의미합니�
 
 이외에도 표준졍규분포, 표준정규분포표에 대해서도 소개되고 있습니다.
 이때 $\Phi$를 표준정규분포의 CDF로 정합니다.
-즉, $Z\sim N(0,1)$일 떄,
+즉, $Z\sim N(0,1)$일 때,
 
 $$\Phi(x)=F_Z(x)=P(Z\le x)=\int_{-\infty}^x\frac1{\sqrt{2\pi}}e^{-\frac{z^2}2}$$
 
