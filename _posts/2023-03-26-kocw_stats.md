@@ -19,6 +19,11 @@ author_profile: false
 예를 들어, 강의에서는 증명이 생략되는 경우도 많고, 개념의 의미가 완벽하게 설명되지 않는 경우도 있습니다.
 이런 미흡한 부분은 다른 여러 자료들에서 채워넣으려고 했습니다.
 
+강의의 회차를 나타낼 때에는 꺽쇠괄호를 사용했습니다.
+예를 들어 $\langle02\rangle$라고 쓰면 이것은 2회차 강의 내용 또는 2회차 강의의 정리를 뜻합니다.
+중요한 식을 나타낼 때에는 $(\ast)$, $(\ast\ast)$, $(\ast\ast\ast)$와 같은 기호를 사용했습니다.
+이 식번호는 회차마다 초기화됩니다.
+
 # 01 조건부확률과 Bayes 정리
 
 **(1) sample space**
@@ -96,8 +101,8 @@ $$
 로 정의하면, $\Sigma$는 $\sigma$-algebra이고 $P$는 probability measure입니다.
 (단, 유한집합 $X$에 대하여 $n(X)$는 그 집합의 원소의 개수입니다.)
 
-이렇게 정의한 $P$는 보통 (근원사건의 개수가 유한한 경우에 대한) 확률문제를 풀 때 적용해왔던 그 $P$와 의미가 일치합니다.
-예를 들어, 아까 주사위를 하나 던지는 시행에서  $A=\\{2,4,6\\}$, $B=\\{5\\}$로 두었었는데, $A\in\Sigma$, $B\in\Sigma$이고
+이렇게 정의한 $P$는 보통 주사위 문제를 풀 때 사용해왔던 그 $P$와 의미가 일치합니다.
+아까  $A=\\{2,4,6\\}$, $B=\\{5\\}$로 두었었는데, $A\in\Sigma$, $B\in\Sigma$이고
 
 $$
 \begin{align*}
@@ -106,7 +111,7 @@ P(B)&=\frac{n(B)}{n(S)}=\frac16
 \end{align*}
 $$
 
-입니다.
+이기 때문입니다.
 
 **(3) coditional probability**
 
@@ -120,24 +125,74 @@ $$P(B|A)=\frac{P(B\cap A)}{P(A)}$$
 이것은 마치, $A$를 sample space로 보는 것과 같습니다.
 마찬가지로, 일반적인 확률 $P(A)$도 $P(A|S)$와 같이 해석할 수 있습니다.
 
-**(4) the law of total probability**
+**(4) law of total probability**
 
 $A_1$, $\cdots$, $A_n$가 $S$의 partition이면, 다시 말해,
 
-- $A_i$들이 서로 배반(mutually exclusive)사건이고 ; $i\ne j$일 때 $A_i\cap A_j=\varnothing$
+- $A_i$들이 서로 배반(mutually exclusive)사건이다 ; $i\ne j$일 때 $A_i\cap A_j=\varnothing$
 - $A_i$들에 대한 합집합이 $S$이면 ; $A_1\cup A_2\cup\cdots\cup A_n=S$
 
-$$P(A)=P(A_1\cap A)+\cdots+P(A_n\cap A)=\sum_{i=1}^nP(A_i\cap A)$$
+다음과 같은 식이 성립합니다.
 
-입니다.
-각각의 $i$에 대하여 $P(A_i\cap A)=P(A|A_i)P(A_i)$이므로
-
-$$P(A)=\sum_{i=1}^nP(A|A_i)P(A_i)$$
-
-입니다.
-<!-- 이후에 Bayes theorem에서 자세히 다루겠지만, $P(A|A_i)$와 같은 확률은 사전확률로 해석할 수 있습니다. -->
+$$
+\begin{align*}
+P(A)
+&=P(A_1\cap A)+\cdots+P(A_n\cap A)\\
+&=\sum_{i=1}^nP(A_i\cap A)\\
+&=\sum_{i=1}^nP(A|A_i)P(A_i)
+\end{align*}
+$$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
+
+<div class="notice--danger">
+(a)
+사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
+$$i\ne j\Rightarrow A_i\cap A_j=\varnothing$$
+이면 $A_i$들이 pairwisely exclusive(서로 배반)하다고 말합니다.
+반면에,
+$$A_1\cap A_2\cap\cdots\cap A_n=\varnothing$$
+이면 $A_i$들이 mutually exclusive하다고 말합니다.
+<br>
+마찬가지로, 집합 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
+$$i\ne j\Rightarrow A_i\cap A_j=\varnothing$$
+이면 $A_i$들이 pairwisely disjoint하다고 말합니다.
+반면에
+$$A_1\cap A_2\cap\cdots\cap A_n=\varnothing$$
+이면 $A_i$들이 mutually disjoint하다고 말합니다.
+<br>
+뒤에서도 나오겠지만 독립/종속에 대해서도 비슷한 정의를 내릴 수 있습니다.
+사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
+$$i\ne j\Rightarrow P(A_i\cap A_j)=P(A_i)P(A_j)$$
+이면 $A_i$들이 pairwisely independent하다고 말합니다.
+반면에
+$$P(A_1\cap A_2\cap\cdots\cap A_n)=P(A_1)P(A_2)\cdots P(A_n)$$
+이면 $A_i$들이 mutually disjoint하다고 말합니다.
+<br>
+확률변수 $X_1$, $X_2$, $\cdots$, $X_n$에 대하여
+$$
+\begin{align*}
+i\ne j\Rightarrow
+&F_{X_i,X_j}(x_i,x_j)=F_{X_i}(x_i)F_{X_j}(x_j)&&\text{(discrete)}\\
+&f_{X_i,X_j}(x_i,x_j)=f_{X_i}(x_i)f_{X_j}(x_j)&&\text{(continuous)}\\
+\end{align*}
+$$
+이면 $X_i$들이 pairwisely independent하다고 말합니다.
+반면에
+$$
+\begin{align*}
+i\ne j\Rightarrow
+&F_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=F_{X_1}(x_1)F_{X_2}(x_2)\cdots F_{X_n}(x_n)&&\text{(discrete)}\\
+&f_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=f_{X_1}(x_1)f_{X_2}(x_2)\cdots f_{X_n}(x_n)&&\text{(continuous)}
+\end{align*}
+$$
+이면 $X_i$들이 mutually independent하다고 말합니다.
+<br><br>
+(b) $A_1$, $A_2$, $\cdots$, $A_n$이 pairwisely exclusive하면 mutually exclusive하지만, 그 역은 성립하지 않습니다.
+만약, $A_1=\{1,2\}$, $A_2=\{2,3\}$, $A_3=\{1,3\}$이면 $A_i$들은 mutually exclusive하지만 pairwisely exclusive하지는 않습니다.
+<br><br>
+(c) 이 정의에 따르면, $A_1$, $A_2$, $\cdots$, $A_n$이 $S$의 partition이 되기 위한 조건은, $A_i$들이 pairwisely exclusive하면서 $A_1\cup\cdots\cup A_n=S$인 것입니다.
+</div>
 
 **(5) Bayesian theorem**
 
@@ -147,7 +202,7 @@ $$P(B|A)=\frac{P(A|B)P(B)}{P(A)}\tag{$(\ast)$}$$
 
 입니다.
 만약 $P(B|A)$를 직접적으로 구하기가 어렵지만, $P(A_i|B)$는 구하는 것이 상대적으로 쉽고, $A_1$, $\cdots$, $A_n$이 partition을 이룰 경우에 Bayesian theorem이 자주 쓰입니다.
-이때, $(\ast)$의 우변 분모인 $P(A)$는 the law of total probability에 의해 구할 수 있습니다.
+이때, $(\ast)$의 우변 분모인 $P(A)$는 law of total probability에 의해 구할 수 있습니다.
 이것은 아래의 예를 통해 보면 확인할 수 있습니다.
 
 <div class="notice--danger">
@@ -157,7 +212,6 @@ Bayes theorem($\ast$)의 식의 각 항들은 다음과 같은 의미를 가지�
     <li> $P(B)$ : prior, 사전확률</li>
     <li> $P(A|B)$ : likelihood, 우도</li>
 </ul>
-(식 $(\ast)$를 기준으로 쓴 것입니다.)
 </div>
 
 
@@ -194,7 +248,7 @@ $$
 (마치 행렬같습니다.)
 
 <div class="notice--danger">
-$P(y_1|x_1)$과 같은 표현에 대한 세부적인 정의는 11회차 강의에서 다루어집니다.
+$P(y_1|x_1)$과 같은 표현에 대한 세부적인 정의는 $\langle11\rangle$에서 다루어집니다.
 여기에서는 그냥 '입력이 $x_1$일 때, 출력이 $y_1$일 확률' 정도로 이해하고 넘어가면 될 것 같습니다.
 </div>
 
@@ -210,7 +264,7 @@ P_{12}+P_{22}=1
 $$
 
 이 성립합니다.
-강의에서는 세 종류의 계산을 해보는데, 첫번째 계산은 the law of total probability와 연관이 있고, 두번째와 세번째 계산은 Bayesian theorem과 연관이 있습니다.
+강의에서는 세 종류의 계산을 해보는데, 첫번째 계산은 law of total probability와 연관이 있고, 두번째와 세번째 계산은 Bayesian theorem과 연관이 있습니다.
 
 **(1) error가 발생할 확률**
 
@@ -232,7 +286,7 @@ $$
 **(2) When $y_2$ is received, what is the probability that $x_1$ is transmitted?**
 
 $y_2$가 출력되었을 경우에, $x_1$이 입력되었을 확률을 계산합니다.
-Bayes rule과 the law of total probability, 그리고 $P_{ij}$의 정의에 의해
+Bayes rule과 law of total probability, 그리고 $P_{ij}$의 정의에 의해
 
 $$
 \begin{align*}
@@ -285,7 +339,7 @@ $$P(A)P(B)=P(A\cap B)\tag{\ast\ast}$$
 
 와 동치입니다.
 강의에서는 $(\ast\ast)$를 독립의 정의로 사용하고 있습니다.
-이후에 10회차 강의에서 확률변수들 간의 독립을 정의할 때에도 여전히 $(\ast\ast)$와 같은 식을 정의로서 활용합니다.
+이후에 $\langle10\rangle$에서 확률변수들 간의 독립을 정의할 때에도 여전히 $(\ast\ast)$와 같은 식을 정의로서 활용합니다.
 
 - 세 개 이상의 사건에 대한 독립을 말할 때는 mutually independent라는 용어를 씁니다.
 - 독립의 개념은 독립시행(복원시행, repeated restored trial)을 다룰 때 중요합니다.
@@ -849,7 +903,7 @@ CDF의 그래프는 step function으로 나타나는 것을 볼 수 있습니다
 
 **dirac delta function**
 
-04회차 강의에서 연속확률변수를 다루게 됩니다.
+$\langle04\rangle$에서 연속확률변수를 다루게 됩니다.
 그리고, 연속확률변수에서는 확률질량함수(PMF)가 아닌 확률밀도함수(PDF)를 다루게 됩니다.
 
 이산확률변수 $X$에 대해서도 확률밀도함수 $f_X(x)$를 생각할 수 있을까?
@@ -1125,7 +1179,7 @@ $$
 P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)
 $$
 
-Poisson distribution의 자세한 의미에 대해서는 08회차 강의를 정리하면서 적어보았습니다.
+Poisson distribution의 자세한 의미에 대해서는 $\langle08\rangle$에 적어보았습니다.
 그래도 간단히 요약하면,
 
 단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 단위시간동안 사건이 일어난 횟수
@@ -1166,6 +1220,21 @@ E[X]
 $$
 
 이 됩니다.
+
+<div class="notice--danger">
+확률질량함수가
+$$
+P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)
+$$
+인 Poisson distribution을 표현할 때, $\lambda$의 의미를 강조하기 위하여
+<center>
+$K$가 평균이 $\lambda$인 Poisson distribution을 따른다
+</center>
+라고 말하기도 합니다.
+그리고 기호로는
+$$K\sim\text{Pois}(\lambda)$$
+로 표현합니다.
+</div>
 
 **ex 3.4 exponential distribution**
 
@@ -1223,9 +1292,22 @@ $$
 세번째 등호에서 부분적분을 사용했습니다.
 
 <div class="notice--danger">
+(a)
 이와 같은 푸아송 분포와 지수분포는 특정한 값(parameter) $\lambda$에 의존합니다.
 실제 자연현상이나 사회현상은 그 분포를 알 수 없는데, 우리는 특정한 확률모델을 전제하여 그 현상을 모델링해볼 수 있습니다.
 이와 같은 과정을 parametric estimation (혹은 parametric probability density estimation) 이라고 부르는 것 같습니다.
+<br>
+(b)
+연속확률변수 $X$가
+$$f_X(x)=
+\begin{cases}
+\lambda e^{-\lambda x}  &x\ge0\\
+0                       &x\lt0
+\end{cases}
+$$
+를 그 밀도함수로 가질 때
+$$X\sim\text{Exp}(\lambda)$$
+로 표현하기도 합니다.
 </div>
 
 **3.4 moments of random variables**
@@ -1295,7 +1377,7 @@ $$
 
 <div class="notice--danger">
 <b> LOTUS </b> : law of the unconscious statistician <br>
-14회차 강의에서 다루게 되겠지만, 여기에서 미리 말해놓는 게 좋을 것 같습니다.
+$\langle14\rangle$ 다루게 되겠지만, 여기에서 미리 말해놓는 게 좋을 것 같습니다.
 흔히 LOTUS라는 약칭으로 불리는 정리 혹은 정의로서, 함수 $g$에 대하여 $g(X)$의 평균을 구하는 식이 있습니다 ; 
 
 $$
@@ -1336,7 +1418,7 @@ discrete case는 증명이 쉽지만, continuous case에 대한 일반적인 증
 이렇게 평균을 LOTUS의 식으로 정의해버리면, 기존 정의와도 일치하는 정의가 되면서, 굳이 어려운 증명을 하지 않아도 되게 됩니다. <br>
 
 이 포스트에서는 $(\ast\ast)$를 정의로 두고 LOTUS를 증명하려고 합니다.
-그것들은 14회차 강의에 대해 적으면서 다시 다루겠습니다.
+그것들은 $\langle14\rangle$에서 다시 다루겠습니다.
 다만, LOTUS를 아직 비록 증명하지는 않았더라도, LOTUS는 앞으로 사용할 예정입니다.
 </div>
 
@@ -1570,6 +1652,14 @@ $$
 $${\sigma_K}^2=E[K^2]-E[K]^2=\frac{2-p}{p^2}-\frac1{p^2}=\frac{1-p}{p^2}$$
 
 입니다.
+
+<div class="notice--danger">
+이산확률변수 $K$가
+$$P_K(k)=(1-p)^{k-1}p\qquad(k=1,2,\cdots)$$
+를 그 질량함수로 가질 때
+$$X\sim\text{Geo}(p)$$
+로 표현하기도 합니다.
+</div>
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_6-1.png){: .img-100-center}
 
@@ -1977,7 +2067,7 @@ $$
 \end{align*}
 $$
 
-이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 02회차 강의(1.10.4)에 대해 적을 때 이미 증명했습니다.
+이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 $\langle02\rangle$-(1.10.4)에 서 이미 증명했습니다.
 그 때에는 $(1+x)^n$을 미분하여 얻을 수 있는 성질로부터 증명했었습니다.
 강의에서는 표준적인 방법 (combination의 성질)으로서 증명하고 있는데, 여기에는 생략하겠습니다.
 
@@ -2000,7 +2090,7 @@ the number of Bernoulli trial until the first success
 {: .text-center}
 
 입니다.
-다시 말해(06회차 강의, 3.13에서 소개한 표현을 다시 쓰면),
+다시 말해($\langle06\rangle$의 3.13에서 소개한 표현을 다시 쓰면),
 
 어떤 Bernoulli trial을 반복적으로 시행할 때, $K$번째에 처음으로 성공할 경우
 {: .text-center}
@@ -2075,14 +2165,22 @@ the number of Bernoulli success in a time interval
 {: .text-center}
 
 였습니다.
-다시 말해(05회차 강의, 3.3에서 소개한 표현을 다시 쓰면),
+$\langle05\rangle$ 3.3에서 소개한 표현을 다시 쓰면
 
 단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 단위시간동안 사건이 일어난 횟수
 {: .text-center}
 
 을 말합니다.
+그런데, PMF의 식에서 '단위시간'이라는 것은 전제되어 있지 않습니다.
+그리고 생각해보면, universal한 의미의 '단위시간'이라는 건 없습니다.
+그래서 $K$의 의미를
 
-그러니까 어떤 사건이 일어난다는 것은, 그 자체로 Bernoulli trial이라고 볼 수 있습니다.
+$t$시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, $t$시간동안 사건이 일어난 횟수
+{: .text-center}
+
+라고 정해도 상관 없습니다.
+
+어떤 사건이 일어난다는 것은, 그 자체로 Bernoulli trial이라고 볼 수 있습니다.
 (사건이 일어난다 / 일어나지 않는다)와 같이 두 가능성 중 하나가 발생되는 것이기 때문입니다.
 어떤 사건이 일정한 비율로 일어나는 경향을 보일 때, 특정한 시간 간격동안 어떤 사건이 일어난 횟수를 $K$라고 할 수 있는 것입니다.
 
@@ -2110,7 +2208,6 @@ $$
 
 단, $\lambda$는 $p=\frac\lambda n$으로 주어집니다.
 이에 대한 [증명](https://https://math.stackexchange.com/q/3125971)은 어렵지 않은데
-
 
 $$
 \begin{align*}
@@ -2156,8 +2253,7 @@ $$P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}\qquad(k=0,1,2,\cdots)$$
 
 위 문제를 풀기 위해 할 수 있는 자연스러운 방법은, 한 시간을 작은 시간단위로 쪼개는 것입니다.
 예를 들어 1초 단위로 쪼개본다고 하겠습니다(1시간 = 3600초).
-어느 날의 어느 시각(예를 들어 오후 1시)으로부터 한 시간동안이라고 하면 오후 2시까지입니다.
-그 시간을
+어느 날의 어느 시각으로부터 한 시간동안(예를 들어, 어느 날 오후 1시부터 오후 2시까지)의 시간을
 - 1시 00분 00초 ~ 1시 00분 01초 : $T_1$
 - 1시 00분 01초 ~ 1시 00분 02초 : $T_2$
 
@@ -2191,7 +2287,7 @@ $$
 
 이 될 것입니다.
 그리고 이 때에는 아까의 *가정*(하나의 시간간격동안 2명 이상 들어오지 않는다는 가정)이 더 그럴듯하게 성립할 것이므로 $(\ast\ast)$의 분포는 $(\ast)$의 분포보다 더 괜찮은 (현상을 잘 반영하는) 분포일 것입니다.
-심지어는, 아무리 친구 두 명이서 함께 가게를 방문한다고 하더라도, 두 명의 사람이 가게에 들어오는 시각에는 차이가 있을 것이므로 시간간격을 충분히 줄이면 이 *가정*은 항상 성립한다고 말할 수도 있을 것입니다.
+심지어는, 아무리 친구 두 명이서 함께 가게를 방문한다고 하더라도, 두 명의 사람이 가게에 들어오는 시각에는 미세하게 차이가 있을 것이므로 시간간격을 충분히 줄이면 이 *가정*은 항상 성립한다고 말할 수도 있을 것입니다.
 그래서 3600, 36000이었던 값을 양의 무한대로 보내버리고, 아까의 계산결과를 적용하면
 
 $$
@@ -2241,13 +2337,18 @@ $$
 
 <!-- exponential distribution이 어떤 의미를 가지고 있는지 하는 것은  -->
 
-exponential distribution의 의미에 관해서는 Poisson distribution과 관계되어서 이따가 설명될 것 같습니다.
-그 전에 한 번 대략적으로 이야기하면,
+그리고
+
+<!-- , exponential distribution의 의미에 관해서는 Poisson distribution과 관계되어서 이따가 설명될 것 같습니다.
+그 전에 한 번 대략적으로 이야기하면, -->
 
 단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간
 {: .text-center}
 
-은 exponential distribution을 따릅니다.
+를 $X$라고 하면, $X$는 exponential distribution을 따릅니다.
+다시 말해, $X$가 위의 식인 exponential PMF를 가집니다.
+이것은 이따가 Poisson disribution과의 관계를 통해 증명하겠습니다.
+
 Bernoulli trial의 근원사건들의 의미를 죽음(death)과 생존(survival)이라고 한다면, $X$는 생존시간을 의미한다고도 볼 수 있습니다.
 
 **difference equations and differential equations**
@@ -2360,8 +2461,30 @@ $$
 **relation between ED and PD**
 
 exponential distribution과 Poisson distribution 사이의 관계를 보려고 합니다.
+이를 통해, 만약 $X$가
 
-단위시간동안 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간 $X$은 exponetial distribution을, 단위시간동안 사건이 발생한 횟수 $K$는 Poisson distribution을 따른다고 했습니다.
+단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간
+{: .text-center}
+
+이면, $X$는 exponential PDF인
+
+$$
+f_X(x)=\lambda e^{-\lambda x}\qquad(x\ge0)
+$$
+
+를 가진다는 것을 보려고 합니다.
+
+단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 가정하고 $X$를 사건이 발생하기까지의 기간이라고 하겠습니다.
+<!-- 이때, 단위시간동안 사건이 발생한 횟수 $K$는 평균이 $\lambda$인 Poisson distribution을 따릅니다. -->
+그러면, 길이가 $t$인 시간간격 동안에는 평균적으로 $\lambda t$번의 사건이 일어난다고 기대할 수 있습니다.
+따라서, 길이가 $t$인 시간간격동안 사건이 발생한 횟수를 $K$라고 하면 $K$는 평균이 $\lambda t$인 Poisson distribution을 따릅니다.
+따라서 $K$의 PMF는
+
+$$P_K(k)=\frac{\lambda^kt^k}{k!}e^{-\lambda t}\qquad(k=0,1,2,\cdots)$$
+
+가 됩니다.
+
+<!-- 단위시간동안 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간 $X$은 exponetial distribution을, 단위시간동안 사건이 발생한 횟수 $K$는 Poisson distribution을 따른다고 했습니다.
 그리고 $X$와 $K$에 대한 확률함수는 각각
 
 $$
@@ -2377,7 +2500,7 @@ $t$시간동안 발생한 사건의 횟수를 $M$이라고 하면
 
 $$P_M(m)=\frac{\lambda^xt^x}{x!}e^{-\lambda t}.\qquad(x=0,1,2,\cdots)$$
 
-이 됩니다.
+이 됩니다. -->
 
 <!-- ED는 연속확률분포로서 '(생존)시간'과 관련이 있었고 PD는 이산확률분포로서 주어진 시간구간 동안의 '발생횟수'와 관련이 있었습니다.
 
@@ -2437,11 +2560,34 @@ $0.5$시간 동안에는 평균적으로 $0.5\times\lambda=2.225$번의 사건�
 
 그러면, 길이가 $t$인 시간간격동안 한번도 사건이 발생하지 않을 확률 $P(\text{no event})$은
 
-$$P(\text{no event})=P_M(0)=e^{-\lambda t}$$
+$$P(\text{no event})=P(K=0)=P_K(0)=e^{-\lambda t}$$
 
-이고 길이가 $t$인 시간간격동안 적어도 한 번 사건이 발생할 확률 $P(\text{at least one event})$는 exponential distribution의 CDF에 $t$를 넣은 모양과 완전히 일치합니다.
+이고 길이가 $t$인 시간간격동안 적어도 한 번 사건이 발생할 확률 $P(\text{at least one event})$는
 
-$$P(\text{at least one event})=1-P_M(0)=1-e^{-\lambda t}=F_X(t)$$
+$$P(\text{at least one event})=1-P(\text{no event})=1-e^{-\lambda t}$$
+
+입니다.
+그런데 $X$를 '사건이 발생하기까지의 기간'으로 해석하기로 했으므로
+
+$$P(\text{at least one event})=P(X\le t)=F_X(t)$$
+
+입니다.
+다시 말해,
+
+$$F_X(t)=1-e^{-\lambda t}$$
+
+입니다.
+이것을 친숙한 변수 $x$로 다시 쓰면
+
+$$F_X(x)=1-e^{-\lambda x}$$
+
+이 되고, 이걸 미분하면
+
+$$f_X(x)=\lambda e^{-\lambda x}$$
+
+가 얻어집니다. $\square$
+
+<!-- 이 되어 exponential distribution의 CDF에 $t$를 넣은 모양과 완전히 일치합니다.
 
 그러니까, PD를 해석할 때 어떤 event를 상정했었습니다.
 그 event의 예시를 '상점에서 손님이 들어오는 것'으로 해석했었지만, event가 어떤 종류의 것이었어도 상관없었습니다.
@@ -2458,27 +2604,31 @@ $$
 
 인 것입니다.
 여기서 좌변과 우변의 $X$는 서로 다른 종류의 확률변수입니다.
-즉, 좌변의 $X$는 길이가 $t$인 시간간격 동안 '실패'가 발생할 횟수이고, 우변의 $X$는 생존시간, 즉 '실패'가 처음으로 발생한 시각을 뜻합니다.
+즉, 좌변의 $X$는 길이가 $t$인 시간간격 동안 '실패'가 발생할 횟수이고, 우변의 $X$는 생존시간, 즉 '실패'가 처음으로 발생한 시각을 뜻합니다. -->
 
-다시 정리하면, 특정 시점에 일어날 수 있는 어떤 사건에 대하여
-
-- 사건 사이의 시간간격은 exponential distribution을 따르고
+다시 정리하면, 매시각마다 일정한 비율로 일어나는 어떤 사건이 있을 때,
+- 사건이 일어나는 시간은 exponential distribution을 따르고
 - 일정한 시간간격 동안 사건이 일어난 횟수는 Poisson distribution을 따른다
 
 고 할 수 있습니다.
+또한,
+- 사건들 사이의 시간간격은 exponential distribution을 따른다
+
+고 말할 수도 있습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-2.png){: .img-50-center}
 
-그러니까, exponential distribution을 따르는 어떤 확률변수 $T$를 '사건 사이의 시간간격'이라고 해석하면, 특정 시간간격을 상정한 다음 그 시간간격 동안 해당 사건이 일어난 횟수를 확률변수 $X$라고 정할 때 $X$는 Poisson distribution을 따릅니다.
+<!-- 그러니까, exponential distribution을 따르는 어떤 확률변수 $T$를 '사건 사이의 시간간격'이라고 해석하면, 특정 시간간격을 상정한 다음 그 시간간격 동안 해당 사건이 일어난 횟수를 확률변수 $X$라고 정할 때 $X$는 Poisson distribution을 따릅니다.
 
-반대로, Poisson distribution을 따르는 어떤 확률변수 $X$를 '일정한 시간간격 동안 사건이 일어날 횟수'로 해석한다면, 그 사건이 일어나는 시간 간격을 확률변수 $T$로 정할 때 $T$는 exponential distribution을 따릅니다.
+반대로, Poisson distribution을 따르는 어떤 확률변수 $X$를 '일정한 시간간격 동안 사건이 일어날 횟수'로 해석한다면, 그 사건이 일어나는 시간 간격을 확률변수 $T$로 정할 때 $T$는 exponential distribution을 따릅니다. -->
 
 **4.9 Erlang distribution**
 
 Erlang-$k$ distribution is a generalization of expoential distribution.
+{: .text-center}
 
 어떤 사건이 발생하는 간격은 exponetial distribution을 따른다고 했었습니다.
-즉, 시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 두번째 사건이 발생했다면 $T_2-T_1$은 exponential distribution을 따릅니다.
+즉, 시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 발생했다면 $T_2-T_1$은 exponential distribution을 따릅니다.
 다시 말해, exponential distribution은 한 개의 사건발생간격을 고려합니다.
 
 Erlang-$2$ distribution은 두 개의 사건발생간격을 고려합니다.
@@ -2496,7 +2646,8 @@ f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
 \tag{$\ast$}
 $$
 
-와 같이 정의됩니다.
+입니다.
+연속확률변수 $X_k$가 Erlang-$k$ distribution을 따를 때 $X_k$가 위의 PMF를 가진다는 것은 $\langle16\rangle$에서 배우는 convolution의 개념을 통해 증명할 수 있습니다.
 
 **gamma function**
 
@@ -3239,7 +3390,7 @@ $$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-8.png){: .img-50-center}
 
-위의 성질들은 모두 당연해 보이므로 따로 증명하지 않겠습니다.
+위의 성질 (1)-(4)는 모두 당연해 보이므로 따로 증명하지 않겠습니다.
 그리고 (5)는 두 확률변수가 독립인 것의 정의입니다.
 <!-- 다만, (5)는 아직 이해할 수도 없고 증명할 수도 없습니다.
 아직까지는 두 사건의 독립이라는 개념만 소개했지, 두 확률변수의 독립에 대해서는 정의한 바가 없기 때문입니다.
@@ -3252,7 +3403,7 @@ $X$의 conditional PDF도 conditional CDF의 도함수로서 정의했습니다.
 마찬가지로, 두 연속확률변수 $X$, $Y$에 대하여 $X$와 $Y$의 joint PDF를 정의하기 위해서는 일단 joint CDF를 먼저 정의해야 합니다.
 joint CDF는
 
-$F_{XY}(x,y)=P(X\le x,Y\le y)$
+$$F_{XY}(x,y)=P(X\le x,Y\le y)$$
 
 와 같이 정의됩니다.
 연속확률변수 $X$에 대하여 $P(X=x)$의 값을 정하는 것의 의미가 없었습니다.
@@ -3316,9 +3467,9 @@ f_{XY}(x,y)=2e^{-x-y}\qquad(0\le x\le y,\quad 0\le y)
 $$
 
 로 주어지는 경우에 대하여 앞서 강의에서의 성질들이 성립하는지 살펴보겠습니다.
-이 함수의 정의역을 $R$로 두면
+이 함수가 정의된 영역을 $D$로 두면
 
-$$R=\{(x,y)\in\mathbb R^2:0\le x\le y, 0\le y\}$$
+$$D=\{(x,y)\in\mathbb R^2:0\le x\le y, 0\le y\}$$
 
 이고 이것은
 
@@ -3390,7 +3541,7 @@ $$
 
 와 같이 joint PDF가 주어지는 경우입니다.
 다시 말해, 단위원 내부에서 분포가 uniform distribution으로 주어지는 경우입니다.
-이 함수의 정의역은
+이 함수가 정의된 영역은
 
 $$D=\{(x,y)\in\mathbb R^2:x^2+y^2\le1\}$$
 
@@ -3454,12 +3605,12 @@ $$
 여기에서 괄호 안의 숫자는 강의의 회차를 의미하고, exp.는 expectation, var.은 variance, con.은 conditional, jnt.는 joint를 의미합니다.
 
 그러니까 conditional variance에 대해서는 다루지 않았는데, 이번 강의에서 언급됩니다.
-그리고 joint expectation과 joint variance의 개념은 생각할 수 없습니다.
+한편 joint expectation과 joint variance의 개념은 생각할 수 없습니다.
 joint distribution에 대해서는 어떤 실수값을 가지는 확률변수를 생각할 수 없었기 때문입니다.
-하지만, 여러 개의 확률변수들에 특정한 함수가 주어졌을 때의 expectation은 계산할 수 있습니다(12).
-또 joint variance를 정의하는 대신 covariance를 정의하게 됩니다(12).
+하지만, 여러 개의 확률변수들에 특정한 함수가 주어졌을 때의 expectation은 계산할 수 있습니다$\langle12\rangle$.
+또 joint variance를 정의하는 대신 covariance를 정의하게 됩니다$\langle12\rangle$.
 
-이번 강의에서 공부하는 것은 conditional distribution이지만, 06회차 강의에서 다루었던 일반적인 conditional distribution말고, 두 확률변수에 대해 생각할 때의 conditional distribution을 공부합니다.
+이번 강의에서 공부하는 것은 conditional distribution이지만, $\langle06\rangle$에서 다루었던 일반적인 conditional distribution말고, 두 확률변수에 대해 생각할 때의 conditional distribution을 공부합니다.
 
 $$
 \begin{matrix}
@@ -3473,10 +3624,10 @@ $$
 \begin{align*}
 P(A|B)
 &=\frac{P(A\cap B)}{P(B)}
-&&\text{(conditional probability with respect to events(01))}\\
+&&\text{(conditional probability w.r.t. events(01))}\\
 P(X\le x|X\le a)
 &=\frac{P\left((X\le x)\cap(X\le a)\right)}{P(X\le a)}
-&&\text{(conditional probability with respect to a RV(06))}
+&&\text{(conditional probability w.r.t. RVs(06))}
 \end{align*}
 $$
 
@@ -3486,7 +3637,7 @@ $$
 
 $$
 \begin{align*}
-P_{Y|X}(x,y)
+P_{Y|X}(x|y)
 &=P(Y=y|X=x)\\
 &=\frac{P_{XY}(x,y)}{P_X(x)}
 \end{align*}
@@ -3582,7 +3733,7 @@ $$f_{X|Y}(x,y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$
 
 **conditional expectations and variances**
 
-06회차 강의에서 (일반적인) conditional expectation은 (continuous case)
+$\langle06\rangle$에서 (일반적인) conditional expectation은 (continuous case)
 
 $$
 E[X|\le a]=\int_{x\le a}xf_X(x|x\le a)\,dx
@@ -3913,7 +4064,7 @@ $$
 
 $$E[X]=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_i)$$
 
-이것은 the law of total probability인
+이것은 law of total probability인
 
 $$P[A]=\sum_{j=1}^nP(A|A_i)P(A_i)$$
 
@@ -4177,7 +4328,7 @@ $$-1\le\rho_{XY}\le1$$
 
 이번 강의에서는 $X$의 확률분포가 주어질 때, $g(X)$의 확률분포가 어떻게 나타나는지, 그리고 $E[g(X)]$가 어떻게 계산되는지 다룹니다.
 
-12회차 강의에서 $E[g(X)]$가
+$\langle12\rangle$에서 $E[g(X)]$가
 
 \begin{equation}
 only equation environment
