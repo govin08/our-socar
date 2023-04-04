@@ -3192,7 +3192,7 @@ $S$는 sample space로 그냥 하나의 집합이었고 $\Sigma$는 $\sigma$-alg
 확률변수란, $X:S\to\mathbb R$인 함수 $x=X(w)$로 정의됩니다.
 이를 통해
 
-$$P(X=x)=p(x)=P_X(x)$$
+$$P(X=x)=P_X(x)$$
 
 와 같은 표현을 ($P_X$는 확률질량함수, PMF)
 
@@ -3291,6 +3291,7 @@ $$
 P(X=0,Y=2)
 &=P\left(\{(w_1,w_2)\in S_1\times S_2:X(w_1)=0,Y(w_2)=2\}\right)\\
 &=P\left(\{(T,2)\}\right)\\
+&=\frac{n(\{(T,2)\})}{n(S_1\times S_2)}
 &=\frac1{12}
 \end{align*}
 $$
@@ -3384,14 +3385,15 @@ $$
 \end{align*}
 $$
 
+위의 성질 (1)-(4)는 모두 당연해 보이므로 따로 증명하지 않겠습니다.
+그리고 (5)는 두 확률변수가 독립인 것의 정의입니다.
+
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-6.png){: .img-50-center}
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-7.png){: .img-50-center}
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_10-8.png){: .img-50-center}
 
-위의 성질 (1)-(4)는 모두 당연해 보이므로 따로 증명하지 않겠습니다.
-그리고 (5)는 두 확률변수가 독립인 것의 정의입니다.
 <!-- 다만, (5)는 아직 이해할 수도 없고 증명할 수도 없습니다.
 아직까지는 두 사건의 독립이라는 개념만 소개했지, 두 확률변수의 독립에 대해서는 정의한 바가 없기 때문입니다.
 두 확률변수의 독립에 관해서는 12강에서 잠깐 소개하게 되는데(43분 경), 사실 이산확률변수와 연속확률변수에 대한 (5)번 항목은 두 확률변수가 독립인 것의 정의로 둘 수 있습니다. -->
@@ -3453,6 +3455,7 @@ $$
 \end{align*}
 $$
 
+이때, $\iint_{\mathbb R^2}=\int_{-\infty}^\infty\int_{-\infty}^\infty$ 입니다.
 이번에도 (1)-(4)는 당연합니다.
 그리고 (5)는 두 확률변수가 독립인 것의 정의입니다.
 
@@ -3476,12 +3479,13 @@ $$D=\{(x,y)\in\mathbb R^2:0\le x\le y, 0\le y\}$$
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-1.png){: .img-50-center}
 
 와 같은 영역을 의미합니다.
-먼저  (2)번 성질($\iint_R f_{XY}(x,y)\,dx\,dy=1$)을 보겠습니다.
+먼저 (2)번 성질($\iint_{\mathbb R^2} f_{XY}(x,y)\,dx\,dy=1$)을 보겠습니다.
 이중적분의 순서에 따라 다음의 두 가지 방법으로 계산될 수 있습니다.
 
 $$
 \begin{align*}
-\iint_R f_{XY}(x,y)\,dx\,dy
+\iint_{\mathbb R^2}f_{XY}(x,y)\,dx\,dy
+&=\iint_D f_{XY}(x,y)\,dx\,dy\\
 &\stackrel{(a)}=\int_0^\infty\int_0^yf_{XY}(x,y)\,dx\,dy\\
 &=\int_0^\infty\int_0^y2e^{-x-y}\,dx\,dy\\
 &=\int_0^\infty\left[-2e^{-x-y}\right]_{x=0}^{x=y}\,dy\\
@@ -3489,7 +3493,8 @@ $$
 &=\left[e^{-2y}-2e^{-y}\right]_0^\infty\\
 &=0-(1-2)\\
 &=1\\
-\iint_R f_{XY}(x,y)\,dx\,dy
+\iint_{\mathbb R^2}f_{XY}(x,y)\,dx\,dy
+&=\iint_D f_{XY}(x,y)\,dx\,dy\\
 &\stackrel{(b)}=\int_0^\infty\int_x^\infty f_{XY}(x,y)\,dx\,dy\\
 &=\int_0^\infty\int_x^\infty2e^{-x-y}\,dy\,dx\\
 &=\int_0^\infty\left[-2e^{-x-y}\right]_{y=x}^{y=\infty}\,dx\\
@@ -3531,7 +3536,7 @@ $$
 
 이고, $X$와 $Y$는 독립이 아닙니다(5).
 
-**ex. 5.7?**
+**ex. 5.7**
 
 다음으로
 
@@ -3554,7 +3559,8 @@ $$D=\{(x,y)\in\mathbb R^2:x^2+y^2\le1\}$$
 
 $$
 \begin{align*}
-\iint_D f_{XY}(x,y)\,dx\,dy
+\iint_{\mathbb R^2}f_{XY}(x,y)\,dx\,dy
+&=\iint_D f_{XY}(x,y)\,dx\,dy\\
 &=\iint_D\frac1{\pi r^2}\,dx\,dy\\
 &=\frac1{\pi r^2}\iint_D\,dx\,dy\\
 &=\frac1{\pi r^2}\times\pi r^2\\
@@ -3633,11 +3639,11 @@ $$
 
 와 같은 것들을 공부했습니다.
 
-두 이산확률변수 $X$와 $Y$에 대하여 조건부 확률질량함수(conditional PMF)에 해당하는 함수 $P_{Y|X}$를
+두 이산확률변수 $X$와 $Y$에 대하여 조건부 확률질량함수(conditional PMF)에 해당하는 함수 $P_{Y\vert X}$를
 
 $$
 \begin{align*}
-P_{Y|X}(x|y)
+P_{Y|X}(y|x)
 &=P(Y=y|X=x)\\
 &=\frac{P_{XY}(x,y)}{P_X(x)}
 \end{align*}
@@ -3645,7 +3651,7 @@ $$
 
 와 같이 정의합니다.
 
-(설명을 자세히 적지 않고 캡쳐로 대체했지만) 이전 강의(10)에서 나왔던 예를 다시 살펴보겠습니다.
+(설명을 자세히 적지 않고 캡쳐로 대체했지만) 이전 강의 $\langle 10\rangle$에서 나왔던 예를 다시 살펴보겠습니다.
 동전을 세 개 던질 때, $X$를
 
 첫번째 동전이 앞면이면 1, 뒷면이면 0
@@ -3701,12 +3707,13 @@ $$
 
 $$
 \begin{align*}
-F_{Y|X}(x,y)
+F_{Y|X}(y|x)
 &=\lim_{\Delta x\to0+}\frac{P(x\lt X\le x+\Delta x,Y\le y)}{P(x\lt X\le x+\Delta x)}\\
 &=\lim_{\Delta x\to0+}\frac{P(x+\Delta x,Y\le y)-P(x,Y\le y)}{P(X\le x+\Delta x)-P(X\le x)}\\
 &=\lim_{\Delta x\to0+}\frac{F_{XY}(x+\Delta x,y)-F_{XY}(x,y)}{F_X(x+\Delta x)-F_X(x)}\\
-&=\frac{\lim_{\Delta x\to0+}\frac{F_{XY}(x+\Delta x,y)-F_{XY}(x,y)}{\Delta x}}{\lim_{\Delta x\to0+}\frac{F_X(x+\Delta x)-F_X(x)}{\Delta x}}\\
+&=\frac{\displaystyle\lim_{\Delta x\to0+}\frac{F_{XY}(x+\Delta x,y)-F_{XY}(x,y)}{\Delta x}}{\displaystyle\lim_{\Delta x\to0+}\frac{F_X(x+\Delta x)-F_X(x)}{\Delta x}}\\
 &=\frac{\frac\partial{\partial x}F_{XY}(x,y)}{\frac\partial{\partial x}F_{X}(x)}\\
+&=\frac{\frac\partial{\partial x}F_{XY}(x,y)}{f_{X}(x)}
 \end{align*}
 $$
 
@@ -3716,18 +3723,18 @@ $$
 
 $$
 \begin{align*}
-f_{Y|X}(x,y)
-&=\frac\partial{\partial y}F_{Y|X}(x,y)\\
-&=\frac\partial{\partial y}\left(\frac{\frac\partial{\partial x}F_{XY}(x,y)}{\frac\partial{\partial x}F_{X}(x)}\right)\\
-&=\frac1{\frac\partial{\partial x}F_{X}(x)}\frac\partial{\partial y}\left(\frac\partial{\partial x}F_{XY}(x,y)\right)\\
-&=\frac{\frac{\partial^2}{\partial y\partial x}F_{XY}(x,y)}{\frac\partial{\partial x}F_{X}(x)}\\
+f_{Y|X}(y|x)
+&=\frac\partial{\partial y}F_{Y|X}(y|x)\\
+&=\frac\partial{\partial y}\left(\frac{\frac\partial{\partial x}F_{XY}(x,y)}{f_{X}(x)}\right)\\
+&=\frac1{f_{X}(x)}\frac\partial{\partial y}\left(\frac\partial{\partial x}F_{XY}(x,y)\right)\\
+&=\frac{\frac{\partial^2}{\partial y\partial x}F_{XY}(x,y)}{f_{X}(x)}\\
 &=\frac{f_{XY}(x,y)}{f_X(x)}
 \end{align*}
 $$
 
 마찬가지로 $X$와 $Y$의 위치를 바꾸면
 
-$$f_{X|Y}(x,y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$
+$$f_{X|Y}(x|y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$
 
 입니다.
 
@@ -3740,16 +3747,15 @@ E[X|\le a]=\int_{x\le a}xf_X(x|x\le a)\,dx
 $$
 
 와 같이 정의했었습니다.
-예를 들어, 아래 그림과 같은 bimodal(쌍봉) 분포에서 $X\le a$라는 조건이 주어지면, 그렇지 않았을 때보다 평균이 왼쪽으로 이동하게 될 것입니다.
+예를 들어, 아래 그림과 같은 분포에서 $X\le a$라는 조건이 주어지면, 그렇지 않았을 때보다 평균이 왼쪽으로 이동하게 될 것입니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-4.png){: .img-75-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-4.png){: .img-50-center}
 
-이번에 다루는 것은 (그러니까, 일반적인 conditional expectation이 아니라는 말은) $E[Y|A]$에서 $A$가 $X$에 대한 조건인 경우입니다 ; $E[Y|A_X]$
+이번에 다루는 것은 (그러니까, 일반적인 conditional expectation이 아니라는 말은) $E[Y\vert A]$에서 $A$가 $X$에 대한 조건인 경우입니다 ; $E[Y\vert A_X]$
 
-자세한 것은 다음 강의에서 이어갈 것 같습니다.
+자세한 것은 다음 강의에서 이어집니다.
 
-
-**독립과 종속**
+<!-- **독립과 종속**
 
 강의에서 두 확률변수 $X$와 $Y$의 독립/종속에 대해서는 정의하지 않았던 것으로 보입니다.
 연속확률변수 $X$, $Y$에 대해서는
@@ -3777,7 +3783,7 @@ $$P\left(X^{-1}(A)\times Y^{-1}(B)\right)=P\left(X^{-1}(A)\times S_2\right)P\lef
 
 로 받아들이면 될 것 같습니다.
 만약 $A=\\{x\\}$, $B=\\{y\\}$이면, 이것은 이산확률변수에 대해서의 독립조건과 일치합니다.
-또, $A=[x_1,x_2]$, $B=[y_1,y_2]$로 두면 이것이 연속확률변수에서의 독립조건과 동치라는 것을 증명할 수 있을 것 같습니다.
+또, $A=[x_1,x_2]$, $B=[y_1,y_2]$로 두면 이것이 연속확률변수에서의 독립조건과 동치라는 것을 증명할 수 있을 것 같습니다. -->
 
 # 12 조건부 평균과 공분산
 
@@ -3787,23 +3793,23 @@ $$P\left(X^{-1}(A)\times Y^{-1}(B)\right)=P\left(X^{-1}(A)\times S_2\right)P\lef
 강의의 가장 초반부에 $E[Y|X]$의 의미는 사실은 $E[Y|X=x]$의 의미라는 언급이 있습니다.
 사실 $E[Y|X]$는 그 자체로는 아직 정의된 적이 없는 어떤 개념입니다.
 conditional expectation에서 condition에 어떤 '확률변수'가 들어가있습니다.
-지금까지 condition에 들어갈 수 있었던 것은 $S$의 부분집합(사건), 확률변수가 포함된 조건(e.g. $X=x$, $X\le x$)이었지 확률변수 그 자체는 아니었던 것입니다.
+지금까지 condition에 들어갈 수 있었던 것은 $S$의 부분집합(사건) 혹은 확률변수가 포함된 조건(e.g. $X=x$, $X\le x$)이었지 확률변수 그 자체는 아니었던 것입니다.
 하지만, $E[Y|X=x]$라고 하면 의미가 생깁니다.
 이것은 $X=x$인 조건 하에서의 $Y$의 기댓값을 의미합니다.
 
-더 나아가 이해해야 할 것은 [$E[Y|X]$가 확률변수](https://https://math.stackexchange.com/q/1946058)라는 사실입니다.
+더 나아가 이해해야 할 것은 $E[Y|X]$가 [확률변수](https://https://math.stackexchange.com/q/1946058)라는 사실입니다.
 $E[Y|X=x]$는 $Y$의 기댓값이기 때문에 $Y$라든지 $y$라든지 하는 값에 의존하지 않습니다.
 이것은 오로지 $x$에 의존하는 값입니다.
 다시 말해, $x$에 대한 함수입니다;
 
 $$E[Y|X=x]=g(x)$$
 
-그러면 $E[Y|X]$를
+그러면 $E[Y\vert X]$를
 
 $$E[Y|X]=g(X)$$
 
 로 정의하면 이 값은 하나의 확률변수로 생각할 수 있는 것입니다.
-예를 들어, $X$가 확률변수이면 $X$에 대한 함수 $X^2+X$도 확률변수인 것처럼, $X$가 확률변수이기 때문에 $g(X)$도 확률변수인 것입니다.
+예를 들어, $X$가 확률변수이면 $X$에 대한 함수 $X^2$도 확률변수인 것처럼, $X$가 확률변수이기 때문에 $g(X)$도 확률변수인 것입니다.
 더 깊이 말하면, $X$와 $Y$가 각각 $X:S_1\to\mathbb R$이고 $Y:S_2\to\mathbb R$인 확률변수들이라고 할 때, 새로운 확률변수
 
 $$E[Y|X]:S_1\to\mathbb R$$
@@ -3814,23 +3820,25 @@ $$E[Y|X](w)=E[Y|X=X(w)]$$
 
 로 정의하면 이것은 잘 정의된 확률변수이고, 위에서 말한 의미와도 부합합니다.
 
-사실, 강의에서는 $E[Y|X]$의 의미에 대해서는 설명하지 않는 것으로 보이고, 조금은 notation abusing을 하는 것으로 보입니다.
+<div class="notice--danger">
+사실, 강의에서는 $E[Y\vert X]$의 의미에 대해서는 설명하지 않는 것으로 보이고, 조금은 notation abusing을 하는 것으로 보입니다.
+</div>
 
 이제 강의를 따라서 $E[Y|X=x]$의 정의를 적어보겠습니다.
 아래 식에서 첫번째 등호가 정의이고, 이후의 식들은 이전에 언급한 사실들을 적용한 것입니다.
 
 $$
 \begin{align*}
-E[Y|X]
+E[Y|x=x]
 &=\int_\mathbb Ryf_{Y|X}(x,y)\,dy\\
 &=\int_\mathbb Ry\frac{f_{XY}(x,y)}{f_X(x)}\,dy\\
-&=g(y)
+&=g(x)
 \end{align*}
 $$
 
-둘째 줄의 적분을 계산할 때 $x$가 사라지므로, 적분값을 $y$에 대한 함수로서 놓을 수 있습니다. 따라서 (아까 언급한 것처럼) 마지막 등호가 성립합니다.
+둘째 줄의 적분을 계산할 때 $y$가 사라지므로, 적분값을 $x$에 대한 함수로서 놓을 수 있습니다. 따라서 (아까 언급한 것처럼) 마지막 등호가 성립합니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_12-1.png){: .img-100-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_12-1.jpg){: .img-50-center}
 
 위의 그림은, 강의의 예시를 구체화해서 적어본 것입니다.
 좌표평면 위에 $(0,0)$, $(2,0)$, $(1,1)$을 꼭짓점으로 하는 삼각형의 내부에 점 $P$가 위치한다고 할 때, $P$의 $x$좌표와 $y$좌표를 각각 $X$, $Y$라고 하겠습니다.
@@ -3841,11 +3849,11 @@ $$f_{XY}(x,y)=1\qquad(0\le y\le x, y\le 2-x)$$
 입니다.
 이때, $E[X|Y=y]$와 $E[Y|X=x]$를 계산해보려 합니다.
 계산을 하기 전에 직관적으로 살펴보면, $y$의 값이 어떤 값이건 상관없이 $(0\lt y\lt 1)$ $X$가 위치하는 구간은 $1$을 중심으로 하는 구간입니다.
-또한, $X$가 여전히 uniform distribution을 따를 것이므로, [$X$의 평균은 1일 수밖에 없습니다.](https://https://math.stackexchange.com/q/4669361)
+또한, $X$가 여전히 uniform distribution을 따를 것이므로, [$X$의 평균은 1일 수밖에 없습니다.](https://math.stackexchange.com/q/4669361)
 따라서 $E[X|Y=y]=1$입니다.
 반대로 $x$ 값이 고정되어 있다고 생각하겠습니다.
 이번에는 $x$가 $0\le x\le1$인 경우와 $1\le x\le2$인 경우의 상황이 다릅니다.
-$0\le x\le1$이면, $Y$는 $0$부터 $x$ 사이를 움직이고, 따라서 그 평균은 $\frac12x$가 될 것이니다.
+$0\le x\le1$이면, $Y$는 $0$부터 $x$ 사이를 움직이고, 따라서 그 평균은 $\frac12x$가 될 것입니다.
 $1\le x\le2$이면, $Y$는 $0$부터 $2-x$ 사이를 움직이고, 따라서 그 평균은 $\frac12(2-x)$가 될 것입니다.
 
 계산해보면
@@ -3866,7 +3874,7 @@ $$
 
 이고
 
-$0\le x\le 1$일 때의 $E[Y|X=x]$는
+$0\le x\le 1$일 때의 $E[Y\vert X=x]$는
 
 $$
 \begin{align*}
@@ -3881,7 +3889,7 @@ E[Y|X=x]
 \end{align*}
 $$
 
-이고, $1\le x\le 2$일 때의 $E[Y|X=x]$는
+이고, $1\le x\le 2$일 때의 $E[Y\vert X=x]$는
 
 $$
 \begin{align*}
@@ -3902,7 +3910,7 @@ $$
 
 두 연속확률변수 $X$, $Y$에 대한 PDF가 다음과 같이 주어졌다고 가정하겠습니다.
 
-$$f_{XY}(x,y)=\frac1ye^{-\frac xy}e^{-y}\qquad(0\le y\le x, y\le 2-x)$$
+$$f_{XY}(x,y)=\frac1ye^{-\frac xy}e^{-y}\qquad(x\gt0, y\gt0)$$
 
 정말로 PDF가 맞는지 (예의상) 계산해보면
 
@@ -3948,38 +3956,37 @@ $$
 입니다.
 중간 계산과정에서 $\int te^{-t}\,dt=-te^{-t}-e^{-t}$를 활용했습니다.
 
-이번에는, 확률변수 $X$에 대하여 $g(X)$의 확률을 구하는 식을 소개합니다.
-이번 강의의 맨 처음에 언급한 것이지만, $X$가 어떤 분포를 가지는 확률변수이면, $g(X)$ 또한 새로운 분포를 따르는 확률변수입니다.
-이때
+이번에는, 확률변수 $X$에 대하여 $g(X)$의 확률을 구하는 식이 강의에 소개됩니다.
+이것은 $\langle05\rangle$에서 LOTUS(law of the unconscious statistician)라는 이름으로 언급한 적이 있는 식입니다;
 
 $$
 \begin{align*}
-E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
-&&\text{(continuous)}\\
-E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
-&&\text{(discrete)}\\
-\end{align*}
+E[g(X)]&=\sum_ig(x_i)P_X(x_i)                   &&(\text{discrete})\\
+E[g(X)]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx   &&(\text{continuous})
+\end{align*}\tag{LOTUS}
 $$
 
-가 성립합니다.
-자세한 부분에 대해서는 14장에서 다시 볼 예정입니다.
+이에 대한 증명은 $\langle14\rangle$에서 해봅니다.
 마찬가지로, 다변수 함수 $g(X,Y)$에 대해서도
 
-$$\tag{$\ast$}
+$$
 \begin{aligned}
 E\left[g(X,Y)\right]&=\int_{\mathbb R^2} g(x,y)f_{XY}(x,y)\,dx
 &&\text{(continuous)}\\
 E\left[g(X,Y)\right]&=\sum_{i=1}^m\sum_{j=1}^ng(x_i,y_j)P_X(x_i,y_j)
 &&\text{(discrete)}\\
-\end{aligned}
+\end{aligned}\tag{$\ast$}
 $$
 
 입니다.
 또한,
 두 확률변수 $X$, $Y$에 대하여, 두 함수 $g_1(X,Y)$, $g_2(X,Y)$가 존재할 때, 두 실수 $\alpha$, $\beta$에 대하여
 
-$$E\left[\alpha g_1(X,Y)+\beta g_2(X,Y)\right]
-=\alpha E\left[g_1(X,Y)\right]+\beta E\left[g_2(X,Y)\right]\tag{$\ast\ast$}$$
+$$
+E\left[\alpha g_1(X,Y)+\beta g_2(X,Y)\right]
+=\alpha E\left[g_1(X,Y)\right]+\beta E\left[g_2(X,Y)\right]
+\tag{$\ast\ast$}
+$$
 
 입니다.
 즉, $E$는 다변수 함수에 대해서도 linear operator입니다.
@@ -4010,29 +4017,36 @@ $$
 
 이와 같은 사실들은 구구절절 다 소개되지는 않았지만, 암시적으로 언급되고 있는 것 같습니다.
 
-**ex.5.11** $E\left[E[X|Y]\right]=E[X]$
+**ex.5.11** $E\left[E[X\vert Y]\right]=E[X]$
 
 이번 성질을 이해하려면, 초반에 언급한
 
-$E[X|Y]$는 확률변수이다.
+$E[X\vert Y]$는 확률변수이다.
 {: .text-center}
 
 라는 것을 확실히 알아야 합니다.
-좌변에서 $E[X|Y]$에 대해 기댓값 연산을 취하고 있는데, 그럴 수 있는 것이 $E[X|Y]$가 그 자체로 확률변수이기 때문입니다.
-앞서 언급한대로 $E[X|Y=y]$는 $y$의 함수입니다 ;
+좌변에서 $E[X\vert Y]$에 대해 기댓값 연산을 취하고 있는데, 그럴 수 있는 것이 $E[X\vert Y]$가 그 자체로 확률변수이기 때문입니다.
+앞서 언급한대로 $E[X\vert Y=y]$는 $y$의 함수입니다.
+$E[X\vert Y=y]$를
 
-$$E[X|Y=y]=g(y)$$
+$$E[X|Y=y]=\int_{\mathbb R}xf_{X|Y}(x|y)\,dx=g(y)$$
 
-그런 관점에서 보면 $E\left[E[X|Y]\right]$는 $g(Y)$에 대한 평균을 계산하고 있는 것입니다.
+로 쓰면 $E[X\vert Y]$를
+
+$$E[X|Y]=g(Y)$$
+
+와 같이 생각할 수 있다고 했습니다.
+그런 관점에서 보면 $E\left[E[X\vert Y]\right]$는 $g(Y)$에 대한 평균을 의미합니다.
 계산해보면
 
 $$
 \begin{align*}
 E\left[E[X|Y]\right]
 &=E\left[g(Y)\right]\\
-&=\int_{\mathbb R}g(Y)f_Y(y)\,dy\\
-&=\int_{\mathbb R}\left(\int_{\mathbb R}xf_{X|Y}(x,y)\,dx\right)f_Y(y)\,dy\\
-&=\iint_{\mathbb R^2}xf_{X|Y}(x,y)f_Y(y)\,dx\,dy\\
+&=\int_{\mathbb R}g(y)f_Y(y)\,dy\\
+&=\int_{\mathbb R}E[X|Y=y]f_Y(y)\,dy\\
+&=\int_{\mathbb R}\left(\int_{\mathbb R}xf_{X|Y}(x|y)\,dx\right)f_Y(y)\,dy\\
+&=\iint_{\mathbb R^2}xf_{X|Y}(x|y)f_Y(y)\,dx\,dy\\
 &=\iint_{\mathbb R^2}xf_{XY}(x,y)\,dx\,dy\\
 &=\int_{\mathbb R}x\int_{\mathbb R}f_{XY}(x,y)\,dy\,dx\\
 &=\int_{\mathbb R}xf_X(x)\,dx\\
@@ -4048,13 +4062,13 @@ $$
 \begin{align*}
 E\left[E[X|Y]\right]
 &=E\left[g(Y)\right]\\
-&=\sum_{j=1}^ng(y_j)P_Y(y_i)\\
-&=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_i)\\
-&=\sum_{j=1}^n\left(\sum_{i=1}^mx_iP_{X|Y}(x,y)\right)P_Y(y_i)\\
-&=\sum_{j=1}^n\sum_{i=1}^mx_iP_{X|Y}(x,y)P_Y(y_i)\\
-&=\sum_{j=1}^n\sum_{i=1}^mx_iP_{XY}(x,y)\\
-&=\sum_{i=1}^mx_i\sum_{j=1}^nP_{XY}(x,y)\\
-&=\sum_{i=1}^mx_iP_X(x)\\
+&=\sum_{j=1}^ng(y_j)P_Y(y_j)\\
+&=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_j)\\
+&=\sum_{j=1}^n\left(\sum_{i=1}^mx_iP_{X|Y}(x_i|y_i)\right)P_Y(y_j)\\
+&=\sum_{j=1}^n\sum_{i=1}^mx_iP_{X|Y}(x_i|y_j)P_Y(y_j)\\
+&=\sum_{j=1}^n\sum_{i=1}^mx_iP_{XY}(x_i,y_j)\\
+&=\sum_{i=1}^mx_i\sum_{j=1}^nP_{XY}(x_i,y_j)\\
+&=\sum_{i=1}^mx_iP_X(x_i)\\
 &=E[X]
 \end{align*}
 $$
@@ -4066,9 +4080,9 @@ $$E[X]=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_i)$$
 
 이것은 law of total probability인
 
-$$P[A]=\sum_{j=1}^nP(A|A_i)P(A_i)$$
+$$P(A)=\sum_{j=1}^nP(A|A_i)P(A_i)$$
 
-와 구조가 거의 똑같다는 점이 설명되고 있습니다.
+와 구조가 거의 똑같다는 점이 강의에서 언급되고 있습니다.
 
 **5.7 covariance and correlation coefficient**
 
@@ -4083,15 +4097,17 @@ $$
 \text{cov}(X,Y)=\iint_{\mathbb R^2}(x-\mu_X)(y-\mu_Y)f_{XY}(x,y)\,dx\,dy
 $$
 
-$(\ast\ast)$를 사용해 이것을 정리하면
+입니다.
+또한, $(\ast\ast)$를 사용해 이것을 정리하면
 
-$$\tag{$\ast\ast\ast$}
+$$
 \begin{aligned}
 \text{cov}(X,Y)
 &=E\left[XY-\mu_YX-\mu_XY+\mu_X\mu_Y)\right]\\
 &\stackrel{\ast\ast}{=}E[XY]-\mu_YE[X]-\mu_XE[Y]+\mu_X\mu_Y\\
 &=E[XY]-E[X]E[Y]
 \end{aligned}
+\tag{$\ast\ast\ast$}
 $$
 
 입니다.
@@ -4100,7 +4116,7 @@ $$
 이때, 독립성은 uncorrelatedness를 보장합니다 ;
 
 $X$, $Y$가 서로 독립이면, $X$와 $Y$는 상관성이 없습니다.
-{. :text-center}
+{: .text-center}
 
 왜냐하면, $X$와 $Y$가 독립이라고 가정할 때,
 
@@ -4175,7 +4191,7 @@ $$
 이 반례는, correlated라는 뜻이 "두 확률변수가 연관되어있다"는 것이 아니라는 것도 알려줍니다.
 실제로 위와 같은 $X$와 $Y$는 $Y=3X^2-1$와 같은 '연관성'이 분명히 있는데도 불구하고 uncorrelated인 것입니다.
 
-한편, (Pearson) correlation coefficient[(피어슨) 상관계수]를 
+한편, correlation coefficient(상관계수)를 
 
 $$
 \rho_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}
@@ -4183,6 +4199,11 @@ $$
 
 로 정의합니다.
 이 값은 두 확률변수가 선형적인 상관관계 (양의 상관관계 / 음의 상관관계)가 얼마나 있는지를 나타내는 지표입니다.
+
+$\rho_{XY}$에 대하여 확인해보는 것은 다음의 두 가지입니다.
+이 두가지 사실을 $X$, $Y$가 이산확률변수일때와 연속확률변수일 때에 대하여 증명해봅니다.
+- $-1\le\rho_{XY}\le1$
+- $X$, $Y$가 선형적인 관계 ($Y=aX+b$)를 가지면 $rho_{XY}=1(a>0)$, $rho_{XY}=-1(a<0)$입니다.
 
 두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $A_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $A_y$라고 하면, 두 집합의 Cartesian product $A_x\times A_y$는 countable이고, 따라서 $A_x\times A_y$를
 
@@ -4245,41 +4266,16 @@ $$
 $$
 
 이 됩니다.
-그러면 Cauchy-Schwarz inequality에 의해
+그러면 Cauchy-Schwarz inequality $$|\langle x,y\rangle|\le\vert\vert x\vert\vert\cdot\vert\vert y\vert\vert$$에 의해
 
 $$-1\le\rho_{XY}\le1$$
 
 이 됩니다.
 또한, $\rho_{XY}=1$인 경우는 두 벡터 $x$, $y$가 같은 방향을 향할 경우이고, $\rho_{XY}=-1$인 경우는 반대 방향을 향할 경우를 말한다는 것도 바로 알 수 있습니다.
 
-강의에서는 $X$와 $Y=aX+b$일 경우에 $|\rho_{XY}|=1$이며, $a\gt0$일 때 $\rho_{XY}=1$, $a\lt0$일 때 $\rho_{XY}=-1$이라는 사실이 언급되고 있습니다 ;
+$X$, $Y$가 이산확률변수일 경우 $\vert\rho_{XY}\vert\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 innper product space라는 사실로부터 나옵니다.
 
-$$
-\begin{align*}
-\sigma_{XY}
-&=E\left[(X-\mu_X)(Y-\mu_Y)\right]\\
-&=E\left[a(X-\mu_X)^2\right]\\
-&=aE\left[(X-\mu_X)^2\right]\\
-&=a{\sigma_X}^2\\[15pt]
-\sigma_Y
-&=\sqrt{E\left[(Y-\mu_Y)^2\right]}\\
-&=\sqrt{E\left[a^2(X-\mu_X)^2\right]}\\
-&=|a|\sqrt{E\left[(X-\mu_X)^2\right]}\\
-&=|a|\sigma_X\\[15pt]
-\rho_{XY}
-&=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}\\
-&=\frac{a{\sigma_X}^2}{\sigma_X\cdot|a|\sigma_X}\\
-&=\frac a{|a|}\\
-&=\begin{cases}
-1   &(a\gt0)\\
--1  &(a\lt0)
-\end{cases}
-\end{align*}
-$$
-
-$X$, $Y$가 이산확률변수일 경우 $|\rho_{XY}|\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 innper product space라는 사실로부터 나왔습니다.
-
-$X$, $Y$가 연속확률변수이면, 조금 더 거대한 벡터공간인 함수공간을 생각해야 합니다.
+$X$, $Y$가 연속확률변수이면, 조금 더 거대한 벡터공간인 함수공간(function space)을 생각해야 합니다.
 함수공간
 
 $$\mathbb H=\left\{f\mid f\text{는 }\mathbb R^2\to\mathbb R\text{인 함수}
@@ -4322,7 +4318,36 @@ $$-1\le\rho_{XY}\le1$$
 
 가 성립합니다.
 
-# 13 
+강의의 마지막에는 $X$와 $Y=aX+b$일 경우에 $\vert\rho_{XY}\vert=1$이며, $a\gt0$일 때 $\rho_{XY}=1$, $a\lt0$일 때 $\rho_{XY}=-1$이라는 사실이 언급되고 있습니다.
+이것에 대한 증명은 $X$, $Y$가 이산확률변수인지 아니면 연속확률변수와는 상관없이 한번에 증명됩니다 ;
+
+$$
+\begin{align*}
+\sigma_{XY}
+&=E\left[(X-\mu_X)(Y-\mu_Y)\right]\\
+&=E\left[(X-\mu_X)\left((aX+b)-(a\mu_X+b)\right)\right]\\
+&=E\left[(X-\mu_X)\times a(X-\mu_X)\right]\\
+&=E\left[a(X-\mu_X)^2\right]\\
+&=aE\left[(X-\mu_X)^2\right]\\
+&=a{\sigma_X}^2\\[15pt]
+\sigma_Y
+&=\sqrt{E\left[(Y-\mu_Y)^2\right]}\\
+&=\sqrt{E\left[\left((aX+b)-(a\mu_X+b)\right)^2\right]}\\
+&=\sqrt{E\left[a^2(X-\mu_X)^2\right]}\\
+&=|a|\sqrt{E\left[(X-\mu_X)^2\right]}\\
+&=|a|\sigma_X\\[15pt]
+\rho_{XY}
+&=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}\\
+&=\frac{a{\sigma_X}^2}{\sigma_X\cdot|a|\sigma_X}\\
+&=\frac a{|a|}\\
+&=\begin{cases}
+1   &(a\gt0)\\
+-1  &(a\lt0)
+\end{cases}
+\end{align*}
+$$
+
+# 13 상관계수와 연합확률분포
 
 # 14 확률변수와 변환함수
 
