@@ -428,6 +428,7 @@ $$
 \end{align*}
 $$
 
+이때, $\binom nk$는 $(a+b)^n$의 전개식에서 각 항의 계수(coefficient)의 역할을 한다는 점에서 이항계수(binomial coefficient)라고도 불립니다.
 $f(x)$를 조금 변형하면 이항분포에서의 평균과 분산 식을 계산하는 데 도움이 될 수 있습니다.
 
 위 식의 $f(x)$를 한 번 미분하면
@@ -4349,9 +4350,274 @@ $$
 
 # 13 상관계수와 연합확률분포
 
+13강부터는 내용을 아주 완전히 이해하면서 적기가 조금 힘들어보입니다.
+그래서 며칠간이나 진도를 나가지 못했습니다.
+결국은 내용을 완전히 이해해서 12강까지 정리한 방식으로 쓸 예정이지만, 그전에 강의의 내용들을 단순히 적어보는 과정이 있어야 할 것 같습니다.
+13강부터 16강까지는 먼저 강의의 내용을 literal하게 적고 추후에 그 내용을 변형해나가겠습니다.
+
+
+지난 강의에서 두 확률변수 $X$, $Y$에 대한 covariance(공분산) $\sigma_{XY}$, correlation coefficient(Pearson correlation coefficient, 피어슨 상관계수, 상관계수) $\rho_{XY}$를 다음과 같이 정의했었습니다.
+
+$$
+\begin{align*}
+\sigma_{XY}
+&=E\left[(X-\mu_X)(Y-\mu_Y)\right]      &&\text{covariance}\\
+&=E[XY]-\mu_X\mu_Y\\
+\rho_{XY}
+&=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}  &&\text{correlation coefficient}
+\end{align*}
+$$
+
+선형대수적인 관점에서 $\sigma_X$와 $\sigma_Y$는 두 벡터의 norm이라고 생각할 수 있었고, $\rho_{XY}$는 그 두 벡터의 내적이라고 생각할 수 있었으므로,
+Cauchy Schwarz 부등식에 의해 $|\rho_{XY}|\le1$가 성립했습니다.
+
+한편, 만약 $Y$와 $X$가 linear한 (혹은 affine한) 관계에 있을 때, 즉 $Y=aX+b$일 때 ($a\ne0$),
+
+$$\rho_{XY}=
+\begin{cases}
+1   &(a>0)\\
+-1  &(a<0>)
+\end{cases}$$
+
+인 것도 봤습니다.
+
+$\langle 13\rangle$의 맨 처음에는 지난 시간에 정의했던 pearson correlation coefficient에 대한 예시가 나오고 있습니다.
+어떤 인구집단 내에서 한 사람을 골라 그 사람의 키를 $X$, 몸무게를 $Y$라고 하겠습니다.
+해당 집단의 모든 사람에 대하여 $(X,Y)$를 평면상에 찍으면 아래와 같은 그림이 나올 것입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-1.png){: .img-50-center}
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-2.png){: .img-50-center}
+
+$X$가 증가할 수록 $Y$가 증가하는 경향을 보입니다.
+이 경우에 correlation coefficient는 0보다 큰 값을 가지게 됩니다.
+왜냐하면, $xy$평면 상에 변량들의 *무게중심*에 해당하는 $G=(\mu_X,\mu_Y)$를 찍어보면
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-3.png){: .img-50-center}
+
+이 됩니다.
+만약 $X$가 증가할수록 $Y$가 증가하는 경향을 띤다면, 그러니까 그래프가 우상향하는 경향을 보인다면, $G$의 왼쪽 위 부분(말하자면 1사분면)과 오른쪽 아래 부분(3사분면)에 변량들의 점이 많이 찍힐 것이고, 왼쪽 아랫부분(2사분면)과 오른쪽 윗부분(4사분면)에는 변량들의 점이 적게 찍힐 것입니다.
+그런데 covariance를 계산하는 식
+
+$$
+\begin{align*}
+\sigma_{XY}
+&=E\left[(X-\mu_X)(Y-\mu_Y)\right]\\
+&=\frac1N\sum_{i=1}^N(x_i-\mu_X)(y_i-\mu_Y)
+\end{align*}
+$$
+
+에서, 어떤 변량이 1사분면에 있다면 $x_i\gt\mu_X$, $y_i\gt\mu_Y$일 것이고, 3사분면에 있다면 $x_i\lt\mu_X$, $y_i\lt\mu_Y$일 것이라서, 두 경우 모두
+
+$$(x_i-\mu_X)(y_i-\mu_Y)\gt0$$
+
+일 것입니다.
+반면, 어떤 변량이 2사분면에 있거나 4사분면에 있다면
+
+$$(x_i-\mu_X)(y_i-\mu_Y)\lt0$$
+
+일 것입니다.
+그런데 변량들의 점들은 1,3사분면에 더 많을 것이므로 모든 경우에 대해 $(x_i-\mu_X)(y_i-\mu_Y)$를 더한 값은 0보다 클 것입니다.
+따라서, $\sigma_{XY}$는 0보다 클 것이고, $\rho_{XY}$도 마찬가지로 0보다 클 것입니다.
+$\square$
+
+지금까지는 지난 시간 강의에 대한 보충설명이었습니다.
+
+**5.8 many joint random variables**
+
+확률변수 $X_1$, $X_2$, $\cdots$, $X_n$에 대하여, 다음과 같은 확률햠수(PMF, PDF)를 생각해볼 수 있습니다.
+
+$$
+\begin{align*}
+P_{X_1,\cdots,X_n}(x_1,\cdots,x_n)&(\text{discrete})\\
+f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)&(\text{discrete})
+\end{align*}
+$$
+
+두 확률함수들은 다음과 같은 성질들을 만족합니다.
+
+$$
+\begin{align*}
+\sum_{x_1}\cdots\sum_{x_n}P_{X_1,\cdots,X_n}(x_1,\cdots,x_n)                                    &=1(\text{discrete})\\
+\int_{\mathbb R}\cdots\int_{\mathbb R}f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)\,dx_1\,\cdots,\,dx_n=1 &=1(\text{continuous})
+\end{align*}
+$$
+
+$$
+\begin{align*}
+P_{X_1,\cdots,X_n}(x_1,\cdots,x_n)&=P\left(X_1=x_1,\cdots,X_n=x_n\right)                        (\text{discrete})\\
+\int_{a_1}^{b_1}\cdots\int_{a_n}^{b_n}f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)\,dx_1\,\cdots,\,dx_n&=
+P\left(a_1\lt X_1\le b_1,\cdots,a_n\lt X_n\le b_n\right)                                        (\text{continuous})
+\end{align*}
+$$
+
+조건부 확률함수(conditional PMF, conditional PDF)에 관해서는
+
+$$
+\begin{align*}
+P_{X_n\vert X_{n-1},X_{n-2},\cdots,X_1}\left(x_n\vert x_{n-1},x_{n-2},\cdots,x_1\right)
+&=\frac{P_{X_n,X_{n-1},X_{n-2},\cdots,X_1}\left(x_n,x_{n-1},x_{n-2},\cdots,x_1\right)}{P_{X_{n-1},X_{n-2},\cdots,X_1}\left(x_{n-1},x_{n-2},\cdots,x_1\right)}
+&&(\text{discrete})\\
+f_{X_n\vert X_{n-1},X_{n-2},\cdots,X_1}\left(x_n\vert x_{n-1},x_{n-2},\cdots,x_1\right)
+&=\frac{f_{X_n,X_{n-1},X_{n-2},\cdots,X_1}\left(x_n,x_{n-1},x_{n-2},\cdots,x_1\right)}{f_{X_{n-1},X_{n-2},\cdots,X_1}\left(x_{n-1},x_{n-2},\cdots,x_1\right)}
+&&(\text{continuous})\\
+&=\frac{\partial^n}{\partial x_1\cdots\partial x_n}F_{X_n,\cdots,X_1}\left(x_n,\cdots,x_1\right)
+\end{align*}
+$$
+
+와 같은 식을 만족시킵니다.
+사실 위 식의 continuous case에 대한 등식에서 처음 두 값이 같다는 것이 강의의 칠판에 적혀있습니다.
+하지만, 분모가 0이 될 수 있으므로, 이 정의는 엄밀하지 않을 것 같습니다.
+대신, 첫번째 값에 대한 정의를 세번째 값으로 한다면, 괜찮은 정의가 될 것 같습니다.
+
+강의에서는 이러한 여러 개의 확률변수가 통신공학이나 역학에서 어떻게 활용되는지가 더 설명됩니다.
+위와 같이 확률변수 여러 개의 확률변수들 (혹은 그것들의 집합)을 확률과정(stochastic process)이라고 합니다.
+즉, $X_t$들의 집합
+
+$$\{X_t\}_{t\in T}$$
+
+이 확률과정입니다.
+위에서는 $t$가 $1$, $2$, $\cdots$, $n$과 같은 값을 가졌습니다.
+즉 index set인 $T$가 $T=\\{1,2,\cdots,n\\}$인 것입니다.
+일반적으로 $T$는 실수집합 $\mathbb R$의 부분집합으로 봅니다.
+그러니까, 위의 예처럼 유한집합이 될 수도 있고 ($T=\\{1,2,\cdots,n\\}$), countable 집합이 될 수도 있으며 ($T=\\{1,2,\cdots\\}$) 아니면 양의 실수의 집합이 될 수도 있습니다($T=\\{t\in\mathbb R:t>0\\}$).
+
+만약 $t$를 시간으로 해석하고, $X_t$를 어떤 물체에 대한 물리적인 양으로 생각한다면, 확률과정은 이 물체와 관련된 어떤 현상을 해석하는 데 사용될 수 있습니다.
+강의에서는 미사일이 날아가는 과정을 확률과정을 통해 해석할 수 있다고 말합니다.
+그러니까, $X_t$를 시각 $t$에서의 미사일의 위치라고 한다면 (물론, 미사일은 3차원 공간 안에 위치하므로, 세 개의 확률과정을 생각하거나 세 종류의 확률변수를 생각해야 합니다.) $E[X_t]$를 통해 이 미사일이 이동할 예상 궤적을 생각해볼 수 있고, 각각의 시각 $t$에서 미사일이 특정한 위치에 있는 확률을 계산할 수도 있습니다.
+
+이 미사일의 예에서 $X_t$들은 독립조건을 만족시키지 않습니다.
+만약 brownian motion의 경우라면, $X_t$들은 각각 독립적일 수도 있겠지만, 미사일의 예에서 $X_t$, 즉 시각 $t$에서의 위치는 이전의 시각에서의 위치인 $X_{t-1}$, $X_{t-2}$ 등에 영향을 받을 수밖에 없습니다.
+그런 의미에서
+
+$$f_{X_t|X_{t-1},X_{t-2}}$$
+
+와 같은 조건부확률을 생각할 수밖에 없다는 사실이 강의에서 설명됩니다.
+이러한 확률과정 중에서, 바로 이전 시각에 대한 영향만 고려하는 경우의 stochastic process(확률과정)을 markov process(마르코프 과정, markov chain)이라고 부릅니다.
+다시 말해, 위의 식에서 현재 시점에서의 상태 $X_t$는 바로 이전 시점과 그 이전의 시점과의 연관성만을 고려했습니다.
+그러니까, $X_t$는 $X_{t-3}$, $X_{t-4}$, $\cdots$ 등과는 독립적이라는 가정을 내포하고 있습니다.
+반면, markov process은
+
+$$f_{X_t|X_{t-1}}$$
+
+와 같이 모델링하는 것입니다.
+현재 시점에서의 상태 $X_t$가 바로 이전 시점의 상태 $X_{t-1}$에만 의존한다는 가정 하에 문제를 보는 것입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-4.png){: .img-50-center}
+
+**5.9 multinomial distribution**
+
+이전에 $\langle07\rangle$에서 이항분포(binomial distribution)이란, 여러 번의 독립적인 Bernoulli trial에 대하여 성공횟수의 분포를 말했습니다.
+즉, $n$번의 Bernoulli trial에 대하여, 각각의 Bernoulli trial의 성공확률이 $p$일 때, $n$번 중에서 성공한 횟수를 $X$라고 할 때, $X$는
+
+$$P_X(x)=\binom nxp^x(1-p)^{n-x},\quad(x=0,1,2,\cdots,n)$$
+
+를 PMF로 가진다고 했었습니다.
+이때, PMF의 식에 $\binom nx$와 같은 조합의 수가 나타났었습니다.
+
+한편, $\langle07\rangle$에서 조합의 수는 '같은 것이 포함된 순열'의 특수한 경우라고 했었습니다.
+그러니까, binomial distribution에서 Bernoulli trial (binary trial)이었던 것을 multinary($n$-ary) trial로 바꾸면 multinomial distribution이라고 하는 개념을 생각해볼 수 있고, 그때 조합의 수 대신 '같은 것이 포함된 순열'이 나타납니다.
+
+다시 말해, 하나의 시행에서 나올 수 있는 outcome의 개수가 (2개가 아닌) 여러개인 경우를 생각해볼 수 있습니다.
+대표적으로 trinomial distribution (outcome의 개수가 3개인) 경우를 보겠습니다.
+결과가 $A$, $B$, $C$로 나타날 수 있는 어떤 시행(trinary trial)을 독립적으로 $n$번 시행할 때,
+각 시행에서 $A$가 나타날 확률을 $P_A$, $B$가 나타날 확률을 $P_B$라고 하면 $C$가 나타날 확률은 $1-p_A-p_B$입니다.
+$A$가 $N_A$번, $B$가 $N_B$번 나타난다고 할 때, $N_A$, $N_B$는 각각 이산확률변수이고, 그 joint PMF가
+
+$$P_{N_A,N_B}(n_A,n_B)=\frac{n!}{n_A!n_B!(n-n_A-n_B)!}{p_A}^{n_A}{p_B}^{n_B}{1-p_A-p_B}^{n-n_A-n_B}$$
+
+로 주어집니다.
+이때 $\frac{n!}{n_A!n_B!(n-n_A-n_B)!}$의 값은
+
+$$\binom n{n_A,n_B}=\frac{n!}{n_A!n_B!(n-n_A-n_B)!}$$
+
+와 같이 쓰기도 합니다.
+
+[일반적으로](https://en.wikipedia.org/wiki/Multinomial_distribution), $k$개의 서로다른 outcome $A_1$, $A_2$, $\cdots$, $A_k$이 나올 수 있는 시행에 대하여, 각각의 outcome $A_i$가 나타날 확률이 $p_i$로 주어질 때, $n$번의 독립시행에서 $A_i$가 $N_i$번 나타난다고 할 때, $N_i$는 모두 이산확률변수입니다.
+그때, $N_1$, $\cdots$, $N_k$의 joint PMF는
+
+$$
+\begin{align*}
+P_{N_1,N_2,\cdots,N_k}(n_1,n_2,\cdots,n_k)
+&=\frac{n!}{n_1!n_2!\cdots n_k!}{p_1}^{n_1}{p_2}^{n_2}\cdots{p_k}^{n_k}\\
+&=\binom n{n_1,n_2,\cdots,n_k}\prod_{i=1}^n{p_i}^{n_i}
+\end{align*}
+$$
+
+로 주어집니다.
+
+<div class="notice=danger">
+위의 식에서 
+$$\binom n{n_1,n_2,\cdots,n_k}=\frac{n!}{n_1!n_2!\cdots n_k!}$$
+와 같이 정의된 값을 multinomial coefficient라고 부릅니다.
+조합의 수 $\binom nr$을 binomial coefficient(이항계수)라고 불렀던 것의 연장선입니다.
+<br>
+비슷한 맥락에서 이항정리(binomial theorem)에 대응되는 <a href="https://en.wikipedia.org/wiki/Multinomial_distribution"> 다항정리(multinomial theorem) </a> 도 생각해볼 수 있습니다.
+이항정리가 두 개의 항의 합 $(a+b)^n$에 대한 거듭제곱의 전개식을 설명한다면 다항정리는 $n$개의 항의 합 $(x_1+x_2+\cdots+x_k)^n$에 대한 거듭제곱의 전개식을 설명합니다 ;
+$$(x_1+x_2+\cdots+x_n)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i=1}^n{x_i}^{n_k}.$$
+</div>
+
+**bivariate normal distribution(bivariate Gaussian distribution)**
+
+두 연속확률변수 $X$, $Y$가
+
+$$
+f_{XY}(x,y)=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
+$$
+
+를 joint PMF로 가지면 $X$와 $Y$가 bivariate normal distribution(bivariate gaussian distribution)을 따른다고 말합니다.
+이때, $\rho=\rho_{XY}$입니다.
+
+아래 그림은 함수 $f_{XY}$에 대한 그래프입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-5.png){: .img-50-center}
+
+강의에서는 그래프의 모양이 마치 봉분처럼 보인다고 말합니다.
+또한, CDF는 아래 그림과 같이 나타납니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-6.png){: .img-50-center}
+
+하지만, PDF의 그래프는 위에서 보는 것과 같이 꼭 대칭적으로 나타나지는 않습니다.
+그러니까, PMF 그래프의 등고선을 그렸을 때 원이 나오기도 하지만 일반적으로는 타원이 나옵니다.
+그리고 그 타원의 장축과 단축의 방향이 꼭 $x$축과 $y$축의 방향과 일치할 필요는 없습니다.
+예를 들어, 다음과 같은 PDF가 나올 수도 있는 것입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-7.png){: .img-50-center}
+
+또한, 아래 그림에서는 bivariate normal distribution의 marginal distribution $P_X(x)$, $P_Y(y)$를 표현하고 있습니다.
+그림 상으로 보면 marginal distribution들은 각각 정규분포를 따르는 것처럼 보입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-8.png){: .img-50-center}
+
+$\langle13\rangle$에서 두 확률변수 $X$, $Y$가 독립이면 uncorrelated하다고 했었고, 그 역은 꼭 성립하지는 않는다고 했습니다.
+하지만, bivariate normal인 경우에는 그 역이 성립합니다.
+즉
+
+bivariate normal distribution을 따르는 두 확률변수 $X$, $Y$가 uncorrelated이면, $X$와 $Y$는 독립입니다.
+{: .text-center}
+
+왜냐하면, $X$와 $Y$가 독립임을 가정하면, $\rho=0$입니다.
+이것을 위의 식에 대입하면
+
+$$
+\begin{align*}
+f_{XY}(x,y)
+&=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}
+\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
+&=\frac1{2\pi\sigma_X\sigma_Y}\exp\left(-\frac12
+\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
+&=\frac1{\sqrt{2\pi}\sigma_X}\exp\left(-\frac12\left(\frac{x-\mu_X}{\mu_X}\right)^2\right)
+\times\frac1{\sqrt{2\pi}\sigma_Y}\exp\left(-\frac12\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right)\\
+&=f_X(x)f_Y(y)
+\end{align*}
+$$
+
+그런데 marginal distribution $f_X(x)$가 와 저렇게 나타나지? marginal distribution이 normal이라는 말은 없었던 것 같은데
+
+
 # 14 확률변수와 변환함수
 
-이번 강의에서는 $X$의 확률분포가 주어질 때, $g(X)$의 확률분포가 어떻게 나타나는지, 그리고 $E[g(X)]$가 어떻게 계산되는지 다룹니다.
+<!-- 이번 강의에서는 $X$의 확률분포가 주어질 때, $g(X)$의 확률분포가 어떻게 나타나는지, 그리고 $E[g(X)]$가 어떻게 계산되는지 다룹니다.
 
 $\langle12\rangle$에서 $E[g(X)]$가
 
@@ -4501,4 +4767,4 @@ $$
 입니다.
 따라서 $(\ast)$가 성립합니다.
 
-$$E\left[g(X)\right]=\int_{-\infty}^\infty g(x)f_X(x)\,dx$$
+$$E\left[g(X)\right]=\int_{-\infty}^\infty g(x)f_X(x)\,dx$$ -->
