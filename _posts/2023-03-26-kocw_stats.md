@@ -4422,6 +4422,7 @@ $$(x_i-\mu_X)(y_i-\mu_Y)\lt0$$
 $\square$
 
 지금까지는 지난 시간 강의에 대한 보충설명이었습니다.
+변량들의 무게중심을 중심으로 한 설명은 강의에 있던 내용은 아니고 [StatQuest - Covariance, Clearly Explained!!!](https://youtu.be/qtaqvPAeEJY)를 참고해 작성한 것입니다.
 
 **5.8 many joint random variables**
 
@@ -4559,15 +4560,119 @@ $$(x_1+x_2+\cdots+x_n)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 
 **bivariate normal distribution(bivariate Gaussian distribution)**
 
-두 연속확률변수 $X$, $Y$가
+강의의 마지막에 등장하는 것은 bivariate normal distribution과 multivariate normal distribution에 대한 내용입니다.
+해당 내용들은 워낙 많은 것들을 함축하고 있어서, 그 의미에 대해 다 설명하기는 쉽지 않습니다.
+그래도, bivariate normal distribution에 관해서는 나름대로 공부해보고, 해당 내용들을 TeX파일로 만들어보았습니다.
+이것은, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 내용을 참고하여 bivariate normal distribution에 관한 주요 사항들과, 그 증명에 필요한 사항들을 적어보았는데, 많은 경우에 책에는 $n$개의 확률변수에 대한 정리들이 적혀있는 것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
+[링크]({{ site.url }}/assets/pdf/0405_bivariate_normal_distribution_revised_at_0407.pdf){: .btn .btn--primary}
+
+이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 해보려 했습니다.
+하지만, 일단은 중요한 정리 몇 개만 간단하게 적을 것 같고 이에 대한 상세한 설명이나 증명은 위 링크로 대체하겠습니다.
+나중에 시간이 되면 (시간이나 여력보다 더 중요한 것은, 해당 내용을 이 포스트에 어떻게 넣을 지 걸정되면) 해당 내용을 이 포스트 내에 녹여서 쓸 수도 있을 것 같습니다.
+
+<div class="notice--success">
+<b> bivariate normal distribution </b> <br>
+다섯 개의 수 $\mu_X$, $\mu_Y$, $\sigma_X$, $\sigma_Y$, $\rho$가
+$\mu_X,\mu_Y\in\mathbb R$, $\sigma_X,\sigma_Y\gt0$, $-1\lt\rho\lt1$를 만족시키고, $X$, $Y$가 연속확률변수일때,
+$X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$이기 위한 필요충분조건은 $X$, $Y$의 joint PDF가
 
 $$
 f_{XY}(x,y)=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
+\tag{$(\ast)$}
 $$
 
-를 joint PMF로 가지면 $X$와 $Y$가 bivariate normal distribution(bivariate gaussian distribution)을 따른다고 말합니다.
-이때, $\rho=\rho_{XY}$입니다.
+와 같이 주어지는 것입니다.
+이와 같은 확률변수 $X$, $Y$의 분포를 bivariate normal distribution이라고 부릅니다.
+</div>
 
+이 정리에 대한 한가지 증명은 다음과 같은 세 개의 사실에 의존합니다.
+
+<div class="notice">
+<b> Lemma </b>
+<ol>
+    <li>
+    $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$이면 $aX+bY+c\sim N\left(a\mu_X+b\mu_Y+c,~~a^2{\sigma_X}^2+b^2{\sigma_Y}^2\right)$입니다.
+    </li>
+    <li>
+    $\text{Cov}$ 함수는 bilinear하고 additive constant의 영향을 받지 않습니다.
+    </li>
+    <li>
+    bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재할 때, ($r:(u,v)\mapsto(x,y)$, $(x,y)\in T$이면, $s=r^{-1}:(x,y)\mapsto(u,v)$) $f_{XY}(x,y)=f_{UV}(s_1(x,y),s_2(x,y))\times|J|$ 입니다.
+\end{cases}
+
+    </li>
+</ol>
+</div>
+
+이때, Lemma 1은 moment generating function을 이용하면 쉽게 증명할 수 있습니다.
+다른 증명방법이 있는지는 확인해보지 않았습니다.
+Lemma 2는 다른 사전지식 없이, 이 포스트에 소개된 내용만으로도 증명이 가능합니다.
+Lemma 3의 증명은 어렵습니다. 적어도 DeGroot의 책에는 소개되어 있지 않습니다.
+강의에서는 나중에 다룰 수도 있을 것 같습니다.
+
+위의 세 사실을 가정하고 대략적인 증명을 해보면 다음과 같습니다.
+증명에 앞서, 새로운 확률변수 $U$, $V$를
+
+$$
+\begin{align*}
+U&=\frac{X-\mu_X}{\sigma_X}\\
+V&=\frac1{\sqrt{1-\rho^2}}\left(\frac{Y-\mu_Y}{\sigma_Y}-\rho\frac{X-\mu_X}{\sigma_X}\right)
+\end{align*}
+$$
+
+로 두겠습니다.
+$U$와 $V$에 대하여 Lemma 1을 적용해 계산하면 $U\sim N(0,1)$, $V\sim N(0,1)$임을 알 수 있습니다.
+다시 말해, $U$와 $V$는 모두 standard normal입니다.
+또한, $U$와 $V$가 independent인 것도 확인할 수 있습니다.
+
+먼저 $\Rightarrow$ 방향의 증명입니다.
+그러니까, $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$를 가정했을 때, $X$, $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명하려 합니다.
+따라서 $U$와 $V$의 joint PDF가
+
+$$f_{UV}(u,v)=\frac1{2\pi}e^{-\frac12(u^2+v^2)}$$
+
+임을 쉽게 알 수 있고, 여기에 Lemma 3을 사용하면 $X$와 $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명할 수 있습니다.
+
+이번에는 $\Leftarrow$ 방향의 증명입니다.
+
+$$
+\begin{align*}
+X&=\sigma_XU+\mu_X\\
+Y&=\rho\sigma_YU+\sqrt{1-\rho^2}\sigma_YV+\mu_Y
+\end{align*}
+$$
+
+이므로, Lemma 1을 적용하면 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$임을 쉽게 알 수 있습니다.
+또한, Lemma 2를 적용하면 $\text{Cov}(X,Y)=\sigma_x\sigma_Y\rho$임을 알 수 있고, 따라서 $\rho_{XY}=\rho$인 것도 확인됩니다.
+$\square$
+
+$\langle13\rangle$에서 두 확률변수 $X$, $Y$가 독립이면 uncorrelated하다고 했었고, 그 역은 꼭 성립하지는 않는다고 했습니다.
+하지만, bivariate normal인 경우에는 그 역이 성립합니다.
+즉
+
+bivariate normal distribution을 따르는 두 확률변수 $X$, $Y$가 uncorrelated이면, $X$와 $Y$는 독립입니다.
+{: .text-center}
+
+왜냐하면, $X$와 $Y$가 uncorrelated하다고 가정하면, $\rho=0$입니다.
+이것을 위의 식에 대입하면
+
+$$
+\begin{align*}
+f_{XY}(x,y)
+&=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}
+\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
+&=\frac1{2\pi\sigma_X\sigma_Y}\exp\left(-\frac12
+\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
+&=\frac1{\sqrt{2\pi}\sigma_X}\exp\left(-\frac12\left(\frac{x-\mu_X}{\mu_X}\right)^2\right)
+\times\frac1{\sqrt{2\pi}\sigma_Y}\exp\left(-\frac12\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right)\\
+&=f_X(x)f_Y(y)
+\end{align*}
+$$
+
+이 되어 $X$와 $Y$가 독립이라고 말할 수 있기 때문입니다.
+
+강의에서는 bivariate normal distribution에 대한 그래프의 모양에 대한 언급이 있습니다.
+직접 그래프를 한 번 찾아봤습니다.
 아래 그림은 함수 $f_{XY}$에 대한 그래프입니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-5.png){: .img-50-center}
@@ -4586,34 +4691,223 @@ $$
 
 또한, 아래 그림에서는 bivariate normal distribution의 marginal distribution $P_X(x)$, $P_Y(y)$를 표현하고 있습니다.
 그림 상으로 보면 marginal distribution들은 각각 정규분포를 따르는 것처럼 보입니다.
+이것은 위의 정리에서 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$라고 말했던 것에 해당합니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-8.png){: .img-50-center}
 
-$\langle13\rangle$에서 두 확률변수 $X$, $Y$가 독립이면 uncorrelated하다고 했었고, 그 역은 꼭 성립하지는 않는다고 했습니다.
-하지만, bivariate normal인 경우에는 그 역이 성립합니다.
-즉
+또한, 등고선 위의 타원의 장축(혹은 단축)이 $x$축 (혹은 $y$축)과 얼마만큼의 각도($\theta$)로 떨어져있는지 하는 것은 $\rho$의 값과 관련되어 있다는 언급 또한 나옵니다.
+이때, $\theta$는
 
-bivariate normal distribution을 따르는 두 확률변수 $X$, $Y$가 uncorrelated이면, $X$와 $Y$는 독립입니다.
-{: .text-center}
+$$
+\theta=\frac12\tan^{-1}\left[\frac{2\rho\sigma_X\sigma_Y}{~{\sigma_X}^2-{\sigma_Y}^2}\right]
+$$
 
-왜냐하면, $X$와 $Y$가 독립임을 가정하면, $\rho=0$입니다.
-이것을 위의 식에 대입하면
+로 주어진다고 합니다.
+이에 대한 유도가 강의에서는 과제로 주어지고 있고, 회전변환을 잘 사용하면 이것을 증명할 수 있다는 언급이 있습니다만, 이 포스트에서는 과제를 풀지는 않겠습니다.
+
+
+**multivariate normal distribution(multivariate Gaussian distribution)**
+
+이번에는 변수가 2개가 아니라 여러 개일때의 joint distribution에 대해 다룹니다.
+다음 정리는, binvariate normal distribution에 대한 정리를 확장해서 적어놓은 것인데, 조금의 확인이 더 필요할 것 같습니다.
+일단 적어보면,
+
+<div class="notice--success">
+<b> multivariate normal distribution </b> <br>
+$X_1$, $\cdots$, $X_n$이 모두 연속확률변수이고, 각각의 $i\in\{1,\cdots,n\}$에 대하여 $\mu_{X_i}=\mu_i\in\mathbb R$, $\sigma_{X_i}=\sigma_i\gt0$이며, 각각의 $i,j\in\{1,\cdots,n\}$에 대하여 $-1\lt\rho_{X_i,X_j}=\rho_{ij}\lt1$이라고 가정하겠습니다.
+이때, 각각의 $i\in\{1,\cdots,n\}$에 대하여
+$X_i\sim N(\mu_i,{\sigma_i}^2)$이기 위한 필요충분조건은 $X_1$, $\cdots$, $X_n$의 joint PDF가
+
+$$
+f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)
+=\frac{|{\mathbb C}^{-1}|^{\frac12}}{(2\pi)^{\frac n2}}\exp
+\left\{-\frac12
+(\boldsymbol x-\overline{\boldsymbol x})^T
+{\mathbb C}^{-1}
+(\boldsymbol x-\overline{\boldsymbol x})
+\right\}
+$$
+
+와 같이 주어지는 것입니다.<br>
+이와 같은 확률변수 $X_1$, $\cdots$, $X_n$의 분포를 multivariate normal distribution이라고 부릅니다.
+</div>
+
+위의 정리 및 정의에서,
+
+$$\boldsymbol x =
+\begin{bmatrix}
+x_1\\\vdots\\x_n
+\end{bmatrix}$$
+
+이고,
 
 $$
 \begin{align*}
-f_{XY}(x,y)
-&=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}
-\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
-&=\frac1{2\pi\sigma_X\sigma_Y}\exp\left(-\frac12
-\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
-&=\frac1{\sqrt{2\pi}\sigma_X}\exp\left(-\frac12\left(\frac{x-\mu_X}{\mu_X}\right)^2\right)
-\times\frac1{\sqrt{2\pi}\sigma_Y}\exp\left(-\frac12\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right)\\
-&=f_X(x)f_Y(y)
+\overline{\boldsymbol x}=\frac{\boldsymbol x_1+\cdots+\boldsymbol x_n}n
+=
+\begin{bmatrix}
+\mu_1\\
+\vdots\\
+\mu_n
+\end{bmatrix}
 \end{align*}
 $$
 
-그런데 marginal distribution $f_X(x)$가 와 저렇게 나타나지? marginal distribution이 normal이라는 말은 없었던 것 같은데
+이며,
 
+$$
+\begin{align*}
+\mathbb C
+&=\left[\sigma_{ij}\right]_{n\times n}
+&=\begin{bmatrix}
+\sigma_{11} &\cdots&\sigma_{1n}\\
+\vdots      &\ddots&\vdots\\
+\sigma_{n1} &\cdots&\sigma_{nn}\\
+\end{bmatrix}
+\end{align*}
+$$
+
+입니다.
+
+그러니까, $\mathbb C$는 복소수들의 집합이 아닙니다.
+$\mathbb C$는 covariance matrix라고 불립니다.
+$\text{Cov}(X,Y)=\text{Cov}(Y,X)$이므로, $\mathbb C$는 symmetric matrix입니다.
+따라서, eigenvalue들은 모두 실수이고, eigenvector들이 모두 직교하며, 항상 orthogonally diagonalizable합니다.
+또한, basis vector를 쉽게 구할 수 있고 이를 통해 신호처리 등에서의 모델링을 할 때 쉽게 된다는 말씀도 강의에서 언급되고 있습니다.
+
+확률변수 $X_1$, $\cdots$, $X_n$ 들을 벡터로 만들어놓은 것을 random vector라고 합니다.
+즉,
+
+$$
+\boldsymbol X=
+\begin{bmatrix}
+X_1\\
+\vdots\\
+X_n
+\end{bmatrix}
+$$
+
+은 random vector입니다.
+그러면, $X_1$, $\cdots$, $X_n$이 multivariate normal distribution을 따른다는 것을
+
+$$\boldsymbol X\sim N(\overline{\boldsymbol x},\mathbb C)$$
+
+로 간단히 쓰기도 합니다.
+
+multivariate PDF의 식
+
+$$
+f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)
+=\frac{|{\mathbb C}^{-1}|^{\frac12}}{(2\pi)^{\frac n2}}\exp
+\left\{-\frac12
+(\boldsymbol x-\overline{\boldsymbol x})^T
+{\mathbb C}^{-1}
+(\boldsymbol x-\overline{\boldsymbol x})
+\right\}
+$$
+
+에 $n=1$을 대입하면 ($X_1=X$)
+
+$$
+\begin{align*}
+\mathbb C
+&=\begin{bmatrix}\sigma_{11}\end{bmatrix}
+=\begin{bmatrix}{\sigma_X}^2\end{bmatrix}\\
+\mathbb C^{-1}
+&=\begin{bmatrix}\frac1{~{\sigma_X}^2}\end{bmatrix}\\
+\left|\mathbb C^{-1}\right|
+&=\frac1{~{\sigma_X}^2}\\
+\boldsymbol x
+&=\begin{bmatrix}x\end{bmatrix}\\
+\overline{\boldsymbol x}
+&=\begin{bmatrix}\mu_X\end{bmatrix}\\
+\boldsymbol x-\overline{\boldsymbol x}
+&=\begin{bmatrix}x-\mu_X\end{bmatrix}\\
+(\boldsymbol x-\overline{\boldsymbol x})
+\mathbb C^{-1}
+(\boldsymbol x-\overline{\boldsymbol x})^T
+&=\begin{bmatrix}x-\mu_X\end{bmatrix}
+\begin{bmatrix}\frac1{~{\sigma_X}^2}\end{bmatrix}
+\begin{bmatrix}x-\mu_X\end{bmatrix}\\
+&=\begin{bmatrix}\frac{(x-\mu_X)^2}{~{\sigma_X}^2}\end{bmatrix}\\
+f_X(x)
+&=\frac{|{\mathbb C}^{-1}|^{\frac12}}{(2\pi)^{\frac 12}}\exp
+\left\{-\frac12
+(\boldsymbol x-\overline{\boldsymbol x})^T
+{\mathbb C}^{-1}
+(\boldsymbol x-\overline{\boldsymbol x})
+\right\}\\
+&=\frac1{\sigma_X\sqrt{2\pi}}\exp\left\{
+-\frac12\left({\frac{x-\mu_X}{\sigma_X}}\right)^2
+\right\}
+\end{align*}
+$$
+
+이 되어 univariate normal PDF의 식과 일치합니다.
+
+$n=2$을 대입하면 ($X_1=X$, $X_2=Y$)
+
+$$
+\begin{align*}
+\mathbb C
+&=\begin{bmatrix}
+\sigma_{11}&\sigma_{12}\\
+\sigma_{21}&\sigma_{22}
+\end{bmatrix}
+=\begin{bmatrix}
+{\sigma_X}^2&\sigma_{XY}\\
+\sigma_{XY}&{\sigma_Y}^2
+\end{bmatrix}\\
+|\mathbb C|
+&={\sigma_X}^2{\sigma_Y}^2-{\sigma_{XY}}^2\\
+&={\sigma_X}^2{\sigma_Y}^2(1-\rho^2)\\
+\mathbb C^{-1}
+&=\frac1{~{\sigma_X}^2{\sigma_Y}^2(1-\rho^2)}
+\begin{bmatrix}
+{\sigma_Y}^2&-\sigma_{XY}\\
+-\sigma_{XY}&{\sigma_X}^2
+\end{bmatrix}\\
+\boldsymbol x
+&=\begin{bmatrix}
+x\\
+y
+\end{bmatrix}\\
+\overline{\boldsymbol x}
+&=\begin{bmatrix}
+\mu_X\\
+\mu_Y
+\end{bmatrix}\\
+\boldsymbol x-\overline{\boldsymbol x}
+&=\begin{bmatrix}
+x-\mu_X\\
+y-\mu_Y
+\end{bmatrix}\\
+(\boldsymbol x-\overline{\boldsymbol x})^T
+\mathbb C^{-1}
+(\boldsymbol x-\overline{\boldsymbol x})
+&=\frac1{~{\sigma_X}^2{\sigma_Y}^2(1-\rho^2)}
+\begin{bmatrix}
+x-\mu_X&
+y-\mu_Y
+\end{bmatrix}
+\begin{bmatrix}
+{\sigma_Y}^2&-\sigma_{XY}\\
+-\sigma_{XY}&{\sigma_X}^2
+\end{bmatrix}
+\begin{bmatrix}
+x-\mu_X\\
+y-\mu_Y
+\end{bmatrix}\\
+&=\frac1{~{\sigma_X}^2{\sigma_Y}^2(1-\rho^2)}
+\left[{\sigma_Y}^2(x-\mu_X)^2-2\sigma_{XY}(x-\mu_X)(y-\mu_Y)+{\sigma_X}^2\right]\\
+&=\frac1{1-\rho^2}
+\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]\\
+f_{XY}(x,y)
+&=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
+\end{align*}
+$$
+
+가 되어 bivariate normal PDF와 일치합니다.
 
 # 14 확률변수와 변환함수
 
@@ -4768,3 +5062,10 @@ $$
 따라서 $(\ast)$가 성립합니다.
 
 $$E\left[g(X)\right]=\int_{-\infty}^\infty g(x)f_X(x)\,dx$$ -->
+
+**참고자료**
+1. [KOCW(Korea Open Course Ware), 『확률과 통계』, 한양대학교 이상화 교수님 강의](http://www.kocw.net/home/search/kemView.do?kemId=1056974) 
+2. [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)
+3. [The Book of Statistical Proofs](https://statproofbook.github.io/)
+4. [Mathematics Stack Exchange](https://math.stackexchange.com/)
+5. [StatQuest - Covariance, Clearly Explained!!!](https://youtu.be/qtaqvPAeEJY)
