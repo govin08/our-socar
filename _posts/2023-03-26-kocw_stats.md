@@ -1,4 +1,4 @@
----
+    ---
 layout: single
 title: "(강의정리) 확률 및 통계"
 categories: mathematics
@@ -84,68 +84,46 @@ $\Sigma$가 $S$의 부분집합들의 집합이면서 다음의 세 성질들을
 - $\Sigma$는 차집합에 대해 닫혀있습니다 ; $A,B\in\Sigma$이면 $A-B\in\Sigma$입니다.
 - $\Sigma$는 countable union에 대해 닫혀있습니다 ; $A_1,A_2,\cdots\in\Sigma$이면, $\bigcup_iA_i\in\Sigma$입니다.
 
-한편, $P$는 $S$에서 정의된, $P(S)=1$인 측도(measure)입니다.
-다시 말해, 다음 세 성질을 만족시키는 $P$를 probability measure라고 부릅니다.
+따라서 $\varnothing$과 $S$는 항상 사건입니다.
+이때, $\varnothing$을 공사건, $S$를 전사건이라고 부릅니다.
 
-- $P$는 $P:\Sigma\to[0,1]$인 함수입니다.
-- $P$는 countably additive합니다 ; $A_i\in\Sigma$가 서로 배반사건일 때 $P\left(\sum_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)$
-- $P(\varnothing)=0$, $P(S)=1$ 입니다.
+**배반사건**
 
-예를 들어, 주사위를 하나 던지는 시행에서 $\Sigma$를 $S$의 멱집합(power set, $S$의 모든 부분집합들의 집합)이라고 하고 $P$를
+두 사건 $A$와 $B$가
 
-$$
-P(A)
-=\frac{n(A)}{n(S)}
-$$
+$$A\cap B=\varnothing$$
 
-로 정의하면, $\Sigma$는 $\sigma$-algebra이고 $P$는 probability measure입니다.
-(단, 유한집합 $X$에 대하여 $n(X)$는 그 집합의 원소의 개수입니다.)
+이면, $A$와 $B$가 서로 배반사건(exclusive events)이라고 말합니다.
+이것은 두 집합이 서로소(disjoint)인 것과 대응되는 개념입니다.
 
-이렇게 정의한 $P$는 보통 주사위 문제를 풀 때 사용해왔던 그 $P$와 의미가 일치합니다.
-아까  $A=\\{2,4,6\\}$, $B=\\{5\\}$로 두었었는데, $A\in\Sigma$, $B\in\Sigma$이고
+세 개 이상의 사건들에 대해서는 배반이라는 말이 두 가지의 의미를 가지게 됩니다.
+$A$, $B$, $C$가 사건일 때,
 
-$$
-\begin{align*}
-P(A)&=\frac{n(A)}{n(S)}=\frac36=\frac12\\
-P(B)&=\frac{n(B)}{n(S)}=\frac16
-\end{align*}
-$$
+$$A\cap B\cap C=\varnothing$$
 
-이기 때문입니다.
-
-**(3) coditional probability**
-
-두 사건 $A$, $B$에 대하여 사건 $A$가 발생했을 때
-사건 $B$도 발생할 확률을 $P(B|A)$라고 쓰고,
-
-$$P(B|A)=\frac{P(B\cap A)}{P(A)}$$
-
-로 정의합니다.
-
-이것은 마치, $A$를 sample space로 보는 것과 같습니다.
-마찬가지로, 일반적인 확률 $P(A)$도 $P(A|S)$와 같이 해석할 수 있습니다.
-
-**(4) law of total probability**
-
-$A_1$, $\cdots$, $A_n$가 $S$의 partition이면, 다시 말해,
-
-- $A_i$들이 서로 배반(mutually exclusive)사건이다 ; $i\ne j$일 때 $A_i\cap A_j=\varnothing$
-- $A_i$들에 대한 합집합이 $S$이면 ; $A_1\cup A_2\cup\cdots\cup A_n=S$
-
-다음과 같은 식이 성립합니다.
+이면, 세 사건이 mutually exclusive하다고 말합니다.
+만약
 
 $$
-\begin{align*}
-P(A)
-&=P(A_1\cap A)+\cdots+P(A_n\cap A)\\
-&=\sum_{i=1}^nP(A_i\cap A)\\
-&=\sum_{i=1}^nP(A|A_i)P(A_i)
-\end{align*}
+A\cap B=\varnothing
+\quad\&\quad
+B\cap C=\varnothing
+\quad\&\quad
+C\cap A=\varnothing
 $$
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
+이면, 세 사건이 pairwisely exclusive하다고 말합니다.
+일반적으로, 사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
 
-<div class="notice--danger">
+$$A_1\cap A_2\cap\cdots\cdots A_n=\varnothing$$
+
+이면, $A_i$들이 mutually exculsive하다고 말하고,
+
+$$i\neq j\quad\Rightarrow\quad A_i\cap A_j=\varnothing$$
+
+이면, $A_i$들이 pairwisely exclusive하다고 말합니다.
+
+<!-- <div class="notice--danger">
 (a)
 사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
 $$i\ne j\Rightarrow A_i\cap A_j=\varnothing$$
@@ -192,7 +170,73 @@ $$
 만약, $A_1=\{1,2\}$, $A_2=\{2,3\}$, $A_3=\{1,3\}$이면 $A_i$들은 mutually exclusive하지만 pairwisely exclusive하지는 않습니다.
 <br><br>
 (c) 이 정의에 따르면, $A_1$, $A_2$, $\cdots$, $A_n$이 $S$의 partition이 되기 위한 조건은, $A_i$들이 pairwisely exclusive하면서 $A_1\cup\cdots\cup A_n=S$인 것입니다.
-</div>
+</div> -->
+
+한편, $P$는 전사건에 대한 측도가 1인 measure(측도)입니다.
+다시 말해, 다음 세 성질을 만족시키는 $P$를 probability measure라고 부릅니다.
+
+- $P$는 $P:\Sigma\to[0,1]$인 함수입니다.
+- $P$는 countably additive합니다 ; $A_i\in\Sigma$가 서로 배반사건일 때 $P\left(\sum_{i=1}^\infty A_i\right)=\sum_{i=1}^\infty P(A_i)$
+- $P(\varnothing)=0$, $P(S)=1$ 입니다.
+
+예를 들어, 주사위를 하나 던지는 시행에서 $\Sigma$를 $S$의 멱집합(power set, $S$의 모든 부분집합들의 집합)이라고 하고 $P$를
+
+$$
+P(A)
+=\frac{n(A)}{n(S)}
+$$
+
+로 정의하면, $\Sigma$는 $\sigma$-algebra이고 $P$는 probability measure입니다.
+(단, 유한집합 $X$에 대하여 $n(X)$는 그 집합의 원소의 개수입니다.)
+
+이렇게 정의한 $P$는 보통 주사위 문제를 풀 때 사용해왔던 그 $P$와 의미가 일치합니다.
+아까  $A=\\{2,4,6\\}$, $B=\\{5\\}$로 두었었는데, $A\in\Sigma$, $B\in\Sigma$이고
+
+$$
+\begin{align*}
+P(A)&=\frac{n(A)}{n(S)}=\frac36=\frac12\\
+P(B)&=\frac{n(B)}{n(S)}=\frac16
+\end{align*}
+$$
+
+이기 때문입니다.
+
+**(3) coditional probability**
+
+두 사건 $A$, $B$에 대하여 사건 $A$가 발생했을 때
+사건 $B$도 발생할 확률을 $P(B|A)$라고 쓰고,
+
+$$P(B|A)=\frac{P(B\cap A)}{P(A)}$$
+
+로 정의합니다.
+
+이것은 마치, $A$를 sample space로 보는 것과 같습니다.
+마찬가지로, 일반적인 확률 $P(A)$도 $P(A|S)$와 같이 해석할 수 있습니다.
+
+**(4) law of total probability**
+
+사건 $A_1$, $\cdots$, $A_n$에 대하여, $A_i$들이 pairwisely exclusive하고 $A_i$들의 합집합이 $S$이면, 다시 말해
+
+$$i\neq j\quad\Rightarrow\quad A_i\cap A_j=\varnothing$$
+
+이고,
+
+$$A_1\cup A_2\cup\cdots\cup A_n=S$$
+
+이면, $A_1$, $\cdots$, $A_n$가 $S$의 partition(분할)이라고 말합니다.
+
+만약, $A_1$, $\cdots$, $A_n$가 $S$의 partition이고, $B$가 사건이면 다음과 같은 식이 성립합니다.
+
+$$
+\begin{align*}
+P(A)
+&=P(A_1\cap A)+\cdots+P(A_n\cap A)\\
+&=\sum_{i=1}^nP(A_i\cap A)\\
+&=\sum_{i=1}^nP(A|A_i)P(A_i)
+\end{align*}
+$$
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_1-1.png){: .img-100-center}
 
 **(5) Bayesian theorem**
 
@@ -213,7 +257,6 @@ Bayes theorem($\ast$)의 식의 각 항들은 다음과 같은 의미를 가지�
     <li> $P(A|B)$ : likelihood, 우도</li>
 </ul>
 </div>
-
 
 Bayesian theorem이 활용되는 경우는 대표적인 경우는 $P(B|A)$에서 $A$가 observation data (output)에 대응되고 $B$가 original data (input)에 대응될 때입니다.
 어떤 input이 주어졌을 때 어떤 output이 나올 확률은 보통 인과관계나 선후관계를 잘 따지면 계산할 수 있지만, 어떤 output이 나왔을 때 input이 그 값으로 주어졌을 확률, 즉 반대 경우는 해석하기 어렵고 계산하기 어렵습니다.
@@ -322,7 +365,7 @@ $$
 
 **1.8 independent events**
 
-두 개 혹은 여러 개의 사건에 대해서 독립/종속을 이야기할 수 있습니다.
+이제 사건에 대한 독립/종속을 이야기할 수 있습니다.
 강의에서는 두 개의 사건 $A$, $B$에 대한 독립(independece)만을 이야기합니다.
 만약 두 사건 $A$, $B$가 서로 영향을 주지 않으면, 즉
 
@@ -335,7 +378,7 @@ $$P(A|B)=P(A)$$
 이면, 두 사건 $A$, $B$가 서로 이라고 말합니다.
 $P(A)\ne0$, $P(B)\ne0$인 경우에 이 독립조건은
 
-$$P(A)P(B)=P(A\cap B)\tag{\ast\ast}$$
+$$P(A)P(B)=P(A\cap B)\tag{$\ast\ast$}$$
 
 와 동치입니다.
 강의에서는 $(\ast\ast)$를 독립의 정의로 사용하고 있습니다.
@@ -654,8 +697,6 @@ $$
 
 A random variable is a function $X$ mapping each outcome of random experiment $w\in S$ to a real number $x=X(w)$.
 
-즉 $X:S\to\mathbb R$인 $X$를 확률변수라고 합니다.
-
 **ex.1 : tossing a coin**
 
 동전을 하나 던져서 앞면이 나오면 1점을 얻고 뒷면이 나오면 $-1$점을 얻는 어떤 시행에서,
@@ -673,6 +714,7 @@ X(T)&=-1
 \end{align*}
 $$
 
+를 만족하는 함수입니다.
 확률변수를 사용하면 확률 $P(~\cdot~)$를 마치 숫자들의 함수로서 생각할 수 있게 됩니다.
 그전까지 $P(A)$라는 표현에서 $A$는 사건(event)이라고 불렸고 표본공간 $S$의 부분집합을 의미했습니다.
 그러니까 그전까지는 확률 $P(~\cdot~)$가 마치 '집합의 함수'처럼 동작했습니다.
@@ -726,7 +768,7 @@ S
 \end{align*}
 $$
 
-인데, 강의에서는 cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
+인데, 강의에서는 Cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
 확률변수 $X$는
 
 $$
@@ -769,17 +811,21 @@ $$
 **2.3 events defined by RV**
 
 강의에서는 $A_x$를 도입해서 설명하고 있습니다.
-이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합입니다.
-(따라서 이것은 $X$의 inverse image $X^{-1}(x)$이기도 합니다.)
+이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합으로, 아까 $(\ast)$에서 $P(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
 
-$$A_x=\{w\in S:X(w)=x\}$$
+$$
+\begin{align*}
+A_x
+&=\{w\in S:X(w)=x\}\\
+&=X^{-1}(\{x\})
+\end{align*}
+$$
 
-이것은 아까 $(\ast)$에서 $p(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다;
-<!-- 즉, $p(x)$ 혹은 $P(X=x)$를 -->
+따라서,
 
 $$p(x)=P(X=x)=P(A_x)$$
 
-<!-- 로 정의합니다. -->
+입니다.
 
 지금까지, $P(~\cdot~)$에 들어가는 것이 사건(event, $S$의 부분집합)이었던 것을, 특정한 숫자로 들어갈 수 있게 바꾸었습니다.
 여기에는 '숫자들의 집합'도 들어갈 수 있습니다.
@@ -870,8 +916,6 @@ $$
 입니다.
 이때, $P(X>\frac14)=P(X\ge\frac14)$이지만 $P(X>0)=P(X\ge0)$인 것은 $F_X(x)$가 $x=\frac14$에서는 연속이지만 $x=0$에서는 불연속인 사실과 관련이 있습니다.
 
-이고, 강의에 따르면 조금 직관적으로도 이해할 수 있는 것 같습니다.
-
 **2.5 discrete random variables(이산확률변수)**
 
 확률변수 $X$가 가질 수 있는 값이 유한개이면 (혹은 countable개이면) $X$를 이산확률변수라고 부릅니다.
@@ -951,7 +995,7 @@ P_X(x)=
 $$
 
 와 같이 정의된 가장 기본적인 확률질량함수 $P_X(x)$에 대응되는 확률밀도함수라고 생각할 수 있습니다.
-일반적인 확률질량함수에 대한 확률밀도함수는 이 $\delta(x)$를 적절히 shift한 것들을 가지고 일차결합하여 만들어낼 수 있습니다.
+일반적인 확률질량함수에 대한 확률밀도함수는 이 $\delta(x)$를 적절히 shift($x$축방향의 평행이동)한 것들을 가지고 일차결합하여 만들어낼 수 있습니다.
 즉
 
 $$
@@ -986,7 +1030,7 @@ dirac delta function은 엄밀히 말하면 함수가 아닌 generalized functio
 **2.6 continuous random variables**
 
 앞서 강의에서 확률변수를 $X:S\to\mathbb R$인 함수로 정의했습니다.
-어떤 확률변수가 이산확률변수인지 연속확률변수인지를 결정하는 것은 이 확률변수의 치역 $X(S)$과 관련있습니다.
+어떤 확률변수가 이산확률변수인지 연속확률변수인지를 결정하는 것은 이 확률변수의 치역 $X(S)$과 관련이 있습니다.
 $X(S)$가 countable이면 (혹은 at most countable, 그러니까, finite이거나 countably infinte) $X$를 이산확률변수라고 합니다.
 이것은
 
@@ -1134,7 +1178,7 @@ $f_X(x)$가 (혹은 $P_X(x)$가) 상수함수이면 $X$가 uniform distribution�
 <div class="notice--danger">
 <b> 확률분포(probabilistic distribution) </b> <br>
 확률변수 $X$가 어디에 얼마나 분포되어있는지 하는 것을 그 확률변수의 분포(distribution)이라고 합니다.
-이 분포를 직접적으로 표현하는 것이 PMF, PDF, CDF와 같은 분포함수들입니다.
+이 분포를 직접적으로 표현하는 것이 PMF(확률질량함수, probability mass function), PDF(확률밀도함수, probability density function), CDF(누적분포함수, cumulative distribution function)와 같은 분포함수들입니다.
 그 중 이산확률변수에 대해서는 PMF를, 연속확률분포에 대해서는 PDF를 주로 분포함수로 취급하게 되는데 PMF와 PDF는 모든 종류의 확률변수에 대해 잘 정의되지 않습니다.
 <br>
 예를 들어, PDF로는 이산확률분포를 정하기가 힘들었습니다.
@@ -1187,7 +1231,7 @@ Poisson distribution의 자세한 의미에 대해서는 $\langle08\rangle$에 �
 {: .text-center}
 
 를 $K$라고 하면, $K$는 위의 PMF를 가집니다.
-증명은 뒤에서 해보았습니다.
+이에 대한 증명은 $\langle08\rangle$에서 해보았습니다.
 
 $P_K$가 PMF가 되기 위해서는 두 조건을 만족시켜야 하는데 첫번째 조건인 $P_K(k)\ge0$은 당연합니다.
 두번째 조건인 $\sum_k P_K(k)=1$을 위해서는 $e^x$에 대한 Maclaurin series(혹은 지수함수에 대한 추상적인 정의)를 사용할 수 있습니다;
@@ -1251,14 +1295,14 @@ f_X(x)=
 \end{align*}
 $$
 
-이번에도, exponential distribution의 자세한 의미에 대해서는 뒤에서 다시 설명하겠습니다.
+이번에도, exponential distribution의 자세한 의미에 대해서는 $\langle08\rangle$에서 다시 설명하겠습니다.
 그래도 간단히 요약하면,
 
 단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간
 {: .text-center}
 
-을 $X$라고 하면, $X$는 위의 PDF를 가집니다.
-이에 대한 증명은 뒤에서 하겠습니다.
+를 $X$라고 하면, $X$는 위의 PDF를 가집니다.
+이에 대한 증명은 $\langle08\rangle$에서 해보았습니다.
 
 이번에도 $f_X$가 PDF가 되기 위해서는 두 가지 조건을 만족시켜야 하는데 첫번째 조건 $f_X(x)\ge0$은 당연합니다.
 두 번째 조건인 $\int_{-\infty}^\infty f_X(x)\,dx=1$
@@ -1488,7 +1532,7 @@ $$
 
 $$P_K(k)=\frac{\lambda^k}{k!}e^{-\lambda}$$
 
-에서의 분산을 구해보면
+의 분산을 구해보면
 
 $$
 \begin{align*}
@@ -1521,7 +1565,7 @@ f_X(x)=
 \end{align*}
 $$
 
-에서의 분산을 구해보면
+의 분산을 구해보면
 
 $$
 \begin{align*}
