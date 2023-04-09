@@ -2641,12 +2641,12 @@ Erlang-$2$ distribution은 두 개의 사건발생간격을 고려합니다.
 Erlang-$k$ distribution($k$-order Erlang distribution)의 PMF는
 
 $$
-f_{X_k}(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
+f_X(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
 \tag{$\ast$}
 $$
 
 입니다.
-연속확률변수 $X_k$가 Erlang-$k$ distribution을 따를 때 $X_k$가 위의 PMF를 가진다는 것은 $\langle16\rangle$에서 배우는 convolution의 개념을 통해 증명할 수 있습니다.
+연속확률변수 $X$가 Erlang-$k$ distribution을 따를 때 $X$가 위의 PMF를 가진다는 것은 $\langle16\rangle$에서 배우는 convolution의 개념을 통해 증명할 수 있습니다. $\langle15\rangle$
 
 **gamma function**
 
@@ -4669,7 +4669,11 @@ $$
     $\text{Cov}$ 함수는 bilinear하고 additive constant의 영향을 받지 않습니다.
     </li>
     <li>
-    bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재할 때, ($r:(u,v)\mapsto(x,y)$, $(x,y)\in T$이면, $s=r^{-1}:(x,y)\mapsto(u,v)$) $f_{XY}(x,y)=f_{UV}(s_1(x,y),s_2(x,y))\times|J|$ 입니다.
+    bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재할 때, $r:(u,v)\mapsto(x,y)$, $(x,y)\in T$이면, $s=r^{-1}:(x,y)\mapsto(u,v)$이면,
+    $$f_{XY}(x,y)=f_{UV}(s_1(x,y),s_2(x,y))\times|J|$$ 입니다.
+    이때, $J$는
+    $$J=\frac{\partial(x,y)}{\partial(u,v)}$$
+    (단,)
     </li>
 </ol>
 </div>
@@ -4980,163 +4984,898 @@ $$
 
 가 되어 bivariate normal PDF와 일치합니다.
 
-# 14 확률변수와 변환함수
+# 14 확률변수의 변환함수
 
-<!-- 이번 강의에서는 $X$의 확률분포가 주어질 때, $g(X)$의 확률분포가 어떻게 나타나는지, 그리고 $E[g(X)]$가 어떻게 계산되는지 다룹니다.
+이번 강의에서는 $X$의 확률분포가 주어질 때, $Y=g(X)$의 확률분포가 어떻게 나타나는지, 그리고 $E[g(X)]$가 어떻게 계산되는지 다룹니다.
+$E[g(X)]$는 $\langle03\rangle$에서 언급한 LOTUS의 식으로 쉽게 계산될 수 있다고 했었습니다.
+하지만, $Y=g(X)$의 확률분포는 그렇게까지 간단하게 얻어지지 않습니다.
 
-$\langle12\rangle$에서 $E[g(X)]$가
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_14-1.png){: .img-50-center}
 
-\begin{equation}
-only equation environment
-\end{equation}
+앞서 강의들에서 두 확률변수 $X$, $Y$에 대한 correlation coefficient $\rho_{XY}$를 공부했었습니다.
+$\rho_{XY}$는 두 변수간의 '관계'를 말해줍니다.
+만약 더 나아가, 두 변수간의 '함수' $Y=g(X)$가 주어졌을 때의 경우를 다루는 것입니다.
+이 주제는 이어지는 다섯 번의 강의의 주제이기도 합니다.
+지금은 $g:\mathbb R\to\mathbb R$인 함수를 이야기하고 있는데 이것을 $g:\mathbb R^n\to\mathbb R$인 경우와 $g:\mathbb R^m\to\mathbb R^n$인 경우로까지 확장하며, 그 과정에서 convolution, Jacobian,Fourier transformation 등의 주제가 언급된다고 합니다.
 
-$$
-\begin{equation}
-equation environment
-\end{equation}
-$$
+예를 들어, 0과 1 사이의 uniform distribution을 따르는 값 $X$는 (프로그래밍적으로) 쉽게 만들어낼 수 있다고 합니다.
+만약, 적절한 함수 $g:\mathbb R\to\mathbb R$이 있어서 $Y=g(X)$가 normal distribution을 따를 수 있게 한다면, uniform distribution의 수를 생성해내는 것 만으로도 normal distribution의 수를 생성해낼 수 있게 될 것입니다.
+그때, $X$의 PDF $f_X(x)$와 $Y$의 PDF $f_Y(y)$ 사이의 관계식이 필요할 것이라는 점이 강의에서 언급됩니다.
 
-$$
-\begin{equation*}
-stared equation environment
-\end{equation*}
-$$
+이러한 문제에서, 만약 $g$가 일대일대응이면 문제는 상당히 쉬워집니다.
+하지만 $g$가 일대일대응 조건을 만족하지 못하는 경우에는 조금 처리해주어야 할 사항들이 있는데, 그 점들이 소개됩니다.
+강의에서 나타나는 예는 $g$가 일차함수(affine function, $g(x)=ax+b$)인 경우, 이차함수($g(x)=x^2$)인 경우에 대한 예를 간단히 들고 있습니다.
+그리고 일반적인 경우에 대한 설명이 이어집니다.
 
-$$
-\begin{equation}\tag{9}
-equation environment with tag
-\end{equation}
-$$
-
-$$
-\begin{equation*}\tag{9}
-stared equation environment with tag
-\end{equation*}
-$$
-
-$$
-double dollors
-$$
-
-$$
-double dollors with tag\tag{9}
-$$
-
-
-$$
-\begin{aligned}
-E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
-&&\text{(continuous)}\\
-E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
-&&\text{(discrete)}
-\end{aligned}\tag{$\ast$}
-$$
-
-$$\tag{$\ast$}
-\begin{aligned}
-E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx
-&&\text{(continuous)}\\
-E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
-&&\text{(discrete)}
-\end{aligned}
-$$
-
-$$
-\begin{aligned}
-E\left[g(X)\right]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx\tag{$\ast$}
-&&\text{(continuous)}\\
-E\left[g(X)\right]&=\sum_{i=1}^mg(x_i)P_X(x_i)
-&&\text{(discrete)}
-\end{aligned}
-$$
-
-와 같이 계산될 수 있다고 했었습니다.
-그런데, 사실 이산확률변수 $X$가
+예를 들어, 이산확률변수 $X$가 세 개의 값 $-1$, $0$, $1$을 가지고
 
 $$
 \begin{align*}
-P_X(x_1)&=p_1\\
-P_X(x_2)&=p_2\\
-&\vdots\\
-P_X(x_n)&=p_n\\
+P_X(-1) &=\frac14\\
+P_X(0)  &=\frac12\\
+P_X(1)  &=\frac14
 \end{align*}
 $$
 
-인 확률질량함수를 가지고 있다고 해서 $(\sum_ip_i=1)$ 새로운 확률변수 $g(X)$가
-
-$$\tag{$\ast\ast$}
-\begin{aligned}
-P_Y(g(x_1))&=p_1\\
-P_Y(g(x_2))&=p_2\\
-&\vdots\\
-P_Y(g(x_n))&=p_n\\
-\end{aligned}
-$$
-
-를 항상 만족시키지는 않습니다.
-
-예를 들어 $X\sim U(\\{-1,0,1\\})$ 이고 $Y=2X-1$이면
+와 같이 분포해있다고 가정하겠습니다.
+만약 $g(x)=2x-1$와 같은 함수를 생각하면 이 함수로부터 얻어지는 새로운 확률변수 $Y=g(X)=2X-1$은
 
 $$
 \begin{align*}
-P_X(-1)&=\frac13\\
-P_X(0)&=\frac13\\
-P_X(1)&=\frac13\\
+P_Y(-3) &=\frac14\\
+P_Y(-1) &=\frac12\\
+P_Y( 1) &=\frac14
 \end{align*}
 $$
 
-이고
+와 같은 확률분포를 따르게 됩니다.
+하지만 만약 $g(X)=x^2$와 같은 함수를 가정하면, $Y=g(X)=X^2$는
 
 $$
 \begin{align*}
-P_X(-1)&=\frac13\\
-P_X(1)&=\frac13\\
-P_X(3)&=\frac13\\
+P_Y(0) &=\frac12\\
+P_Y(1) &=\frac12
 \end{align*}
 $$
 
-이라서 $(\ast\ast)$가 성립합니다.
-하지만, $Y=X^2$이면
+과 같은 확률변수를 따르게 됩니다.
+그러니까 $g(x)=2x-1$과 같은 일대일대응 함수의 경우에는 분포가 그대로 유지되지만, $g(x)=x^2$과 같이 일대일조건이 깨지게 되는 경우에는, 기존 분포와는 조금 다른 분포의 모양이 나오게 됩니다.
+
+일반적으로, 이산확률변수 $X$가
 
 $$
 \begin{align*}
-P_X(0)&=\frac13\\
-P_X(1)&=\frac23
+P_X(x_1)    &=p_1\\
+            &\vdots\\
+P_X(x_n)    &=p_n\\
 \end{align*}
 $$
 
-이 되어 $(\ast\ast)$가 성립합니다.
-그러니까, $(\ast\ast)$와 같은 식이 성립하는 것은 $Y=g(X)$가 일대일함수일 때만 가능합니다.
-
-그러니까, 확률변수 $X$의 분포로부터 $g(X)$의 분포를 설명하는 것은 그렇게까지 깔끔하지는 않습니다.
-하지만 어쨌든 $E[g(X)]$을 계산하는 위의 간단한 식은 성립합니다.
-discrete case에 관한 식을 먼저 보면, 확률변수 $X$가 $x_1$, $\cdots$, $x_m$을 값으로 가지고, $Y=g(X)$가 $y_1$, $\cdots$, $y_n$을 값으로 가진다면
-
-$$\{g^{-1}:(y_j):j=1,2,\cdots,n\}$$
-
-는 $\\{x_1,x_2,\cdots,x_m\\}$의 partition이 됩니다.
-따라서
+와 같은 분포를 따르고, $g$가 일대일대응이면, 모든 $i=1,2,\cdots,n$에 대하여
 
 $$
 \begin{align*}
-E\left[g(X)\right]
-&=\sum_{j=1}^ny_jP(g(Y)=y_j)\\
-&=\sum_{j=1}^ny_jP(X\in g^{-1}\left(\{y_j\}\right))\\
-&=\sum_{j=1}^ny_j\sum_{x\in g^{-1}\left(\{y_j\}\right)}P_X(x)\\
-&=\sum_{j=1}^n\sum_{x\in g^{-1}\left(\{y_j\}\right)}y_jP_X(x)\\
-&=\sum_{j=1}^n\sum_{x\in g^{-1}\left(\{y_j\}\right)}g(x)P_X(x)\\
-&=\sum_{i=1}^mg(x_i)P_X(x_i)
+P_Y(g(x_i))
+&=P(Y=g(x_i))\\
+&=P(g(X)=g(x_i))\\
+&=P(X=x_i)\\
+&=P_X(x_i)
 \end{align*}
 $$
 
 입니다.
-따라서 $(\ast)$가 성립합니다.
+따라서 $Y$는
 
-$$E\left[g(X)\right]=\int_{-\infty}^\infty g(x)f_X(x)\,dx$$ -->
+$$
+\begin{align*}
+P_X\left(g(x_1)\right)    &=p_1\\
+                        &\vdots\\
+P_X\left(g(x_n)\right)    &=p_n\\
+\end{align*}
+$$
+
+와 같은 분포를 따름을 쉽게 알 수 있습니다.
+
+$X$가 연속확률변수인 경우에는 아무리 $g$가 일대일대응이라고 하더라도, $Y$의 분포를 얻는게 쉽지 않습니다.
+하지만, 일대일대응 중에서도 단조증가함수 혹은 단조감수함수에 대해서는 비교적 쉽게 결과를 얻을 수 있습니다.
+또한, 증가나 감소가 유한 번 일어나는, 비교적 간단한 연속함수의 경우에도 결과를 낼 수 있다는 것이 강의에서 소개되고 있습니다.
+
+<div class="notice--danger">
+함수 $g:\mathbb R\to\mathbb R$이
+$$x_1\lt x_2\quad\Longrightarrow\quad g(x_1)\lt g(x_2)$$
+이면 $g$가 단조증가함수(monotonically increasing function)라고 합니다.
+만약
+$$x_1\lt x_2\quad\Longrightarrow\quad g(x_1)\gt g(x_2)$$
+이면 $g$가 단조감소함수(monotonically increasing function)라고 합니다. <br>
+단조증가함수와 단조감수함수를 통틀어서 단조함수(monotonic function)라고 부르기도 합니다.
+단조함수가 일대일함수라는 것은 쉽게 증명될 수 있습니다.
+</div>
+
+**(1) 일차함수 $g(x)=ax+b**
+
+확률변수 $X$에 대한 PMF가 $Y=g(X)=aX+b$일 때($a\ne0$), $a\gt0$인 경우와 $a\lt0$인 두 가지의 경우로 나누어볼 수 있습니다.
+만약 $a\gt0$이면,
+
+$$
+\begin{align*}
+F_Y(y)
+&=P(Y\le y)\\
+&=P(aX+b\le y)\\
+&=P\left(X\le\frac{y-b}a\right)\\
+&=F_X\left(\frac{y-b}a\right)
+\end{align*}
+$$
+
+이므로,
+
+$$
+\begin{align*}
+f_Y(y)
+&=\frac d{dy}F_Y(y)\\
+&=\frac d{dy}F_X\left(\frac{y-b}a\right)\\
+&=\frac1aF_X'\left(\frac{y-b}a\right)\\
+&=\frac1af_X\left(\frac{y-b}a\right)\\
+\end{align*}
+$$
+
+입니다.
+반대로, $a\lt0$이면
+
+$$
+\begin{align*}
+F_Y(y)
+&=P(Y\le y)\\
+&=P(aX+b\le y)\\
+&=P\left(X\ge\frac{y-b}a\right)\\
+&=1-F_X\left(\frac{y-b}a\right)
+\end{align*}
+$$
+
+이므로,
+
+$$
+\begin{align*}
+f_Y(y)
+&=\frac d{dy}F_Y(y)\\
+&=\frac d{dy}\left(1-F_X\left(\frac{y-b}a\right)\right)\\
+&=-\frac d{dy}F_X\left(\frac{y-b}a\right)\\
+&=-\frac1aF_X'\left(\frac{y-b}a\right)\\
+&=-\frac1af_X\left(\frac{y-b}a\right)\\
+\end{align*}
+$$
+
+입니다.
+따라서, $a\ne0$을 만족시키는 실수 $a$에 대하여 $Y$의 확률밀도함수 $f_Y(y)$는
+
+$$
+\begin{aligned}
+f_Y(y)
+&=
+\begin{cases}
+\frac1af_X\left(\frac{y-b}a\right)  &(a\gt0)\\
+-\frac1af_X\left(\frac{y-b}a\right) &(a\lt0)\\
+\end{cases}\\[10pt]
+&=\frac{\frac1af_X\left(\frac{y-b}a\right)}{|a|}
+\end{aligned}\tag{$(\ast)$}
+$$
+
+로 계산됩니다.
+
+예를 들어, $Y=\frac12X+1$인 경우 $\left(a=\frac12\right)$
+
+$$P(1\lt X\le 2)=P\left(\frac32\lt X\le 2\right)$$
+
+입니다.
+그러니까, $X$의 입장에서 $1$의 길이를 가지는 구간에 대한 확률과 $Y$의 입장에서 $\frac12$의 길이를 가지는 구간에 대한 확률이 같습니다.
+그러면, 밀도함수의 기준에서 봤을 때는 $f_X$보다는 $f_Y$의 밀도가 두 배 더 높을 것입니다.
+실제로 $a=\frac12$이면, 서로 대응되는 부분에서의 $f_Y$의 값이 $f_X$의 값의 두 배가 된 것이 위의 식에서도 반영되어 있습니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_14-2.png){: .img-50-center}
+
+**(2) 이차함수 $g(x)=x^2**
+
+마찬가지로 $Y=g(X)=X^2$에 대하여 해보겠습니다.
+양수 $y$에 대하여
+
+$$
+\begin{align*}
+F_Y(y)
+&=P(Y\le y)\\
+&=P(X^2\le y)\\
+&=P(-\sqrt y\le X\le\sqrt y)\\
+&=F_X(\sqrt y)-F_X(-\sqrt y)
+\end{align*}
+$$
+
+이면,
+
+$$
+\begin{aligned}
+f_Y(y)
+&=\frac d{dy}F_Y(y)\\
+&=\frac d{dy}\left(F_X(\sqrt y)-F_X(-\sqrt y)\right)\\
+&=\frac{f_X(\sqrt y)}{2\sqrt y}+\frac{f_X(-\sqrt y)}{2\sqrt y}
+\end{aligned}\tag{$(\ast\ast)$}
+$$
+
+이 됩니다.
+
+예를 들어 $X$가 exponential distribution을 따르면
+
+$$f_X(x)=\lambda e^{-\lambda x}\qquad(x\ge0)$$
+
+$Y=X^2$은
+
+$$
+\begin{align*}
+f_Y(y)
+&=\frac{f_X(\sqrt y)}{2\sqrt y}+\frac{f_X(-\sqrt y)}{2\sqrt y}\\
+&=\frac{\lambda e^{-\lambda\sqrt y}}{2\sqrt y}+\frac{\lambda e^{\lambda\sqrt y}}{2\sqrt y}
+\end{align*}
+$$
+
+의 분포를 따릅니다.
+
+$g(x)=ax+b$는 일대일함수였고, 따라서 하나의 $y$에 대하여, $y=g(x)$를 만족시키는 단 하나의 $x=g^{-1}(y)=\frac{y-b}a$가 존재했습니다.
+즉, $y$의 inverse image인 $g^{-1}\left(\{x\}\right)$가 하나의 원소를 가졌습니다;
+
+$$g^{-1}\left(\{x\}\right)=\{\frac{y-b}a\}$$
+
+반면, $g(x)=x^2$는 일대일함수 조건을 만족하지 못합니다.
+하나의 $y$에 대하여 $y=g(x)$를 만족시키는 $x$는 두 개 $x=\sqrt y$, $x=-\sqrt y$ 존재합니다.
+다시 말해,
+
+$$g^{-1}\left(\{x\}\right)=\{-\sqrt y,\sqrt y\}$$
+
+입니다.
+그런 이유로 $(\ast\ast)$의 식에서는 두 개의 항이 나왔습니다.
+
+**(3) 일반적인 함수**
+
+다음으로, 강의에서는 일반적인 경우를 다룹니다.
+만약 어떤 함수 $g:\mathbb R\to\mathbb R$가 연속함수이고 미분가능하며, 극값의 개수가 유한하고, 실수 $y$가 $g$의 극값이 아니라고 가정하면, $g$의 함수의 그래프는 다음과 같이 생겼습니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_14-3.png){: .img-50-center}
+
+즉, $y=f(x)$를 만족하는 $x$의 값이 세 개인 경우를 다룹니다.
+이것들을 각각 $x_1$, $x_2$, $x_3$라고 하면,
+
+$$f^{-1}\left(\{y\}\right)=\{x_1,x_2,x_3\}$$
+
+입니다.
+위와 같은 특정한 경우에 $Y$의 CDF는
+
+$$
+\begin{align*}
+F_Y(y)
+&=P(Y\le y)\\
+&=P(X\le x_1)+P(x_2\lt X\le x_3)\\
+&=F_X(x_1)-F_X(x_2)+F_x(x_3)
+\end{align*}
+$$
+
+입니다.
+이것을 $y$에 대해 미분하여 $f_Y(y)$를 구하면
+
+$$
+\begin{align*}
+f_Y(y)
+&=\frac d{dy}F_Y(y)\\[10pt]
+&=\frac d{dy}\left(F_X(x_1)-F_X(x_2)+F_x(x_3)\right)\\[10pt]
+&=\frac d{dy}F_X(x_1)-\frac d{dy}F_X(x_2)+\frac d{dy}F_X(x_3)\\[10pt]
+&=\left[\frac d{dy}F_X(x)\right]_{x=x_1}-\left[\frac d{dy}F_X(x)\right]_{x=x_2}+\left[\frac d{dy}F_X(x)\right]_{x=x_3}\\[10pt]
+&=\left[\frac{dx}{dy}\cdot\frac d{dx}F_X(x)\right]_{x=x_1}-\left[\frac{dx}{dy}\cdot\frac d{dx}F_X(x)\right]_{x=x_2}+\left[\frac{dx}{dy}\cdot\frac d{dx}F_X(x)\right]_{x=x_3}\\[10pt]
+&=\left[\frac{\frac d{dx}F_X(x)}{\frac{dy}{dx}}\right]_{x=x_1}-\left[\frac{\frac d{dx}F_X(x)}{\frac{dy}{dx}}\right]_{x=x_2}+\left[\frac{\frac d{dx}F_X(x)}{\frac{dy}{dx}}\right]_{x=x_3}\\[10pt]
+&=\left[\frac{f_X(x)}{g'(x)}\right]_{x=x_1}-\left[\frac{f_X(x)}{g'(x)}\right]_{x=x_2}+\left[\frac{f_X(x)}{g'(x)}\right]_{x=x_3}\\[10pt]
+&=\frac{f_X(x_1)}{g'(x_1)}-\frac{f_X(x_2)}{g'(x_2)}+\frac{f_X(x_3)}{g'(x_3)}\\[10pt]
+&=\sum_{i=1}^3\frac{f_X(x_i)}{|g'(x_i)|}
+\end{align*}
+$$
+
+일반적으로 실수 $y$에 대하여 $y=g(x)$를 만족하는 $x$의 값이 $x_1$, $x_2$, $\cdots$, $x_n$일 때, $Y$의 PDF $f_Y(y)$는
+
+$$
+f_Y(y)=\sum_{i=1}^3\frac{f_X(x_i)}{|g'(x_i)|}
+$$
+
+입니다.
+여기에 $g(x)=ax+b$를 대입해보면 $n=1$이고, $x_1=\frac{y-b}a$이므로,
+
+$$
+\begin{align*}
+f_Y(y)
+&=\sum_{i=1}^1\frac{f_X(x_1)}{|g'(x_1)|}\\[10pt]
+&=\frac{f_X(x_1)}{|g'(x_1)|}\\[10pt]
+&=\frac{f_X\left(\frac{y-b}a\right)}{|a|}
+\end{align*}
+$$
+
+가 되어 $(\ast)$와 일치합니다.
+이번에는 $g(x)=x^2$을 대입해보면 $n=2$이고,$x_1=-\sqrt y$, $x_2=\sqrt y$이므로,
+
+$$
+\begin{align*}
+f_Y(y)
+&=\sum_{i=1}^2\frac{f_X(x_1)}{|g'(x_1)|}\\[10pt]
+&=\frac{f_X(x_1)}{|g'(x_1)|}+\frac{f_X(x_2)}{|g'(x_2)|}\\[10pt]
+&=\frac{f_X(x_1)}{|2x_1|}+\frac{f_X(x_2)}{|2x_2|}\\[10pt]
+&=\frac{f_X(-\sqrt y)}{|-2\sqrt y|}+\frac{f_X(\sqrt y)}{|2\sqrt y|}\\[10pt]
+&=\frac{f_X(-\sqrt y)}{2\sqrt y}+\frac{f_X(\sqrt y)}{2\sqrt y}
+\end{align*}
+$$
+
+가 되어 $(\ast\ast)$와 일치합니다.
+
+**ex.6.2**
+
+$X\sim N(0,1)$이고, $Y=X^2$일 때, $Y$의 분포를 알아보겠습니다.
+$X$의 PDF는
+
+$$
+f_X(x)=\frac1{\sqrt{2\pi}}e^{-\frac{x^2}2}
+$$
+
+로 주어지므로, $(\ast\ast)$를 적용하면, 임의의 양수 $y$에 대하여
+
+$$
+\begin{align*}
+f_Y(y)
+&=\frac{f_X(\sqrt y)}{2\sqrt y}+\frac{f_X(-\sqrt y)}{2\sqrt y}\\
+&=\frac1{2\sqrt{2\pi y}}e^{-\frac y2}+\frac1{2\sqrt{2\pi y}}e^{-\frac y2}\\
+&=\frac1{\sqrt{2\pi y}}e^{-\frac y2}
+\end{align*}
+$$
+
+**6.3 Expectations**
+
+여기에서, $\langle05\rangle$에서 미뤄두었던 LOTUS(law of the unconscious statistician)가 나옵니다.
+
+$$
+\begin{align*}
+E[g(X)]&=\sum_ig(x_i)P_X(x_i)                   &&(\text{discrete})\\
+E[g(X)]&=\int_{-\infty}^\infty g(x)f_X(x)\,dx   &&(\text{continuous})
+\end{align*}\tag{LOTUS}
+$$
+
+discrete case에 대하여 간단하게 증명해보겠습니다.
+확률변수 $X$가 $x_1$, $\cdots$, $x_m$을 값으로 가지고, $Y=g(X)$가 $y_1$, $\cdots$, $y_n$을 값으로 가진다면 $g^{-1}(y_1)$, $g^{-1}(y_2)$, $\cdots$, $g^{-1}(y_n)$은 $\\{x_1,x_2,\cdots,x_m\\}$의 partition이 됩니다($\star$).
+이때, $g^{-1}(y_j)$는
+
+$$g^{-1}(y_j)=\{x_i:g(x_i)=y_j\}$$
+
+인 $x_i$들의 집합을 말합니다.
+따라서,
+
+$$
+\begin{align*}
+E\left[g(X)\right]
+&=\sum_{j=1}^ny_jP(Y=y_j)\\
+&=\sum_{j=1}^ny_j\sum_{x_i\in g^{-1}\left(\{y_j\}\right)}P(X=x_i)\\
+&=\sum_{j=1}^n\sum_{x_i\in g^{-1}\left(\{y_j\}\right)}g(x_i)P(X=x_i)\\
+&\stackrel\star=\sum_{i=1}^mg(x_i)P(X=x_i)
+\end{align*}
+$$
+
+입니다.
+따라서 discrete case의 LOTUS가 성립합니다.$\square$
+
+다음으로, continuous case입니다.
+일반적인 continuous case에 대한 증명은 어렵습니다.
+이 포스트에서는 $g$가 단조함수이면서 미분가능하며, 모든 $x$에 대하여 $g'(x)\ne0$인 경우만을 다룹니다.
+
+만약, $g$가 단조증가함수이면 $f_X(x)$와 $f_Y$ 사이의 관계식은
+
+$$
+\begin{align*}
+F_Y(y)
+&=P(Y\le y)\\
+&=P(g(X)\le y)\\
+&\stackrel{\star\star}=P(X\le g^{-1}(y))\\
+&=F_X\left(g^{-1}(y)\right)\\
+f_Y(y)
+&=\frac d{dy}F_Y(y)\\
+&=\frac{d g^{-1}(y)}{dy}F_X'\left(g^{-1}(y)\right)\\
+&=\frac{f_X\left(g^{-1}(y)\right)}{g'(g^{-1}(y))}
+\end{align*}
+$$
+
+입니다.
+$\star\star$에서 $g$가 단조증가함수인 것이 사용되었습니다.
+따라서
+
+$$
+\begin{align*}
+E[g(X)]
+&=E[Y]\\[10pt]
+&=\int_{y=-\infty}^{y=\infty}yf_Y(y)\,dy\\[10pt]
+&=\int_{y=-\infty}^{y=\infty}y\frac{f_X\left(g^{-1}(y)\right)}{g'(g^{-1}(y))}\,dy\\[10pt]
+&=\int_{x=-\infty}^{x=\infty}g(x)\frac{f_X(x)}{g'(x)}\frac{dy}{dx}\,dx\\[10pt]
+&=\int_{x=-\infty}^{x=\infty}g(x)f_X(x)\,dx\\
+\end{align*}
+$$
+
+입니다.
+반대로, $g$가 단조감소함수이면
+
+$$
+\begin{align*}
+F_Y(y)
+&=P(Y\le y)\\
+&=P(g(X)\le y)\\
+&\stackrel{\star\star\star}=P(X\ge g^{-1}(y))\\
+&=1-F_X\left(g^{-1}(y)\right)\\
+f_Y(y)
+&=\frac d{dy}\left(1-F_X\left(g^{-1}(y)\right)\right)\\
+&=-\frac{d g^{-1}(y)}{dy}F_X'\left(g^{-1}(y)\right)\\
+&=-\frac{f_X\left(g^{-1}(y)\right)}{g'(g^{-1}(y))}
+\end{align*}
+$$
+
+입니다.
+$\star\star\star$에서 $g$가 단조감소함수인 것이 사용되었습니다.
+따라서
+
+$$
+\begin{align*}
+E[g(X)]
+&=E[Y]\\[10pt]
+&=\int_{y=-\infty}^{y=\infty}yf_Y(y)\,dy\\[10pt]
+&=-\int_{y=-\infty}^{y=\infty}y\frac{f_X\left(g^{-1}(y)\right)}{g'(g^{-1}(y))}\,dy\\[10pt]
+&=-\int_{x=\infty}^{x=-\infty}g(x)\frac{f_X(x)}{g'(x)}\frac{dy}{dx}\,dx\\[10pt]
+&=\int_{x=-\infty}^{x=\infty}g(x)f_X(x)\,dx\\
+\end{align*}
+$$
+
+입니다.
+
+따라서 continuous case의 LOTUS가 성립합니다.$\square$
+
+# 15 연속확률변수의 합과 컨볼루션
+
+이전 강의에서 두 확률변수 $X$, $Y$ 사이에 $Y=g(X)$인 함수 $g:\mathbb R\to\mathbb R$이 존재할 때, $f_X(x)$를 통해 $f_Y(y)$를 구하는 방법에 대해 다뤘습니다.
+함수 $g$는 multivariate function(다변수함수)일 수도 있고 ($g:\mathbb R^m\to\mathbb R$), vector valued function(벡터함수)일 수도 있으며($g:\mathbb R\to\mathbb R^n$), 둘 다일 수도 있습니다($g:\mathbb R^m\to\mathbb R^n$).
+이번 강의에서는 $g$가 multivariate function인 경우
+
+$$g:\mathbb R^m\to\mathbb R$$
+
+에 대해 다룹니다.
+그 중에서도 가장 간단한 $m=2$인 경우를 다루고 있습니다.
+즉
+
+$$g:\mathbb R^2\to\mathbb R$$
+
+인, $g$가 이변수함수(bivariate function)인 경우입니다.
+기존에 주어진 연속확률변수 $X$, $Y$를 가지고, 새로운 연속확률변수 $S=g(X,Y)$가 주어지는 경우입니다.
+
+$X$와 $Y$의 확률함수가 주어져있는 경우에, 새로운 확률변수 $S$의 CDF를 구하는 방법은
+
+$$
+\begin{align*}
+F_S(s)
+&=P(S\le s)\\
+&=P(g(X,Y)\le s)\\
+&=\iint_{g(x,y)\le s}F_{XY}(x,y)\,dx\,dy
+\end{align*}
+$$
+
+인 것은 당연합니다.
+그리고, $S$의 PDF는 위 식을 미분하면 얻어집니다;
+
+$$f_S(s)=\frac d{ds}\iint_{g(x,y)\le s}F_{XY}(x,y)\,dx\,dy$$
+
+그러니까, 위의 두 식은 항상 성립하는 식입니다.
+
+**convolution**
+
+모든 종류의 이변수 함수(bivariate function) 중에서 가장 간단하면서도 중요한 경우는 $g$가
+
+$$g(x,y)=x+y$$
+
+로 주어지는 경우입니다.
+다시 말해, 두 확률변수 $X$, $Y$에 대하여 새로운 확률변수 $X+Y$의 분포를 구해보는 것입니다.
+이 새로운 확률변수 $S=X+Y$의 PDF는
+
+$$
+f_S(s)=\int_{-\infty}^\infty f_{XY}(s-y,y)\,dy
+\tag{$(\ast)$}
+$$
+
+로 주어집니다.
+당연히, 위의 식에서 $y$는 dummy variable입니다.
+그러니까, 위의 식에서 $y$말고 다른 어떤 변수로 넣어도, 상관없습니다.
+만약, $X$와 $Y$가 독립이면
+
+$$
+f_S(s)=\int_{-\infty}^\infty f_X(s-y)f_Y(y)\,dy
+\tag{$(\ast\ast)$}
+$$
+
+와 같이 쓸 수도 있습니다.
+$(\ast\ast)$에 대한 증명을 강의에서는 다음과 같이 하고 있습니다.
+
+$$
+\begin{align*}
+F_S(s)
+&=P(S\le s)\\
+&=\iint_{x+y\le s}f_{XY}(x,y)\,dx\,dy
+\end{align*}
+$$
+
+에서 $x+y\le s$인 부등식의 영역은
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-1.png){: .img-50-center}
+
+와 같이 주어집니다.
+이 이중적분에서, $y$는 $-\infty$부터 $\infty$까지 움직이고, $y$가 하나의 특정한 값으로 고정되었을 때, $x$는 $-\infty$부터 $s-y$까지 움직이므로
+
+$$
+\begin{align*}
+F_S(s)
+&=\int_{-\infty}^\infty\int_{-\infty}^{s-y}f_{XY}(x,y)\,dx\,dy\\
+&=\int_{-\infty}^\infty\int_{-\infty}^{s-y}f_X(x)f_Y(y)\,dx\,dy\\
+&=\int_{-\infty}^\infty f_Y(y)\int_{-\infty}^{s-y}f_X(x)\,dx\,dy\\
+&=\int_{-\infty}^\infty f_Y(y)F_X(s-y)\,dy
+\end{align*}
+$$
+
+양변을 $s$에 대해 미분하면
+
+$$
+\begin{align*}
+f_S(s)
+&=\frac d{ds}\int_{-\infty}^\infty f_Y(y)F_X(s-y)\,dy\\
+&\stackrel\star=\int_{-\infty}^\infty\frac d{ds}f_Y(y)F_X(s-y)\,dy\\
+&=\int_{-\infty}^\infty f_Y(y)f_X(s-y)\,dy
+\end{align*}
+$$
+
+이 된다는 것입니다.
+따라서 $(\ast\ast)$가 성립합니다.
+
+이 증명도 맞는 증명이겠지만, $\star$의 과정에서 미분과 적분의 순서를 바꾼 것에 대한 이유를 충분히 찾지 못하겠어서, 다른 증명을 찾아봤습니다.
+DeGroot의 책에는 다음과 같이 증명하고 있습니다.
+
+$$
+F_S(s)=\int_{-\infty}^\infty\int_{-\infty}^{s-y}f_{XY}(x,y)\,dx\,dy
+$$
+
+에서 $x+y=t$로 치환하면 $x=t-y$, $dx=dt$, $x=-\infty\iff t=-\infty$, $x=s-y\iff t=s$ 이므로
+
+$$
+\begin{align*}
+F_S(s)
+&=\int_{-\infty}^\infty\int_{-\infty}^sf_{XY}(t-y,y)\,dt\,dy\\
+\end{align*}
+$$
+
+입니다.
+이 과정에서 적분영역은 $x\le s$이고,
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-1.png){: .img-50-center}
+
+따라서 적분의 순서를 바꿀 수 있습니다.
+
+$$
+\begin{align*}
+F_S(s)
+&=\int_{-\infty}^s\int_{-\infty}^\infty f_{XY}(t-y,y)\,dy\,dt\\
+\end{align*}
+$$
+
+양변을 미분하면
+
+$$f_S(s)=\int_{-\infty}^\infty f_{XY}(s-y,y)\,dy$$
+
+이고, 따라서 $(\ast)$가 성립하며, $(\ast\ast)$도 성립합니다.
+
+<div class="notice--danger">
+<b> 정의 : convolution </b><br>
+일반적으로, 두 함수 $f:\mathbb R\to\mathbb R$, $g:\mathbb R$에 대하여 새로운 함수 $f\ast g:\mathbb R\to\mathbb R$을
+$$(f\ast g)(s)=\int_{-\infty}^\infty f(t)g(s-t)\,dt$$
+로 정의할 때, $f\ast g$는 $f$와 $g$의 convolution이라고 불립니다.
+</div>
+
+따라서, 앞서의 결과를 정리하면, 두 연속확률변수 $X$와 $Y$에 대하여 $S=X+Y$의 확률밀도함수 $f_S$는 $f_X$와 $f_Y$의 convolution입니다.
+다시 말해,
+
+$$f_S=f_X\ast f_Y$$
+
+라고 쓸 수 있고, $f_S(s)$는
+
+$$f_S(s)=\int_{-\infty}^\infty f(y)g(s-y)\,dy$$
+
+를 만족시키는 함수입니다.
+
+강의에는 포함되어 있지 않지만, convolution 연산 $\ast$의 기본적인 성질들에 대해 더 적어보려 합니다.
+$\ast$은 교환법칙과 결합법칙이 성립합니다.
+먼저, $\ast$가 교환법칙이 성립한다는 것은, $f\ast g=g\ast f$가 성립한다는 것입니다.
+왜냐하면
+
+$$
+\begin{align*}
+(f\ast g)(s)
+&=\int_{-\infty}^\infty f(t)g(s-t)\,dt\\
+&=-\int^{-\infty}_\infty f(s-u)g(u)\,du\\
+&=\int_{-\infty}^\infty g(u)f(s-u)\,du\\
+&=(g\ast f)(s)
+\end{align*}
+$$
+
+이기 때문입니다.
+또한, 교환법칙도 성립합니다.
+왜냐하면 (적분기호의 위끝과 아래끝을 생략했습니다.)
+
+$$
+\begin{align*}
+((f\ast g)\ast h)(s)
+&=\int_{-\infty}^\infty (f\ast g)(t)h(s-t)\,dt\\
+&=\int_{-\infty}^\infty\int_{-\infty}^\infty f(u)g(s-t-u)\,du\,h(t)\,dt\\
+&=\int_{-\infty}^\infty f(u)\int_{-\infty}^\infty h(t)g(s-u-t)\,dt\,du\\
+&=\int_{-\infty}^\infty f(u)(h\ast g)(s-u)\,du\\
+&=\int_{-\infty}^\infty f(u)(g\ast h)(s-u)\,du\\
+&=(f\ast(g\ast h))(s)
+\end{align*}
+$$
+
+이기 때문입니다.
+따라서, 실수 전체에서 적분가능한 함수들의 집합을 $\mathcal F$이라고 하면, $(\mathcal F,\ast)$는 abelian group입니다.
+
+다시 강의로 돌아오겠습니다.
+강의에서는 convolution에 대한 개념정리를 다음과 같이 하고 있습니다(표현을 조금 바꾸어서 적었습니다.).
+
+$x(t)\ast h(t)=y(t)$
+
+1. Select functions $x(t) and $h(t)$, transform $h(t)$ symmetrically about $t=0$ to get $x(t)$ and $h(-t)$.
+2. Shift the symmetrically transformed function $h(-t)$ by $s$ to get $x(t)$ and $h(s-t)$.
+3. Product the overlapped region of $y=x(t)$ and $y=h(s-t)$ by calculating
+
+$$\int_{-\infty}^\infty x(t)h(s-t)\,ds$$
+
+**ex.6.3**
+
+convolution에 대한 예시로서, 두 함수 $x(u)$와 $h(u)$가
+
+$$
+\begin{align*}
+x(u)&=
+\begin{cases}
+1&(0\le u\le 1)\\
+0&(\text{otherwise})
+\end{cases}\\[10pt]
+h(u)&=
+\begin{cases}
+\frac12&(0\le u\le2)\\
+0&(\text{otherwise})
+\end{cases}
+\end{align*}
+$$
+
+와 같이 주어지는 경우입니다.
+그러면 실수 $t$에 대하여, $y=x(u)$와 $y=h(t-u)$의 그래프는 아래와 같이 주어집니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-3.gif){: .img-50-center}
+
+$x(u)$가 0이 아닌 $u$들의 집합을 $\text{supp}(x)$라고 하고, $h(t-u)$가 0이 아닌 집합을 $\text{supp}(h)$라고 하면,
+
+$$
+\begin{align*}
+\text{supp}(x)&=\{u:0\le u\le1\}=[0,1]\\
+\text{supp}(h)&=\{u:t-2\le u\le t\}=[t-2,t]
+\end{align*}
+$$
+
+이고, 따라서
+
+$$
+\begin{matrix}
+            &\text{supp}(x)\cap\text{supp}(h)&x(t)h(t-u)&(x\ast h)(t)\\[10pt]
+t\le 0      &\varnothing                     &          &0           \\[10pt]
+0\le t\le1  &[0,t]                           &\frac12   &\frac12t    \\[10pt]
+1\le t\le2  &[1,2]                           &\frac12   &\frac12     \\[10pt]
+2\le t\le3  &[t-2,1]                         &\frac12   &\frac12(3-t)\\[10pt]
+t\ge0       &\varnothing                     &          &0           \\
+\end{matrix}
+$$
+
+입니다.
+$y=\left(x\ast h\right)(t)$의 그래프를 그려보면
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-4.png){: .img-50-center}
+
+와 같이 됩니다.
+
+**ex.6.5. Erlang distribution**
+
+convolution을 사용하면 $\langle08\rangle$에서 미뤄두었던 Erlang distribution에 대한 PDF를 $k=2$에 한해서 유도할 수 있습니다.
+다시 복습해보면, 사건의 평균 발생주기가 $\lambda$인 Poisson process에서 사건이 시각 $T_0$, $T_1$, $T_2$에 일어났다고 가정하면, $T_1-T_0$과 $T_2-T_1$는 exponential distribution을 따릅니다.
+$X=T_1-T_0$, $Y=T_2-T_1$라고 두면,
+
+$$
+\begin{align*}
+f_X(x)&=
+\begin{cases}
+\lambda e^{-\lambda x}  &x\ge0\\
+0                       &(\text{otherwise})
+\end{cases}\\[20pt]
+f_Y(y)&=
+\begin{cases}
+\lambda e^{-\lambda y}  &y\ge0\\
+0                       &(\text{otherwise})
+\end{cases}
+\end{align*}
+$$
+
+인 것입니다.
+이때, $T_3-T_1$는 Erlang-$2$ distribution을 따른다고 할 수 있습니다.
+확률변수 $S$를 $S=T_3-t_1=X+Y$라고 두면
+Erlang-$k$ distribution의 식
+
+$$
+f_X(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
+\tag{$(\ast\ast\ast)$}
+$$
+
+에 $k=2$를 대입한
+
+$$
+f_S(s)=\lambda^2se^{-\lambda s}\qquad s\ge0
+$$
+
+와 같은 식이 유도되어야 합니다.
+실제로 convolution을 통해 식을 유도해보기 전에, 두 함수 $f_X(u)$와 $f_Y(s-u)$가 0이 되지 않는 구간 (두 함수 $f_X(u)$와 $f_Y(s-u)$의 support)을 계산해보면
+
+$$
+\begin{align*}
+\text{supp}(f_x(u))
+&=\{u:f_X(u)\ge0\}\\
+&=\{u:u\ge0\}\\
+\text{supp}(f_Y(s-u))
+&=\{u:f_Y(s-u)\ge0\}\\
+&=\{u:s-u\ge0\}\\
+&=\{u:u\le s\}
+\end{align*}
+$$
+
+입니다.
+따라서, 두 함수의 곱 $f_X(u)f_Y(s-u)$은 $s\ge0$일 때, 0이 아닌 구간 $0\le u\le s$을 가지지만, 그렇지 않은 경우에는 모든 실수 $u$에 대하여 $f_X(u)f_Y(s-u)=0$입니다.
+그러므로,
+
+$$
+\begin{aligned}
+(f_X\ast f_Y)(s)
+&=\int_{-\infty}^\infty f_X(u)f_Y(s-u)\,du\\
+&=\int_0^sf_X(u)f_Y(s-u)\,du\\
+&=\int_0^s\lambda e^{-\lambda u}\times\lambda e^{-\lambda(s-u)}\,du\\
+&=\lambda^2\int_0^se^{-\lambda s}\,du\\
+&=\lambda^2se^{-\lambda s}
+\end{aligned}\qquad(s\ge0)
+$$
+
+이 되어, Erlang-$2$ PDF의 식과 일치합니다.
+
+일반적인 Erlang-$k$ distribution의 PDF 식을 유도하기 위해 다시, 사건의 평균 발생주기가 $\lambda$인 Poisson process에서 사건이 시각 $T_1$, $T_2$, $\cdots$, $T_k$에 일어났다고 가정하겠습니다.
+그리고, $X_i=X_i-X_{i-1}$로 두면 ($i=1,2,\cdots,k$)
+
+$$
+f_{X_i}(x_i)=
+\begin{cases}
+\lambda e^{-\lambda x_i}  &x_i\ge0\\
+0                         &(\text{otherwise})
+\end{cases}
+$$
+
+입니다.
+아까, convolution 연산 $\ast$가 결합법칙을 만족한다고 했으므로, 새로운 확률변수 $X$가 $X=X_1+\cdots+X_k$에 대하여
+
+$$f_X=f_{X_1}\ast f_{X_2}\ast\cdots\ast f_{X_k}$$
+
+는 잘 정의된 함수입니다.
+
+$k=1$, $k=2$일 때에는 이미 $(\ast\ast\ast)$이 성립함을 확인했습니다.
+$k-1$의 경우에 $(\ast\ast\ast)$이 성립한다고 가정하고, $k$인 경우를 보겠습니다.
+$X=T_k-T_{k-1}$, $Y=T_{k-1}-T_0$이라고 하면, 이미
+
+$$
+\begin{align*}
+f_X(x)&=
+\begin{cases}
+\lambda e^{-\lambda x}  &x\ge0\\
+0                       &(\text{otherwise})
+\end{cases}\\[20pt]
+f_Y(y)&=
+\begin{cases}
+\frac{\lambda^{k-1}y^{k-2}}{(k-2)!}e^{-\lambda y}  &y\ge0\\
+0                                                  &(\text{otherwise})
+\end{cases}
+\end{align*}
+$$
+
+를 알고 있는 셈입니다.
+이때, $S=T_k-T_0=X+Y$로 나타낼 수 있는 새로운 확률변수 $S$가 $(\ast\ast\ast)$를 만족시키는지 확인하려고 합니다.
+convolution으로 $f_X$를 계산해보면, $s\ge0$일 때
+
+$$
+\begin{align*}
+f_S(s)
+&=(f_X\ast f_Y)(s)\\
+&=\int_{-\infty}^\infty\lambda e^{-\lambda u}\times\frac{\lambda^{k-1}(s-u)^{k-2}}{(k-2)!}e^{-\lambda(s-u)}\,du\\
+&=\int_0^s\lambda e^{-\lambda u}\times\frac{\lambda^{k-1}(s-u)^{k-2}}{(k-2)!}e^{-\lambda(s-u)}\,du\\
+&=\frac{\lambda^k}{(k-2)!}\int_0^se^{-\lambda s}(s-u)^{k-2}\,du\\
+&=\frac{\lambda^ke^{-\lambda s}}{(k-2)!}\int_s^0v^{k-2}\times(-1)\,dv\\
+&=\frac{\lambda^ke^{-\lambda s}}{(k-2)!}\int_0^sv^{k-2}\,dv\\
+&=\frac{\lambda^ke^{-\lambda s}}{(k-2)!}\times\frac{s^{k-1}}{k-1}\\
+&=\frac{\lambda^ks^{k-1}}{(k-1)!}e^{-\lambda s}
+\end{align*}
+$$
+
+이 되어 정말로 $(\ast\ast\ast)$가 성립합니다.
+따라서, Erlang-$k$ distribution의 PDF 식이 증명되었습니다.
+
+
+**moments of sum of random variables**
+
+두 확률변수 $X$, $Y$의 합 $S=X+Y$의 평균은 각 확률변수의 합과 같습니다 ;
+
+$$E[X+Y]=E[X]+E[Y]$$
+
+연속확률변수의 경우에만 증명해보면
+
+$$
+\begin{align*}
+E[X+Y]
+&=\iint_{\mathbb R^2}(x+y)P_{XY}(x,y)\,dx\,dy\\
+&=\iint_{\mathbb R^2}xP_{XY}(x,y)\,dx\,dy+\iint_{\mathbb R^2}yP_{XY}(x,y)\,dx\,dy\\
+&=\int_{\mathbb R}x\int_{\mathbb R}P_{XY}(x,y)\,dy\,dx
++\iint_{\mathbb R}y\int_{\mathbb R}P_{XY}(x,y)\,dx\,dy\\
+&=\int_{\mathbb R}xP_X(x)\,dx+\int_{\mathbb R}yP_Y(y)\,dy\\
+&=E[X]+E[Y]
+\end{align*}
+$$
+
+가 됩니다.
+이산확률변수의 경우에도 비슷하게 증명할 수 있습니다.
+
+$S=X+Y$의 분산은
+
+$$
+\begin{align*}
+{\sigma_S}^2
+&=E\left[\left\{(X+Y)-(E[X]+E[Y])\right\}^2\right]\\
+&=E\left[\left\{(X+Y)-(\mu_X+\mu_Y)\right\}^2\right]\\
+&=E\left[\left\{(X-\mu_X)+(Y-\mu_Y)\right\}^2\right]\\
+&=E\left[(X-\mu_X)^2+2(X-\mu_X)(Y-\mu_Y)+(Y-\mu_Y)^2\right]\\
+&=E\left[(X-\mu_X)^2\right]
++2E\left[(X-\mu_X)(Y-\mu_Y)\right]
++E\left[(Y-\mu_Y)^2\right]\\
+&={\sigma_X}^2+2\text{cov}(X,Y)+{\sigma_Y}^2
+\end{align*}
+$$
+
+로 계산될 수 있습니다.
+만약, $X$와 $Y$가 uncorrelated이면,
+
+$${\sigma_S}^2={\sigma_X}^2+{\sigma_Y}^2$$
+
+이 성립하는 것도 쉽게 확인할 수 있습니다.
+
+마찬가지로, $S=X_1+\cdots+X_n$일 때,
+
+$$
+\begin{align*}
+E[S]&=E[X_1]+\cdots+E[X_n]\\
+{\sigma_S}^2&={\sigma_{X_1}}^2+\cdots+{\sigma_{X_n}}^2+2\sum_{i\ne j}\text{cov}(X_i,X_j)
+\end{align*}
+$$
+
+가 될 것입니다.
+
+
 
 **참고자료**
 1. [KOCW(Korea Open Course Ware), 『확률과 통계』, 한양대학교 이상화 교수님 강의](http://www.kocw.net/home/search/kemView.do?kemId=1056974) 
-2. [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)
-3. [The Book of Statistical Proofs](https://statproofbook.github.io/)
-4. [Mathematics Stack Exchange](https://math.stackexchange.com/)
-5. [StatQuest - Covariance, Clearly Explained!!!](https://youtu.be/qtaqvPAeEJY)
+1. [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)
+1. [The Book of Statistical Proofs](https://statproofbook.github.io/)
+1. [Introduction to Probability, Statistics and Random Process](https://www.probabilitycourse.com/)
+1. [Mathematics Stack Exchange](https://math.stackexchange.com/)
+1. [G. Strang, Linear Algebra and Its Applications, 4ed](https://a.co/d/5l0YO6H)
+1. [StatQuest - Covariance, Clearly Explained!!!](https://youtu.be/qtaqvPAeEJY)
