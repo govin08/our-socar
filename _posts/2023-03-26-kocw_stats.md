@@ -1,4 +1,4 @@
-    ---
+---
 layout: single
 title: "(강의정리) 확률 및 통계"
 categories: mathematics
