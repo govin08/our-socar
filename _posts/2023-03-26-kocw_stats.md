@@ -115,7 +115,7 @@ $$
 이면, 세 사건이 pairwisely exclusive하다고 말합니다.
 일반적으로, 사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
 
-$$A_1\cap A_2\cap\cdots\cdots A_n=\varnothing$$
+$$A_1\cap A_2\cap\cdots\cap A_n=\varnothing$$
 
 이면, $A_i$들이 mutually exculsive하다고 말하고,
 
@@ -123,56 +123,10 @@ $$i\neq j\quad\Rightarrow\quad A_i\cap A_j=\varnothing$$
 
 이면, $A_i$들이 pairwisely exclusive하다고 말합니다.
 
-<!-- <div class="notice--danger">
-(a)
-사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
-$$i\ne j\Rightarrow A_i\cap A_j=\varnothing$$
-이면 $A_i$들이 pairwisely exclusive(서로 배반)하다고 말합니다.
-반면에,
-$$A_1\cap A_2\cap\cdots\cap A_n=\varnothing$$
-이면 $A_i$들이 mutually exclusive하다고 말합니다.
-<br>
-마찬가지로, 집합 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
-$$i\ne j\Rightarrow A_i\cap A_j=\varnothing$$
-이면 $A_i$들이 pairwisely disjoint하다고 말합니다.
-반면에
-$$A_1\cap A_2\cap\cdots\cap A_n=\varnothing$$
-이면 $A_i$들이 mutually disjoint하다고 말합니다.
-<br>
-뒤에서도 나오겠지만 독립/종속에 대해서도 비슷한 정의를 내릴 수 있습니다.
-사건 $A_1$, $A_2$, $\cdots$, $A_n$에 대하여
-$$i\ne j\Rightarrow P(A_i\cap A_j)=P(A_i)P(A_j)$$
-이면 $A_i$들이 pairwisely independent하다고 말합니다.
-반면에
-$$P(A_1\cap A_2\cap\cdots\cap A_n)=P(A_1)P(A_2)\cdots P(A_n)$$
-이면 $A_i$들이 mutually disjoint하다고 말합니다.
-<br>
-확률변수 $X_1$, $X_2$, $\cdots$, $X_n$에 대하여
-$$
-\begin{align*}
-i\ne j\Rightarrow
-&F_{X_i,X_j}(x_i,x_j)=F_{X_i}(x_i)F_{X_j}(x_j)&&\text{(discrete)}\\
-&f_{X_i,X_j}(x_i,x_j)=f_{X_i}(x_i)f_{X_j}(x_j)&&\text{(continuous)}\\
-\end{align*}
-$$
-이면 $X_i$들이 pairwisely independent하다고 말합니다.
-반면에
-$$
-\begin{align*}
-i\ne j\Rightarrow
-&F_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=F_{X_1}(x_1)F_{X_2}(x_2)\cdots F_{X_n}(x_n)&&\text{(discrete)}\\
-&f_{X_1,X_2,\cdots,X_n}(x_1,x_2,\cdots,x_n)=f_{X_1}(x_1)f_{X_2}(x_2)\cdots f_{X_n}(x_n)&&\text{(continuous)}
-\end{align*}
-$$
-이면 $X_i$들이 mutually independent하다고 말합니다.
-<br><br>
-(b) $A_1$, $A_2$, $\cdots$, $A_n$이 pairwisely exclusive하면 mutually exclusive하지만, 그 역은 성립하지 않습니다.
-만약, $A_1=\{1,2\}$, $A_2=\{2,3\}$, $A_3=\{1,3\}$이면 $A_i$들은 mutually exclusive하지만 pairwisely exclusive하지는 않습니다.
-<br><br>
-(c) 이 정의에 따르면, $A_1$, $A_2$, $\cdots$, $A_n$이 $S$의 partition이 되기 위한 조건은, $A_i$들이 pairwisely exclusive하면서 $A_1\cup\cdots\cup A_n=S$인 것입니다.
-</div> -->
+**확률**
 
-한편, $P$는 전사건에 대한 측도가 1인 measure(측도)입니다.
+한편, $P$는 확률측도(probability measure)라고 불립니다.
+확률측도란 전사건에 대한 측도가 1인 measure(측도)를 말합니다.
 다시 말해, 다음 세 성질을 만족시키는 $P$를 probability measure라고 부릅니다.
 
 - $P$는 $P:\Sigma\to[0,1]$인 함수입니다.
@@ -811,7 +765,7 @@ $$
 **2.3 events defined by RV**
 
 강의에서는 $A_x$를 도입해서 설명하고 있습니다.
-이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합으로, 아까 $(\ast)$에서 $P(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
+이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합으로, 아까 $(\ast)$에서 pP(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
 
 $$
 \begin{align*}
@@ -3833,7 +3787,7 @@ $$P\left(X^{-1}(A)\times Y^{-1}(B)\right)=P\left(X^{-1}(A)\times S_2\right)P\lef
 # 12 조건부 평균과 공분산
 
 이번 강의에서 다루는 것은, 드디어 $E[Y|X]$ 입니다.
-이전에 이것의 정확한 의미를 파악하지 못해 고생했었습니다.
+개인적으로는 이것의 정확한 의미를 파악하지 못해 고생한 적이 있습니다.
 
 강의의 가장 초반부에 $E[Y|X]$의 의미는 사실은 $E[Y|X=x]$의 의미라는 언급이 있습니다.
 사실 $E[Y|X]$는 그 자체로는 아직 정의된 적이 없는 어떤 개념입니다.
@@ -3881,7 +3835,8 @@ E[Y|x=x]
 \end{align*}
 $$
 
-둘째 줄의 적분을 계산할 때 $y$가 사라지므로, 적분값을 $x$에 대한 함수로서 놓을 수 있습니다. 따라서 (아까 언급한 것처럼) 마지막 등호가 성립합니다.
+둘째 줄의 적분을 계산할 때 $y$가 사라지므로, 적분값을 $x$에 대한 함수로서 놓을 수 있습니다.
+따라서, 아까 언급한 것처럼 $E[Y\vert X=x]$는 $x$에 대한 함수입니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_12-1.jpg){: .img-50-center}
 
@@ -4123,7 +4078,7 @@ $$
 
 $$E[X]=\sum_{j=1}^n\left(E[X|Y=y_i]\right)P_Y(y_i)$$
 
-이것은 law of total probability인
+인데, 이것은 law of total probability인
 
 $$P(A)=\sum_{j=1}^nP(A|A_i)P(A_i)$$
 
@@ -4139,7 +4094,10 @@ $$\text{cov}(X,Y)=\sigma_{XY}=E\left[(X-\mu_X)(Y-\mu_Y)\right]$$
 물론, $(\ast)$에 의해
 
 $$
-\text{cov}(X,Y)=\iint_{\mathbb R^2}(x-\mu_X)(y-\mu_Y)f_{XY}(x,y)\,dx\,dy
+\begin{align*}
+\text{cov}(X,Y)&=\iint_{\mathbb R^2}(x-\mu_X)(y-\mu_Y)f_{XY}(x,y)\,dx\,dy&&(\text{continuous})\\
+\text{cov}(X,Y)&=\sum_i\sum_j(x_i-\mu_X)(y_j-\mu_Y)P_{XY}(x,y)&&(\text{discrete})
+\end{align*}
 $$
 
 입니다.
@@ -4248,33 +4206,99 @@ $$
 $\rho_{XY}$에 대하여 확인해보는 것은 다음의 두 가지입니다.
 이 두가지 사실을 $X$, $Y$가 이산확률변수일때와 연속확률변수일 때에 대하여 증명해봅니다.
 - $-1\le\rho_{XY}\le1$
-- $X$, $Y$가 선형적인 관계 ($Y=aX+b$)를 가지면 $rho_{XY}=1(a>0)$, $rho_{XY}=-1(a<0)$입니다.
+- $X$, $Y$가 선형적인 관계 ($Y=aX+b$)를 가지면 $\rho_{XY}=1(a>0)$, $\rho_{XY}=-1(a<0)$입니다.
 
-두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $A_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $A_y$라고 하면, 두 집합의 Cartesian product $A_x\times A_y$는 countable이고, 따라서 $A_x\times A_y$를
+$-1\le\rho_{XY}\le1$에 대한 증명은 Cauchy-Scwarz inequality로부터 도출되는데, 증명이 길지 않기는 하지만 식이 꽤 복잡할 수 있습니다.
+그래서, 간단한 경우를 먼저 보겠습니다.
 
-$$A_x\times A_y=\{(x_1,y_1),(x_2,y_2),\cdots\}$$
+$\langle$ 가장 간단한 경우 $\rangle$
+
+두 확률변수 $X$, $Y$와 자연수 $n$에 대하여
+
+$$
+\begin{align*}
+P_{XY}(x_1,y_1)&=\frac1n\\
+P_{XY}(x_2,y_2)&=\frac1n\\
+&\vdots\\
+P_{XY}(x_n,y_n)&=\frac1n\\
+\end{align*}
+$$
+
+인 굉장히 간단한 경우에
+
+$$
+\begin{align*}
+\sigma_X        &=\frac1n\sum_{i=1}^n(x_i-\mu_X)^2\\
+\sigma_Y        &=\frac1n\sum_{i=1}^n(y_i-\mu_Y)^2\\
+\text{cov}(X,Y) &=\frac1n\sum_{i=1}^n(x_i-\mu_X)(y_i-\mu_Y)
+\end{align*}
+$$
+
+입니다.
+한편, 고등학교에서 나오는 Cauchy schwarz inequality는
+
+$$
+\begin{align*}
+(a^2+b^2)(x^2+y^2)&\ge(ax+by)^2\\
+(a^2+b^2+c^2)(x^2+y^2+z^2)&\ge(ax+by+cz)^2
+\end{align*}
+$$
+
+입니다.
+이것을 $n$차원으로 확장하면
+
+$$({a_1}^2+\cdots+{a_n}^2)({b_1}^2+\cdots+{b_n}^2)\ge(a_1b_1+\cdots+a_nb_n)^2$$
+
+이 되고,
+
+$$\left(\sum_i{a_i}^2\right)\left(\sum_i{b_i}^2\right)\ge\left(\sum_i a_ib_i\right)^2$$
+
+이기도 합니다.
+여기에 $a_i=x_i-\mu_X$, $b_i=y_i-\mu_Y$를 넣으면
+
+$$\left(\sum_i(x_i-\mu_X)^2\right)\left(\sum_i(y_i-\mu_Y)^2\right)\ge\left(\sum_i(x_i-\mu_X)(y_i-\mu_Y)\right)^2$$
+
+가 됩니다.
+양변을 $n^2$으로 나누면
+
+$$\left(\frac1n\sum_i(x_i-\mu_X)^2\right)\left(\frac1n\sum_i(y_i-\mu_Y)^2\right)\ge\left(\frac1n\sum_i(x_i-\mu_X)(y_i-\mu_Y)\right)^2$$
+
+이 되는데, 이것은
+
+$${\sigma_X}^2{\sigma_Y}^2\ge\sigma_{XY}^2$$
+
+이고, 따라서
+
+$$\sigma_X\sigma_Y\ge\left|\sigma_{XY}\right|$$
+
+입니다.
+양변을 $\sigma_X\sigma_Y$로 나누면
+
+$$1\ge\frac{\left|\sigma_{XY}\right|}{\sigma_X\sigma_Y}=|\rho_{XY}|$$
+
+가 되면서 $-1\le\rho_{XY}\le1$이 얻어집니다.
+다시 말해, 두 벡터
+
+$$
+\begin{align*}
+x&=(x_1,\cdots,x_n)\\
+y&=(y_1,\cdots,x_y)
+\end{align*}
+$$
+
+에 대한 Cauchy Schwarz inequality인 $|x\cdot y|\le||x||\cdot||y|$ 로부터 결과를 얻은 셈입니다.
+이것이, 가장 간단한 경우에 대한 증명입니다.
+
+$\langle$ 연속확률분포 $\rangle$
+
+두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $C_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $C_y$라고 하면, 두 집합의 Cartesian product $C_x\times C_y$는 countable이고, 따라서 $C_x\times C_y$를
+
+$$C_x\times C_y=\{(x_1,y_1),(x_2,y_2),\cdots\}$$
 
 로 쓸 수 있습니다.
-이때, $A_x\times A_y$는 유한집합(finite, $|A_x\times A_y|=n$)일 수도 있고, 무한집합(countably many)일 수도 있습니다.
+이때, $C_x\times C_y$는 유한집합(finite, $|C_x\times C_y|=n$)일 수도 있고, 무한집합(countably many)일 수도 있습니다.
 
-<!-- 두 집합의 합집합을 $\\{t_1,t_2,\cdots,\\}$이라고 하면, 기존의 확률질량함수 $P_X(x)$와 $P_Y(y)$를 다음과 같이 확장할 수 있습니다. -->
-
-<!-- $$
-\begin{align*}
-P_X(t_i)=
-\begin{cases}
-P_X(x_j)&t_i\in A_x,~~t_i=x_j\\
-0       &t_i\not\in A_x
-\end{cases}\\[20pt]
-P_Y(t_i)=
-\begin{cases}
-P_Y(y_j)&t_i\in A_y,~~t_i=y_j\\
-0       &t_i\not\in A_y
-\end{cases}
-\end{align*}
-$$ -->
-
-만약, $A_x\times A_y$가 유한집합이면 두 벡터 $x,y\in\mathbb R^n$를
+만약, $C_x\times C_y$가 유한집합이면 두 벡터 $x,y\in\mathbb R^n$를
 
 $$
 \begin{align*}
@@ -4283,7 +4307,7 @@ y&=\left((y_1-\mu_Y)\sqrt{P_{XY}(x_1,y_1)}~~,(x_2,y_2-\mu_Y)\sqrt{P_{XY}(x_2,y_2
 \end{align*}
 $$
 
-으로 두고, 만약 $A_x\times A_y$가 무한집합이면 두 벡터 $x,y\in\mathbb R^\infty$를
+으로 두고, 만약 $C_x\times C_y$가 무한집합이면 두 벡터 $x,y\in\mathbb R^\infty$를
 
 $$
 \begin{align*}
@@ -4304,6 +4328,7 @@ $$
 $$
 
 입니다.
+(이때, 내적을 $x\cdot y=\langle x,y\rangle$로 표현했습니다.)
 따라서, 피어슨 상관계수는
 
 $$
@@ -4317,6 +4342,8 @@ $$-1\le\rho_{XY}\le1$$
 
 이 됩니다.
 또한, $\rho_{XY}=1$인 경우는 두 벡터 $x$, $y$가 같은 방향을 향할 경우이고, $\rho_{XY}=-1$인 경우는 반대 방향을 향할 경우를 말한다는 것도 바로 알 수 있습니다.
+
+$\langle$ 연속확률변수 $\rangle$
 
 $X$, $Y$가 이산확률변수일 경우 $\vert\rho_{XY}\vert\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 innper product space라는 사실로부터 나옵니다.
 
@@ -4419,8 +4446,8 @@ Cauchy Schwarz 부등식에 의해 $|\rho_{XY}|\le1$가 성립했습니다.
 
 $$\rho_{XY}=
 \begin{cases}
-1   &(a>0)\\
--1  &(a<0>)
+1   &(a\gt0)\\
+-1  &(a\lt0)
 \end{cases}$$
 
 인 것도 봤습니다.
@@ -4440,7 +4467,7 @@ $X$가 증가할 수록 $Y$가 증가하는 경향을 보입니다.
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-3.png){: .img-50-center}
 
 이 됩니다.
-만약 $X$가 증가할수록 $Y$가 증가하는 경향을 띤다면, 그러니까 그래프가 우상향하는 경향을 보인다면, $G$의 왼쪽 위 부분(말하자면 1사분면)과 오른쪽 아래 부분(3사분면)에 변량들의 점이 많이 찍힐 것이고, 왼쪽 아랫부분(2사분면)과 오른쪽 윗부분(4사분면)에는 변량들의 점이 적게 찍힐 것입니다.
+만약 $X$가 증가할수록 $Y$가 증가하는 경향을 띤다면, 그러니까 그래프가 우상향하는 경향을 보인다면, $G$의 오른쪽 위 부분(말하자면 1사분면)과 왼쪽 아래 부분(3사분면)에 변량들의 점이 많이 찍힐 것이고, 오른쪽 아랫부분(2사분면)과 왼쪽 윗부분(4사분면)에는 변량들의 점이 적게 찍힐 것입니다.
 그런데 covariance를 계산하는 식
 
 $$
@@ -4461,9 +4488,8 @@ $$(x_i-\mu_X)(y_i-\mu_Y)\gt0$$
 $$(x_i-\mu_X)(y_i-\mu_Y)\lt0$$
 
 일 것입니다.
-그런데 변량들의 점들은 1,3사분면에 더 많을 것이므로 모든 경우에 대해 $(x_i-\mu_X)(y_i-\mu_Y)$를 더한 값은 0보다 클 것입니다.
+그런데 변량들의 점들은 1,3사분면에 더 많다고 했으므로, 모든 경우에 대해 $(x_i-\mu_X)(y_i-\mu_Y)$를 더한 값은 0보다 클 것입니다.
 따라서, $\sigma_{XY}$는 0보다 클 것이고, $\rho_{XY}$도 마찬가지로 0보다 클 것입니다.
-$\square$
 
 지금까지는 지난 시간 강의에 대한 보충설명이었습니다.
 변량들의 무게중심을 중심으로 한 설명은 강의에 있던 내용은 아니고 [StatQuest - Covariance, Clearly Explained!!!](https://youtu.be/qtaqvPAeEJY)를 참고해 작성한 것입니다.
@@ -4475,7 +4501,7 @@ $\square$
 $$
 \begin{align*}
 P_{X_1,\cdots,X_n}(x_1,\cdots,x_n)&(\text{discrete})\\
-f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)&(\text{discrete})
+f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)&(\text{continuous})
 \end{align*}
 $$
 
@@ -4484,7 +4510,7 @@ $$
 $$
 \begin{align*}
 \sum_{x_1}\cdots\sum_{x_n}P_{X_1,\cdots,X_n}(x_1,\cdots,x_n)                                    &=1(\text{discrete})\\
-\int_{\mathbb R}\cdots\int_{\mathbb R}f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)\,dx_1\,\cdots,\,dx_n=1 &=1(\text{continuous})
+\int_{\mathbb R}\cdots\int_{\mathbb R}f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)\,dx_1\,\cdots,\,dx_n &=1(\text{continuous})
 \end{align*}
 $$
 
@@ -4525,17 +4551,19 @@ $$\{X_t\}_{t\in T}$$
 위에서는 $t$가 $1$, $2$, $\cdots$, $n$과 같은 값을 가졌습니다.
 즉 index set인 $T$가 $T=\\{1,2,\cdots,n\\}$인 것입니다.
 일반적으로 $T$는 실수집합 $\mathbb R$의 부분집합으로 봅니다.
-그러니까, 위의 예처럼 유한집합이 될 수도 있고 ($T=\\{1,2,\cdots,n\\}$), countable 집합이 될 수도 있으며 ($T=\\{1,2,\cdots\\}$) 아니면 양의 실수의 집합이 될 수도 있습니다($T=\\{t\in\mathbb R:t>0\\}$).
+그러니까, 위의 예처럼 유한집합이 될 수도 있고 ; $T=\\{1,2,\cdots,n\\}$,
+countable 집합이 될 수도 있으며 ; $T=\\{1,2,\cdots\\}$,
+아니면 양의 실수의 집합이 될 수도 있습니다 ;$T=\\{t\in\mathbb R:t>0\\}$.
 
 만약 $t$를 시간으로 해석하고, $X_t$를 어떤 물체에 대한 물리적인 양으로 생각한다면, 확률과정은 이 물체와 관련된 어떤 현상을 해석하는 데 사용될 수 있습니다.
 강의에서는 미사일이 날아가는 과정을 확률과정을 통해 해석할 수 있다고 말합니다.
-그러니까, $X_t$를 시각 $t$에서의 미사일의 위치라고 한다면 (물론, 미사일은 3차원 공간 안에 위치하므로, 세 개의 확률과정을 생각하거나 세 종류의 확률변수를 생각해야 합니다.) $E[X_t]$를 통해 이 미사일이 이동할 예상 궤적을 생각해볼 수 있고, 각각의 시각 $t$에서 미사일이 특정한 위치에 있는 확률을 계산할 수도 있습니다.
+그러니까, $X_t$를 시각 $t$에서의 미사일의 위치라고 한다면 (물론, 미사일은 3차원 공간 안에 위치하므로, 세 개의 확률과정을 생각하거나 세 종류의 확률변수를 생각해야 합니다.) $E[X_t]$를 통해 이 미사일이 이동할 예상 궤적을 생각해볼 수 있고, 각각의 시각 $t$에서 미사일이 특정한 영역 내에 위치할 확률을 계산할 수도 있습니다.
 
 이 미사일의 예에서 $X_t$들은 독립조건을 만족시키지 않습니다.
 만약 brownian motion의 경우라면, $X_t$들은 각각 독립적일 수도 있겠지만, 미사일의 예에서 $X_t$, 즉 시각 $t$에서의 위치는 이전의 시각에서의 위치인 $X_{t-1}$, $X_{t-2}$ 등에 영향을 받을 수밖에 없습니다.
 그런 의미에서
 
-$$f_{X_t|X_{t-1},X_{t-2}}$$
+$$f_{X_t|X_{t-1},X_{t-2}}(x_t\vert x_{t-1}, x_{t-2})$$
 
 와 같은 조건부확률을 생각할 수밖에 없다는 사실이 강의에서 설명됩니다.
 이러한 확률과정 중에서, 바로 이전 시각에 대한 영향만 고려하는 경우의 stochastic process(확률과정)을 markov process(마르코프 과정, markov chain)이라고 부릅니다.
@@ -4543,7 +4571,7 @@ $$f_{X_t|X_{t-1},X_{t-2}}$$
 그러니까, $X_t$는 $X_{t-3}$, $X_{t-4}$, $\cdots$ 등과는 독립적이라는 가정을 내포하고 있습니다.
 반면, markov process은
 
-$$f_{X_t|X_{t-1}}$$
+$$f_{X_t|X_{t-1}}(x_t\vert x_{t-1})$$
 
 와 같이 모델링하는 것입니다.
 현재 시점에서의 상태 $X_t$가 바로 이전 시점의 상태 $X_{t-1}$에만 의존한다는 가정 하에 문제를 보는 것입니다.
@@ -4559,17 +4587,17 @@ $$P_X(x)=\binom nxp^x(1-p)^{n-x},\quad(x=0,1,2,\cdots,n)$$
 
 를 PMF로 가진다고 했었습니다.
 이때, PMF의 식에 $\binom nx$와 같은 조합의 수가 나타났었습니다.
-
 한편, $\langle07\rangle$에서 조합의 수는 '같은 것이 포함된 순열'의 특수한 경우라고 했었습니다.
-그러니까, binomial distribution에서 Bernoulli trial (binary trial)이었던 것을 multinary($n$-ary) trial로 바꾸면 multinomial distribution이라고 하는 개념을 생각해볼 수 있고, 그때 조합의 수 대신 '같은 것이 포함된 순열'이 나타납니다.
+
+만약, binomial distribution에서 Bernoulli trial (binary trial)이었던 것을 multinary trial로 바꾸면 multinomial distribution이라고 하는 개념을 생각해볼 수 있고, 그때 조합의 수 대신 '같은 것이 포함된 순열'이 나타납니다.
 
 다시 말해, 하나의 시행에서 나올 수 있는 outcome의 개수가 (2개가 아닌) 여러개인 경우를 생각해볼 수 있습니다.
-대표적으로 trinomial distribution (outcome의 개수가 3개인) 경우를 보겠습니다.
+대표적으로 trinomial distribution의 경우 (outcome의 개수가 3개인 경우)를 보겠습니다.
 결과가 $A$, $B$, $C$로 나타날 수 있는 어떤 시행(trinary trial)을 독립적으로 $n$번 시행할 때,
-각 시행에서 $A$가 나타날 확률을 $P_A$, $B$가 나타날 확률을 $P_B$라고 하면 $C$가 나타날 확률은 $1-p_A-p_B$입니다.
+각 시행에서 $A$가 나타날 확률을 $p_A$, $B$가 나타날 확률을 $p_B$라고 하면 $C$가 나타날 확률은 $1-p_A-p_B$입니다.
 $A$가 $N_A$번, $B$가 $N_B$번 나타난다고 할 때, $N_A$, $N_B$는 각각 이산확률변수이고, 그 joint PMF가
 
-$$P_{N_A,N_B}(n_A,n_B)=\frac{n!}{n_A!n_B!(n-n_A-n_B)!}{p_A}^{n_A}{p_B}^{n_B}{1-p_A-p_B}^{n-n_A-n_B}$$
+$$P_{N_A,N_B}(n_A,n_B)=\frac{n!}{n_A!n_B!(n-n_A-n_B)!}{p_A}^{n_A}{p_B}^{n_B}(1-p_A-p_B)^{n-n_A-n_B}$$
 
 로 주어집니다.
 이때 $\frac{n!}{n_A!n_B!(n-n_A-n_B)!}$의 값은
@@ -4578,7 +4606,7 @@ $$\binom n{n_A,n_B}=\frac{n!}{n_A!n_B!(n-n_A-n_B)!}$$
 
 와 같이 쓰기도 합니다.
 
-[일반적으로](https://en.wikipedia.org/wiki/Multinomial_distribution), $k$개의 서로다른 outcome $A_1$, $A_2$, $\cdots$, $A_k$이 나올 수 있는 시행에 대하여, 각각의 outcome $A_i$가 나타날 확률이 $p_i$로 주어질 때, $n$번의 독립시행에서 $A_i$가 $N_i$번 나타난다고 할 때, $N_i$는 모두 이산확률변수입니다.
+[일반적으로](https://en.wikipedia.org/wiki/Multinomial_distribution), $k$개의 서로다른 outcome $A_1$, $A_2$, $\cdots$, $A_k$이 나올 수 있는 시행에 대하여, 각각의 outcome $A_i$가 나타날 확률이 $p_i$로 주어지고, $n$번의 독립시행에서 $A_i$가 $N_i$번 나타난다고 할 때, $N_i$는 모두 이산확률변수입니다.
 그때, $N_1$, $\cdots$, $N_k$의 joint PMF는
 
 $$
@@ -4591,7 +4619,7 @@ $$
 
 로 주어집니다.
 
-<div class="notice=danger">
+<div class="notice--danger">
 위의 식에서 
 $$\binom n{n_1,n_2,\cdots,n_k}=\frac{n!}{n_1!n_2!\cdots n_k!}$$
 와 같이 정의된 값을 multinomial coefficient라고 부릅니다.
@@ -4612,7 +4640,7 @@ $$(x_1+x_2+\cdots+x_n)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 
 이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 해보려 했습니다.
 하지만, 일단은 중요한 정리 몇 개만 간단하게 적을 것 같고 이에 대한 상세한 설명이나 증명은 위 링크로 대체하겠습니다.
-나중에 시간이 되면 (시간이나 여력보다 더 중요한 것은, 해당 내용을 이 포스트에 어떻게 넣을 지 걸정되면) 해당 내용을 이 포스트 내에 녹여서 쓸 수도 있을 것 같습니다.
+나중에 시간이 되면 (시간이나 여력보다 더 중요한 것은, 해당 내용을 이 포스트에 어떻게 넣을 지 결정되면) 해당 내용을 이 포스트 내에 녹여서 쓸 수도 있을 것 같습니다.
 
 <div class="notice--success">
 <b> bivariate normal distribution </b> <br>
@@ -4642,8 +4670,6 @@ $$
     </li>
     <li>
     bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재할 때, ($r:(u,v)\mapsto(x,y)$, $(x,y)\in T$이면, $s=r^{-1}:(x,y)\mapsto(u,v)$) $f_{XY}(x,y)=f_{UV}(s_1(x,y),s_2(x,y))\times|J|$ 입니다.
-\end{cases}
-
     </li>
 </ol>
 </div>
@@ -4671,13 +4697,15 @@ $U$와 $V$에 대하여 Lemma 1을 적용해 계산하면 $U\sim N(0,1)$, $V\sim
 
 먼저 $\Rightarrow$ 방향의 증명입니다.
 그러니까, $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$를 가정했을 때, $X$, $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명하려 합니다.
-따라서 $U$와 $V$의 joint PDF가
+$U$와 $V$가 모두 standard normal이고 independent이므로, joint PDF가
 
 $$f_{UV}(u,v)=\frac1{2\pi}e^{-\frac12(u^2+v^2)}$$
 
-임을 쉽게 알 수 있고, 여기에 Lemma 3을 사용하면 $X$와 $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명할 수 있습니다.
+임을 쉽게 알 수 있고, 여기에 Lemma 3을 사용해 계산하면 $X$와 $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명할 수 있습니다.
 
 이번에는 $\Leftarrow$ 방향의 증명입니다.
+다시 말해, $(\ast)$와 같이 PDF가 주어진 두 확률변수 $X$, $Y$에 대하여 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$ 임을 증명하려 합니다.
+$X$와 $Y$, $U$와 $V$ 사이의 관계식을 변형하면
 
 $$
 \begin{align*}
@@ -4694,7 +4722,7 @@ $\langle13\rangle$에서 두 확률변수 $X$, $Y$가 독립이면 uncorrelated�
 하지만, bivariate normal인 경우에는 그 역이 성립합니다.
 즉
 
-bivariate normal distribution을 따르는 두 확률변수 $X$, $Y$가 uncorrelated이면, $X$와 $Y$는 독립입니다.
+bivariate normal distribution을 따르는 두 확률변수가 uncorrelated이면, 독립입니다.
 {: .text-center}
 
 왜냐하면, $X$와 $Y$가 uncorrelated하다고 가정하면, $\rho=0$입니다.
@@ -4734,7 +4762,7 @@ $$
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-7.png){: .img-50-center}
 
 또한, 아래 그림에서는 bivariate normal distribution의 marginal distribution $P_X(x)$, $P_Y(y)$를 표현하고 있습니다.
-그림 상으로 보면 marginal distribution들은 각각 정규분포를 따르는 것처럼 보입니다.
+그림상으로 보면 marginal distribution들은 각각 정규분포를 따르는 것처럼 보입니다.
 이것은 위의 정리에서 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$라고 말했던 것에 해당합니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_13-8.png){: .img-50-center}
@@ -4787,7 +4815,7 @@ x_1\\\vdots\\x_n
 
 $$
 \begin{align*}
-\overline{\boldsymbol x}=\frac{\boldsymbol x_1+\cdots+\boldsymbol x_n}n
+\overline{\boldsymbol x}
 =
 \begin{bmatrix}
 \mu_1\\
@@ -4812,12 +4840,11 @@ $$
 $$
 
 입니다.
-
 그러니까, $\mathbb C$는 복소수들의 집합이 아닙니다.
-$\mathbb C$는 covariance matrix라고 불립니다.
+$\mathbb C$는 covariance matrix(공분산행렬)이라고 불립니다.
 $\text{Cov}(X,Y)=\text{Cov}(Y,X)$이므로, $\mathbb C$는 symmetric matrix입니다.
 따라서, eigenvalue들은 모두 실수이고, eigenvector들이 모두 직교하며, 항상 orthogonally diagonalizable합니다.
-또한, basis vector를 쉽게 구할 수 있고 이를 통해 신호처리 등에서의 모델링을 할 때 쉽게 된다는 말씀도 강의에서 언급되고 있습니다.
+이를 통해 basis vector들을 쉽게 구할 수 있고 이를 통해 신호처리 등에서의 모델링을 할 때 쉽게 된다는 말씀도 강의에서 언급되고 있습니다.
 
 확률변수 $X_1$, $\cdots$, $X_n$ 들을 벡터로 만들어놓은 것을 random vector라고 합니다.
 즉,
