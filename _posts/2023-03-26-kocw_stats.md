@@ -408,11 +408,11 @@ $$(n-1)!$$
 
 서로 다른 $n$개의 대상들 중 $r$개를 선택하는 방법의 수는
 
-$$\binom nk=_nC_r=\frac{_nP_r}{r!}=\frac{n!}{r!(n-r)!}$$
+$$\binom nr=_nC_r=\frac{_nP_r}{r!}=\frac{n!}{r!(n-r)!}$$
 
 입니다.
 이것은 '같은것이 포함된 순열'과 연관해서 설명될 수도 있습니다.
-즉 $\binom nk$는 두 종류의 대상 $A$와 $B$가 각각 $k$개, $n-k$개 있을 때, 이 $n$개의 대상을 일렬로 나열하는 방법의 수와 같습니다.
+즉 $\binom nr$는 두 종류의 대상 $A$와 $B$가 각각 $r$개, $n-r$개 있을 때, 이 $n$개의 대상을 일렬로 나열하는 방법의 수와 같습니다.
 
 **1.10.4 binomial theorem (이항정리)**
 
@@ -626,9 +626,9 @@ $$1-\prod_{i=1}^n\left(1-R_i(t)\right)$$
 $$
 \begin{align*}
 R
-&=R_x+R_y\\
-&=\left(1-(1-R_1)(1-R_2)\right)\left(1-(1-R_4)(1-R_5)\right)
-+1-(1-R_1R_4)(1-R_2R_5)
+=&R_x+R_y\\
+=&R_3\left[\left(1-(1-R_1)(1-R_2)\right)\left(1-(1-R_4)(1-R_5)\right)\right]\\
+&+(1-R_3)\left[1-(1-R_1R_4)(1-R_2R_5)\right]
 \end{align*}
 $$
 
@@ -653,7 +653,7 @@ A random variable is a function $X$ mapping each outcome of random experiment $w
 
 **ex.1 : tossing a coin**
 
-동전을 하나 던져서 앞면이 나오면 1점을 얻고 뒷면이 나오면 $-1$점을 얻는 어떤 시행에서,
+동전을 하나 던져서 앞면이 나오면 1점을 얻고 뒷면이 나오면 $0$점을 얻는 어떤 시행에서,
 
 동전을 하나 던졌을 때 얻는 점수
 {: .text-center}
@@ -664,7 +664,7 @@ A random variable is a function $X$ mapping each outcome of random experiment $w
 $$
 \begin{align*}
 X(H)&=1\\
-X(T)&=-1
+X(T)&=0
 \end{align*}
 $$
 
@@ -694,7 +694,7 @@ $$
 $$
 \begin{align*}
 p(1)&=P(X=1)=\frac12\\
-p(-1)&=P(X=-1)=\frac12
+p(0)&=P(X=0)=\frac12
 \end{align*}
 $$
 
@@ -765,7 +765,7 @@ $$
 **2.3 events defined by RV**
 
 강의에서는 $A_x$를 도입해서 설명하고 있습니다.
-이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합으로, 아까 $(\ast)$에서 pP(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
+이때 $A_x$는 사건으로서, 확률변수 $X$가 $x$의 값을 가지는 경우, 즉 $X(w)=x$인 $w\in S$들의 집합으로, 아까 $(\ast)$에서 $p(x)$ 혹은 $P(X=x)$를 정의할 때 쓰인 집합입니다.
 
 $$
 \begin{align*}
@@ -799,7 +799,7 @@ $$P(X\le1)=P\left(\{HH,HT,TH\}\right)=\frac34$$
 
 **2.4 distribution functions**
 
-확률변수 $X$와 실수 $x$에 대하여 cumulative distribution function(CDF, 누적확률)은 
+확률변수 $X$와 실수 $x$에 대하여 cumulative distribution function(CDF, 누적확률함수)은 
 
 $$F_X(x)=P\left(X\le x\right)$$
 
@@ -929,6 +929,7 @@ $$
 \end{cases}
 $$
 
+와 같이 정의됩니다.
 이 함수는 $x\ne0$인 곳에서는 함숫값이 0이고 $x=0$인 곳에서만 함숫값이 $\infty$인 불연속함수처럼 적혀있는데, 실제로는 연속함수처럼 생각합니다.
 또, 실수 전체의 범위에서 적분했을 때의 값이 $1$인 것으로 가정합니다.
 
@@ -3290,7 +3291,7 @@ $$
 P(X=0,Y=2)
 &=P\left(\{(w_1,w_2)\in S_1\times S_2:X(w_1)=0,Y(w_2)=2\}\right)\\
 &=P\left(\{(T,2)\}\right)\\
-&=\frac{n(\{(T,2)\})}{n(S_1\times S_2)}
+&=\frac{n(\{(T,2)\})}{n(S_1\times S_2)}\\
 &=\frac1{12}
 \end{align*}
 $$
@@ -3838,7 +3839,7 @@ $$
 둘째 줄의 적분을 계산할 때 $y$가 사라지므로, 적분값을 $x$에 대한 함수로서 놓을 수 있습니다.
 따라서, 아까 언급한 것처럼 $E[Y\vert X=x]$는 $x$에 대한 함수입니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_12-1.jpg){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_12-1.jpg){: .img-30-center}
 
 위의 그림은, 강의의 예시를 구체화해서 적어본 것입니다.
 좌표평면 위에 $(0,0)$, $(2,0)$, $(1,1)$을 꼭짓점으로 하는 삼각형의 내부에 점 $P$가 위치한다고 할 때, $P$의 $x$좌표와 $y$좌표를 각각 $X$, $Y$라고 하겠습니다.
@@ -4553,7 +4554,7 @@ $$\{X_t\}_{t\in T}$$
 일반적으로 $T$는 실수집합 $\mathbb R$의 부분집합으로 봅니다.
 그러니까, 위의 예처럼 유한집합이 될 수도 있고 ; $T=\\{1,2,\cdots,n\\}$,
 countable 집합이 될 수도 있으며 ; $T=\\{1,2,\cdots\\}$,
-아니면 양의 실수의 집합이 될 수도 있습니다 ;$T=\\{t\in\mathbb R:t>0\\}$.
+아니면 양의 실수의 집합이 될 수도 있습니다 ; $T=\\{t\in\mathbb R:t>0\\}$.
 
 만약 $t$를 시간으로 해석하고, $X_t$를 어떤 물체에 대한 물리적인 양으로 생각한다면, 확률과정은 이 물체와 관련된 어떤 현상을 해석하는 데 사용될 수 있습니다.
 강의에서는 미사일이 날아가는 과정을 확률과정을 통해 해석할 수 있다고 말합니다.
@@ -6120,7 +6121,89 @@ $$X+Y\sim\text{Pois}(\lambda+\nu)$$
 
 다시 말해, $X$는 어떤 사건 $A$가 단위시간당 $\lambda$번 일어난다고 가정할 때의 어느 단위시간동안 사건이 일어난 수이고, $Y$는 어떤 사건 $B$가 단위시간당 $\nu$번 일어난다고 가정할 때의 어느 단위시간동안 사건이 일어난 수일 때, 단위시간당 $\lambda+\nu$번의 사건 A 혹은 사건 B가 일어나므로, $X+Y$는 $\text{Pois}(\lambda+\nu)$를 따릅니다.
 
-**참고자료**
+# 17 두 변수의 변환 함수
+
+이번 강의에서는 $g$가 다변수벡터함수인 경우, 다시 말해 $g:\mathbb R^n\to\mathbb R^n$인 경우를 다룹니다.
+그 중에서도 가장 간단한 경우인 $g:\mathbb R^2\to\mathbb R^2$인 경우를 고려합니다.
+
+시작하기에 앞서서, $g$가 일변수 실함수인 경우를 복습해보겠습니다.
+$\langle14\rangle$에서 이미 비슷한 계산을 해본 적이 있습니다.
+함수 $g:\mathbb R\to\mathbb R$이 일대일함수이고 미분가능하며, 두 확률변수 $X$, $Y$가 $Y=g(X)$를 만족시킨다고 가정하겠습니다.
+그러면 $g$는 [단조함수일 수밖에 없습니다.](https://math.stackexchange.com/q/1435015)
+왜냐하면, 집합 $M=\\{(x,y)\in\mathbb R^2:x\lt y\\}$는 connected set이고, $h(x,y)=g(x)-g(y)$로 정의된 $h:M\to\mathbb R$는 연속함수이기 때문에, $h$의 image인 $h(M)$은 connected입니다.
+$g$가 일대일함수라는 사실로부터 $0\notin h(M)$이고, 따라서 $h(M)$은 $(-\infty,0)$ 안에 들어있거나 아니면 $(0,\infty)$ 안에 들어있습니다.
+전자의 경우에는 $g$가 monotonically increasing하고, 후자의 경우에는 monotonically decreasing합니다.
+
+monotonically increasing한 경우에는
+
+$$
+\begin{align*}
+f_Y(y)
+&=\frac d{dy}F_Y(y)\\[10pt]
+&=\frac d{dy}P(Y\le y)\\[10pt]
+&=\frac d{dy}P(g(X)\le y)\\[10pt]
+&=\frac d{dy}P(X\le g^{-1}(y))\\[10pt]
+&=\frac d{dy}F_X(g^{-1}(y))\\[10pt]
+&=\frac{dx}{dy}\cdot\frac d{dx}F_X(g^{-1}(y))\\[10pt]
+&=\frac{\frac d{dx}F_X(g^{-1}(y))}{\frac{dy}{dx}}\\[10pt]
+&=\frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}
+\end{align*}
+$$
+
+입니다.
+monotonically decreasing한 경우에는 그 결과가
+
+$$f_Y(y)=-\frac{f_X(g^{-1}(y))}{g'(g^{-1}(y))}$$
+
+로 나오므로, 이것을 하나의 식으로
+
+$$f_Y(y)=\frac{f_X(g^{-1}(y))}{|g'(g^{-1}(y))|}$$
+
+와 같이 쓸 수 있었습니다.
+$x=g^{-1}(y)$로 표현하면
+
+$$f_Y(y)=\frac{f_X(x)}{|g'(x)|}$$
+
+입니다.
+
+$g:\mathbb R^2\to\mathbb R^2$인 경우도 비슷합니다.
+다만, 위의 식의 분모에 $g'(x)$이었던 것이 jacobian으로 바뀝니다.
+
+이제 $g:\mathbb R^2\to\mathbb R^2$인 경우를 적어보면, 네 확률변수 $X$, $Y$, $Z$, $W$에 대하여
+
+$$(Z,W)=g(X,Y)$$
+
+의 관계가 있다고 하겠습니다.
+$g$가 $R^2$의 부분집합 $S$에 대하여, $g|S:S\to g(S)$가 일대일대응이고, $T=g(S)$로 표기하면
+
+$$f_{ZW}(z,w)=\iint_Sf_{XY}(x,y)\times\frac1{|J|}\,dx\,dy$$
+
+입니다.
+$J$는
+
+$$
+J=
+\text{det}\frac{\partial(z,w)}{\partial(x,y)}
+=\text{det}
+\begin{bmatrix}
+\frac{\partial z}{\partial x}&\frac{\partial z}{\partial y}\\
+\frac{\partial w}{\partial x}&\frac{\partial w}{\partial y}
+\end{bmatrix}
+$$
+여기에서 $g|S$는 함수 $g$의 $S$에서의 restriction이고
+
+시작하기에 앞서서, $g$가 일변수 실함수인 경우를 복습해보겠습니다.
+$\langle14\rangle$에서 이미 비슷한 계산을 해본 적이 있습니다.
+함수 $g:\mathbb R\to\mathbb R$이 일대일함수이고 미분가능하며, 두 확률변수 $X$, $Y$가 $Y=g(X)$를 만족시킨다고 가정하겠습니다.
+그러면 $g$는 [단조함수일 수밖에 없습니다.](https://math.stackexchange.com/q/1435015)
+왜냐하면, 집합 $M=\\{(x,y)\in\mathbb R^2:x\lt y\\}$는 connected set이고, $h(x,y)=g(x)-g(y)$로 정의된 $h:M\to\mathbb R$는 연속함수이기 때문에, $h$의 image인 $h(M)$은 connected입니다.
+$g$가 일대일함수라는 사실로부터 $0\notin h(M)$이고, 따라서 $h(M)$은 $(-\infty,0)$ 안에 들어있거나 아니면 $(0,\infty)$ 안에 들어있습니다.
+전자의 경우에는 $g$가 monotonically increasing하고, 후자의 경우에는 monotonically decreasing합니다.
+
+
+
+
+**참고한 자료들**
 1. [KOCW(Korea Open Course Ware), 『확률과 통계』, 한양대학교 이상화 교수님 강의](http://www.kocw.net/home/search/kemView.do?kemId=1056974) 
 1. [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)
 1. [The Book of Statistical Proofs](https://statproofbook.github.io/)
