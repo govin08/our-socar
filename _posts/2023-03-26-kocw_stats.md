@@ -5573,8 +5573,8 @@ $$f_S(s)=\int_{-\infty}^\infty f_{XY}(s-y,y)\,dy$$
 이고, 따라서 $(\ast)$가 성립하며, $(\ast\ast)$도 성립합니다.
 
 <div class="notice--danger">
-<b> 정의 : convolution </b><br>
-일반적으로, 두 함수 $f:\mathbb R\to\mathbb R$, $g:\mathbb R$에 대하여 새로운 함수 $f\ast g:\mathbb R\to\mathbb R$을
+<b> 정의 : convolution (continuous) </b><br>
+일반적으로, 두 함수 $f:\mathbb R\to\mathbb R$, $g:\mathbb R\to\mathbb R$에 대하여 새로운 함수 $f\ast g:\mathbb R\to\mathbb R$을
 $$(f\ast g)(s)=\int_{-\infty}^\infty f(u)g(s-u)\,du$$
 로 정의할 때, $f\ast g$는 $f$와 $g$의 convolution이라고 불립니다.
 </div>
@@ -5882,7 +5882,243 @@ $$
 
 가 될 것입니다.
 
+# 16 이산확률의 합과 컨볼루션
 
+지난 강의에서 연속확률변수의 convolution에 대해 이야기되었습니다.
+즉, 이산확률변수 $X$와 $Y$에 대하여 새로운 확률변수 $S=X+Y$의 확률밀도함수는
+
+$$f_S=f_X\ast f_Y$$
+
+의 관계를 만족시키며, 구체적으로는
+
+$$(f_X\ast f_Y)(s)=\int_{-\infty}^\infty f(s-u)g(u)\,du$$
+
+와 같이 나타난다고 했습니다.
+
+이번 강의에서는 이산확률변수 $X$와 $Y$에 대한 convolution을 다룹니다.
+$X$가 이산확률변수라고 하는 것은, $X$가 취할 수 있는 값이 유한하거나, countable하다는 뜻이라고 했습니다.
+그런데, convolution의 계산을 편하게 하기 위해서, $X$가 정수의 값만 가질 수 있다고 가정하고 있습니다.
+마찬가지로 $Y$도 그 값이 정수인 경우만 이야기하고 있습니다.
+
+이 경우에 convolution의 정의나 $S=X+Y$의 확률함수 식 계산은 연속확률분포에서보다 훨씬 간단합니다.
+연속확률변수의 경우에서는 누적분포함수 $F_S(s)$를 먼저 구하기 위해서, 좌표평면 위에 $x+y\le s$라고 하는 부등식의 영역을 고려한 뒤 적분했어야 했습니다.
+하지만, 이산확률변수의 경우, 확률질량함수 $P_X(s)$를 바로 구해도 됩니다.
+그러면 부등식의 영역 대신
+
+$$x+y=s,\qquad x,y\in\mathbb Z$$
+
+와 같은 간단한 방정식을 생각하게 됩니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_16-1.png){: .img-50-center}
+
+이때, $\mathbb Z$는 정수들의 집합으로, $x,y\in Z$는 $x$와 $y$가 모두 정수라는 사실을 표현한 것입니다.
+이 디오판토스 방정식의 해는 무한히 많지만 countable한 정도로 많고, 그 해를 모두 쉽게 표현할 수 있습니다 ;
+
+$$
+\begin{cases}
+x=k\\
+y=s-k
+\end{cases}\quad(k\in\mathbb Z)
+$$
+
+즉
+
+$$
+\{(x,y)\in\mathbb Z^2:x+y=s\}=\bigcup_{k=-\infty}^\infty\{(k,s-k)\}
+$$
+
+입니다.
+따라서,
+
+$$
+\begin{align*}
+P_S(s)
+&=P(S=s)\\
+&=P(X+Y=s)\\
+&=\sum_{k=-\infty}^\infty P(X=k, Y=s-k)
+\end{align*}
+$$
+
+만약, $X$와 $Y$가 독립이면
+
+$$
+P_S(s)
+=\sum_{k=-\infty}^\infty P_X(k)P_Y(s-k)
+$$
+
+이것은 연속확률변수에서의 식과 거의 유사합니다.
+integral이었던 것이 summation으로 바뀌었고, PDF였던 것이 PMF로 바뀌었습니다.
+
+<div class="notice--danger">
+<b> 정의 : convolution (discrete) </b><br>
+일반적으로, 두 함수 $f:\mathbb Z\to\mathbb R$, $g:\mathbb Z\to\mathbb R$에 대하여 새로운 함수 $f\ast g:\mathbb Z\to\mathbb R$을
+$$(f\ast g)(s)=\sum_{k=-\infty}^\infty f(k)g(s-k)$$
+로 정의할 때, $f\ast g$는 $f$와 $g$의 convolution이라고 불립니다.
+</div>
+
+dicrete 버전의 convolution도 마찬가지로 결합법칙과 교환법칙이 성립합니다 ;
+
+$$
+\begin{align*}
+((f\ast g)\ast h)(s)
+&=\sum_{k\in\mathbb Z}(f\ast g)(k)h(s-k)\\
+&=\sum_{k\in\mathbb Z}\sum_{m\in\mathbb Z}f(m)g(k-m)h(s-k)\\
+&=\sum_{m\in\mathbb Z}f(m)\sum_{k\in\mathbb Z}g(k-m)h(s-k)\\
+&=\sum_{m\in\mathbb Z}f(m)\sum_{j\in\mathbb Z}g(j)h(s-m-j)\\
+&=\sum_{m\in\mathbb Z}f(m)(g\ast h)(s-m)\\
+&=(f\ast(g\ast h))(s)\\[10pt]
+(f\ast g)(s)
+&=\sum_{k\in\mathbb Z}f(k)g(s-k)\\
+&=\sum_{j\in\mathbb Z}f(s-j)g(j)\\
+&=\sum_{j\in\mathbb Z}g(j)f(s-j)\\
+&=(g\ast f)(s)
+\end{align*}
+$$
+
+**ex.**
+
+동전을 하나 던져서 앞면이 나오면 $X=1$, 뒷면이 나오면 $X=0$으로 대응시키는 확률변수 $X$를 생각하면, $X$의 PMF는
+
+$$
+\begin{cases}
+P_X(0)&=\frac12\\
+P_X(1)&=\frac12
+\end{cases}
+$$
+
+입니다.
+또, 주사위를 하나 던져서 나온 숫자를 $Y$라고 하면, $Y$의 PMF는
+
+$$
+\begin{cases}
+P_X(1)&=\frac16\\
+P_X(2)&=\frac16\\
+P_X(3)&=\frac16\\
+P_X(4)&=\frac16\\
+P_X(5)&=\frac16\\
+P_X(6)&=\frac16
+\end{cases}
+$$
+
+입니다.
+그러면, 당연히 $X$와 $Y$는 독립입니다.
+새로운 확률변수 $S$를 $S=X+Y$로 정의하면 $S$의 값은 $1$, $2$, $\cdots$, $7$의 값을 가질 수 있고
+
+$$
+\begin{cases}
+P_S(1)&=\frac1{12}\\
+P_S(2)&=\frac16\\
+P_S(3)&=\frac16\\
+P_S(4)&=\frac16\\
+P_S(5)&=\frac16\\
+P_S(6)&=\frac16\\
+P_S(7)&=\frac1{12}
+\end{cases}
+$$
+
+와 같이 계산됩니다.
+이것은 
+
+$$P_S(s)=(P_X\ast P_Y)(s)=\sum_{k=-\infty}^\infty P_X(k)P_Y(s-k)$$
+
+로 계산될 수 있습니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_16-2.gif){: .img-50-center}
+
+**ex. 6.8**
+
+강의에서는 이 동전-주사위 문제를 조금 더 확장해서, 나올 수 있는 근원사건의 수가 각각 $M$, $N$개이고 ($M\gt N$) 그 분포가 uniform한 두 확률변수 $X$, $Y$에 대해 더 말하고 있습니다.
+이전 예와 비교했을 때 크게 다른 점은 없으므로 캡쳐로 대신하겠습니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_16-3.png){: .img-50-center}
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_16-4.png){: .img-50-center}
+
+**sums of independent binomial random variables**
+
+강의의 마지막에는 이항분포를 따르는 두 확률변수의 합에 대해 이야기합니다.
+만약
+
+$$X\sim B(n,p),\quad Y\sim B(m,p)$$
+
+이면,
+
+$$
+\begin{align*}
+P_X(x)&=\binom nxp^x(1-p)^{n-x}&&x=0,1,\cdots,n\\
+P_Y(y)&=\binom myp^y(1-p)^{m-y}&&y=0,1,\cdots,m
+\end{align*}
+$$
+
+입니다.
+두 확률변수의 합인 $S=X+Y$의 확률질량함수를 구하기 위해서는 위의 두 PMF를 convolve하면 되는데 그때 사용되는 두 값은 $P_X(k)$와 $P_Y(s-k)$입니다.
+만약 $k\lt0$이면 $P_X(k)=0$이고, $k\gt s$이면 $P_Y(s-k)=0$입니다.
+따라서, convolution을 계산할 때 $0\le k\le s$인 항들만 계산하면 됩니다;
+
+$$
+\begin{align*}
+P_S(s)
+&=(P_X\ast P_Y)(s)\\
+&=\sum_{k=-\infty}^\infty P_X(k)P_Y(s-k)\\
+&=\sum_{k=0}^sP_X(k)P_Y(s-k)\\
+&=\sum_{k=0}^s\binom nkp^k(1-p)^{n-k}\times\binom m{s-k}p^{s-k}(1-p)^{m-s+k}\\
+&=\sum_{k=0}^s\binom nk\binom m{s-k}p^s(1-p)^{m+n-s}\\
+&=\left(\sum_{k=0}^s\binom nk\binom m{s-k}\right)p^s(1-p)^{m+n-s}\\
+&\stackrel\ast=\binom{m+n}sp^s(1-p)^{m+n-s}\\
+\end{align*}
+$$
+
+입니다.
+이때 $\star$는 Vandermonde's identity라는 이름을 가지고 있다고 합니다.
+강의에서는 이 식에 대한 증명을 조합론적으로 하고 있습니다.
+만약 $m+n$개의 대상 중 $s$개를 뽑는다고 할 때, 특정한 $m$개의 대상을 A집단, 나머지를 B집단이라고 하면, 그 경우의 수는 A에서 $k$개를 뽑고 B에서 나머지 $s-k$개를 뽑는 경우를 다 더한 값과 같습니다.
+따라서 Vandermonde's inequality가 성립합니다.
+
+이 등식에 대한 조금 더 수학적인 증명도 찾아보려 했는데, [위키피디아](https://en.wikipedia.org/wiki/Vandermonde's_identity)에서는 이항정리을 이용한 증명과 rectangular grid의 길찾기 문제를 이용한 증명이 나와있습니다.
+하지만 근본적으로는 다 비슷한 증명이 아닐까 하는 생각이 듭니다.
+[이곳](https://math.stackexchange.com/q/219938)에는 수학적 귀납법을 사용한 증명도 있습니다.
+
+**sums of independent Poisson random variables**
+
+Poisson distribution에 대한 합도 생각해볼 수 있습니다.
+만약
+
+$$X\sim\text{Pois}(\lambda),\quad Y\sim\text{Pois}(\nu)$$
+
+이면,
+
+$$
+\begin{align*}
+P_X(x)&=\frac{\lambda^x}{x!}e^{-\lambda}\qquad(x=0,1,2,\cdots)\\
+P_Y(y)&=\frac{\nu^y}{y!}e^{-\nu}\qquad(y=0,1,2,\cdots)\\
+\end{align*}
+$$
+
+입니다.
+이번에도, $k\lt0$이거나 $k\gt s$이면 두 값 $P_X(k)$와 $P_Y(s-k)$ 중 하나의 값이 $0$이 되고, 따라서 $0\le k\le s$인 항들만 계산하면 됩니다;
+
+$$
+\begin{align*}
+P_S(s)
+&=(P_X\ast P_Y)(s)\\
+&=\sum_{k=-\infty}^\infty P_X(k)P_Y(s-k)\\
+&=\sum_{k=0}^sP_X(k)P_Y(s-k)\\
+&=\sum_{k=0}^s\frac{\lambda^k}{k!}e^{-\lambda}\times\frac{\nu^{s-k}}{(s-k)!}e^{-\nu}\\
+&=\frac{e^{-(\lambda+\nu)}}{s!}\sum_{k=0}^s\frac{s!}{k!(s-k)!}\lambda^k\nu^{s-k}\\
+&=\frac{e^{-(\lambda+\nu)}}{s!}(\lambda+\nu)^s\\
+&=\frac{(\lambda+\nu)^s}{s!}e^{-(\lambda+\nu)}
+\end{align*}
+$$
+
+따라서, $S$는 parameter가 $\lambda+\mu$인 Poisson distribution을 따릅니다 ;
+
+$$X+Y\sim\text{Pois}(\lambda+\nu)$$
+
+이것은, 어떻게 생각하면 당연한 결과입니다.
+상점의 예를 들면, A 상점에는 시간당 $\lambda$명의 사람이 들어오고 B 상점에는 시간당 $\nu$명의 사람이 들어올 때, 어느 시점의 한 시간동안 A상점에 들어온 손님의 수를 $X$, B상점에 들어온 손님의 수를 $Y$라고 하면, $X$와 $Y$는 각각 위의 확률질량함수 $P_X$와 $P_Y$를 갖는다고 했었습니다.
+만약, $S$를 $S=X+Y$라고 하면, (두 상점에 모두 들어간 손님이 없다고 할 때) $S$는 상점 A 혹은 상점 B에 들어간 손님의 수라고 볼 수 있고, 시간당 $\lambda+\nu$명의 손님이 들어온다고 예상되므로, $S\sim\text{Pois}(\lambda+\nu)$인 것입니다.
+
+다시 말해, $X$는 어떤 사건 $A$가 단위시간당 $\lambda$번 일어난다고 가정할 때의 어느 단위시간동안 사건이 일어난 수이고, $Y$는 어떤 사건 $B$가 단위시간당 $\nu$번 일어난다고 가정할 때의 어느 단위시간동안 사건이 일어난 수일 때, 단위시간당 $\lambda+\nu$번의 사건 A 혹은 사건 B가 일어나므로, $X+Y$는 $\text{Pois}(\lambda+\nu)$를 따릅니다.
 
 **참고자료**
 1. [KOCW(Korea Open Course Ware), 『확률과 통계』, 한양대학교 이상화 교수님 강의](http://www.kocw.net/home/search/kemView.do?kemId=1056974) 
