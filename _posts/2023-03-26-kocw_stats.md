@@ -347,9 +347,9 @@ $$P(A)P(B)=P(A\cap B)\tag{$\ast\ast$}$$
 
 **1.9 combined experiments**
 
-For two experiments with sample spaces $S_1$ and $S_2$, the sample space of the combined experiments is the Cartesian product $S_1\times S_2$;
+For two experiments with sample spaces $S_1$ and $S_2$, the sample space of the combined experiments is the cartesian product $S_1\times S_2$;
 
-동시에 일어나는 서로 다른 두 시행을 하나의 시행으로 보았을 때의 표본공간은, 각각의 시행에 대한 표본공간 $S_1$와 $S_2$의 Cartesian product인 $S_1\times S_2$로 정의합니다.
+동시에 일어나는 서로 다른 두 시행을 하나의 시행으로 보았을 때의 표본공간은, 각각의 시행에 대한 표본공간 $S_1$와 $S_2$의 cartesian product인 $S_1\times S_2$로 정의합니다.
 
 $$S_1\times S_2=\{(x,y):x\in S_1,y\in S_2\}$$
 
@@ -722,7 +722,7 @@ S
 \end{align*}
 $$
 
-인데, 강의에서는 Cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
+인데, 강의에서는 cartesian product에서의 순서쌍의 표현을 생략하여, $S=\\{HH,HT,TH,TT\\}$로 쓰고 있습니다.
 확률변수 $X$는
 
 $$
@@ -3218,7 +3218,7 @@ $$P(X\le x, Y\le y)$$
 
 를 어떻게 정의할지 하는 문제를 다룹니다.
 
-두 확률변수 $X:S_1\to\mathbb R$, $Y:S_2\to\mathbb R$를 고려한다고 해서 이 둘의 Cartesian product를 확률변수로 놓을 수는 없습니다.
+두 확률변수 $X:S_1\to\mathbb R$, $Y:S_2\to\mathbb R$를 고려한다고 해서 이 둘의 cartesian product를 확률변수로 놓을 수는 없습니다.
 $X\times Y:S_1\times S_2\to\mathbb R^2$을 $(X\times Y)(w_1,w_2)=(X(w_1),Y(w_2))$로 정의한다고 하면 이것은 공역이 $\mathbb R^2$이므로 확률변수라고 할 수 없기 때문입니다.
 하지만, 순서쌍 $(X(w_1),Y(w_2))$에 대한 분포는 생각해볼 수 있습니다.
 
@@ -4291,7 +4291,7 @@ $$
 
 $\langle$ 연속확률분포 $\rangle$
 
-두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $C_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $C_y$라고 하면, 두 집합의 Cartesian product $C_x\times C_y$는 countable이고, 따라서 $C_x\times C_y$를
+두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $C_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $C_y$라고 하면, 두 집합의 cartesian product $C_x\times C_y$는 countable이고, 따라서 $C_x\times C_y$를
 
 $$C_x\times C_y=\{(x_1,y_1),(x_2,y_2),\cdots\}$$
 
@@ -4994,9 +4994,9 @@ $E[g(X)]$는 $\langle03\rangle$에서 언급한 LOTUS의 식으로 쉽게 계산
 
 앞서 강의들에서 두 확률변수 $X$, $Y$에 대한 correlation coefficient $\rho_{XY}$를 공부했었습니다.
 $\rho_{XY}$는 두 변수간의 '관계'를 말해줍니다.
-만약 더 나아가, 두 변수간의 '함수' $Y=g(X)$가 주어졌을 때의 경우를 다루는 것입니다.
-이 주제는 이어지는 다섯 번의 강의의 주제이기도 합니다.
-지금은 $g:\mathbb R\to\mathbb R$인 함수를 이야기하고 있는데 이것을 $g:\mathbb R^n\to\mathbb R$인 경우와 $g:\mathbb R^m\to\mathbb R^n$인 경우로까지 확장하며, 그 과정에서 convolution, Jacobian,Fourier transformation 등의 주제가 언급된다고 합니다.
+이번에는 더 나아가, 두 변수간의 '함수' $Y=g(X)$가 주어졌을 때의 경우를 다루는 것입니다.
+이 주제는 이번 강의를 포함한 다섯 번의 강의의 주제이기도 합니다.
+지금은 $g:\mathbb R\to\mathbb R$인 함수를 이야기하고 있는데 이것을 $g:\mathbb R^n\to\mathbb R$인 경우와 $g:\mathbb R^m\to\mathbb R^n$인 경우로까지 확장하며, 그 과정에서 convolution, Jacobian, Fourier transformation 등의 주제가 언급된다고 합니다.
 
 예를 들어, 0과 1 사이의 uniform distribution을 따르는 값 $X$는 (프로그래밍적으로) 쉽게 만들어낼 수 있다고 합니다.
 만약, 적절한 함수 $g:\mathbb R\to\mathbb R$이 있어서 $Y=g(X)$가 normal distribution을 따를 수 있게 한다면, uniform distribution의 수를 생성해내는 것 만으로도 normal distribution의 수를 생성해낼 수 있게 될 것입니다.
@@ -5091,7 +5091,7 @@ $$x_1\lt x_2\quad\Longrightarrow\quad g(x_1)\gt g(x_2)$$
 단조함수가 일대일함수라는 것은 쉽게 증명될 수 있습니다.
 </div>
 
-**(1) 일차함수 $g(x)=ax+b**
+**(1) 일차함수 $g(x)=ax+b$**
 
 확률변수 $X$에 대한 PMF가 $Y=g(X)=aX+b$일 때($a\ne0$), $a\gt0$인 경우와 $a\lt0$인 두 가지의 경우로 나누어볼 수 있습니다.
 만약 $a\gt0$이면,
@@ -5155,7 +5155,7 @@ f_Y(y)
 \frac1af_X\left(\frac{y-b}a\right)  &(a\gt0)\\
 -\frac1af_X\left(\frac{y-b}a\right) &(a\lt0)\\
 \end{cases}\\[10pt]
-&=\frac{\frac1af_X\left(\frac{y-b}a\right)}{|a|}
+&=\frac{f_X\left(\frac{y-b}a\right)}{|a|}
 \end{aligned}\tag{$(\ast)$}
 $$
 
@@ -5167,12 +5167,12 @@ $$P(1\lt X\le 2)=P\left(\frac32\lt X\le 2\right)$$
 
 입니다.
 그러니까, $X$의 입장에서 $1$의 길이를 가지는 구간에 대한 확률과 $Y$의 입장에서 $\frac12$의 길이를 가지는 구간에 대한 확률이 같습니다.
-그러면, 밀도함수의 기준에서 봤을 때는 $f_X$보다는 $f_Y$의 밀도가 두 배 더 높을 것입니다.
-실제로 $a=\frac12$이면, 서로 대응되는 부분에서의 $f_Y$의 값이 $f_X$의 값의 두 배가 된 것이 위의 식에서도 반영되어 있습니다.
+그러면, 밀도함수의 기준에서 봤을 때는 $f_X$에 비해 $f_Y$의 밀도가 두 배 더 높을 것입니다.
+실제로 $a=\frac12$이면, 서로 대응되는 부분에서의 $f_Y$의 값이 $f_X$의 값의 두 배가 되는 것이 $(\ast)$에 나타나있습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_14-2.png){: .img-50-center}
 
-**(2) 이차함수 $g(x)=x^2**
+**(2) 이차함수 $g(x)=x^2$**
 
 마찬가지로 $Y=g(X)=X^2$에 대하여 해보겠습니다.
 양수 $y$에 대하여
@@ -5219,7 +5219,7 @@ $$
 $g(x)=ax+b$는 일대일함수였고, 따라서 하나의 $y$에 대하여, $y=g(x)$를 만족시키는 단 하나의 $x=g^{-1}(y)=\frac{y-b}a$가 존재했습니다.
 즉, $y$의 inverse image인 $g^{-1}\left(\{x\}\right)$가 하나의 원소를 가졌습니다;
 
-$$g^{-1}\left(\{x\}\right)=\{\frac{y-b}a\}$$
+$$g^{-1}\left(\{x\}\right)=\left\{\frac{y-b}a\right\}$$
 
 반면, $g(x)=x^2$는 일대일함수 조건을 만족하지 못합니다.
 하나의 $y$에 대하여 $y=g(x)$를 만족시키는 $x$는 두 개 $x=\sqrt y$, $x=-\sqrt y$ 존재합니다.
@@ -5275,7 +5275,7 @@ $$
 일반적으로 실수 $y$에 대하여 $y=g(x)$를 만족하는 $x$의 값이 $x_1$, $x_2$, $\cdots$, $x_n$일 때, $Y$의 PDF $f_Y(y)$는
 
 $$
-f_Y(y)=\sum_{i=1}^3\frac{f_X(x_i)}{|g'(x_i)|}
+f_Y(y)=\sum_{i=1}^n\frac{f_X(x_i)}{|g'(x_i)|}
 $$
 
 입니다.
@@ -5350,6 +5350,8 @@ $$
 \begin{align*}
 E\left[g(X)\right]
 &=\sum_{j=1}^ny_jP(Y=y_j)\\
+&=\sum_{j=1}^ny_jP(g(X)=y_j)\\
+&=\sum_{j=1}^ny_jP\left(X\in g^{-1}\left(\{y_j\}\right)\right)\\
 &=\sum_{j=1}^ny_j\sum_{x_i\in g^{-1}\left(\{y_j\}\right)}P(X=x_i)\\
 &=\sum_{j=1}^n\sum_{x_i\in g^{-1}\left(\{y_j\}\right)}g(x_i)P(X=x_i)\\
 &\stackrel\star=\sum_{i=1}^mg(x_i)P(X=x_i)
@@ -5361,7 +5363,7 @@ $$
 
 다음으로, continuous case입니다.
 일반적인 continuous case에 대한 증명은 어렵습니다.
-이 포스트에서는 $g$가 단조함수이면서 미분가능하며, 모든 $x$에 대하여 $g'(x)\ne0$인 경우만을 다룹니다.
+이 포스트에서는 $g$가 단조함수이면서 미분가능하며, 모든 $x$에 대하여 $g'(x)\ne0$인 경우만을 다루겠습니다.
 
 만약, $g$가 단조증가함수이면 $f_X(x)$와 $f_Y$ 사이의 관계식은
 
@@ -5433,13 +5435,15 @@ $$
 # 15 연속확률변수의 합과 컨볼루션
 
 이전 강의에서 두 확률변수 $X$, $Y$ 사이에 $Y=g(X)$인 함수 $g:\mathbb R\to\mathbb R$이 존재할 때, $f_X(x)$를 통해 $f_Y(y)$를 구하는 방법에 대해 다뤘습니다.
-함수 $g$는 multivariate function(다변수함수)일 수도 있고 ($g:\mathbb R^m\to\mathbb R$), vector valued function(벡터함수)일 수도 있으며($g:\mathbb R\to\mathbb R^n$), 둘 다일 수도 있습니다($g:\mathbb R^m\to\mathbb R^n$).
+그러니까 $g$는 일변수의 실함수였습니다.
+
+조금 더 일반적인 상황에서는, 함수 $g$는 multivariate function(다변수함수)일 수도 있고 ($g:\mathbb R^m\to\mathbb R$), vector valued function(벡터함수)일 수도 있으며($g:\mathbb R\to\mathbb R^n$), 둘 다일 수도 있습니다($g:\mathbb R^m\to\mathbb R^n$).
 이번 강의에서는 $g$가 multivariate function인 경우
 
 $$g:\mathbb R^m\to\mathbb R$$
 
 에 대해 다룹니다.
-그 중에서도 가장 간단한 $m=2$인 경우를 다루고 있습니다.
+그 중에서도 가장 간단한 $m=2$인 경우로부터 시작하고 있습니다.
 즉
 
 $$g:\mathbb R^2\to\mathbb R$$
@@ -5476,17 +5480,17 @@ $$g(x,y)=x+y$$
 이 새로운 확률변수 $S=X+Y$의 PDF는
 
 $$
-f_S(s)=\int_{-\infty}^\infty f_{XY}(s-y,y)\,dy
+f_S(s)=\int_{-\infty}^\infty f_{XY}(s-u,u)\,du
 \tag{$(\ast)$}
 $$
 
 로 주어집니다.
-당연히, 위의 식에서 $y$는 dummy variable입니다.
-그러니까, 위의 식에서 $y$말고 다른 어떤 변수로 넣어도, 상관없습니다.
+당연히, 위의 식에서 $u$는 dummy variable입니다.
+그러니까, 위의 식에서 $u$말고 다른 어떤 변수로 넣어도, 상관없습니다.
 만약, $X$와 $Y$가 독립이면
 
 $$
-f_S(s)=\int_{-\infty}^\infty f_X(s-y)f_Y(y)\,dy
+f_S(s)=\int_{-\infty}^\infty f_X(s-u)f_Y(u)\,du
 \tag{$(\ast\ast)$}
 $$
 
@@ -5551,7 +5555,7 @@ $$
 입니다.
 이 과정에서 적분영역은 $x\le s$이고,
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-1.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-2.png){: .img-50-center}
 
 따라서 적분의 순서를 바꿀 수 있습니다.
 
@@ -5571,7 +5575,7 @@ $$f_S(s)=\int_{-\infty}^\infty f_{XY}(s-y,y)\,dy$$
 <div class="notice--danger">
 <b> 정의 : convolution </b><br>
 일반적으로, 두 함수 $f:\mathbb R\to\mathbb R$, $g:\mathbb R$에 대하여 새로운 함수 $f\ast g:\mathbb R\to\mathbb R$을
-$$(f\ast g)(s)=\int_{-\infty}^\infty f(t)g(s-t)\,dt$$
+$$(f\ast g)(s)=\int_{-\infty}^\infty f(u)g(s-u)\,du$$
 로 정의할 때, $f\ast g$는 $f$와 $g$의 convolution이라고 불립니다.
 </div>
 
@@ -5582,7 +5586,7 @@ $$f_S=f_X\ast f_Y$$
 
 라고 쓸 수 있고, $f_S(s)$는
 
-$$f_S(s)=\int_{-\infty}^\infty f(y)g(s-y)\,dy$$
+$$f_S(s)=\int_{-\infty}^\infty f(u)g(s-u)\,du$$
 
 를 만족시키는 함수입니다.
 
@@ -5602,13 +5606,14 @@ $$
 $$
 
 이기 때문입니다.
-또한, 교환법칙도 성립합니다.
+또한, 결합법칙도 성립합니다.
 왜냐하면 (적분기호의 위끝과 아래끝을 생략했습니다.)
 
 $$
 \begin{align*}
 ((f\ast g)\ast h)(s)
-&=\int_{-\infty}^\infty (f\ast g)(t)h(s-t)\,dt\\
+&=(h\ast(f\ast g))(s)\\
+&=\int_{-\infty}^\infty (f\ast g)(s-t)h(t)\,dt\\
 &=\int_{-\infty}^\infty\int_{-\infty}^\infty f(u)g(s-t-u)\,du\,h(t)\,dt\\
 &=\int_{-\infty}^\infty f(u)\int_{-\infty}^\infty h(t)g(s-u-t)\,dt\,du\\
 &=\int_{-\infty}^\infty f(u)(h\ast g)(s-u)\,du\\
@@ -5625,7 +5630,7 @@ $$
 
 $x(t)\ast h(t)=y(t)$
 
-1. Select functions $x(t) and $h(t)$, transform $h(t)$ symmetrically about $t=0$ to get $x(t)$ and $h(-t)$.
+1. Select functions $x(t)$ and $h(t)$, transform $h(t)$ symmetrically about $t=0$ to get $x(t)$ and $h(-t)$.
 2. Shift the symmetrically transformed function $h(-t)$ by $s$ to get $x(t)$ and $h(s-t)$.
 3. Product the overlapped region of $y=x(t)$ and $y=h(s-t)$ by calculating
 
@@ -5653,14 +5658,19 @@ $$
 와 같이 주어지는 경우입니다.
 그러면 실수 $t$에 대하여, $y=x(u)$와 $y=h(t-u)$의 그래프는 아래와 같이 주어집니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-3.gif){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_15-3.gif){: .img-100-center}
 
-$x(u)$가 0이 아닌 $u$들의 집합을 $\text{supp}(x)$라고 하고, $h(t-u)$가 0이 아닌 집합을 $\text{supp}(h)$라고 하면,
+$x(u)$가 0이 아닌 $u$들의 집합을 $\text{supp}(x)$라고 하고, $h(t-u)$가 0이 아닌 집합을 $\text{supp}(h)$라고 하면, 
 
 $$
 \begin{align*}
-\text{supp}(x)&=\{u:0\le u\le1\}=[0,1]\\
-\text{supp}(h)&=\{u:t-2\le u\le t\}=[t-2,t]
+\text{supp}(x)
+&=\{u:0\le u\le1\}\\
+&=[0,1]\\
+\text{supp}(h)
+&=\{u:0\le t-u\le 2\}\\
+&=\{u:t-2\le u\le t\}\\
+&=[t-2,t]
 \end{align*}
 $$
 
@@ -5686,7 +5696,7 @@ $y=\left(x\ast h\right)(t)$의 그래프를 그려보면
 
 **ex.6.5. Erlang distribution**
 
-convolution을 사용하면 $\langle08\rangle$에서 미뤄두었던 Erlang distribution에 대한 PDF를 $k=2$에 한해서 유도할 수 있습니다.
+convolution을 사용하면 $\langle08\rangle$에서 미뤄두었던 Erlang distribution에 대한 PDF 식을 유도할 수 있습니다.
 다시 복습해보면, 사건의 평균 발생주기가 $\lambda$인 Poisson process에서 사건이 시각 $T_0$, $T_1$, $T_2$에 일어났다고 가정하면, $T_1-T_0$과 $T_2-T_1$는 exponential distribution을 따릅니다.
 $X=T_1-T_0$, $Y=T_2-T_1$라고 두면,
 
@@ -5707,7 +5717,7 @@ $$
 
 인 것입니다.
 이때, $T_3-T_1$는 Erlang-$2$ distribution을 따른다고 할 수 있습니다.
-확률변수 $S$를 $S=T_3-t_1=X+Y$라고 두면
+확률변수 $S$를 $S=T_3-T_1=X+Y$라고 두면
 Erlang-$k$ distribution의 식
 
 $$
@@ -5727,17 +5737,18 @@ $$
 $$
 \begin{align*}
 \text{supp}(f_x(u))
-&=\{u:f_X(u)\ge0\}\\
-&=\{u:u\ge0\}\\
+&=\{u:f_X(u)\gt0\}\\
+&=\{u:u\gt0\}\\
 \text{supp}(f_Y(s-u))
-&=\{u:f_Y(s-u)\ge0\}\\
-&=\{u:s-u\ge0\}\\
-&=\{u:u\le s\}
+&=\{u:f_Y(s-u)\gt0\}\\
+&=\{u:s-u\gt0\}\\
+&=\{u:u\lt s\}
 \end{align*}
 $$
 
 입니다.
-따라서, 두 함수의 곱 $f_X(u)f_Y(s-u)$은 $s\ge0$일 때, 0이 아닌 구간 $0\le u\le s$을 가지지만, 그렇지 않은 경우에는 모든 실수 $u$에 대하여 $f_X(u)f_Y(s-u)=0$입니다.
+(일반적으로 함수 $f$의 support는 $f(x)\ne0$인 $x$들의 집합에 closure를 취한 것이지만, 여기에서는 closure를 취하지 않은 버전의 support를 구했습니다.)
+따라서, 두 함수의 곱 $f_X(u)f_Y(s-u)$은 $s\gt0$일 때, 0이 아닌 구간 $0\lt u\lt s$을 가지지만, 그렇지 않은 경우에는 모든 실수 $u$에 대하여 $f_X(u)f_Y(s-u)=0$입니다.
 그러므로,
 
 $$
@@ -5765,15 +5776,15 @@ f_{X_i}(x_i)=
 $$
 
 입니다.
-아까, convolution 연산 $\ast$가 결합법칙을 만족한다고 했으므로, 새로운 확률변수 $X$가 $X=X_1+\cdots+X_k$에 대하여
+아까, convolution 연산 $\ast$가 결합법칙을 만족한다고 했으므로, 새로운 확률변수 $S=X_1+\cdots+X_k$에 대하여
 
-$$f_X=f_{X_1}\ast f_{X_2}\ast\cdots\ast f_{X_k}$$
+$$f_S=f_{X_1}\ast f_{X_2}\ast\cdots\ast f_{X_k}$$
 
 는 잘 정의된 함수입니다.
 
 $k=1$, $k=2$일 때에는 이미 $(\ast\ast\ast)$이 성립함을 확인했습니다.
 $k-1$의 경우에 $(\ast\ast\ast)$이 성립한다고 가정하고, $k$인 경우를 보겠습니다.
-$X=T_k-T_{k-1}$, $Y=T_{k-1}-T_0$이라고 하면, 이미
+$X=T_1-T_0$, $Y=T_k-T_1$이라고 하면, 이미
 
 $$
 \begin{align*}
@@ -5792,11 +5803,13 @@ $$
 
 를 알고 있는 셈입니다.
 이때, $S=T_k-T_0=X+Y$로 나타낼 수 있는 새로운 확률변수 $S$가 $(\ast\ast\ast)$를 만족시키는지 확인하려고 합니다.
-convolution으로 $f_X$를 계산해보면, $s\ge0$일 때
+convolution으로 $f_S$를 계산해보면, $s\ge0$일 때
 
 $$
 \begin{align*}
 f_S(s)
+&=\left(f_{X_1}\ast \left(f_{X_2}\ast\cdots\ast f_{X_k}\right)\right)(s)\\
+&=(f_X\ast f_Y)(s)\\
 &=(f_X\ast f_Y)(s)\\
 &=\int_{-\infty}^\infty\lambda e^{-\lambda u}\times\frac{\lambda^{k-1}(s-u)^{k-2}}{(k-2)!}e^{-\lambda(s-u)}\,du\\
 &=\int_0^s\lambda e^{-\lambda u}\times\frac{\lambda^{k-1}(s-u)^{k-2}}{(k-2)!}e^{-\lambda(s-u)}\,du\\
