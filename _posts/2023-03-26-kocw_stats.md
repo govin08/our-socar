@@ -443,7 +443,7 @@ $$n!=g(n)\left(\frac ne\right)^n$$
 
 ![stats 2-2]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-2.png){: .img-50-center}
 
-여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, 이 시스템의 reliability는
+여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, $R_n(t)$ 이 시스템의 reliability는
 
 $$\prod_{i=1}^nR_i(t)$$
 
@@ -485,8 +485,9 @@ $$
 
 **2.2 definiion of random variables**
 
-언제나 확률변수의 개념을 정확히 이해하는 건 어려운 일인 것 같습니다.
-개인적으로는 볼때마다 새로운 것 같은데, 그래도 다시 한 번 강의를 보며 다시 한 번 이해해봤습니다.
+언제나 확률변수의 개념을 정확히 이해하는 건 쉬운 일은 아닌 것 같습니다.
+한 번 볼 때마다 완벽히 이해한다고 생각하지만, 어찌된 것인지 볼때마다 새로운 것 같습니다.
+그래도 다시 한 번 강의를 보며 다시 한 번 이해해봤습니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-1.png){: .img-50-center}
 
