@@ -7,8 +7,6 @@ toc_label: "MYSELF"
 author_profile: false
 ---
 
-<img src="\assets\images\archimedes.webp" alt="about" style="max-width: 100%; height: auto;"/>
-
 수학, 머신러닝, 소설을 좋아합니다.
 
 **수학**은 모든 종류의 수학을 좋아합니다만, 잘 알지 못하는 수학이 더 많습니다.
@@ -21,3 +19,5 @@ author_profile: false
 
 **소설**을 좋아합니다만, 정확하게는 고전 소설들을 읽는 것을 좋아합니다.
 특히 19세기의 유럽 문학들을 읽는 것이 좋습니다.
+
+<img src="\assets\images\archimedes.webp" alt="about" style="max-width: 100%; height: auto;"/>
