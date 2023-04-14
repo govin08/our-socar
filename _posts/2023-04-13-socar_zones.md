@@ -1,8 +1,8 @@
 ---
 layout: single
-title: "SOCAR, 신규 쏘카존 제안"
+title: "(SOCAR) 신규 쏘카존 제안 프로젝트"
 categories: machine_learning
-tags: [clustering, SARIMA, NDCG]
+tags: [clustering, SARIMA, DCG]
 use_math: true
 publish: false
 author_profile: false
