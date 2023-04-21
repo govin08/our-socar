@@ -5728,7 +5728,7 @@ f_Y(y)&=
 \end{align*}
 $$
 
-인 것입니다.
+입니다.
 이때, $T_3-T_1$는 Erlang-$2$ distribution을 따른다고 할 수 있습니다.
 확률변수 $S$를 $S=T_3-T_1=X+Y$라고 두면
 Erlang-$k$ distribution의 식
