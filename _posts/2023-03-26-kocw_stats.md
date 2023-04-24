@@ -2311,7 +2311,7 @@ $t$시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대
 >
 >Another example is the number of decay events that occur from a radioactive source during a defined observation period.
 
-Poisson PMF의 식의 의미를 여러가지로 아주 재미있는 결과를 발견했습니다.
+Poisson PMF의 식의 의미를 여러가지로 알아보다가 아주 재미있는 결과를 발견했습니다.
 이 결과를 사용하면, Poisson PMF의 의미를 더 정확하게 알 수 있습니다.
 그 내용은 이렇습니다.
 binomial PMF인
@@ -2387,7 +2387,7 @@ $\qquad\vdots$
 그러니까 각각의 $T_i$에 대하여 손님이 들어오지 않거나(0명), 아니면 들어오거나(1명) 한다고 *가정*할 수 있습니다.
 즉, 한 번의 시행은 그 결과값이 0 아니면 1인 Bernoulli trial이고 이때 $p=0.00125$입니다.
 그런데 이런 시행이 한 번 있는 것이 아니라 3600번 있습니다.
-그리고 각각의 시행들이 독립적일테니까, $X$는 $B(3600, 0.00125)$인 이항분포를 따릅니다.
+각각의 시행들이 독립적이라고 가정하면, $X$는 $B(3600, 0.00125)$인 이항분포를 따릅니다.
 따라서 한 시간동안 들어온 손님의 수가 $x$인 확률은
 
 $$
@@ -2432,7 +2432,7 @@ Poisson distribution에 대한 위의 설명은, 1시간동안 손님이 $4.5$�
 어떤 사건에 대한 단위시간당 발생비율이 $\lambda$인 Poisson process는 다음의 두 조건을 만족시키는 (stochastic) process입니다.
 <ul>
     <li>길이가 $\lambda t$인 시간간격 동안 사건이 일어나는 횟수는 Poisson distribution을 따르고, 그 평균이 $\lambda t$입니다.</li>
-    <li>서로소인 두 개의 시간간격에 대하여 사건이 일어난 횟수는 독립적입니다.</li>
+    <li>겹치지 않는 두 개의 시간간격에 대하여 사건이 일어난 횟수는 독립적입니다.</li>
 </ul>
 </div>
 
@@ -2464,8 +2464,8 @@ $$
 단위시간동안 평균적으로 $\lambda$번의 사건이 일어난다고 기대될 때, 사건이 발생하기까지의 시간
 {: .text-center}
 
-를 $X$라고 하면, $X$는 exponential distribution을 따릅니다.
-다시 말해, $X$가 위의 식인 exponential PMF를 가집니다.
+을 $X$라고 하면, $X$는 exponential distribution을 따릅니다.
+다시 말해, $X$가 위의 식을 PMF로 가집니다.
 이것은 이따가 Poisson disribution과의 관계를 통해 증명하겠습니다.
 
 Bernoulli trial의 근원사건들의 의미를 죽음(death)과 생존(survival)이라고 한다면, $X$는 생존시간을 의미한다고도 볼 수 있습니다.
@@ -2536,12 +2536,12 @@ exponetial distribution도 마찬가지로 momoryless property를 가진다는 �
 이때, $s$ 시간 안에 죽을 확률, 혹은 $s$ 시간 안에 사건이 일어날 확률은 $P(X\le s)$로 쓸 수 있을 것입니다.
 exponential distribution이 memoryless property를 가진다는 것은, $t$ 시점까지 어떤 일이 일어났는지와는 상관없이, 이후의 $s$ 시간 안에 죽을 확률, 혹은 $s$ 시간 안에 사건이 일어날 확률이 $P(X\le s)$와 같다는 것입니다.
 
-이번에도 문제를 간단하게 하기 위해, $s$ 시점까지 생존했다고(사건이 발생하지 않았다고) 가정하겠습니다.
-이 가정은 $X\le s$라는 식으로 쓸 수 있습니다.
+이번에도 문제를 간단하게 하기 위해, $t$ 시점까지 생존했다고(사건이 발생하지 않았다고) 가정하겠습니다.
+이 가정은 $X\gt t$라는 식으로 쓸 수 있습니다.
 그리고 구해야 하는 확률은, $t+s$ 시점 내에 죽을(사건이 발생할) 확률입니다.
 이것은 $X\le t+s$로 쓸 수 있습니다.
 
-따라서, $t$ 시점까지 생존했다고 가정했을 때, 그 이후 $t+s$ 시점까지도 생존할 확률 ($t$ 시점까지 사건이 발생하지 않았다고 가정했을 때, 그 이후 $t+s$시점 까지도 사건이 발생하지 않을 확률)은 $P(X\le t+s|X\le t)$로 표현될 수 있습니다.
+따라서, $t$ 시점까지 생존했다고 가정했을 때, 그 이후 $t+s$ 시점까지도 생존할 확률 ($t$ 시점까지 사건이 발생하지 않았다고 가정했을 때, 그 이후 $t+s$시점 까지도 사건이 발생하지 않을 확률)은 $P(X\le t+s|X\gt t)$로 표현될 수 있습니다.
 이것이 $P(X\le s)$와 같은지를 보려고 합니다.
 
 <!-- expoential distribution은 어떤 시스템의 (혹은 어떤 상태의) 생존(survival, success)에 관한 문제와 관련있습니다.
@@ -2726,7 +2726,7 @@ $$
 즉, 좌변의 $X$는 길이가 $t$인 시간간격 동안 '실패'가 발생할 횟수이고, 우변의 $X$는 생존시간, 즉 '실패'가 처음으로 발생한 시각을 뜻합니다. -->
 
 다시 정리하면, 매시각마다 일정한 비율로 일어나는 어떤 사건이 있을 때,
-- 사건이 일어나는 시간은 exponential distribution을 따르고
+- 사건이 일어나는 데 걸리는 시간은 exponential distribution을 따르고
 - 일정한 시간간격 동안 사건이 일어난 횟수는 Poisson distribution을 따른다
 
 고 할 수 있습니다.
@@ -2748,7 +2748,7 @@ Erlang-$k$ distribution is a generalization of expoential distribution.
 
 어떤 사건이 발생하는 간격은 exponetial distribution을 따른다고 했었습니다.
 즉, 시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 발생했다면 $T_2-T_1$은 exponential distribution을 따릅니다.
-다시 말해, exponential distribution은 한 개의 사건발생간격을 고려합니다.
+다시 말해, exponential distribution은 한 개의 사건발생간격과 관련있습니다.
 
 Erlang-$2$ distribution은 두 개의 사건발생간격을 고려합니다.
 시각 $T_1$에 처음 사건이 발생하고 그 다음 사건이 시각 $T_2$에 발생하며, 또 그 다음 사건이 시각 $T_3$에 발생하면, $T_3-T_1$이 따르는 분포가 $k=2$인 Erlang distribution입니다.
@@ -2766,7 +2766,7 @@ f_X(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
 $$
 
 입니다.
-연속확률변수 $X$가 Erlang-$k$ distribution을 따를 때 $X$가 위의 PMF를 가진다는 것은 $\langle16\rangle$에서 배우는 convolution의 개념을 통해 증명할 수 있습니다. $\langle15\rangle$
+이 식은 $\langle16\rangle$에서 배우는 convolution의 개념을 통해 증명할 수 있습니다. $\langle15\rangle$
 
 **gamma function**
 
@@ -2821,7 +2821,7 @@ gamma function의 정의 ($\ast\ast$)에서 $k$는 양의 정수(자연수)로 �
 $\frac12!$을 어떻게 정의할까?
 {: .text-center}
 
-하는 질문에 $\frac12!=\Gamma(\frac12)$ 로 정의해볼 수 있는 것입니다.
+하는 질문에 $\frac12!=\Gamma(\frac32)$ 로 정의해볼 수 있는 것입니다.
 
 이제, Erlang distribution에 관한 $(\ast)$ 식이 정말로 PDF의 역할을 하는 지 살펴보기 위해 계산해보면
 
@@ -2847,7 +2847,7 @@ E[X]
 &=\int_0^\infty x\cdot\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\,dx\\
 &=\frac{\lambda^k}{(k-1)!}\underline{\int_0^\infty x^ke^{-\lambda x}\,dx}\\
 &=\frac{\lambda^k}{(k-1)!}\left(
-    \left[-\frac{x^{k-1}}\lambda e^{-\lambda x}\right]_0^\infty
+    \left[-\frac{x^k}\lambda e^{-\lambda x}\right]_0^\infty
     +\frac k{\lambda}\int_0^\infty x^{k-1}e^{-\lambda x}\,dx\right)\\
 &=\frac{\lambda^k}{(k-1)!}\left(0+\frac k{\lambda^{k+1}}
 \int_0^\infty(\lambda x)^{k-1}e^{-\lambda x}\,d(\lambda x)\right)\\
@@ -2950,7 +2950,7 @@ $$
 
 분산에 대해서도 비슷한 해석을 할 수 있다고 하는데, 사실 강의에서의 설명은 잘 이해하지는 못했습니다.
 하지만, 다음과 같이 해석하면 되지 않을까 싶습니다.
-$X^{(1)}$, $X^{(2)}$, $\cdots$, $X^{(k)}$가 모두 평균 $\mu$를 가지고 분산 $\sigma^2$를 가지는 동일한 분포를 따를 때, 이것들의 산술평균인 $\overline X = \frac1k(X^{(1)}+\cdots+X^{(k)})$는 평균이 $\mu$이고 분산이 $\frac{\sigma^2}k$임이 알려져있습니다. (표본평균의 평균과 분산)
+$X^{(1)}$, $X^{(2)}$, $\cdots$, $X^{(k)}$가 모두 평균 $\mu$를 가지고 분산 $\sigma^2$를 가지는 동일한 분포를 따를 때, 이것들의 산술평균인 $\overline X = \frac1k(X^{(1)}+\cdots+X^{(k)})$는 평균이 $\mu$이고 분산이 $\frac{\sigma^2}k$임이 알려져있습니다(표본평균의 평균과 분산).
 그러니까,
 
 $$
@@ -3020,20 +3020,28 @@ $$
 \end{align*}
 $$
 
-입니다.
+입니다. $\square$
 
 **4.10 uniform distribution**
 
 uniform distribution에 대해서도 이미 다룬 바가 있지만, 이번에는 PMF와 PDF, 평균과 분산에 대해 다시 봅니다.
 
-$X$가 uniform한 이산확률분포이고 $X$가 가질 수 있는 값이 $x_1$, $x_2$, $\cdots$, $x_n$이면 $P(X=x_1)=P(X=x_2)=\cdots=P(X=x_n)$으로부터
+$X$가 uniform한 이산확률분포이고 $X$가 가질 수 있는 값이 $x_1$, $x_2$, $\cdots$, $x_n$이면, 즉
+
+$$X\sim\text{Unif}(x_1,x_2,\cdots,x_n)$$
+
+이면, $P(X=x_1)=P(X=x_2)=\cdots=P(X=x_n)$으로부터
 
 $$
 P_X(x_i)=\frac1n\qquad(i=1,2,\cdots,n)
 $$
 
 로 $X$의 PMF가 결정됩니다.
-만약 $X$가 uniform한 연속확률분포이고 $X$가 가질 수 있는 값이 $a\le X\le b$이면
+만약 $X$가 uniform한 연속확률분포이고 $X$가 가질 수 있는 값이 $a\le X\le b$이면, 즉
+
+$$X\sim\text{Unif}\left([a,b]\right)$$
+
+이면,
 
 $$f_X(x)=c(a\le x\le b)$$
 
@@ -3049,7 +3057,7 @@ $$f_X(x)=\frac1{b-a}(a\le x\le b)$$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_8-3.png){: .img-50-center}
 
-이산확률분포의 경우 $E[X]=\frac1n(x_1+\cdots+x_n)$, ${\sigma_X}^2=\frac1n\left(\sum_i(x_i-\mu_X)^2\right)$이어서 사실 새로울 게 없습니다.
+이산확률분포의 경우 $E[X]=\frac1n(x_1+\cdots+x_n)$, ${\sigma_X}^2=\frac1n\left(\sum_i(x_i-\mu_X)^2\right)$이어서 새로울 게 없습니다.
 연속확률 변수의 경우의 평균과 분산은 $E[X]=\frac{a+b}2$, ${\sigma_X}^2=\frac{(a-b)^2}{12}$로 주어지는데, 직접 계산해보면
 
 $$
@@ -3146,10 +3154,10 @@ A^2
 &=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
 \int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
 &=\frac1{2\pi}\iint_{\mathbb R^2}e^{-\frac12(u^2+v^2)}\,du\,dv\\
-&=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
+&=\frac1{2\pi}\int_0^{2\pi}\int_0^\infty
 e^{-\frac12r^2}r\,dr\,d\theta\\
 &=\frac1{2\pi}\int_0^{2\pi}d\theta\times
-\int_{-\infty}^\infty
+\int_0^\infty
 e^{-\frac12r^2}r\,dr\\
 &=\frac1{2\pi}\times 2\pi\times\int_0^\infty
 e^{-\frac12r^2}\,d\left(\frac12r^2\right)\\
@@ -3170,10 +3178,10 @@ E[U]^2
 &=\int_{-\infty}^\infty\frac u{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
 \int_{-\infty}^\infty\frac v{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
 &=\frac1{2\pi}\iint uve^{-\frac12(u^2+v^2)}\,du\,dv\\
-&=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
+&=\frac1{2\pi}\int_0^{2\pi}\int_0^\infty
 r^2\cos\theta\sin\theta e^{-\frac12r^2}r\,dr\,d\theta\\
 &=\frac1{2\pi}\int_0^{2\pi}\cos\theta\sin\theta\,d\theta\times
-\int_{-\infty}^\infty r^3e^{-\frac12r^2}r\,dr\\
+\int_0^\infty r^3e^{-\frac12r^2}\,dr\\
 &=\frac1{2\pi}\int_0^{2\pi}\frac12\sin(2\theta)\,d\theta
 \times\int_0^\infty
 \left(\frac12r^2\right)e^{-\frac12r^2}\,d\left(\frac12r^2\right)\times2\\
@@ -3205,10 +3213,10 @@ V[U]^2
 &=\int_{-\infty}^\infty\frac{u^2}{\sqrt{2\pi}}e^{-\frac12u^2}\,du\times
 \int_{-\infty}^\infty\frac{v^2}{\sqrt{2\pi}}e^{-\frac12v^2}\,dv\\
 &=\frac1{2\pi}\iint u^2v^2e^{-\frac12(u^2+v^2)}\,du\,dv\\
-&=\frac1{2\pi}\int_0^{2\pi}\int_{-\infty}^\infty
+&=\frac1{2\pi}\int_0^{2\pi}\int_0^\infty
 r^4\cos^2\theta\sin^2\theta e^{-\frac12r^2}r\,dr\,d\theta\\
 &=\frac1{2\pi}\int_0^{2\pi}\cos^2\theta\sin^2\theta\,d\theta\times
-\int_{-\infty}^\infty r^5e^{-\frac12r^2}r\,dr\\
+\int_0^\infty r^5e^{-\frac12r^2}\,dr\\
 &=\frac1{2\pi}\int_0^{2\pi}\frac14\sin^2(2\theta)\,d\theta
 \times\int_0^\infty
 \left(\frac12r^2\right)^2e^{-\frac12r^2}\,d\left(\frac12r^2\right)\times4\\
@@ -3234,13 +3242,13 @@ discrete case에서는 mode가 최빈값, 즉 PMF의 최대점을 의미합니�
 강의에서 위의 계산도 하는 것 같은데, $du\,dv=r\,dr\,d\theta$를 설명하기 위해 Jacobian matrix도 소개되고 있습니다.
 다만 위에서 계산한 세 값 중 맨 위의 값만 계산하고 있습니다.
 
-이외에도 표준졍규분포, 표준정규분포표에 대해서도 소개되고 있습니다.
+이외에도 표준정규분포, 표준정규분포표에 대해서도 소개되고 있습니다.
 이때 $\Phi$를 표준정규분포의 CDF로 정합니다.
 즉, $Z\sim N(0,1)$일 때,
 
-$$\Phi(x)=F_Z(x)=P(Z\le x)=\int_{-\infty}^x\frac1{\sqrt{2\pi}}e^{-\frac{z^2}2}$$
+$$\Phi(x)=F_Z(x)=P(Z\le x)=\int_{-\infty}^x\frac1{\sqrt{2\pi}}e^{-\frac{z^2}2}\,dz$$
 
-입니다.
+로 정의합니다.
 
 **approximation of binomial distributions**
 
