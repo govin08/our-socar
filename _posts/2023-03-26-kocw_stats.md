@@ -1589,7 +1589,7 @@ $$
 $$
 \begin{align*}
 E[K]
-&=\sum_{k=1}^\infty kP_k(k)\\
+&=\sum_{k=1}^\infty kP_K(k)\\
 &=\sum_{k=1}^\infty k(1-p)^{k-1}p\\
 &=p+2(1-p)p+3(1-p)^2+\cdots\\
 (1-p)E[K]&=(1-p)p+2(1-p)^2p+3(1-p)^3p
@@ -2071,9 +2071,9 @@ $$P_X(x)=\binom nxp^x(1-p)^{n-x}\qquad(x=0,1,\cdots,n)$$
 
 $$
 \begin{align*}
-\sum_{x=1}^nP_X(x)
+\sum_{x=0}^nP_X(x)
 &=
-\sum_{x=1}^n\binom nxp^x(1-p)^{n-x}\\
+\sum_{x=0}^n\binom nxp^x(1-p)^{n-x}\\
 &=\left(p+(1-p)\right)^n\\
 &=1
 \end{align*}
@@ -2081,7 +2081,52 @@ $$
 
 이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 $\langle02\rangle$-(1.10.4)에 서 이미 증명했습니다.
 그 때에는 $(1+x)^n$을 미분하여 얻을 수 있는 성질로부터 증명했었습니다.
-강의에서는 표준적인 방법 (combination의 성질)으로서 증명하고 있는데, 여기에는 생략하겠습니다.
+강의에서는 표준적인 방법 (combination의 성질)으로서 증명하고 있습니다.
+
+$$
+\begin{align*}
+E[X]
+&=\sum_{x=0}^nxP_X(x)\\
+&=\sum_{x=0}^nx\binom nxp^x(1-p)^{n-x}\\
+&=\sum_{x=1}^nx\binom nxp^x(1-p)^{n-x}\\
+&\stackrel\star=\sum_{x=1}^nn\binom{n-1}{x-1}p^x(1-p)^{n-x}\\
+&=np\sum_{x=1}^nn\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)}\\
+&=np\sum_{y=0}^{n-1}\binom{n-1}yp^y(1-p)^{(n-1)-y}\\
+&=np\left(p+(p-1)\right)^{n-1}\\
+&=np\\
+E[X^2]
+&=\sum_{x=0}^nx^2P_X(x)\\
+&=\sum_{x=0}^nx^2\binom nxp^x(1-p)^{n-x}\\
+&=\sum_{x=0}^n(x^2-x)\binom nxp^x(1-p)^{n-x}+\sum_{x=0}^nx\binom nxp^x(1-p)^{n-x}\\
+&\stackrel{\star\star}=\sum_{x=2}^nx(x-1)\binom nxp^x(1-p)^{n-x}+np\\
+&=\sum_{x=2}^nn(n-1)\binom{n-2}{x-2}p^x(1-p)^{n-x}+np\\
+&=n(n-1)p^2\sum_{x=2}^n\binom{n-2}{x-2}p^{x-2}(1-p)^{(n-2)-(x-2)}+np\\
+&=n(n-1)p^2\sum_{y=0}^{n-2}\binom{n-2}yp^y(1-p)^{(n-2)-y}+np\\
+&=n(n-1)p^2\left(p+(1-p)\right)^{n-2}+np\\
+&=n(n-1)p^2+np\\
+&=n^2p^2-np^2+np\\
+V[X]
+&=E[X^2]-E[X^2]\\
+&=n^2p^2-np^2+np-(np)^2\\
+&=np-np^2\\
+&=np(1-p)
+\end{align*}
+$$
+
+위의 계산들 중 $\star$와 $\star\star$는 combination의 성질을 사용한 것입니다.
+$\star$만 증명하면
+
+$$
+\begin{align*}
+x\binom nx
+&=x\times\frac{n!}{x!(n-x)!}\\
+&=n\times\frac{(n-1)!}{(x-1)!((n-1)-(x-1))!}\\
+&=n\binom{n-1}{x-1}
+\end{align*}
+$$
+
+입니다.
+$\star\star$도 마찬가지의 방법으로 하면 쉽게 증명될 수 있습니다.
 
 **4.4 geometric distribution**
 
