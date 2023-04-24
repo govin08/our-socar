@@ -24,7 +24,8 @@ author_profile: false
 중요한 식을 나타낼 때에는 $(\ast)$, $(\ast\ast)$, $(\ast\ast\ast)$와 같은 기호를 사용했습니다.
 이 식번호는 회차마다 초기화됩니다.
 
-내용이 길다보니, 페이지의 모든 수식이 완전히 조판되는 데에는 1분 이내의 시간이 걸립니다.
+21강의 내용을 모두 한 포스트에 넣으려다보니 내용이 상당히 방대합니다.
+그래서, 페이지의 모든 수식이 완전히 조판되는 데에는 약간의 시간(1분)이 걸립니다.
 
 # 01 조건부확률과 Bayes 정리
 
@@ -600,11 +601,7 @@ $$n!=g(n)\left(\frac ne\right)^n$$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_2-2.png){: .img-50-center}
 
-<<<<<<< HEAD
 여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, $R_n(t)$ 이 시스템의 reliability는
-=======
-여러 개의 독립적인 모듈 $C_1$, $\cdots$, $C_n$ 들이 직렬로 연결되어 있고(cascade) 각 모듈들의 reliabilty가 $R_1(t)$, $\cdots$, $R_n(t)$일 때, 이 시스템의 reliability는
->>>>>>> cbcedb43c793fe680a6e3e42f8ed03652d1c09c7
 
 $$\prod_{i=1}^nR_i(t)$$
 
@@ -646,15 +643,9 @@ $$
 
 **2.2 definition of random variables**
 
-<<<<<<< HEAD
 언제나 확률변수의 개념을 정확히 이해하는 건 쉬운 일은 아닌 것 같습니다.
 한 번 볼 때마다 완벽히 이해한다고 생각하지만, 어찌된 것인지 볼때마다 새로운 것 같습니다.
 그래도 다시 한 번 강의를 보며 다시 한 번 이해해봤습니다.
-=======
-언제나 확률변수의 개념을 정확히 이해하는 건 결코 쉬운 일은 아닌 것 같습니다.
-매번 충분할 정도로 이해하고 넘어가려고 노력하는데도 불구하고 볼때마다 새로운 것 같습니다.
-그래도 강의를 보며 다시 한 번 이해해봤습니다.
->>>>>>> cbcedb43c793fe680a6e3e42f8ed03652d1c09c7
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_3-1.png){: .img-50-center}
 
@@ -1882,24 +1873,28 @@ conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
 학부때 확률론을 계속해서 피해다녔더니, 이제서야 보게 되었습니다.
 
 그런데, 아주 재미있는 부등식인 것 같습니다.
-확률변수 $X$와 양의 실수 $a$에 대하여
+확률변수 $X$와 양의 실수 $a$에 대하여 아래의 부등식이 성립합니다.
+이것을 Chevysev inequality라고 부릅니다.
 
 $$
 P\left(\big|X-E[X]\big|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
 $$
 
-입니다.
 $X$가 평균으로부터 어느 정도의 간격($a$) 이상 떨어져있을 확률은 그 간격에 의존하는 어떤 값$\left(\frac{\,{\sigma_X}^2}{a^2}\right)$보다 작다는 뜻입니다.
 
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-1.png){: .img-70-center}
+
 예를 들어 $a=2\sigma_X$인 경우에 있어서의 Chebysev inequality는 $X$가 2-sigma 바깥에 있을 확률이 $\frac14$보다 작다는 것을 의미합니다.
+다시 말해, 아래 그림에서 하늘색으로 표시된 부분의 면적이 $\frac14$보다 작다는 것입니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-1.png){: .img-100-center}
 
 이 부등식이 아주 tight한 것 같지는 않습니다.
 만약, $X$가 정규분포를 따른다면, $a=2\sigma_X$에 대한 확률은
 
 $$
 \begin{align*}
-P\left(|X-E[X]|\ge a\right)
-&=P\left(|X-E[X]|\ge2\sigma_X\right)\\
+P\left(|X-E[X]|\ge2\sigma_X\right)
 &=P\left(|Z|\ge2\right)\\
 &=2\left(1-P\left(0\le Z\le2\right)\right)\\
 &=2(0.5-0.47725)\\
@@ -1911,7 +1906,7 @@ $$
 그러니까, Chevysev inequailty를 통해 얻는 확률의 upper bound는 0.25였는데, 실제 확률의 값은 0.0455입니다.
 따라서 이 경우는 Chevysev inequality의 결과를 (당연히) 만족시키기는 합니다.
 근데 그 결과라는 게 실제값보다는 너무 크다는 것입니다.
-그런 의미에서 Chevysev inequality는 어떤 확률에 대한 일반적인 upper bound를 제시하는 것이라고 이해해야 할 것 같습니다.
+그런 의미에서 Chevysev inequality는 모든 종류의 확률변수에 대하여 일반적인 upper bound를 제시하는 것이라고 이해해야 할 것 같습니다.
 
 연속확률변수에 대한 Chevysev inequality는, ${\sigma_X}^2$을 들여다보면 쉽게 증명됩니다.
 
@@ -1943,6 +1938,30 @@ $$
 (되는데?)
 "expectation 값이 random variable이 아닐 수도 있다"는 말씀이 무슨 의미인지 잘 모르겠습니다.
 [이 사람](https://zhengtianyu.wordpress.com/2014/01/04/proof-of-chebyshevs-inequality/)은 제가 한 것과 똑같은 증명을 적어놓았고, [wikipedia](https://en.wikipedia.org/wiki/Chebyshev%27s_inequality)에는 conditional expectation의 성질을 사용하여 (그러니까 summation이나 integral을 사용하지 않고) 증명했습니다.
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-3.png){: .img-50-center}
+
+이번에는 discrete uniform한 경우의 예를 살펴봤습니다.
+$X$가 집합 $\\{1,2,3,4,5,6,7\\}$의 uniform distribution을 따를 때, $X$의 평균은
+
+$$E[X]=4$$
+
+이고, 표준편차는
+
+$$\sigma_X=\sqrt{\frac17\left(9+4+1+0+1+4+9\right)}=2$$
+
+입니다.
+Chevysev inequality의 식
+
+$$
+P\left(\big|X-E[X]\big|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
+$$
+
+에서 $a=2.5$를 대입하면
+
+$$\frac27\le\frac2{2.5}$$
+
+가 되어, Chevysev inequality가 여전히 성립합니다.
 
 **Chapter 4. Special Distributions**
 
@@ -2007,7 +2026,7 @@ $$
 
 입니다.
 
-예를 들어, 동전을 하나 던졌을 때 앞면이 나오면 $x=1$로 정하고 뒷면이 나오면 $x=0$으로 정하면, 
+예를 들어, 동전을 하나 던졌을 때 앞면이 나오면 $X=1$로 정하고 뒷면이 나오면 $X=0$으로 정하면, 
 이 시행은 Bernoulli trial이고 ; $S=\\{H,T\\}$, $|S|=2$, $X$의 분포는 Bernoulli distribution입니다.
 그리고 $X$는
 
