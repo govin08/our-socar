@@ -1890,7 +1890,7 @@ $$
 P\left(\big|X-E[X]\big|\ge 2\sigma_X\right)\le\frac14
 $$
 
-다시 말해, 아래 그림에서 하늘색으로 표시된 부분의 면적이 $\frac14$보다 작다는 것입니다.
+만약 정규분포의 상황을 가정하면, 아래 그림에서 하늘색으로 표시된 부분의 면적이 $\frac14$보다 작다는 것입니다.
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-2.png){: .img-100-center}
 
@@ -1944,7 +1944,7 @@ $$
 "expectation 값이 random variable이 아닐 수도 있다"는 말씀이 무슨 의미인지 잘 모르겠습니다.
 [이 사람](https://zhengtianyu.wordpress.com/2014/01/04/proof-of-chebyshevs-inequality/)은 제가 한 것과 똑같은 증명을 적어놓았고, [wikipedia](https://en.wikipedia.org/wiki/Chebyshev%27s_inequality)에는 conditional expectation의 성질을 사용하여 (그러니까 summation이나 integral을 사용하지 않고) 증명했습니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-3.png){: .img-50-center}
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_7-3.png){: .img-70-center}
 
 이번에는 discrete uniform한 경우의 예를 살펴봤습니다.
 $X$가 집합 $\\{1,2,3,4,5,6,7\\}$의 uniform distribution을 따를 때, $X$의 평균은
