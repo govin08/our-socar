@@ -1910,7 +1910,7 @@ $$
 입니다([표준정규분포표](https://ko.wikipedia.org/wiki/%ED%91%9C%EC%A4%80%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC%ED%91%9C)의 값을 활용했습니다.)
 그러니까, Chevysev inequailty를 통해 얻는 확률의 upper bound는 0.25였는데, 실제 확률의 값은 0.0455입니다.
 따라서 이 경우는 Chevysev inequality의 결과를 (당연히) 만족시키기는 합니다.
-근데 그 결과라는 게 실제값보다는 너무 크다는 것입니다.
+그런데 그 결과라는 게 실제값보다 꽤 큽니다.
 그런 의미에서 Chevysev inequality는 모든 종류의 확률변수에 대하여 일반적인 upper bound를 제시하는 것이라고 이해해야 할 것 같습니다.
 
 연속확률변수에 대한 Chevysev inequality는, ${\sigma_X}^2$을 들여다보면 쉽게 증명됩니다.
@@ -2103,7 +2103,7 @@ $$
 \end{align*}
 $$
 
-이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 $\langle02\rangle$-(1.10.4)에 서 이미 증명했습니다.
+이항분포의 평균과 분산이 각각 $np$, $np(1-p)$이라는 것은 $\langle02\rangle$-(1.10.4)에서 이미 증명했습니다.
 그 때에는 $(1+x)^n$을 미분하여 얻을 수 있는 성질로부터 증명했었습니다.
 강의에서는 표준적인 방법 (combination의 성질)으로 증명하고 있습니다.
 
@@ -2151,6 +2151,44 @@ $$
 
 입니다.
 $\star\star$도 마찬가지의 방법으로 하면 쉽게 증명될 수 있습니다.
+
+강의에서는, 이 증명방법보다 더 간결한 증명방식도 소개합니다.
+함수 $f$를
+
+$$f(t)=\left(pt+(1-p)\right)^n=\sum_{x=0}^n\binom nxp^xt^x(1-p)^{n-x}$$
+
+와 같이 정의하고, $f'(1)$와 $f''(1)$을 각각 계산해보면
+
+$$
+\begin{align*}
+f'(t)&=np\left(pt+(1-p)\right)^{n-1}&&=\sum_{x=0}^nx\binom nxp^xt^{x-1}(1-p)^{n-x}\\
+f'(1)&=np\left(p+(1-p)\right)^{n-1}&&=\sum_{x=0}^nx\binom nxp^x(1-p)^{n-x}\\
+&=np&&=E[X]\\
+f''(t)&=n(n-1)p^2\left(pt+(1-p)\right)^{n-2}&&=\sum_{x=0}^nx(x-1)\binom nxp^xt^{x-2}(1-p)^{n-x}\\
+f''(1)&=np\left(p+(1-p)\right)^{n-1}&&=\sum_{x=0}^nx(x-1)\binom nxp^x(1-p)^{n-x}\\
+&=n(n-1)p^2&&=E[X^2]-E[X]\\
+\end{align*}
+$$
+
+이 됩니다.
+마지막 식을 정리하면
+
+$$E[X^2]=n^2p^2-np^2+np$$
+
+가 되고, 이것으로 ${\sigma_X}^2$을 구하면
+
+$$
+\begin{align*}
+{\sigma_X}^2
+&=E[X^2]-E[X]^2\\
+&=(n^2p^2-np^2+np)-n^2p^2\\
+&=-np^2+np\\
+&=np(1-p)
+\end{align*}
+$$
+
+입니다.
+이와 같이 binomal distribution의 평균과 표준편차를 구할 수 있습니다.
 
 **4.4 geometric distribution**
 
