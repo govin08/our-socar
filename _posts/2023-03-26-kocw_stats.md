@@ -1874,7 +1874,7 @@ conditional PDF로 바로 변환되는 것이 아니기 때문입니다.
 
 그런데, 아주 재미있는 부등식인 것 같습니다.
 확률변수 $X$와 양의 실수 $a$에 대하여 아래의 부등식이 성립합니다.
-이것을 Chevysev inequality라고 부릅니다.
+이것을 Chebysev inequality라고 부릅니다.
 
 $$
 P\left(\big|X-E[X]\big|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
@@ -1908,12 +1908,12 @@ P\left(|X-E[X]|\ge2\sigma_X\right)
 $$
 
 입니다([표준정규분포표](https://ko.wikipedia.org/wiki/%ED%91%9C%EC%A4%80%EC%A0%95%EA%B7%9C%EB%B6%84%ED%8F%AC%ED%91%9C)의 값을 활용했습니다.)
-그러니까, Chevysev inequailty를 통해 얻는 확률의 upper bound는 0.25였는데, 실제 확률의 값은 0.0455입니다.
-따라서 이 경우는 Chevysev inequality의 결과를 (당연히) 만족시키기는 합니다.
+그러니까, Chebysev inequailty를 통해 얻는 확률의 upper bound는 0.25였는데, 실제 확률의 값은 0.0455입니다.
+따라서 이 경우는 Chebysev inequality의 결과를 (당연히) 만족시키기는 합니다.
 그런데 그 결과라는 게 실제값보다 꽤 큽니다.
-그런 의미에서 Chevysev inequality는 모든 종류의 확률변수에 대하여 일반적인 upper bound를 제시하는 것이라고 이해해야 할 것 같습니다.
+그런 의미에서 Chebysev inequality는 모든 종류의 확률변수에 대하여 일반적인 upper bound를 제시하는 것이라고 이해해야 할 것 같습니다.
 
-연속확률변수에 대한 Chevysev inequality는, ${\sigma_X}^2$을 들여다보면 쉽게 증명됩니다.
+연속확률변수에 대한 Chebysev inequality는, ${\sigma_X}^2$을 들여다보면 쉽게 증명됩니다.
 
 $$
 \begin{align*}
@@ -1956,7 +1956,7 @@ $$E[X]=4$$
 $$\sigma_X=\sqrt{\frac17\left(9+4+1+0+1+4+9\right)}=2$$
 
 입니다.
-Chevysev inequality의 식
+Chebysev inequality의 식
 
 $$
 P\left(\big|X-E[X]\big|\ge a\right)\le\frac{\,{\sigma_X}^2}{a^2}
@@ -1964,9 +1964,9 @@ $$
 
 에서 $a=2.5$를 대입하면
 
-$$\frac27\le\frac2{2.5}$$
+$$\frac27\le\frac{2^2}{2.5^2}$$
 
-가 되어, Chevysev inequality가 여전히 성립합니다.
+가 되어, Chebysev inequality가 여전히 성립합니다.
 
 **Chapter 4. Special Distributions**
 
@@ -2122,8 +2122,8 @@ E[X^2]
 &=\sum_{x=0}^nx^2P_X(x)\\
 &=\sum_{x=0}^nx^2\binom nxp^x(1-p)^{n-x}\\
 &=\sum_{x=0}^n(x^2-x)\binom nxp^x(1-p)^{n-x}+\sum_{x=0}^nx\binom nxp^x(1-p)^{n-x}\\
-&\stackrel{\star\star}=\sum_{x=2}^nx(x-1)\binom nxp^x(1-p)^{n-x}+np\\
-&=\sum_{x=2}^nn(n-1)\binom{n-2}{x-2}p^x(1-p)^{n-x}+np\\
+&=\sum_{x=2}^nx(x-1)\binom nxp^x(1-p)^{n-x}+np\\
+&\stackrel{\star\star}=\sum_{x=2}^nn(n-1)\binom{n-2}{x-2}p^x(1-p)^{n-x}+np\\
 &=n(n-1)p^2\sum_{x=2}^n\binom{n-2}{x-2}p^{x-2}(1-p)^{(n-2)-(x-2)}+np\\
 &=n(n-1)p^2\sum_{y=0}^{n-2}\binom{n-2}yp^y(1-p)^{(n-2)-y}+np\\
 &=n(n-1)p^2\left(p+(1-p)\right)^{n-2}+np\\
@@ -3870,7 +3870,7 @@ $$f_{X|Y}(x|y)=\frac{f_{XY}(x,y)}{f_Y(y)}$$
 $\langle06\rangle$에서 (일반적인) conditional expectation은 (continuous case)
 
 $$
-E[X|\le a]=\int_{x\le a}xf_X(x|x\le a)\,dx
+E[X|X\le a]=\int_{x\le a}xf_X(x|X\le a)\,dx
 $$
 
 와 같이 정의했었습니다.
@@ -3879,7 +3879,7 @@ $$
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_11-4.png){: .img-50-center}
 
 이번에 다루는 것은 (그러니까, 일반적인 conditional expectation이 아니라는 말은) $E[Y\vert A]$에서 $A$가 $X$에 대한 조건인 경우입니다 ; $E[Y\vert A_X]$
-
+다시 말해, $\langle06\rangle$에서는 $X$에 대한 조건 하에 $X$의 평균을 계산했다면, 이번에는 $X$에 대한 조건 하에 $Y$의 평균을 계산합니다.
 자세한 것은 다음 강의에서 이어집니다.
 
 <!-- **독립과 종속**
@@ -3952,14 +3952,13 @@ $$E[Y|X](w)=E[Y|X=X(w)]$$
 </div>
 
 이제 강의를 따라서 $E[Y|X=x]$의 정의를 적어보겠습니다.
-아래 식에서 첫번째 등호가 정의이고, 이후의 식들은 이전에 언급한 사실들을 적용한 것입니다.
+아래 식에서 첫번째 등호가 정의이고, 두번째 등호는 conditional PMF의 성질을 사용한 것입니다.
 
 $$
 \begin{align*}
 E[Y|x=x]
 &=\int_\mathbb Ryf_{Y|X}(x,y)\,dy\\
-&=\int_\mathbb Ry\frac{f_{XY}(x,y)}{f_X(x)}\,dy\\
-&=g(x)
+&=\int_\mathbb Ry\frac{f_{XY}(x,y)}{f_X(x)}\,dy
 \end{align*}
 $$
 
@@ -4071,8 +4070,8 @@ $$
 $$
 \begin{align*}
 E[X|Y=y]
-&=\int_0^\infty xf_{XY}(x,y)\,dx\\
-&=\int_0^\infty x\frac{f_{X|Y}(x,y)}{f_Y(y)}\,dx\\
+&=\int_0^\infty xf_{X|Y}(x,y)\,dx\\
+&=\int_0^\infty x\frac{f_{XY}(x,y)}{f_Y(y)}\,dx\\
 &=\int_0^\infty x\times\frac{\frac1ye^{-\frac xy}e^{-y}}{e^{-y}}\,dx\\
 &=\int_0^\infty\left(\frac xy\right)e^{-\frac xy}\,dx\\
 &=y\int_0^\infty\left(\frac xy\right)e^{-\frac xy}\,d\left(\frac xy\right)\\
@@ -4082,7 +4081,7 @@ E[X|Y=y]
 $$
 
 입니다.
-중간 계산과정에서 $\int te^{-t}\,dt=-te^{-t}-e^{-t}$를 활용했습니다.
+중간 계산과정에서 $\int te^{-t}\,dt=-te^{-t}-e^{-t}+C$를 활용했습니다.
 
 이번에는, 확률변수 $X$에 대하여 $g(X)$의 확률을 구하는 식이 강의에 소개됩니다.
 이것은 $\langle05\rangle$에서 LOTUS(law of the unconscious statistician)라는 이름으로 언급한 적이 있는 식입니다;
@@ -4264,7 +4263,7 @@ $$
 가 되어 식 $(\ast\ast\ast)$의 우변이 0이 되기 때문입니다.
 
 하지만, uncorrelatedness가 독립성을 보장하지는 않습니다.
-그 [반례](https://stats.stackexchange.com/q/85384)로, $X$가 $\\{-1,0,1\\}$의 uniform distribution이고 $Y=3X^2-1$이면, $X$와 $Y$는 uncorrelated하지만 독립조건이 깨집니다.
+그 [반례](https://stats.stackexchange.com/q/85384)로, $X$가 $\\{-1,0,1\\}$의 uniform distribution이고 $Y=3X^2-2$이면, $X$와 $Y$는 uncorrelated하지만 독립조건이 깨집니다.
 $P_X(x)$는
 
 $$
@@ -4279,8 +4278,8 @@ $$
 
 $$
 \begin{align*}
-P_Y(-1) &=\frac13\\[10pt]
-P_Y(2)  &=\frac23
+P_Y(-2) &=\frac13\\[10pt]
+P_Y(1)  &=\frac23
 \end{align*}
 $$
 
@@ -4290,8 +4289,8 @@ $$
 $$
 \begin{matrix}
         &X=-1           &X=0            &X=1            \\[20pt]
-Y=-1    &P_{XY}=0       &P_{XY}=\frac13 &P_{XY}=0       \\[20pt]
-Y=2     &P_{XY}=\frac13 &P_{XY}=0       &P_{XY}=\frac13
+Y=-2    &P_{XY}=0       &P_{XY}=\frac13 &P_{XY}=0       \\[20pt]
+Y=1     &P_{XY}=\frac13 &P_{XY}=0       &P_{XY}=\frac13
 \end{matrix}
 $$
 
@@ -4301,7 +4300,7 @@ $$
 \begin{align*}
 E[(X-\mu_X)(Y-\mu_Y)]
 &=E[XY]\\
-&=0\times(-1)\times\frac13+(-1)\times2\times\frac13+1\times2\times\frac13\\
+&=2\times\frac13+0\times\frac13+(-2)\times\frac13\\
 &=0
 \end{align*}
 $$
@@ -4312,15 +4311,15 @@ $$
 $$
 \begin{align*}
 P(X=-1)     &=\frac13\\
-P(Y=-1)     &=\frac13\\
-P(X=-1,Y=-1)&=0
+P(Y=1)     &=\frac13\\
+P(X=-1,Y=1)&=0
 \end{align*}
 $$
 
-이 되어 $P(X=-1)P(Y=-1)\ne P(X=-1,Y=-1)$이고, 따라서 $X$와 $Y$는 독립이 아닙니다.
+이 되어 $P(X=-1)P(Y=1)\ne P(X=-1,Y=1)$이고, 따라서 $X$와 $Y$는 독립이 아닙니다.
 
 이 반례는, correlated라는 뜻이 "두 확률변수가 연관되어있다"는 것이 아니라는 것도 알려줍니다.
-실제로 위와 같은 $X$와 $Y$는 $Y=3X^2-1$와 같은 '연관성'이 분명히 있는데도 불구하고 uncorrelated인 것입니다.
+실제로 위와 같은 $X$와 $Y$는 $Y=3X^2-2$와 같은 '연관성'이 분명히 있는데도 불구하고 uncorrelated인 것입니다.
 
 한편, correlation coefficient(상관계수)를 
 
