@@ -4300,7 +4300,7 @@ $$
 \begin{align*}
 E[(X-\mu_X)(Y-\mu_Y)]
 &=E[XY]\\
-&=2\times\frac13+0\times\frac13+(-2)\times\frac13\\
+&=(-1)\times\frac13+0\times\frac13+1\times\frac13\\
 &=0
 \end{align*}
 $$
@@ -4311,12 +4311,12 @@ $$
 $$
 \begin{align*}
 P(X=-1)     &=\frac13\\
-P(Y=1)     &=\frac13\\
-P(X=-1,Y=1)&=0
+P(Y=-2)     &=\frac13\\
+P(X=-1,Y=-2)&=0
 \end{align*}
 $$
 
-이 되어 $P(X=-1)P(Y=1)\ne P(X=-1,Y=1)$이고, 따라서 $X$와 $Y$는 독립이 아닙니다.
+이 되어 $P(X=-1)P(Y=-2)\ne P(X=-1,Y=-2)$이고, 따라서 $X$와 $Y$는 독립이 아닙니다.
 
 이 반례는, correlated라는 뜻이 "두 확률변수가 연관되어있다"는 것이 아니라는 것도 알려줍니다.
 실제로 위와 같은 $X$와 $Y$는 $Y=3X^2-2$와 같은 '연관성'이 분명히 있는데도 불구하고 uncorrelated인 것입니다.
@@ -4331,9 +4331,12 @@ $$
 이 값은 두 확률변수가 선형적인 상관관계 (양의 상관관계 / 음의 상관관계)가 얼마나 있는지를 나타내는 지표입니다.
 
 $\rho_{XY}$에 대하여 확인해보는 것은 다음의 두 가지입니다.
-이 두가지 사실을 $X$, $Y$가 이산확률변수일때와 연속확률변수일 때에 대하여 증명해봅니다.
-- $-1\le\rho_{XY}\le1$
-- $X$, $Y$가 선형적인 관계 ($Y=aX+b$)를 가지면 $\rho_{XY}=1(a>0)$, $\rho_{XY}=-1(a<0)$입니다.
+이 두 가지 사실을 $X$, $Y$가 이산확률변수일때와 연속확률변수일 때에 대하여 증명해봅니다.
+
+<ol>
+    <li>$-1\le\rho_{XY}\le1$</li>
+    <li>$X$, $Y$가 선형적인 관계 ($Y=aX+b$)를 가지면 $\rho_{XY}=1(a>0)$, $\rho_{XY}=-1(a<0)$입니다.</li>
+</ol>
 
 $-1\le\rho_{XY}\le1$에 대한 증명은 Cauchy-Scwarz inequality로부터 도출되는데, 증명이 길지 않기는 하지만 식이 꽤 복잡할 수 있습니다.
 그래서, 간단한 경우를 먼저 보겠습니다.
@@ -4351,7 +4354,7 @@ P_{XY}(x_n,y_n)&=\frac1n\\
 \end{align*}
 $$
 
-인 굉장히 간단한 경우에
+인 굉장히 간단한 경우(discrete uniform distribution)에
 
 $$
 \begin{align*}
@@ -4408,15 +4411,15 @@ $$1\ge\frac{\left|\sigma_{XY}\right|}{\sigma_X\sigma_Y}=|\rho_{XY}|$$
 
 $$
 \begin{align*}
-x&=(x_1,\cdots,x_n)\\
-y&=(y_1,\cdots,x_y)
+a&=(a_1,\cdots,a_n)\\
+b&=(b_1,\cdots,b_n)
 \end{align*}
 $$
 
-에 대한 Cauchy Schwarz inequality인 $|x\cdot y|\le||x||\cdot||y|$ 로부터 결과를 얻은 셈입니다.
+에 대한 Cauchy Schwarz inequality인 $|a\cdot b|\le||a||\cdot||b||$ 로부터 결과를 얻은 셈입니다.
 이것이, 가장 간단한 경우에 대한 증명입니다.
 
-$\langle$ 연속확률분포 $\rangle$
+$\langle$ 이산확률분포 $\rangle$
 
 두 이산확률변수 $X$와 $Y$에 대해서 $X$가 가질 수 있는 값들의 집합을 $C_x$라고 하고, $Y$가 가질 수 있는 값들의 집합을 $C_y$라고 하면, 두 집합의 cartesian product $C_x\times C_y$는 countable이고, 따라서 $C_x\times C_y$를
 
@@ -4430,7 +4433,7 @@ $$C_x\times C_y=\{(x_1,y_1),(x_2,y_2),\cdots\}$$
 $$
 \begin{align*}
 x&=\left((x_1-\mu_X)\sqrt{P_{XY}(x_1,y_1)}~~,(x_2-\mu_X)\sqrt{P_{XY}(x_2,y_2)},~~\cdots,~~(x_n-\mu_X)\sqrt{P_{XY}(x_n,y_n)}\right)\\
-y&=\left((y_1-\mu_Y)\sqrt{P_{XY}(x_1,y_1)}~~,(x_2,y_2-\mu_Y)\sqrt{P_{XY}(x_2,y_2)},~~\cdots,~~(y_n-\mu_Y)\sqrt{P_{XY}(x_n,y_n)}\right)\\
+y&=\left((y_1-\mu_Y)\sqrt{P_{XY}(x_1,y_1)}~~,(y_2-\mu_Y)\sqrt{P_{XY}(x_2,y_2)},~~\cdots,~~(y_n-\mu_Y)\sqrt{P_{XY}(x_n,y_n)}\right)\\
 \end{align*}
 $$
 
@@ -4470,14 +4473,14 @@ $$-1\le\rho_{XY}\le1$$
 이 됩니다.
 또한, $\rho_{XY}=1$인 경우는 두 벡터 $x$, $y$가 같은 방향을 향할 경우이고, $\rho_{XY}=-1$인 경우는 반대 방향을 향할 경우를 말한다는 것도 바로 알 수 있습니다.
 
-$\langle$ 연속확률변수 $\rangle$
+$\langle$ 연속확률분포 $\rangle$
 
-$X$, $Y$가 이산확률변수일 경우 $\vert\rho_{XY}\vert\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 innper product space라는 사실로부터 나옵니다.
+$X$, $Y$가 이산확률변수일 경우 $\vert\rho_{XY}\vert\le1$인 사실에 대한 증명은 $\mathbb R^n$과 $\mathbb R^\infty$가 벡터공간이고, 더 나아가 inner product space라는 사실로부터 나옵니다.
 
 $X$, $Y$가 연속확률변수이면, 조금 더 거대한 벡터공간인 함수공간(function space)을 생각해야 합니다.
 함수공간
 
-$$\mathbb H=\left\{f\mid f\text{는 }\mathbb R^2\to\mathbb R\text{인 함수}
+$$\mathbb H=\left\{f\mid f\text{는 }\mathbb R^2\to\mathbb R\text{인 연속함수}
 \right\}$$
 
 은 벡터공간을 이루고, 어떤 의미에서는 그 차원이 $\mathbb R^\infty$보다도 더 큽니다.
@@ -4516,9 +4519,17 @@ $$
 $$-1\le\rho_{XY}\le1$$
 
 가 성립합니다.
+이로써, 첫번째 사실인 $-1\le\rho_{XY}\le1$이  증명되었습니다.
+$\square$
 
-강의의 마지막에는 $X$와 $Y=aX+b$일 경우에 $\vert\rho_{XY}\vert=1$이며, $a\gt0$일 때 $\rho_{XY}=1$, $a\lt0$일 때 $\rho_{XY}=-1$이라는 사실이 언급되고 있습니다.
-이것에 대한 증명은 $X$, $Y$가 이산확률변수인지 아니면 연속확률변수와는 상관없이 한번에 증명됩니다 ;
+다음으로, 두번째 사실을 증명해봅니다.
+즉,
+
+$X$와 $Y=aX+b$이면 $\vert\rho_{XY}\vert=1$이며, $a\gt0$일 때 $\rho_{XY}=1$, $a\lt0$일 때 $\rho_{XY}=-1$이다
+{: .text-center}
+
+라는 것을 살펴봅니다.
+이것은 $X$, $Y$가 이산확률변수인지 아니면 연속확률변수와는 상관없이 한번에 증명됩니다 ;
 
 $$
 \begin{align*}
@@ -4548,11 +4559,10 @@ $$
 
 # 13 상관계수와 연합확률분포
 
-13강부터는 내용을 아주 완전히 이해하면서 적기가 조금 힘들어보입니다.
+13강부터는 내용이 조금 어려워지는 것처럼 보입니다.
 그래서 며칠간이나 진도를 나가지 못했습니다.
 결국은 내용을 완전히 이해해서 12강까지 정리한 방식으로 쓸 예정이지만, 그전에 강의의 내용들을 단순히 적어보는 과정이 있어야 할 것 같습니다.
 13강부터 16강까지는 먼저 강의의 내용을 literal하게 적고 추후에 그 내용을 변형해나가겠습니다.
-
 
 지난 강의에서 두 확률변수 $X$, $Y$에 대한 covariance(공분산) $\sigma_{XY}$, correlation coefficient(Pearson correlation coefficient, 피어슨 상관계수, 상관계수) $\rho_{XY}$를 다음과 같이 정의했었습니다.
 
@@ -4623,7 +4633,7 @@ $$(x_i-\mu_X)(y_i-\mu_Y)\lt0$$
 
 **5.8 many joint random variables**
 
-확률변수 $X_1$, $X_2$, $\cdots$, $X_n$에 대하여, 다음과 같은 확률햠수(PMF, PDF)를 생각해볼 수 있습니다.
+확률변수 $X_1$, $X_2$, $\cdots$, $X_n$에 대하여, 다음과 같은 확률함수(PMF, PDF)를 생각해볼 수 있습니다.
 
 $$
 \begin{align*}
@@ -4664,9 +4674,7 @@ f_{X_n\vert X_{n-1},X_{n-2},\cdots,X_1}\left(x_n\vert x_{n-1},x_{n-2},\cdots,x_1
 $$
 
 와 같은 식을 만족시킵니다.
-사실 위 식의 continuous case에 대한 등식에서 처음 두 값이 같다는 것이 강의의 칠판에 적혀있습니다.
-하지만, 분모가 0이 될 수 있으므로, 이 정의는 엄밀하지 않을 것 같습니다.
-대신, 첫번째 값에 대한 정의를 세번째 값으로 한다면, 괜찮은 정의가 될 것 같습니다.
+위 식의 continuous case에 대한 등식에서 처음 두 값이 같다는 것만 강의의 칠판에 적혀있습니다.
 
 강의에서는 이러한 여러 개의 확률변수가 통신공학이나 역학에서 어떻게 활용되는지가 더 설명됩니다.
 위와 같이 확률변수 여러 개의 확률변수들 (혹은 그것들의 집합)을 확률과정(stochastic process)이라고 합니다.
@@ -4714,13 +4722,13 @@ $$P_X(x)=\binom nxp^x(1-p)^{n-x},\quad(x=0,1,2,\cdots,n)$$
 
 를 PMF로 가진다고 했었습니다.
 이때, PMF의 식에 $\binom nx$와 같은 조합의 수가 나타났었습니다.
-한편, $\langle07\rangle$에서 조합의 수는 '같은 것이 포함된 순열'의 특수한 경우라고 했었습니다.
+한편, $\langle02\rangle$에서 조합의 수는 '같은 것이 포함된 순열'의 특수한 경우라고 했었습니다.
 
 만약, binomial distribution에서 Bernoulli trial (binary trial)이었던 것을 multinary trial로 바꾸면 multinomial distribution이라고 하는 개념을 생각해볼 수 있고, 그때 조합의 수 대신 '같은 것이 포함된 순열'이 나타납니다.
 
-다시 말해, 하나의 시행에서 나올 수 있는 outcome의 개수가 (2개가 아닌) 여러개인 경우를 생각해볼 수 있습니다.
+다시 말해, 하나의 시행에서 나올 수 있는 outcome의 개수가 (2개가 아닌) 여러 개인 경우를 생각해볼 수 있습니다.
 대표적으로 trinomial distribution의 경우 (outcome의 개수가 3개인 경우)를 보겠습니다.
-결과가 $A$, $B$, $C$로 나타날 수 있는 어떤 시행(trinary trial)을 독립적으로 $n$번 시행할 때,
+결과가 $A$, $B$, $C$로 나타날 수 있는 어떤 시행(ternary trial)을 독립적으로 $n$번 시행할 때,
 각 시행에서 $A$가 나타날 확률을 $p_A$, $B$가 나타날 확률을 $p_B$라고 하면 $C$가 나타날 확률은 $1-p_A-p_B$입니다.
 $A$가 $N_A$번, $B$가 $N_B$번 나타난다고 할 때, $N_A$, $N_B$는 각각 이산확률변수이고, 그 joint PMF가
 
@@ -4754,7 +4762,7 @@ $$\binom n{n_1,n_2,\cdots,n_k}=\frac{n!}{n_1!n_2!\cdots n_k!}$$
 <br>
 비슷한 맥락에서 이항정리(binomial theorem)에 대응되는 <a href="https://en.wikipedia.org/wiki/Multinomial_distribution"> 다항정리(multinomial theorem) </a> 도 생각해볼 수 있습니다.
 이항정리가 두 개의 항의 합 $(a+b)^n$에 대한 거듭제곱의 전개식을 설명한다면 다항정리는 $n$개의 항의 합 $(x_1+x_2+\cdots+x_k)^n$에 대한 거듭제곱의 전개식을 설명합니다 ;
-$$(x_1+x_2+\cdots+x_n)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i=1}^n{x_i}^{n_k}.$$
+$$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i=1}^n{x_i}^{n_k}.$$
 </div>
 
 **bivariate normal distribution(bivariate Gaussian distribution)**
@@ -4763,7 +4771,7 @@ $$(x_1+x_2+\cdots+x_n)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 해당 내용들은 워낙 많은 것들을 함축하고 있어서, 그 의미에 대해 다 설명하기는 쉽지 않습니다.
 그래도, bivariate normal distribution에 관해서는 나름대로 공부해보고, 해당 내용들을 TeX파일로 만들어보았습니다.
 이것은, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 내용을 참고하여 bivariate normal distribution에 관한 주요 사항들과, 그 증명에 필요한 사항들을 적어보았는데, 많은 경우에 책에는 $n$개의 확률변수에 대한 정리들이 적혀있는 것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
-[링크]({{ site.url }}/assets/pdf/0405_bivariate_normal_distribution_revised_at_0407.pdf){: .btn .btn--primary}
+[링크]({{ site.url }}/assets/pdf/0405_bivariate_normal_distribution.pdf){: .btn .btn--primary}
 
 이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 해보려 했습니다.
 하지만, 일단은 중요한 정리 몇 개만 간단하게 적을 것 같고 이에 대한 상세한 설명이나 증명은 위 링크로 대체하겠습니다.
@@ -4796,11 +4804,14 @@ $$
     $\text{Cov}$ 함수는 bilinear하고 additive constant의 영향을 받지 않습니다.
     </li>
     <li>
-    bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재할 때, $r:(u,v)\mapsto(x,y)$, $(x,y)\in T$이면, $s=r^{-1}:(x,y)\mapsto(u,v)$이면,
+    bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재하여 $r:(u,v)\mapsto(x,y)$이고 $s=r^{-1}:(x,y)\mapsto(u,v)$이면,
     $$f_{XY}(x,y)=f_{UV}(s_1(x,y),s_2(x,y))\times|J|$$ 입니다.
-    이때, $J$는
-    $$J=\frac{\partial(x,y)}{\partial(u,v)}$$
-    (단,)
+    이때, $|J|$는 다음과 같이 주어지는 jacobian matrix의 determinant입니다;
+    $$J=\frac{\partial(x,y)}{\partial(u,v)}=
+    \begin{bmatrix}
+    \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
+    \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
+    \end{bmatrix}$$
     </li>
 </ol>
 </div>
@@ -4808,8 +4819,10 @@ $$
 이때, Lemma 1은 moment generating function을 이용하면 쉽게 증명할 수 있습니다.
 다른 증명방법이 있는지는 확인해보지 않았습니다.
 Lemma 2는 다른 사전지식 없이, 이 포스트에 소개된 내용만으로도 증명이 가능합니다.
-Lemma 3의 증명은 어렵습니다. 적어도 DeGroot의 책에는 소개되어 있지 않습니다.
-강의에서는 나중에 다룰 수도 있을 것 같습니다.
+이 두 Lemma는 위에 첨부한 글에 설명을 적어보았습니다.
+Lemma 3는 $\langle17\rangle$에서 다루어집니다만, 간단하게 다음과 같은 그림으로 이해될 수 있습니다;
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_17-1.png){: .img-70-center}
 
 위의 세 사실을 가정하고 대략적인 증명을 해보면 다음과 같습니다.
 증명에 앞서, 새로운 확률변수 $U$, $V$를
@@ -4827,7 +4840,7 @@ $U$와 $V$에 대하여 Lemma 1을 적용해 계산하면 $U\sim N(0,1)$, $V\sim
 또한, $U$와 $V$가 independent인 것도 확인할 수 있습니다.
 
 먼저 $\Rightarrow$ 방향의 증명입니다.
-그러니까, $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$를 가정했을 때, $X$, $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명하려 합니다.
+그러니까, $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$를 가정했을 때, $X$, $Y$의 joint PDF가 $(\ast)$와 같이 나온다는 것을 증명하려 합니다.
 $U$와 $V$가 모두 standard normal이고 independent이므로, joint PDF가
 
 $$f_{UV}(u,v)=\frac1{2\pi}e^{-\frac12(u^2+v^2)}$$
