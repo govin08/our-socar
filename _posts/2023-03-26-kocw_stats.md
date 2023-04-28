@@ -27,6 +27,10 @@ author_profile: false
 21강의 내용을 모두 한 포스트에 넣으려다보니 내용이 상당히 방대합니다.
 그래서, 페이지의 모든 수식이 완전히 조판되는 데에는 약간의 시간(1분)이 걸립니다.
 
+일단 17강까지의 내용에 대해서는 다 정리해보았습니다.
+18강부터의 내용은 일단 보류합니다.
+이정도에서 매듭을 짓고, 나중에 시간이 나면 뒷부분도 채우든지 하겠습니다.
+
 # 01 조건부확률과 Bayes 정리
 
 **(1) sample space**
@@ -5053,86 +5057,145 @@ $$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 <div class="notice--success">
 <b> bivariate normal distribution </b> <br>
 다섯 개의 수 $\mu_X$, $\mu_Y$, $\sigma_X$, $\sigma_Y$, $\rho$가
-$\mu_X,\mu_Y\in\mathbb R$, $\sigma_X,\sigma_Y\gt0$, $-1\lt\rho\lt1$를 만족시키고, $X$, $Y$가 연속확률변수일때,
-$X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$이기 위한 필요충분조건은 $X$, $Y$의 joint PDF가
+$\mu_X,\mu_Y\in\mathbb R$, $\sigma_X,\sigma_Y\gt0$, $-1\lt\rho\lt1$를 만족시키고, $X$, $Y$가 연속확률변수일때, $X$, $Y$의 joint PDF가
 
 $$
 f_{XY}(x,y)=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
 \tag{$\ast$}
 $$
 
-와 같이 주어지는 것입니다.
-이와 같은 확률변수 $X$, $Y$의 분포를 bivariate normal distribution이라고 부릅니다.
+와 같이 주어지면 $X$, $Y$의 분포를 bivariate normal distribution이라고 부릅니다.
+또한, 이 경우에
+$$
+\begin{align*}
+X&\sim N(\mu_X,{\sigma_X}^2)\\
+Y&\sim N(\mu_Y,{\sigma_Y}^2)\\
+\rho_{XY}&=\rho
+\end{align*}
+$$
+가 성립합니다.
 </div>
 
-이 정리에 대한 한가지 증명은 다음과 같은 세 개의 사실에 의존합니다.
-
-<div class="notice">
-<b> Lemma </b>
-<ol>
-    <li>
-    $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$이면 $aX+bY+c\sim N\left(a\mu_X+b\mu_Y+c,~~a^2{\sigma_X}^2+b^2{\sigma_Y}^2\right)$입니다.
-    </li>
-    <li>
-    $\text{Cov}$ 함수는 bilinear하고 additive constant의 영향을 받지 않습니다.
-    </li>
-    <li>
-    bivariate transformation of PDF : $(u,v)\in S$와 $(x,y)\in T$ 사이에 일대일대응 $r$이 존재하여 $r:(u,v)\mapsto(x,y)$이고 $s=r^{-1}:(x,y)\mapsto(u,v)$이면,
-    $$f_{XY}(x,y)=f_{UV}(s_1(x,y),s_2(x,y))\times|J|$$ 입니다.
-    이때, $|J|$는 다음과 같이 주어지는 jacobian matrix의 determinant입니다;
-    $$J=\frac{\partial(x,y)}{\partial(u,v)}=
-    \begin{bmatrix}
-    \frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\
-    \frac{\partial y}{\partial u}&\frac{\partial y}{\partial v}
-    \end{bmatrix}$$
-    </li>
-</ol>
+<div class="notice--danger">
+이 강의에서의 notation을 계속 따라가고 있기 때문에 위의 statement는 그 뜻이 조금 명확하지 않게 적혀져있습니다.
+이 강의에서 $\mu_X$와 $\sigma_X$는 각각 $X$의 평균과 표준편차를 의미했습니다.
+하지만 위의 statement에서 첫번째 줄에서 $\mu_X$, $\mu_Y$, $\sigma_X$, $\sigma_Y$, $\rho$를 언급할 때, 이것들은 단지 다섯 개의 실수를 언급할 뿐이지 $X$와 $Y$의 평균이나 표준편차라는 의미는 아직 없습니다.
+그런데 만약 $(\ast)$ 식이 PDF로 주어진다면, 이 숫자들이 평균과 표준편차의 의미를 가진다는 것이 위 statement의 내용입니다.
+강의의 notation을 따라가기 위해서, 그리고 너무 statement가 길어지지 않게 하기 위해서 위와 같이 적어보았습니다.
 </div>
 
-이때, Lemma 1은 moment generating function을 이용하면 쉽게 증명할 수 있습니다.
-다른 증명방법이 있는지는 확인해보지 않았습니다.
-Lemma 2는 다른 사전지식 없이, 이 포스트에 소개된 내용만으로도 증명이 가능합니다.
-이 두 Lemma는 위에 첨부한 글에 설명을 적어보았습니다.
-Lemma 3는 $\langle17\rangle$에서 다루어집니다만, 간단하게 다음과 같은 그림으로 이해될 수 있습니다;
+bivariate normal distribution에 대한 위의 statement는 $\langle09\rangle$의 마지막 부분에서 증명한 '정규분포를 따르는 확률변수들의 일차결합은 정규분포이다'라는 성질과 $\langle12\rangle$에서 증명한 covariance의 bilinearity로부터 다음과 같이 증명될 수 있습니다.
 
-![]({{site.url}}\images\2023-03-26-kocw_stats\stats_17-1.png){: .img-70-center}
-
-위의 세 사실을 가정하고 대략적인 증명을 해보면 다음과 같습니다.
-증명에 앞서, 새로운 확률변수 $U$, $V$를
+새 확률변수 $U$, $V$를
 
 $$
 \begin{align*}
 U&=\frac{X-\mu_X}{\sigma_X}\\
-V&=\frac1{\sqrt{1-\rho^2}}\left(\frac{Y-\mu_Y}{\sigma_Y}-\rho\frac{X-\mu_X}{\sigma_X}\right)
+V&=\frac1{\sqrt{1-\rho^2}}\left(-\rho\frac{X-\mu_X}{\sigma_X}+\frac{Y-\mu_Y}{\sigma_Y}\right)
 \end{align*}
 $$
 
-로 두겠습니다.
-$U$와 $V$에 대하여 Lemma 1을 적용해 계산하면 $U\sim N(0,1)$, $V\sim N(0,1)$임을 알 수 있습니다.
-다시 말해, $U$와 $V$는 모두 standard normal입니다.
-또한, $U$와 $V$가 independent인 것도 확인할 수 있습니다.
-
-먼저 $\Rightarrow$ 방향의 증명입니다.
-그러니까, $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$를 가정했을 때, $X$, $Y$의 joint PDF가 $(\ast)$와 같이 나온다는 것을 증명하려 합니다.
-$U$와 $V$가 모두 standard normal이고 independent이므로, joint PDF가
-
-$$f_{UV}(u,v)=\frac1{2\pi}e^{-\frac12(u^2+v^2)}$$
-
-임을 쉽게 알 수 있고, 여기에 Lemma 3을 사용해 계산하면 $X$와 $Y$의 PDF가 $(\ast)$와 같이 나온다는 것을 증명할 수 있습니다.
-
-이번에는 $\Leftarrow$ 방향의 증명입니다.
-다시 말해, $(\ast)$와 같이 PDF가 주어진 두 확률변수 $X$, $Y$에 대하여 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$ 임을 증명하려 합니다.
-$X$와 $Y$, $U$와 $V$ 사이의 관계식을 변형하면
+로 정의하면
 
 $$
 \begin{align*}
-X&=\sigma_XU+\mu_X\\
-Y&=\rho\sigma_YU+\sqrt{1-\rho^2}\sigma_YV+\mu_Y
+x&=\sigma_Xu+\mu_Y\\
+y&=\sigma_Y\left(\rho u+\sqrt{1-\rho^2}v\right)+\mu_Y
 \end{align*}
 $$
 
-이므로, Lemma 1을 적용하면 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$임을 쉽게 알 수 있습니다.
-또한, Lemma 2를 적용하면 $\text{Cov}(X,Y)=\sigma_x\sigma_Y\rho$임을 알 수 있고, 따라서 $\rho_{XY}=\rho$인 것도 확인됩니다.
+로부터
+
+$$
+\begin{align*}
+\frac{\partial(x,y)}{\partial(u,v)}
+&=\begin{vmatrix}
+\frac{\partial x}{\partial u}&\frac{\partial x}{\partial v}\\[5pt]
+\frac{\partial x}{\partial u}&\frac{\partial y}{\partial v}
+\end{vmatrix}\\
+&=\frac{\partial x}{\partial u}\times\frac{\partial y}{\partial v}
+-\frac{\partial x}{\partial v}\times\frac{\partial y}{\partial u}\\
+&=\sigma_X\times\sigma_Y\sqrt{1-\rho^2}-0\times\sigma_Y\rho\\
+&=\sigma_X\sigma_Y\sqrt{1-\rho^2}
+\end{align*}
+$$
+
+입니다.
+그러면
+
+$$
+\begin{align*}
+f_{UV}(u,v)
+&\stackrel\star=f_{XY}(x,y)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\\
+&=f_{XY}\left(\sigma_Xu+\mu_Y,\sigma_Y\left(\rho u+\sqrt{1-\rho^2}v\right)+\mu_Y\right)\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\\
+=&\frac1{2\pi}\exp\Biggl\{-\frac1{2(1-\rho^2)}\biggl[
+u^2-2\rho u(\rho u+\sqrt{1-\rho^2}v)+(\rho u+\sqrt{1-\rho^2}v)^2\biggr]\Biggr\}\\
+=&\frac1{2\pi}\exp\Biggl\{-\frac1{2(1-\rho^2)}\biggl[u^2-\rho u^2+(1-\rho^2)v^2\biggr]\Biggr\}\\
+=&\frac1{2\pi}\exp\Biggl\{-\frac12(u^2+v^2)\Biggr\}\\
+\end{align*}
+$$
+
+입니다.
+이때, $\star$는 $\langle17\rangle$에서 다루어집니다.
+간단하게 설명하면
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_17-1.png){: .img-70-center}
+
+와 같이 말할 수 있습니다.
+따라서
+
+$$
+\begin{align*}
+f_V(v)
+&=\int_{\mathbb R}f_{UV}(u,v)\,dv\\
+&=\frac{e^{-\frac12u^2}}{2\pi}\int_{\mathbb R}e^{-\frac12v^2}\,dv\\
+&=\frac{e^{-\frac12u^2}}{2\pi}\times\sqrt{2\pi}\\
+&=\frac1{\sqrt{2\pi}}e^{-\frac12u^2}
+\end{align*}
+$$
+
+이고, 마찬가지로
+
+$$f_V(v)=\frac1{\sqrt{2\pi}}e^{-\frac12v^2}.$$
+
+입니다.
+따라서, $U$와 $V$는 standard normal이고 독립입니다.
+
+그러면, $X=\sigma_XU+\mu_X$이고 $U\sim N(0,1)$이므로 $X$는 평균이
+
+$$E[X]=\sigma_X\times0+\mu_X=\mu_X$$
+
+이고, 분산이
+
+$$V[X]={\sigma_X}^2\times1^2={\sigma_X}^2.$$
+
+인 정규분포를 따름을 알 수 있습니다.
+또한, $Y=\sigma_Y\left(\rho U+\sqrt{1-\rho^2}V\right)+\mu_Y$이고 $V\sim N(0,1)$, $\text{cov}(U,V)=0$이므로 $Y$는 평균이
+
+$$E[Y]=\sigma_Y\rho\times0+\sigma_Y\sqrt{1-\rho^2}\times0+\mu_Y=\mu_Y$$
+
+이고 분산이
+
+$$V[Y]={\sigma_Y}^2\rho^2\times1^2+{\sigma_Y}^2(1-\rho^2)\times1^2={\sigma_Y}^2.$$
+
+인 정규분포를 따름을 알 수 있습니다.
+즉, $X\sim N(\mu_X,{\sigma_X}^2)$이고 $Y\sim N(\mu_Y,{\sigma_Y}^2)$입니다.
+
+마지막으로 $\rho_{XY}$를 계산해보면,
+
+$$
+\begin{align*}
+\text{Cov}(X,Y)
+&=\text{Cov}\left(\sigma_XU+\mu_X,\sigma_Y\rho U+\sigma_Y\sqrt{1-\rho^2}V+\mu_Y\right)\\
+&=\text{Cov}\left(\sigma_XU,\sigma_Y\rho U+\sigma_Y\sqrt{1-\rho^2}V\right)\\
+&=\text{Cov}\left(\sigma_XU,\sigma_Y\rho U\right)+\text{Cov}\left(\sigma_XU,\sigma_Y\sqrt{1-\rho^2}V\right)\\
+&=\sigma_X\sigma_Y\rho\text{Cov}\left(U,U\right)+\sigma_X\sigma_Y\sqrt{1-\rho^2}\text{Cov}\left(U,V\right)\\
+&=\sigma_X\sigma_Y\rho\times1+\sigma_X\sigma_Y\sqrt{1-\rho^2}\times0\\
+&=\sigma_X\sigma_Y\rho
+\end{align*}
+$$
+
+이 되어 $\rho_{XY}=\rho$가 성립합니다.
 $\square$
 
 $\langle13\rangle$에서 두 확률변수 $X$, $Y$가 독립이면 uncorrelated하다고 했었고, 그 역은 꼭 성립하지는 않는다고 했습니다.
@@ -5204,8 +5267,7 @@ $$
 <div class="notice--success">
 <b> multivariate normal distribution </b> <br>
 $X_1$, $\cdots$, $X_n$이 모두 연속확률변수이고, 각각의 $i\in\{1,\cdots,n\}$에 대하여 $\mu_{X_i}=\mu_i\in\mathbb R$, $\sigma_{X_i}=\sigma_i\gt0$이며, 각각의 $i,j\in\{1,\cdots,n\}$에 대하여 $-1\lt\rho_{X_i,X_j}=\rho_{ij}\lt1$이라고 가정하겠습니다.
-이때, 각각의 $i\in\{1,\cdots,n\}$에 대하여
-$X_i\sim N(\mu_i,{\sigma_i}^2)$이기 위한 필요충분조건은 $X_1$, $\cdots$, $X_n$의 joint PDF가
+만약, $X_1$, $\cdots$, $X_n$의 joint PDF가
 
 $$
 f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)
@@ -5217,8 +5279,9 @@ f_{X_1,\cdots,X_n}(x_1,\cdots,x_n)
 \right\}
 $$
 
-와 같이 주어지는 것입니다.<br>
-이와 같은 확률변수 $X_1$, $\cdots$, $X_n$의 분포를 multivariate normal distribution이라고 부릅니다.
+와 같이 주어지면, $X_1$, $\cdots$, $X_n$의 분포를 multivariate normal distribution이라고 부릅니다.
+
+이때, 각각의 $i\in\{1,\cdots,n\}$에 대하여 $X_i\sim N(\mu_i,{\sigma_i}^2)$이 성립합니다.
 </div>
 
 위의 정리 및 정의에서,
@@ -6535,6 +6598,8 @@ $$X+Y\sim\text{Pois}(\lambda+\nu)$$
 
 # 17 두 변수의 변환 함수
 
+**일변수 실함수의 변환함수**
+
 이번 강의에서는 $g$가 다변수벡터함수인 경우, 다시 말해 $g:\mathbb R^n\to\mathbb R^n$인 경우를 다룹니다.
 그 중에서도 가장 간단한 경우인 $g:\mathbb R^2\to\mathbb R^2$인 경우를 고려합니다.
 
@@ -6578,41 +6643,420 @@ $$f_Y(y)=\frac{f_X(x)}{|g'(x)|}$$
 
 입니다.
 
+**이변수 벡터함수의 변환함수**
+
 $g:\mathbb R^2\to\mathbb R^2$인 경우도 비슷합니다.
 다만, 위의 식의 분모에 $g'(x)$이었던 것이 jacobian으로 바뀝니다.
-
-이제 $g:\mathbb R^2\to\mathbb R^2$인 경우를 적어보면, 네 확률변수 $X$, $Y$, $Z$, $W$에 대하여
+네 확률변수 $X$, $Y$, $Z$, $W$에 대하여
 
 $$(Z,W)=g(X,Y)$$
 
 의 관계가 있다고 하겠습니다.
-$g$가 $R^2$의 부분집합 $S$에 대하여, $g|S:S\to g(S)$가 일대일대응이고, $T=g(S)$로 표기하면
+만약, $(x,y)$의 한 근방과 $(z,w)=g(x,y)$의 한 근방에서 $g$가 일대일대응이면
 
-$$f_{ZW}(z,w)=\iint_Sf_{XY}(x,y)\times\frac1{|J|}\,dx\,dy$$
+$$f_{ZW}(z,w)=f_{XY}(x,y)\times\left|\frac{\partial(x,y)}{\partial(z,w)}\right|$$
+
+이 성립합니다.
+왜냐하면, $g|S:S\to T$가 일대일대응인 모든 $S,T\subset\mathbb R^2$에 대하여
+
+$$
+\begin{align*}
+\iint_Tf_{ZW}(z,w)\,dz\,dw
+&=P\left((z,w)\in T\right)\\
+&=P\left((x,y)\in S\right)\\
+&=\iint_Sf_{XY}(x,y)\,dx\,dy\\
+&\stackrel\star=\iint_T f_{XY}\left(h_1(z,w),h_2(z,w)\right)\cdot\left|\frac{\partial(x,y)}{\partial(z,w)}\right|\,dz\,dw
+\end{align*}
+$$
+
+이기 때문입니다.
+이때, $h$는 $g$의 역함수로서
+
+$$(x,y)=h(z,w)=\left(h_1(z,w),h_2(z,w)\right)$$
+
+이고, $\star$는 다변수 미적분(multivariate calculus)에서 얻을 수 있는 결과로서, $\lvert\frac{\partial(x,y)}{\partial(z,w)}\rvert$는 jacobian matrix의 determinant에 절댓값을 취한 것입니다;
+
+$$
+\left|\frac{\partial(z,w)}{\partial(x,y)}\right|
+=\left|\text{det}\left(\begin{bmatrix}
+\frac{\partial x}{\partial z}&\frac{\partial x}{\partial w}\\[5pt]
+\frac{\partial y}{\partial z}&\frac{\partial y}{\partial w}
+\end{bmatrix}\right)\right|
+=\begin{vmatrix}
+\frac{\partial x}{\partial z}&\frac{\partial x}{\partial w}\\[5pt]
+\frac{\partial y}{\partial z}&\frac{\partial y}{\partial w}
+\end{vmatrix}
+=\left|\frac{\partial x}{\partial z}\times\frac{\partial y}{\partial w}-\frac{\partial x}{\partial w}\times\frac{\partial y}{\partial z}\right|
+$$
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_17-2.png){: .img-50-center}
+
+**ex 6.16**
+
+예를 들어,
+
+$$
+\begin{align*}
+U&=X+Y\\
+V&=X-Y
+\end{align*}
+$$
+
+이고, $f_{XY}(x,y)$가
+
+$$
+f_{XY}(x,y)=\frac1{2\pi}e^{-\frac{x^2+y^2}2}
+$$
+
+로 주어져있을 때, $f_{UV}(u,v)$를 구하는 문제를 생각해보겠습니다.
+확률변수 $U$, $V$, $X$, $Y$ 대신 확률변수의 값 $u$, $v$, $x$, $y$로 바꿔서 정리하면
+
+$$
+\begin{align*}
+u&=x+y\\
+v&=x-y
+\end{align*}
+$$
+
+이고, $(U,V)$와 $(X,Y)$의 관계를 서로 바꾸면
+
+$$
+\begin{align*}
+x&=\frac12u+\frac12v\\
+y&=\frac12u-\frac12v
+\end{align*}
+$$
 
 입니다.
-$J$는
+따라서
 
 $$
-J=
-\text{det}\frac{\partial(z,w)}{\partial(x,y)}
-=\text{det}
+\begin{align*}
+f_{UV}(u,v)
+&=f_{XY}(x,y)\times\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\\
+&=f_{XY}\left(\frac12u+\frac12v,\frac12u-\frac12v\right)\times
+\begin{vmatrix}\frac12&\frac12\\\frac12&-\frac12\end{vmatrix}\\
+&=\frac12f_{XY}\left(\frac12u+\frac12v,\frac12u-\frac12v\right)\\
+\end{align*}
+$$
+
+입니다.
+
+**추가예시**
+
+또다른 예시로, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 Example 3.9.9를 들어보겠습니다.
+앞서의 예시와 거의 비슷한데, 덧셈과 뺄셈이었던 것이 곱셈과 나눗셈으로 바뀌었습니다.
+
+$$
+f_{UV}(u,v)=
+\begin{cases}
+4uv	&0<u,v<1\\
+0.	&\text{(otherwise)}
+\end{cases}
+$$
+
+이고, $X=\frac UV$, $Y=UV$일 때, $f_{XY}(x,y)$를 계산해보는 문제입니다.
+
+문제를 풀기에 앞서 $f_{XY}$가 정말 PDF의 역할을 하는지 확인해봅니다 ;
+
+$$
+\begin{align*}
+P\left((u,v)\in S\right)
+&=\iint_Sf_{UV}(u,v)\,du\,dv\\
+&=\int_0^1\int_0^14uv\,du\,dv\\
+&=1.
+\end{align*}
+$$
+
+함수 $r=(r_1,r_2):\mathbb R^2\to\mathbb R^2$를
+
+$$
+\begin{aligned}
+x&=r_1(u,v)=\frac uv\\
+y&=r_2(u,v)=uv
+\end{aligned}
+$$
+
+로 정의하면 이 함수 $r$은
+
+$$S=\{(u,v)\in\mathbb R^2:0\lt u,v\lt 1\}$$
+
+에서 미분가능합니다.
+$r$은 일대일함수이기도 한데 만약 $\left(\frac{u_1}{v_1},u_1v_1\right)=\left(\frac{u_2}{v_2},u_2v_2\right)$ 이면
+
+$$
+\begin{align*}
+{u_1}^2&=\left(\frac{u_1}{v_1}\right)\times(u_1v_1)=\left(\frac{u_2}{v_2}\right)\times(u_2v_2)={u_2}^2\\
+{v_1}^2&=\left(\frac{u_1}{v_1}\right)\div(u_1v_1)=\left(\frac{u_2}{v_2}\right)\div(u_2v_2)={v_2}^2
+\end{align*}
+$$
+
+이어서 $(u_1,v_1)=(u_2,v_2)$ if $r(u_1,v_1)=r(u_2,v_2)$이기 때문입니다.
+
+집합 $T$를 $T=r(S)$라고 하면, $r$은 $S$와 $T$ 사이에서 일대일대응입니다.
+$r$의 역함수를 $s$라고 하면,
+
+$$
+\begin{align*}
+u&=s_1(x,y)=\sqrt{xy}\\
+v&=s_2(x,y)=\sqrt{\frac yx}.
+\end{align*}
+$$
+
+입니다.
+$T$를 구해보면
+
+$$
+\begin{align*}
+(x,y)\in T
+&\iff\left(s_1(x,y),x_2(x,y)\right)\in S\\
+&\iff(u,v)\in S\\
+&\iff 0<u<1\quad\&\quad0<v<1\\
+&\iff 0<\sqrt{xy}<1\quad\&\quad0<\sqrt{\frac yx}<1\\
+&\iff x>0\quad\&\quad y>0\quad\&\quad y<\frac1x\quad\&\quad y<x\\
+&\iff 0<y<\min\left(x,\frac1x\right),\\
+T&=\left\{(x,y)\in\mathbb R^2:0<y<\min\left(x,\frac1x\right)\right\}
+\end{align*}
+$$
+
+입니다;
+
+![]({{site.url}}\images\2023-03-26-kocw_stats\stats_17-3.png){: .img-40-center}
+
+한편,
+
+$$
+\begin{align*}
+\frac{\partial(u,v)}{\partial(x,y)}
+&=\det
 \begin{bmatrix}
-\frac{\partial z}{\partial x}&\frac{\partial z}{\partial y}\\
-\frac{\partial w}{\partial x}&\frac{\partial w}{\partial y}
-\end{bmatrix}
+\frac{\partial u}{\partial x}&\frac{\partial u}{\partial y}\\[10pt]
+\frac{\partial v}{\partial x}&\frac{\partial v}{\partial y}
+\end{bmatrix}\\
+&=
+\begin{vmatrix}
+\frac12\sqrt{\frac yx}		&\frac12\sqrt{\frac xy}\\[10pt]
+-\frac12\sqrt{\frac y{x^3}}	&\frac12\sqrt{\frac1{xy}}
+\end{vmatrix}\\
+&=\frac1{2x}.
+\end{align*}
 $$
-여기에서 $g|S$는 함수 $g$의 $S$에서의 restriction이고
 
-시작하기에 앞서서, $g$가 일변수 실함수인 경우를 복습해보겠습니다.
-$\langle14\rangle$에서 이미 비슷한 계산을 해본 적이 있습니다.
-함수 $g:\mathbb R\to\mathbb R$이 일대일함수이고 미분가능하며, 두 확률변수 $X$, $Y$가 $Y=g(X)$를 만족시킨다고 가정하겠습니다.
-그러면 $g$는 [단조함수일 수밖에 없습니다.](https://math.stackexchange.com/q/1435015)
-왜냐하면, 집합 $M=\\{(x,y)\in\mathbb R^2:x\lt y\\}$는 connected set이고, $h(x,y)=g(x)-g(y)$로 정의된 $h:M\to\mathbb R$는 연속함수이기 때문에, $h$의 image인 $h(M)$은 connected입니다.
-$g$가 일대일함수라는 사실로부터 $0\notin h(M)$이고, 따라서 $h(M)$은 $(-\infty,0)$ 안에 들어있거나 아니면 $(0,\infty)$ 안에 들어있습니다.
-전자의 경우에는 $g$가 monotonically increasing하고, 후자의 경우에는 monotonically decreasing합니다.
+이고, 따라서
 
+$$
+\begin{align*}
+f_{XY}(x,y)
+&=f_{UV}\left(\sqrt{xy} &&\sqrt{\frac yx}\right)\qquad(x,y)\in T\\
+&=\frac{2y}x            &&0<y<\min\left(x,\frac1x\right)
+\end{align*}
+$$
 
+입니다.
+
+**이변수 실수함수의 변환함수**
+
+이번에는 $g:\mathbb R^2\to\mathbb R$인 경우입니다.
+이경우에는 jacobian matrix가 정사각행렬이 아니므로 기존의 방법을 그대로 적용할 수는 없습니다.
+확률변수 $X$, $Y$의 PDF가 주어져있고, 함수 $g$를 통해서 새로운 확률변수 $Z=g(X,Y)$를 정의할 때,
+jacobian 행렬은 $1\times2$ 행렬인 것처럼 보이기 때문입니다.
+이때에는, $W$라는 보조적인(auxiliary) 확률변수를 도입하여 jacobian matrixf를 정사각행렬로 만들어주는 트릭이 존재합니다;
+
+$$
+\begin{align*}
+Z&=g(X,Y)\\
+W&=X
+\end{align*}
+$$
+
+로 두는 것입니다.
+
+**ex 6.20**
+
+만약 $U=XY$이면,
+
+$$
+\begin{align*}
+U&=XY\\
+W&=X
+\end{align*}
+$$
+
+이라고 쓸 수 있고,
+
+$$
+\begin{align*}
+u&=xy\\
+w&=x
+\end{align*}
+$$
+
+로부터
+
+$$
+\begin{align*}
+\frac{\partial(u,w)}{\partial(x,y)}&=\begin{vmatrix}y&x\\1&0\end{vmatrix}=|-x|=|x|\\
+\frac{\partial(x,y)}{\partial(u,w)}&=\frac1{\frac{\partial(u,w)}{\partial(x,y)}}=\frac1{|w|}
+\end{align*}
+$$
+
+입니다.
+따라서,
+
+$$f_{UW}(u,w)=f_{XY}(x,y)\times\frac1{|w|}=\frac{f_{XY}\left(w,\frac uw\right)}{|w|}$$
+
+입니다.
+만약 $X$, $Y$가 joint (standard) normal 이어서
+
+$$
+f_{XY}(x,y)=\frac1{2\pi}e^{-\frac{x^2+y^2}2}
+$$
+
+이라면,
+
+$$
+\begin{align*}
+f_{UW}(u,w)
+&=\frac{f_{XY}\left(w,\frac uw\right)}{|w|}\\
+&=\frac1{2\pi|w|}e^{-\frac{w^2+\frac{u^2}{w^2}}2}
+\end{align*}
+$$
+
+이 될 것입니다.
+
+**generating Gaussian distribution from the uniform distribution**
+
+이제, $\langle14\rangle$에서 언급되었던, uniform distribution을 따르는 확률변수를 통해서 normal distribution을 만드는 방법을 소개할 수 있습니다.
+조금 더 정확하게는 unifrom distribution을 따르는 두 확률변수로부터 standard joint normal한 두 확률변수를 얻어낼 수 있습니다.
+
+두 확률변수 $X$, $Y$가 $0$과 $1$ 사이의 uniform distribution을 따른다고 하겠습니다 ;
+
+$$
+\begin{align*}
+X&\sim U(0,1)\\
+Y&\sim U(0,1)
+\end{align*}
+$$
+
+더 나아가, $X$와 $Y$가 독립이라고 하겠습니다.
+$X$와 $Y$의 PDF는 각각
+
+$$
+\begin{align*}
+f_X(x)&=1&&(0\lt x\lt 1)\\
+f_Y(y)&=1&&(0\lt y\lt 1)
+\end{align*}
+$$
+
+로 주어지고, $f_{XY}(x,y)=1$입니다.
+새로운 확률변수 $U$와 $V$를
+
+$$
+\begin{align*}
+U&=\sqrt{-2\log X}\cos 2\pi Y\\
+V&=\sqrt{-2\log X}\sin 2\pi Y
+\end{align*}
+$$
+
+로 두면 ($\log$는 자연로그입니다.)
+
+$$
+\begin{align*}
+u&=\sqrt{-2\log x}\cos 2\pi y\\
+v&=\sqrt{-2\log x}\sin 2\pi y
+\end{align*}
+\tag{$\ast$}
+$$
+
+로부터
+
+$$
+\begin{align*}
+\frac{\partial(u,v)}{\partial(x,y)}
+&=\begin{vmatrix}
+-\frac{-\cos 2\pi y}{x\sqrt{-2\log x}}   &-2\pi\sqrt{-2\log x}\sin2\pi y\\
+-\frac{-\sin 2\pi y}{x\sqrt{-2\log x}}   & 2\pi\sqrt{-2\log x}\cos2\pi y
+\end{vmatrix}
+=-\frac{2\pi}x\\
+\frac{\partial(x,y)}{\partial(u,v)}
+&=\frac1{\frac{\partial(x,y)}{\partial(u,v)}}=-\frac x{2\pi}
+\end{align*}
+$$
+
+이고, 따라서
+
+$$
+\begin{align*}
+f_{UV}(u,v)
+&=f_{XY}(x,y)\times\lvert\frac{\partial(x,y)}{\partial(u,v)}\rvert\\
+&=\frac x{2\pi}\\
+&=\frac1{2\pi}e^{-\frac12(u^2+v^2)}
+\end{align*}
+$$
+
+입니다.
+따라서, $U$, $V$는 standard joint normal입니다.
+
+$(x,y)$를 $(u,v)$로 변환하는 식 $(\ast)$은 관찰해볼 여지가 있는 재미있는 식인 것 같습니다.
+$(u,v)$를 복소수로 생각하면, $\sqrt{-2\log x}$는 이 복소수의 크기(amplitude)를 나타내고, $2\pi y$는 이 복소수의 편각(argument)를 나타냅니다;
+
+$(u,v)=\sqrt{-2\log x}e^{2\pi yi}$
+
+$x$가 $(0,1)$ 안에서 움직이므로, $\sqrt{-2\log x}$는 $(0,\infty)$ 안에서 움직입니다.
+또, $y$도 $(0,1)$ 안의 실수이므로, $0\lt2\pi y\lt1$입니다.
+그러니까, $(x,y)$가 unit square $(0,1)^2$ 내부에서 움직이는 동안, $(u,v)$는 복소평면의 한 branch cut
+
+$$\{(u,v):u\ge0, v=0\}$$
+
+을 제외한 모든 곳을 움직입니다.
+하지만 이 부분을 무시하면, $(u,v)$는 이차원 평면 전체를 움직인다고 생각할 수 있습니다.
+
+**generating exponential from the uniform distribution**
+
+$X\sim U(0,1)$인 확률변수 $X$에 대하여, 새로운 확률변수 $Y=g(X)$를 함수 $g$로 정의할 때, $Y$가 $\lambda=1$인 exponential PDF를 가지기 위해서는 어떤 함수 $g$를 적용해야 할 지 고민해봅니다.
+문제를 단순하게 만들기 위해 $g$가 단조감수함수라고 가정하겠습니다.
+따라서 $g$는 일대일대응이고, 역함수를 가지고 있습니다.
+
+$X$의 PDF는
+
+$$f_X(x)=1\qquad(0\lt x\lt 1)$$
+
+이고, CDF는
+
+$$F_X(x)=x\qquad(0\lt x\lt 1)$$
+
+입니다.
+한편, $Y$는
+
+$$
+\begin{align*}
+f_Y(y)&=e^{-y}\\
+F_Y(y)&=1-e^{-y}
+\end{align*}
+$$
+
+를 만족시킵니다.
+그러면
+
+$$
+\begin{align*}
+1-e^{-y}
+&=P(Y\le y)\\
+&=P(X\ge g^{-1}(y))\\
+&=1-F_X\left(g^{-1}(y)\right)\\
+&=1-g^{-1}(y)
+\end{align*}
+$$
+
+따라서,
+
+$$g^{-1}(y)=e^{-y}$$
+
+이고,
+
+$$g(x)=-\log x$$
+
+로 두면 된다는 것을 확인할 수 있습니다.
 
 
 **참고한 자료들**
