@@ -199,7 +199,7 @@ $$
 
 조건부확률의 식으로부터
 
-$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}\tag{$(\ast)$}$$
+$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}\tag{$\ast$}$$
 
 입니다.
 만약 $P(B|A)$를 직접적으로 구하기가 어렵지만, $P(A_i|B)$는 구하는 것이 상대적으로 쉽고, $A_1$, $\cdots$, $A_n$이 partition을 이룰 경우에 Bayesian theorem이 자주 쓰입니다.
@@ -2026,7 +2026,7 @@ P_X(x)=
 p &(x=1)\\
 1-p &(x=0)
 \end{cases}
-\tag{$(\ast)$}
+\tag{$\ast$}
 $$
 
 입니다.
@@ -3110,15 +3110,16 @@ $$
 를 가지면 $X$가 정규분포를 따른다고 하고 $X\sim N(\mu_X,{\sigma_X}^2)$라고 표시합니다.
 이 PDF에 대하여 다음 세 사실이 성립합니다.
 
-$$\tag{$\ast\ast$}
-\begin{align*}
+$$
+\begin{aligned}
 \int_{-\infty}^\infty f_X(x)\,dx&=1\\
 E[X]&=\mu_X\\
 V[X]&={\sigma_X}^2
-\end{align*}
+\end{aligned}
+\tag{$\ast\ast$}
 $$
 
-이것을 직접 증명하는 것은 복잡하기 때문에, $\mu=0$이고 $\sigma=1$인 경우를 보려고 합니다.
+이것을 직접 증명하는 것은 복잡하기 때문에, 먼저 $\mu=0$이고 $\sigma=1$인 경우를 보려고 합니다(standard normal distribution).
 다시 말해,
 
 $$
@@ -3129,16 +3130,15 @@ $$
 로 주어진 연속확률변수 $U$에 대하여
 
 $$
-\begin{align*}
+\begin{aligned}
 \int_{-\infty}^\infty f_U(u)\,du&=1\\
 E[U]&=0\\
 V[U]&=1
-\end{align*}
+\end{aligned}
+\tag{$\ast\ast\ast$}
 $$
 
 를 증명하려고 합니다.
-그리고 나서 $X=\sigma_X U+\mu_X$로 $X$를 정의하면
-$X$의 확률밀도함수는 $(\ast)$를 만족시키고, $(\ast\ast)$의 세 성질이 성립합니다.
 
 먼저 $U$의 확률밀도함수를 실수 전체에 대해 적분했을 때 1이 된다는 사실을 먼저 증명하기 위해
 
@@ -3227,7 +3227,63 @@ r^4\cos^2\theta\sin^2\theta e^{-\frac12r^2}r\,dr\,d\theta\\
 \end{align*}
 $$
 
-따라서 $(\ast\ast)$의 세 성질이 성립합니다.
+따라서 $(\ast\ast\ast)$가 증명되었습니다.
+이제 $(\ast\ast)$를 증명해보려고 합니다.
+만약 확률변수 $X$가 $(\ast)$를 PDF로 가진다면 변수변환 $x=\sigma_Xu+\mu_X$에 의하여
+
+$$
+\begin{align*}
+\int_{-\infty}^\infty f_X(x)\,dx
+&=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}\sigma_X}e^{-\frac{(x-{\mu_X})^2}{2{\sigma_X}^2}}\,dx\\
+&=\int_{-\infty}^\infty\frac1{\sqrt{2\pi}}e^{-\frac12u^2}\,du\\
+&=1
+\end{align*}
+$$
+
+입니다.
+따라서 $(\ast\ast\ast)$의 첫번째 식이 증명되었습니다.
+또한, 새로운 확률변수
+
+$$U=\frac{X-\mu_X}{\sigma_X}$$
+
+는 standard normal입니다.
+($U\sim N(0,1)$ 입니다.)
+왜냐하면,
+
+$$
+\begin{align*}
+F_U(u)
+&=P(U\le u)\\
+&=P(\frac{x-\mu_X}{\sigma_X}\le u)\\
+&=P(X\le\sigma_Xu+\mu_X)\\
+&=F_X\left(\sigma_Xu+\mu_X\right)\\
+f_U(u)
+&=\frac d{du}F_U(u)\\
+&=\frac d{du}F_X\left(\sigma_Xu+\mu_X\right)\\
+&=\sigma_Xf_X\left(\sigma_Xu+\mu_X\right)\\
+&=\sigma_X\times\frac1{\sqrt{2\pi}\sigma_X}e^{-\frac12\left(\frac{x-\mu_X}{\sigma_X}\right)^2}\\
+&=\frac1{\sqrt{2\pi}}e^{-\frac12\left(\frac{x-\mu_X}{\sigma_X}\right)^2}
+\end{align*}
+$$
+
+이기 때문입니다.
+따라서
+
+$$
+\begin{align*}
+E[X]
+&=E\left[\mu_X+\sigma_XU\right]\\
+&=\mu_X+\sigma_XE[U]\\
+&=\mu_X\\
+{\sigma_X}^2
+&=V\left[\mu_X+\sigma_XU\right]\\
+&={\sigma_X}^2V[U]\\
+&={\sigma_X}^2
+\end{align*}
+$$
+
+입니다.
+즉 $(\ast\ast)$의 나머지 두 식이 증명되었습니다. $\square$
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-1.png){: .img-100-center}
 
@@ -3303,11 +3359,155 @@ $X_1\sim N(\mu_1,{\sigma_1}^2)$, $X_2\sim N(\mu_2,{\sigma_2}^2)$일 때,새로�
 
 **4.5 Pascal distribution (Negative binomial distribution)**
 
+강의의 마지막에는 Pascal distribution에 대한 설명이 간략하게 있습니다.
+이에 관해서는 칠판에 적힌 캡쳐로 간단하게 갈음하겠습니다.
+
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-3.png){: .img-75-center}
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-4.png){: .img-75-center}
 
 ![]({{site.url}}\images\2023-03-26-kocw_stats\stats_9-5.png){: .img-75-center}
+
+강의의 내용은 여기까지입니다.
+하지만, 정규분포가 워낙 중요한 분포이고 나중에 사용할 수 있는 중요한 성질들이 언급되어있지 않기 때문에, 조금 더 적어보려고 합니다.
+여기에 적어볼 사실은 다음과 같습니다.
+
+<div class="notice--success">
+(a) $X\sim N(\mu,\sigma^2)\qquad\iff\qquad M_X(t)=\exp\left(\mu t+\frac12\sigma^2t^2\right)$
+<br>
+
+(b) 두 확률변수 $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$ 가 독립이면
+$$aX+bY+c\sim N\left(a\mu_X+b\mu_Y+c,a^2{\sigma_X}^2+b^2{\sigma_Y}^2\right).$$
+이 성립합니다.
+</div>
+
+(a)에서 등장하는 $M_X$라는 함수는 moment generating function이라고 불립니다.
+즉 (a)의 내용은, 정규분포가 moment generating function을 통해 설명(characterize)될 수 있다는 것입니다.
+(b)는 정규분포를 따르며 독립인 확률변수들의 일차결합이 여전히 정규분포를 따른다는 중요한 사실을 이야기하고 있습니다.
+이것들에 대한 증명을 시작하기 전에, 먼저 moment generating function에 대해 간략하게 설명해보겠습니다.
+
+<div class="notice">
+<b> moment genrating functions </b> <br>
+
+$X$가 확률변수일 때,
+$$M_X(t)=E\left[e^{tX}\right]$$
+를 $X$의 moment generating function이라고 합니다.
+이것을 활용하면, $X$의 $n$th moment를 쉽게 계산할 수 있습니다;
+$${M_X}^{(n)}(0)=E[X^n]$$
+</div>
+
+이에 대한 증명은 다음과 같습니다.
+아래 계산에서 등장하는 급수들은 모두 적당히 잘 수렴한다고 가정합니다.
+$e^{tX}$에 Maclaurin series를 적용하면
+
+$$
+\begin{align*}
+M_X(t)
+&=E\left[e^{tX}\right]\\
+&=E\left[1+tX+\frac{t^2X^2}{2!}+\frac{t^3X^3}{3!}+\cdots\right]\\
+&=1+tE[X]+\frac{t^2}{2!}E[X^2]+\frac{t^3}{3!}E[X^3]+\cdots
+\end{align*}
+$$
+
+입니다.
+따라서
+
+$$
+\begin{align*}
+M_X'(t)&=E[X]+tE[X^2]+\frac{t^2}{2!}E[X^3]+\frac{t^3}{3!}E[X^4]+\cdots\\
+M_X''(t)&=E[X^2]+tE[X^3]+\frac{t^2}{2!}E[X^4]+\frac{t^3}{3!}E[X^5]+\cdots\\
+&\vdots\\
+M_X^{(n)}(t)&=E[X^n]+tE[X^{n+1}]+\frac{t^2}{2!}E[X^{n+2}]+\frac{t^3}{3!}E[X^{n+3}]+\cdots.
+\end{align*}
+$$
+
+이고
+
+$$M_X^{(n)}(0)=E[X^n].$$
+
+입니다.
+$\square$
+
+<div class="notice--danger">
+<b>Uniqueness of moment generating function</b><br>
+확률변수 $X$에 대하여 그에 대응하는 moment generating function $M_X$는 유일(unique)하다고 알려져있습니다.
+다시 말해, 새로운 확률변수 $X'$이  $M_X=M_{X'}$을 만족시키면, $X$와 $X'$의 분포는 같습니다.
+이에 대한 증명은 생략하겠지만, 이 사실은 매우 유용하게 쓰일 수 있습니다.
+</div>
+
+이제 (a)를 증명해보겠습니다.
+먼저 $\Rightarrow$ 방향입니다.
+
+$X\sim N(\mu,\sigma^2)$를 가정하면
+
+$$
+\begin{align*}
+M_X(t)
+&=E[e^{tX}]\\
+&=\int_{\mathbb R}e^{tx}\times\frac1{\sqrt{2\pi}\sigma}\exp\left(-\left(\frac{x-\mu}{\sqrt2\sigma}\right)^2\right)\,dx\\
+&=\frac1{\sqrt{2\pi}\sigma}\int_{\mathbb R}\exp\left(tx-\left(\frac{x-\mu}{\sqrt2\sigma}\right)^2\right)\,dx.
+\end{align*}
+$$
+
+입니다.
+
+변수변환 $u=\frac{x-\mu}{\sqrt2\sigma}$ 을 하면 $dx=\sqrt2\sigma\,du$ 이므로
+
+$$
+\begin{align*}
+M_X(t)
+&=\frac1{\sqrt{2\pi}\sigma}\int_{\mathbb R}\exp\left(t(\mu+\sqrt2\sigma u)-u^2\right)\times\sqrt2\sigma\,du.\\
+&=\frac{e^{\mu t}}{\sqrt\pi}\int_{\mathbb R}\exp\left(\sqrt2\sigma tu-u^2\right)\,du.\\
+&=\frac{e^{\mu t}}{\sqrt\pi}\int_{\mathbb R}\exp\left(-\left(u-\frac{\sigma t}{\sqrt2}\right)^2+\frac{\sigma^2t^2}2\right)\,du.\\
+\end{align*}
+$$
+
+입니다.
+다시, 변수변환 $v=u-\frac{\sigma t}{\sqrt2}$를 적용하면
+
+$$
+\begin{align*}
+M_X(t)
+&=\frac{e^{\mu t+\frac12\sigma^2t^2}}{\sqrt\pi}\int_{\mathbb R}\exp\left(-v^2\right)\,du\\
+&\stackrel{\star}=\frac{e^{\mu t+\frac12\sigma^2t^2}}{\sqrt\pi}\times\sqrt\pi\\
+&=e^{\mu t+\frac12\sigma^2t^2}.
+\end{align*}
+$$
+
+이 됩니다.
+이때, $\star$는 $\langle09\rangle$의 서두에 등장했던 이중적분과 좌표변환을 통해 얻을 수 있습니다.
+
+(a)의 반대방향($\Leftarrow$)은 $M_X$가 유일하다는 것으로부터 당연합니다.
+즉, 만약 확률변수 $Y$가 $M_Y(t)=\exp\left(\mu t+\frac12\sigma^2t^2\right)$를 만족시키는 확률변수여서 (a)의 오른쪽 조건이 성립한다면, $M_X=M_Y$가 성립합니다.
+그런데 moment generating function의 유일성으로부터 $Y$와 $X$의 분포는 같습니다.
+그러므로 $Y\sim N(\mu,\sigma^2)$이고, (a)의 왼쪽조건이 성립합니다.
+따라서 (a)의 $\Leftarrow$ 방향도 증명되었습니다.
+
+이번엔 (b)에 대한 증명입니다.
+(a)의 $\Rightarrow$방향과 moment generating function의 정의, 그리고 독립인 확률변수들의 성질로부터
+
+$$
+\begin{align*}
+M_{aX+bY+c}(t)
+&=E\left[e^{(aX+bY+c)t}\right]\\
+&=E\left[e^{aXt}e^{aYt}e^{ct}\right]\\
+&\stackrel{\star\star}=E\left[e^{X(at)}\right]E\left[e^{Y(bt)}\right]E\left[e^{ct}\right]\\
+&=M_X(at)\times M_Y(bt)\times e^{ct}\\
+&=\exp\left(\mu_X(at)+\frac12{\sigma_X}^2(at)^2\right)\times\exp\left(\mu_Y(bt)+\frac12{\sigma_Y}^2(bt)^2\right)\times\exp(ct)\\
+&=\exp\left((a\mu_X+b\mu_Y+c)t+\frac12\left(a^2{\sigma_X}^2+b^2{\sigma_Y}^2\right)t^2\right)
+\end{align*}
+$$
+
+입니다.
+이때 $\star\star$는 $X$와 $Y$가 독립이라는 사실 때문에 그렇습니다.
+즉, 두 함수 $f$, $g$에 대하여
+
+$$E[f(X)g(Y)]=E[f(X)]E[g(Y)]$$
+
+가 성립하는데, 이것은 $\langle12\rangle$에서 증명됩니다.
+다시 증명으로 돌아와보면, (a)의 $\Leftarrow$ 방향으로부터 $aX+bY+c$가 평균이 $a\mu_X+b\mu_Y+c$ 이고 분산이 $a^2{\mu_X}^2+b^2{\mu_Y}^2$인 정규분포를 따른다는 것을 알 수 있습니다.
+이것으로 (b)에 대한 증명이 끝났습니다$\square$
+
 
 # 10 다중변수 및 연합분포
 
@@ -4213,6 +4413,8 @@ $$P(A)=\sum_{j=1}^nP(A|A_i)P(A_i)$$
 
 **5.7 covariance and correlation coefficient**
 
+**covariance(공분산)**
+
 $X$와 $Y$가 확률변수이고, $E[X]=\mu_X$, $E[Y]=\mu_Y$이면, $X$와 $Y$ 사이의 공분산(covariance)을
 
 $$\text{cov}(X,Y)=\sigma_{XY}=E\left[(X-\mu_X)(Y-\mu_Y)\right]$$
@@ -4253,14 +4455,30 @@ $X$, $Y$가 서로 독립이면, $X$와 $Y$는 상관성이 없습니다.
 $$
 \begin{align*}
 E[XY]
-&=\iint_{\mathbb R^2}xyP_{XY}(x,y)\,dx\,dy\\
-&=\iint_{\mathbb R^2}xyP_X(x)P_Y(y)\,dx\,dy\\
-&=\int_{\mathbb R}xP_X(x)\,dx\times\int_{\mathbb R}yP_Y(y)\,dy\\
+&=\iint_{\mathbb R^2}xyf_{XY}(x,y)\,dx\,dy\\
+&=\iint_{\mathbb R^2}xyf_X(x)P_Y(y)\,dx\,dy\\
+&=\int_{\mathbb R}xf_X(x)\,dx\times\int_{\mathbb R}yf_Y(y)\,dy\\
 &=E[X]E[Y]
 \end{align*}
 $$
 
 가 되어 식 $(\ast\ast\ast)$의 우변이 0이 되기 때문입니다.
+
+<div class="notice--danger">
+일반적으로, 두 확률변수 $X$, $Y$가 독립이면
+$$E[g(X)h(Y)]=E[g(X)]E[h(Y)]$$
+입니다.
+이에 대한 증명은 LOTUS로부터 당연합니다.
+\begin{align*}
+E[g(X)h(Y)]
+&\stackrel{\text{LOTUS}}=
+\int_{-\infty}^\infty\int_{-\infty}^\infty g(x)h(y)f_{XY}(x,y)\,dx\,dy\\
+&=\int_{-\infty}^\infty\int_{-\infty}^\infty g(x)h(y)f_X(x)f_Y(y)\,dx\,dy\\
+&=\int_{-\infty}^\infty g(x)f_X\,dx\times
+\int_{-\infty}^\infty h(y)f_Y(y)\,dy\\
+&\stackrel{\text{LOTUS}}=E[g(X)]E[h(Y)]
+\end{align*}
+</div>
 
 하지만, uncorrelatedness가 독립성을 보장하지는 않습니다.
 그 [반례](https://stats.stackexchange.com/q/85384)로, $X$가 $\\{-1,0,1\\}$의 uniform distribution이고 $Y=3X^2-2$이면, $X$와 $Y$는 uncorrelated하지만 독립조건이 깨집니다.
@@ -4321,7 +4539,61 @@ $$
 이 반례는, correlated라는 뜻이 "두 확률변수가 연관되어있다"는 것이 아니라는 것도 알려줍니다.
 실제로 위와 같은 $X$와 $Y$는 $Y=3X^2-2$와 같은 '연관성'이 분명히 있는데도 불구하고 uncorrelated인 것입니다.
 
-한편, correlation coefficient(상관계수)를 
+다음 개념으로 넘어가기 전에, covariance의 여러 성질들을 적어보겠습니다.
+가장 먼저 covarinace의 bilinearity입니다 : (a), (b).
+다시 말해, 함수 $\text{cov}(\cdot,\cdot)$이 각 성분에 대하여 linear하다는 것입니다.
+또한, 상수를 더하는 것(additive constant)이 covariance의 값에 영향을 주지 않는다는 것도 언급하겠습니다 : (c), (d).
+마지막으로 covarinace가 symmetric한 성질을 가진다는 것도 언급해보려고 합니다 : (e).
+구체적으로 말하면 다음과 같습니다.
+
+<div class="notice--success">
+(a) $\text{cov}(aX+bY,Z)=a\text{cov}(X,Z)+b\text{cov}(X,Z)$ <br>
+(b) $\text{cov}(X,aY+bZ)=a\text{cov}(X,Y)+b\text{cov}(X,Z)$ <br>
+(c) $\text{cov}(X+c,Y)=\text{cov}(X,Y)$ <br>
+(d) $\text{cov}(X,Y+c)=\text{cov}(X,Y)$ <br>
+(e) $\text{cov}(X,Y)=\text{cov}(Y,X)$
+</div>
+
+(b)의 증명은 (a)의 증명과 거의 같으니, (a)의 증명만 하겠습니다.
+(a)의 증명은 $(\ast\ast)$로부터 당연합니다 ;
+
+$$
+\begin{align*}
+\text{cov}(aX+bY,Z)
+&=E\left[\left((aX+bY)-(a\mu_X+b\mu_Y)\right)(z-\mu_Z)\right]\\
+&=E\left[\left(a(X-\mu_X)+b(Y-\mu_Y)\right)(z-\mu_Z)\right]\\
+&=E\left[a(X-\mu_X)(z-\mu_Z)+b(Y-\mu_Y)(z-\mu_Z)\right]\\
+&\stackrel{(\ast\ast)}=aE\left[(X-\mu_X)(z-\mu_Z)\right]+bE\left[(Y-\mu_Y)(z-\mu_Z)\right]\\
+&=a\text{cov}(X,Z)+b\text{Cov}(Y,Z),
+\end{align*}
+$$
+
+(c), (d)의 경우에도 (c)만 증명하겠습니다 ; 
+
+$$
+\begin{align*}
+\text{cov}(X+c,Y)
+&=E\left[\left((X+c)-(\mu_X+c)\right)(Y-\mu_Y)\right]\\
+&=E\left[(X-\mu_X)(Y-\mu_Y)\right]\\
+&=\text{cov}(X,Y).
+\end{align*}
+$$
+
+(e)는 covariance의 정의로부터 당연합니다 ; 
+
+$$
+\text{cov}(X,Y)
+=E\left[(X-\mu_X)(Y-\mu_Y)\right]
+=E\left[(Y-\mu_Y)(X-\mu_X)\right]
+=\text{cov}(Y,X).
+$$
+
+따라서, covariance에 대한 다섯 가지 성질들이 모두 증명되었습니다.
+$\square$
+
+**Pearson correlation coefficient(피어슨 상관계수)**
+
+한편, correlation coefficient(상관계수, 피어슨 상관계수, Pearson correlation coefficient)를 
 
 $$
 \rho_{XY}=\frac{\sigma_{XY}}{\sigma_X\sigma_Y}
@@ -4770,7 +5042,8 @@ $$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 강의의 마지막에 등장하는 것은 bivariate normal distribution과 multivariate normal distribution에 대한 내용입니다.
 해당 내용들은 워낙 많은 것들을 함축하고 있어서, 그 의미에 대해 다 설명하기는 쉽지 않습니다.
 그래도, bivariate normal distribution에 관해서는 나름대로 공부해보고, 해당 내용들을 TeX파일로 만들어보았습니다.
-이것은, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 내용을 참고하여 bivariate normal distribution에 관한 주요 사항들과, 그 증명에 필요한 사항들을 적어보았는데, 많은 경우에 책에는 $n$개의 확률변수에 대한 정리들이 적혀있는 것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
+이것은, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 내용을 참고하여 bivariate normal distribution에 관한 주요 사항들과 그 증명에 필요한 사항들을 적어본 것입니다.
+책에는 $n$개의 확률변수에 대해 적혀있는데 그것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
 [링크]({{ site.url }}/assets/pdf/0405_bivariate_normal_distribution.pdf){: .btn .btn--primary}
 
 이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 해보려 했습니다.
@@ -4785,7 +5058,7 @@ $X\sim N(\mu_X,{\sigma_X}^2)$, $Y\sim N(\mu_Y,{\sigma_Y}^2)$, $\rho_{XY}=\rho$�
 
 $$
 f_{XY}(x,y)=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
-\tag{$(\ast)$}
+\tag{$\ast$}
 $$
 
 와 같이 주어지는 것입니다.
@@ -5296,7 +5569,7 @@ f_Y(y)
 -\frac1af_X\left(\frac{y-b}a\right) &(a\lt0)\\
 \end{cases}\\[10pt]
 &=\frac{f_X\left(\frac{y-b}a\right)}{|a|}
-\end{aligned}\tag{$(\ast)$}
+\end{aligned}\tag{$\ast$}
 $$
 
 로 계산됩니다.
@@ -5335,7 +5608,7 @@ f_Y(y)
 &=\frac d{dy}F_Y(y)\\
 &=\frac d{dy}\left(F_X(\sqrt y)-F_X(-\sqrt y)\right)\\
 &=\frac{f_X(\sqrt y)}{2\sqrt y}+\frac{f_X(-\sqrt y)}{2\sqrt y}
-\end{aligned}\tag{$(\ast\ast)$}
+\end{aligned}\tag{$\ast\ast$}
 $$
 
 이 됩니다.
@@ -5621,7 +5894,7 @@ $$g(x,y)=x+y$$
 
 $$
 f_S(s)=\int_{-\infty}^\infty f_{XY}(s-u,u)\,du
-\tag{$(\ast)$}
+\tag{$\ast$}
 $$
 
 로 주어집니다.
@@ -5631,7 +5904,7 @@ $$
 
 $$
 f_S(s)=\int_{-\infty}^\infty f_X(s-u)f_Y(u)\,du
-\tag{$(\ast\ast)$}
+\tag{$\ast\ast$}
 $$
 
 와 같이 쓸 수도 있습니다.
@@ -5862,7 +6135,7 @@ Erlang-$k$ distribution의 식
 
 $$
 f_X(x)=\frac{\lambda^kx^{k-1}}{(k-1)!}e^{-\lambda x}\qquad x\ge0
-\tag{$(\ast\ast\ast)$}
+\tag{$\ast\ast\ast$}
 $$
 
 에 $k=2$를 대입한
