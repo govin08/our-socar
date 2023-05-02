@@ -2322,7 +2322,7 @@ Poisson PMF의 식의 의미를 여러가지로 알아보다가 아주 재미있
 그 내용은 이렇습니다.
 binomial PMF인
 
-$$f_X(k)=\binom nkp^k(1-p)^{n-k}$$
+$$P_X(k)=\binom nkp^k(1-p)^{n-k}$$
 
 에서 $n$을 무한대로 보내면, Poisson PMF의 모양이 됩니다.
 
