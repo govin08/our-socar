@@ -27,7 +27,7 @@ notice--danger / 빨강 / 참고 -->
 그리하여, 한 번 시간을 잡고 위의 두 내용에 대해 고민해본 적이 있습니다.
 많은 자료들을 뒤졌지만 정작 제가 궁금해하는 저 위의 사실에 대하여 AtoZ로 알려주는 자료는 찾지 못했습니다.
 그래서, 관련 내용을 직접 TeX으로 정리해 본 적이 있습니다.
-[링크]({{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf){: .btn .btn--primary}
+[링크]({{ site.url }}/assets/pdf/200300_orthogonally_diagonalizable.pdf){: .btn .btn--primary}
 
 해당 파일은 영어로 작성해본 것인데, 이번 포스트에서는 이것을 한글로 적으면서 내용도 풀어서 다시 정리해보고자 합니다.
 사실, 어느 정도 선형대수에 대한 지식이 있다면, 간결하게 적어놓은 원래 파일이 더 잘 읽힐 수 있습니다.
@@ -3050,7 +3050,7 @@ $$
 이것은 성질 21에서 따로 증명하겠습니다.
 따라서, 남은 포스트의 내용은 정리 19(b)를 증명하는 것을 목적으로 합니다.
 그러면 정리 19를 모두 증명하는 셈이 됩니다.
-그리고 사실 원래 만들었던 [파일]({{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf){: .btn .btn--primary}의 내용은 지금부터이며, 앞의 내용들은 이 증명을 위한 배경지식이었습니다.
+그리고 사실 원래 만들었던 [파일]({{ site.url }}/assets/pdf/200300_orthogonally_diagonalizable.pdf){: .btn .btn--primary}의 내용은 지금부터이며, 앞의 내용들은 이 증명을 위한 배경지식이었습니다.
 
 만약, 행렬 $A$의 eigenvalue들이 모두 다를 경우에 정리 19(b)를 증명하는 것은 그래도 꽤 간결하게 설명될 수 있습니다 (2.3).
 하지만, 그렇지 않을 경우, 즉 characteristic equation이 중근을 가질 경우까지 고려한다면 그렇게 간단하지 않아서, Schur's lemma를 사용해 설명해보았습니다 (2.4).
@@ -4420,4 +4420,4 @@ matrix norm과 Lipschitz constant에 대해서도 쓰고 싶습니다.
 Fourier series에 대해서도 쓰고 싶습니다만, 이것은 꼭 선형대수와 직접적으로 연관지을 필요는 없을 것입니다.
 여하튼, 이것들을 어떻게 구성해나가야 할지에 대해서는 많은 고민이 있습니다.
 
-[1]:{{ site.url }}/assets/pdf/orthogonally_diagonalizable.pdf
+[1]:{{ site.url }}/assets/pdf/200300_orthogonally_diagonalizable.pdf

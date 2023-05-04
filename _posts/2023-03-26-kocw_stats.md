@@ -5050,7 +5050,7 @@ $$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 그래도, bivariate normal distribution에 관해서는 나름대로 공부해보고, 해당 내용들을 TeX파일로 만들어보았습니다.
 이것은, [DeGroot, Probability and Statistics, 4ed](https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466)의 내용을 참고하여 bivariate normal distribution에 관한 주요 사항들과 그 증명에 필요한 사항들을 적어본 것입니다.
 책에는 $n$개의 확률변수에 대해 적혀있는데 그것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
-[링크]({{ site.url }}/assets/pdf/0405_bivariate_normal_distribution.pdf){: .btn .btn--primary}
+[링크]({{ site.url }}/assets/pdf/230405_bivariate_normal_distribution.pdf){: .btn .btn--primary}
 
 이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 해보려 했습니다.
 하지만, 일단은 중요한 정리 몇 개만 간단하게 적을 것 같고 이에 대한 상세한 설명이나 증명은 위 링크로 대체하겠습니다.
