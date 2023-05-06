@@ -1,0 +1,6 @@
+layout: single
+title:  "genetic algorithm으로 시험에서 만점 받기"
+categories: machine_learning
+tag: [genetic algorithm]
+toc: true
+author_profile: false
