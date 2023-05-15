@@ -3828,7 +3828,7 @@ $$
 &=1\\
 \iint_{\mathbb R^2}f_{XY}(x,y)\,dx\,dy
 &=\iint_D f_{XY}(x,y)\,dx\,dy\\
-&\stackrel{(b)}=\int_0^\infty\int_x^\infty f_{XY}(x,y)\,dx\,dy\\
+&\stackrel{(b)}=\int_0^\infty\int_x^\infty f_{XY}(x,y)\,dy\,dx\\
 &=\int_0^\infty\int_x^\infty2e^{-x-y}\,dy\,dx\\
 &=\int_0^\infty\left[-2e^{-x-y}\right]_{y=x}^{y=\infty}\,dx\\
 &=\int_0^\infty2e^{-2x}\,dx\\
@@ -4839,8 +4839,7 @@ $$
 
 13강부터는 내용이 조금 어려워지는 것처럼 보입니다.
 그래서 며칠간이나 진도를 나가지 못했습니다.
-결국은 내용을 완전히 이해해서 12강까지 정리한 방식으로 쓸 예정이지만, 그전에 강의의 내용들을 단순히 적어보는 과정이 있어야 할 것 같습니다.
-13강부터 16강까지는 먼저 강의의 내용을 literal하게 적고 추후에 그 내용을 변형해나가겠습니다.
+여기서부터는, 먼저 강의의 내용을 literal하게 적고, 추후에 그 내용을 변경해나갔습니다.
 
 지난 강의에서 두 확률변수 $X$, $Y$에 대한 covariance(공분산) $\sigma_{XY}$, correlation coefficient(Pearson correlation coefficient, 피어슨 상관계수, 상관계수) $\rho_{XY}$를 다음과 같이 정의했었습니다.
 
