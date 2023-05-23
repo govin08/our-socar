@@ -5051,9 +5051,7 @@ $$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 책에는 $n$개의 확률변수에 대해 적혀있는데 그것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
 [링크]({{ site.url }}/assets/pdf/230405_bivariate_normal_distribution.pdf){: .btn .btn--primary}
 
-이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 소개해보려 했습니다.
-하지만, 일단은 중요한 정리 몇 개만 간단하게 적을 것 같고 이에 대한 상세한 설명이나 증명은 위 링크로 대체하겠습니다.
-나중에 시간이 되면 (시간이나 여력보다 더 중요한 것은, 해당 내용을 이 포스트에 어떻게 넣을 지 결정되면) 해당 내용을 이 포스트 내에 녹여서 쓸 수도 있을 것 같습니다.
+이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 소개해보았습니다.
 
 <div class="notice--success">
 <b> bivariate normal distribution </b> <br>
