@@ -5051,7 +5051,7 @@ $$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 책에는 $n$개의 확률변수에 대해 적혀있는데 그것을 $2$개의 확률변수로 바꾸어서 적어놓은 것입니다.
 [링크]({{ site.url }}/assets/pdf/230405_bivariate_normal_distribution.pdf){: .btn .btn--primary}
 
-이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 해보려 했습니다.
+이번 절에서는 강의의 내용을 따라가되, 강의에서 제시한 짤막한 소개를 보충하는, 정확한 statement를 소개해보려 했습니다.
 하지만, 일단은 중요한 정리 몇 개만 간단하게 적을 것 같고 이에 대한 상세한 설명이나 증명은 위 링크로 대체하겠습니다.
 나중에 시간이 되면 (시간이나 여력보다 더 중요한 것은, 해당 내용을 이 포스트에 어떻게 넣을 지 결정되면) 해당 내용을 이 포스트 내에 녹여서 쓸 수도 있을 것 같습니다.
 
@@ -5061,7 +5061,7 @@ $$(x_1+x_2+\cdots+x_k)^n=\sum_{n_1+\cdots+n_k=n}\binom n{n_1,\cdots,n_k}\prod_{i
 $\mu_X,\mu_Y\in\mathbb R$, $\sigma_X,\sigma_Y\gt0$, $-1\lt\rho\lt1$를 만족시키고, $X$, $Y$가 연속확률변수일때, $X$, $Y$의 joint PDF가
 
 $$
-f_{XY}(x,y)=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
+f_{XY}(x,y)=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]\right)
 \tag{$\ast$}
 $$
 
@@ -5079,8 +5079,8 @@ $$
 
 <div class="notice--danger">
 이 강의에서의 notation을 계속 따라가고 있기 때문에 위의 statement는 그 뜻이 조금 명확하지 않게 적혀져있습니다.
-이 강의에서 $\mu_X$와 $\sigma_X$는 각각 $X$의 평균과 표준편차를 의미했습니다.
-하지만 위의 statement에서 첫번째 줄에서 $\mu_X$, $\mu_Y$, $\sigma_X$, $\sigma_Y$, $\rho$를 언급할 때, 이것들은 단지 다섯 개의 실수를 언급할 뿐이지 $X$와 $Y$의 평균이나 표준편차라는 의미는 아직 없습니다.
+이 강의에서 $\mu_X$와 $\sigma_X$는 항상, 각각 $X$의 평균과 표준편차를 의미했습니다.
+하지만 위의 statement에서 첫번째 줄에서 $\mu_X$, $\mu_Y$, $\sigma_X$, $\sigma_Y$를 언급할 때, 이것들은 단지 다섯 개의 실수를 언급할 뿐이지 $X$와 $Y$의 평균이나 표준편차라는 의미는 아직 없습니다.
 그런데 만약 $(\ast)$ 식이 PDF로 주어진다면, 이 숫자들이 평균과 표준편차의 의미를 가진다는 것이 위 statement의 내용입니다.
 강의의 notation을 따라가기 위해서, 그리고 너무 statement가 길어지지 않게 하기 위해서 위와 같이 적어보았습니다.
 </div>
@@ -5213,11 +5213,11 @@ $$
 \begin{align*}
 f_{XY}(x,y)
 &=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}
-\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
+\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]\right)\\
 &=\frac1{2\pi\sigma_X\sigma_Y}\exp\left(-\frac12
-\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)\\
-&=\frac1{\sqrt{2\pi}\sigma_X}\exp\left(-\frac12\left(\frac{x-\mu_X}{\mu_X}\right)^2\right)
-\times\frac1{\sqrt{2\pi}\sigma_Y}\exp\left(-\frac12\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right)\\
+\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]\right)\\
+&=\frac1{\sqrt{2\pi}\sigma_X}\exp\left(-\frac12\left(\frac{x-\mu_X}{\sigma_X}\right)^2\right)
+\times\frac1{\sqrt{2\pi}\sigma_Y}\exp\left(-\frac12\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right)\\
 &=f_X(x)f_Y(y)
 \end{align*}
 $$
@@ -5455,7 +5455,7 @@ y-\mu_Y
 &=\frac1{1-\rho^2}
 \left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]\\
 f_{XY}(x,y)
-&=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\mu_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\mu_X}\right)\left(\frac{y-\mu_Y}{\mu_Y}\right)+\left(\frac{y-\mu_Y}{\mu_Y}\right)^2\right]\right)
+&=\frac1{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}\exp\left(-\frac1{2(1-\rho^2)}\left[\left(\frac{x-\mu_X}{\sigma_X}\right)^2-2\rho\left(\frac{x-\mu_X}{\sigma_X}\right)\left(\frac{y-\mu_Y}{\sigma_Y}\right)+\left(\frac{y-\mu_Y}{\sigma_Y}\right)^2\right]\right)
 \end{align*}
 $$
 
@@ -6313,11 +6313,11 @@ $$E[X+Y]=E[X]+E[Y]$$
 $$
 \begin{align*}
 E[X+Y]
-&=\iint_{\mathbb R^2}(x+y)P_{XY}(x,y)\,dx\,dy\\
-&=\iint_{\mathbb R^2}xP_{XY}(x,y)\,dx\,dy+\iint_{\mathbb R^2}yP_{XY}(x,y)\,dx\,dy\\
-&=\int_{\mathbb R}x\int_{\mathbb R}P_{XY}(x,y)\,dy\,dx
-+\iint_{\mathbb R}y\int_{\mathbb R}P_{XY}(x,y)\,dx\,dy\\
-&=\int_{\mathbb R}xP_X(x)\,dx+\int_{\mathbb R}yP_Y(y)\,dy\\
+&=\iint_{\mathbb R^2}(x+y)f_{XY}(x,y)\,dx\,dy\\
+&=\iint_{\mathbb R^2}xf_{XY}(x,y)\,dx\,dy+\iint_{\mathbb R^2}yf_{XY}(x,y)\,dx\,dy\\
+&=\int_{\mathbb R}x\int_{\mathbb R}f_{XY}(x,y)\,dy\,dx
++\int_{\mathbb R}y\int_{\mathbb R}f_{XY}(x,y)\,dx\,dy\\
+&=\int_{\mathbb R}xf_X(x)\,dx+\int_{\mathbb R}yf_Y(y)\,dy\\
 &=E[X]+E[Y]
 \end{align*}
 $$
