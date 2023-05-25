@@ -1,4 +1,4 @@
-ru테디노트 동영상
+테디노트 동영상
  - https://www.youtube.com/watch?v=ACzFIAOsfpM
 A to Z GitHub Blog Jekyll minimal mistakes
  - https://eona1301.github.io/a_to_z/GithubBlog/
