@@ -16,6 +16,8 @@ interpolation(보간법)에 대하여 한 번 정리해봤습니다.
 (`ipnyb`로 포스트를 작성할 때에 그림 파일이 제대로 잘 변환되지 않는 오류를 아직 해결하고 있지 못하고 있습니다.
 그래서 아직 genetic algorithm 포스트도 미완인 상태로 있습니다.)
 
+![]({{site.url}}\images\2023-05-27-interpolation\0a.png){: .img-50-center}
+
 # 1 univariate interpolations
 
 univariate interpolation이라는 말에서 변수가 한 개(univariate)라는 의미는 독립변수($x$)의 개수가 한 개라는 것입니다.
@@ -39,7 +41,7 @@ $$f(x_i)=\frac1{|\{j:x_j=x_i\}|}\sum_{j:x_j=x_i}y_j$$
 이 문제상황을 그림으로 그려보면 다음과 같습니다.
 $n+1$개의 점이 이미 찍혀있는 상태에서, 이 점들을 적절히 이어서 새로운 함수 $f$를 만드는 것입니다.
 
-![]({{site.url}}\images\2023-05-27-interpolation\1a.gif){: .img-50-center}
+![]({{site.url}}\images\2023-05-27-interpolation\1b.gif){: .img-50-center}
 
 $n+1$개의 점 $(x_i,y_i)$를 찍는 코드는 다음과 같습니다.
 
@@ -64,9 +66,11 @@ plt.savefig("../../images/2023-05-27-interpolation/1c.png")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_4_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_5_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1c.png){: .img-50-center}
 
 ## 1.1 vanilla interpolations
 
@@ -106,6 +110,7 @@ def interp(kind, filename):
     plt.xticks(np.arange(0, length))
     plt.yticks(np.arange(6, 10))
     plt.savefig("../../images/2023-05-27-interpolation/"+filename+".png")
+    plt.title("kind = "+kind)
 
 ```
 
@@ -118,9 +123,11 @@ interp('nearest', "1.1.1a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_11_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_13_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.1.1a.png){: .img-50-center}
 
 ### 1.1.2 previous
 
@@ -148,9 +155,11 @@ interp('previous', "1.1.2a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_14_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_17_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.1.2a.png){: .img-50-center}
 
 넓은 의미에서 이것을 (뒤에 나올) spline interpolation에 포함시킬 수 있습니다.
 즉, 각 구간 $[x_{i-1},x_i]$의 함수 $f_i$를 0차함수(=상수함수)로서 모델링하는 것입니다.
@@ -164,9 +173,11 @@ interp('zero', "1.1.2b")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_16_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_20_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.1.2b.png){: .img-50-center}
 
 ### 1.1.3 next
 
@@ -193,11 +204,13 @@ interp('next', "1.1.3a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_19_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_24_0.png)
     
 
 
-# 1.2 polynomial interpolation
+![]({{site.url}}\images\2023-05-27-interpolation\1.1.3b.png){: .img-50-center}
+
+## 1.2 polynomial interpolations
 
 $n+1$개의 점이 찍혀있을 때, 이 $n+1$개의 점을 지나는 $n$차 다항식을 항상 찾을 수 있습니다.
 이것을 interpolation theorem이라고 하는데, wikipedia의 statement를 그대로 따라 적어보면 다음과 같습니다.
@@ -219,7 +232,7 @@ polynomial interpolation을 사용하면, $n+1$개의 점을 지나는 다항식
 그래서, 이러한 polynomial interpolation 방법은 일반적으로 잘 쓰이지 않고, 다음과 같은 spline interpolation을 많이 사용하게 됩니다.
 polynomial interpolation이 고차원의 다항함수 한 개를 사용하여 $n+1$개의 점을 모두 지나도록 의도한 것이라면, spline interpolation에서는 저차원의 다항함수 여러 개($n$개)를 사용하는 것이라고 말할 수 있습니다.
 
-## 1.3 spline interpolation
+## 1.3 spline interpolations
 
 총 $n+1$개의 점들에 대하여, $n$개의 구간 $[x_{i-1},x_i]$을 생각할 수 있습니다($i=1,2,\cdots,n$).
 이 구간의 양 끝점 $(x_{i-1},y_{i-1})$, $(x_i,y_i)$을 지나는 저차원의 다항함수 $f_i$를 만들어내는 것이 spline interpolation의 방법입니다.
@@ -227,7 +240,7 @@ polynomial interpolation이 고차원의 다항함수 한 개를 사용하여 $n
 <!-- 이번에는 다항함수를 사용해 $f_i$를 만들어봅니다.
 즉, 보간을 위해 일종의 모델링을 하는 것인데, 어려운 모델링이 아니기 때문에 그 결과는 deterministic하게 나타납니다. -->
 
-### 1.3.1 linear (spline) interpolation
+### 1.3.1 linear spline
 
 1차함수를 통해 $f_i$를 만들어냅니다.
 
@@ -243,9 +256,11 @@ interp('linear', "1.3.1a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_25_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_31_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.3.1a.png){: .img-50-center}
 
 `slinear` 옵션은 `linear` 옵션과 거의 같은 것으로 생각됩니다.
 [이곳](https://stackoverflow.com/questions/17572390/in-scipy-what-is-slinear-interpolation)과 [이곳](https://gist.github.com/stringfellow/8ae4d3f25ca525e75bb79c01fbda4a24)에 그 차이가 설명되어 있다고 하는데, 자세히 읽어보지는 않았습니다.
@@ -258,9 +273,11 @@ interp('slinear', "1.3.1b")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_27_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_34_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.3.1b.png){: .img-50-center}
 
 거창하게 linear interpolation이라고 되어 있지만, 단순히 knot들을 선분으로 이은 것에 불과합니다.
 그래도 식으로 굳이 한 번 써보면
@@ -299,7 +316,7 @@ $$f\in C[x_0,x_n]$$
 
 이 성립합니다. ($f$가 연속함수라는 뜻입니다.)
 
-### 1.3.2 quadratic spline interpolation
+### 1.3.2 quadratic spline
 
 
 ```python
@@ -309,9 +326,11 @@ interp('quadratic', "1.3.2a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_30_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_38_0.png)
     
 
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.3.2a.png){: .img-50-center}
 
 2차함수를 통해 $f_i$를 만들어냅니다.
 즉, knot들을 포물선으로 연결하게 되는데, 두 점을 잇는 포물선은 유일하지 않습니다.
@@ -351,13 +370,24 @@ $$
 
 $$f\in C^1[x_0,x_n]$$
 
-이 성립합니다. ($f$의 도함수가 연속이라는 뜻입니다.)
+이 성립합니다. ($f$의 도함수까지 연속이라는 뜻입니다.)
 
-### 1.3.3 cubic spline interpolation
+### 1.3.3 cubic spline
 
-# 1.2.3 cubic : third order
+
+```python
+# 1.3.3 cubic : third order
 # popular interpolation
-interp('cubic')
+interp('cubic', "1.3.3a")
+```
+
+
+    
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_42_0.png)
+    
+
+
+![]({{site.url}}\images\2023-05-27-interpolation\1.3.3a.png){: .img-50-center}
 
 3차함수를 통해 $f_i$를 만들어냅니다.
 quadratic spline보다 더 많은 조건을 부여합니다.
@@ -417,9 +447,36 @@ $$
 
 $$f\in C^2[x_0,x_n]$$
 
-이 성립합니다. (이계도함수가 연속이라는 뜻입니다.)
+이 성립합니다. ($f$가 이계도함수까지 연속이라는 뜻입니다.)
 
 # 2 multivariate interpolation
+
+
+```python
+# generating an arbitrary sequence of pairs of numbers (not with missing values)
+min = 5
+max = 8
+length = 3
+ax = plt.axes(projection='3d')
+x = list(range(length))*length
+y = np.array(([[i]*length for i in range(length)])).flatten()
+z = np.random.randint(min, max, (length,length))
+plt.xticks(np.arange(0, length))
+plt.yticks(np.arange(0, length))
+ax.scatter3D(x, y, z)
+plt.show()
+```
+
+
+    
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_46_0.png)
+    
+
+
+
+```python
+
+```
 
 # 참고한 자료들
 1. [Jeffrey Chasnov, Cubic Spline Interpolation (youtube)](https://youtu.be/LaolbjAzZvg)
