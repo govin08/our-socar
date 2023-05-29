@@ -99,7 +99,7 @@ y_n&(\frac{x_{n-1}+x_n}2\le x\le x_n)
 $$
 
 이 정의에서 (그리고 아래의 두 정의에서) $\le$와 $\lt$는 큰 의미가 있지 않습니다.
-이것들을 반대로 바꾸면, 엄밀하게는 이전과는 다른 함수가 될테지만, (특히 프로그래밍적으로는) 그 차이는 큰 의미가 없을 것입니다.
+이것들을 반대로 바꾸면, 엄밀하게는 이전과는 다른 함수가 될테지만, 프로그래밍적으로는 그 차이는 큰 의미가 없을 것입니다.
 
 univariate interpolation을 파이썬 코드로 구현할 때 `scipy.interpolate.interp1d` 메소드를 이용할 수 있습니다.
 
@@ -398,11 +398,10 @@ interp('cubic', "1.3.3a")
 quadratic spline보다 더 많은 조건을 부여합니다.
 각 knot에서의 이계미분계수가 같도록, 그러니까 이계미분가능(twice-differentiable)해지도록 합니다.
 
-가장 흔히 쓰이는 방식의 spline interpolation입니다.
+이것은 가장 흔히 쓰이는 방식의 spline interpolation입니다.
 spline interpolation이 여러 univariate interpolation 방법 중에서 가장 표준적인 방법인 이유는 두 가지 정도가 있는 것 같습니다.
 첫째로, 곡률의 관점에서 좋습니다.
 그래프의 곡률이 급격하게 바뀌지 않습니다.
-왜냐하면, 함수 $y=f(x)$의 $x=a$에서의 곡률 $\kappa$가
 왜냐하면, 함수 $y=f(x)$의 $x=a$에서의 곡률 $\kappa$가
 
 $$\kappa = \frac{f''(a)}{(1+\{f'(a)\}^2)^{\frac32}}$$
