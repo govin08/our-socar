@@ -46,7 +46,6 @@ $n+1$개의 점이 이미 찍혀있는 상태에서, 이 점들을 적절히 이
 위의 그림에서 보듯 $n+1$개의 점들은 벽에 박힌듯 고정되어 있고, 나머지 선들이 실처럼 움직입니다.
 그런 의미에서 고정된 $n+1$개의 점들을 knot이라고 부르기도 합니다.
 
-
 $n+1$개의 점 $(x_i,y_i)$를 찍는 코드는 다음과 같습니다.
 
 
@@ -70,9 +69,18 @@ plt.savefig("../../images/2023-05-27-interpolation/1c.png")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_5_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_6_0.png)
     
 
+
+위의 코드는 그 자체로 자명하지만, 그래도 조금 설명을 적어보면 $x$좌표들은 $\\{0,1,2,3,4,5,6,7,8,9\\}$ 중에서 값을 가지게 됩니다.
+(`x = np.arange(0, length)`)
+각각의 $x\in\\{0,1,2,3,4,5,6,7,8,9\\}$에 대하여 $5$, $6$, $7$, $8$ 중의 하나의 값을 $y$로 대응시킵니다.
+(`y = np.random.randint(min, max, length)`)
+즉, 길이가 10이고 그 값이 $5$, $6$, $7$, $8$ 중에 하나인 수열을 만든 셈입니다.
+결측치를 만들기 위해, $y$값이 $5$인 경우를 제외시킵니다.
+(`x = np.delete(x, np.where(y == 5))`, `y = np.delete(y, np.where(y == 5))`)
+그러면, $n\le9$인 데이터 $\\{(x_i,y_i)\\}_{i=0}^n$이 생성됩니다.
 
 ![]({{site.url}}\images\2023-05-27-interpolation\1c.png){: .img-50-center}
 
@@ -83,7 +91,7 @@ plt.savefig("../../images/2023-05-27-interpolation/1c.png")
 ### 1.1.1 nearest neighbor
 
 함수 $f:[x_0,x_n]\to\mathbb R$을 다음과 같이 정의합니다.
-말 그대로, 주어진 $x$에 대하여 $x$에서 가장 가까이 있는 $x$좌표가 $x_i$이면 $y_i$에 그 함숫값을 대응시키는 것입니다.
+말 그대로, 주어진 $x$에 대하여 $x$에서 가장 가까이 있는 $x$좌표가 $x_i$이면 그 함숫값을 $y_i$로 대응시키는 것입니다.
 
 $$
 f(x)=
@@ -113,8 +121,8 @@ def interp(kind, filename):
     plt.plot(x, y, 'o', xnew, ynew, '-')
     plt.xticks(np.arange(0, length))
     plt.yticks(np.arange(6, 10))
-    plt.savefig("../../images/2023-05-27-interpolation/"+filename+".png")
     plt.title("interp1d : kind = "+kind)
+    plt.savefig("../../images/2023-05-27-interpolation/"+filename+".png")
 
 ```
 
@@ -127,7 +135,7 @@ interp('nearest', "1.1.1a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_13_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_15_0.png)
     
 
 
@@ -159,7 +167,7 @@ interp('previous', "1.1.2a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_17_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_19_0.png)
     
 
 
@@ -177,7 +185,7 @@ interp('zero', "1.1.2b")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_20_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_22_0.png)
     
 
 
@@ -208,7 +216,7 @@ interp('next', "1.1.3a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_24_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_26_0.png)
     
 
 
@@ -233,7 +241,7 @@ polynomial interpolation을 사용하면, $n+1$개의 점을 지나는 다항식
 우리가 원하는 것은 $n+1$개의 점들을 잇는 '적당한' 함수를 찾는 것인데, 그 결과로 나오는 함수(interpolant)가 너무 복잡하다면 적절하지 않습니다.
 일종의 overfitting이 발생하는 셈입니다.
 
-![]({{site.url}}\images\2023-05-27-interpolation\1.2a.png){: .img-50-center}
+![]({{site.url}}\images\2023-05-27-interpolation\1.2a.png){: .img-70-center}
 
 그래서, 이러한 polynomial interpolation 방법은 일반적으로 잘 쓰이지 않고, 다음과 같은 spline interpolation을 많이 사용하게 됩니다.
 polynomial interpolation이 고차원의 다항함수 한 개를 사용하여 $n+1$개의 점을 모두 지나도록 의도한 것이라면, spline interpolation에서는 저차원의 다항함수 여러 개($n$개)를 사용하는 것이라고 말할 수 있습니다.
@@ -262,7 +270,7 @@ interp('linear', "1.3.1a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_31_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_33_0.png)
     
 
 
@@ -279,7 +287,7 @@ interp('slinear', "1.3.1b")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_34_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_36_0.png)
     
 
 
@@ -309,13 +317,13 @@ $2n$개의 unkown들을 $2n$개의 constraint들로 풀어낼 수 있으므로 �
 
 $$
 \begin{align*}
-\text{\# of unknowns }&:{ 2n}\\
-\text{\# of constraints }&:{ 2n}
+\text{# of unknowns }&:{ 2n}\\
+\text{# of constraints }&:{ 2n}
 \end{align*}
 $$
 
-이 함수 $f$는 연속함수이지만, 미분가능하지는 않습니다.
-(그리고, 당연히, 도함수가 연속이지 않습니다.)
+이 함수 $f$는 연속함수이지만, 반드시 미분가능하지는 않습니다.
+(그리고, 당연히, 도함수가 반드시 연속이지 않습니다.)
 다시 말해,
 
 $$f\in C^0[x_0,x_n]$$
@@ -332,7 +340,7 @@ interp('quadratic', "1.3.2a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_38_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_40_0.png)
     
 
 
@@ -389,7 +397,7 @@ interp('cubic', "1.3.3a")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_42_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_44_0.png)
     
 
 
@@ -408,7 +416,7 @@ spline interpolation이 여러 univariate interpolation 방법 중에서 가장 
 
 $$\kappa = \frac{f''(a)}{(1+\{f'(a)\}^2)^{\frac32}}$$
 
-와 같이 나타나고, quadratic spline은 이계도함수가 연속이기 때문입니다.
+와 같이 나타나고, cubic spline으로 얻어진 $f$는 이계도함수까지 연속이기 때문입니다.
 
 둘째로, 보간해야 할 column이 물리적인 의미를 가지고 있을 때 유용합니다.
 예를 들어, 어떤 물체의 위치 (특정한 방향으로의 좌표)를 나타내는 column을 보간한다고 하면, $f'(x)$는 그 방향으로의 속도성분을, $f''{}(x)$는 가속도성분을 의미할 것입니다.
@@ -477,8 +485,8 @@ def cubicspline(bc_type, filename):
     plt.plot(x, y, 'o', xnew, ynew, '-')
     plt.xticks(np.arange(0, length))
     plt.yticks(np.arange(6, 10))
-    plt.savefig("../../images/2023-05-27-interpolation/"+filename+".png")
     plt.title("CubicSpline : bc_type = "+bc_type)
+    plt.savefig("../../images/2023-05-27-interpolation/"+filename+".png")
 
 ```
 
@@ -489,7 +497,7 @@ cubicspline("not-a-knot","1.3.3b")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_47_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_49_0.png)
     
 
 
@@ -500,7 +508,7 @@ cubicspline("clamped","1.3.3c")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_48_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_50_0.png)
     
 
 
@@ -511,12 +519,14 @@ cubicspline("natural","1.3.3d")
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_49_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_51_0.png)
     
 
 
 ![]({{site.url}}\images\2023-05-27-interpolation\1.3.3b.png){: .img-50-center}
+
 ![]({{site.url}}\images\2023-05-27-interpolation\1.3.3c.png){: .img-50-center}
+
 ![]({{site.url}}\images\2023-05-27-interpolation\1.3.3d.png){: .img-50-center}
 
 # 2 multivariate interpolation
@@ -539,7 +549,7 @@ plt.show()
 
 
     
-![png](2023-05-27-interpolation_files/2023-05-27-interpolation_52_0.png)
+![png](2023-05-27-interpolation_files/2023-05-27-interpolation_54_0.png)
     
 
 
