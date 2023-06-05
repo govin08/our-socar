@@ -6846,7 +6846,7 @@ $$
 $$
 \begin{align*}
 f_{XY}(x,y)
-&=f_{UV}\left(\sqrt{xy} &&\sqrt{\frac yx}\right)\qquad(x,y)\in T\\
+&=f_{UV}\sqrt{xy} &&\sqrt{\frac yx}\qquad(x,y)\in T\\
 &=\frac{2y}x            &&0<y<\min\left(x,\frac1x\right)
 \end{align*}
 $$
@@ -7067,7 +7067,7 @@ $$g(x)=-\log x$$
 delta function의 제대로 된 정의를 measure-theoretic하게 공부해보고 싶습니다.
 확률론을 전공한 몇몇 지인들은 이것들을 오래전부터 이것을 잘 알고 있었을 거라 생각하니, 샘이 나기도 합니다.
 특히나, covolution 연산이 어떤 의미에서 abelian group을 형성하는데, 그 group의 identity가 delta function이 된다는 아주 재미있는 사실은 정말 공부하고 싶습니다.
-더 나아가서 delta functionㅁ은 양자역학과도 연관이 있다고 합니다.
+더 나아가서 delta function은 양자역학과도 연관이 있다고 합니다.
 물리에서 delta function이 중요하다고도 합니다, 그리고 물리에서 말하는 delta function과 수학에서 말하는 delta function은
 (그래서, 얼마 전 물리를 전공한 친구와 강화도 여행을 갔을 때 이에 대해 물어봤었는데, 그 친구는 이에 대해 아주 잘 알지는 못했던 것 같습니다.)
 delta function에 대한 책도 하나 찾아두기는 했습니다.
