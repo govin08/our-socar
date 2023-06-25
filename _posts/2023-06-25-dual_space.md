@@ -23,7 +23,7 @@ dual space에 대해서는 당연히, 학부 2학년 때 배운 바가 있기는
 
 1에서는 관련된 기본 배경개념을 적어봤는데 vector space와 field, basis와 dimension 정도에 대해 간단히 적었습니다.
 2에서는 linear functional과 dual space에 대해 적었습니다.
-3을 쓸 수 있을지는 모르겠지만, 쓰게 된다면 linear functional의 예에 대해서 간단히 적을 것 같습니다.
+3에서는 linear functional의 해석학적인 예시에 대해 적어보았는데, 관련된 질문이 해소되지 않은 것이 있어서 stackexchange에 [질문](https://math.stackexchange.com/questions/4725056/what-is-the-dual-of-integration-over-the-unit-interval)도 올려보았습니다.
 
 <style id="compiled-css" type="text/css">
 ol.parenthesis {
