@@ -9,7 +9,7 @@ author_profile: false
 toc: true
 ---
 
-문득 심심해져서 linear functional과 dual space에 대해 정리해봤습니다.
+문득 궁금해져서 linear functional과 dual space에 대해 정리해봤습니다.
 그저께였던 금요일 저녁에 Oxford에서 제작한 것으로 보이는 [어떤 자료](https://people.maths.ox.ac.uk/flynn/genus2/alg0506/LALect03.pdf)를 따라가면서 그 증명을 채워넣었습니다.
 어제 아침에 더 괜찮아보이는 notation으로 다시 적어보았고, 그리고 오늘 (새벽 4시) 일찍 일어난 김에 포스팅을 작성해봅니다.
 
@@ -64,7 +64,7 @@ $(F,+,\times)$ is a field if the following 11 conditions hold ;
 <li>$\forall a,b,c\in F$, $(ab)c=a(bc)$</li>
 <li>$\forall a,b\in F$, $ab=ba$</li>
 <li>$\exists 1\in F$ s.t. $\forall a\in F$, $a\times1=1\times a=a$</li>
-<li>$\forall a\in F$, $\exists -a\in F$ s.t. $a+(-a)=(-a)+a=0$</li>
+<li>$\forall a\in F$, $\exists a^{-1}\in F$ s.t. $aa^{-1}=a^{-1}a=1$</li>
 <li>$\forall a,b,c\in F$, $(a+b)c=ac+bc$</li>
 </ol>
 
@@ -75,7 +75,7 @@ That is, $F$ is an abelian group under the addition(1-5), $F\setminus\\{0\\}$ is
 $(V,+,\cdot)$ is a vector space if the following 10 conditions hold;
 
 <ol class="parenthesis">
-<li>$\forall v,w\in V$, $f+g\in V$</li>
+<li>$\forall v,w\in V$, $v+w\in V$</li>
 <li>$\forall u,v,w\in V$, $(u+v)+w=u+(v+w)$</li>
 <li>$\forall v,w\in V$, $v+w=w+v$</li>
 <li>$\exists 0\in V$ s.t. $\forall v\in V$, $v+0=0+v=v$</li>
@@ -109,7 +109,7 @@ By the linear independence of $\\{v_1,\cdots,v_n\\}$, we mean
 
 $$a_1v_1+\cdots+a_nv_n\quad\Longrightarrow\quad a_1=\cdots=a_n=0,$$
 
-where $a_i\in F$ and $v_i\in V$ $(i=1,\cdots,n)$.
+where $a_i\in F$.
 We say $\\{v_1,\cdots,v_n\\}$ spans $V$ or
 
 $$\text{span}(\{v_1,\cdots,v_n\})=V,$$
@@ -177,7 +177,7 @@ But quadratic form *for each vector* $v\mapsto v^TAv$ is not a linear functional
 
 ## 2.2 Dual space
 
-For a vector space $V$ over a field $F$, define $V^\ast$ be the collection of all linearl functionals.
+For a vector space $V$ over a field $F$, define $V^\ast$ be the collection of all linear functionals.
 It is called the **dual space** of $V$.
 We can impose algebraic structure $(V^\ast,+,\cdot)$ in such a canonical way that
 
@@ -188,7 +188,7 @@ We can impose algebraic structure $(V^\ast,+,\cdot)$ in such a canonical way tha
 
 **2.2.1 $V^\ast$ is a vector space.**
 
-To prove that $V^\ast$ is a vector space over $F$, it is enought to check the ten conditions illustrated in **1.2**
+To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten conditions illustrated in **1.2**
 
 <ol class="parenthesis">
 <li>
@@ -196,7 +196,8 @@ To prove that $V^\ast$ is a vector space over $F$, it is enought to check the te
     Let $f,g\in V^\ast$.
     For $v,w\in V$, 
     \begin{align*}
-    (f+g)(v+w)=f(v+w)+g(v+w)
+    (f+g)(v+w)
+    &=f(v+w)+g(v+w)
     =&\left(f(v)+f(w)\right)+\left(g(v)+g(w)\right)\\
     =&\left(f(v)+g(v)\right)+\left(f(w)+g(w)\right)\\
     =&(f+g)(v)+(f+g)(w).
@@ -351,7 +352,7 @@ $$
 \delta_{ij}=
 \begin{cases}
 1&(i=j)\\
-0&(i\ne j)
+0&(i\ne j).
 \end{cases}
 $$
 
@@ -379,7 +380,7 @@ f_i(av)
 &=f_i\left(a\sum_{j=1}^na_jv_j\right)\\
 &=f_i\left(\sum_{j=1}^naa_jv_j\right)\\
 &=aa_i\\
-=af_i(v)
+&=af_i(v)
 \end{align*}
 $$
 
@@ -387,13 +388,13 @@ Therefore, $f_i\in V^\ast$.
 
 **2.3.2 $\\{f_i\\}_{i=1}^n$ is a basis for $V^\ast$**
 
-It is enought to prove the linear independence and spanning of $\\{f_i\\}_{i=1}^n$.
+It is enough to prove the linear independence and spanning of $\\{f_i\\}_{i=1}^n$.
 
 To prove the linear independence of $\\{f_i\\}_{i=1}^n$, set
 
 $$\sum_{i=1}^na_if_i=0.$$
 
-For each $i\in\\{1,\cdots,n\\}$,
+For each $j\in\\{1,\cdots,n\\}$,
 
 $$
 \begin{align*}
@@ -450,7 +451,7 @@ $$\mathcal D\left(\sum_{j=1}^na_jv_j\right)=\sum_{j=1}^na_jf_j.$$
 is a one-to-one correspondence.
 To prove the injectivity of $\mathcal D$, let
 
-$$\mathcal D\left(\sum_{j=1}^na_jf_j\right)=\mathcal D\left(\sum_{j=1}^nb_jf_j\right)$$
+$$\mathcal D\left(\sum_{j=1}^na_jv_j\right)=\mathcal D\left(\sum_{j=1}^nb_jv_j\right)$$
 
 so that
 
@@ -461,7 +462,7 @@ Thus,
 
 $$\sum_{j=1}^na_jv_j=\sum_{j=1}^nb_jv_j$$
 
-and $\mathcal D$ is surjective.
+and $\mathcal D$ is injective.
 Surjectivity follows immediately from the spanning property.
  <!-- of $\\{f_i\\}_{i=1}^n$. -->
 Let $f\in V^\ast$.
@@ -477,7 +478,7 @@ and $\mathcal D$ is surjective.
 
 **2.3.5 $\mathcal D$ is linear**
 
-The conversion map of $V$ onto $V^\ast$ is a linear transformation ;
+The conversion map $\mathcal D$ of $V$ onto $V^\ast$ is a linear transformation ;
 
 $$
 \begin{align*}
@@ -575,15 +576,15 @@ Therefore, $f_i\in U^0$, as desired.
 That $F^0=\\{f_{k+1},\cdots,f_n\\}$ is linearly independent is trivial.
 To prove $\text{span}(F^0)=U^0$, let $f\in U^0$ with
 
-$$f=\sum_{i=1}^nf_i$$
+$$f=\sum_{i=1}^na_if_i$$
 
 For every $j\in\\{1,\cdots,k\\}$,
 
-$$0=f(v_j)=\sum_{i=1}^nf_i(v_j)=a_j.$$
+$$0=f(v_j)=\sum_{i=1}^na_if_i(v_j)=a_j.$$
 
 Thus,
 
-$$f=\sum_{i=k+1}^nf_i$$
+$$f=\sum_{i=k+1}^na_if_i$$
 
 and $F^0=\\{f_{k+1},\cdots,f_n\\}$ spans $U^0$.
 
@@ -613,14 +614,14 @@ If $U=V$, then $U^0=\\{0\\}$ and
 $$\text{dim}(U)+\text{dim}(U^0)=n+0=n=\text{dim}(V).$$
 
 This proves the statement in 2.4.1 in general.
-\qed
+$\square$
 
 # 3. Examples of linear functionals and dual of them
 
 ## 3.1 Integration
 
 Consider a function space $C^0[0,1]$ of all continuous functions on the unit closed interval $[0,1]$.
-Let $\Lambda:C^0[0,1]\to\mathbb R$ be defined by
+Let $\Phi:C^0[0,1]\to\mathbb R$ be defined by
 
 $$\Phi(f)=\int_0^1f(x)\,dx$$
 
@@ -654,7 +655,7 @@ $$
 \begin{align*}
 \Psi(f+g)
 &=(f+g)'\left(\frac12\right)\\
-&=f\left(\frac12\right)+g\left(\frac12\right)\\
+&=f'\left(\frac12\right)+g'\left(\frac12\right)\\
 &=\Psi(f)+\Psi(g)\\
 \Psi(af)
 &=(af)'\left(\frac12\right)\\
