@@ -201,16 +201,16 @@ To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten
     \begin{align*}
     (f+g)(v+w)
     &=f(v+w)+g(v+w)\\
-    =&\left(f(v)+f(w)\right)+\left(g(v)+g(w)\right)\\
-    =&\left(f(v)+g(v)\right)+\left(f(w)+g(w)\right)\\
-    =&(f+g)(v)+(f+g)(w).
+    &=\left(f(v)+f(w)\right)+\left(g(v)+g(w)\right)\\
+    &=\left(f(v)+g(v)\right)+\left(f(w)+g(w)\right)\\
+    &=(f+g)(v)+(f+g)(w).
     \end{align*}
     And for all $a\in F$ and $v\in V$,
     \begin{align*}
-    (f+g)(av)=f(av)+g(av)
-    =&af(v)+ag(v)\\
-    =&a\left(f(v)+g(v)\right)\\
-    =&a(f+g)(v).
+    (f+g)(av)=f(av)+g(av)\\
+    &=af(v)+ag(v)\\
+    &=a\left(f(v)+g(v)\right)\\
+    &=a(f+g)(v).
     \end{align*}
     Thus, $f+g$ is a linear functional and $f+g\in V^\ast$.
 </li>
@@ -221,11 +221,11 @@ To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten
     For each $v\in V$,
     \begin{align*}
     \left((f+g)+h\right)(v)
-    =&(f+g)(v)+h(v)\\
-    =&\left(f(v)+g(v)\right)+h(v)\\
-    =&f(v)+\left(g(v)+h(v)\right)\\
-    =&f(v)+(g+h)(v)\\
-    =&\left(f+(g+h)\right)(v).
+    &=(f+g)(v)+h(v)\\
+    &=\left(f(v)+g(v)\right)+h(v)\\
+    &=f(v)+\left(g(v)+h(v)\right)\\
+    &=f(v)+(g+h)(v)\\
+    &=\left(f+(g+h)\right)(v).
     \end{align*}
     Thus, $(f+g)+h=f+(g+h)$.
 </li>
@@ -235,9 +235,9 @@ To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten
     For each $v\in V$,
     \begin{align*}
     \left(f+g\right)(v)
-    =&f(v)+g(v)\\
-    =&g(v)+f(v)\\
-    =&\left(g+f\right)(v).
+    &=f(v)+g(v)\\
+    &=g(v)+f(v)\\
+    &=\left(g+f\right)(v).
     \end{align*}
     Thus, $f+g=g+f$.
 </li>
