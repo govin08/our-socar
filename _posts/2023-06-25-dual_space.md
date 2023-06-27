@@ -191,7 +191,7 @@ We can impose algebraic structure $(V^\ast,+,\cdot)$ in such a canonical way tha
 
 **2.2.1 $V^\ast$ is a vector space.**
 
-To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten conditions illustrated in **1.2**
+To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten conditions illustrated in **1.2** ;
 
 <ol class="parenthesis">
 <li>
