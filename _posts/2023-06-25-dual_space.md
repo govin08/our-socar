@@ -499,7 +499,7 @@ $$
 \end{align*}
 $$
 
-That said, $\mathcal D$ is an isomorphism of $V$ onto $V^\ast$.
+Combining 2.3.4 and 2.3.5, $\mathcal D$ is an isomorphism of $V$ onto $V^\ast$.
 
 
 ## 2.4 Annihilator
