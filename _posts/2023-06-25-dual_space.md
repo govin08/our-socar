@@ -69,6 +69,7 @@ $(F,+,\times)$ is a field if the following 11 conditions hold ;
 </ol>
 
 That is, $F$ is an abelian group under the addition(1-5), $F\setminus\\{0\\}$ is an abelian group under the multiplication(6-10) and the distribution law holds(11).
+An element $a$ of a field $F$ is called a \emph{scalar}.
 
 ## 1.2 Vector space
 
@@ -88,6 +89,7 @@ $(V,+,\cdot)$ is a vector space if the following 10 conditions hold;
 </ol>
 
 That is, $V$ is an abelian group under the addition(1-5) which satisfies several conditions(6-10) with respect to the scalar multiplication.
+An element $v$ of a vector space $V$ is called a \emph{vector}.
 
 **1.2.1**
 
@@ -109,7 +111,7 @@ By the linear independence of $\\{v_1,\cdots,v_n\\}$, we mean
 
 $$a_1v_1+\cdots+a_nv_n\quad\Longrightarrow\quad a_1=\cdots=a_n=0,$$
 
-where $a_i\in F$.
+where $a_i\in F$ for all $i$.
 We say $\\{v_1,\cdots,v_n\\}$ spans $V$ or
 
 $$\text{span}(\{v_1,\cdots,v_n\})=V,$$
@@ -118,6 +120,7 @@ if every vector $v\in V$ can be expressed as a linear combination
 
 $$v=a_1v_1+\cdots+a_nv_n.$$
 
+of vectors $v_i$'s.
 The basis $\\{v_1,\cdots,v_n\\}$ is often denoted by $\\{v_i\\}_{i=1}^n$ for brevity.
 
 A cardinality of a basis for a vector space is unique and is called the dimension of $V$ ; 
@@ -177,7 +180,7 @@ But quadratic form *for each vector* $v\mapsto v^TAv$ is not a linear functional
 
 ## 2.2 Dual space
 
-For a vector space $V$ over a field $F$, define $V^\ast$ be the collection of all linear functionals.
+For a vector space $V$ over a field $F$, define $V^\ast$ be the collection of all linear functionals of $V$ into $F$.
 It is called the **dual space** of $V$.
 We can impose algebraic structure $(V^\ast,+,\cdot)$ in such a canonical way that
 
@@ -197,7 +200,7 @@ To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten
     For $v,w\in V$, 
     \begin{align*}
     (f+g)(v+w)
-    &=f(v+w)+g(v+w)
+    &=f(v+w)+g(v+w)\\
     =&\left(f(v)+f(w)\right)+\left(g(v)+g(w)\right)\\
     =&\left(f(v)+g(v)\right)+\left(f(w)+g(w)\right)\\
     =&(f+g)(v)+(f+g)(w).
