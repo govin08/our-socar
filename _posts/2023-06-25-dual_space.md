@@ -499,6 +499,8 @@ $$
 \end{align*}
 $$
 
+That said, $\mathcal D$ is an isomorphism of $V$ onto $V^\ast$.
+
 
 ## 2.4 Annihilator
 
