@@ -69,7 +69,7 @@ $(F,+,\times)$ is a field if the following 11 conditions hold ;
 </ol>
 
 That is, $F$ is an abelian group under the addition(1-5), $F\setminus\\{0\\}$ is an abelian group under the multiplication(6-10) and the distribution law holds(11).
-An element $a$ of a field $F$ is called a \emph{scalar}.
+An element $a$ of a field $F$ is called a *scalar*.
 
 ## 1.2 Vector space
 
@@ -89,7 +89,7 @@ $(V,+,\cdot)$ is a vector space if the following 10 conditions hold;
 </ol>
 
 That is, $V$ is an abelian group under the addition(1-5) which satisfies several conditions(6-10) with respect to the scalar multiplication.
-An element $v$ of a vector space $V$ is called a \emph{vector}.
+An element $v$ of a vector space $V$ is called a *vector*.
 
 **1.2.1**
 
@@ -525,8 +525,6 @@ Then, $(af)(u)=af(u)=a\cdot0=0$ for all $u\in U$.
 Thus, $af\in U^0$.
 
 Therefore, $U^0$ is a subspace of $V^\ast$ as expected.
-
----
 
 Now we prove the following main result,
 
