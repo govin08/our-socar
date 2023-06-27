@@ -207,7 +207,8 @@ To prove that $V^\ast$ is a vector space over $F$, it is enough to check the ten
     \end{align*}
     And for all $a\in F$ and $v\in V$,
     \begin{align*}
-    (f+g)(av)=f(av)+g(av)\\
+    (f+g)(av)
+    &=f(av)+g(av)\\
     &=af(v)+ag(v)\\
     &=a\left(f(v)+g(v)\right)\\
     &=a(f+g)(v).
