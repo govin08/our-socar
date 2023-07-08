@@ -19,7 +19,7 @@ dual space에 대해서는 당연히, 학부 2학년 때 배운 바가 있기는
 혹은, $U<V$일 때, $\text{dim}(V)=\text{dim}(U)+\text{dim}(V^\perp)$가 성립한다는 식과도 유사해보입니다. (같은 것일지도 모르겠습니다.)
 
 간단한 수학이고, 그 정도의 목적을 위해서는 영어가 훨씬 편할 것 같아서 영어로 작성했습니다.
-간단히 적기 위해서 universal / existential quantifier ($\forall, \exists$)를 적극적으로 활용했습니다.
+간략히 적기 위해서 universal / existential quantifier ($\forall, \exists$)를 적극적으로 활용했습니다.
 
 1에서는 관련된 기본 배경개념을 적어봤는데 vector space와 field, basis와 dimension 정도에 대해 간단히 적었습니다.
 2에서는 linear functional과 dual space에 대해 적었습니다.
@@ -123,7 +123,7 @@ $$v=a_1v_1+\cdots+a_nv_n.$$
 of vectors $v_i$'s.
 The basis $\\{v_1,\cdots,v_n\\}$ is often denoted by $\\{v_i\\}_{i=1}^n$ for brevity.
 
-A cardinality of a basis for a vector space is unique and is called the dimension of $V$ ; 
+The cardinality of a basis for a vector space is unique and is called the dimension of $V$ ; 
 
 $$\text{dim}(V)=n.$$
 
@@ -350,7 +350,7 @@ For each $i\in\\{1,\cdots,n\\}$, let $f_i:V\to F$ be defined by
 
 $$f_i\left(\sum_{j=1}^na_jv_j\right)=a_j.$$
 
-It is equivalent to saying that $f_i(v_j)=\delta_{ij}$ for all $j\in\\{1,\cdots,n\\}$, where $\delta_{ij}$ is the Kronecker delta defined by
+It is equivalent to saying that $f_i$'s are linear functionals such that $f_i(v_j)=\delta_{ij}$ for all $j\in\\{1,\cdots,n\\}$, where $\delta_{ij}$ is the Kronecker delta defined by
 
 $$
 \delta_{ij}=
@@ -536,7 +536,7 @@ which takes several steps as follows.
 
 **2.4.2 Two types of basis vectors**
 
-Suppose that $U\ne\{0\}$ and $U\ne V$.
+Suppose that $U\ne\\{0\\}$ and $U\ne V$.
 Let $B_0=\\{v_1,\cdots,v_k\\}$ be a basis for $U$ and $F_0=\\{f_1,\cdots,f_k\\}$ be the corresponding dual basis where $0\lt k\lt n$.
 We can extend the basis $B_0$ for $U$ to a basis $B=\\{v_1,\cdots,v_k,v_{k+1},\cdots,v_n\\}$ for $V$.
 Let $B^0=\\{v_{k+1},\cdots,v_n\\}$ and let $F^0=\\{f_{k+1},\cdots,f_n\\}$ be the set of the coresponding linear functionals.
