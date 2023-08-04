@@ -72,7 +72,7 @@ feature를 나타낼 때에는 <code>이용 수</code>라는 단어를, 일반�
 
 ## 1 데이터 분석
 
-![]({{site.url}}\images\2023-04-14-socar_zones\Slide5.PNG){: .img-100-center}
+<!-- ![]({{site.url}}\images\2023-04-14-socar_zones\Slide5.PNG){: .img-100-center} -->
 
 저희 팀은 경기도 지역을 타겟으로 삼았습니다.
 그 이유는, 제공받은 `수요 데이터`는 대부분이(77.96%) 경기도의 데이터였기 때문이었는데요.
