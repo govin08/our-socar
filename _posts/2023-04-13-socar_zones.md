@@ -16,7 +16,15 @@ author_profile: false
 카셰어링 업체 SOCAR로부터 45만여 건의 SOCAR 사용이력 데이터를 제공받았습니다.
 그 중 다섯 건의 사용이력은 다음과 같습니다.
 
-![]({{site.url}}\images\2023-04-14-socar_zones\original_socar_data.png){: .img-75-center}
+||지역1|지역2|대여시작시각|대여종료시각|나이대|성별|차종|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|0|xx광역시|xx구|2019-xx-xx xx:xx:xx|2019-xx-xx xx:xx:xx|1|male|경형|
+|1|xx광역시|xx구|2019-xx-xx xx:xx:xx|2019-xx-xx xx:xx:xx|1|female|준중형|
+|2|xx도|xx군|2019-xx-xx xx:xx:xx|2019-xx-xx xx:xx:xx|3|female|준중형|
+|3|xx도|xx시|2019-xx-xx xx:xx:xx|2019-xx-xx xx:xx:xx|2|male|중형|
+|4|xx시|xx구|2019-xx-xx xx:xx:xx|2019-xx-xx xx:xx:xx|4|male|중형|
+
+<!-- ![]({{site.url}}\images\2023-04-14-socar_zones\original_socar_data.png){: .img-75-center} -->
 
 사용이력에 포함된 feature들은 각각 `지역1`(대지역), `지역2`(소지역), `대여시작시각`, `대여종료시각`, `나이대`, `성별`, `차종`입니다.
 
