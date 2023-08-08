@@ -6,6 +6,7 @@ tags: [statistics]
 use_math: true
 publish: false
 author_profile: false
+toc: false
 ---
 
 
